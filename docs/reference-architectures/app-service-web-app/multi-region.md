@@ -4,12 +4,12 @@ description: Microsoft Azure에서 실행되고 고가용성을 요구하는 웹
 author: MikeWasson
 ms.date: 11/23/2016
 cardTitle: Run in multiple regions
-ms.openlocfilehash: 00309e58c163a64f6d9796bedc19d936afcd09ab
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.openlocfilehash: 2efcc591695e1c592053ea32832fe15e624df2e1
+ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37958826"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "43016018"
 ---
 # <a name="run-a-web-application-in-multiple-regions"></a>여러 지역에서 웹 응용 프로그램 실행
 [!INCLUDE [header](../../_includes/header.md)]
@@ -58,13 +58,13 @@ Azure 지역은 동일한 지역 내에서 다른 지역과 쌍을 이룹니다.
 
 ### <a name="traffic-manager-configuration"></a>Traffic Manager 구성 
 
-**라우팅**. Traffic Manager는 여러 [라우팅 알고리즘][tm-routing]을 지원합니다. 이 문서에 설명된 시나리오는 *우선 순위* 라우팅(이전에는 *장애 조치(failover)* 라우팅이라고 함)을 사용합니다. 이 설정을 사용하면 Traffic Manager가 해당 지역의 끝점에 연결할 수 없는 경우가 아닌 한 모든 요청을 주 지역으로 보냅니다. 이때 자동으로 보조 지역으로 장애 조치(failover)됩니다. [장애 조치(failover) 라우팅 방법 구성][tm-configure-failover]을 참조하세요.
+**라우팅**. Traffic Manager는 여러 [라우팅 알고리즘][tm-routing]을 지원합니다. 이 문서에 설명된 시나리오는 *우선 순위* 라우팅(이전에는 *장애 조치(failover)* 라우팅이라고 함)을 사용합니다. 이 설정을 사용하면 Traffic Manager가 해당 지역의 엔드포인트에 연결할 수 없는 경우가 아닌 한 모든 요청을 주 지역으로 보냅니다. 이때 자동으로 보조 지역으로 장애 조치(failover)됩니다. [장애 조치(failover) 라우팅 방법 구성][tm-configure-failover]을 참조하세요.
 
-**상태 프로브**. Traffic Manager는 HTTP(또는 HTTPS) 프로브를 사용하여 각 끝점의 가용성을 모니터링합니다. 이 프로브는 Traffic Manager가 보조 지역으로의 장애 조치(failover)에 대한 통과/실패 테스트를 제공합니다. 지정된 URL 경로 요청을 전송하여 작동됩니다. 제한 시간 내에 200개의 비응답을 받으면 프로브가 실패합니다. 4개의 요청이 실패하면 Traffic Manager가 끝점을 성능 저하로 표시하고 다른 끝점으로 장애 조치(failover)합니다. 자세한 내용은 [Traffic Manager 끝점 모니터링 및 장애 조치(failover)][tm-monitoring]를 참조하세요.
+**상태 프로브**. Traffic Manager는 HTTP(또는 HTTPS) 프로브를 사용하여 각 엔드포인트의 가용성을 모니터링합니다. 이 프로브는 Traffic Manager가 보조 지역으로의 장애 조치(failover)에 대한 통과/실패 테스트를 제공합니다. 지정된 URL 경로 요청을 전송하여 작동됩니다. 제한 시간 내에 200개의 비응답을 받으면 프로브가 실패합니다. 4개의 요청이 실패하면 Traffic Manager가 엔드포인트를 성능 저하로 표시하고 다른 엔드포인트로 장애 조치(failover)합니다. 자세한 내용은 [Traffic Manager 엔드포인트 모니터링 및 장애 조치(failover)][tm-monitoring]를 참조하세요.
 
-응용 프로그램의 전반적인 상태를 보고하는 상태 프로브 끝점을 만들고 이 끝점을 상태 프로브에 사용하는 것이 좋습니다. 끝점은 App Service 앱, 저장소 큐, SQL Database와 같은 중요 종속성을 확인해야 합니다. 그렇지 않으면 응용 프로그램의 중요한 부분이 실제로 실패할 때 프로브에서 정상 끝점을 보고할 수 있습니다.
+응용 프로그램의 전반적인 상태를 보고하는 상태 프로브 엔드포인트를 만들고 이 엔드포인트를 상태 프로브에 사용하는 것이 좋습니다. 엔드포인트는 App Service 앱, 저장소 큐, SQL Database와 같은 중요 종속성을 확인해야 합니다. 그렇지 않으면 응용 프로그램의 중요한 부분이 실제로 실패할 때 프로브에서 정상 엔드포인트를 보고할 수 있습니다.
 
-반면에 하위 우선 순위 서비스를 확인하는 데 상태 프로브를 사용하지 않습니다. 예를 들어 메일 서비스가 중단되면 응용 프로그램이 두 번째 공급자로 전환하거나 나중에 메일을 보낼 수 있습니다. 이는 응용 프로그램에서 장애 조치(failover)를 취할 만큼 높은 우선 순위가 아닙니다. 자세한 내용은 [상태 끝점 모니터링 패턴][health-endpoint-monitoring-pattern]을 참조하세요.
+반면에 하위 우선 순위 서비스를 확인하는 데 상태 프로브를 사용하지 않습니다. 예를 들어 메일 서비스가 중단되면 응용 프로그램이 두 번째 공급자로 전환하거나 나중에 메일을 보낼 수 있습니다. 이는 응용 프로그램에서 장애 조치(failover)를 취할 만큼 높은 우선 순위가 아닙니다. 자세한 내용은 [상태 엔드포인트 모니터링 패턴][health-endpoint-monitoring-pattern]을 참조하세요.
  
 ### <a name="sql-database"></a>SQL Database
 [활성 지역 복제][sql-replication]를 사용하여 다른 지역에서 읽기 가능한 보조 복제본을 만듭니다. 최대 4개의 읽기 가능한 보조 복제본을 사용할 수 있습니다. 주 데이터베이스에 오류가 발생하거나 데이터베이스를 오프라인으로 전환해야 하는 경우 보조 데이터베이스로 장애 조치(failover)합니다. Elastic Database 풀에서 모든 데이터베이스에 대한 활성 지역 복제를 구성할 수 있습니다.
@@ -80,7 +80,7 @@ Cosmos DB는 지역 간 지역에서 복제를 지원합니다. 한 지역은 �
 >
 
 ### <a name="storage"></a>Storage
-Azure Storage의 경우 RA-GRS([읽기 액세스 지역 중복 저장소][ra-grs])를 사용합니다. RA-GRS 저장소를 사용하면 데이터가 보조 지역에 복제됩니다. 별도의 끝점을 통해 보조 지역의 데이터에 읽기 전용으로 액세스할 수 있습니다. 지역 가동 중단이나 재해가 발생할 경우 Azure Storage 팀이 보조 지역에 대해 지역 장애 조치(failover)를 수행하기로 결정할 수 있습니다. 이 장애 조치(failover)에 필요한 고객 작업은 없습니다.
+Azure Storage의 경우 RA-GRS([읽기 액세스 지역 중복 저장소][ra-grs])를 사용합니다. RA-GRS 저장소를 사용하면 데이터가 보조 지역에 복제됩니다. 별도의 엔드포인트를 통해 보조 지역의 데이터에 읽기 전용으로 액세스할 수 있습니다. 지역 가동 중단이나 재해가 발생할 경우 Azure Storage 팀이 보조 지역에 대해 지역 장애 조치(failover)를 수행하기로 결정할 수 있습니다. 이 장애 조치(failover)에 필요한 고객 작업은 없습니다.
 
 Queue Storage의 경우 보조 지역에 백업 큐를 만듭니다. 장애 조치(failover) 중에 앱은 주 지역을 다시 사용할 수 있을 때까지 백업 큐를 사용할 수 있습니다. 이런 방식으로 응용 프로그램이 새 요청을 계속 처리할 수 있습니다.
 
@@ -104,7 +104,7 @@ SQL Database의 RPO(복구 지점 목표) 및 ERT(예상 복구 시간)에 대�
 ### <a name="storage"></a>Storage
 RA-GRS 저장소는 지속형 저장소를 제공하지만 가동 중단 시 다음과 같은 사항이 발생할 수 있다는 점을 이해하는 것이 중요합니다.
 
-* 저장소 가동 중단이 발생하는 경우 데이터에 대한 쓰기 액세스 권한이 없는 기간이 발생합니다. 가동 중단 중에 보조 끝점에서 계속 읽을 수 있습니다.
+* 저장소 가동 중단이 발생하는 경우 데이터에 대한 쓰기 액세스 권한이 없는 기간이 발생합니다. 가동 중단 중에 보조 엔드포인트에서 계속 읽을 수 있습니다.
 * 지역 가동 중단이나 재해가 기본 위치에 영향을 미치고 해당 위치의 데이터를 복구할 수 없는 경우 Azure Storage 팀에서 보조 지역에 대한 지역 장애 조치(failover)를 수행하기로 결정할 수 있습니다.
 * 보조 지역에 대한 데이터 복제는 비동기적으로 수행됩니다. 따라서 지역 장애 조치(failover)를 수행하는 경우 주 지역에서 데이터를 복구할 수 없으면 일부 데이터가 손실될 수 있습니다.
 * 네트워크 가동 중단 등의 일시적인 오류는 저장소 장애 조치(failover)를 트리거하지 않습니다. 일시적인 장애를 복원할 수 있도록 응용 프로그램을 디자인합니다. 다음은 가능한 완화 방법입니다.
@@ -163,7 +163,7 @@ azure network traffic-manager endpoint set --name <endpoint> --profile-name <pro
 [storage-outage]: /azure/storage/storage-disaster-recovery-guidance
 [tm-configure-failover]: /azure/traffic-manager/traffic-manager-configure-failover-routing-method
 [tm-monitoring]: /azure/traffic-manager/traffic-manager-monitoring
-[tm-ps]: https://msdn.microsoft.com/library/mt125941.aspx
+[tm-ps]: /powershell/module/azurerm.trafficmanager
 [tm-routing]: /azure/traffic-manager/traffic-manager-routing-methods
 [tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager/v1_0/
 [traffic-manager]: https://azure.microsoft.com/services/traffic-manager/

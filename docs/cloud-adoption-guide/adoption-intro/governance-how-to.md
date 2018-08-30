@@ -2,12 +2,12 @@
 title: Azure 거버넌스 디자인 가이드
 description: 사용자가 간단한 워크로드를 배포할 수 있도록 Azure 거버넌스 컨트롤을 구성하기 위한 지침
 author: petertay
-ms.openlocfilehash: 78545400fc0b09262dce3d0e577442443468b2ed
-ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
+ms.openlocfilehash: 88cd24a46a6bdaca4e0dd18706af1f7e3fe3bce2
+ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39229577"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "43016088"
 ---
 # <a name="azure-governance-design-guide"></a>Azure 거버넌스 디자인 가이드
 
@@ -24,7 +24,7 @@ ms.locfileid: "39229577"
 거버넌스 모델을 디자인하기 전에 Azure의 사용을 허가하는 방법을 이해해야 합니다. Azure 라이선스와 연결된 관리자 계정에 모든 Azure 리소스에 대한 가장 높은 수준의 액세스 권한이 있기 때문입니다. 이러한 관리 계정은 거버넌스 모델의 기본을 형성합니다.  
 
 > [!NOTE]
-> 조직에 Azure가 포함되지 않은 기존 [Microsoft 기업계약](https://www.microsoft.com/licensing/licensing-programs/enterprise.aspx)이 있는 경우 선불 현금 약정 금액을 만들어서 Azure를 추가할 수 있습니다. 자세한 내용은 [엔터프라이즈용 Azure 라이선스](https://azure.microsoft.com/pricing/enterprise-agreement/)를 참조하세요. 
+> 조직에 Azure가 포함되지 않은 기존 [Microsoft 기업계약](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)이 있는 경우 선불 현금 약정 금액을 만들어서 Azure를 추가할 수 있습니다. 자세한 내용은 [엔터프라이즈용 Azure 라이선스](https://azure.microsoft.com/pricing/enterprise-agreement/)를 참조하세요. 
 
 Azure를 조직의 기업계약에 추가하는 경우 조직에는 **Azure 계정**을 만들라는 메시지가 표시됩니다. 계정 생성 프로세스 중에 **Azure 계정 소유자**뿐만 아니라 **전역 관리자** 계정을 사용하는 Azure AD(Azure Active Directory) 테넌트가 생성되었습니다. Azure AD 테넌트는 Azure AD의 안전한 전용 인스턴스를 나타내는 논리적 구문입니다.
 

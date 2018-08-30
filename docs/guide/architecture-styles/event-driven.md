@@ -2,12 +2,12 @@
 title: 이벤트 기반 아키텍처 스타일
 description: Azure에서 이벤트 기반 아키텍처와 IoT 아키텍처의 혜택, 과제 및 모범 사례를 설명합니다.
 author: MikeWasson
-ms.openlocfilehash: 3289bf784b02d62e3d0c1a29b4839c9be3501134
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: dbf6be5ed386d06f96c876993ad03e7cb0e3dded
+ms.sourcegitcommit: 8ec48a0e2c080c9e2e0abbfdbc463622b28de2f2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29478326"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "43016091"
 ---
 # <a name="event-driven-architecture-style"></a>이벤트 기반 아키텍처 스타일
 
@@ -55,42 +55,9 @@ ms.locfileid: "29478326"
 - 배달 보장. 일부 시스템, 특히 IoT 시나리오에서는 이벤트가 배달되도록 보장하는 것이 중요합니다.
 - 이벤트를 순서대로 또는 한 번만 처리. 복원 및 확장성을 위해 일반적으로 각 소비자 유형이 여러 인스턴스에서 실행됩니다. 이벤트가 소비자 유형 내에서 순서대로 처리되어야 하거나 처리 논리가 비멱등적인 경우 이것이 문제가 될 수 있습니다.
 
-## <a name="iot-architecture"></a>IoT 아키텍처
-
-이벤트 기반 아키텍처는 IoT 솔루션의 핵심입니다. 다음 다이어그램은 IoT의 가능한 논리 아키텍처를 보여 줍니다. 이 다이어그램에서는 아키텍처의 이벤트 스트리밍 구성 요소가 강조 표시되어 있습니다.
-
-![](./images/iot.png)
-
-**클라우드 게이트웨이**는 안정적이고 대기 시간이 짧은 메시징 시스템을 사용하여 클라우드 경계에서 장치 이벤트를 수집합니다.
-
-장치는 클라우드 게이트웨이에 직접 또는 **필드 게이트웨이**를 통해 이벤트를 보낼 수 있습니다. 필드 게이트웨이는 이벤트를 수신하여 클라우드 게이트웨이에 전달하는 특수 장치 또는 소프트웨어이며 일반적으로 장치와 함께 배치됩니다. 필드 게이트웨이에서 필터링, 집계, 프로토콜 변환 등의 기능을 수행하여 원시 장치 이벤트를 전처리할 수도 있습니다.
-
-수집된 이벤트는 데이터를 저장소 등으로 라우트하거나 분석 및 기타 처리를 수행할 수 있는 하나 이상의 **스트림 프로세서**를 통과합니다.
-
-다음은 몇 가지 일반적인 처리 유형입니다. (전체 목록은 아닙니다.)
-
-- 보관 또는 배치 분석을 위해 콜드 스토리지에 이벤트 데이터 기록.
-
-- 실행 부하 과다 경로 분석, (거의) 실시간으로 이벤트 스트림을 분석하여 이상 검색, 롤링 기간의 패턴 인식 또는 스트림에서 특정 조건이 발생할 때 경고 트리거. 
-
-- 알림, 경보 등 장치에서 수신된 특수 유형의 비원격 분석 메시지 처리. 
-
-- 기계 학습.
-
-회색으로 표시된 상자는 이벤트 스트리밍과 직접 관련되지 않은 IoT 시스템의 구성 요소를 표시하지만 전체 표시를 위해 여기에 포함되었습니다.
-
-- **장치 레지스트리**는 장치 ID와 일반적으로 장치 메타데이터(예: 위치)를 포함하는 프로비전된 장치의 데이터베이스입니다.
-
-- **프로비저닝 API**는 새 장치를 프로비전 및 등록하기 위한 공통 외부 인터페이스입니다.
-
-- 일부 IoT 솔루션에서는 **명령 및 제어 메시지**를 장치에 전송할 수 있습니다.
-
-> 이 섹션에서는 IoT를 개괄적으로 설명했으며, 고려해야 할 여러 가지 세부 사항과 과제가 있습니다. 자세한 참조 아키텍처와 토론을 보려면 [Microsoft Azure IoT 참조 아키텍처][iot-ref-arch](PDF 다운로드)를 참조하세요.
-
  <!-- links -->
 
 [competing-consumers]: ../../patterns/competing-consumers.md
-[iot-ref-arch]: https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/
 [minimize-coordination]: ../design-principles/minimize-coordination.md
 
 
