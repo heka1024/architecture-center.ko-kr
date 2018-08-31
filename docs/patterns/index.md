@@ -2,12 +2,13 @@
 title: 클라우드 디자인 패턴
 description: Microsoft Azure에 대한 클라우드 디자인 패턴
 keywords: Azure
-ms.openlocfilehash: 0b564931fe027e42b3a6db1a5d6a207e6441e536
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.date: 06/23/2017
+ms.openlocfilehash: 308e9bc784fc791d04adcecaae64bf258edeb20b
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30847255"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43326200"
 ---
 # <a name="cloud-design-patterns"></a>클라우드 디자인 패턴
 
@@ -57,7 +58,7 @@ ms.locfileid: "30847255"
     <td style="width: 64px; vertical-align: middle;"><a href="./category/performance-scalability.md"><img src="_images/category/performance-scalability.svg" alt="Performance and Scalability" /></a></td>
     <td>
         <h3><a href="./category/performance-scalability.md">성능 및 확장성</a></h3>
-        <p>성능은 지정된 시간 간격 내에서 어떤 작업을 실행하는 시스템의 응답성을 나타내는 척도이고, 확장성은 성능에 영향을 주지 않고 부하 증가를 처리하거나 가용 리소스를 즉시 늘릴 수 있는 시스템 기능을 의미합니다. 클라우드 응용 프로그램은 일반적으로 작업에서 수시로 변하는 워크로드 및 최대 부하와 맞닥뜨리게 됩니다. 이러한 변수를 예측하기란, 특히 다중 테넌트 시나리오에서 예측하기란 거의 불가능합니다. 대신, 수요가 증가하면 응용 프로그램이 한도 내에서 규모 확장하고, 수요가 감소하면 규모 감축할 수 있어야 합니다. 확장성은 계산 인스턴스뿐 아니라 데이터 저장소, 메시지 인프라 등의 다른 요소에도 영향을 줍니다.</p>
+        <p>성능은 지정된 시간 간격 내에서 어떤 작업을 실행하는 시스템의 응답성을 나타내는 척도이고, 가용성은 성능에 영향을 주지 않고 부하 증가를 처리하거나 가용 리소스를 즉시 늘릴 수 있는 시스템 기능을 의미합니다. 클라우드 응용 프로그램은 일반적으로 작업에서 수시로 변하는 워크로드 및 최대 부하와 맞닥뜨리게 됩니다. 이러한 변수를 예측하기란, 특히 다중 테넌트 시나리오에서 예측하기란 거의 불가능합니다. 대신, 수요가 증가하면 응용 프로그램이 한도 내에서 규모 확장하고, 수요가 감소하면 규모 감축할 수 있어야 합니다. 확장성은 계산 인스턴스뿐 아니라 데이터 저장소, 메시지 인프라 등의 다른 요소에도 영향을 줍니다.</p>
     </td>
 </tr>
 <tr>
