@@ -3,12 +3,12 @@ title: Azure Virtual Datacenter
 description: Microsoft Azure Virtual Datacenter의 리소스
 keywords: Azure
 layout: LandingPage
-ms.openlocfilehash: e37ac347247b2960b85832a20a2b57eec18f65a7
-ms.sourcegitcommit: 776b8c1efc662d42273a33de3b82ec69e3cd80c5
+ms.openlocfilehash: 9b82122358085c37f89fb258034a4c9a91ecb054
+ms.sourcegitcommit: 8ec48a0e2c080c9e2e0abbfdbc463622b28de2f2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38987515"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "43324801"
 ---
 # <a name="azure-virtual-datacenter-and-the-enterprise-control-plane"></a>Azure Virtual Datacenter 및 Enterprise Control Plane
 
@@ -26,7 +26,7 @@ Azure Virtual Datacenter는 기존 보안 및 네트워킹 정책을 적용하�
 <tr>
     <td style="width: 64px; vertical-align: middle;"><a href="/azure/networking/networking-virtual-datacenter"><img src="./images/vdc-network.png" alt="Network Perspective" /></a></td>
     <td>
-        <h3><a href="/azure/networking/networking-virtual-datacenter">Azure Virtual Datacenter: 네트워크 측면</a></h3>
+        <h3><a href="networking-virtual-datacenter.md">Azure Virtual Datacenter: 네트워크 측면</a></h3>
         <p>이 온라인 문서는 많은 고객들이 클라우드로의 집단 전환을 고려할 때 직면하게 되는 구조적 규모, 성능 및 보안 문제를 해결하는 데 사용할 수 있는 네트워킹 패턴 및 디자인에 대한 개요를 제공합니다.</p>
     </td>
 </tr>
