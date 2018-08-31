@@ -3,12 +3,12 @@ title: Azure Virtual Machines에서 AnyDB용 SAP NetWeaver(Windows) 배포
 description: Azure의 Linux 환경에서 고가용성을 통해 SAP S/4HANA를 실행하는 검증된 사례입니다.
 author: lbrader
 ms.date: 05/11/2018
-ms.openlocfilehash: 90334e4872bdd15d59aa16286a031d07f3d1bb2f
-ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
+ms.openlocfilehash: f4a33e7a3f30bdd6d8bdd41599a5e3b47501b874
+ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37864541"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "43016071"
 ---
 # <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>Azure Virtual Machines에서 AnyDB용 SAP NetWeaver(Windows) 배포
 
@@ -35,7 +35,7 @@ ms.locfileid: "37864541"
 - **Jumpbox**. 요새 호스트라고도 합니다. 이는 관리자가 다른 가상 머신에 연결하는 데 사용하는 네트워크의 보안 가상 머신입니다.
 - **Windows Server Active Directory 도메인 컨트롤러**. 도메인 컨트롤러는 도메인의 모든 VM 및 사용자에 사용됩니다.
 
-**부하 분산 장치**. 기본 제공 SAP 부하 분산 장치와 [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)를 모두 사용하여 HA를 달성합니다. Azure Load Balancer 인스턴스를 사용하여 응용 프로그램 계층 서브넷의 가상 머신에 트래픽을 분산합니다.
+**부하 분산 장치**. [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) 인스턴스를 사용하여 응용 프로그램 계층 서브넷의 가상 머신에 트래픽을 분산합니다. 데이터 계층에서는 DBMS에 따라 기본 제공 SAP 부하 분산 장치, Azure Load Balancer 또는 기타 메커니즘을 사용하여 고가용성을 달성할 수 있습니다. 자세한 내용은 [SAP NetWeaver에 대한 Azure Virtual Machines DBMS 배포](/azure/virtual-machines/workloads/sap/dbms-guide)를 참조하세요. 
 
 **가용성 집합**. SAP Web Dispatcher, SAP 응용 프로그램 서버 및 (A)SCS 역할용 가상 머신은 별도의 [가용성 집합](/azure/virtual-machines/windows/tutorial-availability-sets)으로 그룹화되고, 역할당 둘 이상의 가상 머신이 프로비전됩니다. 이렇게 하면 가상 머신에 더 높은 [SLA(서비스 수준 계약)](https://azure.microsoft.com/support/legal/sla/virtual-machines)를 적용할 수 있습니다.
 

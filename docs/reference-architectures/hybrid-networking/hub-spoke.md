@@ -5,12 +5,12 @@ author: telmosampaio
 ms.date: 04/09/2018
 pnp.series.title: Implement a hub-spoke network topology in Azure
 pnp.series.prev: expressroute
-ms.openlocfilehash: 9105748f434e5d655b09b1fe0775417f33a912b0
-ms.sourcegitcommit: f7fa67e3bdbc57d368edb67bac0e1fdec63695d2
+ms.openlocfilehash: abe9d6a58f3deeab388c20471c5559d63ef2f245
+ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37843595"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "43016022"
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>Azure에서 허브-스포크 네트워크 토폴로지 구현
 
@@ -289,7 +289,7 @@ Linux VM을 사용하여 시뮬레이션된 온-프레미스 환경에서 스포
 
 ### <a name="add-connectivity-between-spokes"></a>스포크 사이의 연결 추가
 
-이 단계는 옵션입니다. 스포크를 서로 연결할 수 있도록 하려면 NVA(네트워크 가상 어플라이언스)를 허브 VNet의 라우터로 사용하고 다른 스포크에 연결하려고 할 때 스포크에서 라우터로 트래픽을 강제로 적용해야 합니다. 두 개의 스포크 VNet을 연결할 수 있는 UDR(사용자 정의 경로)과 함께 기본 샘플 NVA를 단일 VM으로 배포하려면 다음 단계를 수행합니다.
+이 단계는 선택 사항입니다. 스포크를 서로 연결할 수 있도록 하려면 NVA(네트워크 가상 어플라이언스)를 허브 VNet의 라우터로 사용하고, 다른 스포크에 연결하려고 할 때 스포크에서 라우터로 트래픽을 강제로 적용해야 합니다. 두 개의 스포크 VNet을 연결할 수 있는 UDR(사용자 정의 경로)과 함께 기본 샘플 NVA를 단일 VM으로 배포하려면 다음 단계를 수행합니다.
 
 1. `hub-nva.json` 파일을 엽니다. `adminUsername` 및 `adminPassword`에 대한 값을 대체합니다.
 

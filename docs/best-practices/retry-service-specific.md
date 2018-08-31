@@ -4,12 +4,12 @@ description: 재시도 메커니즘 설정에 대한 서비스 관련 지침입�
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: 72dfb59c3357c5f14806a33ef5f6cdd3e7937915
-ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
+ms.openlocfilehash: 790c933458717f2cb4cde0741b1d22f6ae89cc39
+ms.sourcegitcommit: 8ec48a0e2c080c9e2e0abbfdbc463622b28de2f2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/29/2018
-ms.locfileid: "39334167"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "43016043"
 ---
 # <a name="retry-guidance-for-specific-services"></a>특정 서비스에 대한 다시 시도 지침
 
@@ -23,7 +23,9 @@ ms.locfileid: "39334167"
 | --- | --- | --- | --- | --- |
 | **[Azure Active Directory](#azure-active-directory)** |ADAL 라이브러리에서 기본 |ADAL 라이브러리에 포함 |내부 |없음 |
 | **[Cosmos DB](#cosmos-db)** |서비스의 네이티브 |구성할 수 없음 |전역 |TraceSource |
+| **Data Lake Store** |클라이언트의 네이티브 |구성할 수 없음 |개별 작업 |없음 |
 | **[Event Hubs](#event-hubs)** |클라이언트의 네이티브 |프로그래밍 방식 |클라이언트 |없음 |
+| **[IoT Hub](#iot-hub)** |클라이언트 SDK의 네이티브 |프로그래밍 방식 |클라이언트 |없음 |
 | **[Redis Cache](#azure-redis-cache)** |클라이언트의 네이티브 |프로그래밍 방식 |클라이언트 |TextWriter |
 | **[Search](#azure-search)** |클라이언트의 네이티브 |프로그래밍 방식 |클라이언트 |ETW 또는 사용자 지정 |
 | **[Service Bus](#service-bus)** |클라이언트의 네이티브 |프로그래밍 방식 |네임스페이스 관리자, 메시징 팩터리 및 클라이언트 |ETW |
@@ -124,6 +126,25 @@ client.RetryPolicy = RetryPolicy.Default;
 
 ### <a name="more-information"></a>자세한 정보
 [Azure Event Hubs용 .NET 표준 클라이언트 라이브러리](https://github.com/Azure/azure-event-hubs-dotnet)
+
+## <a name="iot-hub"></a>IoT Hub
+
+Azure IoT Hub는 IoT(사물 인터넷) 응용 프로그램을 개발하기 위해 장치를 연결, 모니터링 및 관리하는 서비스입니다.
+
+### <a name="retry-mechanism"></a>재시도 메커니즘
+
+Azure IoT 장치 SDK는 네트워크, 프로토콜 또는 응용 프로그램에서 오류를 검색할 수 있습니다. 오류 형식에 따라 SDK는 다시 시도를 수행해야 하는지 여부를 확인합니다. 오류가 *복구 가능한* 경우, SDK는 구성된 재시도 정책을 사용하여 다시 시도를 시작합니다.
+
+기본 재시도 정책은 *임의 지터를 사용한 지수적 백오프*이지만 구성할 수 있습니다.
+
+### <a name="policy-configuration"></a>정책 구성
+
+정책 구성은 언어에 따라 다릅니다. 자세한 내용은 [IoT Hub 재시도 정책 구성](/azure/iot-hub/iot-hub-reliability-features-in-sdks#retry-policy-apis)을 참조하세요.
+
+### <a name="more-information"></a>자세한 정보
+
+* [IoT Hub 재시도 정책](/azure/iot-hub/iot-hub-reliability-features-in-sdks)
+* [IoT Hub 장치 연결 끊김 문제 해결](/azure/iot-hub/iot-hub-troubleshoot-connectivity)
 
 ## <a name="azure-redis-cache"></a>Azure Redis 캐시(영문)
 Azure Redis Cache는 많이 사용되는 오픈 소스 Redis 캐시에 기반한 캐시 서비스로 데이터 액세스 속도가 빠르고 대기 시간이 짧습니다. 이 캐시는 Microsoft에서 관리되어 안전하며 Azure의 모든 응용 프로그램에서 액세스할 수 있습니다.

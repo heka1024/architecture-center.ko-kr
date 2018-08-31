@@ -3,12 +3,12 @@ title: Azure의 확장성 있는 주문 처리
 description: Azure Cosmos DB를 사용하여 확장성이 높은 주문 처리 파이프라인을 구축하는 예제 시나리오입니다.
 author: alexbuckgit
 ms.date: 07/10/2018
-ms.openlocfilehash: 541b5e9f523c64bc55526e4e2dffc57a5212e67f
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: 9fa0dc7c564270ee811b56169e05f7e743664838
+ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060984"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "43016031"
 ---
 # <a name="scalable-order-processing-on-azure"></a>Azure의 확장성 있는 주문 처리
 
@@ -41,7 +41,7 @@ Cosmos DB 및 HDInsight와 같은 관리되는 Azure 서비스를 사용하면 �
 
 ### <a name="components"></a>구성 요소
 
-* [Cosmos DB][docs-cosmos-db]는 전역으로 분산된 Microsoft의 다중 모델 데이터베이스로, 솔루션을 통해 여러 지리적 지역에 걸쳐 있는 처리량과 저장소의 크기를 탄력적이고 독립적으로 조정할 수 있습니다. 포괄적인 SLA(서비스 수준 계약)를 통해 처리량, 대기 시간, 가용성 및 일관성을 보장합니다. 이 시나리오에서는 이벤트 스트림 저장소 및 스냅숏 저장소에 Cosmos DB를 사용하고, Cosmos DB의 변경 피드 기능을 활용하여 데이터 일관성 및 오류 복구를 제공합니다. 
+* [Cosmos DB][docs-cosmos-db]는 전역으로 분산된 Microsoft의 다중 모델 데이터베이스로, 솔루션을 통해 여러 지리적 지역에 걸쳐 있는 처리량과 저장소의 크기를 탄력적이고 독립적으로 조정할 수 있습니다. 포괄적인 SLA(서비스 수준 계약)를 통해 처리량, 대기 시간, 가용성 및 일관성을 보장합니다. 이 시나리오에서는 이벤트 스트림 저장소 및 스냅숏 저장소에 Cosmos DB를 사용하고, [Cosmos DB의 변경 피드][docs-cosmos-db-change-feed] 기능을 활용하여 데이터 일관성 및 오류 복구를 제공합니다. 
 * [HDInsight의 Apache Kafka][docs-kafka]는 실시간 스트리밍 데이터 파이프라인 및 응용 프로그램을 구축하기 위한 오픈 소스 분산 스트리밍 플랫폼인 Apache Kafka의 관리 서비스 구현입니다. 또한 Kafka는 명명된 데이터 스트림을 게시하고 구독하기 위해 메시지 큐와 비슷한 메시지 브로커 기능을 제공합니다. 이 시나리오에서는 Kafka를 사용하여 주문 처리 파이프라인에서 들어오는 이벤트와 다운스트림 이벤트를 처리합니다. 
 
 ## <a name="considerations"></a>고려 사항
@@ -107,6 +107,7 @@ Azure Cosmos DB의 통화는 RU(요청 단위)입니다. 요청 단위를 사용
 [architecture-diagram]: ./images/architecture-diagram-cosmos-db.png
 [docs-cosmos-db]: /azure/cosmos-db
 [docs-cosmos-db-change-feed]: /azure/cosmos-db/change-feed
+[docs-cosmos-db-online-backup-and-restore]: /azure/cosmos-db/online-backup-and-restore
 [docs-cosmos-db-regional-failover]: /azure/cosmos-db/regional-failover
 [docs-cosmos-db-guarantees]: /azure/cosmos-db/distribute-data-globally#AvailabilityGuarantees
 [docs-cosmos-db-use-cases]: /azure/cosmos-db/use-cases

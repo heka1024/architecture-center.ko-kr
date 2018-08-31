@@ -4,12 +4,12 @@ description: 잘 디자인된 Web API를 만드는 방법에 관한 지침입니
 author: dragon119
 ms.date: 01/12/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: db9784f454e0b52b335d6dff3a054c2c59124c9f
-ms.sourcegitcommit: f7418f8bdabc8f5ec33ae3551e3fbb466782caa5
+ms.openlocfilehash: 68ed3f59e1fd63ae754ceabf27a182daa0de0e5d
+ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209613"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "43016116"
 ---
 # <a name="api-design"></a>API 디자인
 
@@ -432,7 +432,7 @@ Content-Type: application/json; charset=utf-8
 {"id":3,"name":"Contoso LLC","dateCreated":"2014-09-04T12:11:38.0376089Z","address":{"streetAddress":"1 Microsoft Way","city":"Redmond","state":"WA","zipCode":98053}}
 ```
 
-이 버전 관리 메커니즘은 매우 간단하지만 요청을 적절한 끝점으로 라우팅하는 서버에 따라 달라집니다. 그러나 여러 번 반복을 통해 웹 API가 성숙해짐에 따라 이 메커니즘을 다룰 수 없게 될 수 있으며 서버가 다양한 버전을 지원해야 합니다. 또한 엄격히 말해서, 클라이언트 응용 프로그램이 같은 데이터(고객 3)를 가져오므로, URI가 버전에 따라 달라져서는 안 됩니다. 또한 이 체계는 모든 링크가 자신의 URI에 버전 번호를 포함해야 하므로 HATEOAS 구현을 복잡하게 만듭니다.
+이 버전 관리 메커니즘은 매우 간단하지만 요청을 적절한 엔드포인트로 라우팅하는 서버에 따라 달라집니다. 그러나 여러 번 반복을 통해 웹 API가 성숙해짐에 따라 이 메커니즘을 다룰 수 없게 될 수 있으며 서버가 다양한 버전을 지원해야 합니다. 또한 엄격히 말해서, 클라이언트 응용 프로그램이 같은 데이터(고객 3)를 가져오므로, URI가 버전에 따라 달라져서는 안 됩니다. 또한 이 체계는 모든 링크가 자신의 URI에 버전 번호를 포함해야 하므로 HATEOAS 구현을 복잡하게 만듭니다.
 
 ### <a name="query-string-versioning"></a>쿼리 문자열 버전 관리
 복수 URI를 제공하는 대신에 HTTP 요청에 추가된 쿼리 문자열 내에 *http://adventure-works.com/customers/3?version=2* 같은 매개 변수를 사용하여 리소스의 버전을 지정할 수 있습니다. 버전 매개 변수는 이전 클라이언트 응용 프로그램에서 생략했다면 기본적으로 1과 같은 의미 있는 값입니다.
