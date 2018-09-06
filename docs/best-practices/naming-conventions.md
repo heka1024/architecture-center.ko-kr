@@ -4,12 +4,12 @@ description: Azure 리소스에 대한 명명 규칙 가상 머신, 저장소 �
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 6ad71a5ee39b8f1863c51dae0120dbdc7baf1f76
-ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
+ms.openlocfilehash: 8aa0b46d9f43107cfa4ae4be3160900249365702
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39229153"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43326323"
 ---
 # <a name="naming-conventions"></a>명명 규칙
 
@@ -111,10 +111,10 @@ Azure의 각 리소스 또는 서비스 유형은 명명 제한 및 범위 집�
 | --- | --- | --- | --- | --- | --- | --- |
 |Virtual Network(VNet) |리소스 그룹 |2-64 |대/소문자 구분하지 않음 |영숫자, 하이픈, 밑줄 및 마침표 |`<service short name>-vnet` |`profx-vnet` |
 |서브넷 |부모 VNet |2-80 |대/소문자 구분하지 않음 |영숫자, 하이픈, 밑줄 및 마침표 |`<descriptive context>` |`web` |
-|네트워크 인터페이스 |리소스 그룹 |1-80 |대/소문자 구분하지 않음 |영숫자, 하이픈, 밑줄 및 마침표 |`<vmname>-nic<num>` |`profx-sql1-nic1` |
+|네트워크 인터페이스 |리소스 그룹 |1-80 |대/소문자 구분하지 않음 |영숫자, 하이픈, 밑줄 및 마침표 |`<vmname>-nic<num>` |`profx-sql1-vm1-nic1` |
 |네트워크 보안 그룹 |리소스 그룹 |1-80 |대/소문자 구분하지 않음 |영숫자, 하이픈, 밑줄 및 마침표 |`<service short name>-<context>-nsg` |`profx-app-nsg` |
 |네트워크 보안 그룹 규칙 |리소스 그룹 |1-80 |대/소문자 구분하지 않음 |영숫자, 하이픈, 밑줄 및 마침표 |`<descriptive context>` |`sql-allow` |
-|공용 IP 주소 |리소스 그룹 |1-80 |대/소문자 구분하지 않음 |영숫자, 하이픈, 밑줄 및 마침표 |`<vm or service name>-pip` |`profx-sql1-pip` |
+|공용 IP 주소 |리소스 그룹 |1-80 |대/소문자 구분하지 않음 |영숫자, 하이픈, 밑줄 및 마침표 |`<vm or service name>-pip` |`profx-sql1-vm1-pip` |
 |Load Balancer |리소스 그룹 |1-80 |대/소문자 구분하지 않음 |영숫자, 하이픈, 밑줄 및 마침표 |`<service or role>-lb` |`profx-lb` |
 |부하 분산된 규칙 구성 |Load Balancer |1-80 |대/소문자 구분하지 않음 |영숫자, 하이픈, 밑줄 및 마침표 |`<descriptive context>` |`http` |
 |Azure Application Gateway |리소스 그룹 |1-80 |대/소문자 구분하지 않음 |영숫자, 하이픈, 밑줄 및 마침표 |`<service or role>-agw` |`profx-agw` |
@@ -176,9 +176,9 @@ Azure Resource Manager는 임의적인 텍스트 문자열로 태그 지정 엔�
 
 Azure Storage 계정에서 Blob 데이터에 액세스할 수 있도록 사용자 지정 도메인 이름을 구성할 수 있습니다. Blob Service의 기본 엔드포인트는 https://\<name\>.blob.core.windows.net입니다.
 
-그러나 사용자 지정 도메인(예: www.contoso.com )을 저장소 계정의 Blob 끝점에 매핑하는 경우 해당 도메인을 사용하여 저장소 계정의 Blob 데이터에 액세스할 수 있습니다. 예를 들어 사용자 지정 도메인 이름을 통해 `http://mystorage.blob.core.windows.net/mycontainer/myblob`에 `http://www.contoso.com/mycontainer/myblob`로 액세스할 수 있습니다.
+그러나 사용자 지정 도메인(예: www.contoso.com )을 저장소 계정의 Blob 엔드포인트에 매핑하는 경우 해당 도메인을 사용하여 저장소 계정의 Blob 데이터에 액세스할 수 있습니다. 예를 들어 사용자 지정 도메인 이름을 통해 `http://mystorage.blob.core.windows.net/mycontainer/myblob`에 `http://www.contoso.com/mycontainer/myblob`로 액세스할 수 있습니다.
 
-이 기능 구성에 대한 자세한 내용은 [Blob 저장소 끝점에 대한 사용자 지정 도메인 이름 구성](/azure/storage/storage-custom-domain-name/)을 참조하세요.
+이 기능 구성에 대한 자세한 내용은 [Blob 저장소 엔드포인트에 대한 사용자 지정 도메인 이름 구성](/azure/storage/storage-custom-domain-name/)을 참조하세요.
 
 Blob, 컨테이너 및 테이블 명명에 대한 자세한 내용은 다음 목록을 참조하세요.
 
@@ -195,4 +195,4 @@ Blob 이름은 문자 조합을 포함할 수 있지만 예약된 URL 문자는 
 
 <!-- links -->
 
-[scaffold]: /azure/azure-resource-manager/resource-manager-subscription-governance
+[scaffold]: /azure/azure-resource-manager/resource-manager-azure-scaffold

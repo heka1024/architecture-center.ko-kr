@@ -2,12 +2,13 @@
 title: 큰 계산 아키텍처 스타일
 description: Azure에서 큰 계산 아키텍처의 이점, 과제 및 모범 사례를 설명합니다.
 author: MikeWasson
-ms.openlocfilehash: b16be4133143d7d73062eeb280b44779c390f387
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.date: 08/30/2018
+ms.openlocfilehash: aca2221faf1fbf47de2fd81c8909dfe8aef46bea
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582669"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43326176"
 ---
 # <a name="big-compute-architecture-style"></a>큰 계산 아키텍처 스타일
 

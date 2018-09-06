@@ -2,12 +2,13 @@
 title: 모두 중복으로 구성
 description: 응용 프로그램에 중복성을 구축하여 단일 실패 지점을 피합니다.
 author: MikeWasson
-ms.openlocfilehash: 4f6e3404b2aaf9c28dfd6812975c2709d8cc8c85
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.date: 08/30/2018
+ms.openlocfilehash: 0df9e0bded9b8719d43b9ba328c2de6a10b37f92
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206646"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325464"
 ---
 # <a name="make-all-things-redundant"></a>모두 중복으로 구성
 

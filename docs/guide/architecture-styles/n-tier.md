@@ -2,12 +2,13 @@
 title: N 계층 아키텍처 스타일
 description: Azure에서 N 계층 아키텍처의 혜택, 과제 및 모범 사례를 설명합니다.
 author: MikeWasson
-ms.openlocfilehash: 8333b789e03a9da2b021abe7d7c193cd2af8d6bf
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.date: 08/30/2018
+ms.openlocfilehash: 2a113cefec8bd1c6c524030fbc459851094c09d6
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582702"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325753"
 ---
 # <a name="n-tier-architecture-style"></a>N 계층 아키텍처 스타일
 

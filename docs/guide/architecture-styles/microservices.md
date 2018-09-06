@@ -2,12 +2,13 @@
 title: 마이크로 서비스 아키텍처 스타일
 description: Azure에서 마이크로 서비스 아키텍처의 혜택, 과제 및 모범 사례를 설명합니다.
 author: MikeWasson
-ms.openlocfilehash: 08fd39b6cf0b3c88af654b27e21b2d7dd9fb19b1
-ms.sourcegitcommit: 7764a804f000180c37a4f8dbab946b525f784f58
+ms.date: 08/30/2018
+ms.openlocfilehash: fb23ac3e408f3a202d925a1bf684bc30d423f218
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2018
-ms.locfileid: "27717643"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325446"
 ---
 # <a name="microservices-architecture-style"></a>마이크로 서비스 아키텍처 스타일
 
@@ -33,7 +34,7 @@ ms.locfileid: "27717643"
 
 **관리**. 관리 구성 요소는 노드에 서비스 배치, 실패 식별, 노드 간에 서비스 부하 조정 등의 작업을 담당합니다.  
 
-**서비스 검색**.  서비스 목록과 서비스 목록이 배치되는 노드를 유지 관리합니다. 서비스 조회를 통해 서비스 끝점을 찾을 수 있게 합니다. 
+**서비스 검색**.  서비스 목록과 서비스 목록이 배치되는 노드를 유지 관리합니다. 서비스 조회를 통해 서비스 엔드포인트를 찾을 수 있게 합니다. 
 
 **API 게이트웨이**. API 게이트웨이는 클라이언트의 진입점입니다. 클라이언트는 서비스를 직접 호출하지 않습니다. 대신, 호출을 백 엔드의 적절한 서비스에 전달하는 API 게이트웨이를 호출합니다. API 게이트웨이는 여러 서비스의 응답을 집계하고 집계된 응답을 반환할 수 있습니다. 
 
@@ -142,7 +143,7 @@ Service Fabric 클러스터는 하나 이상의 VM 확장 집합에 배포됩니
 
 Service Fabric 런타임은 서비스 배치, 노드 장애 조치(failover) 및 상태 모니터링을 비롯한 클러스터 관리를 수행합니다. 런타임은 클러스터 노드 자체에 배포됩니다. 별도의 클러스터 관리 VM 집합이 없습니다.
 
-서비스는 Service Fabric에 빌드된 역방향 프록시를 사용하여 서로 통신합니다. Service Fabric은 명명된 서비스의 끝점을 확인할 수 있는 검색 서비스를 제공합니다.
+서비스는 Service Fabric에 빌드된 역방향 프록시를 사용하여 서로 통신합니다. Service Fabric은 명명된 서비스의 엔드포인트를 확인할 수 있는 검색 서비스를 제공합니다.
 
 
 <!-- links -->

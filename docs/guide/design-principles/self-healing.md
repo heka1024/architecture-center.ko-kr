@@ -2,12 +2,13 @@
 title: 자체 복구를 위한 디자인
 description: 복원 응용 프로그램은 수동 개입 없이 오류를 복구할 수 있습니다.
 author: MikeWasson
-ms.openlocfilehash: 508341ba428b294cf268e34e922aced9d2d67579
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.date: 08/30/2018
+ms.openlocfilehash: f85e3881fe7753f0551d1d31dd64b4631b441686
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206653"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325811"
 ---
 # <a name="design-for-self-healing"></a>자체 복구를 위한 디자인
 

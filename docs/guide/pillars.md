@@ -2,12 +2,13 @@
 title: 소프트웨어 품질 핵심 요소
 description: 확장성, 가용성, 복원력, 관리 및 보안이라는 5가지 소프트웨어 품질 핵심 요소를 설명합니다.
 author: MikeWasson
-ms.openlocfilehash: 117706046ca1a9b7f3203a99737347809d0c323f
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.date: 08/30/2018
+ms.openlocfilehash: dce87aba849c61750416f277bcc5558c400c1f25
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35252790"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43326159"
 ---
 # <a name="pillars-of-software-quality"></a>소프트웨어 품질 핵심 요소 
 

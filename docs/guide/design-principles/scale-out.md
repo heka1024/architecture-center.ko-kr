@@ -2,12 +2,13 @@
 title: 규모 확장을 위한 디자인
 description: 클라우드 응용 프로그램은 수평적 크기 조정에 맞게 설계되어야 합니다.
 author: MikeWasson
-ms.openlocfilehash: 8207f322d4312f6a30a8b0db7328b272c1d82de0
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.date: 08/30/2018
+ms.openlocfilehash: 9b57f4e6a17eece4f5283436e104c286602bb54f
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206731"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325657"
 ---
 # <a name="design-to-scale-out"></a>규모 확장을 위한 디자인
 

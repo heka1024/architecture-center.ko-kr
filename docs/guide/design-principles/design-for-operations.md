@@ -2,12 +2,13 @@
 title: 운영을 위한 디자인
 description: 운영 팀에 필요한 도구가 포함되도록 응용 프로그램을 디자인합니다.
 author: MikeWasson
-ms.openlocfilehash: 5b9f76c27656e5154fb039ca41976f7209395cd8
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.date: 08/30/2018
+ms.openlocfilehash: a73479a7661c042d05db61907d1f993fc04ac11d
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206618"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43326241"
 ---
 # <a name="design-for-operations"></a>운영을 위한 디자인
 

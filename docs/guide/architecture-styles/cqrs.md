@@ -2,12 +2,13 @@
 title: CQRS 아키텍처 스타일
 description: CQRS 아키텍처의 이점, 과제 및 모범 사례를 설명합니다.
 author: MikeWasson
-ms.openlocfilehash: dd3da5886587159f57646ff1bfffa2094725f798
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.date: 08/30/2018
+ms.openlocfilehash: ba7af25f940a01e184279c4665f8fce8ebb71b23
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582674"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325927"
 ---
 # <a name="cqrs-architecture-style"></a>CQRS 아키텍처 스타일
 
