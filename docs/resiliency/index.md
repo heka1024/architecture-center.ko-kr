@@ -4,12 +4,12 @@ description: Azure에서 고가용성 및 재해 복구를 제공하는 복원 �
 author: MikeWasson
 ms.date: 05/26/2017
 ms.custom: resiliency
-ms.openlocfilehash: c32f093da4c47ef655dfca89b0410f063e9fe212
-ms.sourcegitcommit: 2154e93a0a075e1f7425a6eb11fc3f03c1300c23
+ms.openlocfilehash: b92a26323b4329f3dbe4f941b98da0080e730d65
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352589"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389437"
 ---
 # <a name="designing-resilient-applications-for-azure"></a>Azure용 복원 응용 프로그램 디자인
 
@@ -259,7 +259,7 @@ Azure에는 개별 VM에서 전체 영역에 이르는 모든 오류 수준에�
 
 이러한 이유로 디자인 단계에서 잠재적인 실패 지점을 분석하는 것이 매우 중요합니다. 분석 결과를 테스트 계획에 입력해야 합니다.
 
-**부하 테스트**. [Visual Studio Team Services][vsts] 또는 [Apache JMeter][jmeter] 같은 도구를 사용하여 응용 프로그램의 부하 테스트를 수행합니다. 부하 테스트는 백 엔드 데이터베이스 성능 초과나 서비스 제한처럼 부하 상태에서만 발생하는 오류를 식별하는 데 있어서 매우 중요합니다. 프로덕션 데이터와 최대한 비슷한 프로덕션 데이터 또는 가상 데이터를 사용하여 최대 부하를 테스트합니다. 응용 프로그램이 실제 조건에서 어떻게 동작하는지 확인하는 것이 목표입니다.   
+**부하 테스트**. 부하 테스트는 백 엔드 데이터베이스 성능 초과나 서비스 제한처럼 부하 상태에서만 발생하는 오류를 식별하는 데 있어서 매우 중요합니다. 프로덕션 데이터와 최대한 비슷한 프로덕션 데이터 또는 가상 데이터를 사용하여 최대 부하를 테스트합니다. 응용 프로그램이 실제 조건에서 어떻게 동작하는지 확인하는 것이 목표입니다.   
 
 ## <a name="deploy-using-reliable-processes"></a>신뢰할 수 있는 프로세스를 사용하여 배포
 응용 프로그램이 프로덕션 환경에 배포된 후에는 업데이트로 인해 오류가 발생할 수 있습니다. 최악의 경우 잘못된 업데이트 때문에 가동이 중지될 수 있습니다. 이를 방지하려면 배포 프로세스가 예측 가능하고 반복 가능해야 합니다. 배포에는 Azure 리소스를 프로비전하고, 응용 프로그램 코드를 배포하고, 구성 설정을 적용하는 것이 포함됩니다. 업데이트에 세 가지가 모두 관련될 수도 있고 일부만 관련될 수도 있습니다. 
@@ -355,4 +355,3 @@ Azure에는 개별 VM에서 전체 영역에 이르는 모든 오류 수준에�
 [tm]: https://azure.microsoft.com/services/traffic-manager/
 [tm-failover]: /azure/traffic-manager/traffic-manager-monitoring
 [tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager/v1_0/
-[vsts]: https://www.visualstudio.com/features/vso-cloud-load-testing-vs.aspx
