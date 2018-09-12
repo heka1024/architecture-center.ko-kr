@@ -5,12 +5,12 @@ keywords: 클라우드 서비스 비교, 클라우드 서비스 비교, 다중 �
 author: lbrader
 ms.date: 11/30/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 7a650eee1a42860c6c41db2572cf2feb71844999
-ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
+ms.openlocfilehash: 4c78f45c654a40142ff25736b83a5b6b10591fc6
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "43016041"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325015"
 ---
 # <a name="aws-to-azure-services-comparison"></a>AWS와 Azure 서비스 비교 
 
@@ -172,6 +172,7 @@ AWS 사용자를 위한 Azure 개요는 [AWS 전문가를 위한 Azure 소개](i
 |             방화벽             |                    웹 응용 프로그램 방화벽                    |                                 [Application Gateway 웹 응용 프로그램 방화벽(미리 보기)](https://azure.microsoft.com/updates/application-gateway-web-application-firewall-in-public-preview/)                                 |                                                                                     일반적인 웹 공격으로부터 웹 응용 프로그램을 보호하는 방화벽입니다. 사용자는 사용자 지정 가능한 웹 보안 규칙을 정의할 수 있습니다.                                                                                      |
 |             보안             |                           검사기                            |                                                                           [보안 센터](https://azure.microsoft.com/services/security-center/)                                                                            |                                                  응용 프로그램의 보안 및 준수를 향상하는 자동화된 보안 평가 서비스입니다. 모범 사례를 기반으로 응용 프로그램의 취약점 및 문제를 자동으로 평가합니다.                                                  |
 |     <strong>&nbsp;</strong>      |                      인증서 관리자                       |                                                  [포털에서 사용할 수 있는 App Service Certificate](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)                                                   |                                                                                               고객이 클라우드에서 원활하게 인증서를 만들고 관리하며 사용할 수 있게 하는 서비스입니다.                                                                                                |
+| &nbsp; | GuardDuty | Azure AD, OMS(Operations Management Suite), Security Center | Azure에서는 요구 사항에 맞게 구성되고 사용자 지정될 수 있는 기본 제공 지능형 위협 탐지 기능을 제공합니다. 자세한 내용은 [Azure 지능형 위협 탐지](/azure/security/azure-threat-detection)를 참조하세요. |
 |        디렉터리 서비스        | AWS의 AWS Directory Service + Windows Server Active Directory  |                                       [Azure IaaS의 Azure Active Directory Domain Services + Windows Server Active Directory](https://azure.microsoft.com/services/active-directory/)                                        | 포괄적인 ID 및 액세스 관리 클라우드 솔루션으로 사용자 및 그룹 관리를 위한 강력한 기능 모음을 제공합니다. Office 365와 같은 Microsoft 온라인 서비스와 다양한 타사 SaaS 응용 프로그램을 포함한 온-프레미스 및 클라우드 응용 프로그램에 대한 안전한 액세스를 돕습니다. |
 |     <strong>&nbsp;</strong>      |                            Cognito                             |                                                                   [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/)                                                                    |                                                                          수억 개의 ID로 확장하는 소비자 지향 응용 프로그램에 항상 사용 가능한 전역적인 ID 관리 서비스입니다.                                                                           |
 |     <strong>&nbsp;</strong>      |                     AWS Directory Service                      |                                                                 [Windows Server Active Directory](https://azure.microsoft.com/services/active-directory-ds/)                                                                  |                                                                                                                클라우드에서 Microsoft Active Directory를 지원하기 위한 서비스입니다.                                                                                                                |

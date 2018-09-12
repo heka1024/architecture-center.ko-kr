@@ -7,12 +7,12 @@ pnp.series.title: Network DMZ
 pnp.series.prev: ./index
 pnp.series.next: secure-vnet-dmz
 cardTitle: DMZ between Azure and on-premises
-ms.openlocfilehash: 45583473ef297b2c7a5b0c4baff52485286dd051
-ms.sourcegitcommit: 9b459f75254d97617e16eddd0d411d1f80b7fe90
+ms.openlocfilehash: e397a8691a1b7b37cc0129d914dc85d92c876139
+ms.sourcegitcommit: f4069cf68456b5c74acb1b890dc4e45e11f12b59
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37403167"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43675810"
 ---
 # <a name="dmz-between-azure-and-your-on-premises-datacenter"></a>Azure와 온-프레미스 데이터 센터 간의 DMZ
 
@@ -78,8 +78,7 @@ VM, VNet 및 부하 분산 장치와 같은 Azure 리소스는 리소스 그룹�
 
 ### <a name="nva-recommendations"></a>NVA 권장 사항
 
-NVA는 네트워크 트래픽을 관리하고 모니터링하기 위한 다양한 서비스를 제공합니다. 
-  [Azure Marketplace][azure-marketplace-nva]는 사용할 수 있는 여러 타사 공급 업체 NVA를 제공합니다. 이러한 타사 NVA 중 요구 사항을 충족하는 것이 없는 경우 VM을 사용하여 사용자 지정 NVA를 만들 수 있습니다. 
+NVA는 네트워크 트래픽을 관리하고 모니터링하기 위한 다양한 서비스를 제공합니다. [Azure Marketplace][azure-marketplace-nva]는 사용할 수 있는 여러 타사 공급 업체 NVA를 제공합니다. 이러한 타사 NVA 중 요구 사항을 충족하는 것이 없는 경우 VM을 사용하여 사용자 지정 NVA를 만들 수 있습니다. 
 
 예를 들어 이 참조 아키텍처에 솔루션을 배포하면 VM에서 다음과 같은 기능을 사용하여 NVA를 구현합니다.
 
@@ -227,6 +226,7 @@ NSG를 사용하여 계층 간 트래픽을 제한합니다. 비즈니스 계층
 * Azure에서 네트워크 보안을 관리하는 방법에 대한 자세한 내용은 [Microsoft Cloud Services 및 네트워크 보안][cloud-services-network-security]을 참조하세요.
 * Azure에서 리소스를 보호하는 방법에 대한 자세한 내용은 [Microsoft Azure 보안 시작][getting-started-with-azure-security]을 참조하세요. 
 * Azure 게이트웨이 연결에서 보안 문제를 해결하는 방법에 대한 자세한 내용은 [Azure 및 온-프레미스 VPN을 사용하여 하이브리드 네트워크 아키텍처 구현][guidance-vpn-gateway-security] 및 [Azure ExpressRoute를 사용하여 하이브리드 네트워크 아키텍처 구현][guidance-expressroute-security]을 참조하세요.
+* [Azure의 네트워크 가상 어플라이언스 문제 해결](/azure/virtual-network/virtual-network-troubleshoot-nva)
   > 
 
 <!-- links -->

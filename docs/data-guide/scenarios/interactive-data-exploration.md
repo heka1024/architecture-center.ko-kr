@@ -3,12 +3,12 @@ title: 대화형 데이터 탐색
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 20740a8fe912a63526c847416b832941f4ac33ec
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.openlocfilehash: 2e3d61fa5e1903c7fee6ebc84db3fa7c28d515cb
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30297959"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325120"
 ---
 # <a name="interactive-data-exploration"></a>대화형 데이터 탐색
 
@@ -51,7 +51,7 @@ ms.locfileid: "30297959"
 
 - **결과 공유.** 사용자가 보고서 또는 데이터 시각화를 만들고 공유할 수 있는 경우 보안을 고려해야 할 수 있습니다.
 
-## <a name="architecture"></a>건축
+## <a name="architecture"></a>아키텍처
 
 이 시나리오의 목표는 대화형 데이터 분석을 지원하는 것이지만, 데이터 과학과 관련된 데이터 정리, 샘플링 및 구성 태스크에는 장기 실행 프로세스가 수반됩니다. 따라서 [일괄 처리](../big-data/batch-processing.md) 아키텍처가 적절할 수 있습니다.
 
@@ -82,6 +82,7 @@ Azure의 대화형 데이터 탐색을 위해 다음과 같은 기술이 권장�
 ### <a name="analytics-and-reporting"></a>분석 및 보고
 
 - **Jupyter**. Jupyter 노트는 R, Python 또는 Scala 등의 언어로 코드를 실행하기 위한 브라우저 기반 인터페이스를 제공합니다. R Server 또는 Spark를 사용하여 데이터를 일괄로 처리하거나, Spark SQL을 사용하여 쿼리할 테이블 스키마를 정의할 때 데이터 쿼리를 위해 Jupyter를 선택하는 것이 적절할 수 있습니다. Spark를 사용할 경우, 포함된 SQL 문 뿐만 아니라 표준 Spark 데이터프레임 API 또는 Spark SQL API를 사용하여 데이터를 쿼리하고 시각화를 생성할 수 있습니다.
+- **드릴** 임시 데이터 탐색을 수행하려는 경우 [Apache Drill](https://drill.apache.org/)은 스키마가 없는 SQL 쿼리 엔진입니다. 스키마가 필요하지 않기 때문에 다양한 데이터 원본의 데이터를 쿼리할 수 있습니다. 엔진은 데이터의 구조를 자동으로 이해합니다.
 - **대화형 Hive 클라이언트**. 대화형 Hive 클러스터를 사용하여 데이터를 쿼리하는 경우 Ambari 클러스터 대시보드, Beeline 명령줄 도구, Microsoft Excel이나 Power BI 같은 ODBC 기반 도구(Hive ODBC 드라이버 사용)에서 Hive 보기를 사용할 수 있습니다.
 
 자세한 내용은 [데이터 분석 및 보고 기술](../technology-choices/analysis-visualizations-reporting.md)을 참조하세요.

@@ -7,12 +7,12 @@ pnp.series.title: Connect an on-premises network to Azure
 pnp.series.next: expressroute
 pnp.series.prev: ./index
 cardTitle: VPN
-ms.openlocfilehash: dafcee6607d9cc7c56c332f9ed5d9568ff70f0e7
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: ef89cdd3e2a175f82929b613159a99557560cc7a
+ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30270696"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43325391"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN 게이트웨이를 사용하여 온-프레미스 네트워크를 Azure에 연결
 
@@ -22,7 +22,7 @@ ms.locfileid: "30270696"
 
 *이 아키텍처의 [Visio 파일][visio-download]을 다운로드합니다.*
 
-## <a name="architecture"></a>건축 
+## <a name="architecture"></a>아키텍처 
 
 이 아키텍처는 다음 구성 요소로 구성됩니다.
 
@@ -80,13 +80,7 @@ ms.locfileid: "30270696"
 > 
 > 
 
-사용자의 처리량 요구 사항에 가장 가까운 Azure VPN 게이트웨이 SKU를 선택합니다. Azure VPN 게이트웨이는 아래 표에 제시된 것처럼 세 가지 SKU로 제공됩니다. 
-
-| SKU | VPN 처리량 | 최대 IPSec 터널 |
-| --- | --- | --- |
-| Basic |100Mbps |10 |
-| Standard |100Mbps |10 |
-| 고성능 |200Mbps |30 |
+사용자의 처리량 요구 사항에 가장 가까운 Azure VPN 게이트웨이 SKU를 선택합니다. 자세한 내용은 [게이트웨이 SKU][azure-gateway-skus]를 참조하세요.
 
 > [!NOTE]
 > 기본 SKU는 Azure ExpressRoute와 호환되지 않습니다. 게이트웨이를 만든 뒤에 [SKU를 변경][changing-SKUs]할 수 있습니다.
@@ -467,6 +461,7 @@ Azure VPN 게이트웨이에 문제가 있는지 판단할 때 다음과 같은 
 [vpn-appliance]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices
 [azure-vpn-gateway]: https://azure.microsoft.com/services/vpn-gateway/
 [azure-gateway-charges]: https://azure.microsoft.com/pricing/details/vpn-gateway/
+[azure-gateway-skus]: /azure/vpn-gateway/vpn-gateway-about-vpngateways#gwsku
 [connect-to-an-Azure-vnet]: https://technet.microsoft.com/library/dn786406.aspx
 [vpn-gateway-multi-site]: /azure/vpn-gateway/vpn-gateway-multi-site
 [policy-based-routing]: https://en.wikipedia.org/wiki/Policy-based_routing
@@ -494,9 +489,4 @@ Azure VPN 게이트웨이에 문제가 있는지 판단할 때 다음과 같은 
 <!--[solution-script]: https://github.com/mspnp/reference-architectures/tree/master/guidance-hybrid-network-vpn/Deploy-ReferenceArchitecture.ps1-->
 <!--[solution-script-bash]: https://github.com/mspnp/reference-architectures/tree/master/guidance-hybrid-network-vpn/deploy-reference-architecture.sh-->
 <!--[virtualNetworkGateway-parameters]: https://github.com/mspnp/reference-architectures/tree/master/guidance-hybrid-network-vpn/parameters/virtualNetworkGateway.parameters.json-->
-[azure-cli]: https://azure.microsoft.com/documentation/articles/xplat-cli-install/
-[CIDR]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
-[0]: ./images/vpn.png "온-프레미스 인프라와 Azure 인프라를 포괄하는 하이브리드 네트워크"
-[2]: ../_images/guidance-hybrid-network-vpn/audit-logs.png "Azure Portal의 감사 로그"
-[3]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-counters.png "VPN 네트워크 트래픽 모니터링을 위한 성능 카운터"
-[4]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-graph.png "VPN 네트워크 성능 그래프 예"
+[azure-cli]: https://azure.microsoft.com/documentation/articles/xplat-cli-install/ [CIDR]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing [0]: ./images/vpn.png "온-프레미스 및 Azure 인프라에 걸친 하이브리드 네트워크" [2]: ../_images/guidance-hybrid-network-vpn/audit-logs.png "Azure Portal의 감사 로그" [3]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-counters.png "VPN 네트워크 트래픽을 모니터링하는 성능 카운터" [4]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-graph.png "예제 VPN 네트워크 성능 그래프""
