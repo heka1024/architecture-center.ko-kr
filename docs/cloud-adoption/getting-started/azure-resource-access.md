@@ -2,12 +2,13 @@
 title: '엔터프라이즈 클라우드 채택: Azure의 리소스 액세스 관리'
 description: 'Azure에서 리소스 액세스 관리 구문 설명: Azure Resource Manager, 구독, 리소스 그룹 및 리소스'
 author: petertaylor9999
-ms.openlocfilehash: cd26b73e0327fa15b6ae29492b45331a19b9d6c2
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.date: 09/10/2018
+ms.openlocfilehash: 2e64d8828574ebe216da1e76b19ec3ce5aeda993
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43326988"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389080"
 ---
 # <a name="enterprise-cloud-adoption-resource-access-management-in-azure"></a>엔터프라이즈 클라우드 채택: Azure의 리소스 액세스 관리
 
