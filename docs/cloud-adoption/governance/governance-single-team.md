@@ -2,12 +2,13 @@
 title: '엔터프라이즈 클라우드 채택: 간단한 워크로드에 대한 거버넌스 디자인'
 description: 사용자가 간단한 워크로드를 배포할 수 있도록 Azure 거버넌스 컨트롤을 구성하기 위한 지침
 author: petertaylor9999
-ms.openlocfilehash: 57ae4a972f79e683ec8266c30a6271df4bde1dd7
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.date: 09/10/2018
+ms.openlocfilehash: 13c7c4b41df14151d28b9c685f01019af3ec63f2
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43327355"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389250"
 ---
 # <a name="enterprise-cloud-adoption-governance-design-for-a-simple-workload"></a>엔터프라이즈 클라우드 채택: 간단한 워크로드에 대한 거버넌스 디자인
 
@@ -101,7 +102,7 @@ Azure 계정의 만들어지면 조직의 사용자를 Azure **계정 소유자*
 
 다음으로, Azure **계정 소유자**는 [구독을 만들고](https://docs.microsoft.com/partner-center/create-a-new-subscription) 여기에 [Azure AD 테넌트를 연결](/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory)해야 합니다.
 
-이제 구독을 만들고 Azure AD 테넌트와 연결했으므로 마지막으로, 기본 제공 **소유자** 역할](/azure/billing/billing-add-change-azure-subscription-administrator#add-an-rbac-owner-for-a-subscription-in-azure-portal)을 포함하는 구독에 **워크로드 소유자**를 [추가할 수 있습니다.
+[이제 구독을 만들고 Azure AD 테넌트와 연결했으므로 마지막으로, 기본 제공 **소유자** 역할](/azure/billing/billing-add-change-azure-subscription-administrator#add-an-rbac-owner-for-a-subscription-in-azure-portal)을 포함하는 구독에 **워크로드 소유자**를 추가할 수 있습니다.
 
 ## <a name="next-steps"></a>다음 단계
 > [!div class="nextstepaction"]
