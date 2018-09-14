@@ -5,10 +5,10 @@ author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
 ms.openlocfilehash: d1d9c1b3cf07f724eb010fc260d86ceb84b789ca
-ms.sourcegitcommit: 2e8b06e9c07875d65b91d5431bfd4bc465a7a242
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 09/13/2018
 ms.locfileid: "29059975"
 ---
 # <a name="data-partitioning"></a>데이터 분할
@@ -27,7 +27,7 @@ ms.locfileid: "29059975"
 * **가용성 향상**. 데이터를 여러 서버에 분리하면 단일 장애 지점이 발생하지 않습니다. 서버에 오류가 발생하거나 계획된 유지 관리를 수행 중인 경우 해당 파티션의 데이터만 사용할 수 없게 됩니다. 다른 파티션에 대한 작업은 계속 진행할 수 있습니다. 파티션 수를 늘리면 사용할 수 없는 데이터의 비율이 줄어 단일 서버 오류의 상대적 영향이 줄어듭니다. 각 파티션을 복제하면 작업에 영향을 미치는 단일 파티션 오류가 발생할 가능성을 더 줄일 수 있습니다. 또한 가용성이 지속적이고 높아야 하는 중요 데이터와 가용성 요구 사항이 더 낮은, 덜 중요한 데이터(예: 로그 파일)를 분리할 수도 있습니다.
 * **보안 기능 향상**. 데이터 특성 및 분할 방법에 따라 중요한 데이터 및 중요하지 않은 데이터를 다른 파티션, 다른 서버나 데이터 저장소로 분리할 수 있습니다. 그러면 특별히 보안 기능을 중요 데이터에 최적화할 수 있습니다.
 * **유연한 운영**. 분할을 수행하면 작업을 미세 조정하고, 관리 효율성을 극대화하며, 비용을 최소화할 수 있는 기회가 늘어납니다. 예를 들어 각 파티션의 데이터 중요도에 따라 관리, 모니터링, 백업 및 복원, 기타 관리 작업에 다양한 전략을 정의할 수 있습니다.
-* **사용 패턴에 맞게 데이터 저장소 조정**. 분할은 데이터 저장소에서 제공하는 기본 제공 기능 및 비용에 따라 각 파티션을 다양한 유형의 데이터 저장소에 배포할 수 있습니다. 예를 들어 대용량 이진 데이터는 BLOB 데이터 저장소에 저장할 수 있으며, 더 구조화된 데이터는 문서 데이터베이스에 보관할 수 있습니다. e자세한 내용은 패턴 및 사례 지침의 [Polyglot 솔루션 빌드]와 Microsoft 웹 사이트의 [확장성이 뛰어난 솔루션에 대한 데이터 액세스: SQL, NoSQL 및 Polyglot 지속성 사용] 을 참조하세요.
+* **사용 패턴에 맞게 데이터 저장소 조정**. 분할은 데이터 저장소에서 제공하는 기본 제공 기능 및 비용에 따라 각 파티션을 다양한 유형의 데이터 저장소에 배포할 수 있습니다. 예를 들어 대용량 이진 데이터는 BLOB 데이터 저장소에 저장할 수 있으며, 더 구조화된 데이터는 문서 데이터베이스에 보관할 수 있습니다. 자세한 내용은 패턴 및 사례 지침의 [Polyglot 솔루션 빌드]와 Microsoft 웹 사이트의 [확장성이 뛰어난 솔루션에 대한 데이터 액세스: SQL, NoSQL 및 Polyglot 지속성 사용]을 참조하세요.
 
 일부 시스템에서는 분할이 장점이 아닌 비용으로 간주되어 구현되지 않습니다. 이러한 원리에 대한 일반적인 이유는 다음과 같습니다.
 
@@ -46,7 +46,7 @@ ms.locfileid: "29059975"
 ### <a name="partitioning-strategies"></a>분할 전략
 다음은 일반적인 세 가지 데이터 분할 전략입니다.
 
-* **행 분할**\(일반적으로 *분할*이라고 함). 이 전략에서 각 파티션은 그 자체로 데이터 저장소이지만 모든 파티션에 동일한 스키마가 있습니다. 각 파티션을 *분할된 데이터베이스*라고 하며, 데이터의 특정 하위 집합(예: 전자 상거래 응용 프로그램에서 특정 고객 집합의 모든 주문)이 있습니다.
+* **행 분할**(일반적으로 *분할*이라고 함). 이 전략에서 각 파티션은 그 자체로 데이터 저장소이지만 모든 파티션에 동일한 스키마가 있습니다. 각 파티션을 *분할된 데이터베이스*라고 하며, 데이터의 특정 하위 집합(예: 전자 상거래 응용 프로그램에서 특정 고객 집합의 모든 주문)이 있습니다.
 * **수직 분할**. 이 전략에서는 각 파티션에 데이터 저장소의 항목 필드 하위 집합이 보관됩니다. 필드는 해당 사용 패턴에 따라 구분됩니다. 예를 들어 자주 액세스되는 필드가 하나의 수직 분할에 배치되고 덜 자주 액세스되는 필드가 또 다른 수직 분할에 배치됩니다.
 * **기능 분할**. 이 전략에서는 시스템의 제한된 컨텍스트별로 데이터가 사용되는 방법에 따라 데이터를 집계합니다. 예를 들어 청구 및 제품 재고 관리를 위한 별도의 비즈니스 기능을 구현하는 전자 상거래 시스템에서 청구서 데이터와 제품 재고 데이터를 각각 다른 파티션에 저장할 수 있습니다.
 
@@ -117,7 +117,7 @@ ms.locfileid: "29059975"
 
 일부 클라우드 환경에서는 인프라 경계를 기준으로 리소스를 할당합니다. 선택한 경계에 대한 제한이 데이터 저장소, 처리 능력 및 대역폭 측면에서 예상되는 데이터 볼륨 증가에 맞게 충분한 공간을 제공해야 합니다.
 
-예를 들어 Azure 테이블 저장소를 사용하는 경우 사용 중인 분할된 데이터베이스에서 요청을 처리하는 데 단일 파티션에 사용할 수 있는 것보다 더 많은 리소스가 필요할 수 있습니다. (특정 기간에 단일 파티션에서 처리할 수 있는 요청 볼륨은 제한되어 있습니다. 자세한 내용은 Microsoft 웹 사이트의 [Azure 저장소 확장성 및 성능 목표] 페이지를 참조하세요.)
+예를 들어 Azure 테이블 저장소를 사용하는 경우 사용 중인 분할된 데이터베이스에서 요청을 처리하는 데 단일 파티션에 사용할 수 있는 것보다 더 많은 리소스가 필요할 수 있습니다. (특정 기간에 단일 파티션에서 처리할 수 있는 요청 볼륨은 제한되어 있습니다. 자세한 내용은 Microsoft 웹 사이트의 [Azure Storage Scalability and Performance Targets] 페이지를 참조하세요.)
 
  이러한 경우 부하를 분산하기 위해 분할된 데이터베이스를 다시 분할해야 할 수 있습니다. 해당 테이블의 총 크기 또는 처리량이 저장소 계정 용량을 초과하면 추가 저장소 계정을 만들어 해당 계정에 테이블을 분산해야 할 수도 있습니다. 저장소 계정 수가 구독에 사용할 수 있는 계정 수를 초과하면 여러 구독을 사용해야 할 수 있습니다.
 
@@ -197,7 +197,7 @@ Azure SQL Database는 클라우드에서 실행되는 관계형 DaaS(Database-as
 
 데이터 집합을 shardlet 키와 연결하는 작업은 프로그래머가 담당합니다. 별도의 SQL 데이터베이스는 전역 분할된 데이터베이스 맵 관리자 역할을 합니다. 이 데이터베이스에는 시스템의 모든 분할된 데이터베이스 및 shardlet 목록이 포함됩니다. 데이터에 액세스하는 클라이언트 응용 프로그램에서 먼저 전역 분할된 데이터베이스 맵 관리자 데이터베이스에 연결하여 로컬로 캐시되는 분할된 데이터베이스 맵 복사본(분할된 데이터베이스 및 shardlet 나열)을 가져옵니다.
 
-그런 다음 응용 프로그램에서 이 정보를 사용하여 데이터 요청을 적절한 분할된 데이터베이스로 라우팅합니다. 이 기능은 Azure SQL Database Elastic Database 클라이언트 라이브러리에 포함된 일련의 API에 포함되어 있으며, NuGet 패키지로 제공됩니다. Elastic Database에 대한 더 포괄적인 소개는 Microsoft 웹 사이트의 [ 기능 개요] 페이지에서 제공합니다.
+그런 다음 응용 프로그램에서 이 정보를 사용하여 데이터 요청을 적절한 분할된 데이터베이스로 라우팅합니다. 이 기능은 Azure SQL Database Elastic Database 클라이언트 라이브러리에 포함된 일련의 API에 포함되어 있으며, NuGet 패키지로 제공됩니다. Elastic Database에 대한 더 포괄적인 소개는 Microsoft 웹 사이트의 [Elastic Database 기능 개요] 페이지에서 제공합니다.
 
 > [!NOTE]
 > 전역 분할된 데이터베이스 맵 관리자 데이터베이스를 복제하여 대기 시간을 줄이고 가용성을 향상시킬 수 있습니다. 프리미엄 가격 책정 계층 중 하나를 사용하여 데이터베이스를 구현하면 활성 지역 복제를 구성하여 다른 지역에 있는 데이터베이스에 지속적으로 데이터를 복사할 수 있습니다. 사용자의 각 해당 지역에 데이터베이스 복사본을 만듭니다. 그런 다음 이 복사본에 연결하여 분할된 데이터베이스 맵을 가져오도록 응용 프로그램을 구성합니다.
@@ -264,7 +264,7 @@ Azure Storage는 데이터 관리를 위한 다음 네 가지 추상화를 제�
 * **영역 중복 저장소**는 3개의 데이터 복사본을 유지 관리하는데, 동일한 지역(또는 지리적으로 가까운 두 지역)에 있는 여러 데이터 센터에 분산됩니다. 이 형태의 중복성은 단일 데이터 센터 내에서 발생하는 재해는 방지할 수 있지만 전체 지역에 영향을 미치는 대규모 네트워크 연결 해제는 방지할 수 없습니다. 영역 중복 저장소는 블록 Blob에만 사용할 수 있습니다.
 * **지역 중복 저장소**는 6개의 데이터 복사본을 유지 관리하는데, 세 개의 복사본은 한 지역(해당 지역)에 있고 다른 세 개의 복사본은 원격 지역에 있습니다. 이러한 형태의 중복성은 최고 수준의 재해 방지 기능을 제공합니다.
 
-Microsoft는 Azure Storage에 대한 확장성 목표를 게시했습니다. 자세한 내용은 Microsoft 웹 사이트의 [Azure 저장소 확장성 및 성능 목표] 페이지를 참조하세요. 현재 총 저장소 계정 용량은 500TB 이하여야 합니다. 이 용량은 저장소 큐에 보관된 미해결 메시지 외에도 Table Storage, 파일 저장소 및 Blob Storage에 보관된 데이터의 크기를 포함합니다.
+Microsoft는 Azure Storage에 대한 확장성 목표를 게시했습니다. 자세한 내용은 Microsoft 웹 사이트의 [Azure Storage Scalability and Performance Targets] 페이지를 참조하세요. 현재 총 저장소 계정 용량은 500TB 이하여야 합니다. 이 용량은 저장소 큐에 보관된 미해결 메시지 외에도 Table Storage, 파일 저장소 및 Blob Storage에 보관된 데이터의 크기를 포함합니다.
 
 저장소 계정에 대한 최대 요청 속도(1KB 엔터티, Blob 또는 메시지 크기 가정)는 초당 20,000개 요청입니다. 저장소 계정에는 파일 공유당 최대 1,000 IOPS(8KB 크기)가 있습니다. 시스템에서 이러한 제한을 초과할 가능성이 있으면 부하를 여러 저장소 계정에 분할하는 것이 좋습니다. 하나의 Azure 구독으로 최대 200개의 저장소 계정을 만들 수 있습니다. 그러나 시간이 지남에 따라 이러한 제한이 변경될 수 있습니다.
 
@@ -274,7 +274,7 @@ Azure 테이블 저장소는 분할을 중심으로 디자인하여 저장한 �
 * **파티션 키**. 이 키는 Azure 테이블 저장소에서 엔터티를 배치할 파티션을 결정하는 문자열 값입니다. 파티션 키가 동일한 모든 엔터티가 동일한 파티션에 저장됩니다.
 * **행 키**. 이 키는 파티션 내에서 엔터티를 식별하는 다른 문자열 값입니다. 파티션 내의 모든 엔터티는 이 키에 따라 어휘순 및 오름차순으로 정렬됩니다. 파티션 키와 행 키의 조합은 엔터티별로 고유해야 하며 길이가 1KB 이하여야 합니다.
 
-엔터티의 나머지 데이터는 응용 프로그램 정의 필드로 구성됩니다. 특정 스키마가 적용되지 않으며, 각 행에 서로 다른 응용 프로그램 정의 필드 집합이 포함될 수 있습니다. 유일한 제한 사항은 엔터티의 최대 크기(파티션 키 및 행 키 포함)이며 현재 1MB입니다. 테이블의 최대 크기는 200TB지만 이 수치는 나중에 변경될 수 있습니다. (해당 제한 사항에 대한 최신 정보는 Microsoft 웹 사이트의 [Azure 저장소 확장성 및 성능 목표] 페이지를 확인하세요.)
+엔터티의 나머지 데이터는 응용 프로그램 정의 필드로 구성됩니다. 특정 스키마가 적용되지 않으며, 각 행에 서로 다른 응용 프로그램 정의 필드 집합이 포함될 수 있습니다. 유일한 제한 사항은 엔터티의 최대 크기(파티션 키 및 행 키 포함)이며 현재 1MB입니다. 테이블의 최대 크기는 200TB지만 이 수치는 나중에 변경될 수 있습니다. (해당 제한 사항에 대한 최신 정보는 Microsoft 웹 사이트의 [Azure Storage Scalability and Performance Targets] 페이지를 확인하세요.)
 
 이 용량을 초과하는 엔터티를 저장하려면 엔터티를 여러 테이블로 분할하는 것이 좋습니다. 수직 분할을 사용하여 함께 액세스할 가능성이 높은 그룹으로 필드를 나눕니다.
 
@@ -314,7 +314,7 @@ Azure 테이블 저장소에 엔터티를 디자인할 때 다음 사항을 고�
 Azure 테이블 저장소에서 데이터를 분할하는 방법에 대한 자세한 내용은 Microsoft 웹 사이트의 [Azure 저장소 테이블 설계 가이드] 를 참조하세요.
 
 ## <a name="partitioning-azure-blob-storage"></a>Azure Blob 저장소 분할
-Azure Blob Storage를 사용하면 현재 블록 Blob은 최대 5TB, 페이지 Blob은 최대 1TB 크기의 LOB(Large Binary Object)을 보유할 수 있습니다. (최신 정보는 Microsoft 웹 사이트의 [Azure 저장소 확장성 및 성능 목표] 페이지를 참조하세요.) 블록 Blob은 대용량 데이터를 신속하게 업로드 또는 다운로드해야 하는 스트리밍과 같은 시나리오에 사용합니다. 페이지 Blob은 데이터 일부에 직렬 액세스가 아닌 랜덤 액세스가 필요한 응용 프로그램에 사용됩니다.
+Azure Blob Storage를 사용하면 현재 블록 Blob은 최대 5TB, 페이지 Blob은 최대 1TB 크기의 LOB(Large Binary Object)을 보유할 수 있습니다. (최신 정보는 Microsoft 웹 사이트의 [Azure Storage Scalability and Performance Targets] 페이지를 참조하세요.) 블록 Blob은 대용량 데이터를 신속하게 업로드 또는 다운로드해야 하는 스트리밍과 같은 시나리오에 사용합니다. 페이지 Blob은 데이터 일부에 직렬 액세스가 아닌 랜덤 액세스가 필요한 응용 프로그램에 사용됩니다.
 
 각 Blob(블록 또는 페이지)은 Azure 저장소 계정의 컨테이너에 보관됩니다. 컨테이너를 사용하여 보안 요구 사항이 동일한 관련 Blob을 그룹화할 수 있습니다. 해당 그룹화는 물리적이 아니라 논리적입니다. 컨테이너 내에 있는 각 Blob에는 고유의 이름이 있습니다.
 
@@ -322,7 +322,7 @@ Blob의 파티션 키는 계정 이름 + 컨테이너 이름 + Blob 이름입니
 
 단일 블록(블록 Blob) 또는 페이지(페이지 Blob)를 기록하는 작업은 원자성이 있지만 여러 블록, 페이지 또는 Blob에 분산된 작업은 그렇지 않습니다. 여러 블록, 페이지 및 Blob에서 쓰기 작업을 수행할 때 일관성을 유지해야 하는 경우에는 Blob 임대를 사용하여 쓰기 잠금을 제거합니다.
 
-Azure Blob Storage는 Blob별 초당 60MB 또는 초당 500개 요청의 최대 전송 속도를 목표로 합니다. 이 한도를 초과할 것으로 예상되고 Blob 데이터가 상대적으로 정적인 경우에는 Azure Content Delivery Network를 사용하여 Blob을 복제하는 것이 좋습니다. 자세한 내용은 Microsoft 웹 사이트의 [Azure에 콘텐츠 배달 네트워크] 페이지를 참조하세요. 추가 참고 자료 및 고려 사항은 [Azure 콘텐츠 배달 네트워크 사용]을 참조하세요.
+Azure Blob Storage는 Blob별 초당 60MB 또는 초당 500개 요청의 최대 전송 속도를 목표로 합니다. 이 한도를 초과할 것으로 예상되고 Blob 데이터가 상대적으로 정적인 경우에는 Azure Content Delivery Network를 사용하여 Blob을 복제하는 것이 좋습니다. 자세한 내용은 Microsoft 웹 사이트의 [Azure Content Delivery Network] 페이지를 참조하세요. 추가 참고 자료 및 고려 사항은 [Azure용 CDN(Content Delivery Network) 사용]을 참조하세요.
 
 ## <a name="partitioning-azure-storage-queues"></a>Azure 저장소 큐 분할
 Azure 저장소 큐를 사용하면 프로세스 간에 비동기 메시징을 구현할 수 있습니다. Azure 저장소 계정에는 큐가 개수에 관계없이 포함될 수 있으며 각 큐에는 메시지가 개수에 관계없이 포함될 수 있습니다. 유일한 제한은 저장소 계정에서 사용 가능한 공간입니다. 개별 메시지의 최대 크기는 64KB입니다. 이보다 큰 메시지가 필요한 경우 Azure Service Bus 큐를 사용하는 것이 좋습니다.
@@ -413,7 +413,7 @@ Azure Search에서 서비스의 각 인스턴스에 데이터를 분할하는 �
 이 방법은 검색 중인 데이터의 지역별 편차가 큰 경우 가장 적합합니다.
 
 ## <a name="partitioning-strategies-for-azure-redis-cache"></a>Azure Redis Cache 분할 전략
-Azure Redis Cache는 Redis 키/값 데이터 저장소를 기반으로 하는 클라우드에 공유 캐싱 서비스를 제공합니다. 이름에서 알 수 있듯이 Azure Redis Cache는 캐싱 솔루션을 위한 것입니다. 영구적 데이터 저장소가 아니라 데이터를 일시적으로 보관하는 용도로만 사용합니다. Azure Redis Cache를 활용하는 응용 프로그램은 캐시를 사용할 수 없는 경우에도 계속 작동될 수 있어야 합니다. Azure Redis Cache는 주/보조 복제를 지원하여 고가용성을 제공하지만 현재 최대 캐시 크기가 53GB로 제한됩니다. 이보다 더 많은 공간이 필요한 경우 캐시를 추가로 만들어야 합니다. 자세한 내용은 Microsoft 웹 사이트의 [Azure Redis Cache] 페이지를 참조하세요.
+Azure Redis Cache는 Redis 키/값 데이터 저장소를 기반으로 하는 클라우드에 공유 캐싱 서비스를 제공합니다. 이름에서 알 수 있듯이 Azure Redis Cache는 캐싱 솔루션을 위한 것입니다. 영구적 데이터 저장소가 아니라 데이터를 일시적으로 보관하는 용도로만 사용합니다. Azure Redis Cache를 활용하는 응용 프로그램은 캐시를 사용할 수 없는 경우에도 계속 작동될 수 있어야 합니다. Azure Redis Cache는 주/보조 복제를 지원하여 고가용성을 제공하지만 현재 최대 캐시 크기가 53GB로 제한됩니다. 이보다 더 많은 공간이 필요한 경우 캐시를 추가로 만들어야 합니다. 자세한 내용은 Microsoft 웹 사이트의 [Azure Redis 캐시(영문)] 페이지를 참조하세요.
 
 Redis 데이터 저장소를 분할하려면 데이터를 Redis 서비스의 여러 인스턴스에 분할해야 합니다. 각 인스턴스는 단일 파티션으로 구성됩니다. Azure Redis Cache는 Redis 서비스를 외관 뒤에 추상화하여 직접 노출하지 않습니다. 분할을 구현하는 가장 간단한 방법은 다수의 Azure Redis Cache 인스턴스를 만들어 데이터를 분산하는 것입니다.
 
@@ -441,7 +441,7 @@ Azure Redis Cache를 사용하여 데이터를 분할하는 방법을 결정할 
   * 목록(큐 및 스택의 역할을 할 수 있음)과 같은 집계 형식
   * 집합(정렬 및 정렬되지 않음)
   * 해시(관련 필드(예: 개체의 필드를 나타내는 항목)를 함께 그룹화할 수 있음)
-* 집계 형식을 사용하면 키가 동일한 다수의 관련 값을 연결할 수 있습니다. Redis 키는 포함된 데이터 항목이 아닌 목록, 집합 또는 해시를 식별합니다. 해당 형식은 모두 Azure Redis Cache와 함께 사용할 수 있으며, Redis 웹 사이트의 [데이터 형식] 페이지에 설명되어 있습니다. 예를 들어 고객의 주문을 추적하는 전자 상거래 시스템 일부에서 고객 ID를 사용하여 키가 지정된 Redis 해시에 각 고객의 세부 정보를 저장할 수 있습니다. 각 해시에는 고객의 주문 ID 컬렉션이 보관될 수 있습니다. 별도의 Redis 집합은 주문 ID를 사용하여 키가 지정되고 해시로 다시 구조화된 주문을 보관할 수 있습니다. 그림 8에서는 이러한 구조를 보여줍니다. Redi는 어떤 형태의 참조 무결성도 구현하지 않으므로, 고객과 주문 간 관계를 유지 관리하는 것은 개발자의 책임입니다.
+* 집계 형식을 사용하면 키가 동일한 다수의 관련 값을 연결할 수 있습니다. Redis 키는 포함된 데이터 항목이 아닌 목록, 집합 또는 해시를 식별합니다. 해당 형식은 모두 Azure Redis Cache와 함께 사용할 수 있으며, Redis 웹 사이트의 [Data Types] 페이지에 설명되어 있습니다. 예를 들어 고객의 주문을 추적하는 전자 상거래 시스템 일부에서 고객 ID를 사용하여 키가 지정된 Redis 해시에 각 고객의 세부 정보를 저장할 수 있습니다. 각 해시에는 고객의 주문 ID 컬렉션이 보관될 수 있습니다. 별도의 Redis 집합은 주문 ID를 사용하여 키가 지정되고 해시로 다시 구조화된 주문을 보관할 수 있습니다. 그림 8에서는 이러한 구조를 보여줍니다. Redi는 어떤 형태의 참조 무결성도 구현하지 않으므로, 고객과 주문 간 관계를 유지 관리하는 것은 개발자의 책임입니다.
 
 ![고객 주문 및 세부 정보를 기록하기 위해 제안된 Redis 저장소의 구조](./images/data-partitioning/RedisCustomersandOrders.png)
 
@@ -472,7 +472,7 @@ Azure Redis Cache를 사용하여 데이터를 분할하는 방법을 결정할 
 Azure Service Fabric은 클라우드에서 배포 응용 프로그램에 대해 런타임을 제공하는 마이크로 서비스 플랫폼입니다. Service Fabric은 .Net 게스트 실행 파일, 상태 저장 및 상태 비저장 서비스, 컨테이너를 지원합니다. 상태 저장 서비스는 Service Fabric 클러스터 내의 키/값 컬렉션에 데이터를 영구적으로 저장하기 위한 [신뢰할 수 있는 컬렉션][service-fabric-reliable-collections]을 제공합니다. 신뢰할 수 있는 컬렉션에서 키 분할 전략에 대한 자세한 내용은 [Azure Service Fabric에서 신뢰할 수 있는 컬렉션에 대한 지침 및 권장 사항]을 참조하세요.
 
 ### <a name="more-information"></a>자세한 정보
-* [Azure Service Fabric 개요]는 Azure Service Fabric에 대한 소개입니다.
+* [Azure Service Fabric의 개요]는 Azure Service Fabric에 대한 소개입니다.
 * [Service Fabric Reliable Services 분할]에서는 Azure Service Fabric의 Reliable Services에 대한 자세한 정보를 제공합니다.
 
 ## <a name="partitioning-strategies-for-azure-event-hubs"></a>Azure Event Hubs 분할 전략
@@ -526,33 +526,33 @@ Event Hubs에서 파티션을 사용하는 방법에 대한 자세한 내용은 
 데이터 일관성을 구현하기 위한 전략을 고려하는 경우 다음 패턴이 시나리오와 관련이 있을 수도 있습니다.
 
 * Microsoft 웹 사이트의 [데이터 일관성 입문서] 페이지에서 클라우드와 같은 분산 환경에서 일관성을 유지 관리할 수 있는 전략을 설명합니다.
-* Microsoft 웹 사이트의 [데이터 분할 참고 자료] 페이지에는 분산 솔루션의 다양한 조건을 충족하는 파티션을 디자인하는 방법에 대한 일반 개요가 있습니다.
+* Microsoft 웹 사이트의 [Data Partitioning Guidance] 페이지에는 분산 솔루션의 다양한 조건을 충족하는 파티션을 디자인하는 방법에 대한 일반 개요가 있습니다.
 * Microsoft 웹 사이트에 설명된 [분할 패턴] 은 데이터 분할에 많이 사용되는 몇 가지 전략을 요약합니다.
 * Microsoft 웹 사이트에 설명된 [인덱스 테이블 패턴] 은 데이터에 대한 보조 인덱스를 만드는 방법을 보여 줍니다. 이 방법을 사용하면 응용 프로그램에서 컬렉션의 기본 키를 참조하지 않는 쿼리를 사용하여 데이터를 신속하게 검색할 수 있습니다.
-* Microsoft 웹 사이트에 설명된 [구체화된 뷰 패턴] 은 빠른 쿼리 작업을 지원하도록 데이터를 요약하고 미리 채워진 뷰 생성 방법을 설명합니다. 이 방법은 요약되는 데이터가 포함된 파티션을 여러 사이트에 분산하는 경우 분할된 데이터 저장소에서 유용할 수 있습니다.
-* Microsoft 웹 사이트의 [Azure 콘텐츠 배달 네트워크 사용] 문서에는 Azure에서 CDN을 구성하고 사용하는 방법에 대한 추가 참고 자료가 있습니다.
+* Microsoft 웹 사이트에 설명된 [Materialized View Pattern] 은 빠른 쿼리 작업을 지원하도록 데이터를 요약하고 미리 채워진 뷰 생성 방법을 설명합니다. 이 방법은 요약되는 데이터가 포함된 파티션을 여러 사이트에 분산하는 경우 분할된 데이터 저장소에서 유용할 수 있습니다.
+* Microsoft 웹 사이트의 [Azure용 CDN(Content Delivery Network) 사용] 문서에는 Azure에서 CDN을 구성하고 사용하는 방법에 대한 추가 참고 자료가 있습니다.
 
 ## <a name="more-information"></a>자세한 정보
 * Microsoft 웹 사이트의 [Azure SQL Database 정의] 페이지에는 SQL Database를 만들고 사용하는 방법을 설명하는 자세한 설명서가 있습니다.
-* Elastic Database에 대한 포괄적인 소개는 Microsoft 웹 사이트의 [ 기능 개요] 페이지에서 제공합니다.
+* Elastic Database에 대한 포괄적인 소개는 Microsoft 웹 사이트의 [Elastic Database 기능 개요] 페이지에서 제공합니다.
 * Microsoft 웹 사이트의 [Elastic Database 분할/병합 도구를 사용하여 확장하기] 페이지에는 분할/병합 서비스를 사용하여 Elastic Database 분할된 데이터베이스를 관리하는 방법에 대한 내용이 있습니다.
-* Microsoft 웹 사이트의 [Azure 저장소 확장성 및 성능 목표](https://msdn.microsoft.com/library/azure/dn249410.aspx) 페이지에는 Azure Storage의 현재 크기 조정 및 처리량 한도가 설명되어 있습니다.
+* Microsoft 웹 사이트의 [Azure Storage 확장성 및 성능 목표](https://msdn.microsoft.com/library/azure/dn249410.aspx) 페이지에는 Azure Storage의 현재 크기 조정 및 처리량 한도가 설명되어 있습니다.
 * Microsoft 웹 사이트의 [엔터티 그룹 트랜잭션 수행] 페이지에는 Azure 테이블 저장소에 저장된 엔터티에 트랜잭션 작업을 구현하는 방법에 대한 자세한 정보가 있습니다.
 * Microsoft 웹 사이트의 [Azure 저장소 테이블 설계 가이드] 는 Azure 테이블 저장소에서 데이터를 분할하는 방법에 대한 자세한 내용을 포함합니다.
-* Microsoft 웹 사이트의 [Azure 콘텐츠 배달 네트워크 사용] 페이지에서는 Azure Content Delivery Network를 사용하여 Azure Blob 저장소에 보관된 데이터를 복제하는 방법을 설명합니다.
+* Microsoft 웹 사이트의 [Azure용 CDN(Content Delivery Network) 사용] 페이지에서는 Azure Content Delivery Network를 사용하여 Azure Blob 저장소에 보관된 데이터를 복제하는 방법을 설명합니다.
 * Microsoft 웹 사이트의 [Azure Search란?] 페이지에는 Azure Search에서 사용할 수 있는 기능에 대한 전체 설명이 있습니다.
 * Microsoft 웹 사이트의 [Azure Search의 서비스 제한 사항] 페이지에는 Azure Search의 각 인스턴스 용량에 대한 정보가 있습니다.
 * Microsoft 웹 사이트의 [지원되는 데이터 형식(Azure Search)] 페이지에는 검색 가능한 문서 및 인덱스에서 사용할 수 있는 데이터 형식이 요약되어 있습니다.
-* Microsoft 웹 사이트의 [Azure Redis Cache] 페이지에는 Azure Redis Cache가 소개되어 있습니다.
+* Microsoft 웹 사이트의 [Azure Redis 캐시(영문)] 페이지에는 Azure Redis Cache가 소개되어 있습니다.
 * Redis 웹 사이트의 [분할: 여러 Redis 인스턴스 간에 데이터를 분할하는 방법] 페이지에는 Redis를 사용하여 분할을 구현하는 방법에 대한 내용이 있습니다.
 * Microsoft 웹 사이트의 [Azure의 CentOS Linux VM에서 Redis 실행] 페이지는 Azure VM으로 실행하는 Redis 노드를 빌드하고 구성하는 방법을 보여 주는 예제를 안내합니다.
-* Redis 웹 사이트의 [데이터 형식] 페이지에서는 Redis 및 Azure Redis Cache에 사용할 수 있는 데이터 형식을 설명합니다.
+* Redis 웹 사이트의 [Data Types] 페이지에서는 Redis 및 Azure Redis Cache에 사용할 수 있는 데이터 형식을 설명합니다.
 
 [Event Hubs의 가용성 및 일관성]: /azure/event-hubs/event-hubs-availability-and-consistency
 [azure-limits]: /azure/azure-subscription-service-limits
-[Azure에 콘텐츠 배달 네트워크]: /azure/cdn/cdn-overview
-[Azure Redis Cache]: http://azure.microsoft.com/services/cache/
-[Azure 저장소 확장성 및 성능 목표]: /azure/storage/storage-scalability-targets
+[Azure Content Delivery Network]: /azure/cdn/cdn-overview
+[Azure Redis 캐시(영문)]: http://azure.microsoft.com/services/cache/
+[Azure Storage Scalability and Performance Targets]: /azure/storage/storage-scalability-targets
 [Azure 저장소 테이블 설계 가이드]: /azure/storage/storage-table-design-guide
 [Polyglot 솔루션 빌드]: https://msdn.microsoft.com/library/dn313279.aspx
 [cosmos-db-ru]: /azure/cosmos-db/request-units
@@ -561,21 +561,21 @@ Event Hubs에서 파티션을 사용하는 방법에 대한 자세한 내용은 
 [Data Partitioning Guidance]: https://msdn.microsoft.com/library/dn589795.aspx
 [Data Types]: http://redis.io/topics/data-types
 [cosmosdb-sql-api]: /azure/cosmos-db/sql-api-introduction
-[ 기능 개요]: /azure/sql-database/sql-database-elastic-scale-introduction
+[Elastic Database 기능 개요]: /azure/sql-database/sql-database-elastic-scale-introduction
 [event-hubs]: /azure/event-hubs
 [Federations Migration Utility]: https://code.msdn.microsoft.com/vstudio/Federations-Migration-ce61e9c1
 [Azure Service Fabric에서 신뢰할 수 있는 컬렉션에 대한 지침 및 권장 사항]: /azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines
 [인덱스 테이블 패턴]: http://aka.ms/Index-Table-Pattern
 [Materialized View Pattern]: http://aka.ms/Materialized-View-Pattern
 [다중 분할된 데이터베이스 쿼리]: /azure/sql-database/sql-database-elastic-scale-multishard-querying
-[Azure Service Fabric 개요]: /azure/service-fabric/service-fabric-overview
+[Azure Service Fabric의 개요]: /azure/service-fabric/service-fabric-overview
 [Service Fabric Reliable Services 분할]: /azure/service-fabric/service-fabric-concepts-partitioning
 [분할: 여러 Redis 인스턴스 간에 데이터를 분할하는 방법]: http://redis.io/topics/partitioning
 [엔터티 그룹 트랜잭션 수행]: https://msdn.microsoft.com/library/azure/dd894038.aspx
 [Redis 클러스터 자습서]: http://redis.io/topics/cluster-tutorial
 [Azure의 CentOS Linux VM에서 Redis 실행]: http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx
 [Elastic Database 분할/병합 도구를 사용하여 확장하기]: /azure/sql-database/sql-database-elastic-scale-overview-split-and-merge
-[Azure 콘텐츠 배달 네트워크 사용]: /azure/cdn/cdn-create-new-endpoint
+[Azure용 CDN(Content Delivery Network) 사용]: /azure/cdn/cdn-create-new-endpoint
 [Service Bus 할당량]: /azure/service-bus-messaging/service-bus-quotas
 [service-fabric-reliable-collections]: /azure/service-fabric/service-fabric-reliable-services-reliable-collections
 [Azure Search의 서비스 제한 사항]:  /azure/search/search-limits-quotas-capacity
