@@ -7,12 +7,12 @@ tags: azure-resource-manager
 ms.service: virtual-network
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 34fab47cef6d5a9c0130f0864e9fdef33357ba25
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: 2dbbad3dd8d1a45b94bb4e265d306815d1f5242c
+ms.sourcegitcommit: f1dcc388c8b4fc983549c36d7e6b009fa1f072ba
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43325481"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46329915"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Azure 가상 데이터 센터: 네트워크 측면
 
@@ -369,7 +369,7 @@ Traffic Manager는 Azure 공용 엔드포인트에서 작동하며 트래픽을 
 [VPN]: /azure/vpn-gateway/vpn-gateway-about-vpngateways 
 [ExR]: /azure/expressroute/expressroute-introduction 
 [NVA]: /azure/architecture/reference-architectures/dmz/nva-ha
-[SubMgmt]: /azure/azure-resource-manager/resource-manager-azure-scaffold 
+[SubMgmt]: /azure/architecture/cloud-adoption/appendix/azure-scaffold 
 [RGMgmt]: /azure/azure-resource-manager/resource-group-overview
 [DMZ]: /azure/best-practices-network-security
 [ALB]: /azure/load-balancer/load-balancer-overview
