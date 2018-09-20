@@ -5,12 +5,12 @@ keywords: AWS 전문가, Azure 비교, AWS 비교, azure와 aws의 차이점, az
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 0af0890d383d22db0ed9d3b445cdd5b561b498ae
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.openlocfilehash: f90186ba36f035871ec918c65b05eebe44190ffa
+ms.sourcegitcommit: f1dcc388c8b4fc983549c36d7e6b009fa1f072ba
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31012623"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46329898"
 ---
 # <a name="azure-for-aws-professionals"></a>AWS 전문가를 위한 Azure
 
@@ -156,7 +156,7 @@ Azure [지역 중복 저장소](https://azure.microsoft.com/documentation/articl
 
 ## <a name="services"></a>Services
 
-모든 서비스가 플랫폼 간에 매핑되는 방식에 대한 전체 목록은 [AWS와 Azure의 전체 서비스 비교표](https://aka.ms/azure4aws-services)를 참조하세요.
+플랫폼 간 서비스 맵핑 방법 목록은 [AWS에서 Azure 서비스 비교](./services.md)를 참조하십시오.
 
 지역에 따라 일부 Azure 제품 및 서비스가 제공되지 않을 수도 있습니다. 자세한 내용은 [지역별 제품](https://azure.microsoft.com/regions/services/) 페이지를 참조하세요. [서비스 수준 계약](https://azure.microsoft.com/support/legal/sla/) 페이지에서 각 Azure 제품 및 서비스의 작동 시간 보장 및 가동 중지 시간 크레딧 정책을 확인할 수 있습니다.
 
@@ -175,8 +175,6 @@ AWS 인스턴스 형식과 Azure 가상 머신 크기는 비슷한 방식으로 
 -   [Azure에서 가상 머신 크기(Linux)](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
 
 초 단위로 요금이 청구되는 AWS와는 달리, Azure 주문형 VM은 분 단위로 요금이 청구됩니다.
-
-Azure에는 EC2 스폿 인스턴스 또는 전용 호스트에 해당하는 항목이 없습니다.
 
 #### <a name="ebs-and-azure-storage-for-vm-disks"></a>VM 디스크용 EBS 및 Azure Storage
 
@@ -428,8 +426,6 @@ Notification Hubs는 SMS 또는 전자 메일 메시지 보내기를 지원하�
 
 ## <a name="next-steps"></a>다음 단계
 
--   [AWS와 Azure의 전체 서비스 비교표](https://aka.ms/azure4aws-services)
-
 -   [대화형 Azure 플랫폼 큰 그림](http://azureplatform.azurewebsites.net/)
 
 -   [Azure 시작](https://azure.microsoft.com/get-started/)
@@ -437,8 +433,6 @@ Notification Hubs는 SMS 또는 전자 메일 메시지 보내기를 지원하�
 -   [Azure 솔루션 아키텍처](https://azure.microsoft.com/solutions/architecture/)
 
 -   [Azure 참조 아키텍처](https://azure.microsoft.com/documentation/articles/guidance-architecture/)
-
--   [패턴 및 연습: Azure 지침](https://azure.microsoft.com/documentation/articles/guidance/)
 
 -   [무료 온라인 강좌: AWS 전문가를 위한 Microsoft Azure](http://aka.ms/azureforaws)
 
