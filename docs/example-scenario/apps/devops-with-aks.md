@@ -3,12 +3,12 @@ title: 컨테이너 기반 작업에 대한 CI/CD 파이프라인
 description: Jenkins, Azure Container Registry, Azure Kubernetes Service, Cosmos DB 및 Grafana를 사용하는 Node.js 웹앱용 DevOps 파이프라인을 구축하는 데 입증된 시나리오입니다.
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: dceb4ad3c34ec43a54d802772f5817cacdd3929c
-ms.sourcegitcommit: 8b5fc0d0d735793b87677610b747f54301dcb014
+ms.openlocfilehash: d659916e3af0caa2128db25faab441a2af8f3f6a
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/29/2018
-ms.locfileid: "39334218"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389386"
 ---
 # <a name="cicd-pipeline-for-container-based-workloads"></a>컨테이너 기반 작업에 대한 CI/CD 파이프라인
 
@@ -44,7 +44,7 @@ Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서�
 ### <a name="components"></a>구성 요소
 
 * [Jenkins][jenkins]는 Azure 서비스와 통합하여 CI 및 CD를 수행할 수 있게 하는 오픈 소스 자동화 서버입니다. 이 시나리오에서 Jenkins는 소스 제어에 대한 커밋에 따라 새 컨테이너 이미지를 만들도록 오케스트레이션하고, Azure Container Registry에 해당 이미지를 푸시한 다음, Azure Kubernetes Service에서 응용 프로그램 인스턴스를 업데이트합니다.
-* [Azure Linux Virtual Machines][azurevm-docs]는 Jenkins 및 Grafana 인스턴스를 실행하는 데 사용됩니다.
+* [Azure Linux Virtual Machines][azurevm-docs]는 Jenkins 및 Grafana 인스턴스를 실행하는 데 사용되는 IaaS 플랫폼입니다.
 * [Azure Container Registry][azureacr-docs]는 Azure Kubernetes Service 클러스터에서 사용되는 컨테이너 이미지를 저장하고 관리합니다. 이미지는 안전하게 저장되며, Azure 플랫폼을 통해 다른 지역으로 복제하여 배포 시간을 단축할 수 있습니다.
 * [Azure Kubernetes Service][azureaks-docs]는 컨테이너 오케스트레이션에 대한 전문 지식이 없어도 컨테이너화된 응용 프로그램을 배포하고 관리할 수 있는 관리되는 Kubernetes 플랫폼입니다. 호스팅되는 Kubernetes 서비스인 Azure는 상태 모니터링 및 유지 관리 같은 중요 작업을 처리합니다.
 * [Azure Cosmos DB][azurecosmosdb-docs]는 요구 사항에 맞게 다양한 데이터베이스 및 일관성 모델 중에서 선택할 수 있는 전역으로 분산된 다중 모델 데이터베이스입니다. Cosmos DB를 사용하면 데이터를 전역으로 복제할 수 있으며, 배포 및 구성할 클러스터 관리 또는 복제 구성 요소가 없습니다.
@@ -53,7 +53,7 @@ Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서�
 
 ### <a name="alternatives"></a>대안
 
-* [Visual Studio Team Services][vsts] 및 Team Foundation Server를 사용하면 모든 응용 프로그램에 대한 지속적인 통합(CI), 테스트 및 배포(CD) 파이프라인을 구현할 수 있습니다.
+* [Azure Pipelines][azure-pipelines]를 사용하면 모든 앱에 대한 지속적인 통합(CI), 테스트 및 배포(CD) 파이프라인을 구현할 수 있습니다.
 * [Kubernetes][kubernetes]는 클러스터에 대해 더 자세히 제어하려는 경우에 관리 서비스 대신 Azure VM에서 직접 실행할 수 있습니다.
 * [Service Fabric][service-fabric]은 AKS를 대체할 수 있는 대체 컨테이너 오케스트레이터입니다.
 
@@ -65,7 +65,7 @@ Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서�
 
 Azure Kubernetes Service 클러스터의 일부인 부하 분산 장치는 응용 프로그램을 실행하는 하나 이상의 컨테이너(포드)에 응용 프로그램 트래픽을 분산시킵니다. Kubernetes에서 컨테이너화된 응용 프로그램을 실행하는 이 접근 방식은 고객에게 고가용성 인프라를 제공합니다.
 
-다른 가용성 항목에 대해서는 아키텍처 센터에서 사용할 수 있는 [가용성 검사 목록][availability]을 참조하세요.
+다른 가용성 항목에 대해서는 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
 
 ### <a name="scalability"></a>확장성
 
@@ -73,7 +73,7 @@ Azure Kubernetes Service를 사용하면 응용 프로그램의 요구 사항에
 
 응용 프로그램 데이터는 전역으로 크기 조정할 수 있는 전역 분산형 다중 모델 데이터베이스인 Azure Cosmos DB에 저장됩니다. Cosmos DB는 기존 데이터베이스 구성 요소와 마찬가지로 인프라의 크기를 조정하기 위한 요구 사항을 추상화하고, 고객의 요구를 충족하기 위해 Cosmos DB를 전역으로 복제하도록 선택할 수 있습니다.
 
-다른 확장성 항목에 대해서는 아키텍처 센터에서 사용할 수 있는 [확장성 검사 목록][scalability]을 참조하세요.
+다른 확장성 항목에 대해서는 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
 
 ### <a name="security"></a>보안
 
@@ -93,7 +93,7 @@ Azure Kubernetes Service를 사용하면 응용 프로그램의 요구 사항에
 
 **필수 조건.**
 
-* 기존 Azure 계정이 있어야 합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [무료 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
+* 기존 Azure 계정이 있어야 합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [체험 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
 * SSH 공개 키 쌍이 필요합니다. 공개 키 쌍을 만드는 방법에 대한 단계는 [Linux VM용 SSH 키 쌍 만들기 및 사용][sshkeydocs]을 참조하세요.
 * 서비스 및 리소스의 인증에는 Azure AD(Active Directory) 서비스 사용자가 필요합니다. 필요한 경우 [az ad sp create-for-rbac][createsp]를 사용하여 서비스 사용자를 만듭니다.
 
@@ -123,9 +123,9 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오를 배포하�
 
 저장할 컨테이너 이미지 및 Kubernetes 노드의 수를 기준으로 다음 세 가지 샘플 비용 프로필을 제공하여 응용 프로그램을 실행했습니다.
 
-* [소량][small-pricing]: 매월 1,000개의 컨테이너 빌드와 관련이 있습니다.
-* [중간][medium-pricing]: 매월 100,000개의 컨테이너 빌드와 관련이 있습니다.
-* [대량][large-pricing]: 매월 1,000,000개의 컨테이너 빌드와 관련이 있습니다.
+* [소형][small-pricing]: 이 가격 책정 예제는 매월 1,000개의 컨테이너 빌드와 관련이 있습니다.
+* [중형][medium-pricing]: 이 가격 책정 예제는 매월 100,000개의 컨테이너 빌드와 관련이 있습니다.
+* [대형][large-pricing]: 이 가격 책정 예제는 매월 1,000,000개의 컨테이너 빌드와 관련이 있습니다.
 
 ## <a name="related-resources"></a>관련 리소스
 
@@ -149,7 +149,7 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오를 배포하�
 [security]: /azure/security/
 [scalability]: ../../checklist/scalability.md
 [sshkeydocs]: /azure/virtual-machines/linux/mac-create-ssh-keys
-[vsts]: /vsts/?view=vsts
+[azure-pipelines]: /azure/devops/pipelines
 [kubernetes]: https://kubernetes.io/
 [service-fabric]: /azure/service-fabric/
 

@@ -4,12 +4,12 @@ description: Microsoft Azure에서 실행되는 기본 웹 응용 프로그램�
 author: MikeWasson
 ms.date: 12/12/2017
 cardTitle: Basic web application
-ms.openlocfilehash: bc8cf9b5c66fc451d097cbc992ecb9a249645dce
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.openlocfilehash: e4992564bc4e8a7b71fc7c5f0bf1662f5e13d5c1
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37958843"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389403"
 ---
 # <a name="basic-web-application"></a>기본 웹앱 응용 프로그램
 [!INCLUDE [header](../../_includes/header.md)]
@@ -152,7 +152,7 @@ App Service App에는 라이브 프로덕션 사이트를 나타내는 `producti
 
 [New Relic][ new-relic] 또는 [Application Insights][app-insights] 같은 서비스를 사용하여 응용 프로그램 성능 및 부하를 받을 때의 동작을 모니터링합니다. Application Insights에 대한 [데이터 속도 제한][app-insights-data-rate]을 알아둡니다.
 
-[Visual Studio Team Services][vsts]와 같은 도구를 사용하여 부하 테스트를 수행합니다. 클라우드 응용 프로그램의 성능 분석에 대한 개요는 [Performance Analysis Primer][perf-analysis]를 참조하세요.
+[Azure DevOps][azure-devops] 또는 [Visual Studio Team Foundation Server][tfs]와 같은 도구를 사용하여 부하 테스트를 수행합니다. 클라우드 응용 프로그램의 성능 분석에 대한 개요는 [Performance Analysis Primer][perf-analysis]를 참조하세요.
 
 응용 프로그램 문제 해결 팁:
 
@@ -168,13 +168,13 @@ App Service App에는 라이브 프로덕션 사이트를 나타내는 `producti
 감사는 규정 준수를 유지 관리하고, 비즈니스 문제나 의심스러운 보안 위반을 나타낼 수 있는 불일치 및 이상 활동을 파악하는 데 도움이 될 수 있습니다. [SQL Database 감사 시작][sql-audit]을 참조하세요.
 
 ### <a name="deployment-slots"></a>배포 슬롯
-각 배포 슬롯에는 공용 IP 주소가 있습니다. 개발 및 DevOps 팀의 구성원만 해당 끝점에 연결할 수 있도록 [Azure Active Directory 로그인][ aad-auth]을 사용하여 프로덕션이 아닌 슬롯을 보호합니다.
+각 배포 슬롯에는 공용 IP 주소가 있습니다. 개발 및 DevOps 팀의 구성원만 해당 엔드포인트에 연결할 수 있도록 [Azure Active Directory 로그인][aad-auth]을 사용하여 프로덕션이 아닌 슬롯을 보호합니다.
 
 ### <a name="logging"></a>로깅
 사용자 암호 또는 ID 사기에 사용될 수 있는 기타 정보는 절대로 기록해서는 안 됩니다. 데이터를 저장하기 전에 데이터에서 이러한 세부 정보를 지웁니다.   
 
 ### <a name="ssl"></a>SSL
-App Service 앱에서는 추가 비용 없이 `azurewebsites.net`의 하위 도메인의 SSL 끝점을 제공합니다. SSL 끝점에는 `*.azurewebsites.net` 도메인에 대한 와일드카드 인증서가 포함되어 있습니다. 사용자 지정 도메인 이름을 사용하는 경우 사용자 지정 도메인과 일치하는 인증서를 제공해야 합니다. 가장 간단한 방법은 Azure Portal에서 직접 인증서를 구입하는 것입니다. 다른 인증 기관에서 인증서를 가져올 수도 있습니다. 자세한 내용은 [Azure App Service에 대한 SSL 인증서 구입 및 구성][ssl-cert]을 참조하세요.
+App Service 앱에서는 추가 비용 없이 `azurewebsites.net`의 하위 도메인의 SSL 엔드포인트를 제공합니다. SSL 엔드포인트에는 `*.azurewebsites.net` 도메인에 대한 와일드카드 인증서가 포함되어 있습니다. 사용자 지정 도메인 이름을 사용하는 경우 사용자 지정 도메인과 일치하는 인증서를 제공해야 합니다. 가장 간단한 방법은 Azure Portal에서 직접 인증서를 구입하는 것입니다. 다른 인증 기관에서 인증서를 가져올 수도 있습니다. 자세한 내용은 [Azure App Service에 대한 SSL 인증서 구입 및 구성][ssl-cert]을 참조하세요.
 
 보안을 극대화하려면 앱에서 HTTP 요청을 리디렉션하여 HTTPS를 적용해야 합니다. 응용 프로그램 내부에서 이를 구현하거나 로[Azure App Service에서 앱에 HTTPS 사용][ssl-redirect]에 설명된 대로 URL 다시 쓰기 규칙을 사용할 수 있습니다.
 
@@ -224,6 +224,7 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 [app-service-security]: /azure/app-service-web/web-sites-security
 [app-settings]: /azure/app-service-web/web-sites-configure
 [arm-template]: /azure/azure-resource-manager/resource-group-overview#resource-groups
+[azure-devops]: /azure/devops/
 [azure-dns]: /azure/dns/dns-overview
 [custom-domain-name]: /azure/app-service-web/web-sites-custom-domain-name
 [deploy]: /azure/app-service-web/web-sites-deploy
@@ -252,9 +253,9 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 [sql-resource-limits]: /azure/sql-database/sql-database-resource-limits
 [ssl-cert]: /azure/app-service-web/web-sites-purchase-ssl-web-site
 [troubleshoot-blade]: https://azure.microsoft.com/updates/self-service-troubleshooting-for-app-service-web-apps-customers/
+[tfs]: /tfs/index
 [troubleshoot-web-app]: /azure/app-service-web/web-sites-dotnet-troubleshoot-visual-studio
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/app-service-reference-architectures.vsdx
-[vsts]: https://www.visualstudio.com/features/vso-cloud-load-testing-vs.aspx
 [web-app-autoscale]: /azure/app-service-web/web-sites-scale
 [web-app-backup]: /azure/app-service-web/web-sites-backup
 [web-app-log-stream]: /azure/app-service-web/web-sites-enable-diagnostic-log#streamlogs

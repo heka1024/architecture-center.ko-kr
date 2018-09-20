@@ -3,12 +3,12 @@ title: Azure의 확장성 있는 주문 처리
 description: Azure Cosmos DB를 사용하여 확장성이 높은 주문 처리 파이프라인을 구축하는 예제 시나리오입니다.
 author: alexbuckgit
 ms.date: 07/10/2018
-ms.openlocfilehash: 9fa0dc7c564270ee811b56169e05f7e743664838
-ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
+ms.openlocfilehash: aa7281263db7cc72781b740941f3b86dad025baa
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "43016031"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389114"
 ---
 # <a name="scalable-order-processing-on-azure"></a>Azure의 확장성 있는 주문 처리
 
@@ -41,7 +41,7 @@ Cosmos DB 및 HDInsight와 같은 관리되는 Azure 서비스를 사용하면 �
 
 ### <a name="components"></a>구성 요소
 
-* [Cosmos DB][docs-cosmos-db]는 전역으로 분산된 Microsoft의 다중 모델 데이터베이스로, 솔루션을 통해 여러 지리적 지역에 걸쳐 있는 처리량과 저장소의 크기를 탄력적이고 독립적으로 조정할 수 있습니다. 포괄적인 SLA(서비스 수준 계약)를 통해 처리량, 대기 시간, 가용성 및 일관성을 보장합니다. 이 시나리오에서는 이벤트 스트림 저장소 및 스냅숏 저장소에 Cosmos DB를 사용하고, [Cosmos DB의 변경 피드][docs-cosmos-db-change-feed] 기능을 활용하여 데이터 일관성 및 오류 복구를 제공합니다. 
+* [Cosmos DB][docs-cosmos-db]는 전역으로 분산된 Microsoft의 다중 모델 데이터베이스로, 솔루션을 통해 여러 지리적 지역에 걸쳐 있는 처리량과 저장소의 크기를 탄력적이고 독립적으로 조정할 수 있습니다. 포괄적인 SLA(서비스 수준 계약)를 통해 처리량, 대기 시간, 가용성 및 일관성을 보장합니다. 이 시나리오에서는 이벤트 스트림 저장소 및 스냅숏 저장소에 Cosmos DB를 사용하고, [Cosmos DB의 변경 피드][docs-cosmos-db-change-feed] 기능을 활용하여 데이터 일관성 및 오류 복구를 제공합니다.
 * [HDInsight의 Apache Kafka][docs-kafka]는 실시간 스트리밍 데이터 파이프라인 및 응용 프로그램을 구축하기 위한 오픈 소스 분산 스트리밍 플랫폼인 Apache Kafka의 관리 서비스 구현입니다. 또한 Kafka는 명명된 데이터 스트림을 게시하고 구독하기 위해 메시지 큐와 비슷한 메시지 브로커 기능을 제공합니다. 이 시나리오에서는 Kafka를 사용하여 주문 처리 파이프라인에서 들어오는 이벤트와 다운스트림 이벤트를 처리합니다. 
 
 ## <a name="considerations"></a>고려 사항
@@ -83,13 +83,13 @@ Azure Cosmos DB의 통화는 RU(요청 단위)입니다. 요청 단위를 사용
 
 필요한 활동량을 기준으로 제공한 세 가지 샘플 비용 프로필은 다음과 같습니다.
 
-* [소형][small-pricing]: Cosmos DB의 1TB 데이터 저장소 및 소형(D3 v2) Kafka 클러스터로 예약된 5개 RU와 관련이 있습니다.
-* [중형][medium-pricing]: Cosmos DB의 10TB 데이터 저장소 및 중형(D4 v2) Kafka 클러스터로 예약된 50개 RU와 관련이 있습니다.
-* [대형][large-pricing]: Cosmos DB의 30TB 데이터 저장소 및 대형(D5 v2) Kafka 클러스터로 예약된 500개 RU와 관련이 있습니다.
+* [소형][small-pricing]: 이 가격 책정 예제는 Cosmos DB의 1TB 데이터 저장소 및 소형(D3 v2) Kafka 클러스터로 예약된 5개 RU와 관련이 있습니다.
+* [중형][medium-pricing]: 이 가격 책정 예제는 Cosmos DB의 10TB 데이터 저장소 및 소형(D4 v2) Kafka 클러스터로 예약된 50개 RU와 관련이 있습니다.
+* [대형][large-pricing]: 이 가격 책정 예제는 Cosmos DB의 30TB 데이터 저장소 및 소형(D5 v2) Kafka 클러스터로 예약된 500개 RU와 관련이 있습니다.
 
 ## <a name="related-resources"></a>관련 리소스
 
-이 예제 시나리오는 종단 간 주문 처리 파이프라인에 대해 [Jet.com](https://jet.com)에서 구축된 이 아키텍처의 더 광범위한 버전을 기반으로 합니다. 자세한 내용은 [jet.com 기술 고객 프로필][source-document] 및 [Build 2018에 있는 jet.com의 프레젠테이션][source-presentation]을 참조하세요. 
+이 예제 시나리오는 종단 간 주문 처리 파이프라인에 대해 [Jet.com](https://jet.com)에서 구축된 이 아키텍처의 더 광범위한 버전을 기반으로 합니다. 자세한 내용은 [jet.com 기술 고객 프로필][source-document] 및 [Build 2018에 있는 jet.com의 프레젠테이션][source-presentation]을 참조하세요.
 
 기타 관련 리소스는 다음과 같습니다.
 * _[데이터 집약적인 응용 프로그램 설계](https://dataintensive.net/)_ - Martin Kleppmann 작성, O'Reilly Media, 2017
@@ -104,10 +104,9 @@ Azure Cosmos DB의 통화는 RU(요청 단위)입니다. 요청 단위를 사용
 [small-pricing]: https://azure.com/e/3d43949ffbb945a88cc0a126dc3a0e6e
 [medium-pricing]: https://azure.com/e/1f1e7bf2a6ad4f7799581211f4369b9b
 [large-pricing]: https://azure.com/e/75207172ece94cf6b5fb354a2252b333
-[architecture-diagram]: ./images/architecture-diagram-cosmos-db.png
+[architecture-diagram]: ./media/architecture-diagram-cosmos-db.png
 [docs-cosmos-db]: /azure/cosmos-db
 [docs-cosmos-db-change-feed]: /azure/cosmos-db/change-feed
-[docs-cosmos-db-online-backup-and-restore]: /azure/cosmos-db/online-backup-and-restore
 [docs-cosmos-db-regional-failover]: /azure/cosmos-db/regional-failover
 [docs-cosmos-db-guarantees]: /azure/cosmos-db/distribute-data-globally#AvailabilityGuarantees
 [docs-cosmos-db-use-cases]: /azure/cosmos-db/use-cases

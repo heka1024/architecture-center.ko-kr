@@ -3,12 +3,12 @@ title: Azure에서 실시간 부정 행위 감지
 description: Azure Event Hubs 및 Stream Analytics를 사용하여 부정 행위를 실시간으로 감지하는 데 입증된 시나리오입니다.
 author: alexbuckgit
 ms.date: 07/05/2018
-ms.openlocfilehash: e22322133adf40d033ac5af98069cb00765d14ca
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: d80fab460938cceeb84f3ed2ecd97e9e149f8e2d
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060815"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389131"
 ---
 # <a name="real-time-fraud-detection-on-azure"></a>Azure에서 실시간 부정 행위 감지
 
@@ -67,7 +67,7 @@ Azure Monitor는 다양한 Azure 서비스를 모니터링하기 위한 통합�
 
 ### <a name="security"></a>보안
 
-Azure Event Hubs는 SAS(공유 액세스 서명) 토큰과 이벤트 게시자의 조합에 기반한 [인증 및 보안 모델][docs-event-hubs-security-model]을 통해 데이터를 보호합니다. 이벤트 게시자는 이벤트 허브에 대한 가상 끝점을 정의합니다. 게시자는 이벤트 허브에 메시지를 보내는 데만 사용할 수 있습니다. 게시자에서 메시지를 받을 수 없습니다.
+Azure Event Hubs는 SAS(공유 액세스 서명) 토큰과 이벤트 게시자의 조합에 기반한 [인증 및 보안 모델][docs-event-hubs-security-model]을 통해 데이터를 보호합니다. 이벤트 게시자는 이벤트 허브에 대한 가상 엔드포인트를 정의합니다. 게시자는 이벤트 허브에 메시지를 보내는 데만 사용할 수 있습니다. 게시자에서 메시지를 받을 수 없습니다.
 
 보안 솔루션 설계에 대한 일반적인 지침은 [Azure 보안 설명서][security]를 참조하세요.
 
@@ -99,7 +99,7 @@ Azure Event Hubs는 SAS(공유 액세스 서명) 토큰과 이벤트 게시자�
 [small-pricing]: https://azure.com/e/74149ec312c049ccba79bfb3cfa67606
 [medium-pricing]: https://azure.com/e/4fc94f7376de484d8ae67a6958cae60a
 [large-pricing]: https://azure.com/e/7da8804396f9428a984578700003ba42
-[architecture-diagram]: ./images/architecture-diagram-fraud-detection.png
+[architecture-diagram]: ./media/architecture-diagram-fraud-detection.png
 [docs-event-hubs]: /azure/event-hubs/event-hubs-what-is-event-hubs
 [docs-event-hubs-security-model]: /azure/event-hubs/event-hubs-authentication-and-security-model-overview
 [docs-stream-analytics]: /azure/stream-analytics/stream-analytics-introduction

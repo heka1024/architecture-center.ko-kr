@@ -3,12 +3,12 @@ title: Azure의 3D 비디오 렌더링
 description: Azure Batch 서비스를 사용하여 Azure에서 원시 HPC 워크로드를 실행합니다.
 author: adamboeglin
 ms.date: 07/13/2018
-ms.openlocfilehash: e629e2ba0b9490e534057fee33f7bededa9656af
-ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
+ms.openlocfilehash: 723d437671c52dc9f717bef9641663d0e7a8fbc4
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39229187"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389352"
 ---
 # <a name="3d-video-rendering-on-azure"></a>Azure의 3D 비디오 렌더링
 
@@ -52,19 +52,21 @@ Azure Batch는 다음 Azure 기술을 기반으로 합니다.
 ## <a name="considerations"></a>고려 사항
 
 ### <a name="machine-sizes-available-for-azure-batch"></a>Azure Batch에 사용 가능한 머신 크기
-대부분의 렌더링 고객은 CPU 능력이 높은 리소스를 선택하지만, VM 확장 집합을 사용하는 다른 워크로드는 VM을 다르게 선택할 수 있으며 여러 요인에 따라 달라집니다.
-  - 응용 프로그램이 메모리에 바인딩되어 실행되고 있나요?
-  - 응용 프로그램에서 GPU를 사용해야 하나요? 
-  - 당황스러울 정도의 병렬 작업 유형이거나 긴밀하게 결합된 작업에 대한 Infiniband 연결이 필요한가요?
-  - 계산 노드에서 저장소에 대한 빠른 I/O가 필요한가요?
+
+대부분의 렌더링 고객은 CPU 능력이 높은 리소스를 선택하지만, 가상 머신 확장 집합을 사용하는 다른 워크로드는 VM을 다르게 선택할 수 있으며 다음과 같은 여러 요인에 따라 달라집니다.
+
+* 응용 프로그램이 메모리에 바인딩되어 실행되고 있나요?
+* 응용 프로그램에서 GPU를 사용해야 하나요? 
+* 당황스러울 정도의 병렬 작업 유형이거나 긴밀하게 결합된 작업에 대한 Infiniband 연결이 필요한가요?
+* 계산 노드에서 저장소에 대한 빠른 I/O가 필요한가요?
 
 Azure에는 위의 응용 프로그램 요구 사항을 모두 처리할 수 있는 광범위한 VM 크기가 있으며, 일부는 HPC에만 관련되지만 가장 작은 크기조차도 효과적인 그리드 구현을 제공하는 데 활용할 수 있습니다.
 
-  - [HPC VM 크기][compute-hpc] 렌더링의 CPU 바인딩 특성으로 인해 Microsoft는 일반적으로 Azure H 시리즈 VM을 제안합니다.  이러한 VM은 고급 계산 요구 사항에 맞게 특별히 만들어졌으며, 8개 및 16개 코어 vCPU 크기를 사용할 수 있고, DDR4 메모리, SSD 임시 저장소 및 Haswell E5 Intel 기술을 갖추고 있습니다.
-  - [GPU VM 크기][compute-gpu] GPU 최적화된 VM 크기는 단일 또는 여러 NVIDIA GPU에서 사용할 수 있는 특수한 가상 머신입니다. 이러한 크기는 계산 집약적이며 그래픽 집약적인 시각화 워크로드용으로 설계되었습니다.
-    - NC, NCv2, NCv3 및 ND 크기는 CUDA 기반 및 OpenCL 기반 응용 프로그램 및 시뮬레이션, AI, 딥 러닝을 포함하여 계산 집약적이고 네트워크 집약적인 응용 프로그램과 알고리즘에 최적화되어 있습니다. NV 크기는 OpenGL 및 DirectX와 같은 프레임워크를 활용하는 원격 시각화, 스트리밍, 게임, 인코딩 및 VDI 시나리오에 맞게 최적화되고 설계되었습니다.
-  - [메모리 최적화된 VM 크기][compute-memory] 더 많은 메모리가 필요한 경우 메모리 최적화된 VM 크기는 더 높은 메모리 대 CPU 비율을 제공합니다.
-  - [범용 VM 크기][compute-general] 범용 VM 크기도 사용할 수 있으며, 균형 잡힌 CPU 대 메모리 비율을 제공합니다.
+* [HPC VM 크기][compute-hpc] 렌더링의 CPU 바인딩 특성으로 인해 Microsoft는 일반적으로 Azure H 시리즈 VM을 제안합니다.  이러한 VM은 고급 계산 요구 사항에 맞게 특별히 만들어졌으며, 8개 및 16개 코어 vCPU 크기를 사용할 수 있고, DDR4 메모리, SSD 임시 저장소 및 Haswell E5 Intel 기술을 갖추고 있습니다.
+* [GPU VM 크기][compute-gpu] GPU 최적화된 VM 크기는 단일 또는 여러 NVIDIA GPU에서 사용할 수 있는 특수한 가상 머신입니다. 이러한 크기는 계산 집약적이며 그래픽 집약적인 시각화 워크로드용으로 설계되었습니다.
+* NC, NCv2, NCv3 및 ND 크기는 CUDA 기반 및 OpenCL 기반 응용 프로그램 및 시뮬레이션, AI, 딥 러닝을 포함하여 계산 집약적이고 네트워크 집약적인 응용 프로그램과 알고리즘에 최적화되어 있습니다. NV 크기는 OpenGL 및 DirectX와 같은 프레임워크를 활용하는 원격 시각화, 스트리밍, 게임, 인코딩 및 VDI 시나리오에 맞게 최적화되고 설계되었습니다.
+* [메모리 최적화된 VM 크기][compute-memory] 더 많은 메모리가 필요한 경우 메모리 최적화된 VM 크기는 더 높은 메모리 대 CPU 비율을 제공합니다.
+* [범용 VM 크기][compute-general] 범용 VM 크기도 사용할 수 있으며, 균형 잡힌 CPU 대 메모리 비율을 제공합니다.
 
 ### <a name="alternatives"></a>대안
 
@@ -74,11 +76,11 @@ Azure에서 사용할 수 있는 모든 HPC 솔루션에 대한 전체 개요는
 
 ### <a name="availability"></a>가용성
 
-Azure Batch 구성 요소에 대한 모니터링은 다양한 서비스, 도구 및 API를 통해 사용할 수 있습니다. 이에 대해서는 [Batch 솔루션 모니터링][batch-monitor] 문서에서 자세히 설명합니다.
+Azure Batch 구성 요소에 대한 모니터링은 다양한 서비스, 도구 및 API를 통해 사용할 수 있습니다. 모니터링에 대해서는 [Batch 솔루션 모니터링][batch-monitor] 문서에서 자세히 설명합니다.
 
 ### <a name="scalability"></a>확장성
 
-Azure Batch 계정 내의 풀은 수동 개입을 통해 크기 조정하거나 Azure Batch 메트릭에 기반한 수식을 사용하여 자동으로 크기 조정할 수 있습니다. 이에 대한 자세한 내용은 [Batch 풀에서 노드의 크기를 조정하는 자동 크기 조정 수식 만들기][batch-scaling] 문서를 참조하세요.
+Azure Batch 계정 내의 풀은 수동 개입을 통해 크기 조정하거나 Azure Batch 메트릭에 기반한 수식을 사용하여 자동으로 크기 조정할 수 있습니다. 크기 조정에 대한 자세한 내용은 [Batch 풀에서 노드의 크기를 조정하는 자동 크기 조정 수식 만들기][batch-scaling] 문서를 참조하세요.
 
 ### <a name="security"></a>보안
 
@@ -101,20 +103,21 @@ Azure Batch에는 현재 장애 조치 기능이 없지만, 계획되지 않은 
 
 [Azure Batch Masterclass][batch-labs-masterclass]
 
-### <a name="deploying-the-sample-scenario-using-an-azure-resource-manager-arm-template"></a>ARM(Azure Resource Manager) 템플릿을 사용하여 샘플 시나리오 배포
+### <a name="deploying-the-sample-scenario-using-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿을 사용하여 샘플 시나리오 배포
 
 템플릿에서 다음과 같이 배포합니다.
-  - 새 Azure Batch 계정
-  - 저장소 계정
-  - 배치 계정과 연결된 노드 풀
-  - Canonical Ubuntu 이미지를 사용하여 노드 풀에서 A2 v2 VM을 사용하도록 구성됩니다.
-  - 처음에는 노드 풀에 0개의 VM이 포함되며, VM을 추가하려면 수동으로 크기 조정해야 합니다.
+
+* 새 Azure Batch 계정
+* 저장소 계정
+* 배치 계정과 연결된 노드 풀
+* Canonical Ubuntu 이미지를 사용하여 노드 풀에서 A2 v2 VM을 사용하도록 구성됩니다.
+* 처음에는 노드 풀에 0개의 VM이 포함되며, VM을 추가하려면 수동으로 크기 조정해야 합니다.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fhpc%2Fbatchcreatewithpools.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-[ARM 템플릿에 대한 자세한 정보][azure-arm-templates]
+[Resource Manager 템플릿에 대해 자세히 알아보기][azure-arm-templates]
 
 ## <a name="pricing"></a>가격
 
@@ -122,22 +125,21 @@ Azure Batch를 사용하는 데 드는 비용은 풀에 사용되는 VM 크기�
 
 서로 다른 수의 서버를 사용하여 8시간 내에 완료되는 작업에 청구될 수 있는 비용의 예는 다음과 같습니다.
 
-
-- 100개 고성능 CPU VM: [예상 비용][hpc-est-high]
+* 100개 고성능 CPU VM: [예상 비용][hpc-est-high]
 
   100 x H16m(16개 코어, 225GB RAM, 512GB Premium Storage), 2TB Blob Storage, 1TB 송신
 
-- 50개 고성능 CPU VM: [예상 비용][hpc-est-med]
+* 50개 고성능 CPU VM: [예상 비용][hpc-est-med]
 
   50 x H16m(16개 코어, 225GB RAM, 512GB Premium Storage), 2TB Blob Storage, 1TB 송신
 
-- 10개 고성능 CPU VM: [예상 비용][hpc-est-low]
+* 10개 고성능 CPU VM: [예상 비용][hpc-est-low]
   
   10 x H16m(16개 코어, 225GB RAM, 512GB Premium Storage), 2TB Blob Storage, 1TB 송신
 
-### <a name="low-priority-vm-pricing"></a>낮은 우선 순위 VM 가격
+### <a name="low-priority-vm-pricing"></a>낮은 우선 순위 VM 가격 책정
 
-Azure Batch는 노드 풀에서 낮은 우선 순위 VM*도 사용할 수 있도록 지원하므로 잠재적으로 상당한 비용을 절감할 수 있습니다. 표준 VM과 낮은 우선 순위 VM 간의 가격 비교 및 우선 순위가 낮은 VM에 대한 자세한 내용은 [Batch 가격][batch-pricing]을 참조하세요.
+Azure Batch는 노드 풀에서 낮은 우선 순위 VM*도 사용할 수 있도록 지원하므로 잠재적으로 상당한 비용을 절감할 수 있습니다. 표준 VM과 낮은 우선 순위 VM 간의 가격 비교 및 우선 순위가 낮은 VM에 대한 자세한 내용은 [Batch 가격 책정][batch-pricing]을 참조하세요.
 
 \* 특정 응용 프로그램과 워크로드만 낮은 우선 순위 VM에서 실행하는 데 적합하다는 점에 유의하세요.
 

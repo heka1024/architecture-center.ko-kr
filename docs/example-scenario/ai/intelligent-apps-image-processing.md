@@ -3,12 +3,12 @@ title: Azure에서 보험 청구에 대한 이미지 분류
 description: Azure 응용 프로그램에 이미지 처리를 구축하는 데 입증된 시나리오입니다.
 author: david-stanford
 ms.date: 07/05/2018
-ms.openlocfilehash: 361a88234fd9ed918ab7664893f86666b4328b8c
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: 0ca0b46e83219afc5e22c2ac6467bf4be945c97a
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060832"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389165"
 ---
 # <a name="image-classification-for-insurance-claims-on-azure"></a>Azure에서 보험 청구에 대한 이미지 분류
 
@@ -16,7 +16,7 @@ ms.locfileid: "39060832"
 
 잠재적인 응용 프로그램에는 패션 웹 사이트에 대한 이미지 분류, 보험 청구에 대한 텍스트 및 이미지 분석 또는 게임 스크린샷의 원격 분석 데이터 인식이 포함됩니다. 일반적으로 회사에서는 기계 학습 모델에 대한 전문 지식을 개발하고, 모델을 학습하며, 마지막으로 사용자 지정 프로세스를 통해 이미지를 실행하여 이미지에서 데이터를 가져와야 합니다.
 
-Computer Vision API 및 Azure Functions와 같은 Azure 서비스를 사용하면, 개별 서버를 관리할 필요가 없으며, 비용을 줄이고, Microsoft에서 Cognitive Services를 사용하여 이미지를 처리할 때 이미 개발한 전문 지식을 활용할 수 있습니다. 이 시나리오에서는 특히 이미지 처리 시나리오에 대해 다루고 있습니다. 다양한 AI 요구 사항이 있으면 [Cognitive Services][cognitive-docs]의 전체 제품군을 사용하는 것이 좋습니다.
+Computer Vision API 및 Azure Functions와 같은 Azure 서비스를 사용하면, 개별 서버를 관리할 필요가 없으며, 비용을 줄이고, Microsoft에서 Cognitive Services를 사용하여 이미지를 처리할 때 이미 개발한 전문 지식을 활용할 수 있습니다. 이 예제 시나리오에서는 특히 이미지 처리 사용 사례에 대해 다루고 있습니다. 다양한 AI 요구 사항이 있으면 [Cognitive Services][cognitive-docs]의 전체 제품군을 사용하는 것이 좋습니다.
 
 ## <a name="related-use-cases"></a>관련 사용 사례
 
@@ -63,11 +63,11 @@ Computer Vision API 및 Azure Functions와 같은 Azure 서비스를 사용하�
 
 ### <a name="scalability"></a>확장성
 
-대부분의 경우 이 시나리오의 모든 구성 요소는 자동으로 크기 조정되는 관리 서비스입니다. 몇 가지 주목할 만한 예외: Azure Functions에는 최대 200개의 인스턴스 제한이 있습니다. 이 제한을 초과하여 확장해야 하는 경우 여러 지역 또는 앱 계획을 사용하는 것이 좋습니다.
+이 시나리오에서 사용된 대부분의 구성 요소는 자동으로 크기 조정되는 관리 서비스입니다. 몇 가지 주목할 만한 예외: Azure Functions에는 최대 200개의 인스턴스 제한이 있습니다. 이 제한을 초과하여 확장해야 하는 경우 여러 지역 또는 앱 계획을 사용하는 것이 좋습니다.
 
-Cosmos DB는 프로비전된 RU(요청 단위)를 기준으로 자동으로 크기 조정되지 않습니다.  요구 사항 추정에 대한 지침은 설명서의 [요청 단위][request-units]를 참조하세요. Cosmos DB의 크기 조정을 최대한 활용하려면 [파티션 키][partition-key]도 확인해야 합니다.
+Cosmos DB는 프로비전된 RU(요청 단위)를 기준으로 자동으로 크기 조정되지 않습니다.  요구 사항 추정에 대한 지침은 설명서의 [요청 단위][request-units]를 참조하세요. Cosmos DB의 크기 조정을 최대한 활용하려면 [파티션 키][partition-key]를 탐색합니다.
 
-NoSQL 데이터베이스는 가용성, 확장성 및 파티션에 대한 일관성을 자주 교환합니다(CAP 정리의 의미에서).  그러나 이 시나리오에서 사용되는 키-값 데이터 모델의 경우 대부분의 작업이 원자성 정의이므로 트랜잭션 일관성은 거의 필요하지 않습니다. [적절한 데이터 저장소 선택](../../guide/technology-choices/data-store-overview.md)에 대한 추가 지침은 아키텍처 센터에서 사용할 수 있습니다.
+NoSQL 데이터베이스는 가용성, 확장성 및 파티션에 대한 일관성을 자주 교환합니다(CAP 정리의 의미에서).  이 시나리오에서는 키-값 데이터 모델이 사용되며 대부분의 작업이 원자성 정의이므로 트랜잭션 일관성은 거의 필요하지 않습니다. [적절한 데이터 저장소 선택](../../guide/technology-choices/data-store-overview.md)에 대한 추가 지침은 Azure 아키텍처 센터에서 사용할 수 있습니다.
 
 확장 가능한 솔루션 설계에 대한 일반적인 지침은 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
 
@@ -89,15 +89,15 @@ NoSQL 데이터베이스는 가용성, 확장성 및 파티션에 대한 일관�
 
 트래픽 양을 기준으로 다음 세 가지 샘플 비용 프로필을 제공했습니다(모든 이미지가 100kb 크기라고 가정).
 
-* [소량][pricing]: 매월 5,000개의 이미지 처리와 관련이 있습니다.
-* [중간][medium-pricing]: 매월 50만 개의 이미지 처리와 관련이 있습니다.
-* [대규모][large-pricing]: 매월 5천만 개의 이미지 처리와 관련이 있습니다.
+* [소형][pricing]: 이 가격 책정 예제는 매월&lt; 5000개 이미지 처리와 관련이 있습니다.
+* [중형][medium-pricing]: 이 가격 책정 예제는 매월 500,000개 이미지 처리와 관련이 있습니다.
+* [대형][large-pricing]: 이 가격 책정 예제는 매월 5천만 개 이미지 처리와 관련이 있습니다.
 
 ## <a name="related-resources"></a>관련 리소스
 
 이 시나리오의 단계별 학습 경로는 [Azure에서 서버를 사용하지 않는 웹앱 빌드][serverless]를 참조하세요.  
 
-이 솔루션을 프로덕션 환경에 배치하기 전에 Azure Functions [모범 사례][functions-best-practices]를 검토하세요.
+이 예제 시나리오를 프로덕션 환경에 배치하기 전에 Azure Functions [모범 사례][functions-best-practices]를 검토하세요.
 
 <!-- links -->
 [pricing]: https://azure.com/e/f9b59d238b43423683db73f4a31dc380

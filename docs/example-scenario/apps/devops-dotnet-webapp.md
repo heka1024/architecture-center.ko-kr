@@ -3,12 +3,12 @@ title: VSTS를 사용하는 CI/CD 파이프라인
 description: .NET 앱을 Azure Web Apps에 빌드하고 릴리스하는 예제입니다.
 author: christianreddington
 ms.date: 07/11/18
-ms.openlocfilehash: ae4ac5fc02cc841fc39b3cbef46124fe9da75e9b
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: aea757087f4a505a8c52658abe1841c5455977cc
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39061014"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389276"
 ---
 # <a name="cicd-pipeline-with-vsts"></a>VSTS를 사용하는 CI/CD 파이프라인
 
@@ -50,7 +50,7 @@ DevOps에 적합한 사용 사례는 다음과 같습니다.
 
 이 문서에서는 Visual Studio Team Services에 집중하고 있지만, [Team Foundation Server][team-foundation-server]를 온-프레미스 대체 도구로 사용할 수 있습니다. 또는 [Jenkins][jenkins-on-azure]를 활용하는 오픈 소스 개발 파이프라인에 함께 사용되는 기술 모음을 찾을 수도 있습니다.
 
-인프라를 코드로 변환(Infrastructure as Code) 관점에서 [ARM(Azure Resource Manager) 템플릿][arm-templates]은 Azure DevOps 프로젝트의 일부로 포함되지만, 여기서는 [Terraform][terraform] 또는 [Chef][chef]를 고려할 수 있습니다. IaaS(Infrastructure as a Service) 기반 배포를 선호하고 구성 관리가 필요한 경우 [Azure Desired State Configuration][desired-state-configuration], [Ansible][ansible] 또는 [Chef][chef] 중 하나를 고려할 수 있습니다.
+인프라를 코드로 변환(Infrastructure as Code) 관점에서 [Azure Resource Manager 템플릿][arm-templates]은 Azure DevOps 프로젝트의 일부로 포함되지만, 여기서는 [Terraform][terraform] 또는 [Chef][chef]를 고려할 수 있습니다. IaaS(Infrastructure as a Service) 기반 배포를 선호하고 구성 관리가 필요한 경우 [Azure Automation State Configuration][desired-state-configuration], [Ansible][ansible] 또는 [Chef][chef] 중 하나를 고려할 수 있습니다.
 
 ### <a name="alternatives-to-web-app-hosting"></a>Web App 호스팅에 대한 대안
 
@@ -79,7 +79,7 @@ Azure Web Apps에서 호스팅하는 데 사용할 수 있는 대체 도구는 �
 또한 지속적인 업데이트는 부하 테스트 및 사용자 승인 테스트 환경으로 확장될 수 있습니다.
 
 지속적인 업데이트는 이상적으로 모든 환경에서 지속적인 모니터링을 통해 이점을 제공합니다.
-만들기 및 구성 또는 호스팅 인프라를 스크립팅하여 환경 전반에 걸쳐 배포 및 통합 테스트의 일관성과 안정성을 더 쉽게 만들 수 있습니다(클라우드 기반 워크로드에서 상당히 쉬운 작업, Azure 인프라를 코드로 변환(Infrastructure as Code) 참조). 이를 ["infrastructure-as-code"][infra-as-code]라고도 합니다.
+만들기 및 구성 또는 호스팅 인프라를 스크립팅하여 환경 전반에 걸쳐 배포 및 통합 테스트의 일관성과 안정성을 더 쉽게 만들 수 있습니다(클라우드 기반 워크로드에서 상당히 쉬운 작업, Azure 인프라를 코드로 변환(Infrastructure as Code) 참조). 이를 [“infrastructure-as-code”][infra-as-code]라고도 합니다.
 
 * 지속적인 업데이트는 프로젝트 수명 주기에서 가능한 한 빨리 시작합니다. 늦게 시작할수록 더 어려워집니다.
 * 통합 및 단위 테스트에는 프로젝트 기능과 동일한 우선 순위를 부여해야 합니다.
@@ -96,7 +96,7 @@ Azure Web Apps에서 호스팅하는 데 사용할 수 있는 대체 도구는 �
 
 적절한 [App Service 웹 응용 프로그램 참조 아키텍처][app-service-reference-architecture]의 가용성 고려 사항을 검토합니다.
 
-다른 가용성 항목은 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
+다른 가용성 항목에 대해서는 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
 
 ### <a name="scalability"></a>확장성
 
@@ -104,7 +104,7 @@ Azure Web Apps에서 호스팅하는 데 사용할 수 있는 대체 도구는 �
 
 적절한 [App Service 웹 응용 프로그램 참조 아키텍처][app-service-reference-architecture]의 확장성 고려 사항을 검토합니다.
 
-다른 확장성 항목은 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
+다른 확장성 항목에 대해서는 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
 
 ### <a name="security"></a>보안
 
@@ -118,7 +118,7 @@ Azure Web Apps에서 호스팅하는 데 사용할 수 있는 대체 도구는 �
 
 [일반적인 복원력 디자인 패턴][design-patterns-resiliency]을 검토하고, 적절할 경우 이를 구현하는 것이 좋습니다.
 
-아키텍처 서비스 센터에서 [App Service에 대한 다양한 복원력 권장 사례][resiliency-app-service]를 찾을 수 있습니다.
+Azure 아키텍처 센터에서 [App Service에 대한 다양한 권장 사례][resiliency-app-service]를 찾을 수 있습니다.
 
 복원력 있는 솔루션 설계에 대한 일반적인 지침은 [복원력 있는 Azure 응용 프로그램 디자인][resiliency]을 참조하세요.
 
@@ -135,7 +135,7 @@ Azure Web Apps에서 호스팅하는 데 사용할 수 있는 대체 도구는 �
 
 DevOps 프로젝트는 App Service 계획, App Service 및 App Insights 리소스를 배포하고 Visual Studio Team Services 프로젝트를 구성합니다.
 
-DevOps 프로젝트를 만들고 빌드가 완료되면 관련 코드 변경, 작업 항목 및 테스트 결과를 검토합니다. 실행할 모든 테스트가 코드에 포함되어 있지 않으므로 테스트 결과가 표시되지 않습니다.
+DevOps 프로젝트를 개발하고 빌드가 완료되면 관련 코드 변경 사항, 작업 항목 및 테스트 결과를 검토합니다. 실행할 모든 테스트가 코드에 포함되어 있지 않으므로 테스트 결과가 표시되지 않습니다.
 
 릴리스 정의를 검토합니다. 릴리스 파이프라인이 설정되어 응용 프로그램이 개발 환경으로 릴리스되었습니다. **삭제** 빌드 아티팩트에서 **지속적인 배포 트리거**가 설정되어 있고, 개발 환경으로 자동 릴리스되는지 확인합니다. 지속적인 배포 프로세스의 일부로 릴리스가 여러 환경에 걸쳐 있음을 알 수 있습니다. 릴리스는 인프라를 모두 확장하고(인프라를 코드로 변환(Infrastructure as Code)과 같은 기술을 사용), 필요한 모든 응용 프로그램 패키지와 구성 후 작업도 배포할 수 있습니다.
 

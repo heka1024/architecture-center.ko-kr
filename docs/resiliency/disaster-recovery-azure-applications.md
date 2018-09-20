@@ -3,12 +3,12 @@ title: Azure 응용 프로그램에 대한 재해 복구
 description: Microsoft Azure에서 재해 복구를 위한 응용 프로그램 설계에 대한 기술 개요와 자세한 정보입니다.
 author: adamglick
 ms.date: 05/26/2017
-ms.openlocfilehash: 2d890e479e008e03dcfce9b7240f8bcbaf270372
-ms.sourcegitcommit: e8f4786b187697b1bea374e5f35f217c65d2dfe0
+ms.openlocfilehash: faae658d91ec0cb2dd5dc436e67aa9b494fd4b49
+ms.sourcegitcommit: 46ed67297e6247f9a80027cfe891a5e51ee024b4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343382"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45556685"
 ---
 # <a name="disaster-recovery-for-azure-applications"></a>Azure 응용 프로그램에 대한 재해 복구
 
@@ -32,7 +32,7 @@ Azure는 전 세계 여러 지역에서 데이터 센터를 유지 관리합니�
 ## <a name="azure-traffic-manager"></a>Azure Traffic Manager
 지역 특정 오류가 발생하는 경우 다른 지역의 서비스 또는 배포에 트래픽을 리디렉션해야 합니다. 주 지역이 실패하는 경우 다른 지역으로 사용자 트래픽의 장애 조치(failover)를 자동화하는 Azure Traffic Manager와 같은 서비스를 통해 이를 처리하는 것이 가장 효과적입니다. 효과적인 DR 전략을 디자인할 때 Traffic Manager의 기초를 이해하는 것은 중요합니다.
 
-Traffic Manager는 DNS(Domain Name System)를 사용하여 클라이언트 요청을 트래픽 라우팅 방법 및 끝점의 상태를 기준으로 가장 적절한 끝점으로 리디렉션합니다. 다음 다이어그램에서 사용자는 실제 사이트 URL(`http://app1URL.cloudapp.net` 및 `http://app2URL.cloudapp.net`)을 추상화하는 Traffic Manager URL(`http://myATMURL.trafficmanager.net`)에 연결합니다. 사용자 요청은 구성된 [Traffic Manager 라우팅 메서드](/azure/traffic-manager/traffic-manager-routing-methods)를 기반으로 하는 적절한 기본 URL로 라우팅됩니다. 이 문서에서는 장애 조치 옵션에 대해서만 알아보겠습니다.
+Traffic Manager는 DNS(Domain Name System)를 사용하여 클라이언트 요청을 트래픽 라우팅 방법 및 엔드포인트의 상태를 기준으로 가장 적절한 엔드포인트로 리디렉션합니다. 다음 다이어그램에서 사용자는 실제 사이트 URL(`http://app1URL.cloudapp.net` 및 `http://app2URL.cloudapp.net`)을 추상화하는 Traffic Manager URL(`http://myATMURL.trafficmanager.net`)에 연결합니다. 사용자 요청은 구성된 [Traffic Manager 라우팅 메서드](/azure/traffic-manager/traffic-manager-routing-methods)를 기반으로 하는 적절한 기본 URL로 라우팅됩니다. 이 문서에서는 장애 조치 옵션에 대해서만 알아보겠습니다.
 
 ![Azure Traffic Manager를 통해 라우팅](./images/disaster-recovery-azure-applications/routing-using-azure-traffic-manager.png)
 
@@ -299,7 +299,10 @@ Azure Site Recovery를 사용하는 경우 데이터 손실 또는 가동 중지
 
 | 서비스 | 항목 |
 |---------|-------|
+| Azure Database for MySQL | [Azure Database for MySQL의 비즈니스 연속성 개요](/azure/mysql/concepts-business-continuity) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL의 비즈니스 연속성 개요](/azure/postgresql/concepts-business-continuity)
 | Cloud Services | [Azure Cloud Services에 영향을 주는 Azure 서비스 중단 발생 시 수행할 작업](/azure/cloud-services/cloud-services-disaster-recovery-guidance) |
+| Cosmos DB | [비즈니스 연속성을 위한 Azure Cosmos DB의 자동 지역별 장애 조치(failover)](/azure/cosmos-db/regional-failover)
 | Key Vault | [Azure Key Vault 가용성 및 중복성](/azure/key-vault/key-vault-disaster-recovery-guidance) |
 |Storage | [Azure Storage 중단이 발생할 경우 수행할 작업](/azure/storage/storage-disaster-recovery-guidance) |
 | SQL Database | [Azure SQL Database 복원 또는 보조 데이터베이스에 대한 장애 조치](/azure/sql-database/sql-database-disaster-recovery) |

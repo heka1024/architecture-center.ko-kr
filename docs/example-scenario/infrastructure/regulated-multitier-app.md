@@ -3,12 +3,12 @@ title: 규제 산업용 Windows 웹 응용 프로그램 보호
 description: 확장 집합, Application Gateway 및 부하 분산 장치를 사용하는 Azure의 Windows Server에서 안전한 다중 계층 웹 응용 프로그램을 구축하는 데 입증된 시나리오입니다.
 author: iainfoulds
 ms.date: 07/11/2018
-ms.openlocfilehash: aba714fc1955341645d0faa400768bc09fb8e50b
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: 3572f215d9134a6650d76e1b14458226334c6f42
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060994"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389289"
 ---
 # <a name="secure-windows-web-application-for-regulated-industries"></a>규제 산업용 Windows 웹 응용 프로그램 보호
 
@@ -32,7 +32,7 @@ ms.locfileid: "39060994"
 
 1. 사용자는 Azure Application Gateway를 통해 프런트 엔드 ASP.NET 규제 산업 응용 프로그램에 액세스합니다.
 2. Application Gateway에서 Azure 가상 머신 확장 집합 내의 VM 인스턴스에 트래픽을 분산시킵니다.
-3. ASP.NET 응용 프로그램에서 Azure 부하 분산 장치를 통해 백 엔드 계층의 Microsoft SQL Server 클러스터에 연결합니다. 이러한 백 엔드 SQL Server 인스턴스는 별도의 Azure 가상 네트워크에 있으며 트래픽 흐름을 제한하는 네트워크 보안 그룹 규칙으로 보호됩니다.
+3. ASP.NET 응용 프로그램에서 Azure Load Balancer를 통해 백 엔드 계층의 Microsoft SQL Server 클러스터에 연결합니다. 이러한 백 엔드 SQL Server 인스턴스는 별도의 Azure 가상 네트워크에 있으며 트래픽 흐름을 제한하는 네트워크 보안 그룹 규칙으로 보호됩니다.
 4. 부하 분산 장치에서 SQL Server 트래픽을 다른 가상 머신 확장 집합의 VM 인스턴스에 배포합니다.
 5. Azure Blob Storage는 백 엔드 계층의 SQL Server 클러스터에 대한 클라우드 감시 역할을 합니다.  VNet 내에서의 연결은 Azure Storage에 대한 VNet 서비스 엔드포인트를 통해 가능합니다.
 
@@ -47,7 +47,7 @@ ms.locfileid: "39060994"
 
 ### <a name="alternatives"></a>대안
 
-* 인프라의 구성 요소는 OS에 따라 달라지지 않으므로 Windows는 Unix와 마찬가지로 다양한 다른 OS로 쉽게 대체될 수 있습니다.
+* 인프라의 구성 요소는 운영 체제에 따라 달라지지 않으므로 Windows는 Unix와 마찬가지로 다양한 다른 운영 체제로 쉽게 대체될 수 있습니다.
 
 * [Linux용 SQL Server][sql-linux]는 백 엔드 데이터 저장소를 대체할 수 있습니다.
 
@@ -61,13 +61,13 @@ ms.locfileid: "39060994"
 
 데이터베이스 계층에서는 Always On 가용성 그룹을 사용하도록 구성할 수 있습니다. 이 SQL Server 구성을 사용하면 클러스터 내에서 하나의 주 데이터베이스가 최대 8개의 보조 데이터베이스로 구성됩니다. 주 데이터베이스에 문제가 발생하면 클러스터에서 보조 데이터베이스 중 하나에 장애 조치하여 응용 프로그램을 계속 사용할 수 있습니다. 자세한 내용은 [SQL Server에 대한 Always On 가용성 그룹 개요][sqlalwayson-docs]를 참조하세요.
 
-다른 가용성 항목은 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
+다른 가용성 항목에 대해서는 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
 
 ### <a name="scalability"></a>확장성
 
 이 시나리오에서는 프론트 엔드 및 백 엔드 구성 요소에 대한 가상 머신 확장 집합을 사용합니다. 확장 집합을 사용하면 프론트 엔드 응용 프로그램 계층을 실행하는 VM 인스턴스의 수를 고객 요구 또는 정의된 일정에 따라 자동으로 조정할 수 있습니다. 자세한 내용은 [가상 머신 확장 집합을 사용한 자동 크기 조정 개요][vmssautoscale-docs]를 참조하세요.
 
-다른 확장성 항목은 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
+다른 확장성 항목에 대해서는 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
 
 ### <a name="security"></a>보안
 
@@ -85,8 +85,8 @@ PCI DSS(지불 카드 산업 데이터 보안 표준) 3.2 규정 준수 인프�
 
 **필수 조건.**
 
-* 기존 Azure 계정이 있어야 합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [무료 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
-* SQL Server 클러스터를 백 엔드 확장 집합에 배포하려면 Active Directory 디렉터리 서비스 도메인이 필요합니다.
+* 기존 Azure 계정이 있어야 합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [체험 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
+* SQL Server 클러스터를 백 엔드 확장 집합에 배포하려면 Azure AD(Active Directory) 도메인 서비스의 도메인이 필요합니다.
 
 Azure Resource Manager 템플릿을 사용하여 이 시나리오에 대한 핵심 인프라를 배포하려면 다음 단계를 수행합니다.
 
@@ -106,9 +106,9 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오에 대한 핵�
 
 응용 프로그램을 실행하는 확장 집합 VM 인스턴스의 수를 기준으로 제공한 세 가지 샘플 비용 프로필은 다음과 같습니다.
 
-* [소형][small-pricing]: 2개 프론트 엔드 및 2개 백 엔드 VM 인스턴스와 관련이 있습니다.
-* [중형][medium-pricing]: 20개 프론트 엔드 및 5개 백 엔드 VM 인스턴스와 관련이 있습니다.
-* [대형][large-pricing]: 100개 프론트 엔드 및 10개 백 엔드 VM 인스턴스와 관련이 있습니다.
+* [소형][small-pricing]: 이 가격 책정 예제는 2개 프론트 엔드 및 2개 백 엔드 VM 인스턴스와 관련이 있습니다.
+* [중형][medium-pricing]: 이 가격 책정 예제는 20개 프론트 엔드 및 5개 백 엔드 VM 인스턴스와 관련이 있습니다.
+* [대형][large-pricing]: 이 가격 책정 예제는 100개 프론트 엔드 및 10개 백 엔드 VM 인스턴스와 관련이 있습니다.
 
 ## <a name="related-resources"></a>관련 리소스
 

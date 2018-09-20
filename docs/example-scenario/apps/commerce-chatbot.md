@@ -3,12 +3,12 @@ title: Azure에서 호텔 예약을 위한 대화형 챗봇
 description: Azure Bot Service, Cognitive Services 및 LUIS, Azure SQL Database 및 Application Insights를 사용하여 상거래 응용 프로그램용 대화형 챗봇을 구축하는 데 입증된 시나리오입니다.
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: b664faf20d806824c2581346aaa592b0d74207da
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: 95a0fd77a99a348704a1d916de534a98d0b03448
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060866"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389335"
 ---
 # <a name="conversational-chatbot-for-hotel-reservations-on-azure"></a>Azure에서 호텔 예약을 위한 대화형 챗봇
 
@@ -64,7 +64,7 @@ Bot Service 및 Language Understanding 또는 Speech API 서비스와 같은 Azu
 
 ### <a name="scalability"></a>확장성
 
-이 시나리오에서는 Azure App Service를 사용합니다. App Service를 사용하면 봇을 실행하는 인스턴스의 수를 자동으로 조정할 수 있습니다. 이 기능을 사용하면 웹 응용 프로그램과 챗봇에 대한 고객의 요구 사항을 충족할 수 있습니다. 자동 크기 조정에 대한 자세한 내용은 아키텍처 센터의 [자동 크기 조정 모범 사례][autoscaling]를 참조하세요.
+이 시나리오에서는 Azure App Service를 사용합니다. App Service를 사용하면 봇을 실행하는 인스턴스의 수를 자동으로 조정할 수 있습니다. 이 기능을 사용하면 웹 응용 프로그램과 챗봇에 대한 고객의 요구 사항을 충족할 수 있습니다. 자동 크기 조정에 대한 자세한 내용은 Azure 아키텍처 센터의 [자동 크기 조정 모범 사례][autoscaling]를 참조하세요.
 
 다른 확장성 항목에 대해서는 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
 
@@ -92,7 +92,7 @@ Azure SQL Database에 저장된 미사용 정보는 TDE(투명한 데이터 암�
 * [Web App 챗봇](#deploy-web-app-chatbot). Azure CLI를 사용하여 Bot Service 및 LUIS(Language Understanding and Intelligent Service) 앱을 통해 봇을 배포합니다.
 * [샘플 C# 챗봇 응용 프로그램](#deploy-chatbot-c-application-code). Visual Studio를 사용하여 호텔 예약 C# 응용 프로그램 코드 샘플을 검토하고 Azure에서 봇에 배포합니다.
 
-**필수 조건.** 기존 Azure 계정이 있어야 합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [무료 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
+**필수 조건.** 기존 Azure 계정이 있어야 합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [체험 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
 
 ### <a name="deploy-infrastructure-components"></a>인프라 구성 요소 배포
 
@@ -141,11 +141,11 @@ az bot create \
 
 이 시나리오를 실행하는 데 들어가는 비용을 알아보기 위해 모든 서비스가 비용 계산기에서 미리 구성됩니다. 특정 사용 사례에 대한 가격이 변경되는 정도를 확인하려면 필요한 트래픽에 맞게 적절한 변수를 변경합니다.
 
-챗봇에서 처리하는 데 필요한 메시지 양을 기준으로 다음 세 가지 샘플 비용 프로필을 제공했습니다.
+챗봇에서 처리하는 데 필요한 메시지 수를 기준으로 다음 세 가지 샘플 비용 프로필을 제공했습니다.
 
-* [소량][small-pricing]: 매월 1만 개 미만의 메시지 처리와 관련이 있습니다.
-* [중간][medium-pricing]: 매월 50만 개 미만의 메시지 처리와 관련이 있습니다.
-* [대량][large-pricing]: 매월 1천만 개 미만의 메시지 처리와 관련이 있습니다.
+* [소형][small-pricing]: 이 가격 책정 예제는 매월 1만 개 미만의 메시지 처리와 관련이 있습니다.
+* [중형][medium-pricing]: 이 가격 책정 예제는 매월 50만 개 미만의 메시지 처리와 관련이 있습니다.
+* [대형][large-pricing]: 이 가격 책정 예제는 매월 1천만 개 미만의 메시지 처리와 관련이 있습니다.
 
 ## <a name="related-resources"></a>관련 리소스
 

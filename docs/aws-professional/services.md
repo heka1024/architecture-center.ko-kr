@@ -5,12 +5,12 @@ keywords: 클라우드 서비스 비교, 클라우드 서비스 비교, 다중 �
 author: lbrader
 ms.date: 11/30/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 4c78f45c654a40142ff25736b83a5b6b10591fc6
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: e0064e7c8959086da360eedc4ae274af797dbbad
+ms.sourcegitcommit: 46ed67297e6247f9a80027cfe891a5e51ee024b4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43325015"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45556702"
 ---
 # <a name="aws-to-azure-services-comparison"></a>AWS와 Azure 서비스 비교 
 
@@ -44,6 +44,7 @@ AWS 사용자를 위한 Azure 개요는 [AWS 전문가를 위한 Azure 소개](i
 |         <strong>&nbsp;</strong>         |             EC2 컨테이너 레지스트리             |                                                                                                                [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)                                                                                                                 |                                            고객을 Docker 형식 이미지를 저장할 수 있게 합니다. Azure에 배포되는 모든 컨테이너 유형을 만드는 데 사용됩니다.                                             |
 | 마이크로 서비스/컨테이너 오케스트레이터 | EKS(Elastic Container Service for Kubernetes) |                                                                                                              [AKS(Azure Kubernetes Service)](https://azure.microsoft.com/services/kubernetes-service/)                                                                                                               |                  Kubernetes를 사용하여 오케스트레이션 및 컨테이너화된 응용 프로그램을 배포합니다. 자동 업그레이드 및 기본 제공 작업 콘솔을 통해 모니터링 및 클러스터 관리를 간소화합니다.                  |
 |                 &nbsp;                  |                                                |                                                                                                                       [Service Fabric](https://azure.microsoft.com/services/service-fabric/)                                                                                                                        |              상태 비저장 또는 상태 저장 중 하나일 수 있는 복잡한 상호 관련 코드 구성 요소의 실행, 수명, 복원성을 오케스트레이션하고 관리하는 계산 서비스입니다.              |
+| &nbsp; | &nbsp; | [Service Fabric Mesh](/azure/service-fabric-mesh/service-fabric-mesh-overview) | 개발자가 가상 머신, 저장소 또는 네트워킹을 관리하지 않고 마이크로 서비스 응용 프로그램을 배포할 수 있는 완전히 관리되는 서비스입니다.
 |                 &nbsp;                  |                                                |                                                                                                                             [ACS(Azure Container Service)](/azure/container-service/)                                                                                                                              |                                                             프로덕션 준비 Kubernetes, DC/OS 또는 Docker Swarm 클러스터를 빠르게 배포할 수 있습니다.                                                              |
 |               서버를 사용하지 않음                |                     Lambda                     |                                                                                  [Azure 기능](https://azure.microsoft.com/services/functions/) <br/><br/>[Azure Event Grid](https://azure.microsoft.com/services/event-grid/)                                                                                  |                                       서버 프로비전 또는 관리 없이 이벤트나 일정에 대한 응답으로 백 엔드 프로세스를 실행하고 시스템을 통합합니다.                                        |
 |         <strong>&nbsp;</strong>         |                 Lambda @ Edge                  |                                                                                                                       [Azure IoT Edge의 함수](/azure/iot-edge/tutorial-deploy-function)                                                                                                                       |                                                    간헐적 클라우드 연결에서도 가장자리(IoT 장치에서 직접)에서 함수를 실행합니다.                                                    |

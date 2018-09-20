@@ -3,12 +3,12 @@ title: 개발/테스트 작업에 대한 SAP
 description: 개발/테스트 환경에 대한 SAP 시나리오입니다.
 author: AndrewDibbins
 ms.date: 7/11/18
-ms.openlocfilehash: 675a5cb4b1ee4001ca50d24c145ce1a177f90da4
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: d0f266e40969cf4782e69041889a686387499722
+ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060964"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44389182"
 ---
 # <a name="sap-for-devtest-workloads"></a>개발/테스트 작업에 대한 SAP
 
@@ -34,7 +34,7 @@ ms.locfileid: "39060964"
 이 시나리오에서는 단일 가상 머신에 단일 SAP 시스템 데이터베이스와 SAP 응용 프로그램 서버를 프로비전하는 방법에 대해 설명하며, 시나리오를 통한 데이터 흐름은 다음과 같습니다.
 
 1. 프레젠테이션 계층의 고객은 온-프레미스에서 자신의 SAP GUI 또는 다른 사용자 인터페이스(Internet Explorer, Excel 또는 다른 웹 응용 프로그램)를 사용하여 Azure 기반 SAP 시스템에 액세스합니다.
-2. 연결은 설정된 ExpressRoute를 사용하여 제공됩니다. ExpressRoute는 Azure의 ExpressRoute 게이트웨이에서 종료됩니다. 네트워크 트래픽은 ExpressRoute 게이트웨이를 통해 게이트웨이 서브넷으로 라우팅되고, 게이트웨이 서브넷에서 응용 프로그램 계층 스포크 서브넷([허브-스포크][hub-spoke] 패턴 참조)으로 라우팅되며, 네트워크 보안 게이트웨이를 통해 SAP 응용 프로그램 가상 머신으로 라우팅됩니다.
+2. 연결은 설정된 Express Route를 사용하여 제공됩니다. Express Route 연결은 Azure의 Express Route 게이트웨이에서 종료됩니다. 네트워크 트래픽은 ExpressRoute 게이트웨이를 통해 게이트웨이 서브넷으로 라우팅되고, 게이트웨이 서브넷에서 응용 프로그램 계층 스포크 서브넷([허브-스포크][hub-spoke] 패턴 참조)으로 라우팅되며, 네트워크 보안 게이트웨이를 통해 SAP 응용 프로그램 가상 머신으로 라우팅됩니다.
 3. ID 관리 서버는 인증 서비스를 제공합니다.
 4. 점프 박스는 로컬 관리 기능을 제공합니다.
 
@@ -82,17 +82,17 @@ ms.locfileid: "39060964"
 * [소형](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1): 소형 시스템은 8개 vCPU, 32GB RAM 및 200GB 임시 저장소가 있는 D8s_v3 VM 유형으로 구성되며, 2개 512GB 및 1개 128GB 프리미엄 저장소 디스크도 추가로 있습니다.
 * [중형](https://azure.com/e/465bd07047d148baab032b2f461550cd): 중형 시스템은 16개 vCPU, 64GB RAM 및 400GB 임시 저장소가 있는 D16s_v3 VM 유형으로 구성되며, 3개 512GB 및 1개 128GB 프리미엄 저장소 디스크도 추가로 있습니다.
 * [대형](https://azure.com/e/ada2e849d68b41c3839cc976000c6931): 대형 시스템은 32개 vCPU, 256GB RAM 및 512GB 임시 저장소가 있는 E32s_v3 VM 유형으로 구성되며, 3개 512GB 및 1개 128GB 프리미엄 저장소 디스크도 추가로 있습니다.
-* [초대형](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef): 초대형 시스템은 64개 vCPU, 1,024GB RAM 및 2,000GB 임시 저장소가 있는 M64s VM 유형으로 구성되며, 4개 512GB 및 1개 128GB 프리미엄 저장소 디스크도 추가로 있습니다.
+* [초대형](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef): 초대형 시스템은 64개 vCPU, 1024GB RAM 및 2000GB 임시 저장소가 있는 M64s VM 유형으로 구성되며, 4개 512GB 및 1개 128GB 프리미엄 저장소 디스크도 추가로 있습니다.
 
 ## <a name="deployment"></a>배포
 
-위 시나리오와 비슷한 기본 인프라를 배포하려면 배포 단추를 사용해 주세요.
+위 시나리오와 비슷한 기본 인프라를 배포하려면 배포 단추를 사용합니다.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fapps%2Fsap-2tier%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-\* SAP가 설치되지 않으므로 인프라를 수동으로 구축한 후에 이 작업을 수행해야 합니다.
+\* SAP는 자동으로 설치되지 않습니다. 인프라가 빌드된 후에 수동으로 설치하세요.
 
 <!-- links -->
 [reference architecture]:  /azure/architecture/reference-architectures/sap
