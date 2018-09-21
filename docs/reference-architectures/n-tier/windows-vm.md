@@ -3,12 +3,12 @@ title: Azure에서 Windows VM 실행
 description: 확장성, 복원력, 관리 효율성 및 보안에 주의하면서 Azure에서 Windows VM을 실행하는 방법입니다.
 author: telmosampaio
 ms.date: 04/03/2018
-ms.openlocfilehash: d790c9a6693dca751e0ba05f1fd3c23756cf53bb
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.openlocfilehash: a20359f90e7b20486defce3110b2db6f7e0027ba
+ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142219"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45584700"
 ---
 # <a name="run-a-windows-vm-on-azure"></a>Azure에서 Windows VM 실행
 
@@ -115,6 +115,8 @@ RDP를 사용하도록 설정하려면 TCP 포트 3389에 인바운드 트래픽
 [감사 로그][audit-logs]를 사용하여 프로비전 동작 및 기타 VM 이벤트를 확인합니다.
 
 **데이터 암호화.** OS 및 데이터 디스크를 암호화해야 하는 경우 [Azure Disk Encryption][disk-encryption]을 고려하세요. 
+
+**DDoS 보호** VNet에서 리소스에 대한 추가 DDoS 완화를 제공하는 [DDoS Protection 표준](/azure/virtual-network/ddos-protection-overview)을 활성화하는 것이 좋습니다. 기본 DDoS 보호가 Azure 플랫폼의 일부로 자동으로 활성화되어 있지만 DDoS Protection 표준은 Azure Virtual Network 리소스에 맞게 조정된 완화 기능을 제공합니다.  
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 

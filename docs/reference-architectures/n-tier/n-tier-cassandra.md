@@ -3,12 +3,12 @@ title: Apache Cassandra를 통한 N 계층 응용 프로그램
 description: Microsoft Azure에서 N 계층 아키텍처에 대한 Linux VM 실행 방법
 author: MikeWasson
 ms.date: 05/03/2018
-ms.openlocfilehash: 7ee14088a2fae3cfc5c1119daf717236c75ecc6a
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.openlocfilehash: fa5faeda4ef1dcae46181c0a3be8f4e139dc27d0
+ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142236"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45584717"
 ---
 # <a name="n-tier-application-with-apache-cassandra"></a>Apache Cassandra를 통한 N 계층 응용 프로그램
 
@@ -122,7 +122,7 @@ VM 확장 집합을 사용하지 않는 경우 동일한 계층의 VM을 가용�
 다음은 부하 분산 장치 상태 프로브에 대한 몇 가지 권장 사항입니다.
 
 * 프로브는 HTTP와 TCP를 모두 테스트할 수 있습니다. VM이 HTTP 서버를 실행 중인 경우에는 HTTP 프로브를 만들고, HTTP 서버를 실행하지 않는 경우에는 TCP 프로브를 만듭니다.
-* HTTP 프로브를 만들 때는 HTTP 끝점으로 향하는 경로를 지정합니다. 프로브는 이 경로에서 HTTP 200 응답을 확인합니다. 경로는 루트 경로("/")일 수도 있고, 응용 프로그램의 상태를 확인하는 사용자 지정 로직을 구현하는 상태 모니터링 끝점일 수도 있습니다. 끝점은 익명의 HTTP 요청을 허용해야 합니다.
+* HTTP 프로브를 만들 때는 HTTP 엔드포인트로 향하는 경로를 지정합니다. 프로브는 이 경로에서 HTTP 200 응답을 확인합니다. 경로는 루트 경로("/")일 수도 있고, 응용 프로그램의 상태를 확인하는 사용자 지정 로직을 구현하는 상태 모니터링 엔드포인트일 수도 있습니다. 엔드포인트는 익명의 HTTP 요청을 허용해야 합니다.
 * 프로브는 [알려진 IP 주소][health-probe-ip]인 168.63.129.16에서 전송됩니다. 방화벽 정책이나 NSG(네트워크 보안 그룹) 규칙에서 이 IP 주소로의 트래픽 송수신을 차단하지 않도록 합니다.
 * [상태 프로브 로그][health-probe-log]를 사용하여 상태 프로브의 상태를 확인합니다. Azure Portal에서 각 부하 분산 장치에 대해 로깅을 활성화합니다. 로그는 Azure Blob Storage에 쓰기됩니다. 이 로그에서는 백엔드의 VM 중 실패한 프로브 응답으로 인해 네트워크 트래픽을 수신하지 못하는 VM의 개수를 확인할 수 있습니다.
 
@@ -137,6 +137,8 @@ Cassandra 클러스터의 경우 고려할 장애 조치(failover) 시나리오�
 NVA(네트워크 가상 어플라이언스)를 추가하여 인터넷과 Azure 가상 네트워크 사이에 DMZ를 만드는 것도 좋은 방법입니다. NVA는 방화벽, 패킷 조사, 감사, 사용자 지정 라우팅과 같은 네트워크 관련 작업을 수행하는 가상 어플라이언스를 통칭하는 용어입니다. 자세한 내용은 [Azure와 인터넷 사이에 DMZ 구현][dmz]을 참조하세요.
 
 중요한 미사용 데이터를 암호화하고 [Azure Key Vault][azure-key-vault]를 사용하여 데이터베이스 암호화 키를 관리합니다. Key Vault는 암호화 키를 HSM(하드웨어 보안 모듈)에 저장합니다. 또한 Key Vault에 데이터베이스 연결 문자열과 같은 응용 프로그램 비밀을 저장하는 것이 좋습니다.
+
+VNet에서 리소스에 대한 추가 DDoS 완화를 제공하는 [DDoS Protection 표준](/azure/virtual-network/ddos-protection-overview)을 활성화하는 것이 좋습니다. 기본 DDoS 보호가 Azure 플랫폼의 일부로 자동으로 활성화되어 있지만 DDoS Protection 표준은 Azure Virtual Network 리소스에 맞게 조정된 완화 기능을 제공합니다.  
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 

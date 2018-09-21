@@ -4,12 +4,12 @@ description: 다양한 Azure 서비스에 대한 복원력 지침을 제공하�
 author: petertaylor9999
 ms.date: 03/02/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 25d961d6bb753b1f515fc073e51bbb912cc59db7
-ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
+ms.openlocfilehash: 735d4466f53ff03b67063b49b86f4184bbf1af41
+ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29783512"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45584768"
 ---
 # <a name="resiliency-checklist-for-specific-azure-services"></a>특정 Azure 서비스에 대한 복원력 검사 목록
 
@@ -50,7 +50,6 @@ ms.locfileid: "29783512"
 **지역에 걸쳐 데이터베이스를 복제합니다.** Cosmos DB를 사용하면 개수에 관계없이 Azure 지역을 원하는 만큼 Cosmos DB 데이터베이스 계정에 연결할 수 있습니다. Cosmos DB 데이터베이스는 하나의 쓰기 지역 및 다중 읽기 지역을 포함할 수 있습니다. 쓰기 지역에 오류가 있으면 다른 복제본에서 읽을 수 있습니다. 클라이언트 SDK는 이 작업을 자동으로 처리합니다. 또한 쓰기 지역을 다른 지역으로 장애 조치할 수도 있습니다. 자세한 내용은 [Azure Cosmos DB로 데이터를 전역적으로 배포하는 방법](/azure/cosmos-db/distribute-data-globally)을 참조하세요.
 
 ## <a name="event-hubs"></a>Event Hubs
-
 
 **검사점 사용**.  이벤트 소비자는 미리 정의된 간격으로 영구 저장소에 현재 위치를 기록해야 합니다. 이렇게 하면 소비자에게 오류가 발생하는 경우(예: 소비자에게 충돌이나 호스트 장애가 발생하는 경우) 새 인스턴스가 마지막으로 기록된 위치에서 스트림 읽기를 다시 시작할 수 있습니다. 자세한 내용은 [이벤트 소비자](/azure/event-hubs/event-hubs-features#event-consumers)를 참조하세요.
 
@@ -101,6 +100,10 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 **지리적 복원을 사용하여 서비스 중단에서 복구합니다.** 지리적 복원은 지역 중복 백업에서 데이터베이스를 복원합니다.  자세한 내용은 [자동화된 데이터베이스 백업을 사용하여 Azure SQL 데이터베이스 복구][sql-restore]를 참조하세요.
 
+## <a name="sql-data-warehouse"></a>SQL Data Warehouse
+
+**지역 백업을 비활성화하지 마십시오.** 기본적으로 SQL Data Warehouse는 재해 복구에 대해 24시간마다 데이터의 전체 백업을 수행합니다. 이 기능을 해제하는 것은 권장되지 않습니다. 자세한 내용은 [지역 백업](/azure/sql-data-warehouse/backup-and-restore#geo-backups)을 참조하세요.
+
 ## <a name="sql-server-running-in-a-vm"></a>VM에서 실행되는 SQL Server
 
 **데이터베이스를 복제합니다.** SQL Server Always On 가용성 그룹을 사용하여 데이터베이스를 복제합니다. SQL Server 인스턴스 하나가 실패하는 경우 고가용성을 제공 합니다. 자세한 내용은 [N 계층 응용 프로그램에 대해 Windows VM 실행](../reference-architectures/virtual-machines-windows/n-tier.md) 참조
@@ -111,7 +114,7 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 **수동 장애 복구를 수행합니다.** Traffic Manager 장애 조치 후 자동으로 장애 복구하는 대신 수동 장애 복구를 수행합니다. 장애 복구 전에 모든 응용 프로그램 하위 시스템이 정상 상태인지 확인합니다.  그렇지 않으면 응용 프로그램이 데이터 센터 간에 앞뒤로 뒤집어지는 상황이 발생할 수 있습니다. 자세한 내용은 [고가용성을 위해 여러 지역에서 VM 실행](../reference-architectures/virtual-machines-windows/multi-region-application.md)을 참조하세요.
 
-**상태 프로브 끝점을 만듭니다.** 응용 프로그램의 전반적인 상태에 관하여 보고하는 사용자 지정 끝점을 만듭니다. 이렇게 하면 단지 프런트 엔드뿐만 아니라 중요 경로가 고장인 경우 Traffic Manager가 장애 조치할 수 있습니다. 끝점은 중요 의존성이 비정상 상태이거나 도달할 수 없는 경우 HTTP 오류 코드를 반환해야 합니다. 그러나 중요하지 않은 서비스에 대해서는 오류를 보고하지 마세요. 그렇지 않으면 상태 프로브가 필요하지 않을 때 장애 조치를 트리거하여 가양성이 발생할 수 있습니다. 자세한 내용은 [Traffic Manager 끝점 모니터링 및 장애 조치](/azure/traffic-manager/traffic-manager-monitoring/)를 참조하세요.
+**상태 프로브 엔드포인트를 만듭니다.** 응용 프로그램의 전반적인 상태에 관하여 보고하는 사용자 지정 엔드포인트를 만듭니다. 이렇게 하면 단지 프런트 엔드뿐만 아니라 중요 경로가 고장인 경우 Traffic Manager가 장애 조치할 수 있습니다. 엔드포인트는 중요 의존성이 비정상 상태이거나 도달할 수 없는 경우 HTTP 오류 코드를 반환해야 합니다. 그러나 중요하지 않은 서비스에 대해서는 오류를 보고하지 마세요. 그렇지 않으면 상태 프로브가 필요하지 않을 때 장애 조치를 트리거하여 가양성이 발생할 수 있습니다. 자세한 내용은 [Traffic Manager 엔드포인트 모니터링 및 장애 조치](/azure/traffic-manager/traffic-manager-monitoring/)를 참조하세요.
 
 ## <a name="virtual-machines"></a>Virtual Machines
 
@@ -137,7 +140,7 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 **공용 IP 주소를 허용하거나 차단하려면 NSG를 서브넷에 추가합니다.** 악의적인 사용자의 액세스를 차단하거나 응용 프로그램에 액세스할 권한을 가진 사용자의 액세스만 허용합니다.  
 
-**사용자 지정 상태 프로브를 만듭니다.** 부하 분산 장치 상태 프로브는 HTTP 또는 TCP를 테스트할 수 있습니다. VM에서 HTTP 서버를 실행하는 경우 HTTP 프로브는 TCP 프로브보다 더 나은 상태 표시기입니다. HTTP 프로브의 경우 모든 중요 의존성을 포함하여 응용 프로그램의 전반적인 상태를 보고하는 사용자 지정 끝점을 사용합니다. 자세한 내용은 [Azure 부하 분산 장치 개요](/azure/load-balancer/load-balancer-overview/)를 참조하세요.
+**사용자 지정 상태 프로브를 만듭니다.** 부하 분산 장치 상태 프로브는 HTTP 또는 TCP를 테스트할 수 있습니다. VM에서 HTTP 서버를 실행하는 경우 HTTP 프로브는 TCP 프로브보다 더 나은 상태 표시기입니다. HTTP 프로브의 경우 모든 중요 의존성을 포함하여 응용 프로그램의 전반적인 상태를 보고하는 사용자 지정 엔드포인트를 사용합니다. 자세한 내용은 [Azure 부하 분산 장치 개요](/azure/load-balancer/load-balancer-overview/)를 참조하세요.
 
 **상태 프로브를 차단하지 않습니다.** 부하 분산 장치 상태 프로브는 알려진 IP 주소 168.63.129.16에서 전송됩니다. 방화벽 정책 또는 NSG(네트워크 보안 그룹)에서 IP에 대한 트래픽을 차단하지 마세요. 상태 프로브를 차단하면 부하 분산 장치가 VM을 윤번에서 제거할 것입니다.
 

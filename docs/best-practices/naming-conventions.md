@@ -4,12 +4,12 @@ description: Azure 리소스에 대한 명명 규칙 가상 머신, 저장소 �
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 8aa0b46d9f43107cfa4ae4be3160900249365702
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: 625f672c80b0256e93932b72367768f37c1e72f4
+ms.sourcegitcommit: f1dcc388c8b4fc983549c36d7e6b009fa1f072ba
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43326323"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46329881"
 ---
 # <a name="naming-conventions"></a>명명 규칙
 
@@ -45,7 +45,7 @@ Azure 구독을 명명하는 경우 자세한 이름은 각 구독의 컨텍스�
 | Contoso |IT |InternalApps |프로덕션 |Contoso IT InternalApps 프로덕션 |
 | Contoso |IT |InternalApps |개발 |Contoso IT InternalApps 개발 |
 
-대규모 기업에 대해 구독을 구성하는 방법에 대한 자세한 내용은 [규범적인 구독 거버넌스 지침][scaffold]을 참조하세요.
+대규모 기업에 대해 구독을 구성하는 방법에 대한 자세한 내용은 [Azure 엔터프라이즈 스캐폴드 - 규범적 구독 거버넌스][scaffold]를 참조하세요.
 
 ## <a name="use-affixes-to-avoid-ambiguity"></a>모호성을 예방하기 위해 접사 사용
 
@@ -195,4 +195,4 @@ Blob 이름은 문자 조합을 포함할 수 있지만 예약된 URL 문자는 
 
 <!-- links -->
 
-[scaffold]: /azure/azure-resource-manager/resource-manager-azure-scaffold
+[scaffold]: /azure/architecture/cloud-adoption/appendix/azure-scaffold

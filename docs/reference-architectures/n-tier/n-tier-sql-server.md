@@ -3,12 +3,12 @@ title: SQL Server를 통한 N 계층 응용 프로그램
 description: 가용성, 보안, 확장성 및 관리 효율성을 위해 Azure에서 다중 계층 아키텍처를 구현하는 방법을 설명합니다.
 author: MikeWasson
 ms.date: 07/19/2018
-ms.openlocfilehash: fc761e940a25c4667146db9598d944bac2c32496
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: 3a291b9492c94450a42de96bea2135190c163fe7
+ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43326059"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45584751"
 ---
 # <a name="n-tier-application-with-sql-server"></a>SQL Server를 통한 N 계층 응용 프로그램
 
@@ -154,6 +154,8 @@ NVA(네트워크 가상 어플라이언스)를 추가하여 인터넷과 Azure �
 
 중요한 미사용 데이터를 암호화하고 [Azure Key Vault][azure-key-vault]를 사용하여 데이터베이스 암호화 키를 관리합니다. Key Vault는 암호화 키를 HSM(하드웨어 보안 모듈)에 저장합니다. 자세한 내용은 [Azure VM에서 SQL Server에 대한 Azure Key Vault 통합 구성][sql-keyvault]을 참조하세요. 또한 Key Vault에 데이터베이스 연결 문자열과 같은 응용 프로그램 비밀을 저장하는 것이 좋습니다.
 
+VNet에서 리소스에 대한 추가 DDoS 완화를 제공하는 [DDoS Protection 표준](/azure/virtual-network/ddos-protection-overview)을 활성화하는 것이 좋습니다. 기본 DDoS 보호가 Azure 플랫폼의 일부로 자동으로 활성화되어 있지만 DDoS Protection 표준은 Azure Virtual Network 리소스에 맞게 조정된 완화 기능을 제공합니다.  
+
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
 이 참조 아키텍처에 대한 배포는 [GitHub][github-folder]에서 사용할 수 있습니다. AD DS, Windows Server 장애 조치(failover) 클러스터 및 SQL Server 가용성 그룹을 구성하는 스크립트 실행을 포함하여 전체 배포에는 최대 2시간이 걸릴 수 있습니다.
@@ -220,7 +222,7 @@ NVA(네트워크 가상 어플라이언스)를 추가하여 인터넷과 Azure �
     "witnessStorageAccountKey": "[replace-with-storagekey]"
     ```
 
-8. `n-tier-windows.json` 파일에서 `[replace-with-password]`의 모든 인스턴스를 검색하고 강력한 암호로 바꿉니다. 파일을 저장합니다.
+8. `n-tier-windows.json` 파일에서 `[replace-with-password]`의 모든 인스턴스를 검색하고 `[replace-with-sql-password]`를 강력한 암호로 바꿉니다. 파일을 저장합니다.
 
     > [!NOTE]
     > 관리자 사용자 이름을 변경하는 경우 JSON 파일에서 `extensions` 블록을 업데이트해야 합니다. 
