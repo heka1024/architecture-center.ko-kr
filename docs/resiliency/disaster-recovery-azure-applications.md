@@ -2,13 +2,13 @@
 title: Azure 응용 프로그램에 대한 재해 복구
 description: Microsoft Azure에서 재해 복구를 위한 응용 프로그램 설계에 대한 기술 개요와 자세한 정보입니다.
 author: adamglick
-ms.date: 05/26/2017
-ms.openlocfilehash: faae658d91ec0cb2dd5dc436e67aa9b494fd4b49
-ms.sourcegitcommit: 46ed67297e6247f9a80027cfe891a5e51ee024b4
+ms.date: 09/12/2018
+ms.openlocfilehash: 4f879445154e37502bbeeeb90939737b6072e6ec
+ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45556685"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45584802"
 ---
 # <a name="disaster-recovery-for-azure-applications"></a>Azure 응용 프로그램에 대한 재해 복구
 
@@ -118,6 +118,9 @@ Azure Redis Cache는 클라우드 서비스 배포 내에서 응용 프로그램
 
 Azure Storage의 기본 제공 중복성으로 인해 동일한 지역에 두 개의 백업 파일 복제본을 만듭니다. 그러나 백업 프로세스를 실행하는 빈도가 RPO를 결정하며 이는 재해 시나리오에서 손실될 수는 데이터 양입니다. 예를 들어 매 정시에 백업을 수행하고 재해는 정시가 되기 2분 전에 발생한다고 가정합니다. 마지막으로 백업이 수행된 후에 기록된 데이터의 58분이 손실됩니다. 또한 지역 전체 서비스 중단을 방지하려면 대체 지역에 BACPAC 파일을 복사해야 합니다. 그러면 대체 지역에 이러한 백업을 복원하는 옵션이 있습니다. 자세한 내용은 [개요: SQL Database의 클라우드 무중단 업무 방식 및 데이터베이스 재해 복구](/azure/sql-database/sql-database-business-continuity/)를 참조하세요.
 
+#### <a name="sql-data-warehouse"></a>SQL Data Warehouse
+SQL Data warehouse의 경우 [지역 백업](/azure/sql-data-warehouse/backup-and-restore#geo-backups)을 사용하여 재해 복구에 대해 페어링된 지역으로 복원합니다. 이러한 백업은 24시간마다 수행되고, 페어링된 지역에서 20분 이내에 복원될 수 있습니다. 이 기능은 모든 SQL 데이터 웨어하우스에 대해 기본적으로 설정됩니다. 데이터 웨어하우스를 복원하는 방법에 대한 자세한 내용은 [PowerShell을 사용하여 Azure 지역에서 복원](/azure/sql-data-warehouse/sql-data-warehouse-restore#restore-from-an-azure-geographical-region-using-powershell)을 참조하세요.
+
 #### <a name="azure-storage"></a>Azure Storage
 Azure Storage의 경우 사용자 지정 백업 프로세스를 개발하거나 여러 타사 백업 도구 중 하나를 사용할 수 있습니다. 대부분의 응용 프로그램 설계는 저장소 리소스를 서로 참조하기 때문에 더 복잡합니다. 예를 들어 Azure Storage의 Blob에 연결하는 열이 있는 SQL 데이터베이스를 가정하겠습니다. 백업이 동시에 발생하지 않는 경우 데이터베이스에는 실패하기 전에 백업되지 않은 Blob에 대한 포인터가 있을 수 있습니다. 응용 프로그램 또는 재해 복구 계획은 복구 후에 이러한 불일치를 처리하는 프로세스를 구현해야 합니다.
 
@@ -127,7 +130,7 @@ Elasticsearch 또는 MongoDB와 같은 데이터 플랫폼을 호스팅하는 �
 ### <a name="reference-data-pattern-for-disaster-recovery"></a>재해 복구에 대한 참조 데이터 패턴
 참조 데이터는 응용 프로그램 기능을 지원하는 읽기 전용 데이터입니다. 일반적으로 자주 변경하지 않습니다. 백업 및 복원이 지역 전체 서비스 중단을 처리하는 한 가지 방법이지만 RTO는 비교적 깁니다. 보조 지역에 응용 프로그램을 배포할 경우 몇 가지 전략을 통해 참조 데이터에 대한 RTO를 향상시킬 수 있습니다.
 
-참조 데이터가 자주 변경되기 때문에 보조 지역에서 참조 데이터의 영구 복사본을 유지하여 RTO를 향상시킬 수 있습니다. 이렇게 하면 재해 발생 시 백업을 복원하는 데 필요한 시간을 제거합니다. 여러 지역 재해 복구 요구 사항을 충족하려면 여러 지역에 응용 프로그램 및 참조 데이터를 함께 배포해야 합니다. [고가용성을 위한 참조 데이터 패턴](high-availability-azure-applications.md#reference-data-pattern-for-high-availability)에서 설명한 것처럼 역할 자체, 외부 저장소 또는 둘의 조합에 참조 데이터를 배포할 수 있습니다.
+참조 데이터가 자주 변경되기 때문에 보조 지역에서 참조 데이터의 영구 복사본을 유지하여 RTO를 향상시킬 수 있습니다. 이렇게 하면 재해 발생 시 백업을 복원하는 데 필요한 시간을 제거합니다. 여러 지역 재해 복구 요구 사항을 충족하려면 여러 지역에 응용 프로그램 및 참조 데이터를 함께 배포해야 합니다. 역할 자체, 외부 저장소 또는 둘의 조합에 참조 데이터를 배포할 수 있습니다.
 
 계산 노드 내의 참조 데이터 배포 모델은 암시적으로 재해 복구 요구 사항을 충족합니다. SQL Database에 참조 데이터를 배포하려면 각 지역에 참조 데이터의 복사본을 배포해야 합니다. Azure Storage에 동일한 전략이 적용됩니다. Azure Storage에 저장된 참조 데이터의 복사본을 주 지역 및 보조 지역에 배포해야 합니다.
 
@@ -153,7 +156,7 @@ Elasticsearch 또는 MongoDB와 같은 데이터 플랫폼을 호스팅하는 �
 
 > [!NOTE]
 > 이 문서는 대부분 PaaS(platform as a service)에 중점을 둡니다. 그러나 하이브리드 응용 프로그램에 대한 추가적인 복제 및 가용성 옵션은 Azure Virtual Machines를 사용합니다. 이러한 하이브리드 응용 프로그램은 IaaS(Infrastructure as a Service)를 사용하여 Azure의 가상 머신에서 SQL Server를 호스트합니다. 따라서 AlwaysOn 가용성 그룹 또는 로그 전달과 같은 SQL Server의 기존 가용성 방식을 사용할 수 있습니다. AlwaysOn과 같은 일부 기법은 온-프레미스 SQL Server 인스턴스와 Azure 가상 머신 간에서만 작동합니다. 자세한 내용은 [Azure Virtual Machines의 SQL Server에 대한 고가용성 및 재해 복구](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr/)를 참조하세요.
-> 
+>
 > 
 
 #### <a name="reduced-application-functionality-for-transaction-capture"></a>트랜잭션 캡처를 위한 제한된 응용 프로그램 기능
@@ -308,5 +311,4 @@ Azure Site Recovery를 사용하는 경우 데이터 손실 또는 가동 중지
 | SQL Database | [Azure SQL Database 복원 또는 보조 데이터베이스에 대한 장애 조치](/azure/sql-database/sql-database-disaster-recovery) |
 | 가상 머신 | [Azure 가상 머신에 영향을 주는 Azure 서비스 중단 발생 시 수행할 작업](/azure/virtual-machines/virtual-machines-disaster-recovery-guidance) |
 | 가상 네트워크 | [Virtual Network – 비즈니스 연속성](/azure/virtual-network/virtual-network-disaster-recovery-guidance) |
-
 
