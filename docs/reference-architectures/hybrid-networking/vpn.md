@@ -7,12 +7,12 @@ pnp.series.title: Connect an on-premises network to Azure
 pnp.series.next: expressroute
 pnp.series.prev: ./index
 cardTitle: VPN
-ms.openlocfilehash: ef89cdd3e2a175f82929b613159a99557560cc7a
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: d0966791642ee174d020c960c9fc6e72d8768539
+ms.sourcegitcommit: b38ba378c9d6110da2dfd50b4233fadd94604bb0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43325391"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47167441"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN 게이트웨이를 사용하여 온-프레미스 네트워크를 Azure에 연결
 
@@ -486,7 +486,10 @@ Azure VPN 게이트웨이에 문제가 있는지 판단할 때 다음과 같은 
 [vpn-appliances]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-architectures.vsdx
 [vpn-appliance-ipsec]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices#ipsec-parameters
-<!--[solution-script]: https://github.com/mspnp/reference-architectures/tree/master/guidance-hybrid-network-vpn/Deploy-ReferenceArchitecture.ps1-->
-<!--[solution-script-bash]: https://github.com/mspnp/reference-architectures/tree/master/guidance-hybrid-network-vpn/deploy-reference-architecture.sh-->
-<!--[virtualNetworkGateway-parameters]: https://github.com/mspnp/reference-architectures/tree/master/guidance-hybrid-network-vpn/parameters/virtualNetworkGateway.parameters.json-->
-[azure-cli]: https://azure.microsoft.com/documentation/articles/xplat-cli-install/ [CIDR]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing [0]: ./images/vpn.png "온-프레미스 및 Azure 인프라에 걸친 하이브리드 네트워크" [2]: ../_images/guidance-hybrid-network-vpn/audit-logs.png "Azure Portal의 감사 로그" [3]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-counters.png "VPN 네트워크 트래픽을 모니터링하는 성능 카운터" [4]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-graph.png "예제 VPN 네트워크 성능 그래프""
+[virtualNetworkGateway-parameters]: https://github.com/mspnp/hybrid-networking/vpn/parameters/virtualNetworkGateway.parameters.json
+[azure-cli]: https://azure.microsoft.com/documentation/articles/xplat-cli-install/
+[CIDR]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
+[0]: ./images/vpn.png "온-프레미스 인프라와 Azure 인프라를 포괄하는 하이브리드 네트워크"
+[2]: ../_images/guidance-hybrid-network-vpn/audit-logs.png "Azure Portal의 감사 로그"
+[3]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-counters.png "VPN 네트워크 트래픽 모니터링을 위한 성능 카운터"
+[4]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-graph.png "VPN 네트워크 성능 그래프 예"
