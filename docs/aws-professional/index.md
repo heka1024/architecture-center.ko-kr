@@ -5,12 +5,12 @@ keywords: AWS 전문가, Azure 비교, AWS 비교, azure와 aws의 차이점, az
 author: lbrader
 ms.date: 03/24/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: f90186ba36f035871ec918c65b05eebe44190ffa
-ms.sourcegitcommit: f1dcc388c8b4fc983549c36d7e6b009fa1f072ba
+ms.openlocfilehash: 04157b9a647779ae47ad0aff8132289a30544acf
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46329898"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429641"
 ---
 # <a name="azure-for-aws-professionals"></a>AWS 전문가를 위한 Azure
 
@@ -96,7 +96,7 @@ Azure는 리소스를 관리하는 여러 방법을 제공합니다.
 
 이러한 각 인터페이스에서 리소스 그룹은 Azure 리소스를 만들고 배포하고 수정하는 데 있어서 핵심적인 역할을 합니다. CloudFormation 배포 시 "스택"이 AWS 리소스 그룹화에서 수행하는 역할과 비슷합니다.
 
-이러한 인터페이스의 구문 및 구조는 AWS와 다르지만, 비슷한 기능을 제공합니다. 또한 AWS에 사용되는 [Hashicorp's Terraform](https://www.terraform.io/docs/providers/azurerm/) 및 [Netflix Spinnaker](http://www.spinnaker.io/) 같은 여러 타사 관리 도구가 Azure에서도 제공됩니다.
+이러한 인터페이스의 구문 및 구조는 AWS와 다르지만, 비슷한 기능을 제공합니다. 또한 AWS에 사용되는 [Hashicorp's Terraform](https://www.terraform.io/docs/providers/azurerm/) 및 [Netflix Spinnaker](https://www.spinnaker.io/) 같은 여러 타사 관리 도구가 Azure에서도 제공됩니다.
 
 ### <a name="see-also"></a>참고 항목
 
@@ -426,15 +426,11 @@ Notification Hubs는 SMS 또는 전자 메일 메시지 보내기를 지원하�
 
 ## <a name="next-steps"></a>다음 단계
 
--   [대화형 Azure 플랫폼 큰 그림](http://azureplatform.azurewebsites.net/)
-
 -   [Azure 시작](https://azure.microsoft.com/get-started/)
 
 -   [Azure 솔루션 아키텍처](https://azure.microsoft.com/solutions/architecture/)
 
 -   [Azure 참조 아키텍처](https://azure.microsoft.com/documentation/articles/guidance-architecture/)
-
--   [무료 온라인 강좌: AWS 전문가를 위한 Microsoft Azure](http://aka.ms/azureforaws)
 
 
 <!-- links -->

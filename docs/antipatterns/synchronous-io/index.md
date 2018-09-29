@@ -3,12 +3,12 @@ title: 동기 I/O 안티패턴
 description: I/O가 완료하는 동안 호출 스레드를 차단하면 성능이 감소하고 수직 확장성에 영향을 미칠 수 있습니다.
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: d5b3635565c6b71ef7716f54ee8cccc76093c3a3
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 961eacb82344ec7e71aaa96fb4cd8bc530721e96
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24851503"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429012"
 ---
 # <a name="synchronous-io-antipattern"></a>동기 I/O 안티패턴
 
@@ -197,7 +197,7 @@ Azure 웹 응용 프로그램 및 웹 역할의 경우 IIS 웹 서버의 성능�
 [sample-app]: https://github.com/mspnp/performance-optimization/tree/master/SynchronousIO
 
 
-[async-wrappers]: http://blogs.msdn.com/b/pfxteam/archive/2012/03/24/10287244.aspx
+[async-wrappers]: https://blogs.msdn.microsoft.com/pfxteam/2012/03/24/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
 [performance-counters]: /azure/cloud-services/cloud-services-dotnet-diagnostics-performance-counters
 [web-sites-monitor]: /azure/app-service-web/web-sites-monitor
 

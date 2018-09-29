@@ -3,12 +3,12 @@ title: Azure Virtual Datacenter
 description: Microsoft Azure Virtual Datacenter의 리소스
 keywords: Azure
 layout: LandingPage
-ms.openlocfilehash: 9b82122358085c37f89fb258034a4c9a91ecb054
-ms.sourcegitcommit: 8ec48a0e2c080c9e2e0abbfdbc463622b28de2f2
+ms.openlocfilehash: 5b5b6f58911e39ae1296722194b58c601b9baea8
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "43324801"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428094"
 ---
 # <a name="azure-virtual-datacenter-and-the-enterprise-control-plane"></a>Azure Virtual Datacenter 및 Enterprise Control Plane
 
@@ -17,9 +17,9 @@ Azure Virtual Datacenter는 기존 보안 및 네트워킹 정책을 적용하�
 ## <a name="resources"></a>리소스
 <table>
 <tr>
-    <td style="width: 64px; vertical-align: middle;"><a href="http://aka.ms/VDC/Concepts"><img src="../_images/virtual-datacenter.svg" alt="Virtual Datacenter eBook" /></a></td>
+    <td style="width: 64px; vertical-align: middle;"><a href="https://aka.ms/VDC/Concepts"><img src="../_images/virtual-datacenter.svg" alt="Virtual Datacenter eBook" /></a></td>
     <td>
-        <h3><a href="http://aka.ms/VDC/Concepts">Azure Virtual Datacenter: 개념</a></h3>
+        <h3><a href="https://aka.ms/VDC/Concepts">Azure Virtual Datacenter: 개념</a></h3>
         <p>이 전자책은 기존 보안 및 네트워킹 정책을 적용하는 동시에 Azure 클라우드 플랫폼에 엔터프라이즈 워크로드를 배포하는 방법을 보여줍니다.</p>
     </td>
 </tr>
@@ -31,16 +31,16 @@ Azure Virtual Datacenter는 기존 보안 및 네트워킹 정책을 적용하�
     </td>
 </tr>
 <tr>
-    <td style="width: 64px; vertical-align: middle;"><a href="http://aka.ms/VDC/Lift"><img src="./images/vdc-lift-and-shift.png" alt="Lift and Shift Guide" /></a></td>
+    <td style="width: 64px; vertical-align: middle;"><a href="https://aka.ms/VDC/Lift"><img src="./images/vdc-lift-and-shift.png" alt="Lift and Shift Guide" /></a></td>
     <td>
-        <h3><a href="http://aka.ms/VDC/Lift">Azure Virtual Datacenter: 리프트 앤 시프트 가이드</a></h3>
+        <h3><a href="https://aka.ms/VDC/Lift">Azure Virtual Datacenter: 리프트 앤 시프트 가이드</a></h3>
         <p>이 백서는 엔터프라이즈 IT 직원 및 의사 결정권자가 클라우드 호스팅 옵션을 최적화하면서 동시에 추가적인 개발 비용을 최소화할 수 있도록 리프트 앤 시프트 방식을 사용하여 Azure로의 응용 프로그램 및 서버 마이그레이션을 식별하고 계획하는 데 사용할 수 있는 프로세스에 대해 논의합니다.</p>
     </td>
 </tr>
 <tr>
-    <td style="width: 64px; vertical-align: middle;"><a href="http://aka.ms/VDC/Deck"><img src="./images/vdc-deck.png" alt="Presentation Deck" /></a></td>
+    <td style="width: 64px; vertical-align: middle;"><a href="https://aka.ms/VDC/Deck"><img src="./images/vdc-deck.png" alt="Presentation Deck" /></a></td>
     <td>
-        <h3><a href="http://aka.ms/VDC/Deck">Azure Virtual Datacenter: 프레젠테이션 데크</a></h3>
+        <h3><a href="https://aka.ms/VDC/Deck">Azure Virtual Datacenter: 프레젠테이션 데크</a></h3>
         <p>이 프레젠테이션 데크는 Azure Virtual Datacenter 지침 및 도구를 탐색합니다. VDC 목표, 고객 드라이버, Azure 지역, VDC 자동화의 요소, 산업화되고 신뢰할 수 있는 Azure VDC에 대해 다루며 CIO 지침 관련 작업 계획으로 끝납니다. 지원 및 교육 정보가 제공됩니다.</p>
     </td>
 </tr>
@@ -57,4 +57,4 @@ Azure Virtual Datacenter는 기존 보안 및 네트워킹 정책을 적용하�
 Azure Virtual Datacenter 모델에서 격리 정책을 적용하고, 사용자가 아는 물리적 데이터 센터와 더 비슷하게 클라우드를 만들고, 사용자에게 필요한 보안 및 신뢰 수준을 달성할 수 있습니다. 엔터프라이즈 IT 팀이 인정하는 소프트웨어 정의 네트워킹, 암호화, ID 관리 및 Azure 플랫폼의 기본 준수 표준 및 인증의 네 가지 구성 요소를 통해 가능합니다. 이러한 네 가지 구성 요소는 가상 데이터 센터를 기존 인프라 투자의 신뢰할 수 있는 확장으로 만드는 데 핵심입니다.
 
 
-<a href="http://aka.ms/VDC/eBook">Azure Virtual Datacenter 개념</a> 전자책을 이어서 읽어보세요.
+<a href="https://aka.ms/VDC/eBook">Azure Virtual Datacenter 개념</a> 전자책을 이어서 읽어보세요.

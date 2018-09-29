@@ -3,12 +3,12 @@ title: 붐비는 프런트 엔드 안태패턴
 description: 다수의 백그라운드 스레드에서 비동기 작업을 수행하면 다른 포그라운드 작업에 결핍이 발생할 수 있습니다.
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: cedb80ddac5ceb1eb901455df3165993fd28a138
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 89a2d6c41af1e19ca1b9b6a0a5dceac615afd60a
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24851509"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428298"
 ---
 # <a name="busy-front-end-antipattern"></a>붐비는 프런트 엔드 안태패턴
 
@@ -209,7 +209,7 @@ CPU 및 네트워크 사용률 역시 향상된 성능을 보여줍니다. CPU �
 [sync-io]: ../synchronous-io/index.md
 [web-queue-worker]: /azure/architecture/guide/architecture-styles/web-queue-worker
 
-[WebJobs]: http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx
+[WebJobs]: https://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx
 [ComputePartitioning]: https://msdn.microsoft.com/library/dn589773.aspx
 [ServiceBusQueues]: https://msdn.microsoft.com/library/azure/hh367516.aspx
 [AppDynamics-Transactions-Front-End-Requests]: ./_images/AppDynamicsPerformanceStats.jpg
