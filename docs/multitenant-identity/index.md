@@ -5,12 +5,12 @@ author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.next: tailspin
-ms.openlocfilehash: c363ac01e798b522fa95f39586e28fe3af5fae4a
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 9c2efe9aea9da53177478161b90406d0c2021550
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "24851563"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429437"
 ---
 # <a name="manage-identity-in-multitenant-applications"></a>다중 테넌트 응용 프로그램의 ID 관리
 
@@ -18,7 +18,7 @@ ms.locfileid: "24851563"
 
 [![GitHub](../_images/github.png) 샘플 코드][sample application]
 
-다중 테넌트 응용 프로그램을 빌드할 때 첫 번째 과제 중 하나는 이제 모든 사용자가 테넌트에 속하므로 사용자 ID를 관리하는 것입니다. 예:
+다중 테넌트 응용 프로그램을 빌드할 때 첫 번째 과제 중 하나는 이제 모든 사용자가 테넌트에 속하므로 사용자 ID를 관리하는 것입니다. 예: 
 
 * 사용자가 조직 자격 증명으로 로그인합니다.
 * 사용자는 조직의 데이터에는 액세스할 수 있지만 다른 테넌트에 속한 데이터에는 액세스하지 못합니다.
@@ -93,7 +93,7 @@ Azure AD(Azure Active Directory)에는 이러한 모든 시나리오를 지원�
 
 
 <!-- Links -->
-[ADConnect]: /azure/active-directory/active-directory-aadconnect
+[ADConnect]: /azure/active-directory/hybrid/whatis-hybrid-identity
 [AzureAD]: /azure/active-directory
 
 [고객의 AD FS와 페더레이션]: adfs.md
