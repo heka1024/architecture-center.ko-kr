@@ -4,18 +4,43 @@ description: Azure의 일반 워크로드에 대한 참조 아키텍처, 청사�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: bd04a866258fb2f6ff849a4f29492610d3545e1f
-ms.sourcegitcommit: 20953a7bed708713e4c972d390a2910505e80f08
+ms.openlocfilehash: c96fc08aca97beb886fa96807d6f9cc5c09d0555
+ms.sourcegitcommit: 9eecff565392273d11b8702f1fcecb4d75e27a15
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44040454"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48243634"
 ---
 # <a name="azure-reference-architectures"></a>Azure 참조 아키텍처
 
 Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍처가 함께 그룹화됩니다. 각 아키텍처는 확장성, 가용성, 관리성 및 보안에 대한 고려 사항과 함께 권장 방법을 포함하고 있습니다. 또한 대부분은 배포 가능한 솔루션을 포함하고 있습니다.
 
-[빅 데이터](#big-data-solutions) | [웹 응용 프로그램](#web-applications) | [N 계층 응용 프로그램](#n-tier-applications) | [가상 네트워크](#virtual-networks) | [Active Directory](#extending-on-premises-active-directory-to-azure) | [VM 워크로드](#vm-workloads)로 이동합니다.
+[AI](#ai-and-machine-learning) | [빅 데이터](#big-data-solutions) | [N 계층 응용 프로그램](#n-tier-applications) | [가상 네트워크](#virtual-networks) | [Active Directory](#extending-on-premises-active-directory-to-azure) | [VM 워크로드](#vm-workloads) | [웹 응용 프로그램](#web-applications)으로 이동합니다.
+
+## <a name="ai-and-machine-learning"></a>AI 및 기계 학습
+
+<ul  class="panelContent cardsF">
+<!-- SQL Data Warehouse -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/batch-scoring-deep-learning.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/batch-ai.svg" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>심층 학습 모델에 대한 Batch 평가</h3>
+                        <p>비디오에 신경 스타일 전송을 적용하는 일괄 작업 실행을 자동화합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
 
 ## <a name="big-data-solutions"></a>빅 데이터 솔루션
 
@@ -73,68 +98,6 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                     <div class="cardText">
                         <h3>Azure Stream Analytics를 사용하는 스트림 처리</h3>
                         <p>롤링 평균을 계산하기 위해 두 데이터 스트림의 레코드를 상호 연관시키는 종단간 스트림 처리 파이프 라인.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-</ul>
-
-## <a name="web-applications"></a>웹 응용 프로그램
-
-<ul  class="panelContent cardsF">
-<li style="display: flex; flex-direction: column;">
-    <a href="./app-service-web-app/basic-web-app.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/app-service.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>기본 웹앱 응용 프로그램</h3>
-                        <p>Azure App Service 및 Azure SQL Database를 사용하는 웹 응용 프로그램입니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./app-service-web-app/scalable-web-app.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/app-service.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>확장성이 뛰어난 웹 응용 프로그램</h3>
-                        <p>웹 응용 프로그램의 확장성을 향상시키기 위한 검증된 사례입니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./app-service-web-app/multi-region.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/app-service.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>고가용성 웹 응용 프로그램</h3>
-                        <p>여러 지역에서 App Service 웹앱을 실행하여 고가용성을 달성합니다.</p>
                     </div>
                 </div>
             </div>
@@ -541,3 +504,65 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
 </li>
 </ul>
 
+
+## <a name="web-applications"></a>웹 응용 프로그램
+
+<ul  class="panelContent cardsF">
+<li style="display: flex; flex-direction: column;">
+    <a href="./app-service-web-app/basic-web-app.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/app-service.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>기본 웹앱 응용 프로그램</h3>
+                        <p>Azure App Service 및 Azure SQL Database를 사용하는 웹 응용 프로그램입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./app-service-web-app/scalable-web-app.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/app-service.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>확장성이 뛰어난 웹 응용 프로그램</h3>
+                        <p>웹 응용 프로그램의 확장성을 향상시키기 위한 검증된 사례입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./app-service-web-app/multi-region.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/app-service.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>고가용성 웹 응용 프로그램</h3>
+                        <p>여러 지역에서 App Service 웹앱을 실행하여 고가용성을 달성합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
