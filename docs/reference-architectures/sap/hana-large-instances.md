@@ -3,12 +3,12 @@ title: Azure의 SAP HANA(대규모 인스턴스) 실행
 description: Azure 대규모 인스턴스의 고가용성 환경에서 SAP HANA를 실행하는 검증된 사례입니다.
 author: lbrader
 ms.date: 05/16/2018
-ms.openlocfilehash: 746161ac51335af5c48a559830d6e0345dcfb7b1
-ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
+ms.openlocfilehash: d9d619dd7fb17c7cf0a66ce73c1e067ec97a2401
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37864524"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429709"
 ---
 # <a name="run-sap-hana-on-azure-large-instances"></a>Azure의 SAP HANA(대규모 인스턴스) 실행
 
@@ -129,8 +129,6 @@ SAP, 시스템 통합업체 또는 Microsoft와 협력하여 [고가용성 및 �
 | 로그 백업         | 특정 시점 복구에 필요합니다.                                                                   |                                                            |
 | 기타 백업 도구 | 중복 백업 위치를 사용합니다.                                                                             | 추가 라이선스 비용이 발생합니다.                                |
 
-또한 SapHanaTutorial.com은 유용한 문서인 [HANA 백업 옵션 간 비교][sap-hana-tutorial]를 제공합니다.
-
 ## <a name="manageability-considerations"></a>관리 효율성 고려 사항
 SAP HANA Studio, SAP HANA Cockpit, SAP Solution Manager 및 기타 네이티브 Linux 도구를 사용하여 HANA 대규모 인스턴스 리소스(예: CPU, 메모리, 네트워크 대역폭 및 저장소 공간)를 모니터링합니다. HANA 대규모 인스턴스에는 모니터링 도구가 기본 제공되지 않습니다. Microsoft는 조직의 요구 사항에 따라 [문제를 해결하고 모니터링][hli-troubleshoot]하는 데 유용한 리소스를 제공하며, Microsoft 기술 지원 팀에서 기술 문제를 해결하는 데 지원할 수 있습니다. 
 
@@ -183,7 +181,7 @@ SAP HANA Studio, SAP HANA Cockpit, SAP Solution Manager 및 기타 네이티브 
 [running-SAP]: https://blogs.msdn.microsoft.com/saponsqlserver/2016/06/07/sap-on-sql-general-update-for-customers-partners-june-2016/
 [region]: https://azure.microsoft.com/global-infrastructure/services/
 [running-sap-blog]: https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/04/sap-on-azure-general-update-for-customers-partners-april-2017/
-[quick-sizer]: http://service.sap.com/quicksizing
+[quick-sizer]: https://service.sap.com/quicksizing
 [sap-1793345]: https://launchpad.support.sap.com/#/notes/1793345
 [sap-1872170]: https://launchpad.support.sap.com/#/notes/1872170
 [sap-2121330]: https://launchpad.support.sap.com/#/notes/2121330
@@ -191,12 +189,11 @@ SAP HANA Studio, SAP HANA Cockpit, SAP Solution Manager 및 기타 네이티브 
 [sap-1736976]: https://launchpad.support.sap.com/#/notes/1736976
 [sap-2296290]: https://launchpad.support.sap.com/#/notes/2296290
 [sap-community]: https://www.sap.com/community.html
-[sap-hana-tutorial]: http://saphanatutorial.com/comparison-between-hana-backup-options/
 [sap-security]: https://archive.sap.com/documents/docs/DOC-62943
 [scripts]: /azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery
 [sku]: /azure/expressroute/expressroute-about-virtual-network-gateways
 [sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines
-[stack-overflow]: http://stackoverflow.com/tags/sap/info
+[stack-overflow]: https://stackoverflow.com/tags/sap/info
 [stonith]: /azure/virtual-machines/workloads/sap/ha-setup-with-stonith
 [subnet]: /azure/virtual-network/virtual-network-manage-subnet
 [swd]: https://help.sap.com/doc/saphelp_nw70ehp2/7.02.16/en-us/48/8fe37933114e6fe10000000a421937/frameset.htm

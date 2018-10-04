@@ -9,12 +9,12 @@ pnp.pattern.categories:
 - data-management
 - design-implementation
 - performance-scalability
-ms.openlocfilehash: deb15001bea2598d56a2793be78bbc3e7473bdf3
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 450d0c4c08098c1ba48e4c0dac3d058a46e3709b
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582759"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428214"
 ---
 # <a name="static-content-hosting-pattern"></a>정적 콘텐츠 호스팅 패턴
 
@@ -38,7 +38,7 @@ ms.locfileid: "26582759"
 
 이 패턴을 구현할 방법을 결정할 때 다음 사항을 고려하세요.
 
-- 호스트된 저장소 서비스는 사용자가 정적 리소스를 다운로드하기 위해 액세스할 수 있는 HTTP 끝점을 노출해야 합니다. 일부 저장소 서비스는 HTTPS도 지원하므로 SSL이 필요한 리소스를 저장소 서비스에 호스트할 수 있습니다.
+- 호스트된 저장소 서비스는 사용자가 정적 리소스를 다운로드하기 위해 액세스할 수 있는 HTTP 엔드포인트를 노출해야 합니다. 일부 저장소 서비스는 HTTPS도 지원하므로 SSL이 필요한 리소스를 저장소 서비스에 호스트할 수 있습니다.
 
 - 최대 성능 및 가용성을 위해, CDN(콘텐츠 전송 네트워크)을 사용하여 전 세계에 있는 여러 데이터 센터에 저장소 컨테이너의 콘텐츠를 캐시하는 것이 좋습니다. 그렇지만 CDN 사용 비용을 지불해야 할 수 있습니다.
 
@@ -74,7 +74,7 @@ ms.locfileid: "26582759"
 
 Azure Blob 저장소에 있는 정적 콘텐츠는 웹 브라우저에서 직접 액세스할 수 있습니다. Azure는 클라이언트에 공개적으로 노출될 수 있는 저장소에 대해 HTTP 기반 인터페이스를 제공합니다. 예를 들어, Azure Blob 저장소 컨테이너의 콘텐츠는 다음 형식의 URL을 사용하여 노출됩니다.
 
-`http://[ storage-account-name ].blob.core.windows.net/[ container-name ]/[ file-name ]`
+`https://[ storage-account-name ].blob.core.windows.net/[ container-name ]/[ file-name ]`
 
 
 콘텐츠를 업로드하는 경우, 파일 및 문서를 보유할 하나 이상의 Blob 컨테이너를 만들어야 합니다. 새 컨테이너에 대한 기본 사용 권한은 개인(Private)이며, 클라이언트가 콘텐츠에 액세스하도록 하려면 이 권한을 공용(Public)으로 변경해야 합니다. 콘텐츠를 익명 액세스로부터 보호해야 하는 경우 사용자가 리소스 다운로드를 위해 유효한 토큰을 제공해야 하도록 [발렛(Valet) 키 패턴](valet-key.md)을 구현할 수 있습니다.
@@ -89,7 +89,7 @@ Azure Blob 저장소에 있는 정적 콘텐츠는 웹 브라우저에서 직접
 클라이언트에 전달된 페이지의 링크는 Blob 컨테이너 및 리소스의 전체 URL을 반드시 지정해야 합니다. 예를 들어, 공용 컨테이너에 있는 이미지에 대한 링크를 포함하는 페이지에는 다음 HTML이 포함될 수 있습니다.
 
 ```html
-<img src="http://mystorageaccount.blob.core.windows.net/myresources/image1.png"
+<img src="https://mystorageaccount.blob.core.windows.net/myresources/image1.png"
      alt="My image" />
 ```
 
@@ -169,5 +169,4 @@ Views\Home 폴더의 Index.cshtml에는 `StaticContentUrl` 메서드를 사용�
 
 - 이 패턴의 사용을 보여주는 예제는 [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/static-content-hosting)에서 확인할 수 있습니다.
 - [발레 키 패턴](valet-key.md). 대상 리소스를 익명 사용자가 사용할 수 없게 하려는 경우 정적 콘텐츠를 보유하는 저장소에 보안 조치를 구현해야 합니다. 클라이언트에 특정 리소스 또는 서비스(예: 클라우드 호스티드 저장소 서비스)에 대한 제한된 직접 액세스를 제공하는 토큰 또는 키를 사용하는 방법을 설명합니다.
-- Infosys 블로그의 [An efficient way of deploying a static web site on Azure](http://www.infosysblogs.com/microsoft/2010/06/an_efficient_way_of_deploying.html)(Azure에서 정적 웹 사이트를 배포하는 효율적인 방법)
 - [Blob Service Concepts](https://msdn.microsoft.com/library/azure/dd179376.aspx)(Blob 서비스 개념)

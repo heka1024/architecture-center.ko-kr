@@ -4,12 +4,12 @@ description: 잘 디자인된 Web API를 만드는 방법에 관한 지침입니
 author: dragon119
 ms.date: 01/12/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: 68ed3f59e1fd63ae754ceabf27a182daa0de0e5d
-ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
+ms.openlocfilehash: 1bd53a7ccc54d086978891f1df5fdc2e25a5d638
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "43016116"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429383"
 ---
 # <a name="api-design"></a>API 디자인
 
@@ -34,7 +34,7 @@ REST가 HTTP보다 우수한 주요 장점은 개방형 표준을 사용하므�
 - 리소스마다 해당 리소스를 고유하게 식별하는 URI인 *식별자*가 있습니다. 예를 들어 특정 고객 주문의 URI는 다음과 같습니다. 
  
     ```http
-    http://adventure-works.com/orders/1
+    https://adventure-works.com/orders/1
     ```
  
 - 클라이언트가 리소스의 *표현*을 교환하여 서비스와 상호 작용합니다. 많은 Web API가 교환 형식으로 JSON을 사용합니다. 예를 들어 위에 나열된 URI에 대한 GET 요청은 이 응답 본문을 반환할 수 있습니다.
@@ -56,8 +56,8 @@ REST가 HTTP보다 우수한 주요 장점은 개방형 표준을 사용하므�
         "quantity":4,
         "orderValue":16.60,
         "links": [
-            {"rel":"product","href":"http://adventure-works.com/customers/3", "action":"GET" },
-            {"rel":"product","href":"http://adventure-works.com/customers/3", "action":"PUT" } 
+            {"rel":"product","href":"https://adventure-works.com/customers/3", "action":"GET" },
+            {"rel":"product","href":"https://adventure-works.com/customers/3", "action":"PUT" } 
         ]
     } 
     ```
@@ -77,9 +77,9 @@ REST가 HTTP보다 우수한 주요 장점은 개방형 표준을 사용하므�
 즉, 웹 API가 표시하는 비즈니스 엔터티에 집중해야 합니다. 예를 들어 전자 상거래 시스템에서는 기본 엔터티가 고객과 주문입니다. 주문 정보가 포함된 HTTP POST 요청을 전송하여 주문 만들기를 구현할 수 있습니다. HTTP 응답은 주문이 성공적으로 수행되었는지 여부를 나타냅니다. 가능하다면 리소스 URI는 동사(리소스에 대한 작업)가 아닌 명사(리소스)를 기반으로 해야 합니다. 
 
 ```HTTP
-http://adventure-works.com/orders // Good
+https://adventure-works.com/orders // Good
 
-http://adventure-works.com/create-order // Avoid
+https://adventure-works.com/create-order // Avoid
 ```
 
 리소스는 단일 물리적 데이터 항목을 기반으로 할 필요가 없습니다. 예를 들어 주문 리소스는 내부적으로 관계형 데이터베이스의 여러 테이블로 구현할 수 있지만 클라이언트에 대해서는 단일 엔터티로 표시됩니다. 단순히 데이터베이스의 내부 구조를 반영하는 API를 만들지 마세요. REST의 목적은 엔터티 및 해당 엔터티에서 응용 프로그램이 수행할 수 있는 작업을 모델링하는 것입니다. 클라이언트는 내부 구현에 노출되면 안 됩니다.
@@ -87,7 +87,7 @@ http://adventure-works.com/create-order // Avoid
 엔터티는 종종 컬렉션(주문, 고객)으로 그룹화됩니다. 컬렉션은 컬렉션 내 항목과는 별도의 리소스이며 고유한 URI가 있어야 합니다. 예를 들어 다음 URI는 주문 컬렉션을 나타낼 수 있습니다. 
 
 ```HTTP
-http://adventure-works.com/orders
+https://adventure-works.com/orders
 ```
 
 컬렉션 URI에 HTTP GET 요청을 보내면 컬렉션에 있는 항목 목록을 검색합니다. 또한 컬렉션의 항목마다 고유의 URI가 있습니다. 항목의 URI에 대한 HTTP GET 요청은 해당 항목의 세부 정보를 반환합니다. 
@@ -148,7 +148,7 @@ HTTP 프로토콜에서 형식은 MIME 유형이라고도 하는 *미디어 유�
 요청 또는 응답의 Content-Type 헤더는 표현 형식을 지정합니다. 다음은 JSON 데이터를 포함하는 POST 요청의 예입니다.
 
 ```HTTP
-POST http://adventure-works.com/orders HTTP/1.1
+POST https://adventure-works.com/orders HTTP/1.1
 Content-Type: application/json; charset=utf-8
 Content-Length: 57
 
@@ -160,7 +160,7 @@ Content-Length: 57
 클라이언트 요청에는 클라이언트가 응답 메시지에서 서버로부터 받는 미디어 유형 목록을 포함하는 Accept 헤더가 포함될 수 있습니다. 예: 
 
 ```HTTP
-GET http://adventure-works.com/orders/2 HTTP/1.1
+GET https://adventure-works.com/orders/2 HTTP/1.1
 Accept: application/json
 ```
 
@@ -273,7 +273,7 @@ Location: /api/orders/12345
 /orders?limit=25&offset=50
 ```
 
-또한 서비스 거부 공격을 방지하기 위해 반환되는 항목 수를 제한하는 방안도 고려해 봅니다. 클라이언트 응용 프로그램을 돕기 위해, 페이지가 매겨진 데이터를 반환하는 GET 요청은 컬렉션의 사용할 수 있는 총 리소스 수를 나타내는 모종의 메타데이터 형식을 포함해야 합니다. 다른 지능적인 페이지 매김 방법을 생각할 수도 있으며, 자세한 내용은 [API 설계 참고 사항: 스마트 페이지 매김](http://bizcoder.com/api-design-notes-smart-paging)
+또한 서비스 거부 공격을 방지하기 위해 반환되는 항목 수를 제한하는 방안도 고려해 봅니다. 클라이언트 응용 프로그램을 돕기 위해, 페이지가 매겨진 데이터를 반환하는 GET 요청은 컬렉션의 사용할 수 있는 총 리소스 수를 나타내는 모종의 메타데이터 형식을 포함해야 합니다. 
 
 필드 이름을 */orders?sort=ProductID* 같은 값으로 가져오는 정렬 매개 변수를 제공하여 데이터를 가져올 때 데이터를 정렬하는 비슷한 전략을 사용할 수 있습니다. 그러나 쿼리 문자열 매개 변수는 여러 캐시 구현에서 캐시된 데이터의 키로 사용되는 리소스 식별자의 일부를 구성하기 때문에 이 접근 방식은 캐싱에 나쁜 영향을 미칠 수 있습니다.
 
@@ -288,7 +288,7 @@ Location: /api/orders/12345
 또한 이러한 리소스에 대해 HTTP HEAD 요청을 구현하는 방안을 고려해 봅니다. HEAD 요청은 리소스에 대해 설명하는 HTTP 헤더만 반환하고 메시지 본문이 비어 있다는 점을 제외하면 GET 요청과 비슷합니다. 클라이언트 응용 프로그램은 부분적인 GET 요청을 사용하여 리소스를 가져올지 여부를 결정하는 HEAD 요청을 사용할 수 있습니다. 예: 
 
 ```HTTP
-HEAD http://adventure-works.com/products/10?fields=productImage HTTP/1.1
+HEAD https://adventure-works.com/products/10?fields=productImage HTTP/1.1
 ```
 
 다음은 응답 메시지 예제입니다. 
@@ -304,7 +304,7 @@ Content-Length: 4580
 Content-Length 헤더는 총 리소스 크기를 제공하고, Accept-Ranges 헤더는 해당 GET 작업이 일부 결과를 지원함을 나타냅니다. 클라이언트 응용 프로그램은 이 정보를 사용하여 더 작은 청크에서 이미지를 검색할 수 있습니다. 첫 번째 요청은 범위 헤더를 사용하여 처음 2500 바이트를 가져옵니다.
 
 ```HTTP
-GET http://adventure-works.com/products/10?fields=productImage HTTP/1.1
+GET https://adventure-works.com/products/10?fields=productImage HTTP/1.1
 Range: bytes=0-2499
 ```
 
@@ -343,44 +343,44 @@ REST를 실행하는 기본적인 동기 중 하나는 URI 체계에 대해 미�
   "links":[
     {
       "rel":"customer",
-      "href":"http://adventure-works.com/customers/3", 
+      "href":"https://adventure-works.com/customers/3", 
       "action":"GET",
       "types":["text/xml","application/json"] 
     },
     {
       "rel":"customer",
-      "href":"http://adventure-works.com/customers/3", 
+      "href":"https://adventure-works.com/customers/3", 
       "action":"PUT",
       "types":["application/x-www-form-urlencoded"]
     },
     {
       "rel":"customer",
-      "href":"http://adventure-works.com/customers/3",
+      "href":"https://adventure-works.com/customers/3",
       "action":"DELETE",
       "types":[]
     },
     {
       "rel":"self",
-      "href":"http://adventure-works.com/orders/3", 
+      "href":"https://adventure-works.com/orders/3", 
       "action":"GET",
       "types":["text/xml","application/json"]
     },
     {
       "rel":"self",
-      "href":"http://adventure-works.com/orders/3", 
+      "href":"https://adventure-works.com/orders/3", 
       "action":"PUT",
       "types":["application/x-www-form-urlencoded"]
     },
     {
       "rel":"self",
-      "href":"http://adventure-works.com/orders/3", 
+      "href":"https://adventure-works.com/orders/3", 
       "action":"DELETE",
       "types":[]
     }]
 }
 ```
 
-이 예에서 `links` 배열에는 링크 집합이 있습니다. 각 링크는 관련 엔터티에 대한 작업을 나타냅니다. 각 링크의 데이터에는 관계("고객"), URI(`http://adventure-works.com/customers/3`), HTTP 메서드 및 지원되는 MIME 형식이 포함됩니다. 이 모든 정보가 있어야 클라이언트 응용 프로그램이 작업을 호출할 수 있습니다. 
+이 예에서 `links` 배열에는 링크 집합이 있습니다. 각 링크는 관련 엔터티에 대한 작업을 나타냅니다. 각 링크의 데이터에는 관계("고객"), URI(`https://adventure-works.com/customers/3`), HTTP 메서드 및 지원되는 MIME 형식이 포함됩니다. 이 모든 정보가 있어야 클라이언트 응용 프로그램이 작업을 호출할 수 있습니다. 
 
 또한 `links` 배열은 검색된 리소스 자체에 대한 자체 참조 정보를 포함합니다. 이러한 관계가 *자체* 관계입니다.
 
@@ -395,7 +395,7 @@ Web API가 정적 상태를 유지할 가능성은 매우 낮습니다. 비즈�
 ### <a name="no-versioning"></a>버전 관리 없음
 가장 간단한 방법이며 일부 내부 API에 대해 허용될 수 있습니다. 큰 변화는 새 리소스 또는 새 연결로 나타낼 수 있습니다.  기존 리소스에 콘텐츠를 추가해도 이 콘텐츠가 표시될 것으로 예상하지 않은 클라이언트 응용 프로그램은 해당 콘텐츠를 무시할 것이므로 주요 변경 내용이 표시되지 않을 수 있습니다.
 
-예를 들어 URI *http://adventure-works.com/customers/3* 에 대한 요청은 클라이언트 응용 프로그램이 예상하는 `id`, `name` 및 `address` 필드가 포함된 단일 고객의 세부 정보를 반환해야 합니다.
+예를 들어 URI *https://adventure-works.com/customers/3* 에 대한 요청은 클라이언트 응용 프로그램이 예상하는 `id`, `name` 및 `address` 필드가 포함된 단일 고객의 세부 정보를 반환해야 합니다.
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -423,7 +423,7 @@ Content-Type: application/json; charset=utf-8
 ### <a name="uri-versioning"></a>URI 버전 관리
 웹 API를 수정하거나 리소스의 체계를 변경할 때마다 각 리소스의 URI에 버전 번호를 추가합니다. 앞에서는 기존 URI가 전과 같이 계속 작동하여 원래 체계를 준수하는 리소스를 반환해야 합니다.
 
-앞의 예제를 확장하여 `address` 필드가 주소의 각 구성 부분을 포함하고 있는 하위 필드(예: `streetAddress`, `city`, `state` 및 `zipCode`)로 재구성된다면, http://adventure-works.com/v2/customers/3:과 같은 버전 번호가 들어 있는 URI를 통해 리소스의 이 버전을 표시할 수 있습니다.
+앞의 예제를 확장하여 `address` 필드가 주소의 각 구성 부분을 포함하고 있는 하위 필드(예: `streetAddress`, `city`, `state` 및 `zipCode`)로 재구성된다면, https://adventure-works.com/v2/customers/3:과 같은 버전 번호가 들어 있는 URI를 통해 리소스의 이 버전을 표시할 수 있습니다.
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -435,7 +435,7 @@ Content-Type: application/json; charset=utf-8
 이 버전 관리 메커니즘은 매우 간단하지만 요청을 적절한 엔드포인트로 라우팅하는 서버에 따라 달라집니다. 그러나 여러 번 반복을 통해 웹 API가 성숙해짐에 따라 이 메커니즘을 다룰 수 없게 될 수 있으며 서버가 다양한 버전을 지원해야 합니다. 또한 엄격히 말해서, 클라이언트 응용 프로그램이 같은 데이터(고객 3)를 가져오므로, URI가 버전에 따라 달라져서는 안 됩니다. 또한 이 체계는 모든 링크가 자신의 URI에 버전 번호를 포함해야 하므로 HATEOAS 구현을 복잡하게 만듭니다.
 
 ### <a name="query-string-versioning"></a>쿼리 문자열 버전 관리
-복수 URI를 제공하는 대신에 HTTP 요청에 추가된 쿼리 문자열 내에 *http://adventure-works.com/customers/3?version=2* 같은 매개 변수를 사용하여 리소스의 버전을 지정할 수 있습니다. 버전 매개 변수는 이전 클라이언트 응용 프로그램에서 생략했다면 기본적으로 1과 같은 의미 있는 값입니다.
+복수 URI를 제공하는 대신에 HTTP 요청에 추가된 쿼리 문자열 내에 *https://adventure-works.com/customers/3?version=2* 같은 매개 변수를 사용하여 리소스의 버전을 지정할 수 있습니다. 버전 매개 변수는 이전 클라이언트 응용 프로그램에서 생략했다면 기본적으로 1과 같은 의미 있는 값입니다.
 
 이 접근 방식은 같은 리소스가 언제나 같은 URI에서 검색된다는 의미 체계 장점이 있지만, 쿼리 문자열을 구문 분석하고 해당 HTTP 응답을 다시 보내기 위해 요청을 처리하는 코드에 따라 달라집니다. 또한 이 접근 방식은 HATEOAS를 URI 버전 관리 메커니즘으로 구현할 때와 같이 복잡합니다.
 
@@ -450,7 +450,7 @@ Content-Type: application/json; charset=utf-8
 버전 1:
 
 ```HTTP
-GET http://adventure-works.com/customers/3 HTTP/1.1
+GET https://adventure-works.com/customers/3 HTTP/1.1
 Custom-Header: api-version=1
 ```
 
@@ -464,7 +464,7 @@ Content-Type: application/json; charset=utf-8
 버전 2:
 
 ```HTTP
-GET http://adventure-works.com/customers/3 HTTP/1.1
+GET https://adventure-works.com/customers/3 HTTP/1.1
 Custom-Header: api-version=2
 ```
 
@@ -481,7 +481,7 @@ Content-Type: application/json; charset=utf-8
 이 지침의 앞부분에서 설명한 대로, 클라이언트 응용 프로그램은 웹 서버에 HTTP GET 요청을 보낼 때 Accept 헤더를 사용하여 처리할 수 있는 콘텐츠의 형식을 지정해야 합니다. 흔히 *Accept* 헤더의 목적은 클라이언트 응용 프로그램에서 응답 본문이 XML, JSON 또는 클라이언트가 구문 분석할 수 있는 몇몇 다른 일반적인 형식 중 어느 형식인지 지정할 수 있도록 하는 것입니다. 그러나 클라이언트 응용 프로그램이 예상하는 리소스의 버전을 나타낼 수 있도록 하는 정보를 포함한 사용자 지정 미디어 형식을 정의할 수 있습니다. 다음 예제는 *Accept* 헤더를 값 *application/vnd.adventure-works.v1+json*과 함께 지정하는 요청을 나타냅니다. *vnd.adventure-works.v1* 요소는 웹 서버에 대해 리소스의 버전 1을 반환해야 한다는 것을 나타내며, 한편 *json* 요소는 응답 본문의 형식이 JSON이어야 함을 지정합니다.
 
 ```HTTP
-GET http://adventure-works.com/customers/3 HTTP/1.1
+GET https://adventure-works.com/customers/3 HTTP/1.1
 Accept: application/vnd.adventure-works.v1+json
 ```
 
@@ -516,6 +516,5 @@ Accept 헤더가 모든 알려진 미디어 형식을 지정하지 않은 경우
 
 ## <a name="more-information"></a>자세한 정보
 * [Microsoft REST API 지침](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md). 공용 REST API 디자인에 대한 구체적인 권장 사항입니다.
-* [REST Cookbook](http://restcookbook.com/). RESTful API를 빌드하는 방법을 소개합니다.
 * [Web API 검사 목록](https://mathieu.fenniak.net/the-api-checklist/). Web API를 디자인 및 구현할 때 고려해야 하는 항목 목록입니다.
 * [Open API Initiative](https://www.openapis.org/). Open API에 대한 설명서 및 구현 세부 정보입니다.

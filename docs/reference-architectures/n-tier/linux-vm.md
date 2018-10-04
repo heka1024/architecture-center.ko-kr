@@ -3,12 +3,12 @@ title: Azure에서 Linux VM 실행
 description: 확장성, 복원력, 관리 효율성 및 보안에 주의하면서 Azure에서 Linux VM을 실행하는 방법입니다.
 author: telmosampaio
 ms.date: 04/03/2018
-ms.openlocfilehash: b53db016a594bace880aaac4e16f0586fe3057b1
-ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
+ms.openlocfilehash: eb695f668367a1ca559ebfd054474c8609212dde
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45584734"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429080"
 ---
 # <a name="run-a-linux-vm-on-azure"></a>Azure에서 Linux VM 실행
 
@@ -197,7 +197,7 @@ az vm show -n ra-single-linux-vm1 -g <resource-group-name> -d -o table
 [iostat]: https://en.wikipedia.org/wiki/Iostat
 [manage-vm-availability]: /azure/virtual-machines/virtual-machines-linux-manage-availability
 [managed-disks]: /azure/storage/storage-managed-disks-overview
-[naming-conventions]: /azure/architecture/best-practices/naming-conventions.md
+[naming-conventions]: ../../best-practices/naming-conventions.md
 [nsg]: /azure/virtual-network/virtual-networks-nsg
 [nsg-default-rules]: /azure/virtual-network/virtual-networks-nsg#default-rules
 [planned-maintenance]: /azure/virtual-machines/virtual-machines-linux-planned-maintenance

@@ -3,12 +3,12 @@ title: 데이터 분석 및 보고 기술 선택
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 830c61bba64a6971c815330887e5cdcc4f2b5f56
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 05e33a3da0933036a604d2bc4cc5a20ae70fe772
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29288915"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428318"
 ---
 # <a name="choosing-a-data-analytics-technology-in-azure"></a>Azure에서 데이터 분석 기술 선택
 
@@ -73,28 +73,28 @@ HDInsight 클러스터에서 실행되며 클러스터의 기본 저장소 계�
 
 ## <a name="capability-matrix"></a>기능 매트릭스
 
-다음 표에서 주요 기능 차이점을 요약해서 보여 줍니다. 
+다음 표에서는 주요 기능 차이점을 요약해서 보여 줍니다. 
 
 ### <a name="general-capabilities"></a>일반 기능
 
 | | Power BI | Jupyter 노트북 | Zeppelin 노트 | Microsoft Azure 노트 |
 | --- | --- | --- | --- | --- |
-| 고급 처리를 위해 빅 데이터 클러스터에 연결 | 예 | 예 | 예 | 아니요 |
-| 관리되는 서비스 | 예 | 예 <sup>1</sup> | 예 <sup>1</sup> | 예 |
-| 수백 개의 데이터 원본에 연결 | 예 | 아니오 | 아니요 | 아니요 |
+| 고급 처리를 위해 빅 데이터 클러스터에 연결 | yes | 예 | yes | 아니요 |
+| 관리되는 서비스 | yes | 예 <sup>1</sup> | 예 <sup>1</sup> | yes |
+| 수백 개의 데이터 원본에 연결 | yes | 아니요 | 아니요 | 아니요 |
 | 오프라인 기능 | 예 <sup>2</sup> | 아니요 | 아니요 | 아니요 |
-| 포함 기능 | 예 | 아니오 | 아니요 | 아니요 |
-| 자동 데이터 새로 고침 | 예 | 아니요 | 아니요 | 아니오 |
+| 포함 기능 | yes | 아니요 | 아니요 | 아니요 |
+| 자동 데이터 새로 고침 | yes | 아니요 | 아니요 | 아니요 |
 | 다양한 오픈 소스 패키지에 액세스 | 아니요 | 예 <sup>3</sup> | 예 <sup>3</sup> | 예 <sup>4</sup> |
 | 데이터 변환/정리 옵션 | [파워 쿼리](https://powerbi.microsoft.com/blog/getting-started-with-power-query-part-i/), R | 40개 언어(Python, R, Julia 및 Scala 포함) | 20개 이상의 인터프리터(Python, JDBC 및 R 포함) | Python, F#, R |
 | 가격 | 무료 Power BI Desktop(제작)에 대해서는 호스팅 옵션에 대한 [가격 책정](https://powerbi.microsoft.com/pricing/)을 참조하세요. | 무료 | 무료 | 무료 |
-| 다중 사용자 공동 작업 | [예](/power-bi/service-how-to-collaborate-distribute-dashboards-reports) | 예(공유를 통해 또는 [JupyterHub](https://github.com/jupyterhub/jupyterhub)와 같은 다중 사용자 서버를 사용하여) | 예 | 예(공유를 통해) |
+| 다중 사용자 공동 작업 | [예](/power-bi/service-how-to-collaborate-distribute-dashboards-reports) | 예(공유를 통해 또는 [JupyterHub](https://github.com/jupyterhub/jupyterhub)와 같은 다중 사용자 서버를 사용하여) | yes | 예(공유를 통해) |
 
 [1] 관리되는 HDInsight 클러스터의 일부로 사용되는 경우
 
 [2] Power BI Desktop을 사용하여
 
-[2] [Maven 리포지토리](http://search.maven.org/)에서 커뮤니티 제공 패키지를 검색할 수 있습니다.
+[2] [Maven 리포지토리](https://search.maven.org/)에서 커뮤니티 제공 패키지를 검색할 수 있습니다.
 
 [3] Python 패키지를 pip 또는 conda를 사용하여 설치할 수 있습니다. R 패키지는 CRAN 또는 GitHub에서 설치할 수 있습니다. F#의 패키지는 [Paket 종속성 관리자](https://fsprojects.github.io/Paket/)를 사용하여 nuget.org를 통해 설치할 수 있습니다.
 

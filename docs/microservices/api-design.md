@@ -3,12 +3,12 @@ title: API 디자인
 description: 마이크로 서비스에 대한 API 디자인
 author: MikeWasson
 ms.date: 12/08/2017
-ms.openlocfilehash: d85407f3092ddb5f77aacfea8def2784c4741eb9
-ms.sourcegitcommit: 786bafefc731245414c3c1510fc21027afe303dc
+ms.openlocfilehash: e3524fca177d8c15b280d0f8a706539369c1773a
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2017
-ms.locfileid: "26653201"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429131"
 ---
 # <a name="designing-microservices-api-design"></a>마이크로 서비스 디자인: API 디자인
 
@@ -124,10 +124,10 @@ API를 디자인할 때 도메인 모델을 표현하는 방법, 모델 내의 �
 | DDD 개념 | REST 해당 항목 | 예 | 
 |-------------|-----------------|---------|
 | 집계 | 리소스 | `{ "1":1234, "status":"pending"... }` | 
-| ID | URL | `http://delivery-service/deliveries/1` |
+| ID | URL | `https://delivery-service/deliveries/1` |
 | 자식 엔터티 | 링크 | `{ "href": "/deliveries/1/confirmation" }` |
-| 업데이트 값 개체 | PUT 또는 PATCH | `PUT http://delivery-service/deliveries/1/dropoff` |
-| 리포지토리 | 컬렉션 | `http://delivery-service/deliveries?status=pending` |
+| 업데이트 값 개체 | PUT 또는 PATCH | `PUT https://delivery-service/deliveries/1/dropoff` |
+| 리포지토리 | 컬렉션 | `https://delivery-service/deliveries?status=pending` |
 
 
 ## <a name="api-versioning"></a>API 버전 관리

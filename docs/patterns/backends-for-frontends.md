@@ -3,12 +3,12 @@ title: 프런트 엔드에 대한 백 엔드 패턴
 description: 특정 프런트 엔드 응용 프로그램 또는 인터페이스에서 사용할 별도의 백 엔드 서비스를 만듭니다.
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 2991d7a3e05b3ce6cd5148a552bae6d4ba8f7c4c
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: a0dbc9ab58aa218f6faf40b70dad1bdc22d71458
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30270022"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428791"
 ---
 # <a name="backends-for-frontends-pattern"></a>프런트 엔드에 대한 백 엔드 패턴
 
@@ -34,7 +34,7 @@ ms.locfileid: "30270022"
 
 각 백 엔드는 하나의 인터페이스에 맞춰지므로 해당 인터페이스에 대해 최적화할 수 있습니다. 결과적으로 모든 인터페이스의 요구 사항을 충족하는 일반 백 엔드보다 더 작고, 덜 복잡하고, 더 빠를 수 있습니다. 각 인터페이스 팀은 자율적으로 자체 백 엔드를 제어할 수 있으며, 중앙 집중식 백 엔드 개발 팀에 의존하지 않습니다. 이를 통해 인터페이스 팀은 언어 선택, 릴리스 일정, 작업 우선 순위, 백 엔드의 기능 통합 문제를 유연하게 처리할 수 있습니다.
 
-자세한 내용은 [패턴: 프런트 엔드에 대한 백 엔드](http://samnewman.io/patterns/architectural/bff/)를 참조하세요.
+자세한 내용은 [패턴: 프런트 엔드에 대한 백 엔드](https://samnewman.io/patterns/architectural/bff/)를 참조하세요.
 
 ## <a name="issues-and-considerations"></a>문제 및 고려 사항
 

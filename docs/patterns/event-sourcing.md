@@ -8,12 +8,12 @@ pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - data-management
 - performance-scalability
-ms.openlocfilehash: 9a0bf170c9b54c3b2ee9cc91d6dcb5c55a13b96a
-ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
+ms.openlocfilehash: 1cb63b61f5eb97726e266f797dfe13011907c95f
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29963213"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429335"
 ---
 # <a name="event-sourcing-pattern"></a>이벤트 소싱 패턴
 
@@ -82,7 +82,7 @@ CRUD 접근 방법에는 다음과 같은 몇 가지 제한 사항이 있습니�
 
 정보를 얻기 위해 이벤트를 읽는 표준 방법이나 SQL 쿼리와 같은 기존 메커니즘은 없습니다. 추출할 수 있는 데이터는 이벤트 식별자를 기준으로 사용하는 이벤트 스트림뿐입니다. 이벤트 ID는 일반적으로 개별 엔터티에 매핑됩니다. 엔터티의 현재 상태는 관련된 모든 이벤트를 해당 엔터티의 원래 상태에 대해 재생해야만 확인할 수 있습니다.
 
-각 이벤트 스트림의 길이는 시스템 관리 및 업데이트에 영향을 줍니다. 스트림이 큰 경우 지정된 이벤트 수 등의 특정 간격으로 스냅숏을 만드는 것이 좋습니다. 스냅숏에서 해당 시점 이후에 발생한 이벤트를 재생하면 엔터티의 현재 상태를 확인할 수 있습니다. 데이터 스냅숏을 만드는 방법에 대한 자세한 내용은 [Martin Fowler 엔터프라이즈 응용프로그램 아키텍처 웹 사이트의 스냅숏](http://martinfowler.com/eaaDev/Snapshot.html) 및 [마스터-하위 스냅숏 복제](https://msdn.microsoft.com/library/ff650012.aspx)를 참조하세요.
+각 이벤트 스트림의 길이는 시스템 관리 및 업데이트에 영향을 줍니다. 스트림이 큰 경우 지정된 이벤트 수 등의 특정 간격으로 스냅숏을 만드는 것이 좋습니다. 스냅숏에서 해당 시점 이후에 발생한 이벤트를 재생하면 엔터티의 현재 상태를 확인할 수 있습니다. 데이터 스냅숏을 만드는 방법에 대한 자세한 내용은 [Martin Fowler 엔터프라이즈 응용프로그램 아키텍처 웹 사이트의 스냅숏](https://martinfowler.com/eaaDev/Snapshot.html) 및 [마스터-하위 스냅숏 복제](https://msdn.microsoft.com/library/ff650012.aspx)를 참조하세요.
 
 이벤트 소싱이 데이터 업데이트의 충돌 가능성을 최소화하더라도 응용 프로그램이 결과적 일관성과 트랜잭션 부족에서 발생하는 불일치를 처리할 수 있어야 합니다. 예를 들어 해당 품목이 주문되는 동안 재고 감소를 나타내는 이벤트가 데이터 저장소에 도착하여 고객에게 안내하거나 이월 주문을 만들어 두 작업을 조정해야 할 수 있습니다.
 
@@ -162,5 +162,3 @@ CRUD 접근 방법에는 다음과 같은 몇 가지 제한 사항이 있습니�
 - [데이터 일관성 입문서](https://msdn.microsoft.com/library/dn589800.aspx). 개별 읽기 저장소 또는 구체화된 뷰와 함께 이벤트 소싱을 사용하는 경우 데이터 읽기가 즉시 일치하지 않고 결과적 일관성만 제공됩니다. 분산 데이터에 대한 일관성 유지와 관련된 문제를 요약합니다.
 
 - [데이터 분할 지침](https://msdn.microsoft.com/library/dn589795.aspx). 이벤트 소싱을 사용하여 확장성을 향상하고, 경합을 줄이고, 성능을 최적화하는 경우 데이터가 분할되는 경우가 많습니다. 데이터를 개별 파티션으로 나누는 방법과 발생할 수 있는 문제에 대해 설명합니다.
-
-- Greg Young 게시물 [Why use Event Sourcing?](http://codebetter.com/gregyoung/2010/02/20/why-use-event-sourcing/)(이벤트 소싱을 사용하는 이유).

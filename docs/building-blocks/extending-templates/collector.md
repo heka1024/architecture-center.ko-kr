@@ -3,12 +3,12 @@ title: Azure Resource Manager 템플릿에서 속성 변환기 및 수집기 구
 description: Azure Resource Manager 템플릿에서 속성 변환기 및 수집기를 구현하는 방법을 설명합니다.
 author: petertay
 ms.date: 06/09/2017
-ms.openlocfilehash: 893779e652b845b3d936d11936dc767ef632fa43
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 2c2fd93c977b82bed05ebe0ae68233a700df0f4f
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582636"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428587"
 ---
 # <a name="implement-a-property-transformer-and-collector-in-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿에서 속성 변환기 및 수집기 구현
 
@@ -88,7 +88,7 @@ ms.locfileid: "26582636"
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "source": { "type": "object" },
@@ -180,7 +180,7 @@ ms.locfileid: "26582636"
         "mode": "Incremental",
         "parameters": { },
         "template": {
-          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": { },
           "variables": { },

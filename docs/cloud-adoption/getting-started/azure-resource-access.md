@@ -3,12 +3,12 @@ title: '엔터프라이즈 클라우드 채택: Azure의 리소스 액세스 관
 description: 'Azure에서 리소스 액세스 관리 구문 설명: Azure Resource Manager, 구독, 리소스 그룹 및 리소스'
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: 2e64d8828574ebe216da1e76b19ec3ce5aeda993
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.openlocfilehash: c26b01d207bc4eb100653a826a053b394d03d1e6
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389080"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428706"
 ---
 # <a name="enterprise-cloud-adoption-resource-access-management-in-azure"></a>엔터프라이즈 클라우드 채택: Azure의 리소스 액세스 관리
 
@@ -84,7 +84,7 @@ Azure AD에서 사용자는 **테넌트**로 조각화됩니다. 테넌트는 �
 
 RBAC 역할은 사용자가 특정 리소스에 대해 수행할 수 있는 일련의 사용 권한을 지정합니다. 역할을 사용자에게 할당하면 해당 사용 권한이 적용됩니다. 예를 들어 [기본 제공 **소유자** 역할](/azure/role-based-access-control/built-in-roles#owner)을 사용하면 사용자가 리소스에서 모든 작업을 수행할 수 있습니다.
 
-다음 컨트롤은 [Azure 리소스 정책](/azure/azure-policy/)에 지정된 설정에서 요청이 허용되는지를 검사합니다. Azure 리소스 정책은 특정 리소스에 허용되는 작업을 지정합니다. 예를 들어 Azure 리소스 정책은 사용자가 특정 형식의 가상 머신만을 배포할 수 있도록 지정할 수 있습니다.
+다음 컨트롤은 [Azure 리소스 정책](/azure/governance/policy/)에 지정된 설정에서 요청이 허용되는지를 검사합니다. Azure 리소스 정책은 특정 리소스에 허용되는 작업을 지정합니다. 예를 들어 Azure 리소스 정책은 사용자가 특정 형식의 가상 머신만을 배포할 수 있도록 지정할 수 있습니다.
 
 ![](../_images/governance-1-19.png)   
 *그림 11. Azure 리소스 정책.*

@@ -9,12 +9,12 @@ pnp.pattern.categories:
 - data-management
 - design-implementation
 - performance-scalability
-ms.openlocfilehash: c2832aa806909c6f0aab8b6345ffb8162eb59903
-ms.sourcegitcommit: d08f6ee27e1e8a623aeee32d298e616bc9bb87ff
+ms.openlocfilehash: 9a2eecdff7494fb627ea5c4655e6edc789bd5bdf
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33811052"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429692"
 ---
 # <a name="command-and-query-responsibility-segregation-cqrs-pattern"></a>CQRS(명령 및 쿼리 책임 분리) 패턴
 
@@ -248,8 +248,6 @@ public interface IProductsDomain
 
 - [구체화된 뷰 패턴](materialized-view.md). CQRS를 구현한 읽기 모델은 쓰기 모델 데이터의 구체화된 뷰를 포함할 수 있습니다. 또는 구체화된 뷰를 생성하는 데 읽기 모델을 사용할 수 있습니다.
 
-- 패턴 및 사례 가이드 [CQRS 과정](http://aka.ms/cqrs). 특히 [Introducing the Command Query Responsibility Segregation Pattern](https://msdn.microsoft.com/library/jj591573.aspx)(명령 쿼리 책임 분리 패턴 소개)은 패턴 및 유용한 경우를 탐색하며, [Epilogue: Lessons Learned](https://msdn.microsoft.com/library/jj591568.aspx)(에필로그: 교훈)는 이 패턴을 사용할 때 발생하는 문제 중 일부를 이해하는 데 도움이 됩니다.
+- 패턴 및 사례 가이드 [CQRS 과정](https://aka.ms/cqrs). 특히 [Introducing the Command Query Responsibility Segregation Pattern](https://msdn.microsoft.com/library/jj591573.aspx)(명령 쿼리 책임 분리 패턴 소개)은 패턴 및 유용한 경우를 탐색하며, [Epilogue: Lessons Learned](https://msdn.microsoft.com/library/jj591568.aspx)(에필로그: 교훈)는 이 패턴을 사용할 때 발생하는 문제 중 일부를 이해하는 데 도움이 됩니다.
 
-- [Martin Fowler의 CQRS](http://martinfowler.com/bliki/CQRS.html) 게시물. 패턴의 기본 내용을 설명하고 다른 유용한 리소스에 연결되는 링크를 제공합니다.
-
-- [Greg Young의 게시물](http://codebetter.com/gregyoung/). CQRS 패턴의 여러 측면을 탐색합니다.
+- [Martin Fowler의 CQRS](https://martinfowler.com/bliki/CQRS.html) 게시물. 패턴의 기본 내용을 설명하고 다른 유용한 리소스에 연결되는 링크를 제공합니다.

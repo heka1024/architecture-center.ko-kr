@@ -3,13 +3,13 @@ title: 구독 거버넌스에 대한 시나리오 및 예제
 description: 일반적인 시나리오에서 Azure 구독 관리를 구현하는 방법에 대한 예제를 제공합니다.
 author: rdendtler
 ms.date: 01/03/2017
-ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 2c10b9a61be0cd7dadff6bfb327d938cc498c935
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.author: rodend
+ms.openlocfilehash: 51be0e1cdbcb3258102c9e4a4790764cada98d1e
+ms.sourcegitcommit: 9eecff565392273d11b8702f1fcecb4d75e27a15
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43327724"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48243668"
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Azure 엔터프라이즈 스캐폴드 구현 예제
 이 문서에서는 기업에서 [Azure 엔터프라이즈 스캐폴드](azure-scaffold.md)에 대한 권장 사항을 구현하는 방법에 대한 예를 제공합니다. Contoso라는 가상의 회사를 사용하여 일반적인 시나리오의 모범 사례를 보여 줍니다.
@@ -34,7 +34,7 @@ Contoso는 전 세계 개발자가 사용할 소스 코드 관리 시스템(BitB
 ### <a name="naming-standards--resource-groups"></a>이름 지정 표준 및 리소스 그룹
 Dave는 모든 사업부 간에 일반적인 개발자 도구를 지원하는 구독을 만듭니다. Dave는 구독과 리소스 그룹(응용 프로그램 및 네트워크용)에 대해 의미 있는 이름을 만들어야 합니다. 다음 구독 및 리소스 그룹을 만듭니다.
 
-| 항목 | Name | 설명 |
+| 항목 | 이름 | 설명 |
 | --- | --- | --- |
 | 구독 |Contoso ETS DeveloperTools Production |일반적인 개발자 도구 지원 |
 | 리소스 그룹 |bitbucket-prod-rg |응용 프로그램 웹 서버 및 데이터베이스 서버 포함 |
@@ -85,7 +85,7 @@ Contoso ETS 정보 보안 및 위험 관리 팀은 응용 프로그램을 Azure�
 
 그는 다음 리소스를 만듭니다.
 
-| 리소스 종류 | Name | 설명 |
+| 리소스 종류 | 이름 | 설명 |
 | --- | --- | --- |
 | Virtual Network |internal-vnet |BitBucket 응용 프로그램에 사용되며 ExpressRoute를 통해 Contoso의 회사 네트워크에 연결됩니다.  서브넷(`bitbucket`)에서 응용 프로그램에 특정 IP 주소 공간을 제공합니다. |
 | Virtual Network |external-vnet |공용 엔드포인트가 필요한 미래의 응용 프로그램에 사용할 수 있습니다. |
@@ -114,7 +114,7 @@ Contoso IT 서비스 관리를 위해서는 위협을 신속하게 파악하고 
 ### <a name="azure-subscriptions"></a>Azure 구독
 Dave는 Azure Enterprise Portal에 로그인하여 공급망 부서가 이미 있는지 확인합니다.  하지만 이 프로젝트는 Azure에서 공급망 팀을 위한 첫 번째 개발 프로젝트이므로 Dave는 Alice 개발 팀을 위해 새 계정이 필요하다는 것을 알게 됩니다.  Alice 팀을 위한 "R&D" 계정을 만들고 Alice에게 액세스 권한을 할당해 줍니다. Alice는 Azure Portal을 통해 로그인하고 두 개의 구독을 만듭니다. 하나는 개발 서버를 보유하고 하나는 프로덕션 서버를 보유합니다.  다음 구독을 만들 때 이전에 설정한 이름 지정 표준을 따릅니다.
 
-| 구독 용도 | Name |
+| 구독 용도 | 이름 |
 | --- | --- |
 | 개발 |Contoso SupplyChain ResearchDevelopment LoyaltyCard Development |
 | 프로덕션 |Contoso SupplyChain Operations LoyaltyCard Production |
@@ -155,13 +155,13 @@ Contoso ETS 정보 보안 및 위험 관리 팀은 응용 프로그램을 Azure�
 
 **개발 구독**을 위해 다음을 만듭니다.
 
-| 리소스 종류 | Name | 설명 |
+| 리소스 종류 | 이름 | 설명 |
 | --- | --- | --- |
 | Virtual Network |internal-vnet |Contoso 로열티 카드 개발 환경을 제공하고 ExpressRoute를 통해 Contoso의 회사 네트워크에 연결됩니다. |
 
 **프로덕션 구독**을 위해 다음을 만듭니다.
 
-| 리소스 종류 | Name | 설명 |
+| 리소스 종류 | 이름 | 설명 |
 | --- | --- | --- |
 | Virtual Network |external-vnet |로열티 카드 응용 프로그램을 호스트하고 Contoso의 ExpressRoute에 직접 연결되지 않습니다. 코드는 소스 코드 시스템을 통해 PaaS 서비스에 직접 푸시됩니다. |
 | 네트워크 보안 그룹 |loyaltycard-nsg |TCP 443에서 인바운드 통신만 허용하여 이 워크로드의 공격 취약성이 최소화되도록 합니다.  또한 Contoso는 웹 응용 프로그램 방화벽을 사용하여 추가 보호를 조사하고 있습니다. |

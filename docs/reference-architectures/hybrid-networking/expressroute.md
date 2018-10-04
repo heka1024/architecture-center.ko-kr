@@ -7,12 +7,12 @@ pnp.series.title: Connect an on-premises network to Azure
 pnp.series.next: expressroute-vpn-failover
 pnp.series.prev: vpn
 cardTitle: ExpressRoute
-ms.openlocfilehash: ada07f399925da6da28b24260f5c73f1e106fd7d
-ms.sourcegitcommit: c441fd165e6bebbbbbc19854ec6f3676be9c3b25
+ms.openlocfilehash: efaf1ef479f24d51a19236d401cbe5765d052235
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30270322"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429522"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute"></a>ExpressRoute를 사용하여 온-프레미스 네트워크를 Azure에 연결
 
@@ -22,7 +22,7 @@ ms.locfileid: "30270322"
 
 *이 아키텍처의 [Visio 파일][visio-download]을 다운로드합니다.*
 
-## <a name="architecture"></a>건축
+## <a name="architecture"></a>아키텍처
 
 이 아키텍처는 다음 구성 요소로 구성됩니다.
 
@@ -232,7 +232,7 @@ ExpressRoute는 레이어 3에서 작동합니다. 응용 프로그램 레이어
 
 보안을 최대화하려면 VM에 대해 공용 IP 주소를 사용하지 않도록 설정하고 NSG를 사용하여 이러한 VM에 공개적으로 액세스할 수 없도록 합니다. 내부 IP 주소를 통해서만 VM을 사용할 수 있어야 합니다. ExpressRoute 네트워크를 통해 이 주소에 액세스하여 온-프레미스 DevOps 직원이 구성 또는 유지 관리를 수행할 수 있도록 합니다.
 
-VM의 관리 끝점을 외부 네트워크에 노출해야 하는 경우 NSG 또는 액세스 제어 목록을 사용하여 이러한 포트의 가시성을 IP 주소 또는 네트워크의 허용 목록으로 제한합니다.
+VM의 관리 엔드포인트를 외부 네트워크에 노출해야 하는 경우 NSG 또는 액세스 제어 목록을 사용하여 이러한 포트의 가시성을 IP 주소 또는 네트워크의 허용 목록으로 제한합니다.
 
 > [!NOTE]
 > 기본적으로 Azure Portal을 통해 배포된 Azure VM에는 로그인 액세스를 제공하는 공용 IP 주소가 포함되어 있습니다.  
@@ -246,7 +246,7 @@ VM의 관리 끝점을 외부 네트워크에 노출해야 하는 경우 NSG 또
 
 솔루션을 배포하려면 다음 단계를 수행합니다.
 
-1. 아래 단추를 클릭합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fhybrid-networking%2Fexpressroute%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+1. 아래 단추를 클릭합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fhybrid-networking%2Fexpressroute%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure Portal에서 링크가 열릴 때까지 기다린 후 다음 단계를 수행합니다.
    * **리소스 그룹** 이름이 매개 변수 파일에 이미 정의되어 있으므로 **새로 만들기**를 선택하고 텍스트 상자에 `ra-hybrid-er-rg`를 입력합니다.
    * **위치** 드롭다운 상자에서 하위 지역을 선택합니다.
@@ -254,7 +254,7 @@ VM의 관리 끝점을 외부 네트워크에 노출해야 하는 경우 NSG 또
    * 사용 약관을 검토한 후 **위에 명시된 사용 약관에 동의함** 확인란을 클릭합니다.
    * **구매** 단추를 클릭합니다.
 3. 배포가 완료될 때가지 기다립니다.
-4. 아래 단추를 클릭합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fhybrid-networking%2Fexpressroute%2Fazuredeploy-expressRouteCircuit.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+4. 아래 단추를 클릭합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fhybrid-networking%2Fexpressroute%2Fazuredeploy-expressRouteCircuit.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 5. Azure Portal에서 링크가 열릴 때까지 기다린 후 다음 단계를 수행합니다.
    * **리소스 그룹** 섹션에서 **기존 항목 사용**을 선택하고 텍스트 상자에 `ra-hybrid-er-rg`를 입력합니다.
    * **위치** 드롭다운 상자에서 하위 지역을 선택합니다.

@@ -3,12 +3,12 @@ title: Azure의 전자 상거래 프런트 엔드
 description: Azure에서 전자 상거래 사이트를 호스팅하는 데 입증된 시나리오입니다.
 author: masonch
 ms.date: 7/13/18
-ms.openlocfilehash: 1af481476c74b365ce5145636426683c6896b00b
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.openlocfilehash: 340f60628bf932489a9fbd11ac3ff1be723a685c
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389199"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428077"
 ---
 # <a name="e-commerce-frontend-on-azure"></a>Azure의 전자 상거래 프런트 엔드
 
@@ -62,7 +62,7 @@ ms.locfileid: "44389199"
 
 웹 계층 및 기능에 대한 다른 옵션은 다음과 같습니다.
 
-* [Service Fabric][docs-service-fabric] - 높은 수준의 제어를 통해 클러스터 전체에 배포되고 실행되는 이점이 있는 분산 구성 요소를 구축하는 데 중점을 둔 플랫폼입니다. 또한 컨테이너를 호스팅하는 데도 사용할 수 있습니다.
+* [Service Fabric][docs-service-fabric] - 높은 수준의 제어를 통해 클러스터 전체에 배포되고 실행되는 이점이 있는 분산 구성 요소를 구축하는 데 중점을 둔 플랫폼입니다. Service Fabric은 컨테이너를 호스팅하는 데도 사용할 수 있습니다.
 * [Azure Kubernetes Service][docs-kubernetes-service] - 마이크로 서비스 아키텍처의 한 구현으로 사용할 수 있는 컨테이너 기반 솔루션을 구축하고 배포하는 플랫폼입니다. 필요에 따라 응용 프로그램의 여러 구성 요소를 독립적으로 민첩하게 크기 조정할 수 있습니다.
 * [Azure Container Instances][docs-container-instances] - 짧은 수명 주기의 컨테이너를 빠르게 배포하고 실행할 수 있습니다. 여기에 있는 컨테이너는 메시지 처리 또는 계산 수행과 같은 빠른 처리 작업을 실행하기 위해 배포된 다음, 완료되는 즉시 프로비전 해제됩니다.
 * [Service Bus][service-bus]는 저장소 큐를 대신하여 사용할 수 있습니다.
@@ -123,7 +123,7 @@ ms.locfileid: "44389199"
 [small-pricing]: https://azure.com/e/90fbb6a661a04888a57322985f9b34ac
 [medium-pricing]: https://azure.com/e/38d5d387e3234537b6859660db1c9973
 [large-pricing]: https://azure.com/e/f07f99b6c3134803a14c9b43fcba3e2f
-[app-service-reference-architecture]: /azure/architecture/reference-architectures/app-service-web-app/
+[app-service-reference-architecture]: ../../reference-architectures/app-service-web-app/basic-web-app.md
 [architecture-diagram]: ./media/architecture-diagram-ecommerce-solution.png
 [availability]: /azure/architecture/checklist/availability
 [circuit-breaker]: /azure/architecture/patterns/circuit-breaker

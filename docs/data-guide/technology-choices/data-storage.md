@@ -3,12 +3,12 @@ title: 데이터 저장소 기술 선택
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: b14611a2dc34bcb145cf420441795d4124e7baeb
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 496df68024aef0dcf030bb7e0138639610aa8a79
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30847212"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429352"
 ---
 # <a name="choosing-a-big-data-storage-technology-in-azure"></a>Azure의 빅 데이터 저장소 기술 선택
 
@@ -26,7 +26,7 @@ Azure에서는 사용자의 요구에 따라 다음과 같은 몇 가지 데이�
 **NoSQL 데이터베이스**
 
 - [Azure Cosmos DB](/azure/cosmos-db/)
-- [HDInsight의 HBase](http://hbase.apache.org/)
+- [HDInsight의 HBase](https://hbase.apache.org/)
 
 ## <a name="azure-storage-blobs"></a>Azure Storage Blob
 
@@ -69,7 +69,7 @@ Azure DB Cosmos 기능은 다음과 같습니다.
 
 ## <a name="hbase-on-hdinsight"></a>HDInsight의 HBase
 
-[Apache HBase](http://hbase.apache.org/)는 Hadoop을 기반으로 하고 Google BigTable 이후에 모델링된 오픈 소스 NoSQL 데이터베이스입니다. HBase는 열 패밀리로 구성된 스키마 없는 데이터베이스에서 구조화되지 않은/반구조화된 대량 데이터에 대해 임의 액세스 및 강력한 일관성을 제공합니다.
+[Apache HBase](https://hbase.apache.org/)는 Hadoop을 기반으로 하고 Google BigTable 이후에 모델링된 오픈 소스 NoSQL 데이터베이스입니다. HBase는 열 패밀리로 구성된 스키마 없는 데이터베이스에서 구조화되지 않은/반구조화된 대량 데이터에 대해 임의 액세스 및 강력한 일관성을 제공합니다.
 
 데이터는 테이블의 행에 저장되고 행 내의 데이터는 열 제품군으로 그룹화됩니다. HBase는 사용 전에 열과 열에 저장되는 데이터 형식을 정의할 필요가 없다는 점에서 스키마 없는 데이터베이스입니다. 오픈 소스 코드는 수천 대의 노드에 있는 페타바이트 크기의 데이터를 처리할 수 있을 정도로 선형으로 확장됩니다. Hadoop 에코시스템의 분산 응용 프로그램이 제공하는 데이터 중복, 일괄 처리 및 기타 기능을 사용할 수 있습니다.
 
@@ -113,10 +113,10 @@ Azure DB Cosmos 기능은 다음과 같습니다.
 |                                    |                                           Azure Cosmos DB                                           |                                                             HDInsight의 HBase                                                             |
 |------------------------------------|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 |       주 데이터베이스 모델       |                      문서 저장소, 그래프, 키-값 저장소, 넓은 열 저장소                      |                                                             넓은 열 저장소                                                              |
-|         보조 인덱스          |                                                 예                                                 |                                                                     아니요                                                                     |
-|        SQL 언어 지원        |                                                 예                                                 |                                     예([Phoenix](http://phoenix.apache.org/) JDBC 드라이버 사용)                                      |
+|         보조 인덱스          |                                                 yes                                                 |                                                                     아니요                                                                     |
+|        SQL 언어 지원        |                                                 yes                                                 |                                     예([Phoenix](https://phoenix.apache.org/) JDBC 드라이버 사용)                                      |
 |            일관성             |                   강력, 제한된 부실, 세션, 일관적인 접두사, 최종                   |                                                                   강력                                                                   |
-| 네이티브 Azure Functions 통합 |                        [예](/azure/cosmos-db/serverless-computing-database)                        |                                                                     아니오                                                                     |
+| 네이티브 Azure Functions 통합 |                        [예](/azure/cosmos-db/serverless-computing-database)                        |                                                                     아니요                                                                     |
 |   자동 글로벌 배포    |                          [예](/azure/cosmos-db/distribute-data-globally)                           | 아니요 [HBase 클러스터 복제](/azure/hdinsight/hbase/apache-hbase-replication)를 최종 일관성을 갖는 지역 간에 구성할 수 있습니다. |
 |           가격 책정 모델            | 탄력적으로 확장 가능한 RU(요청 단위)에 필요에 따라 초당 요금 부과, 탄력적으로 확장 가능한 저장소 |                              HDInsight 클러스터에 대해 분단위 가격 책정(수평 노드 확장), 저장소                               |
 

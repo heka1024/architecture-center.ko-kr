@@ -3,12 +3,12 @@ title: 규제 산업용 Windows 웹 응용 프로그램 보호
 description: 확장 집합, Application Gateway 및 부하 분산 장치를 사용하는 Azure의 Windows Server에서 안전한 다중 계층 웹 응용 프로그램을 구축하는 데 입증된 시나리오입니다.
 author: iainfoulds
 ms.date: 07/11/2018
-ms.openlocfilehash: 3572f215d9134a6650d76e1b14458226334c6f42
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.openlocfilehash: 780b82791510b6ca06ef918b66d2547794dfcf87
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389289"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428757"
 ---
 # <a name="secure-windows-web-application-for-regulated-industries"></a>규제 산업용 Windows 웹 응용 프로그램 보호
 
@@ -90,7 +90,7 @@ PCI DSS(지불 카드 산업 데이터 보안 표준) 3.2 규정 준수 인프�
 
 Azure Resource Manager 템플릿을 사용하여 이 시나리오에 대한 핵심 인프라를 배포하려면 다음 단계를 수행합니다.
 
-1. **Azure에 배포** 단추를 선택합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Finfrastructure%2Fregulated-multitier-app%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+1. **Azure에 배포** 단추를 선택합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Finfrastructure%2Fregulated-multitier-app%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure Portal에서 템플릿 배포가 열릴 때까지 기다린 후에 다음 단계를 수행합니다.
    * 리소스 그룹 **새로 만들기**를 선택한 다음, 텍스트 상자에서 이름(예: *myWindowsscenario*)을 입력합니다.
    * **위치** 드롭다운 상자에서 지역을 선택합니다.
@@ -120,7 +120,7 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오에 대한 핵�
 [appgateway-docs]: /azure/application-gateway/overview
 [architecture]: ./media/regulated-multitier-app/architecture-regulated-multitier-app.png
 [autoscaling]: /azure/architecture/best-practices/auto-scaling
-[availability]: /architecture/checklist/availability
+[availability]: ../../checklist/availability.md
 [azureaz-docs]: /azure/availability-zones/az-overview
 [azurecosmosdb-docs]: /azure/cosmos-db/introduction
 [cloudwitness-docs]: /windows-server/failover-clustering/deploy-cloud-witness

@@ -7,12 +7,12 @@ ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - resiliency
-ms.openlocfilehash: a822de990d6ce933024207073b110e98f8da40bf
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: 3d58537d9c77b97332bcabf762b9af7ed2f20421
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26582888"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428145"
 ---
 # <a name="compensating-transaction-pattern"></a>보상 트랜잭션 패턴
 
@@ -38,9 +38,9 @@ ms.locfileid: "26582888"
 
 일반적인 방법은 워크플로를 사용하여 보정을 필요로 하는 최종적으로 일관된 작업을 구현하는 것입니다. 원래 작업이 계속 진행될 때 시스템은 각 단계와 해당 단계가 수행한 작업을 실행 취소하는 방법에 대한 정보를 기록합니다. 특정 시점에 작업이 실패하면 워크플로는 완료된 단계 이전으로 되돌아가고, 각 단계를 되돌리는 작업을 수행합니다. 보정 트랜잭션은 원래 작업의 정확히 반대 순서로 작업을 실행 취소할 필요는 없으며, 일부 실행 취소 단계를 동시에 수행할 수 있습니다.
 
-> 이 접근 방식은 [Clemens Vasters 블로그](http://vasters.com/clemensv/2012/09/01/Sagas.aspx)에 설명된 Sagas 전략과 비슷합니다.
+> 이 접근 방식은 [Clemens Vasters 블로그](https://vasters.com/clemensv/2012/09/01/Sagas.aspx)에 설명된 Sagas 전략과 비슷합니다.
 
-보정 트랜잭션은 최종적으로 일관된 작업이며, 실패할 수도 있습니다. 시스템은 오류 발생 지점에서 보정 트랜잭션을 다시 시작하고 계속할 수 있어야 합니다. 보정 트랜잭션의 단계를 멱등원 명령으로 정의해야 하므로, 실패한 단계를 반복해야 할 수 있습니다. 자세한 내용은 Jonathan Oliver 블로그에서 [멱등원 패턴](http://blog.jonathanoliver.com/idempotency-patterns/)을 참조하세요.
+보정 트랜잭션은 최종적으로 일관된 작업이며, 실패할 수도 있습니다. 시스템은 오류 발생 지점에서 보정 트랜잭션을 다시 시작하고 계속할 수 있어야 합니다. 보정 트랜잭션의 단계를 멱등원 명령으로 정의해야 하므로, 실패한 단계를 반복해야 할 수 있습니다. 자세한 내용은 Jonathan Oliver 블로그에서 [멱등원 패턴](https://blog.jonathanoliver.com/idempotency-patterns/)을 참조하세요.
 
 경우에 따라 수동 개입을 통한 경우를 제외하고, 실패한 단계에서 복구하지 못할 수도 있습니다. 이러한 경우 시스템은 경고를 발생시키며, 실패 이유에 대한 가능한 많은 정보를 제공해야 합니다.
 
@@ -95,7 +95,7 @@ ms.locfileid: "26582888"
 
 이 패턴을 구현할 때 다음 패턴 및 지침도 관련이 있을 수 있습니다.
 
-- [데이터 일관성 입문서](https://msdn.microsoft.com/library/dn589800.aspx). 보정 트랜잭션 패턴은 종종 최종 일관성 모델이 구현하는 작업을 실행 취소하는 데 사용됩니다. 이 입문서는 최종 일관성의 장단점에 대한 정보를 제공합니다.
+- [Data Consistency Primer](https://msdn.microsoft.com/library/dn589800.aspx)(데이터 일관성 입문서). 보정 트랜잭션 패턴은 종종 최종 일관성 모델이 구현하는 작업을 실행 취소하는 데 사용됩니다. 이 입문서는 최종 일관성의 장단점에 대한 정보를 제공합니다.
 
 - [스케줄러-에이전트-감독자 패턴](scheduler-agent-supervisor.md). 분산 서비스 및 리소스를 사용하는 비즈니스 작업을 수행하는 복원력 있는 시스템을 구현하는 방법을 설명합니다. 경우에 따라 보정 트랜잭션을 사용하여 작업에 의해 수행된 결과를 실행 취소해야 할 수도 있습니다.
 

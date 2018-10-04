@@ -4,12 +4,12 @@ description: API를 구현하는 방법에 대한 지침입니다.
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: cc28864de36afdeed2f8a7155a307e312c3a398e
-ms.sourcegitcommit: c93f1b210b3deff17cc969fb66133bc6399cfd10
+ms.openlocfilehash: fff377d347ce93e9fb83fff1f5a44fe1c7b4dbea
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27596022"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429403"
 ---
 # <a name="api-implementation"></a>API 구현
 
@@ -24,7 +24,7 @@ ms.locfileid: "27596022"
 이러한 요청을 구현하는 코드는 파생 효과를 부과하지 말아야 합니다. 동일한 리소스에 대해 동일한 요청이 반복되면 그 결과는 동일한 상태여야 합니다. 예를 들어 동일한 URI로 여러 개의 DELETE 요청을 보내면 응답 메시지의 HTTP 상태 코드가 다를 수 있습지만 동일한 결과가 발생해야 합니다. 첫 번째 DELETE 요청은 상태 코드 204(콘텐츠 없음)를 반환할 수 있습니다. 반면 후속 DELETE 요청은 상태 코드 404(찾을 수 없음)를 반환할 수 있습니다
 
 > [!NOTE]
-> Jonathan Oliver의 블로그에 있는 [Idempotency Patterns](http://blog.jonathanoliver.com/idempotency-patterns/) (멱등 패턴) 문서에는 멱등에 대한 개요 및 데이터 관리 옵션과의 관계가 제공되어 있습니다.
+> Jonathan Oliver의 블로그에 있는 [Idempotency Patterns](https://blog.jonathanoliver.com/idempotency-patterns/) (멱등 패턴) 문서에는 멱등에 대한 개요 및 데이터 관리 옵션과의 관계가 제공되어 있습니다.
 >
 
 ### <a name="post-actions-that-create-new-resources-should-not-have-unrelated-side-effects"></a>새 리소스를 생성하는 POST 작업에는 무관한 파생 효과가 없어야 합니다.
@@ -35,7 +35,7 @@ POST 요청이 새 리소스를 생성하기 위한 것이라면, 그 효과는 
 
 리소스 컬렉션을 통해 POST, PUT 및 DELETE 요청을 지원합니다. POST 요청은 다수의 새로운 리소스에 대한 세부 정보를 포함할 수 있으며 그 모두를 동일한 컬렉션에 추가할 수 있고, PUT 요청은 컬렉션에 포함된 전체 리소스를 바꿀 수 있고, DELETE 요청은 컬렉션 전체를 제거할 수 있습니다.
 
-ASP.NET Web API 2에 포함된 OData 지원은 여러 요청을 일괄 처리할 수 있는 기능을 제공합니다. 클라이언트 응용 프로그램은 여러 개의 Web API 요청을 패키지로 만들어서 단일 HTTP 요청으로 서버에 보낼 수 있고, 각 요청에 대한 응답을 포함하는 단일 HTTP 응답을 수신할 수 있습니다. 자세한 내용은 [Web API 및 Web API OData의 Batch 지원 소개](http://blogs.msdn.com/b/webdev/archive/2013/11/01/introducing-batch-support-in-web-api-and-web-api-odata.aspx)를 참조하세요.
+ASP.NET Web API 2에 포함된 OData 지원은 여러 요청을 일괄 처리할 수 있는 기능을 제공합니다. 클라이언트 응용 프로그램은 여러 개의 Web API 요청을 패키지로 만들어서 단일 HTTP 요청으로 서버에 보낼 수 있고, 각 요청에 대한 응답을 포함하는 단일 HTTP 응답을 수신할 수 있습니다. 자세한 내용은 [Web API 및 Web API OData의 Batch 지원 소개](https://blogs.msdn.microsoft.com/webdev/2013/11/01/introducing-batch-support-in-web-api-and-web-api-odata/)를 참조하세요.
 
 ### <a name="follow-the-http-specification-when-sending-a-response"></a>응답을 보낼 때 HTTP 사양을 따릅니다. 
 
@@ -56,7 +56,7 @@ HATEOAS 접근 방식을 통해 클라이언트가 초기 시작 지점으로부
 현재 HATEOAS 구현을 제어하는 표준은 없으며 다음 예제에서 가능한 접근 방식을 볼 수 있습니다. 이 예제에서 고객에 대한 세부 정보를 찾는 HTTP GET 요청은 해당 고객의 주문을 참조하는 HATEOAS 링크를 포함하는 응답을 반환합니다.
 
 ```HTTP
-GET http://adventure-works.com/customers/2 HTTP/1.1
+GET https://adventure-works.com/customers/2 HTTP/1.1
 Accept: text/json
 ...
 ```
@@ -69,23 +69,23 @@ Content-Type: application/json; charset=utf-8
 Content-Length: ...
 {"CustomerID":2,"CustomerName":"Bert","Links":[
     {"rel":"self",
-    "href":"http://adventure-works.com/customers/2",
+    "href":"https://adventure-works.com/customers/2",
     "action":"GET",
     "types":["text/xml","application/json"]},
     {"rel":"self",
-    "href":"http://adventure-works.com/customers/2",
+    "href":"https://adventure-works.com/customers/2",
     "action":"PUT",
     "types":["application/x-www-form-urlencoded"]},
     {"rel":"self",
-    "href":"http://adventure-works.com/customers/2",
+    "href":"https://adventure-works.com/customers/2",
     "action":"DELETE",
     "types":[]},
     {"rel":"orders",
-    "href":"http://adventure-works.com/customers/2/orders",
+    "href":"https://adventure-works.com/customers/2/orders",
     "action":"GET",
     "types":["text/xml","application/json"]},
     {"rel":"orders",
-    "href":"http://adventure-works.com/customers/2/orders",
+    "href":"https://adventure-works.com/customers/2/orders",
     "action":"POST",
     "types":["application/x-www-form-urlencoded"]}
 ]}
@@ -120,11 +120,11 @@ HTTP GET 작업은 저장소에서 고객 데이터를 가져오고 `Customer` �
 
 HTTP 응답 예제에 있는 HATEOAS 링크는 클라이언트 응용 프로그램이 다음 작업을 수행할 수 있다는 것을 나타냅니다.
 
-* URI `http://adventure-works.com/customers/2`에 대한 HTTP GET 요청: 고객 세부 정보를 (다시) 가져오기 위한 요청입니다. 데이터는 XML 또는 JSON으로 반환될 수 있습니다.
-* URI `http://adventure-works.com/customers/2`에 대한 HTTP PUT 요청: 고객 세부 정보를 수정하기 위한 요청입니다. 요청 메시지에 x-www-form-urlencoded 형식의 새로운 데이터가 제공되어야 합니다.
-* URI `http://adventure-works.com/customers/2`에 대한 HTTP DELETE 요청: 고객을 삭제하기 위한 요청입니다. 이 요청은 추가적인 정보를 요구하지 않거나 응답 메시지 본문에 데이터를 반환합니다.
-* URI `http://adventure-works.com/customers/2/orders`에 대한 HTTP GET 요청: 고객에 대한 모든 주문을 찾기 위한 요청입니다. 데이터는 XML 또는 JSON으로 반환될 수 있습니다.
-* URI `http://adventure-works.com/customers/2/orders`에 대한 HTTP PUT 요청: 이 고객에 대한 새로운 주문을 만들기 위한 요청입니다. 요청 메시지에 x-www-form-urlencoded 형식의 데이터가 제공되어야 합니다.
+* URI `https://adventure-works.com/customers/2`에 대한 HTTP GET 요청: 고객 세부 정보를 (다시) 가져오기 위한 요청입니다. 데이터는 XML 또는 JSON으로 반환될 수 있습니다.
+* URI `https://adventure-works.com/customers/2`에 대한 HTTP PUT 요청: 고객 세부 정보를 수정하기 위한 요청입니다. 요청 메시지에 x-www-form-urlencoded 형식의 새로운 데이터가 제공되어야 합니다.
+* URI `https://adventure-works.com/customers/2`에 대한 HTTP DELETE 요청: 고객을 삭제하기 위한 요청입니다. 이 요청은 추가적인 정보를 요구하지 않거나 응답 메시지 본문에 데이터를 반환합니다.
+* URI `https://adventure-works.com/customers/2/orders`에 대한 HTTP GET 요청: 고객에 대한 모든 주문을 찾기 위한 요청입니다. 데이터는 XML 또는 JSON으로 반환될 수 있습니다.
+* URI `https://adventure-works.com/customers/2/orders`에 대한 HTTP PUT 요청: 이 고객에 대한 새로운 주문을 만들기 위한 요청입니다. 요청 메시지에 x-www-form-urlencoded 형식의 데이터가 제공되어야 합니다.
 
 ## <a name="handling-exceptions"></a>예외 처리
 
@@ -132,7 +132,7 @@ HTTP 응답 예제에 있는 HATEOAS 링크는 클라이언트 응용 프로그�
 
 ### <a name="capture-exceptions-and-return-a-meaningful-response-to-clients"></a>예외 사항을 확인하고 클라이언트에 의미 있는 응답을 반환합니다.
 
-HTTP 작업을 구현하는 코드는 catch할 수 없는 예외가 프레임워크에 퍼지도록 하기 보다는 포괄적인 예외 처리를 제공해야 합니다. 예외로 인해 작업을 성공적으로 완료하는 것이 불가능한 경우에는 예외 사항이 응답 메시지에 전달될 수 있습니다. 하지만 예외를 유발한 오류에 대하여 의미 있는 설명을 포함해야 합니다. 예외는 모든 상황에 대해 단순히 상태 코드 500만 반환하기 보다는 적절한 HTTP 상태 코드도 포함해야 합니다. 예를 들어, 사용자 요청으로 인해 제약 조건에 위배되는 데이터베이스 업데이트(예: 주문량이 탁월한 고객을 삭제하려는 시도)가 발생한 경우 상태 코드 409(충돌)와 충돌 이유를 나타내는 메시지 본문을 반환해야 합니다. 다른 조건이 달성할 수 없는 요청을 렌더링하는 경우에는 상태 코드 400(잘못된 요청)을 반환할 수 있습니다. HTTP 상태 코드의 전체 목록은 W3C 웹 사이트의 [Status Code Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)(상태 코드 정의) 페이지에서 찾을 수 있습니다.
+HTTP 작업을 구현하는 코드는 catch할 수 없는 예외가 프레임워크에 퍼지도록 하기 보다는 포괄적인 예외 처리를 제공해야 합니다. 예외로 인해 작업을 성공적으로 완료하는 것이 불가능한 경우에는 예외 사항이 응답 메시지에 전달될 수 있습니다. 하지만 예외를 유발한 오류에 대하여 의미 있는 설명을 포함해야 합니다. 예외는 모든 상황에 대해 단순히 상태 코드 500만 반환하기 보다는 적절한 HTTP 상태 코드도 포함해야 합니다. 예를 들어, 사용자 요청으로 인해 제약 조건에 위배되는 데이터베이스 업데이트(예: 주문량이 탁월한 고객을 삭제하려는 시도)가 발생한 경우 상태 코드 409(충돌)와 충돌 이유를 나타내는 메시지 본문을 반환해야 합니다. 다른 조건이 달성할 수 없는 요청을 렌더링하는 경우에는 상태 코드 400(잘못된 요청)을 반환할 수 있습니다. HTTP 상태 코드의 전체 목록은 W3C 웹 사이트의 [Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)(상태 코드 정의) 페이지에서 찾을 수 있습니다.
 
 코드 예제에서는 다른 조건을 트래핑하고 적절한 응답을 반환합니다.
 
@@ -198,7 +198,7 @@ HTTP 프로토콜은 클라이언트 응용 프로그램으로 인해 발생하�
 HTTP 1.1 프로토콜은 클라이언트 및 Cache-Control 헤더를 사용하여 요청을 라우팅하는 중간 서버에서 캐싱을 지원합니다. 클라이언트 응용 프로그램이 Web API에 HTTP GET 요청을 보내면 응답은 본문에 포함된 데이터가 클라이언트 또는 중간 서버(요청이 라우팅되는)에 의해 안전하게 캐싱될 수 있는지와 얼마 만에 만료되는지, 오래된 것으로 간주되는 지를 나타내는 Cache-Control 헤더를 포함할 수 있습니다. 다음 예제는 HTTP GET 요청 및 Cache-Control 헤더를 포함하는 해당 응답입니다.
 
 ```HTTP
-GET http://adventure-works.com/orders/2 HTTP/1.1
+GET https://adventure-works.com/orders/2 HTTP/1.1
 ```
 
 ```HTTP
@@ -339,7 +339,7 @@ Content-Length: ...
 * 클라이언트는 If-None-Match HTTP 헤더에서 참조하는 리소스의 현재 캐시 버전에 대한 ETag를 포함하는 GET 요청을 구성합니다.
 
     ```HTTP
-    GET http://adventure-works.com/orders/2 HTTP/1.1
+    GET https://adventure-works.com/orders/2 HTTP/1.1
     If-None-Match: "2147483648"
     ```
 * Web API의 GET 작업은 요청한 데이터(위 예제의 order 2)에 대한 현재 ETag를 확보하고 If-None-Match 헤더의 값과 비교합니다.
@@ -452,7 +452,7 @@ public class EmptyResultWithCaching : IHttpActionResult
 * 클라이언트는 리소스에 대해 새로운 세부 정보를 포함하는 PUT 요청과 If-Match HTTP 헤더에 참조되는 리소스의 현재 캐시 버전에 대한 ETag를 구성합니다. 다음 예제는 order를 업데이트하는 PUT 요청입니다.
 
     ```HTTP
-    PUT http://adventure-works.com/orders/1 HTTP/1.1
+    PUT https://adventure-works.com/orders/1 HTTP/1.1
     If-Match: "2282343857"
     Content-Type: application/x-www-form-urlencoded
     Content-Length: ...
@@ -571,7 +571,7 @@ IIS를 사용하여 서비스를 호스팅하는 경우, 웹 응용 프로그램
 .NET Framework를 사용하여 클라이언트 응용 프로그램을 빌드하는 경우에는 모든 POST 및 PUT 메시지가 기본적으로 Expect: 100-Continue 헤더를 포함하는 메시지를 우선 보냅니다. 서버쪽의 경우 .NET Framework에 의해 프로세스가 투명하게 처리됩니다. 하지만 이 프로세스는 POST 및 PUT 요청에 대해 (작은 요청에 대해서도) 서버와의 2회 왕복을 유발합니다. 응용 프로그램이 대량의 데이터를 포함하는 요청을 보내지 않는 경우, `ServicePointManager` 클래스를 사용하여 클라이언트 응용 프로그램에서 `ServicePoint` 개체를 생성하도록 하여 이 기능을 비활성화시킬 수 있습니다. `ServicePoint` 개체는 서버의 리소스를 식별하는 URI의 호스트 조각과 스키마를 기반으로 클라이언트가 서버에 만드는 연결을 처리합니다. 그 후 `ServicePoint` 개체의 `Expect100Continue`속성을 false로 설정할 수 있습니다. `ServicePoint` 개체의 호스트 조각 및 스키마와 부합하는 URI를 통해 클라이언트에서 만드는 모든 후속 POST 및 PUT 요청은 Expect: 100-Continue 헤더 없이 전송됩니다. 다음 코드는 `http` 스키마와 `www.contoso.com` 호스트를 포함하는 URI로 전송되는 모든 요청을 구성하는 `ServicePoint` 개체를 구성하는 방법을 보여줍니다.
 
 ```csharp
-Uri uri = new Uri("http://www.contoso.com/");
+Uri uri = new Uri("https://www.contoso.com/");
 ServicePoint sp = ServicePointManager.FindServicePoint(uri);
 sp.Expect100Continue = false;
 ```
@@ -601,7 +601,7 @@ public class OrdersController : ApiController
 }
 ```
 
-클라이언트 응용 프로그램은 URI `http://www.adventure-works.com/api/orders?limit=30&offset=50`을 사용하여 오프셋 50에서 시작하여 30개의 주문을 가져오는 요청을 발급할 수 있습니다.
+클라이언트 응용 프로그램은 URI `https://www.adventure-works.com/api/orders?limit=30&offset=50`을 사용하여 오프셋 50에서 시작하여 30개의 주문을 가져오는 요청을 발급할 수 있습니다.
 
 > [!TIP]
 > 2000자 보다 긴 URI를 생성하는 쿼리 문자열을 지정하도록 클라이언트 응용 프로그램을 사용하지 않습니다. 많은 웹 클라이언트 및 서버는 이렇게 긴 URI를 처리할 수 없습니다.
@@ -631,7 +631,7 @@ Web API는 처리 결과를 클라이언트 응용 프로그램에 반환하기 
 
 - Azure 알림 허브를 사용하여 클라이언트 응용 프로그램에 대한 비동기 응답을 푸시합니다. 자세한 내용은 [Azure Notification Hubs 알릴 사용자](/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification/)를 참조하세요.
 - Comet 모델을 사용하여 클라이언트와 Web API를 호스팅하는 서버 사이의 영구적인 네트워크 연결을 유지하고, 이 연결을 사용하여 서버의 메시지를 클라이언트로 푸시합니다. MSDN Magazine [Building a Simple Comet Application in the Microsoft .NET Framework](https://msdn.microsoft.com/magazine/jj891053.aspx) (Microsoft .NET Framework에서 간단한 Comet 응용 프로그램 빌드) 문서에 예제 솔루션 설명이 있습니다.
-- SignalR을 사용하여 영구적인 네트워크 연결을 통해 실시간으로 웹 서버에서 클라이언트로 데이터를 푸시합니다. SignalR은 ASP.NET 웹 응용프로그램에서 NuGet 패키지로 사용할 수 있습니다. [ASP.NET SignalR](http://signalr.net/) 웹 페이지에서 자세한 내용을 확인할 수 있습니다.
+- SignalR을 사용하여 영구적인 네트워크 연결을 통해 실시간으로 웹 서버에서 클라이언트로 데이터를 푸시합니다. SignalR은 ASP.NET 웹 응용프로그램에서 NuGet 패키지로 사용할 수 있습니다. [ASP.NET SignalR](https://www.asp.net/signalr) 웹 페이지에서 자세한 내용을 확인할 수 있습니다.
 
 ### <a name="ensure-that-each-request-is-stateless"></a>각 요청은 상태 비저장이어야 합니다.
 
@@ -662,7 +662,7 @@ Web API를 클라이언트 응용 프로그램에서 사용할 수 있도록 하
 * 규제 요구 사항은 모든 요청과 응답의 기록 및 감사를 위임할 수 있습니다.
 * 가용성을 보장하기 위하여 Web API를 호스팅하는 서버의 상태를 모니터링하고 필요하면 재시작해야 할 수 있습니다.
 
-Web API 구현과 관련하여, 이러한 문제를 기술적인 문제와 분리하는 것이 유용할 수 있습니다. 따라서 별도 프로세스로 실행되면서 Web API에 요청을 라우팅하는 [외관](http://en.wikipedia.org/wiki/Facade_pattern) 생성을 고려하는 것이 좋습니다. 외관은 관리 작업을 제공하고 유효성을 검사한 요청을 Web API로 전달할 수 있습니다. 외관을 사용하면 다음과 같이 기능적인 이점이 많이 있습니다.
+Web API 구현과 관련하여, 이러한 문제를 기술적인 문제와 분리하는 것이 유용할 수 있습니다. 따라서 별도 프로세스로 실행되면서 Web API에 요청을 라우팅하는 [외관](https://en.wikipedia.org/wiki/Facade_pattern) 생성을 고려하는 것이 좋습니다. 외관은 관리 작업을 제공하고 유효성을 검사한 요청을 Web API로 전달할 수 있습니다. 외관을 사용하면 다음과 같이 기능적인 이점이 많이 있습니다.
 
 * 여러 Web API에 대한 통합 지점 역할을 합니다.
 * 메시지를 변환하고 다양한 기술을 사용하여 빌드한 클라이언트의 통신 프로토콜을 변환합니다.
@@ -784,10 +784,10 @@ API Management 서비스를 사용하여 Web API를 게시한 경우 Azure 관�
 >
 
 ## <a name="more-information"></a>자세한 정보
-* [ASP.NET Web API OData](http://www.asp.net/web-api/overview/odata-support-in-aspnet-web-api)는 ASP.NET을 사용하여 OData 웹을 구현하는 자세한 정보와 예제를 포함합니다.
-* Microsoft 웹 사이트의 [Introducing Batch Support in Web API and Web API OData](http://blogs.msdn.com/b/webdev/archive/2013/11/01/introducing-batch-support-in-web-api-and-web-api-odata.aspx) (Web API 및 Web API OData의 배치 지원 소개) 페이지는 OData를 사용하여 Web API에 배치 작업을 구현하는 방법을 설명합니다.
-* Jonathan Oliver의 블로그에 있는 [Idempotency Patterns](http://blog.jonathanoliver.com/idempotency-patterns/)에서는 idempotency 개요 및 데이터 관리 작업과 관련성을 제공합니다.
-* W3C 웹 사이트의 [상태 코드 정의](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)에는 HTTP 상태 코드의 전체 목록 및 해당 설명이 포함됩니다.
+* [ASP.NET Web API OData](https://www.asp.net/web-api/overview/odata-support-in-aspnet-web-api)는 ASP.NET을 사용하여 OData 웹을 구현하는 자세한 정보와 예제를 포함합니다.
+* Microsoft 웹 사이트의 [Introducing Batch Support in Web API and Web API OData](https://blogs.msdn.microsoft.com/webdev/2013/11/01/introducing-batch-support-in-web-api-and-web-api-odata/) (Web API 및 Web API OData의 배치 지원 소개) 페이지는 OData를 사용하여 Web API에 배치 작업을 구현하는 방법을 설명합니다.
+* Jonathan Oliver의 블로그에 있는 [Idempotency Patterns](https://blog.jonathanoliver.com/idempotency-patterns/)에서는 idempotency 개요 및 데이터 관리 작업과 관련성을 제공합니다.
+* W3C 웹 사이트의 [상태 코드 정의](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)에는 HTTP 상태 코드의 전체 목록 및 해당 설명이 포함됩니다.
 * [WebJobs를 사용하여 배경 작업 실행](/azure/app-service-web/web-sites-create-web-jobs/)에서는 배경 작업을 실행하기 위해 WebJobs를 사용하는 방법에 대한 정보 및 예제를 제공합니다.
 * [Azure Notification Hubs 알릴 사용자](/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification/)는 Azure 알림 허브를 사용하여 클라이언트 응용 프로그램에 비동기 응답을 푸시하는 방법을 보여줍니다.
 * [API Management](https://azure.microsoft.com/services/api-management/)는 Web API에 제어 및 보안 액세스를 제공하는 제품을 게시하는 방법을 설명합니다.

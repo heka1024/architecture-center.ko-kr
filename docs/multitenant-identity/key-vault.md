@@ -5,12 +5,12 @@ author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: client-assertion
-ms.openlocfilehash: d49129a38d0413f6006095f03b817885e1ce6c92
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.openlocfilehash: b6d2e431da85f7c304747df2f804f1714596bfc6
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31012521"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429182"
 ---
 # <a name="use-azure-key-vault-to-protect-application-secrets"></a>Azure Key Vault를 사용하여 응용 프로그램 암호 보호
 
@@ -154,7 +154,7 @@ Surveys 응용 프로그램이 등록된 Azure AD 테넌트 내에서 관리자 
        * Surveys 앱 ID = Surveys 웹 응용 프로그램의 응용 프로그램 ID입니다.
        * Surveys.WebApi 앱 ID = Surveys.WebAPI 응용 프로그램의 응용 프로그램 ID입니다.
          
-    예:
+    예제:
      
     ```
      .\Setup-KeyVault.ps1 -KeyVaultName tailspinkv -ApplicationIds @("f84df9d1-91cc-4603-b662-302db51f1031", "8871a4c2-2a23-4650-8b46-0625ff3928a6")
@@ -190,7 +190,7 @@ Surveys 응용 프로그램이 등록된 Azure AD 테넌트 내에서 관리자 
    
     로컬 데이터베이스로 테스트하기 위해 Tailspin.Surveys.Web/appsettings.json 파일에서 연결 문자열을 복사합니다. 이 경우 이중 백슬래시('\\\\')를 단일 백슬래시로 변경해야 합니다. 이중 백슬래시는 JSON 파일에서 이스케이프 문자입니다.
    
-    예:
+    예제:
    
     ```
     .\Setup-KeyVault.ps1 -KeyVaultName mykeyvault -KeyName Data--SurveysConnectionString -KeyValue "Server=(localdb)\MSSQLLocalDB;Database=Tailspin.SurveysDB;Trusted_Connection=True;MultipleActiveResultSets=true" 
@@ -299,5 +299,5 @@ Surveys 응용 프로그램이 등록된 Azure AD 테넌트 내에서 관리자 
 [readme]: ./run-the-app.md
 [Setup-KeyVault]: https://github.com/mspnp/multitenant-saas-guidance/blob/master/scripts/Setup-KeyVault.ps1
 [Surveys]: tailspin.md
-[user-secrets]: http://go.microsoft.com/fwlink/?LinkID=532709
+[user-secrets]: /aspnet/core/security/app-secrets
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance

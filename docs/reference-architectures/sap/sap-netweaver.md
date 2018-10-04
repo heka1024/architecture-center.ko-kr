@@ -3,12 +3,12 @@ title: Azure Virtual Machines에서 AnyDB용 SAP NetWeaver(Windows) 배포
 description: Azure의 Linux 환경에서 고가용성을 통해 SAP S/4HANA를 실행하는 검증된 사례입니다.
 author: lbrader
 ms.date: 05/11/2018
-ms.openlocfilehash: f4a33e7a3f30bdd6d8bdd41599a5e3b47501b874
-ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
+ms.openlocfilehash: b4a254980dd9aac2847bb194f22f99f3f05376de
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "43016071"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428808"
 ---
 # <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>Azure Virtual Machines에서 AnyDB용 SAP NetWeaver(Windows) 배포
 
@@ -145,7 +145,7 @@ DR(재해 복구)의 경우 장애 조치를 보조 지역으로 수행할 수 �
 
 - **응용 프로그램 서버 계층**. SAP 응용 프로그램 서버에는 비즈니스 데이터가 포함되어 있지 않습니다. Azure에서 간단한 DR 전략은 보조 지역에 SAP 응용 프로그램 서버를 만든 다음, 종료하는 것입니다. 주 응용 프로그램 서버의 구성이 업데이트되거나 커널이 업데이트되는 즉시 동일한 변경 내용을 보조 지역의 가상 머신에 복사해야 합니다. 예를 들어 커널 실행 파일을 DR 가상 머신에 복사합니다. 응용 프로그램 서버를 보조 지역에 자동으로 복제하려면 [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)가 권장되는 솔루션입니다.
 
-- **Central Services**. 이 SAP 응용 프로그램 스택의 구성 요소도 비즈니스 데이터를 유지하지 않습니다. 재해 복구 지역에 VM을 구축하여 Central Services 역할을 실행할 수 있습니다. 주 Central Services 노드에서 동기화할 수 있는 유일한 콘텐츠는 /sapmnt 공유 콘텐츠입니다. 또한 주 Central Services 서버에서 구성이 업데이트되거나 커널이 업데이트되면 Central Services를 실행하는 재해 복구 지역의 VM에서 반복해야 합니다. 두 서버를 동기화하려면 Azure Site Recovery를 사용하여 클러스터 노드를 복제하거나, 정기적으로 예약된 복사 작업을 사용하여 /sapmnt를 재해 복구 지역에 복사하면 됩니다. 이 간단한 복제 방법의 장애 조치 프로세스 빌드, 복사 및 테스트에 대한 자세한 내용은 [SAP NetWeaver: Hyper-V 및 Microsoft Azure 기반 재해 복구 솔루션 빌드](http://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)를 다운로드하여 "4.3. SAP SPOF 레이어(ASCS)"를 참조하세요.
+- **Central Services**. 이 SAP 응용 프로그램 스택의 구성 요소도 비즈니스 데이터를 유지하지 않습니다. 재해 복구 지역에 VM을 구축하여 Central Services 역할을 실행할 수 있습니다. 주 Central Services 노드에서 동기화할 수 있는 유일한 콘텐츠는 /sapmnt 공유 콘텐츠입니다. 또한 주 Central Services 서버에서 구성이 업데이트되거나 커널이 업데이트되면 Central Services를 실행하는 재해 복구 지역의 VM에서 반복해야 합니다. 두 서버를 동기화하려면 Azure Site Recovery를 사용하여 클러스터 노드를 복제하거나, 정기적으로 예약된 복사 작업을 사용하여 /sapmnt를 재해 복구 지역에 복사하면 됩니다. 이 간단한 복제 방법의 장애 조치 프로세스 빌드, 복사 및 테스트에 대한 자세한 내용은 [SAP NetWeaver: Hyper-V 및 Microsoft Azure 기반 재해 복구 솔루션 빌드](https://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)를 다운로드하여 "4.3. SAP SPOF 레이어(ASCS)"를 참조하세요.
 
 - **데이터베이스 계층**. DR은 데이터베이스 자체의 통합 복제 기술로 구현하는 것이 가장 좋습니다. 예를 들어 SQL Server의 경우 AlwaysOn 가용성 그룹을 사용하여 원격 지역에 복제본을 설정하고 수동 장애 조치를 통해 비동기적으로 트랜잭션을 복제하는 것이 좋습니다. 비동기 복제는 주 사이트에서 대화형 워크로드의 성능에 미치는 영향을 방지합니다. 수동 장애 조치는 사용자가 DR 영향을 평가하고 DR 사이트에서 운영하는 것이 정당한지 결정할 수 있는 기회를 제공합니다.
 

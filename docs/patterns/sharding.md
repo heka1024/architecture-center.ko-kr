@@ -8,12 +8,12 @@ pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - data-management
 - performance-scalability
-ms.openlocfilehash: a4e35a19851f4742b5c154197c22bb1fe13de108
-ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
+ms.openlocfilehash: bc2b6aeb6966d14327a21849adbbfe635eae59df
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37091107"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428859"
 ---
 # <a name="sharding-pattern"></a>분할 패턴
 
@@ -219,6 +219,3 @@ Trace.TraceInformation("Fanout query complete - Record Count: {0}",
 - [데이터 분할 지침](https://msdn.microsoft.com/library/dn589795.aspx). 데이터 저장소 분할에 다양한 문제가 추가로 제기될 수 있습니다. 확장성을 개선하고, 경합을 줄이고, 성능을 최적화하기 위해 클라우드의 데이터 저장소 분할과 관련된 이러한 문제에 대해 설명합니다.
 - [인덱스 테이블 패턴](index-table.md). 분할 키 디자인만으로 쿼리를 완전히 지원할 수 없는 경우가 있습니다. 응용 프로그램에서 분할 키 이외의 키를 지정하여 대규모 데이터 저장소에서 데이터를 빠르게 검색할 수 있습니다.
 - [구체화된 뷰 패턴](materialized-view.md). 일부 쿼리 작업의 성능을 유지 관리하려면 데이터를 집계하고 요약하는 구체화된 뷰를 만드는 것이 유용합니다. 이 요약 데이터가 분할된 데이터베이스 간에 분산된 정보를 기반으로 할 경우에 특히 유용합니다. 이러한 뷰를 생성하고 채우는 방법에 대해 설명합니다.
-- Adding Simplicity 블로그의 [Shard Lessons](http://www.addsimplicity.com/adding_simplicity_an_engi/2008/08/shard-lessons.html)(분할된 데이터베이스 단원)
-- CodeFutures 웹 사이트의 [Database Sharding](http://dbshards.com/database-sharding/)(데이터베이스 분할)
-- Dare Obasanjo 블로그의 [Building Scalable Databases: Pros and Cons of Various Database Sharding Schemes](http://www.25hoursaday.com/weblog/2009/01/16/BuildingScalableDatabasesProsAndConsOfVariousDatabaseShardingSchemes.aspx)(확장성 있는 데이터베이스 빌드: 다양한 데이터베이스 분할 구성표의 장단점)

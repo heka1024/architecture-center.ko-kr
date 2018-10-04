@@ -6,12 +6,12 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authenticate
 pnp.series.next: signup
-ms.openlocfilehash: 61788d9759715b21ef1bdda59c5b54d923fd8f62
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 46c43c9bfa4514f206b5e7eabd9223ad4c61628b
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582770"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429375"
 ---
 # <a name="work-with-claims-based-identities"></a>클레임 기반 ID 사용
 
@@ -117,9 +117,9 @@ Azure AD에서 발급자 값은 AD 테넌트당 고유합니다(`https://sts.win
 
 <!-- Links -->
 
-[범위 매개 변수]: http://nat.sakimura.org/2012/01/26/scopes-and-claims-in-openid-connect/
+[범위 매개 변수]: https://nat.sakimura.org/2012/01/26/scopes-and-claims-in-openid-connect/
 [지원되는 토큰 및 클레임 유형]: /azure/active-directory/active-directory-token-and-claims/
-[발급자]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
+[발급자]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken
 [인증 이벤트]: authenticate.md#authentication-events
 [signup]: signup.md
 [Claims-Based Authorization]: /aspnet/core/security/authorization/claims

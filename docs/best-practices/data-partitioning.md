@@ -4,12 +4,12 @@ description: 별도로 관리하고 액세스할 수 있도록 파티션을 구�
 author: dragon119
 ms.date: 07/13/2016
 pnp.series.title: Best Practices
-ms.openlocfilehash: d1d9c1b3cf07f724eb010fc260d86ceb84b789ca
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.openlocfilehash: 579f78004a662fe412cb8dcc25b9ad1db9782125
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "29059975"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429505"
 ---
 # <a name="data-partitioning"></a>데이터 분할
 
@@ -551,37 +551,37 @@ Event Hubs에서 파티션을 사용하는 방법에 대한 자세한 내용은 
 [Event Hubs의 가용성 및 일관성]: /azure/event-hubs/event-hubs-availability-and-consistency
 [azure-limits]: /azure/azure-subscription-service-limits
 [Azure Content Delivery Network]: /azure/cdn/cdn-overview
-[Azure Redis 캐시(영문)]: http://azure.microsoft.com/services/cache/
+[Azure Redis 캐시(영문)]: https://azure.microsoft.com/services/cache/
 [Azure Storage Scalability and Performance Targets]: /azure/storage/storage-scalability-targets
 [Azure 저장소 테이블 설계 가이드]: /azure/storage/storage-table-design-guide
 [Polyglot 솔루션 빌드]: https://msdn.microsoft.com/library/dn313279.aspx
 [cosmos-db-ru]: /azure/cosmos-db/request-units
 [확장성이 뛰어난 솔루션에 대한 데이터 액세스: SQL, NoSQL 및 Polyglot 지속성 사용]: https://msdn.microsoft.com/library/dn271399.aspx
-[데이터 일관성 입문서]: http://aka.ms/Data-Consistency-Primer
+[데이터 일관성 입문서]: https://aka.ms/Data-Consistency-Primer
 [Data Partitioning Guidance]: https://msdn.microsoft.com/library/dn589795.aspx
-[Data Types]: http://redis.io/topics/data-types
+[Data Types]: https://redis.io/topics/data-types
 [cosmosdb-sql-api]: /azure/cosmos-db/sql-api-introduction
 [Elastic Database 기능 개요]: /azure/sql-database/sql-database-elastic-scale-introduction
 [event-hubs]: /azure/event-hubs
 [Federations Migration Utility]: https://code.msdn.microsoft.com/vstudio/Federations-Migration-ce61e9c1
 [Azure Service Fabric에서 신뢰할 수 있는 컬렉션에 대한 지침 및 권장 사항]: /azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines
-[인덱스 테이블 패턴]: http://aka.ms/Index-Table-Pattern
-[Materialized View Pattern]: http://aka.ms/Materialized-View-Pattern
+[인덱스 테이블 패턴]: ../patterns/index-table.md
+[Materialized View Pattern]: ../patterns/materialized-view.md
 [다중 분할된 데이터베이스 쿼리]: /azure/sql-database/sql-database-elastic-scale-multishard-querying
 [Azure Service Fabric의 개요]: /azure/service-fabric/service-fabric-overview
 [Service Fabric Reliable Services 분할]: /azure/service-fabric/service-fabric-concepts-partitioning
-[분할: 여러 Redis 인스턴스 간에 데이터를 분할하는 방법]: http://redis.io/topics/partitioning
+[분할: 여러 Redis 인스턴스 간에 데이터를 분할하는 방법]: https://redis.io/topics/partitioning
 [엔터티 그룹 트랜잭션 수행]: https://msdn.microsoft.com/library/azure/dd894038.aspx
-[Redis 클러스터 자습서]: http://redis.io/topics/cluster-tutorial
-[Azure의 CentOS Linux VM에서 Redis 실행]: http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx
+[Redis 클러스터 자습서]: https://redis.io/topics/cluster-tutorial
+[Azure의 CentOS Linux VM에서 Redis 실행]: https://blogs.msdn.microsoft.com/tconte/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure/
 [Elastic Database 분할/병합 도구를 사용하여 확장하기]: /azure/sql-database/sql-database-elastic-scale-overview-split-and-merge
 [Azure용 CDN(Content Delivery Network) 사용]: /azure/cdn/cdn-create-new-endpoint
 [Service Bus 할당량]: /azure/service-bus-messaging/service-bus-quotas
 [service-fabric-reliable-collections]: /azure/service-fabric/service-fabric-reliable-services-reliable-collections
 [Azure Search의 서비스 제한 사항]:  /azure/search/search-limits-quotas-capacity
-[분할 패턴]: http://aka.ms/Sharding-Pattern
+[분할 패턴]: ../patterns/sharding.md
 [지원되는 데이터 형식(Azure Search)]:  https://msdn.microsoft.com/library/azure/dn798938.aspx
-[트랜잭션]: http://redis.io/topics/transactions
+[트랜잭션]: https://redis.io/topics/transactions
 [Event Hubs란?]: /azure/event-hubs/event-hubs-what-is-event-hubs
 [Azure Search란?]: /azure/search/search-what-is-azure-search
 [Azure SQL Database 정의]: /azure/sql-database/sql-database-technical-overview

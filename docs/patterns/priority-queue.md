@@ -8,12 +8,12 @@ pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - messaging
 - performance-scalability
-ms.openlocfilehash: ecfbb38304bb95587e9ca15523ad9594898d9b32
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 400bfbc03cf5640ff32a551636b01d60e6c0ec50
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582821"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428502"
 ---
 # <a name="priority-queue-pattern"></a>우선 순위 큐 패턴
 
@@ -176,5 +176,5 @@ this.queueManager.SendBatchAsync(highMessages).Wait();
 
 - [자동 크기 조정 지침](https://msdn.microsoft.com/library/dn589774.aspx). 큐의 길이에 따라 큐를 처리하는 소비자 프로세스 풀의 크기를 조정할 수 있습니다. 이 전략은 특히 우선 순위가 높은 메시지를 처리하는 풀의 성능을 향상시키는 데 도움이 됩니다.
 
-- [Service Bus가 있는 엔터프라이즈 통합 패턴](http://abhishekrlal.com/2013/01/11/enterprise-integration-patterns-with-service-bus-part-2/)(Abhishek Lal의 블로그)
+- [Service Bus가 있는 엔터프라이즈 통합 패턴](https://abhishekrlal.com/2013/01/11/enterprise-integration-patterns-with-service-bus-part-2/)(Abhishek Lal의 블로그)
 

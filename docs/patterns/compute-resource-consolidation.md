@@ -7,12 +7,12 @@ ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - design-implementation
-ms.openlocfilehash: 6e05a30245fbf5183a4e50a54650505f5a5f2aa8
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.openlocfilehash: bd212b8b4406a08058f811db030843f732e08cdc
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35252927"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428842"
 ---
 # <a name="compute-resource-consolidation-pattern"></a>계산 리소스 통합 패턴
 
@@ -85,7 +85,7 @@ Azure에서 이 문제는 자체 가상 환경에서 실행되는 Cloud Service,
 
 Azure에서 클라우드 서비스를 빌드할 때는 여러 작업이 수행하는 처리를 단일 역할에 통합할 수 있습니다. 일반적으로 이 역할은 백그라운드 또는 비동기 처리 작업을 수행하는 작업자 역할입니다.
 
-> 일부 경우 백그라운드 또는 비동기 처리 작업을 웹 역할에 포함시킬 수 있습니다. 이 기술이 웹 역할이 제공하는 공용 인터페이스의 확장성과 응답성에 영향을 미칠 수 있지만, 비용을 줄이고 배포를 단순화하는 데에는 도움이 됩니다. [Combining Multiple Azure Worker Roles into an Azure Web Role](http://www.31a2ba2a-b718-11dc-8314-0800200c9a66.com/2012/02/combining-multiple-azure-worker-roles.html)(여러 Azure 작업자 역할을 Azure 웹 역할에 조합) 문서에서는 웹 역할에서 백그라운드 또는 비동기 처리 작업 구현에 관해 자세하게 설명하고 있습니다.
+> 일부 경우 백그라운드 또는 비동기 처리 작업을 웹 역할에 포함시킬 수 있습니다. 이 기술이 웹 역할이 제공하는 공용 인터페이스의 확장성과 응답성에 영향을 미칠 수 있지만, 비용을 줄이고 배포를 단순화하는 데에는 도움이 됩니다. 
 
 이 역할이 작업의 시작 및 중지를 담당합니다. Azure 패브릭 컨트롤러가 역할을 로드하면 역할에 대한 `Start` 이벤트가 발생합니다. `WebRole` 또는 `WorkerRole` 클래스의 `OnStart` 메서드를 재정의하여 이 이벤트를 처리하고 이 메서드가 의존하는 작업에 필요한 데이터와 다른 리소스를 시작할 수 있습니다.
 

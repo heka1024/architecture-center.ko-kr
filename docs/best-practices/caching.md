@@ -4,12 +4,12 @@ description: 성능 및 확장성을 향상하기 위한 캐시에 대한 지침
 author: dragon119
 ms.date: 05/24/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: fde1c3e8c65d357746e4ccaddebeebace943cf9d
-ms.sourcegitcommit: 441185360db49cfb3cf39527b68f318d17d4cb3d
+ms.openlocfilehash: 4db85df7331c805af6acbe0673dbcb993a895e03
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27973147"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429471"
 ---
 # <a name="caching"></a>구성
 
@@ -132,7 +132,7 @@ HTTP 연결을 통해 데이터를 제공하는 웹 응용 프로그램을 작�
 
 공유 캐시 서비스의 가용성에 대한 높은 종속성을 솔루션에 도입하지 않도록 주의하십시오. 공유 캐시를 제공하는 서비스를 사용할 수 없는 경우 응용 프로그램이 계속 작동될 수 있어야 합니다. 캐시 서비스가 다시 시작되기를 기다리는 동안 응용 프로그램이 중단되거나 실패하지 않아야 합니다.
 
-따라서 응용 프로그램은 캐시 서비스의 가용성을 검색하여 준비하고 캐시에 액세스할 수 없는 경우 원래 데이터 저장소로 대체해야 합니다. [회로 차단기 패턴](http://msdn.microsoft.com/library/dn589784.aspx)은 시나리오를 처리하는데 유용합니다. [캐시 배제 패턴](http://msdn.microsoft.com/library/dn589799.aspx)과 같은 전략을 따라 캐시를 제공하는 서비스를 복구할 수 있으며, 원래 데이터 저장소에서 데이터를 읽을 때 서비스를 사용할 수 있게 되면 캐시를 다시 채울 수 있습니다.
+따라서 응용 프로그램은 캐시 서비스의 가용성을 검색하여 준비하고 캐시에 액세스할 수 없는 경우 원래 데이터 저장소로 대체해야 합니다. [회로 차단기 패턴](../patterns/circuit-breaker.md)은 시나리오를 처리하는데 유용합니다. [캐시 배제 패턴](../patterns/cache-aside.md)과 같은 전략을 따라 캐시를 제공하는 서비스를 복구할 수 있으며, 원래 데이터 저장소에서 데이터를 읽을 때 서비스를 사용할 수 있게 되면 캐시를 다시 채울 수 있습니다.
 
 그러나 캐시를 일시적으로 사용할 수 없을 때 응용 프로그램이 다시 원래 데이터 저장소로 되돌아가는 경우 시스템의 확장성에 영향을 미칠 수 있습니다.
 데이터 저장소가 복구 중인 동안 원래 데이터 저장소에 데이터 요청이 너무 많아 시간이 초과되고 연결되지 않을 수 있습니다.
@@ -148,7 +148,7 @@ HTTP 연결을 통해 데이터를 제공하는 웹 응용 프로그램을 작�
 
 여러 대상에 쓰기와 연결된 대기 시간을 줄이려면 주 서버의 캐시에 데이터를 쓸 때 보조 서버에 복제가 비동기적으로 발생할 수 있습니다. 이 방법은 일부 캐시된 정보에 오류가 발생하여 손실될 가능성으로 이어지지만 캐시의 전체 크기에 비해 이 데이터의 비율이 작을 것입니다.
 
-공유 캐시가 크면 노드에 캐시된 데이터를 분할하여 경합 가능성을 줄이고 확장성을 개선하는 데 도움이 될 수 있습니다. 많은 공유 캐시는 노드를 동적으로 추가(및 제거)하고 파티션에 데이터 균형을 다시 조정하는 기능을 지원합니다. 이 방법은 노드 컬렉션이 클라이언트 응용 프로그램에 원활한 단일 캐시로 표시되는 클러스터링을 포함할 수 있습니다. 하지만 내부적으로 데이터는 부하를 균등하게 분산하는 미리 정의된 배포 전략에 따라 노드 간에 분산됩니다. Microsoft 웹 사이트의 [데이터 분할 참고 자료 문서](http://msdn.microsoft.com/library/dn589795.aspx)는 가능한 분할 전략에 대한 자세한 정보를 제공합니다.
+공유 캐시가 크면 노드에 캐시된 데이터를 분할하여 경합 가능성을 줄이고 확장성을 개선하는 데 도움이 될 수 있습니다. 많은 공유 캐시는 노드를 동적으로 추가(및 제거)하고 파티션에 데이터 균형을 다시 조정하는 기능을 지원합니다. 이 방법은 노드 컬렉션이 클라이언트 응용 프로그램에 원활한 단일 캐시로 표시되는 클러스터링을 포함할 수 있습니다. 하지만 내부적으로 데이터는 부하를 균등하게 분산하는 미리 정의된 배포 전략에 따라 노드 간에 분산됩니다. Microsoft 웹 사이트의 [데이터 분할 참고 자료 문서](https://msdn.microsoft.com/library/dn589795.aspx)는 가능한 분할 전략에 대한 자세한 정보를 제공합니다.
 
 또한 클러스터링을 사용하면 캐시의 가용성을 높일 수 있습니다. 노드가 실패해도 캐시의 나머지는 계속 액세스할 수 있습니다.
 클러스터링은 복제 및 장애 조치(Failover)와 함께 자주 사용됩니다. 각 노드는 복제할 수 있으며 노드가 실패하면 복제본이 신속하게 온라인 상태로 전환될 수 있습니다.
@@ -163,7 +163,7 @@ HTTP 연결을 통해 데이터를 제공하는 웹 응용 프로그램을 작�
 
 응용 프로그램의 한 인스턴스는 데이터 항목을 수정하고 해당 항목의 캐시된 버전을 무효화할 수 있습니다. 응용 프로그램의 또 다른 인스턴스는 캐시 누락을 일으키는 캐시에서 이 항목 읽기를 시도하여 데이터 저장소에서 데이터를 읽고 캐시에 추가할 수 있습니다. 그러나 데이터 저장소가 다른 복제본과 완벽하게 동기화되지 않은 경우 응용 프로그램 인스턴스는 이전 값과 함께 캐시를 읽고 채울 수 있습니다.
 
-데이터 일관성을 처리하는 방법에 대한 자세한 내용은 [데이터 일관성 입문서](http://msdn.microsoft.com/library/dn589800.aspx)를 참조하세요.
+데이터 일관성을 처리하는 방법에 대한 자세한 내용은 [데이터 일관성 입문서](https://msdn.microsoft.com/library/dn589800.aspx)를 참조하세요.
 
 ### <a name="protect-cached-data"></a>캐시된 데이터 보호
 사용한 캐시 서비스와 관련 없이 무단 액세스에서 캐시에 보관된 데이터를 보호하는 방법을 고려하세요. 두 개의 주요 관심사가 있습니다.
@@ -200,29 +200,29 @@ Azure Redis Cache는 가용성, 확장성 및 보안을 제공하는 고성능 �
 ### <a name="redis-as-an-in-memory-database"></a>메모리 내 데이터베이스인 Redis
 Redis는 읽기 및 쓰기 작업을 둘 다 지원합니다. Redis에서 쓰기는 로컬 스냅숏 파일 또는 추가 전용 로그 파일 중 하나에 주기적으로 저장되어 시스템 오류로부터 보호될 수 있습니다. 많은 캐시(일시적인 데이터 저장소로 고려해야 함)는 이와 다른 경우입니다.
 
- 모든 쓰기는 비동기적이며 클라이언트가 데이터를 읽고 쓰는 것을 차단하지 않습니다. Redis이 실행되기 시작하는 경우 스냅숏 또는 로그 파일에서 데이터를 읽고 메모리 내 캐시를 생성하는데 사용합니다. 자세한 내용은 Redis 웹 사이트에서 [Redis 지속성](http://redis.io/topics/persistence)을 참조하세요.
+ 모든 쓰기는 비동기적이며 클라이언트가 데이터를 읽고 쓰는 것을 차단하지 않습니다. Redis이 실행되기 시작하는 경우 스냅숏 또는 로그 파일에서 데이터를 읽고 메모리 내 캐시를 생성하는데 사용합니다. 자세한 내용은 Redis 웹 사이트에서 [Redis 지속성](https://redis.io/topics/persistence)을 참조하세요.
 
 > [!NOTE]
-> Redis는 치명적인 오류가 발생한 경우 모든 쓰기가 반드시 저장된다고 할 수 없지만 최악의 경우 몇 초 분량의 데이터만 손실될 수 있습니다. 캐시는 신뢰할 수 있는 데이터 소스의 역할을 하며 캐시를 사용하여 중요한 데이터를 적절한 데이터 저장소에 성공적으로 저장하도록 하는 것이 응용 프로그램의 책임입니다. 자세한 내용은 [캐시 배제 패턴](http://msdn.microsoft.com/library/dn589799.aspx)을 참조하세요.
+> Redis는 치명적인 오류가 발생한 경우 모든 쓰기가 반드시 저장된다고 할 수 없지만 최악의 경우 몇 초 분량의 데이터만 손실될 수 있습니다. 캐시는 신뢰할 수 있는 데이터 소스의 역할을 하며 캐시를 사용하여 중요한 데이터를 적절한 데이터 저장소에 성공적으로 저장하도록 하는 것이 응용 프로그램의 책임입니다. 자세한 내용은 [캐시 배제 패턴](../patterns/cache-aside.md)을 참조하세요.
 > 
 > 
 
 #### <a name="redis-data-types"></a>Redis 데이터 형식
-Redis는 해시, 목록 및 집합 같은 단순 형식 또는 복잡한 데이터 구조를 포함할 수 있는 키-값 저장소를 설정합니다. 이러한 데이터 유형에 대한 소규모 작업 집합을 지원합니다. 키는 영구적이거나 라이브가 제한된 시간으로 태그되어 그 시점에 키 및 해당 값이 자동으로 캐시에서 제거됩니다. Redis 키와 값에 대한 자세한 내용은 Redis 웹 사이트에서 [Redis 데이터 형식 및 추상화 소개](http://redis.io/topics/data-types-intro) 페이지를 방문하세요.
+Redis는 해시, 목록 및 집합 같은 단순 형식 또는 복잡한 데이터 구조를 포함할 수 있는 키-값 저장소를 설정합니다. 이러한 데이터 유형에 대한 소규모 작업 집합을 지원합니다. 키는 영구적이거나 라이브가 제한된 시간으로 태그되어 그 시점에 키 및 해당 값이 자동으로 캐시에서 제거됩니다. Redis 키와 값에 대한 자세한 내용은 Redis 웹 사이트에서 [Redis 데이터 형식 및 추상화 소개](https://redis.io/topics/data-types-intro) 페이지를 방문하세요.
 
 #### <a name="redis-replication-and-clustering"></a>Redis 복제 및 클러스터링
 Redis는 가용성을 보장하고 처리량을 유지하도록 마스터/하위 복제를 지원합니다. Redis 마스터 노드에 대한 쓰기 작업이 하나 이상의 하위 노드에 복제됩니다. 읽기 작업은 마스터 또는 하위 항목 중 하나에서 제공될 수 있습니다.
 
-네트워크 분할이 발생하는 경우 연결이 다시 설정될 때 부하 직원은 데이터를 제공하고 그런 다음 투명하게 마스터와 재동기화합니다. 자세한 내용은 Redis 웹 사이트에서 [복제](http://redis.io/topics/replication) 페이지를 방문하십시오.
+네트워크 분할이 발생하는 경우 연결이 다시 설정될 때 부하 직원은 데이터를 제공하고 그런 다음 투명하게 마스터와 재동기화합니다. 자세한 내용은 Redis 웹 사이트에서 [복제](https://redis.io/topics/replication) 페이지를 방문하십시오.
 
 또한 Redis는 클러스터링을 제공하여 데이터를 서버의 분할로 투명하게 분할하고 로드를 분산시킬 수 있습니다. 이 기능은 캐시 크기의 증가에 따라 새 Redis 서버가 추가될 수 있고 데이터가 다시 분할되므로 확장성을 향상합니다.
 
-또한 클러스터의 각 서버는 마스터/하위 복제를 사용하여 복제할 수 있습니다. 이렇게 하면 클러스터의 각 노드에 걸친 가용성을 보장합니다. 클러스터링 및 분할에 대한 자세한 내용은 Redis 웹 사이트에서 [Redis 클러스터 자습서 페이지](http://redis.io/topics/cluster-tutorial)를 방문하세요.
+또한 클러스터의 각 서버는 마스터/하위 복제를 사용하여 복제할 수 있습니다. 이렇게 하면 클러스터의 각 노드에 걸친 가용성을 보장합니다. 클러스터링 및 분할에 대한 자세한 내용은 Redis 웹 사이트에서 [Redis 클러스터 자습서 페이지](https://redis.io/topics/cluster-tutorial)를 방문하세요.
 
 ### <a name="redis-memory-use"></a>Redis 메모리 사용
 Redis 캐시는 호스트 컴퓨터에서 사용할 수 있는 리소스에 따라 한정된 크기가 있습니다. Redis 서버를 구성할 때 사용할 수 있는 메모리의 최대 크기를 지정할 수 있습니다. 또한 Redis 캐시에 있는 키에 만료 시간이 있도록 구성할 수 있으며 그 이후 캐시에서 자동으로 제거됩니다. 이 기능은 메모리 내 캐시가 오래되거나 유효하지 않은 데이터로 채워지지 않도록 방지할 수 있습니다.
 
-메모리가 차면 Redis는 정책의 수에 따라서 자동으로 키와 값을 제거할 수 있습니다. 기본값은 LRU(오래 전에 사용한 항목)이지만 임의로 키 제거 또는 제거 해제와 같은 기타 정책을 선택할 수 있습니다(이 경우 캐시가 가득 차면 여기에 항목을 추가하는 시도는 실패함). 자세한 정보는 [Redis를 LRU 캐시로 사용](http://redis.io/topics/lru-cache) 페이지를 참조하세요.
+메모리가 차면 Redis는 정책의 수에 따라서 자동으로 키와 값을 제거할 수 있습니다. 기본값은 LRU(오래 전에 사용한 항목)이지만 임의로 키 제거 또는 제거 해제와 같은 기타 정책을 선택할 수 있습니다(이 경우 캐시가 가득 차면 여기에 항목을 추가하는 시도는 실패함). 자세한 정보는 [Redis를 LRU 캐시로 사용](https://redis.io/topics/lru-cache) 페이지를 참조하세요.
 
 ### <a name="redis-transactions-and-batches"></a>Redis 트랜잭션 및 배치
 Redis는 클라이언트 응용 프로그램을 활성화하여 캐시의 데이터를 원자성 트랜잭션으로 읽고 쓰는 일련의 작업을 제출합니다. 트랜잭션에서 모든 명령은 순차적으로 실행되도록 보장되고 다른 동시 클라이언트가 발급한 어떤 명령도 이들 간에 섞이지 않습니다.
@@ -231,7 +231,7 @@ Redis는 클라이언트 응용 프로그램을 활성화하여 캐시의 데이
 
 실행 단계 동안 Redis는 큐에 대기 중인 각 명령을 차례로 수행합니다. 이 단계 동안 명령이 실패한 경우 Redis는 큐에 대기 중인 다음 명령을 사용하여 계속되고 이미 실행된 명령의 효과를 롤백하지 않습니다. 이 간단해진 트랜잭션의 형태가 성능을 유지하고 경합으로 발생하는 성능 문제를 방지합니다.
 
-Redis는 낙관적 잠금이라는 형태를 구현하여 일관성 유지를 지원합니다. Redis를 이용한 트랜잭션 및 잠금에 대한 자세한 정보는 Redis 웹 사이트에서 [트랜잭션 페이지](http://redis.io/topics/transactions)를 참조하십시오.
+Redis는 낙관적 잠금이라는 형태를 구현하여 일관성 유지를 지원합니다. Redis를 이용한 트랜잭션 및 잠금에 대한 자세한 정보는 Redis 웹 사이트에서 [트랜잭션 페이지](https://redis.io/topics/transactions)를 참조하십시오.
 
 또한 Redis는 요청의 비 트랜잭션 배치를 지원합니다. Redis 서버에 명령을 보내기 위해 클라이언트가 사용하는 Redis 프로토콜을 사용하면 클라이언트가 동일한 요청의 일부로써 일련의 작업을 보냅니다. 이는 네트워크에서 패킷 조각화를 줄일 수 있습니다. 배치가 처리될 때 각 명령이 수행됩니다. 이러한 명령 중 하나라도 형식이 잘못된 경우 거부되지만(트랜잭션으로 발생하지 않은) 나머지 명령은 수행됩니다. 또한 배치의 명령이 처리되는 순서에 대해서 보장할 수 없습니다.
 
@@ -244,7 +244,7 @@ Redis는 빠른 데이터 액세스 제공에 집중되었으며 신뢰할 수 �
 
 Redis는 모든 형태의 데이터 암호화를 직접 지원하지 않으므로 모든 인코딩을 클라이언트 응용 프로그램이 수행해야 합니다. 또한 Redis는 어떤 형태의 전송 보안도 제공하지 않습니다. 네트워크를 통해 흐르는 데이터를 보호해야 하는 경우 SSL 프록시를 구현하는 것이 좋습니다.
 
-자세한 내용은 Redis 웹 사이트에서 [Redis 보안](http://redis.io/topics/security) 페이지를 방문하세요.
+자세한 내용은 Redis 웹 사이트에서 [Redis 보안](https://redis.io/topics/security) 페이지를 방문하세요.
 
 > [!NOTE]
 > Azure Redis Cache는 클라이언트가 연결하는 자체 보안 계층을 제공합니다. 기본 Redis 서버는 공용 네트워크에 노출되지 않습니다.
@@ -292,7 +292,7 @@ Azure Redis Cache는 기본 Redis 서버에 외관의 역할을 합니다. 이�
 
 복제를 구현하려는 경우 마스터 및 하위 노드 역할을 수행할 여러 VM을 만들어야 할 수 있기 때문에 이는 잠재적으로 복잡한 프로세스입니다. 또한 클러스터를 만들려는 경우 여러 마스터와 하위 서버가 필요합니다. 높은 수준의 가용성과 확장성을 제공하는 최소한의 클러스터된 복제 토폴로지는 세 쌍의 마스터/하위 서버로 구성된 6개 이상의 VM을 구성합니다(클러스터에 3개 이상의 마스터 노드를 포함해야 함).
 
-각 마스터/하위 쌍은 대기 시간을 최소화하기 위해 서로 가까이 배치되어야 합니다. 그러나 이를 사용할 가능성이 큰 응용 프로그램에 가까운 캐시된 데이터를 찾으려는 경우 다른 지역에 있는 다른 Azure 데이터 센터에서 쌍의 각 집합을 실행할 수 있습니다.  빌드 및 Azure VM으로 실행되는 Redis 노드를 빌드 및 구성하는 방법의 예제를 보려면 [Azure의 CentOS Linux VM에서 Redis 실행](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx)을 참조하세요.
+각 마스터/하위 쌍은 대기 시간을 최소화하기 위해 서로 가까이 배치되어야 합니다. 그러나 이를 사용할 가능성이 큰 응용 프로그램에 가까운 캐시된 데이터를 찾으려는 경우 다른 지역에 있는 다른 Azure 데이터 센터에서 쌍의 각 집합을 실행할 수 있습니다.  빌드 및 Azure VM으로 실행되는 Redis 노드를 빌드 및 구성하는 방법의 예제를 보려면 [Azure의 CentOS Linux VM에서 Redis 실행](https://blogs.msdn.microsoft.com/tconte/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure/)을 참조하세요.
 
 > [!NOTE]
 > 이러한 방식으로 사용자 고유의 Redis 캐시를 구현하는 경우 서비스 모니터링, 관리 및 보안에 책임이 있습니다.
@@ -306,15 +306,15 @@ Azure Redis Cache는 기본 Redis 서버에 외관의 역할을 합니다. 이�
 * 성능 및 확장성을 향상하여 서버에 걸쳐 부하를 분산합니다.
 * 지리 위치 데이터가 액세스하는 사용자에게 가까우므로 대기 시간이 감소합니다.
 
-캐시에 대해 분할의 가장 일반적인 형태가 분할됩니다. 이 전략에서 각 파티션(또는 분할된 데이터베이스)은 그 자체로 Redis 캐시입니다. 데이터는 분할 논리를 사용하여 특정 파티션으로 전송하여 데이터를 분산하는 데 다양한 방식을 사용할 수 있습니다. [분할 패턴](http://msdn.microsoft.com/library/dn589797.aspx)은 분할을 구현하는 방법에 대한 자세한 정보를 제공합니다.
+캐시에 대해 분할의 가장 일반적인 형태가 분할됩니다. 이 전략에서 각 파티션(또는 분할된 데이터베이스)은 그 자체로 Redis 캐시입니다. 데이터는 분할 논리를 사용하여 특정 파티션으로 전송하여 데이터를 분산하는 데 다양한 방식을 사용할 수 있습니다. [분할 패턴](../patterns/sharding.md)은 분할을 구현하는 방법에 대한 자세한 정보를 제공합니다.
 
 Redis 캐시에서 분할을 구현하려면 다음 방법 중 하나를 선택할 수 있습니다.
 
-* *서버측 쿼리 라우팅입니다.* 이 기술에서 클라이언트 응용 프로그램은 캐시를 구성하는 Redis 서버 중 하나에 요청을 보냅니다.(아마도 가장 가까운 서버) 각 Redis 서버는 보유한 분할을 설명하는 메타데이터를 저장하며 또한 다른 서버에 위치한 분할에 대한 정보를 포함합니다. Redis 서버는 클라이언트 요청을 검사합니다. 로컬로 해결할 수 있는 경우 요청된 작업을 수행합니다. 그렇지 않으면 적합한 서버로 요청을 전달합니다. 이 모델은 Redis 클러스터링이 구현하고 Redis 웹 사이트의 [Redis 클러스터 자습서](http://redis.io/topics/cluster-tutorial) 페이지에서 자세히 설명합니다. Redis 클러스터링은 클라이언트 응용 프로그램에 대해 투명하며, 클라이언트를 다시 구성하지 않고도 Redis 서버를 클러스터 및 다시 분할된 데이터에 추가할 수 있습니다.
+* *서버측 쿼리 라우팅입니다.* 이 기술에서 클라이언트 응용 프로그램은 캐시를 구성하는 Redis 서버 중 하나에 요청을 보냅니다.(아마도 가장 가까운 서버) 각 Redis 서버는 보유한 분할을 설명하는 메타데이터를 저장하며 또한 다른 서버에 위치한 분할에 대한 정보를 포함합니다. Redis 서버는 클라이언트 요청을 검사합니다. 로컬로 해결할 수 있는 경우 요청된 작업을 수행합니다. 그렇지 않으면 적합한 서버로 요청을 전달합니다. 이 모델은 Redis 클러스터링이 구현하고 Redis 웹 사이트의 [Redis 클러스터 자습서](https://redis.io/topics/cluster-tutorial) 페이지에서 자세히 설명합니다. Redis 클러스터링은 클라이언트 응용 프로그램에 대해 투명하며, 클라이언트를 다시 구성하지 않고도 Redis 서버를 클러스터 및 다시 분할된 데이터에 추가할 수 있습니다.
 * *클라이언트측 분할입니다.* 이 모델에서 클라이언트 응용 프로그램은 적절한 Redis 서버에 요청을 라우팅하는 논리(아마도 라이브러리 형식으로)를 포함합니다. 이 방법은 Azure Redis Cache와 함께 사용할 수 있습니다. 여러 Azure Redis Cache(각 데이터 파티션에 하나)를 만들고 올바른 캐시에 요청을 라우트하는 클라이언트 쪽 논리를 구현할 수 있습니다. 분할 체계가 변경되면(예를 들어 추가로 Azure Redis Cache를 생성하는 경우) 클라이언트 응용 프로그램을 다시 구성해야 합니다.
 * *프록시 지원 분할입니다.* 이 스키마에서 클라이언트 응용 프로그램은 송신 데이터를 분할하는 방법을 이해하는 중간 프록시 서비스에 요청을 보낸 다음 Redis 서버에 적절한 요청을 라우팅합니다. 또한 이 방법은 Azure Redis Cache와 함께 사용할 수 있습니다. 프록시 서비스는 Azure 클라우드 서비스로 구현할 수 있습니다. 이 접근 방법을 사용하려면 서비스를 구현하기 위해 추가적으로 복잡한 수준이 필요하고 요청도 클라이언트 쪽 분할을 사용하는 것보다 오래 걸릴 수 있습니다.
 
-웹사이트는 Redis의 [분할: 여러 Redis 인스턴스 간에 데이터를 분할하는 방법](http://redis.io/topics/partitioning) 페이지는 Redis와 분할을 구현하는 추가 정보를 제공합니다.
+웹사이트는 Redis의 [분할: 여러 Redis 인스턴스 간에 데이터를 분할하는 방법](https://redis.io/topics/partitioning) 페이지는 Redis와 분할을 구현하는 추가 정보를 제공합니다.
 
 ### <a name="implement-redis-cache-client-applications"></a>Redis 캐시 클라이언트 응용 프로그램 구현
 Redis는 다양한 프로그래밍 언어로 작성된 클라이언트 응용 프로그램을 지원합니다. .NET Framework를 사용하여 새 응용 프로그램을 빌드하면 StackExchange.Redis 클라이언트 라이브러리를 사용하는 것이 좋습니다. 이 라이브러리는 Redis 서버에 연결, 명령 전송 및 응답 수신에 대한 세부 정보를 끌어내는 .NET Framework 개체 모델을 제공합니다. Visual Studio에서 NuGet 패키지로 사용할 수 있습니다. Azure Redis Cache 또는 VM에서 호스트되는 사용자 지정 Redis 캐시에 연결하려면 이 동일한 라이브러리를 사용할 수 있습니다.
@@ -325,7 +325,7 @@ Redis 호스트 및 암호의 주소와 같은 연결 매개 변수를 지정할
 
 Redis 서버에 연결한 후 캐시의 역할을 하는 Redis 데이터베이스에 핸들을 가져올 수 있습니다. Redis 연결이 이를 수행하는 `GetDatabase` 메서드를 제공합니다. 그런 다음 `StringGet` 및 `StringSet` 메서드를 사용하여 캐시에서 항목을 검색하고 캐시에 데이터를 저장할 수 있습니다. 이러한 메서드는 키를 매개 변수로 예상하고 일치하는 값을 갖는 캐시에서 항목을 반환하거나(`StringGet`) 이 키로 캐시에 항목을 추가합니다(`StringSet`).
 
-Redis 서버 위치에 따라 요청이 서버에 전송되고 응답이 클라이언트에 반환되는 동안 많은 작업이 약간의 대기 시간을 발생시킬 수 있습니다. StackExchange 라이브러리는 클라이언트 응용 프로그램이 응답을 하도록 노출하는 많은 매서드의 비동기 버전을 제공합니다. 이러한 메서드는 .NET Framework에서 [작업 기반 비동기 패턴](http://msdn.microsoft.com/library/hh873175.aspx)을 지원합니다.
+Redis 서버 위치에 따라 요청이 서버에 전송되고 응답이 클라이언트에 반환되는 동안 많은 작업이 약간의 대기 시간을 발생시킬 수 있습니다. StackExchange 라이브러리는 클라이언트 응용 프로그램이 응답을 하도록 노출하는 많은 매서드의 비동기 버전을 제공합니다. 이러한 메서드는 .NET Framework에서 [작업 기반 비동기 패턴](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap)을 지원합니다.
 
 다음 코드 조각에 `RetrieveItem`이라는 메서드가 표시됩니다. Redis 및 StackExchange 라이브러리를 기반으로 한 캐시 배제 패턴의 구현 예를 보여 줍니다. `StringGetAsync` 메서드를 호출하여 메서드가 문자열 키 값을 사용하고 Redis 캐시에서 해당 항목을 검색하려고 시도합니다(`StringGet`의 비동기 버전).
 
@@ -476,7 +476,7 @@ Azure Redis Cache를 수행할 수 있는 클라이언트 응용 프로그램 �
 
 예를 들어 "customer:100"과 같은 구조화된 키를 사용하여 단순히 "100"이 아닌 ID 100인 고객에 대한 키를 나타냅니다. 이 체계를 사용하면 다른 데이터 형식을 저장하는 값을 쉽게 구분할 수 있습니다. 예를 들어 "orders:100" 키를 사용하여 ID 100으로 순서에 대한 키를 나타낼 수 있습니다.
 
-1차원 이진 문자열 외에도 Redis 키-값 쌍의 값은 목록, 집합(정렬 및 정렬되지 않은) 및 해시를 포함한 더 구조화된 정보를 보유할 수 있습니다. Redis는 이러한 형식을 조작할 수 있는 포괄적인 명령 집합을 제공하고 이 명령 중 다수는 StackExchange와 같은 클라이언트 라이브러리를 통해 .NET Framework 응용 프로그램에서 사용할 수 있습니다. Redis에 웹 사이트의 [Redis 데이터 형식 및 추상화 소개](http://redis.io/topics/data-types-intro) 페이지가 이를 조작하는데 사용할 수 있는 유형 및 명령의 자세한 개요를 제공합니다.
+1차원 이진 문자열 외에도 Redis 키-값 쌍의 값은 목록, 집합(정렬 및 정렬되지 않은) 및 해시를 포함한 더 구조화된 정보를 보유할 수 있습니다. Redis는 이러한 형식을 조작할 수 있는 포괄적인 명령 집합을 제공하고 이 명령 중 다수는 StackExchange와 같은 클라이언트 라이브러리를 통해 .NET Framework 응용 프로그램에서 사용할 수 있습니다. Redis에 웹 사이트의 [Redis 데이터 형식 및 추상화 소개](https://redis.io/topics/data-types-intro) 페이지가 이를 조작하는데 사용할 수 있는 유형 및 명령의 자세한 개요를 제공합니다.
 
 이 섹션은 이러한 데이터 형식 및 명령에 대한 일부 일반적인 사용 사례를 요약합니다.
 
@@ -859,43 +859,42 @@ ISubscriber subscriber = redisHostConnection.GetSubscriber();
 
 - [Apache Avro](https://avro.apache.org/)는 프로토콜 버퍼 및 Thrift에 유사한 기능을 제공하지만 컴파일 단계는 없습니다. 대신, 직렬화된 데이터는 항상 구조를 설명하는 스키마를 포함합니다. 
 
-- [JSON](http://json.org/)은 인간이 이해하기 쉬운 텍스트 필드를 사용하는 개방형 표준입니다. 광범위한 플랫폼 간 지원을 제공합니다. JSON은 메시지 스키마를 사용하지 않습니다. 텍스트 기반 형식이기 때문에, 네트워크상에서는 별로 효율적이지 않습니다. 그러나 경우에 따라, HTTP를 통해 클라이언트로 직접 캐시된 항목을 반환할 수 있습니다. 이 경우 JSON을 저장하면 다른 형식에서 역직렬화했다가 JSON으로 직렬화하는 비용을 절감할 수 있습니다.
+- [JSON](https://json.org/)은 인간이 이해하기 쉬운 텍스트 필드를 사용하는 개방형 표준입니다. 광범위한 플랫폼 간 지원을 제공합니다. JSON은 메시지 스키마를 사용하지 않습니다. 텍스트 기반 형식이기 때문에, 네트워크상에서는 별로 효율적이지 않습니다. 그러나 경우에 따라, HTTP를 통해 클라이언트로 직접 캐시된 항목을 반환할 수 있습니다. 이 경우 JSON을 저장하면 다른 형식에서 역직렬화했다가 JSON으로 직렬화하는 비용을 절감할 수 있습니다.
 
 - [BSON](http://bsonspec.org/)은 JSON과 유사한 구조를 사용하는 이진 직렬화 형식입니다. BSON은 JSON에 비해 가볍고, 검색이 용이하고, 직렬화 및 역직렬화가 빠르도록 디자인되었습니다. 페이로드는 JSON에 크기와 비슷합니다. 데이터에 따라, BSON 페이로드는 JSON 페이로드보다 작거나 클 수 있습니다. BSON은 JSON에서는 사용할 수 없는 몇 가지 추가 데이터 형식을 갖습니다. 특히 BinData(바이트 배열) 및 Date가 여기에 포함됩니다.
 
-- [MessagePack](http://msgpack.org/)은 네트워크를 통해 전송하기 위해 압축되도록 디자인된 이진 직렬화 형식입니다. 메시지 스키마 또는 메시지 형식 확인은 수행되지 않습니다.
+- [MessagePack](https://msgpack.org/)은 네트워크를 통해 전송하기 위해 압축되도록 디자인된 이진 직렬화 형식입니다. 메시지 스키마 또는 메시지 형식 확인은 수행되지 않습니다.
 
 - [Bond](https://microsoft.github.io/bond/)는 스키마화된 데이터로 작업하기 위한 플랫폼 간 프레임워크입니다. 이 프레임워크는 언어 간 직렬화 및 역직렬화를 지원합니다. 여기에 나열된 다른 시스템과의 중요한 차이점은 상속, 형식 별칭 및 제네릭에 대한 지원입니다. 
 
-- [gRPC](http://www.grpc.io/)는 는 Google에서 개발한 오픈 소스 RPC 시스템입니다. 기본적으로 프로토콜 버퍼를 해당 정의 언어 및 기본 메시지 교환 형식으로 사용합니다.
+- [gRPC](https://www.grpc.io/)는 는 Google에서 개발한 오픈 소스 RPC 시스템입니다. 기본적으로 프로토콜 버퍼를 해당 정의 언어 및 기본 메시지 교환 형식으로 사용합니다.
 
 ## <a name="related-patterns-and-guidance"></a>관련 패턴 및 지침
 
 또한 응용 프로그램에서 캐싱을 구현하는 경우 다음 패턴은 시나리오와 관련될 수 있습니다.
 
-* [캐시 배제 패턴](http://msdn.microsoft.com/library/dn589799.aspx): 이 패턴은 요청 시 데이터를 데이터 저장소에서 캐시로 로드하는 방법을 설명합니다. 또한 이 패턴은 캐시에 저장된 데이터 및 원래 데이터 저장소의 데이터 간 일관성을 유지할 수 있습니다.
-* [분할 패턴](http://msdn.microsoft.com/library/dn589797.aspx)은 많은 양의 데이터를 저장 및 액세스하는 경우 확장성을 향상시키는 수평 분할을 구현할 정보를 제공합니다.
+* [캐시 배제 패턴](../patterns/cache-aside.md): 이 패턴은 요청 시 데이터를 데이터 저장소에서 캐시로 로드하는 방법을 설명합니다. 또한 이 패턴은 캐시에 저장된 데이터 및 원래 데이터 저장소의 데이터 간 일관성을 유지할 수 있습니다.
+* [분할 패턴](../patterns/sharding.md)은 많은 양의 데이터를 저장 및 액세스하는 경우 확장성을 향상시키는 수평 분할을 구현할 정보를 제공합니다.
 
 ## <a name="more-information"></a>자세한 정보
-* Microsoft 웹 사이트의 [MemoryCache 클래스](http://msdn.microsoft.com/library/system.runtime.caching.memorycache.aspx) 페이지.
+* Microsoft 웹 사이트의 [MemoryCache 클래스](/dotnet/api/system.runtime.caching.memorycache) 페이지.
 * Microsoft 웹 사이트의 [Azure Redis Cache 설명서](https://azure.microsoft.com/documentation/services/cache/) 페이지.
 * Microsoft 웹 사이트의 [Azure Redis Cache FAQ](/azure/redis-cache/cache-faq) 페이지.
-* Microsoft 웹 사이트의 [구성 모델](http://msdn.microsoft.com/library/windowsazure/hh914149.aspx) 페이지.
-* Microsoft 웹 사이트의 [작업 기반 비동기 패턴](http://msdn.microsoft.com/library/hh873175.aspx) 페이지.
+* Microsoft 웹 사이트의 [작업 기반 비동기 패턴](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) 페이지.
 * StackExchange.Redis GitHub 리포지토리의 [파이프라인 및 멀티플렉서](https://stackexchange.github.io/StackExchange.Redis/PipelinesMultiplexers) 페이지.
-* Redis 웹 사이트의 [Redis 지속성](http://redis.io/topics/persistence) 페이지.
-* Redis 웹 사이트의 [복제 페이지](http://redis.io/topics/replication) .
-* Redis 웹 사이트의 [Redis 클러스터 자습서](http://redis.io/topics/cluster-tutorial) 페이지.
-* Redis 웹 사이트의 [분할: 여러 Redis 인스턴스 간에 데이터를 분할하는 방법](http://redis.io/topics/partitioning) 페이지.
-* Redis 웹 사이트의 [Redis를 LRU 캐시로 사용](http://redis.io/topics/lru-cache) 페이지.
-* Redis 웹 사이트의 [트랜잭션](http://redis.io/topics/transactions) 페이지.
-* Redis 웹 사이트의 [Redis 보안](http://redis.io/topics/security) 페이지.
+* Redis 웹 사이트의 [Redis 지속성](https://redis.io/topics/persistence) 페이지.
+* Redis 웹 사이트의 [복제 페이지](https://redis.io/topics/replication) .
+* Redis 웹 사이트의 [Redis 클러스터 자습서](https://redis.io/topics/cluster-tutorial) 페이지.
+* Redis 웹 사이트의 [분할: 여러 Redis 인스턴스 간에 데이터를 분할하는 방법](https://redis.io/topics/partitioning) 페이지.
+* Redis 웹 사이트의 [Redis를 LRU 캐시로 사용](https://redis.io/topics/lru-cache) 페이지.
+* Redis 웹 사이트의 [트랜잭션](https://redis.io/topics/transactions) 페이지.
+* Redis 웹 사이트의 [Redis 보안](https://redis.io/topics/security) 페이지.
 * Azure 블로그의 [Azure Redis Cache 둘러보기](https://azure.microsoft.com/blog/2014/06/04/lap-around-azure-redis-cache-preview/) 페이지.
-* Microsoft 웹 사이트에서 [Azure의CentOS Linux VM에서 Redis 실행](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx) 페이지.
+* Microsoft 웹 사이트에서 [Azure의CentOS Linux VM에서 Redis 실행](https://blogs.msdn.microsoft.com/tconte/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure/) 페이지.
 * Microsoft 웹 사이트의 [Azure Redis Cache용 ASP.NET 세션 상태 제공자](/azure/redis-cache/cache-aspnet-session-state-provider) 페이지입니다.
 * Microsoft 웹 사이트의 [Azure Redis Cache용 ASP.NET 출력 캐시 제공자](/azure/redis-cache/cache-aspnet-output-cache-provider) 페이지입니다.
-* Redis 웹 사이트의 [Redis 데이터 형식 및 추상화 소개](http://redis.io/topics/data-types-intro) 페이지.
+* Redis 웹 사이트의 [Redis 데이터 형식 및 추상화 소개](https://redis.io/topics/data-types-intro) 페이지.
 * StackExchange.Redis 웹 사이트의 [기본 사용법](https://stackexchange.github.io/StackExchange.Redis/Basics) 페이지.
 * StackExchange.Redis 리포지토리의 [Redis에서 트랜잭션](https://stackexchange.github.io/StackExchange.Redis/Transactions) 페이지.
-* Microsoft 웹 사이트의 [데이터 분할 가이드](http://msdn.microsoft.com/library/dn589795.aspx) .
+* Microsoft 웹 사이트의 [데이터 분할 가이드](https://msdn.microsoft.com/library/dn589795.aspx) .
 

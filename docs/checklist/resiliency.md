@@ -4,12 +4,12 @@ description: 설계하는 동안 복원력 문제에 대한 지침을 제공하�
 author: petertaylor9999
 ms.date: 01/10/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 883424d5d3535f822cdba61ecb9520ce05f75ec7
-ms.sourcegitcommit: 2154e93a0a075e1f7425a6eb11fc3f03c1300c23
+ms.openlocfilehash: 17612ee08e2329ea648fd21d6764e7bae1ca20e2
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352647"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429097"
 ---
 # <a name="resiliency-checklist"></a>복원력 검사 목록
 
@@ -28,8 +28,7 @@ ms.locfileid: "39352647"
 * 복구 전략을 식별합니다.
   
 
-**서비스의 여러 인스턴스를 배포합니다.** 응용 프로그램이 서비스의 단일 인스턴스에 종속된 경우 단일 실패 지점이 생깁니다. 여러 인스턴스를 프로비전하면 복원력 및 확장성이 모두 개선됩니다. 
-  [Azure App Service](/azure/app-service/app-service-value-prop-what-is/)의 경우 여러 인스턴스를 제공하는 [App Service 계획](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)을 선택합니다. Azure Cloud Services의 경우 각각의 역할을 [여러 인스턴스](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)를 사용하도록 구성합니다. [Azure Virtual Machines(VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)의 경우, VM 아키텍처가 둘 이상의 VM을 포함하는지 그리고 각각의 VM이 [가용성 집합][availability-sets]에 포함되는지 확인합니다.   
+**서비스의 여러 인스턴스를 배포합니다.** 응용 프로그램이 서비스의 단일 인스턴스에 종속된 경우 단일 실패 지점이 생깁니다. 여러 인스턴스를 프로비전하면 복원력 및 확장성이 모두 개선됩니다. [Azure App Service](/azure/app-service/app-service-value-prop-what-is/)의 경우 여러 인스턴스를 제공하는 [App Service 계획](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)을 선택합니다. Azure Cloud Services의 경우 각각의 역할을 [여러 인스턴스](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)를 사용하도록 구성합니다. [Azure Virtual Machines(VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)의 경우, VM 아키텍처가 둘 이상의 VM을 포함하는지 그리고 각각의 VM이 [가용성 집합][availability-sets]에 포함되는지 확인합니다.   
 
 **자동 크기 조정을 사용하여 부하의 증가에 대응합니다.** 응용 프로그램이 부하가 증가할 때 자동으로 규모 확장되도록 구성되지 않은 경우 사용자 요청으로 포화되면 응용 프로그램의 서비스가 실패할 가능성이 있습니다. 자세한 내용은 다음을 참조하세요.
 
@@ -46,14 +45,14 @@ ms.locfileid: "39352647"
 
 **여러 지역에 걸쳐 응용 프로그램을 배포하는 것을 고려합니다.** 응용 프로그램이 단일 지역에 배포되면 전체 지역이 사용할 수 없게 되는 드문 경우에 응용 프로그램도 사용할 수 없습니다. 이러한 상황이 응용 프로그램의 SLA의 조항에 따라 허용되지 않을 수 있습니다. 그러한 경우 응용 프로그램 및 해당 서비스를 여러 지역에 걸쳐 배포하는 것을 고려합니다. 다중 지역 배포는 능동-능동 패턴(여러 활성 인스턴스에 걸쳐 요청을 배포) 또는 능동-수동 패턴(기본 인스턴스가 실패할 경우 “관심 있음” 인스턴스를 예비로 보관)을 사용할 수 있습니다. 응용 프로그램 서비스의 여러 인스턴스를 지역 쌍에 걸쳐 배포하는 것이 좋습니다. 자세한 내용은 [BCDR(비즈니스 연속성 및 재해 복구): Azure 쌍을 이루는 지역](/azure/best-practices-availability-paired-regions)을 참조하세요.
 
-**Azure Traffic Manager를 사용하여 응용 프로그램의 트래픽을 다른 지역으로 경로 설정합니다.**  [Azure Traffic Manager][traffic-manager]는 DNS 수준에서 부하 분산을 수행하며 트래픽을 사용자가 지정하는 [트래픽 라우팅][traffic-manager-routing] 방법 및 응용 프로그램 끝점의 상태를 기반으로 서로 다른 지역에 경로 설정합니다. Traffic Manager가 없으면 배포가 단일 지역으로 제한되어 크기가 제한되고 일부 사용자에 대한 대기 시간이 증가하며, 지역 전체 서비스가 중단된 경우 응용 프로그램 가동 중지 시간이 야기됩니다.
+**Azure Traffic Manager를 사용하여 응용 프로그램의 트래픽을 다른 지역으로 경로 설정합니다.**  [Azure Traffic Manager][traffic-manager]는 DNS 수준에서 부하 분산을 수행하며 트래픽을 사용자가 지정하는 [트래픽 라우팅][traffic-manager-routing] 방법 및 응용 프로그램 엔드포인트의 상태를 기반으로 서로 다른 지역에 경로 설정합니다. Traffic Manager가 없으면 배포가 단일 지역으로 제한되어 크기가 제한되고 일부 사용자에 대한 대기 시간이 증가하며, 지역 전체 서비스가 중단된 경우 응용 프로그램 가동 중지 시간이 야기됩니다.
 
 **부하 분산 장치 및 트래픽 관리자에 대한 상태 프로브를 구성하고 테스트합니다** 상태 논리가 시스템의 중요 부분을 확인하고 상태 프로브에 적절히 반응하도록 합니다.
 
 * [Azure Traffic Manager][traffic-manager] 및 [Azure Load Balancer][load-balancer]에 대한 상태 프로브는 특정 기능을 수행합니다. Traffic Manager의 경우 상태 프로브는 다른 지역으로 장애 조치할지 여부를 결정합니다. 부하 분산 장치의 경우 VM을 윤번에서 제거할지 여부를 결정합니다.      
-* Traffic Manager 프로브의 경우, 상태 끝점이 같은 지역 내에 배포된 중요 종속성을 확인해야 하며, 해당 끝점이 실패하면 다른 지역으로 장애 조치를 트리거해야 합니다.  
-* 부하 분산 장치의 경우 상태 끝점은 VM의 상태를 보고해야 합니다. 다른 계층 또는 외부 서비스를 포함하지 마세요. 그렇지 않으면 VM 외부에서 발생하는 실패 때문에 부하 분산 장치가 VM을 윤번에서 제거하게 됩니다.
-* 응용 프로그램의 상태 모니터링 구현에 대한 지침은 [상태 끝점 모니터링 패턴](https://msdn.microsoft.com/library/dn589789.aspx)을 참조하세요.
+* Traffic Manager 프로브의 경우, 상태 엔드포인트가 같은 지역 내에 배포된 중요 종속성을 확인해야 하며, 해당 엔드포인트가 실패하면 다른 지역으로 장애 조치를 트리거해야 합니다.  
+* 부하 분산 장치의 경우 상태 엔드포인트는 VM의 상태를 보고해야 합니다. 다른 계층 또는 외부 서비스를 포함하지 마세요. 그렇지 않으면 VM 외부에서 발생하는 실패 때문에 부하 분산 장치가 VM을 윤번에서 제거하게 됩니다.
+* 응용 프로그램의 상태 모니터링 구현에 대한 지침은 [상태 엔드포인트 모니터링 패턴](https://msdn.microsoft.com/library/dn589789.aspx)을 참조하세요.
 
 **타사 서비스를 모니터링합니다.** 응용 프로그램이 타사 서비스에 종속된 경우 이러한 타사 서비스가 실패할 수 있는 경우와 방법 및 해당 실패가 응용 프로그램에 주는 영향을 파악합니다. 타사 서비스는 모니터링 및 진단을 포함하지 않은 경우가 있으므로 이러한 서비스의 호출을 기록하고 고유 식별자를 사용하여 응용 프로그램의 상태 및 진단 로깅과 상호 연결하는 것이 중요합니다. 입증된 모니터링 및 진단 사례에 대한 자세한 내용은 [모니터링 및 진단 지침][monitoring-and-diagnostics-guidance]을 참조하세요.
 
@@ -82,7 +81,7 @@ ms.locfileid: "39352647"
 
 ## <a name="security"></a>보안
 
-**DDoS(배포된 서비스 거부) 공격에 대한 응용 프로그램 수준의 보호를 구현합니다.** Azure 서비스는 네트워크 계층에서 DDoS 공격으로부터 보호됩니다. 그러나 실제 사용자 요청을 악의적인 사용자 요청과 구별하기 어려우므로 Azure는 응용 프로그램 계층 공격으로부터 보호할 수 없습니다. 응용 프로그램 계층 DDoS 공격으로부터 보호하는 방법은 [Microsoft Azure 네트워크 보안](http://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)(PDF 다운로드)의 “DDoS로부터 보호” 섹션을 참조하세요.
+**DDoS(배포된 서비스 거부) 공격에 대한 응용 프로그램 수준의 보호를 구현합니다.** Azure 서비스는 네트워크 계층에서 DDoS 공격으로부터 보호됩니다. 그러나 실제 사용자 요청을 악의적인 사용자 요청과 구별하기 어려우므로 Azure는 응용 프로그램 계층 공격으로부터 보호할 수 없습니다. 응용 프로그램 계층 DDoS 공격으로부터 보호하는 방법은 [Microsoft Azure 네트워크 보안](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)(PDF 다운로드)의 “DDoS로부터 보호” 섹션을 참조하세요.
 
 **응용 프로그램의 리소스에 액세스하기 위한 최소 권한의 원칙을 구현합니다.** 응용 프로그램의 리소스에 액세스하기 위한 기본값은 가능하면 제한적이어야 합니다. 승인을 받은 경우 더 높은 권한을 부여합니다. 응용 프로그램의 리소스에 대해 과도하게 허용된 액세스 권한을 부여하면 누군가가 고의로 또는 실수로 리소스를 삭제하게 될 수 있습니다. Azure는 사용자 권한을 관리하기 위한 [역할 기반 액세스 제어](/azure/active-directory/role-based-access-built-in-roles/)를 제공하지만, SQL Server 같은 자체의 권한 시스템을 가진 다른 리소스에 대해서는 최소 권한 허용을 확인하는 것이 중요합니다.
 
@@ -100,7 +99,7 @@ ms.locfileid: "39352647"
 
 **응용 프로그램의 배포 프로세스를 자동화합니다.** 운영 담당자가 응용 프로그램을 수동으로 배포해야 하는 경우 인적 오류 때문에 배포가 실패할 수 있습니다. 
 
-**응용 프로그램 가용성을 최대화하도록 릴리스 프로세스를 설계합니다.** 릴리스 프로세스가 배포 중에 서비스를 오프라인으로 전환할 것을 요구하는 경우 다시 온라인이 될 때까지 응용 프로그램을 사용할 수 없습니다. [파란색/녹색](http://martinfowler.com/bliki/BlueGreenDeployment.html) 또는 [카나리아 릴리스](http://martinfowler.com/bliki/CanaryRelease.html) 배포 기술을 사용하여 응용 프로그램을 프로덕션에 배포합니다. 두 기술 모두 고장 시 릴리스 코드 사용자가 프로덕션 코드로 리디렉션될 수 있도록 프로덕션 코드와 함께 릴리스 코드 배포를 포함합니다.
+**응용 프로그램 가용성을 최대화하도록 릴리스 프로세스를 설계합니다.** 릴리스 프로세스가 배포 중에 서비스를 오프라인으로 전환할 것을 요구하는 경우 다시 온라인이 될 때까지 응용 프로그램을 사용할 수 없습니다. [파란색/녹색](https://martinfowler.com/bliki/BlueGreenDeployment.html) 또는 [카나리아 릴리스](https://martinfowler.com/bliki/CanaryRelease.html) 배포 기술을 사용하여 응용 프로그램을 프로덕션에 배포합니다. 두 기술 모두 고장 시 릴리스 코드 사용자가 프로덕션 코드로 리디렉션될 수 있도록 프로덕션 코드와 함께 릴리스 코드 배포를 포함합니다.
 
 **로그인하고 응용 프로그램의 배포를 감사합니다.** 파란색/녹색 또는 카나리아 릴리스 같은 단계별 배포 기술을 사용하는 경우 프로덕션에서 실행 중인 응용 프로그램의 버전이 둘 이상이 됩니다. 문제가 발생한 경우 응용 프로그램의 버전 중 문제를 야기하는 버전을 결정해야 합니다. 최대한 많은 버전 관련 정보를 캡처하도록 강력한 로깅 전략을 구현합니다.
 

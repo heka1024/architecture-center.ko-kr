@@ -6,12 +6,12 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: claims
 pnp.series.next: app-roles
-ms.openlocfilehash: dde577d5bab63fb436d52fb4548399d5bd8bb38f
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 512fd37080b99a7e6249db70f0d2bc673cf87978
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582744"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429165"
 ---
 # <a name="tenant-sign-up-and-onboarding"></a>테넌트 등록 및 온보딩
 
@@ -58,7 +58,7 @@ Azure AD를 인증하려면 응용 프로그램은 사용자의 디렉터리에 
 
 이러한 단추는 `AccountController` 클래스에서 작업을 호출합니다.
 
-`SignIn` 작업은 OpenID Connect 미들웨어를 인증 끝점으로 리디렉션할 수 있게 하는 **ChallegeResult**를 반환합니다. 이는 ASP.NET Core에서 인증을 트리거하는 기본 방법입니다.  
+`SignIn` 작업은 OpenID Connect 미들웨어를 인증 엔드포인트로 리디렉션할 수 있게 하는 **ChallegeResult**를 반환합니다. 이는 ASP.NET Core에서 인증을 트리거하는 기본 방법입니다.  
 
 ```csharp
 [AllowAnonymous]
@@ -107,7 +107,7 @@ Azure AD에서 관리자 동의 흐름은 "prompt" 매개 변수를 인증 요�
 /authorize?prompt=admin_consent&...
 ```
 
-설문 조사 응용 프로그램은 `RedirectToAuthenticationEndpoint` 이벤트 중 프롬프트를 추가합니다. 이 이벤트는 미들웨어가 인증 끝점에 리디렉션하기 직전에 호출됩니다.
+설문 조사 응용 프로그램은 `RedirectToAuthenticationEndpoint` 이벤트 중 프롬프트를 추가합니다. 이 이벤트는 미들웨어가 인증 엔드포인트에 리디렉션하기 직전에 호출됩니다.
 
 ```csharp
 public override Task RedirectToAuthenticationEndpoint(RedirectContext context)
@@ -259,6 +259,6 @@ private async Task<Tenant> SignUpTenantAsync(BaseControlContext context, TenantM
 [app roles]: app-roles.md
 [Tailspin]: tailspin.md
 
-[상태]: http://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
+[상태]: https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
 [인증]: authenticate.md
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance

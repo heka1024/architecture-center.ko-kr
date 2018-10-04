@@ -8,12 +8,12 @@ pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - design-implementation
 - messaging
-ms.openlocfilehash: 2c17504f594843c10fcfe221f0087f1087a73fb8
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: fd616676f9487bdfe1bf23b3d0fec6c65b97a8f4
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30847110"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429573"
 ---
 # <a name="pipes-and-filters-pattern"></a>파이프 및 필터 패턴
 
@@ -59,7 +59,7 @@ ms.locfileid: "30847110"
 
 - **신뢰성**. 파이프라인의 필터 사이에 흐르는 데이터가 손실되지 않는 인프라를 사용합니다.
 
-- **멱등성**. 메시지를 수신한 후 파이프라인의 필터에 오류가 나서 작업을 해당 필터의 다른 인스턴스로 조정한 경우, 작업 일부가 이미 완료되었을 수 있습니다. 이 작업이 전역 상태의 일부 측면(데이터베이스에 저장된 정보 등)을 업데이트하는 경우, 동일한 업데이트가 반복될 수 있습니다. 파이프라인의 그 다음 필터에 결과를 게시한 후 작업을 성공적으로 완료했다는 표시를 하기 전 필터가 실패하는 경우 동일한 문제가 발생할 수 있습니다. 이러한 경우, 동일한 작업을 필터의 다른 인스턴스에서 반복하여 같은 결과를 두 번 게시하게 됩니다. 이로 인해 파이프라인의 그 다음 필터가 같은 데이터를 두 번 처리하게 됩니다. 그러므로 파이프라인의 필터는 멱등성을 가지도록 설계해야 합니다. 자세한 내용은 Jonathan Oliver에서 [멱등성 패턴](http://blog.jonathanoliver.com/idempotency-patterns/)을 참조하세요.
+- **멱등성**. 메시지를 수신한 후 파이프라인의 필터에 오류가 나서 작업을 해당 필터의 다른 인스턴스로 조정한 경우, 작업 일부가 이미 완료되었을 수 있습니다. 이 작업이 전역 상태의 일부 측면(데이터베이스에 저장된 정보 등)을 업데이트하는 경우, 동일한 업데이트가 반복될 수 있습니다. 파이프라인의 그 다음 필터에 결과를 게시한 후 작업을 성공적으로 완료했다는 표시를 하기 전 필터가 실패하는 경우 동일한 문제가 발생할 수 있습니다. 이러한 경우, 동일한 작업을 필터의 다른 인스턴스에서 반복하여 같은 결과를 두 번 게시하게 됩니다. 이로 인해 파이프라인의 그 다음 필터가 같은 데이터를 두 번 처리하게 됩니다. 그러므로 파이프라인의 필터는 멱등성을 가지도록 설계해야 합니다. 자세한 내용은 Jonathan Oliver에서 [멱등성 패턴](https://blog.jonathanoliver.com/idempotency-patterns/)을 참조하세요.
 
 - **반복 메시지**. 파이프라인의 다음 단계로 메시지를 게시한 후 파이프라인의 필터가 실패하는 경우, 해당 필터의 다른 인스턴스가 실행될 수 있으며 동일한 메시지 복사본을 파이프라인에 게시합니다. 이로 인해 같은 메시지의 인스턴스 두 개가 다음 필터로 전달됩니다. 이것을 방지하려면 파이프라인은 중복 메시지를 감지하여 제거해야 합니다.
 
@@ -282,4 +282,4 @@ public class FinalReceiverRoleEntry : RoleEntryPoint
 - [경쟁 소비자 패턴](competing-consumers.md) 파이프라인에는 하나 이상의 필터의 여러 인스턴스가 포함될 수 있습니다. 이 방법은 느린 필터의 병렬 인스턴스를 실행할 때 시스템이 부하를 분산시키고 처리량을 향상시킬 수 있도록 하므로 유용합니다. 필터의 각 인스턴스는 다른 인스턴스의 입력과 경쟁하며, 한 필터의 두 인스턴스가 같은 데이터를 처리할 수는 없습니다. 이 방법에 대한 설명이 제공됩니다.
 - [계산 리소스 통합 패턴](compute-resource-consolidation.md) 동일한 프로세스에서 같이 크기를 조정해야 하는 필터를 그룹화할 수 있습니다. 이 전략의 장단점에 대한 자세한 내용을 제공합니다.
 - [보상 트랜잭션 패턴](compensating-transaction.md). 필터를 되돌릴 수 있거나, 오류가 발생할 때 상태를 이전 상태로 복원하는 보상 작업을 포함하는 작업으로 구현할 수 있습니다. 이 기능을 구현하여 최종 일관성을 유지 관리하거나 달성하기 위한 방법을 설명합니다.
-- Jonathan Oliver의 [멱등성 패턴](http://blog.jonathanoliver.com/idempotency-patterns/)
+- Jonathan Oliver의 [멱등성 패턴](https://blog.jonathanoliver.com/idempotency-patterns/)

@@ -3,12 +3,12 @@ title: 마이크로 서비스에서 로깅 및 모니터링
 description: 마이크로 서비스에서 로깅 및 모니터링
 author: MikeWasson
 ms.date: 12/08/2017
-ms.openlocfilehash: 1da67047daa9ae87cda5dd7dd581d6081183c428
-ms.sourcegitcommit: 786bafefc731245414c3c1510fc21027afe303dc
+ms.openlocfilehash: b7206e2f35b9f227ff298f077ddafef1c6015b15
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2017
-ms.locfileid: "26652997"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428774"
 ---
 # <a name="designing-microservices-logging-and-monitoring"></a>마이크로 서비스 디자인: 로깅 및 모니터링
 
@@ -64,7 +64,7 @@ ms.locfileid: "26652997"
 
 ## <a name="distributed-tracing"></a>분산된 추적
 
-언급한 바와 같이 마이크로 서비스에서 한 가지 문제는 서비스 전반에 걸쳐 이벤트 흐름을 파악하는 것입니다. 단일 작업 또는 트랜잭션은 여러 서비스에 대한 호출을 포함할 수 있습니다. 단계의 전체 시퀀스를 다시 구성하기 위해 각 서비스는 해당 작업에 대해 고유 식별자의 역할을 하는 *상관 관계 ID*를 전파해야 합니다. 상관 관계 ID는 서비스 전반에 걸쳐 [분산된 추적](http://microservices.io/patterns/observability/distributed-tracing.html)을 사용합니다.
+언급한 바와 같이 마이크로 서비스에서 한 가지 문제는 서비스 전반에 걸쳐 이벤트 흐름을 파악하는 것입니다. 단일 작업 또는 트랜잭션은 여러 서비스에 대한 호출을 포함할 수 있습니다. 단계의 전체 시퀀스를 다시 구성하기 위해 각 서비스는 해당 작업에 대해 고유 식별자의 역할을 하는 *상관 관계 ID*를 전파해야 합니다. 상관 관계 ID는 서비스 전반에 걸쳐 [분산된 추적](https://microservices.io/patterns/observability/distributed-tracing.html)을 사용합니다.
 
 클라이언트 요청을 수신하는 첫 번째 서비스는 상관 관계 ID를 생성해야 합니다. 서비스에서 다른 서비스에 대한 HTTP 호출을 수행하는 경우 요청 헤더에 상관 관계 ID를 배치합니다. 마찬가지로 서비스가 비동기 메시지를 보내는 경우 메시지에 상관 관계 ID를 배치합니다. 전체 시스템을 통해 흐르도록 다운스트림 서비스는 상관 관계 ID를 계속해서 전파합니다. 또한 응용 프로그램 메트릭 또는 로그 이벤트를 작성하는 모든 코드는 상관 관계 ID를 포함해야 합니다.
 
@@ -114,7 +114,7 @@ Application Insights가 요구 사항을 충족하지 않는 경우 인기 있�
 
 ## <a name="example-logging-with-correlation-ids"></a>예제: 상관 관계 ID를 사용하여 로깅
 
-이 챕터에서 설명한 사항 중 일부를 보여 주기 위해 패키지 서비스에서 로깅을 구현하는 방법의 확장된 예제는 다음과 같습니다. 패키지 서비스는 TypeScript에서 작성되었으며 Node.js용 [Koa](http://koajs.com/) 웹 프레임워크를 사용합니다. 여러 개의 Node.js 로깅 라이브러리에서 선택할 수 있습니다. 테스트했을 때 성능 요구 사항을 충족했던 일반적인 로깅 라이브러리인 [Winston](https://github.com/winstonjs/winston)을 선택했습니다.
+이 챕터에서 설명한 사항 중 일부를 보여 주기 위해 패키지 서비스에서 로깅을 구현하는 방법의 확장된 예제는 다음과 같습니다. 패키지 서비스는 TypeScript에서 작성되었으며 Node.js용 [Koa](https://koajs.com/) 웹 프레임워크를 사용합니다. 여러 개의 Node.js 로깅 라이브러리에서 선택할 수 있습니다. 테스트했을 때 성능 요구 사항을 충족했던 일반적인 로깅 라이브러리인 [Winston](https://github.com/winstonjs/winston)을 선택했습니다.
 
 구현 세부 정보를 캡슐화하기 위해 추상 `ILogger` 인터페이스를 정의했습니다.
 

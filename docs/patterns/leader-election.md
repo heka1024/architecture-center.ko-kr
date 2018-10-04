@@ -8,12 +8,12 @@ pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - design-implementation
 - resiliency
-ms.openlocfilehash: 8c8efa0846550557bb53ea81f85ac0e303a77b19
-ms.sourcegitcommit: f19314f18cd794ebe380fa722ca92066b8735b56
+ms.openlocfilehash: 6cc4b19e889cc9fc692e388498cc16ea56b1c981
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37348272"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429199"
 ---
 # <a name="leader-election-pattern"></a>리더 선택 패턴
 
@@ -43,7 +43,7 @@ ms.locfileid: "37348272"
 다음을 포함하여 분산 환경의 태스크 집합 중에서 리더를 선택하는 몇 가지 전략이 있습니다.
 - 순위가 가장 낮은 인스턴스 또는 프로세스 ID를 가진 태스크 인스턴스 선택.
 - 공유 분산 뮤텍스를 확보하기 위해 경합. 뮤텍스를 확보하는 첫 번째 태스크 인스턴스가 리더가 됩니다. 그러나 리더가 종료되거나 시스템의 나머지 부분에서 연결이 끊길 경우 뮤텍스가 해제되어 다른 태스크 인스턴스가 리더가 될 수 있도록 해야 합니다.
-- [Bully 알고리즘](http://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/BullyExample.html) 또는 [Ring 알고리즘](http://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/RingElectExample.html)과 같은 공용 리더 선택 알고리즘 중 하나 구현. 이러한 알고리즘은 각 선택 후보에 고유 ID가 있으며 다른 후보와 안정적으로 통신할 수 있다고 가정합니다.
+- [Bully 알고리즘](https://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/BullyExample.html) 또는 [Ring 알고리즘](https://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/RingElectExample.html)과 같은 공용 리더 선택 알고리즘 중 하나 구현. 이러한 알고리즘은 각 선택 후보에 고유 ID가 있으며 다른 후보와 안정적으로 통신할 수 있다고 가정합니다.
 
 ## <a name="issues-and-considerations"></a>문제 및 고려 사항
 
@@ -198,7 +198,7 @@ private static async Task MyLeaderCoordinatorTask(CancellationToken token)
 - [자동 크기 조정 지침](https://msdn.microsoft.com/library/dn589774.aspx). 응용 프로그램의 부하가 변경됨에 따라 태스크 호스트 인스턴스를 시작 및 중지할 수 있습니다. 자동 크기 조정을 사용하면 최고 처리 시간 동안 처리량과 성능을 유지할 수 있습니다.
 - [Compute 분할 지침](https://msdn.microsoft.com/library/dn589773.aspx) 이 지침은 서비스의 확장성, 성능, 가용성 및 보안을 유지하면서 실행 비용을 최소화하는 데 도움이 되는 방식으로 클라우드 서비스의 호스트에 태스크를 할당하는 방법을 설명합니다.
 - [태스크 기반 비동기 패턴](https://msdn.microsoft.com/library/hh873175.aspx).
-- [Bully 알고리즘](http://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/BullyExample.html)을 보여 주는 예제.
-- [Ring 알고리즘](http://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/RingElectExample.html)을 보여 주는 예제.
-- Apache ZooKeeper용 클라이언트 라이브러리인 [Apache Curator](http://curator.apache.org/).
+- [Bully 알고리즘](https://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/BullyExample.html)을 보여 주는 예제.
+- [Ring 알고리즘](https://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/RingElectExample.html)을 보여 주는 예제.
+- Apache ZooKeeper용 클라이언트 라이브러리인 [Apache Curator](https://curator.apache.org/).
 - MSDN에 있는 [Blob 임대(REST API)](https://msdn.microsoft.com/library/azure/ee691972.aspx) 문서.

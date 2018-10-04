@@ -7,12 +7,12 @@ ms.date: 06/23/2017
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - messaging
-ms.openlocfilehash: d72a09ef7613bebe3701634e4eac0716400e471d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: aea172dcdb33c0d8513fb69715f1549b4a20f5e6
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582793"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428380"
 ---
 # <a name="competing-consumers-pattern"></a>경쟁 소비자 패턴
 
@@ -48,7 +48,7 @@ ms.locfileid: "26582793"
 
 이 패턴을 구현할 방법을 결정할 때 다음 사항을 고려하세요.
 
-- **메시지 정렬**. 소비자 서비스 인스턴스가 메시지를 수신하는 순서는 확정되지 않으며 메시지가 만들어진 순서를 반드시 반영하는 것은 아닙니다. idempotent는 메시지를 처리하는 순서에 대한 의존성을 제거하는 데 도움을 주기 때문에 메시지 처리가 idempotent를 제공하도록 시스템을 디자인합니다. 자세한 내용은 Jonathon Oliver의 블로그에서 [Idempotency Patterns](http://blog.jonathanoliver.com/idempotency-patterns/)(Idempotency 패턴)를 참조하세요.
+- **메시지 정렬**. 소비자 서비스 인스턴스가 메시지를 수신하는 순서는 확정되지 않으며 메시지가 만들어진 순서를 반드시 반영하는 것은 아닙니다. idempotent는 메시지를 처리하는 순서에 대한 의존성을 제거하는 데 도움을 주기 때문에 메시지 처리가 idempotent를 제공하도록 시스템을 디자인합니다. 자세한 내용은 Jonathon Oliver의 블로그에서 [Idempotency Patterns](https://blog.jonathanoliver.com/idempotency-patterns/)(Idempotency 패턴)를 참조하세요.
 
     > Microsoft Azure Service Bus 큐는 메시지 세션을 사용해 보장된 메시지의 선입선출 정렬을 구현할 수 있습니다. 자세한 내용은 [세션을 사용하는 메시징 패턴](https://msdn.microsoft.com/magazine/jj863132.aspx)을 참조하세요.
 
@@ -180,7 +180,7 @@ Azure에서 사용할 수 있는 것과 같은 자동 크기 조정 기능은 �
 
 이 패턴을 구현할 때 다음 패턴 및 지침도 관련이 있을 수 있습니다.
 
-- [비동기 메시징 입문서](https://msdn.microsoft.com/library/dn589781.aspx). 메시지 큐는 비동기 통신 메커니즘입니다. 소비자 서비스가 회신을 응용 프로그램에 전송해야 하는 경우 특정 형태의 응답 메시징을 구현해야 할 수 있습니다. 비동기 메시징 입문서에서는 메시지 큐를 사용하여 요청/회신 메시징을 구현하는 방법에 대한 정보를 제공합니다.
+- [비동기 메시징 입문](https://msdn.microsoft.com/library/dn589781.aspx). 메시지 큐는 비동기 통신 메커니즘입니다. 소비자 서비스가 회신을 응용 프로그램에 전송해야 하는 경우 특정 형태의 응답 메시징을 구현해야 할 수 있습니다. 비동기 메시징 입문서에서는 메시지 큐를 사용하여 요청/회신 메시징을 구현하는 방법에 대한 정보를 제공합니다.
 
 - [자동 크기 조정 지침](https://msdn.microsoft.com/library/dn589774.aspx). 응용 프로그램이 메시지를 게시하는 큐의 길이가 변하기 때문에 소비자 서비스 인스턴스를 시작하고 중지할 수 있습니다. 자동 크기 조정은 최대 처리 시간 동안 처리량을 유지하는 데 도움을 줄 수 있습니다.
 

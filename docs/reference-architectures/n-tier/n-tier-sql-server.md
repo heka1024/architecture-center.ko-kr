@@ -3,12 +3,12 @@ title: SQL Server를 통한 N 계층 응용 프로그램
 description: 가용성, 보안, 확장성 및 관리 효율성을 위해 Azure에서 다중 계층 아키텍처를 구현하는 방법을 설명합니다.
 author: MikeWasson
 ms.date: 07/19/2018
-ms.openlocfilehash: 3a291b9492c94450a42de96bea2135190c163fe7
-ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
+ms.openlocfilehash: d5f46570464916af892afcf492127402181a5df5
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45584751"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429148"
 ---
 # <a name="n-tier-application-with-sql-server"></a>SQL Server를 통한 N 계층 응용 프로그램
 
@@ -267,8 +267,8 @@ Azure 구성 요소를 사용하여 이 샘플 참조 아키텍처를 배포하�
 [vnet faq]: /azure/virtual-network/virtual-networks-faq
 [wsfc-whats-new]: https://technet.microsoft.com/windows-server-docs/failover-clustering/whats-new-in-failover-clustering
 [Nagios]: https://www.nagios.org/
-[Zabbix]: http://www.zabbix.com/
-[Icinga]: http://www.icinga.org/
+[Zabbix]: https://www.zabbix.com/
+[Icinga]: https://www.icinga.org/
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
 [0]: ./images/n-tier-sql-server.png "Microsoft Azure를 사용하는 N 계층 아키텍처"
 [resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview 

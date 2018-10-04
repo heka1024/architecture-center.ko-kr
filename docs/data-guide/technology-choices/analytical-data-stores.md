@@ -3,12 +3,12 @@ title: 분석 데이터 저장소 선택
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: cdc32c16e30aec5e1c0cb6959182215f99d56b56
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 3cf7dc533cc6ae3e6d7e2326852b585da8613e18
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30846885"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428876"
 ---
 # <a name="choosing-an-analytical-data-store-in-azure"></a>Azure에서 분석 데이터 저장소 선택
 
@@ -55,10 +55,10 @@ Azure에서는 사용자의 요구에 따라 다음과 같은 몇 가지 데이�
 
 | | SQL Database | SQL Data Warehouse | HDInsight의 HBase/Phoenix | HDInsight의 Hive LLAP | Azure Analysis Services | Cosmos DB |
 | --- | --- | --- | --- | --- | --- | --- |
-| 관리되는 서비스인지 여부 | 예 | 예 | 예 <sup>1</sup> | 예 <sup>1</sup> | 예 | 예 |
+| 관리되는 서비스인지 여부 | yes | yes | 예 <sup>1</sup> | 예 <sup>1</sup> | yes | yes |
 | 주 데이터베이스 모델 | 관계형(columnstore 인덱스를 사용할 경우 칼럼 형식) | 칼럼 형식 저장소가 있는 관계형 테이블 | 넓은 열 저장소 | Hive/메모리 내 | 테이블 형식/MOLAP 의미 체계 모델 | 문서 저장소, 그래프, 키-값 저장소, 넓은 열 저장소 |
-| SQL 언어 지원 | 예 | 예 | 예([Phoenix](http://phoenix.apache.org/) JDBC 드라이버 사용) | 예 | 아니오 | 예 |
-| 빠른 서비스 계층에 최적화됨 | 예 <sup>2</sup> | 아니요 | 예 | 예 | 아니오 | 예 |
+| SQL 언어 지원 | yes | yes | 예([Phoenix](https://phoenix.apache.org/) JDBC 드라이버 사용) | yes | 아니요 | yes |
+| 빠른 서비스 계층에 최적화됨 | 예 <sup>2</sup> | 아니요 | 예 | yes | 아니요 | yes |
 
 [1] 수동 구성 및 크기 조정 사용
 
@@ -68,20 +68,20 @@ Azure에서는 사용자의 요구에 따라 다음과 같은 몇 가지 데이�
 
 |                                                  | SQL Database | SQL Data Warehouse | HDInsight의 HBase/Phoenix | HDInsight의 Hive LLAP | Azure Analysis Services | Cosmos DB |
 |--------------------------------------------------|--------------|--------------------|----------------------------|------------------------|-------------------------|-----------|
-| 고가용성을 위한 중복 지역 서버 |     예      |        예         |            예             |           아니오           |           아니요            |    예    |
-|             쿼리 확장 지원 여부             |      아니오      |        예         |            예             |          예           |           예           |    예    |
-|          동적 확장성(강화)          |     예      |        예         |             아니오             |           아니요           |           예           |    예    |
-|        데이터의 메모리 내 캐싱 지원 여부        |     예      |        예         |             아니오             |          예           |           예           |    아니오     |
+| 고가용성을 위한 중복 지역 서버 |     yes      |        예         |            yes             |           아니요           |           아니요            |    yes    |
+|             쿼리 확장 지원 여부             |      아니요      |        예         |            예             |          예           |           예           |    yes    |
+|          동적 확장성(강화)          |     yes      |        yes         |             아니요             |           아니요           |           예           |    yes    |
+|        데이터의 메모리 내 캐싱 지원 여부        |     yes      |        yes         |             아니요             |          예           |           yes           |    아니요     |
 
 ### <a name="security-capabilities"></a>보안 기능
 
 | | SQL Database | SQL Data Warehouse | HDInsight의 HBase/Phoenix | HDInsight의 Hive LLAP | Azure Analysis Services | Cosmos DB |
 | --- | --- | --- | --- | --- | --- | --- |
 | 인증  | SQL/Azure AD(Azure Active Directory) | SQL/Azure AD | 로컬/Azure AD <sup>1</sup> | 로컬/Azure AD <sup>1</sup> | Azure AD | 액세스 제어(IAM)을 통한 데이터베이스 사용자/Azure AD |
-| 휴지 상태의 암호화 | 예 <sup>2</sup> | 예 <sup>2</sup> | 예 <sup>1</sup> | 예 <sup>1</sup> | 예 | 예 |
-| 행 수준 보안 | 예 | 아니오 | 예 <sup>1</sup> | 예 <sup>1</sup> | 예(모델에 개체 수준 보안 사용) | 아니오 |
-| 방화벽 지원 여부 | 예 | 예 | 예 <sup>3</sup> | 예 <sup>3</sup> | 예 | 예 |
-| 동적 데이터 마스킹 | 예 | 아니요 | 예 <sup>1</sup> | 예 * | 아니오 | 아니오 |
+| 휴지 상태의 암호화 | 예 <sup>2</sup> | 예 <sup>2</sup> | 예 <sup>1</sup> | 예 <sup>1</sup> | yes | yes |
+| 행 수준 보안 | yes | 아니요 | 예 <sup>1</sup> | 예 <sup>1</sup> | 예(모델에 개체 수준 보안 사용) | 아니요 |
+| 방화벽 지원 여부 | yes | yes | 예 <sup>3</sup> | 예 <sup>3</sup> | yes | yes |
+| 동적 데이터 마스킹 | yes | 아니요 | 예 <sup>1</sup> | 예 * | 아니요 | 아니요 |
 
 [1] [도메인 가입 HDInsight 클러스터](/azure/hdinsight/domain-joined/apache-domain-joined-introduction)를 사용해야 합니다.
 

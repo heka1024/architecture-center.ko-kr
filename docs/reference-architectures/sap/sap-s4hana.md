@@ -3,12 +3,12 @@ title: Azure의 Linux Virtual Machines용 SAP S/4HANA
 description: Azure의 Linux 환경에서 고가용성을 통해 SAP S/4HANA를 실행하는 검증된 사례입니다.
 author: lbrader
 ms.date: 05/11/2018
-ms.openlocfilehash: 9635de73ec431e0ac678e4008e0c4835796d47ad
-ms.sourcegitcommit: 86d86d71e392550fd65c4f76320d7ecf0b72e1f6
+ms.openlocfilehash: ab056a01f05bde9e9dc7a4439baed367ee663f93
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37864507"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429590"
 ---
 # <a name="sap-s4hana-for-linux-virtual-machines-on-azure"></a>Azure의 Linux Virtual Machines용 SAP S/4HANA
 
@@ -151,7 +151,7 @@ SAP 응용 프로그램의 이러한 분산 설치에서는 고가용성을 달�
 
 - **응용 프로그램 서버 계층**. SAP 응용 프로그램 서버에는 비즈니스 데이터가 포함되어 있지 않습니다. Azure에서 간단한 DR 전략은 보조 지역에 SAP 응용 프로그램 서버를 만든 다음, 종료하는 것입니다. 주 응용 프로그램 서버의 구성이 업데이트되거나 커널이 업데이트되는 즉시 동일한 변경 내용이 보조 지역의 가상 머신에 적용되어야 합니다. 예를 들어 SAP 커널 실행 파일을 DR 가상 머신에 복사합니다. 응용 프로그램 서버를 보조 지역에 자동으로 복제하려면 [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)가 권장되는 솔루션입니다. 이 백서를 작성한 시점에서는 ASR에서 Azure VM의 가속 네트워크 구성 설정 복제를 아직 지원하지 않습니다.
 
-- **Central Services**. 이 SAP 응용 프로그램 스택의 구성 요소도 비즈니스 데이터를 유지하지 않습니다. 보조 지역에 VM을 구축하여 Central Services 역할을 실행할 수 있습니다. 주 Central Services 노드에서 동기화할 수 있는 유일한 콘텐츠는 /sapmnt 공유 콘텐츠입니다. 또한 주 Central Services 서버에서 구성이 업데이트되거나 커널이 업데이트되면 Central Services를 실행하는 보조 지역의 VM에서 반복해야 합니다. 두 서버를 동기화하려면 Azure Site Recovery를 사용하여 클러스터 노드를 복제하거나, 정기적으로 예약된 복사 작업을 사용하여 /sapmnt를 DR 쪽에 복사하면 됩니다. 장애 조치 프로세스를 빌드, 복사 및 테스트하는 방법에 대한 자세한 내용은 [SAP NetWeaver: Hyper-V 및 Microsoft Azure 기반 재해 복구 솔루션 빌드](http://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)를 다운로드하여 4.3, "SAP SPOF 계층(ASCS)"을 참조하세요. 이 백서는 Windows에서 실행되는 NetWeaver에 적용되지만, Linux에 대해 동일한 구성을 만들 수 있습니다. Central Services의 경우 [Azure Site Recovery](/en-us/azure/site-recovery/site-recovery-overview)를 사용하여 클러스터 노드와 저장소를 복제합니다. Linux의 경우 고가용성 확장을 사용하여 3개 노드 지역 클러스터를 만듭니다. 
+- **Central Services**. 이 SAP 응용 프로그램 스택의 구성 요소도 비즈니스 데이터를 유지하지 않습니다. 보조 지역에 VM을 구축하여 Central Services 역할을 실행할 수 있습니다. 주 Central Services 노드에서 동기화할 수 있는 유일한 콘텐츠는 /sapmnt 공유 콘텐츠입니다. 또한 주 Central Services 서버에서 구성이 업데이트되거나 커널이 업데이트되면 Central Services를 실행하는 보조 지역의 VM에서 반복해야 합니다. 두 서버를 동기화하려면 Azure Site Recovery를 사용하여 클러스터 노드를 복제하거나, 정기적으로 예약된 복사 작업을 사용하여 /sapmnt를 DR 쪽에 복사하면 됩니다. 장애 조치 프로세스를 빌드, 복사 및 테스트하는 방법에 대한 자세한 내용은 [SAP NetWeaver: Hyper-V 및 Microsoft Azure 기반 재해 복구 솔루션 빌드](https://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)를 다운로드하여 4.3, "SAP SPOF 계층(ASCS)"을 참조하세요. 이 백서는 Windows에서 실행되는 NetWeaver에 적용되지만, Linux에 대해 동일한 구성을 만들 수 있습니다. Central Services의 경우 [Azure Site Recovery](/en-us/azure/site-recovery/site-recovery-overview)를 사용하여 클러스터 노드와 저장소를 복제합니다. Linux의 경우 고가용성 확장을 사용하여 3개 노드 지역 클러스터를 만듭니다. 
 
 - **SAP 데이터베이스 계층**. HANA 지원 복제에 HSR을 사용합니다. HSR은 로컬 2개 노드 고가용성 설정 외에도 별도의 Azure 지역에 있는 세 번째 노드가 클러스터에 속하지 않은 외부 엔터티의 역할을 하고, 클러스터된 HSR 쌍의 보조 복제본에 복제 대상으로 등록하는 다중 계층 복제를 지원합니다. 이렇게 하면 복제 데이지 체인이 만들어집니다. DR 노드로의 장애 조치는 수동 프로세스입니다.
 
