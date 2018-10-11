@@ -4,12 +4,12 @@ description: 설계하는 동안 복원력 문제에 대한 지침을 제공하�
 author: petertaylor9999
 ms.date: 01/10/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 17612ee08e2329ea648fd21d6764e7bae1ca20e2
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 15ad749c12dc8a45c9e7e08376452685d8ad7c9b
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429097"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48819026"
 ---
 # <a name="resiliency-checklist"></a>복원력 검사 목록
 
@@ -39,7 +39,7 @@ ms.locfileid: "47429097"
 
 **부하 분산을 사용하여 요청을 분산합니다.** 부하 분산은 비정상 인스턴스를 윤번에서 제거하여 응용 프로그램의 요청을 정상 서비스 인스턴스에 분산합니다. 서비스에 Azure App Service 또는 Azure Cloud Services를 사용하는 경우 이미 부하 분산이 적용됩니다. 그러나 응용 프로그램이 Azure VM을 사용하는 경우 부하 분산 장치를 프로비전해야 합니다. 자세한 내용은 [Azure Load Balancer](/azure/load-balancer/load-balancer-overview/) 개요를 참조하세요.
 
-**여러 인스턴스를 사용하도록 Azure Application Gateway를 구성 합니다.** 응용 프로그램의 요구 사항에 따라 [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction/)가 요청을 응용 프로그램의 서비스에 배포하기에 더 적합할 수 있습니다. 그러나 응용 프로그램 게이트웨이 서비스의 단일 인스턴스는 SLA에 의해 보증되지 않으므로 응용 프로그램 게이트웨이 인스턴스가 실패하는 경우 응용 프로그램이 실패할 수 있습니다. [SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/v1_0/)의 조항에 따라 서비스의 가용성을 보증하려면 보통 이상의 응용 프로그램 게이트웨이 인스턴스를 두 개 이상 프로비전합니다.
+**여러 인스턴스를 사용하도록 Azure Application Gateway를 구성 합니다.** 응용 프로그램의 요구 사항에 따라 [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction/)가 요청을 응용 프로그램의 서비스에 배포하기에 더 적합할 수 있습니다. 그러나 응용 프로그램 게이트웨이 서비스의 단일 인스턴스는 SLA에 의해 보증되지 않으므로 응용 프로그램 게이트웨이 인스턴스가 실패하는 경우 응용 프로그램이 실패할 수 있습니다. [SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/)의 조항에 따라 서비스의 가용성을 보증하려면 보통 이상의 응용 프로그램 게이트웨이 인스턴스를 두 개 이상 프로비전합니다.
 
 **각 응용 프로그램 계층에 대해 가용성 집합을 사용합니다.** 인스턴스를 [가용성 집합][availability-sets]에 배치하면 더 높은 [SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)를 제공합니다. 
 

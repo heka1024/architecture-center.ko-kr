@@ -3,12 +3,12 @@ title: 검색 데이터 저장소 선택
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: ead07e307e96696faa5ddf48505eee378027523c
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.openlocfilehash: 9576bbba9609a04ccc7851d55dd28853ffc6b701
+ms.sourcegitcommit: f6be2825bf2d37dfe25cfab92b9e3973a6b51e16
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30848617"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48858183"
 ---
 # <a name="choosing-a-search-data-store-in-azure"></a>Azure에서 검색 데이터 저장소 선택
 
@@ -46,35 +46,35 @@ Azure에서 다음의 모든 데이터 저장소는 검색 인덱스를 제공�
 
 | | Azure Search | Elasticsearch | Solr을 포함하는 HDInsight | SQL Database | 
 | --- | --- | --- | --- | --- | 
-| 관리되는 서비스인지 여부 | 예 | 아니오 | 예 | 예 |  
-| REST API | 예 | 예 | 예 | 아니요 |
+| 관리되는 서비스인지 여부 | yes | 아니요 | 예 | yes |  
+| REST API | yes | 예 | yes | 아니요 |
 | 프로그래밍 기능 | .NET | 자바 | 자바 | T-SQL | 
-| 일반적인 파일 형식(PDF, DOCX, TXT 등)에 대한 문서 인덱서 | 예 | 아니오 | 예 | 아니오 |
+| 일반적인 파일 형식(PDF, DOCX, TXT 등)에 대한 문서 인덱서 | yes | 아니요 | yes | 아니요 |
 
 ### <a name="manageability-capabilities"></a>관리 효율성
 
 | | Azure Search | Elasticsearch | Solr을 포함하는 HDInsight | SQL Database | 
 | --- | --- | --- | --- | --- |
-| 업데이트 가능 스키마 | 아니요 | 예 | 예 | 예 |
-| 확장 지원  | 예 | 예 | 예 | 아니오 |
+| 업데이트 가능 스키마 | 아니요 | 예 | 예 | yes |
+| 확장 지원  | yes | 예 | yes | 아니요 |
 
 ### <a name="analytic-workload-capabilities"></a>분석 워크로드 기능
 
-| | Azure Search | Elasticsearch | Solr을 포함하는 HDInsight | SQL Databash | 
+| | Azure Search | Elasticsearch | Solr을 포함하는 HDInsight | SQL Database | 
 | --- | --- | --- | --- | --- | 
-| 전체 텍스트 검색을 능가하는 분석 기능 지원 | 아니요 | 예 | 예 | 예 |
-| 로그 분석 스택에 포함되는지 여부 | 아니오 | 예(ELK) |  아니오 | 아니오 |
-| 의미 체계 검색 지원 | 예(유사 문서만 찾기) | 예 | 예 | 예 | 
+| 전체 텍스트 검색을 능가하는 분석 기능 지원 | 아니요 | 예 | 예 | yes |
+| 로그 분석 스택에 포함되는지 여부 | 아니요 | 예(ELK) |  아니요 | 아니요 |
+| 의미 체계 검색 지원 | 예(유사 문서만 찾기) | yes | 예 | yes | 
 
 ### <a name="security-capabilities"></a>보안 기능
 
-| | Azure Search | Elasticsearch | Solr을 포함하는 HDInsight | SQL Databash | 
+| | Azure Search | Elasticsearch | Solr을 포함하는 HDInsight | SQL Database | 
 | --- | --- | --- | --- | --- | 
-| 행 수준 보안 | 부분적(그룹 ID별로 필터링하기 위한 응용 프로그램 쿼리 필요) | 부분적(그룹 ID별로 필터링하기 위한 응용 프로그램 쿼리 필요) | 예 | 예 | 
-| 투명한 데이터 암호화 | 아니오 | 아니요 | 아니요 | 예 |  
-| 특정 IP 주소로 액세스 제한 | 아니오 | 예 | 예 | 예 |   
-| 가상 네트워크 액세스만 허용하도록 액세스 제한 | 아니요 | 예 | 예 | 예 |  
-| Active Directory 인증(통합 인증) | 아니오 | 아니요 | 아니요 | 예 | 
+| 행 수준 보안 | 부분적(그룹 ID별로 필터링하기 위한 응용 프로그램 쿼리 필요) | 부분적(그룹 ID별로 필터링하기 위한 응용 프로그램 쿼리 필요) | yes | yes | 
+| 투명한 데이터 암호화 | 아니요 | 아니요 | 아니요 | yes |  
+| 특정 IP 주소로 액세스 제한 | 아니요 | 예 | 예 | yes |   
+| 가상 네트워크 액세스만 허용하도록 액세스 제한 | 아니요 | 예 | 예 | yes |  
+| Active Directory 인증(통합 인증) | 아니요 | 아니요 | 아니요 | yes | 
 
 ## <a name="see-also"></a>참고 항목
 

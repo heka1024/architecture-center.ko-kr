@@ -5,12 +5,12 @@ author: MikeWasson
 ms.date: 07/19/2018
 pnp.series.title: Windows VM workloads
 pnp.series.prev: n-tier
-ms.openlocfilehash: a8dafab9ce8312004e99f0f19d06d6b47b6b19d8
-ms.sourcegitcommit: c704d5d51c8f9bbab26465941ddcf267040a8459
+ms.openlocfilehash: 34dd47175e7fd0002cba577ad6c1034968ed4098
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39229255"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48819128"
 ---
 # <a name="multi-region-n-tier-application-for-high-availability"></a>고가용성을 위한 다중 지역 N 계층 응용 프로그램
 
@@ -67,7 +67,7 @@ Azure 지역은 동일한 지역 내에서 다른 지역과 쌍을 이룹니다.
 Traffic Manager를 구성할 때 다음 사항을 고려합니다.
 
 * **라우팅**. Traffic Manager는 여러 [라우팅 알고리즘][tm-routing]을 지원합니다. 이 문서에 설명된 시나리오는 *우선 순위* 라우팅(이전에는 *장애 조치(failover)* 라우팅이라고 함)을 사용합니다. 이 설정을 사용하면 Traffic Manager가 주 지역에 연결할 수 없는 경우가 아닌 한 모든 요청을 주 지역으로 보냅니다. 이때 자동으로 보조 지역으로 장애 조치(failover)됩니다. [장애 조치(failover) 라우팅 방법 구성][tm-configure-failover]을 참조하세요.
-* **상태 프로브**. Traffic Manager는 HTTP(또는 HTTPS) [프로브][tm-monitoring]를 사용하여 각 지역의 가용성을 모니터링합니다. 프로브는 지정된 URL 경로에 대한 HTTP 200 응답을 확인합니다. 응용 프로그램의 전반적인 상태를 보고하고 이 끝점을 상태 프로브에 사용하는 끝점을 생성하는 것이 좋습니다. 그렇지 않으면 응용 프로그램의 중요한 부분이 실제로 실패할 때 프로브에서 정상 끝점을 보고할 수 있습니다. 자세한 내용은 [상태 끝점 모니터링 패턴][health-endpoint-monitoring-pattern]을 참조하세요.   
+* **상태 프로브**. Traffic Manager는 HTTP(또는 HTTPS) [프로브][tm-monitoring]를 사용하여 각 지역의 가용성을 모니터링합니다. 프로브는 지정된 URL 경로에 대한 HTTP 200 응답을 확인합니다. 응용 프로그램의 전반적인 상태를 보고하고 이 엔드포인트를 상태 프로브에 사용하는 엔드포인트를 생성하는 것이 좋습니다. 그렇지 않으면 응용 프로그램의 중요한 부분이 실제로 실패할 때 프로브에서 정상 엔드포인트를 보고할 수 있습니다. 자세한 내용은 [상태 엔드포인트 모니터링 패턴][health-endpoint-monitoring-pattern]을 참조하세요.   
 
 Traffic Manager가 장애 조치(failover)할 때 클라이언트가 응용 프로그램에 연결할 수 없는 기간이 있습니다. 그 기간은 다음과 같은 요인에 의해 영향을 받습니다.
 
@@ -87,7 +87,7 @@ az network traffic-manager endpoint update --resource-group <resource-group> --p
     --name <endpoint-name> --type azureEndpoints --priority 3
 ```    
 
-또 다른 방법은 장애 복구(failback)할 준비가 될 때까지 끝점을 일시적으로 사용하지 않도록 설정하는 것입니다.
+또 다른 방법은 장애 복구(failback)할 준비가 될 때까지 엔드포인트를 일시적으로 사용하지 않도록 설정하는 것입니다.
 
 ```bat
 az network traffic-manager endpoint update --resource-group <resource-group> --profile-name <profile>
@@ -182,8 +182,8 @@ SQL Server 클러스터의 경우 다음과 같은 두 가지 장애 조치(fail
 [tm-configure-failover]: /azure/traffic-manager/traffic-manager-configure-failover-routing-method
 [tm-monitoring]: /azure/traffic-manager/traffic-manager-monitoring
 [tm-routing]: /azure/traffic-manager/traffic-manager-routing-methods
-[tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager/v1_0/
-[traffic-manager]: https://azure.microsoft.com/services/traffic-manager/
+[tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager
+[traffic-manager]: https://azure.microsoft.com/services/traffic-manager
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
 [vnet-dns]: /azure/virtual-network/manage-virtual-network#change-dns-servers
 [vnet-to-vnet]: /azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps
