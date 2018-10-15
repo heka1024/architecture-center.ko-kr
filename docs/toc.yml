@@ -405,6 +405,12 @@ items:
       href: reference-architectures/sap/sap-s4hana.md
     - name: Azure의 SAP HANA(대규모 인스턴스)
       href: reference-architectures/sap/hana-large-instances.md
+  - name: 서버를 사용하지 않음
+    items:
+    - name: 서버리스 웹 응용 프로그램
+      href: reference-architectures/serverless/web-app.md
+    - name: 서버리스 이벤트 처리
+      href: reference-architectures/serverless/event-processing.md
   - name: VM 워크로드
     items:
     - name: Jenkins 서버
@@ -531,9 +537,9 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure 엔터프라이즈 스캐폴드 구현
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: 9f2dcd31b5d3a36badf9db6ce5f64fae6085ff96
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: a79c29c0673de7eb14371d60377dd589cdf78720
+ms.sourcegitcommit: 42797fffb82bbbf86f6deb1da52c61d456be631e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819111"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49313202"
