@@ -3,12 +3,12 @@ title: '엔터프라이즈 클라우드 채택: 기본 워크로드 배포'
 description: Azure에 기본 워크로드를 배포하는 방법 설명
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: e615ba33fb713278a3695057e61d99c92b72b3f2
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.openlocfilehash: 363e7e6f394389fb6c1577e2cbaeffeddcf2de1a
+ms.sourcegitcommit: b38ba378c9d6110da2dfd50b4233fadd94604bb0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389318"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47167356"
 ---
 # <a name="enterprise-cloud-adoption-deploy-a-basic-workload"></a>엔터프라이즈 클라우드 채택: 기본 워크로드 배포
 
