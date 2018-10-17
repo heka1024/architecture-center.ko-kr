@@ -3,12 +3,12 @@ title: Azure 계산 옵션 개요
 description: Azure 계산 옵션 개요
 author: MikeWasson
 ms.date: 06/13/2018
-ms.openlocfilehash: ceb70f8eeff42e6cadb8a63c2f36986f26322201
-ms.sourcegitcommit: 26b04f138a860979aea5d253ba7fecffc654841e
+ms.openlocfilehash: cb59c4472b183d9a14031497f0b6db673938c9a9
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36206626"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48818822"
 ---
 # <a name="overview-of-azure-compute-options"></a>Azure 계산 옵션 개요
 
@@ -18,7 +18,7 @@ ms.locfileid: "36206626"
 
 스펙트럼의 한쪽 끝은 IaaS(**Infrastructure-as-a-Service** )입니다. IaaS를 사용하여 연결된 네트워크 및 저장소 구성 요소와 함께 필요한 VM을 프로비전합니다. 그런 다음 해당 VM에 배치하려는 모든 소프트웨어 및 응용 프로그램을 배포합니다. 이 모델은 Microsoft에서 인프라를 관리한다는 점을 제외하고는 기존 온-프레미스 환경과 가장 가깝습니다. 여전히 개별 VM을 관리하게 됩니다.  
 
-PaaS(**Platform-as-a-Service**)는 VM 또는 네트워킹 리소스를 관리할 필요 없이 응용 프로그램을 배포할 수 있는 관리되는 호스팅 환경을 제공합니다. 예를 들어, 개별 VM을 만드는 대신, 인스턴스 수를 지정하기만 하면 서비스가 필요한 리소스를 프로비전, 구성 및 관리합니다. Azure App Service는 PaaS 서비스의 예제입니다.
+PaaS(**Platform as a Service**)는 VM 또는 네트워킹 리소스를 관리할 필요 없이 응용 프로그램을 배포할 수 있는 관리되는 호스팅 환경을 제공합니다. 예를 들어, 개별 VM을 만드는 대신, 인스턴스 수를 지정하기만 하면 서비스가 필요한 리소스를 프로비전, 구성 및 관리합니다. Azure App Service는 PaaS 서비스의 예제입니다.
 
 IaaS에서 순수한 PaaS로의 스펙트럼이 구현됩니다. 예를 들어 Azure VM은 VM Scale Sets를 사용하여 자동으로 크기가 조정될 수 있습니다. 이러한 자동 크기 조정 기능은 엄밀히 PaaS는 아니며, PaaS 서비스에서 확인될 수 있는 관리 기의 유형입니다.
 

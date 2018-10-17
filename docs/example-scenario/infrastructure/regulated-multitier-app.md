@@ -1,22 +1,22 @@
 ---
 title: 규제 산업용 Windows 웹 응용 프로그램 보호
-description: 확장 집합, Application Gateway 및 부하 분산 장치를 사용하는 Azure의 Windows Server에서 안전한 다중 계층 웹 응용 프로그램을 구축하는 데 입증된 시나리오입니다.
+description: 확장 집합, Application Gateway 및 부하 분산 장치를 사용하여 Azure의 Windows Server에서 안전한 다중 계층 웹 응용 프로그램을 빌드합니다.
 author: iainfoulds
 ms.date: 07/11/2018
-ms.openlocfilehash: 780b82791510b6ca06ef918b66d2547794dfcf87
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 584b5891f9b3d8e174c3eb29835a525ae4a4f156
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428757"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48819009"
 ---
 # <a name="secure-windows-web-application-for-regulated-industries"></a>규제 산업용 Windows 웹 응용 프로그램 보호
 
-이 샘플 시나리오는 다중 계층 응용 프로그램을 보호해야 하는 규제 산업에 적용할 수 있습니다. 이 시나리오에서는 프런트 엔드 ASP.NET 응용 프로그램이 보호된 백 엔드 Microsoft SQL Server 클러스터에 안전하게 연결됩니다.
+이 예제 시나리오는 다중 계층 응용 프로그램을 보호해야 하는 규제 산업에 적용할 수 있습니다. 이 시나리오에서는 프런트 엔드 ASP.NET 응용 프로그램이 보호된 백 엔드 Microsoft SQL Server 클러스터에 안전하게 연결됩니다.
 
 예제 응용 프로그램 시나리오에는 수술실 응용 프로그램 실행, 환자 약속 및 기록 보관 또는 처방전 보충 및 주문이 포함됩니다. 일반적으로 조직에서는 이러한 시나리오에 대한 레거시 온-프레미스 응용 프로그램 및 서비스를 유지 관리해야 했습니다. 조직은 Azure에서 이러한 Windows Server 응용 프로그램을 안전하고 확장 가능한 방식으로 배포함으로써 배포를 현대화하여 온-프레미스 운영 비용과 관리 오버헤드를 줄일 수 있습니다.
 
-## <a name="related-use-cases"></a>관련 사용 사례
+## <a name="relevant-use-cases"></a>관련 사용 사례
 
 이 시나리오에 적합한 사용 사례는 다음과 같습니다.
 
@@ -32,9 +32,9 @@ ms.locfileid: "47428757"
 
 1. 사용자는 Azure Application Gateway를 통해 프런트 엔드 ASP.NET 규제 산업 응용 프로그램에 액세스합니다.
 2. Application Gateway에서 Azure 가상 머신 확장 집합 내의 VM 인스턴스에 트래픽을 분산시킵니다.
-3. ASP.NET 응용 프로그램에서 Azure Load Balancer를 통해 백 엔드 계층의 Microsoft SQL Server 클러스터에 연결합니다. 이러한 백 엔드 SQL Server 인스턴스는 별도의 Azure 가상 네트워크에 있으며 트래픽 흐름을 제한하는 네트워크 보안 그룹 규칙으로 보호됩니다.
+3. ASP.NET 응용 프로그램에서 Azure 부하 분산 장치를 통해 백 엔드 계층의 Microsoft SQL Server 클러스터에 연결합니다. 이러한 백 엔드 SQL Server 인스턴스는 별도의 Azure 가상 네트워크에 있으며 트래픽 흐름을 제한하는 네트워크 보안 그룹 규칙으로 보호됩니다.
 4. 부하 분산 장치에서 SQL Server 트래픽을 다른 가상 머신 확장 집합의 VM 인스턴스에 배포합니다.
-5. Azure Blob Storage는 백 엔드 계층의 SQL Server 클러스터에 대한 클라우드 감시 역할을 합니다.  VNet 내에서의 연결은 Azure Storage에 대한 VNet 서비스 엔드포인트를 통해 가능합니다.
+5. Azure Blob Storage는 백 엔드 계층의 SQL Server 클러스터에 대한 클라우드 감시 역할을 합니다. VNet 내에서의 연결은 Azure Storage에 대한 VNet 서비스 엔드포인트를 통해 가능합니다.
 
 ### <a name="components"></a>구성 요소
 
@@ -51,7 +51,7 @@ ms.locfileid: "47428757"
 
 * [Linux용 SQL Server][sql-linux]는 백 엔드 데이터 저장소를 대체할 수 있습니다.
 
-* [Cosmos DB][cosmos]는 데이터 저장소의 또 다른 대안입니다.
+* [Cosmos DB](/azure/cosmos-db/introduction)는 데이터 저장소의 또 다른 대안입니다.
 
 ## <a name="considerations"></a>고려 사항
 
@@ -71,7 +71,7 @@ ms.locfileid: "47428757"
 
 ### <a name="security"></a>보안
 
-프론트 엔드 응용 프로그램 계층으로의 모든 가상 네트워크 트래픽은 네트워크 보안 그룹으로 보호됩니다. 규칙은 프런트 엔드 응용 프로그램 계층 VM 인스턴스만 백 엔드 데이터베이스 계층에 액세스할 수 있도록 트래픽 흐름을 제한합니다. 데이터베이스 계층에는 아웃바운드 인터넷 트래픽이 허용되지 않습니다. 공격 공간을 줄이기 위해 직접 원격 관리 포트가 열려 있지 않습니다. 자세한 내용은 [Azure 네트워크 보안 그룹][nsg-docs]을 참조하세요.
+프론트 엔드 응용 프로그램 계층으로 전송되는 모든 가상 네트워크 트래픽은 네트워크 보안 그룹을 통해 보호됩니다. 규칙은 프런트 엔드 응용 프로그램 계층 VM 인스턴스만 백 엔드 데이터베이스 계층에 액세스할 수 있도록 트래픽 흐름을 제한합니다. 데이터베이스 계층에는 아웃바운드 인터넷 트래픽이 허용되지 않습니다. 공격 공간을 줄이기 위해 직접 원격 관리 포트가 열려 있지 않습니다. 자세한 내용은 [Azure 네트워크 보안 그룹][nsg-docs]을 참조하세요.
 
 PCI DSS(지불 카드 산업 데이터 보안 표준) 3.2 규정 준수 인프라 배포에 대한 지침을 보려면 [규정 준수 인프라][pci-dss]를 참조하세요. 보안 시나리오 설계에 대한 일반적인 지침은 [Azure 보안 설명서][security]를 참조하세요.
 
@@ -102,7 +102,7 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오에 대한 핵�
 
 ## <a name="pricing"></a>가격
 
-이 시나리오를 실행하는 데 들어가는 비용을 알아보기 위해 모든 서비스가 비용 계산기에서 미리 구성됩니다.  특정 사용 사례에 대한 가격이 변경되는 정도를 확인하려면 필요한 트래픽에 맞게 적절한 변수를 변경합니다.
+이 시나리오를 실행하는 데 들어가는 비용을 알아보기 위해 모든 서비스가 비용 계산기에서 미리 구성됩니다. 특정 사용 사례에 대한 가격이 변경되는 정도를 확인하려면 필요한 트래픽에 맞게 적절한 변수를 변경합니다.
 
 응용 프로그램을 실행하는 확장 집합 VM 인스턴스의 수를 기준으로 제공한 세 가지 샘플 비용 프로필은 다음과 같습니다.
 
@@ -112,17 +112,16 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오에 대한 핵�
 
 ## <a name="related-resources"></a>관련 리소스
 
-이 시나리오에서는 Microsoft SQL Server 클러스터를 실행하는 백 엔드 가상 머신 확장 집합을 사용했습니다. 또한 Azure Cosmos DB도 응용 프로그램 데이터에 대한 확장 가능하고 안전한 데이터베이스 계층으로 사용할 수 있습니다. [Azure 가상 네트워크 서비스 엔드포인트][vnetendpoint-docs]를 사용하면 중요한 Azure 서비스 리소스를 가상 네트워크에서만 보호할 수 있습니다. 이 시나리오에서는 VNet 엔드포인트를 통해 프런트 엔드 응용 프로그램 계층과 Cosmos DB 간의 트래픽을 보호할 수 있습니다. Cosmos DB에 대한 자세한 내용은 [Azure Cosmos DB 개요][azurecosmosdb-docs]를 참조하세요.
+이 시나리오에서는 Microsoft SQL Server 클러스터를 실행하는 백 엔드 가상 머신 확장 집합을 사용했습니다. 또한 Cosmos DB도 응용 프로그램 데이터에 대한 확장 가능하고 안전한 데이터베이스 계층으로 사용할 수 있습니다. [Azure 가상 네트워크 서비스 엔드포인트][vnetendpoint-docs]를 사용하면 중요한 Azure 서비스 리소스를 가상 네트워크에서만 보호할 수 있습니다. 이 시나리오에서는 VNet 엔드포인트를 통해 프런트 엔드 응용 프로그램 계층과 Cosmos DB 간의 트래픽을 보호할 수 있습니다. 자세한 내용은 [Azure Cosmos DB 개요][docs-cosmos-db](/azure/cosmos-db/introduction)를 참조하세요.
 
-완전한 [SQL Server를 통한 일반 N 계층 응용 프로그램에 대한 참조 아키텍처][ntiersql-ra]도 참조하세요.
+[SQL Server를 사용하는 일반 N 계층 응용 프로그램에 대한 참조 아키텍처][ntiersql-ra]도 자세히 살펴볼 수 있습니다.
 
 <!-- links -->
 [appgateway-docs]: /azure/application-gateway/overview
-[architecture]: ./media/regulated-multitier-app/architecture-regulated-multitier-app.png
+[architecture]: ./media/architecture-regulated-multitier-app.png
 [autoscaling]: /azure/architecture/best-practices/auto-scaling
 [availability]: ../../checklist/availability.md
 [azureaz-docs]: /azure/availability-zones/az-overview
-[azurecosmosdb-docs]: /azure/cosmos-db/introduction
 [cloudwitness-docs]: /windows-server/failover-clustering/deploy-cloud-witness
 [loadbalancer-docs]: /azure/load-balancer/load-balancer-overview
 [nsg-docs]: /azure/virtual-network/security-overview
@@ -137,7 +136,6 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오에 대한 핵�
 [vnetendpoint-docs]: /azure/virtual-network/virtual-network-service-endpoints-overview
 [pci-dss]: /azure/security/blueprints/pcidss-iaaswa-overview
 [dmz]: /azure/virtual-network/virtual-networks-dmz-nsg
-[cosmos]: /azure/cosmos-db/
 [sql-linux]: /sql/linux/sql-server-linux-overview?view=sql-server-linux-2017
 
 [small-pricing]: https://azure.com/e/711bbfcbbc884ef8aa91cdf0f2caff72

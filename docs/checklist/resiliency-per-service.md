@@ -4,12 +4,12 @@ description: 다양한 Azure 서비스에 대한 복원력 지침을 제공하�
 author: petertaylor9999
 ms.date: 03/02/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 735d4466f53ff03b67063b49b86f4184bbf1af41
-ms.sourcegitcommit: 25bf02e89ab4609ae1b2eb4867767678a9480402
+ms.openlocfilehash: 50808a837132e905cc89c3c43d40852a04f4885c
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45584768"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48819196"
 ---
 # <a name="resiliency-checklist-for-specific-azure-services"></a>특정 Azure 서비스에 대한 복원력 검사 목록
 
@@ -39,11 +39,11 @@ ms.locfileid: "45584768"
 
 **로그에 대한 별도의 저장소 계정을 만듭니다.** 로그와 응용 프로그램 데이터에 동일한 저장소 계정을 사용하지 마세요. 이렇게 하면 로깅이 응용 프로그램의 성능을 감소시키는 것을 방지하는 데 도움이 됩니다.
 
-**성능을 모니터링합니다.** [New Relic](http://newrelic.com/) 또는 [Application Insights](/azure/application-insights/app-insights-overview/) 같은 성능 모니터링 서비스를 사용하여 응용 프로그램 성능 및 부하를 받을 때의 동작을 모니터링합니다.  성능 모니터링은 응용 프로그램에 대한 실시간 통찰력을 제공합니다. 문제를 진단하고 실패의 근본 원인 분석을 수행할 수 있습니다.
+**성능을 모니터링합니다.** [New Relic](https://newrelic.com/) 또는 [Application Insights](/azure/application-insights/app-insights-overview/) 같은 성능 모니터링 서비스를 사용하여 응용 프로그램 성능 및 부하를 받을 때의 동작을 모니터링합니다.  성능 모니터링은 응용 프로그램에 대한 실시간 통찰력을 제공합니다. 문제를 진단하고 실패의 근본 원인 분석을 수행할 수 있습니다.
 
 ## <a name="application-gateway"></a>Application Gateway
 
-**인스턴스를 두 개 이상 프로비전합니다.** 응용 프로그램 게이트웨이를 두 개 이상의 인스턴스와 함께 배포합니다. 단일 인스턴스는 단일 실패 지점입니다. 중복성 및 확장성을 위해 인스턴스를 두 개 이상 사용합니다. [SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/v1_0/)에 대한 자격을 얻으려면 중, 두 개 이상의 보통 이상의 인스턴스를 두 개 이상 프로비전해야 합니다.
+**인스턴스를 두 개 이상 프로비전합니다.** 응용 프로그램 게이트웨이를 두 개 이상의 인스턴스와 함께 배포합니다. 단일 인스턴스는 단일 실패 지점입니다. 중복성 및 확장성을 위해 인스턴스를 두 개 이상 사용합니다. [SLA](https://azure.microsoft.com/support/legal/sla/application-gateway)에 대한 자격을 얻으려면 중, 두 개 이상의 보통 이상의 인스턴스를 두 개 이상 프로비전해야 합니다.
 
 ## <a name="cosmos-db"></a>Cosmos DB
 
@@ -77,6 +77,21 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
   * 데이터 원본이 지리적으로 복제되는 경우 일반적으로 각 Azure Search의 인덱서가 각각 해당 로컬 데이터 원본 복제본을 가리키게 해야 합니다. 그러나 Azure SQL Database에 저장된 대형 데이터 집합의 경우 이 방법이 권장되지 않습니다. 그 이유는 Azure Search가 보조 SQL Database 복제에서 증분 인덱싱을 수행할 수 없고 주 복제본에서만 가능하기 때문입니다. 그 대신에 모든 인덱서가 주 복제본을 가리킵니다. 장애 조치 후 새 주 복제본에서 Azure Search 인덱서를 가리킵니다.  
   * 데이터 원본이 지리적으로 복제되지 않는 경우 여러 지역의 Azure Search 서비스가 지속적으로 그리고 독립적으로 데이터 원본에서 인덱싱하도록 여러 인덱서가 동일한 데이터 원본을 가리키게 합니다. 자세한 내용은 [Azure Search 성능 및 최적화 고려 사항][search-optimization]을 참조하세요.
+
+## <a name="service-bus"></a>Service Bus
+
+**프로덕션 워크로드에 프리미엄 계층 사용**. [Service Bus 프리미엄 메시지](/azure/service-bus-messaging/service-bus-premium-messaging)는 처리 전용으로 예약된 리소스와 예측 가능한 성능 및 처리량을 지원하기 위한 메모리 용량을 제공합니다. 또한 프리미엄 메시지 계층은 처음에는 프리미엄 고객만 사용할 수 있는 새로운 기능을 제공합니다. 예상 워크로드에 따라 메시징 단위 수를 결정할 수 있습니다.
+
+**중복 메시지 처리.** 게시자가 메시지를 보낸 직후에 실패하거나 네트워크 또는 시스템 문제가 발생하면 메시지가 전송된 것을 기록하지 못할 수 있고, 동일한 메시지를 시스템에 두 번 보낼 수 있습니다. Service Bus는 중복 검색을 사용하여 이 문제를 처리할 수 있습니다. 자세한 내용은 [중복 검색](/azure/service-bus-messaging/duplicate-detection)을 참조하세요.
+
+**예외 처리.** 메시지 API는 사용자 오류, 구성 오류 또는 기타 오류가 발생할 때 예외를 생성합니다. 클라이언트 코드(발신자 및 수신자)는 코드에서 이러한 예외를 처리해야 합니다. 이는 예외 처리를 사용하여 메시지의 일괄 처리 전체 손실을 방지할 수 있는 일괄 처리 프로세싱에서 특히 중요합니다. 자세한 내용은 [Service Bus 메시지 예외](/azure/service-bus-messaging/service-bus-messaging-exceptions)를 참조하세요.
+
+**재시도 정책**. Service Bus를 사용하면 응용 프로그램에 가장 적합한 재시도 정책을 선택할 수 있습니다. 기본 정책은 최대 9회까지 재시도를 허용하고 30초 동안 기다리는 것이지만, 추가로 조정할 수 있습니다. 자세한 내용은 [재시도 정책 - Service Bus](/azure/architecture/best-practices/retry-service-specific#service-bus)를 참조하세요.
+
+**배달 못한 편지 큐 사용**. 여러 번의 재시도 후 처리할 수 없거나 수신자에게 전달할 수 없는 메시지는 배달 못한 편지 큐로 이동됩니다. 배달 못한 편지 큐에서 메시지를 읽고, 검사하고, 문제를 해결하는 프로세스를 구현하세요. 시나리오에 따라 메시지를 있는 그대로 다시 시도하거나, 변경 후 다시 시도하거나, 메시지를 삭제할 수 있습니다. 자세한 내용은 [Service Bus 배달 못한 편지 큐의 개요](/azure/service-bus-messaging/service-bus-dead-letter-queues)를 참조하세요.
+
+**지리적 재해 복구 사용**. 지리적 재해 복구를 사용하면 재해로 인해 Azure 지역 또는 데이터 센터 전체를 사용할 수 없게 되더라도 다른 지역 또는 데이터 센터에서 데이터 처리가 계속 작동합니다. 자세한 내용은 [Azure Service Bus 지역 재해 복구](/azure/service-bus-messaging/service-bus-geo-dr)를 참조하세요.
+
 
 ## <a name="storage"></a>Storage
 

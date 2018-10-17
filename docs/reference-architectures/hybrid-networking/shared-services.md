@@ -5,12 +5,12 @@ author: telmosampaio
 ms.date: 06/19/2018
 pnp.series.title: Implement a hub-spoke network topology with shared services in Azure
 pnp.series.prev: hub-spoke
-ms.openlocfilehash: 283251d5b11f76985405410c5c237e5a64ee98fe
-ms.sourcegitcommit: 71cbef121c40ef36e2d6e3a088cb85c4260599b9
+ms.openlocfilehash: 0238c5d6f28bacbc32268d4586b30395de36384b
+ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060798"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48876871"
 ---
 # <a name="implement-a-hub-spoke-network-topology-with-shared-services-in-azure"></a>Azure에서 공유 서비스를 사용하여 허브-스포크 네트워크 토폴로지 구현
 
@@ -116,7 +116,7 @@ Azure에서 NVA(네트워크 가상 어플라이언스)를 사용하여 다른 �
 
 2. `onprem.json` 파일을 엽니다. 
 
-3. `Password` 및 `adminPassword`의 모든 인스턴스를 검색합니다. 매개 변수에서 사용자 이름과 암호에 값을 입력하고 파일을 저장합니다. 
+3. `UserName`, `adminUserName`, `Password` 및 `adminPassword`의 모든 인스턴스를 검색합니다. 매개 변수에서 사용자 이름과 암호에 값을 입력하고 파일을 저장합니다. 
 
 4. 다음 명령 실행:
 

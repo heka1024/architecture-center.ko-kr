@@ -3,12 +3,12 @@ title: Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 응
 description: Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 응용 프로그램을 리팩터링하는 방법입니다.
 author: petertay
 ms.date: 01/30/2018
-ms.openlocfilehash: 08ef3af68b8eaba36a5b871449f0aba764fe5a04
-ms.sourcegitcommit: 2123c25b1a0b5501ff1887f98030787191cf6994
+ms.openlocfilehash: 7b5c115acdbfca0c105e2b861af9a8049b890dca
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29782549"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48819077"
 ---
 # <a name="refactor-an-azure-service-fabric-application-migrated-from-azure-cloud-services"></a>Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 응용 프로그램 리팩터링
 
@@ -44,7 +44,7 @@ ms.locfileid: "29782549"
 **Tailspin.AnswerAnalysisService** 서비스는 원래의 *Tailspin.Workers.Survey* 작업자 역할에서 이식되었습니다.
 
 > [!NOTE] 
-> 코드는 웹 및 작업자 역할별로 최소한으로 변경되었지만, **Tailspin.Web** 및 **Tailspin.Web.Survey.Public**은 [Kestrel] 웹 서버를 자체 호스팅하도록 수정되었습니다. 이전의 설문 조사 응용 프로그램은 IIS(인터넷 정보 서비스)를 사용하여 호스팅된 ASP.Net 응용 프로그램이지만, Service Fabric에서 IIS를 서비스로 실행할 수 없습니다. 따라서 모든 웹 서버는 [Kestrel]과 같이 자체 호스팅될 수 있어야 합니다. Service Fabric의 컨테이너에서 IIS를 실행할 수 있는 경우도 있습니다. 자세한 내용은 [컨테이너 사용 시나리오][container-scenarios]를 참조하세요.  
+> 코드는 웹 및 작업자 역할별로 최소한으로 변경되었지만, **Tailspin.Web** 및 **Tailspin.Web.Survey.Public**은 [Kestrel] 웹 서버를 자체 호스팅하도록 수정되었습니다. 이전의 설문 조사 응용 프로그램은 IIS(인터넷 정보 서비스)를 사용하여 호스팅된 ASP.NET 응용 프로그램이지만, Service Fabric에서 IIS를 서비스로 실행할 수 없습니다. 따라서 모든 웹 서버는 [Kestrel]과 같이 자체 호스팅될 수 있어야 합니다. Service Fabric의 컨테이너에서 IIS를 실행할 수 있는 경우도 있습니다. 자세한 내용은 [컨테이너 사용 시나리오][container-scenarios]를 참조하세요.  
 
 이제 Tailspin은 설문 조사 응용 프로그램을 더 세부적인 아키텍처로 리팩터링합니다. 리팩터링에 대한 Tailspin의 동기 부여는 설문 조사 응용 프로그램을 더 쉽게 개발, 빌드 및 배포할 수 있도록 하는 것입니다. Tailspin은 기존 웹 및 작업자 역할을 더 세부적인 아키텍처로 분해하여 이러한 역할 간에 밀접하게 결합된 기존의 통신 및 데이터 종속성을 제거하려고 합니다.
 
@@ -90,7 +90,7 @@ Azure Service Fabric에서 지원하는 프로그래밍 모델은 다음과 같�
 ## <a name="communication-framework"></a>통신 프레임워크
 
 설문 조사 응용 프로그램의 각 서비스는 RESTful 웹 API를 사용하여 통신합니다. RESTful API는 다음과 같은 이점을 제공합니다.
-* 사용 편의성: 각 서비스는 웹 API 만들기를 기본적으로 지원하는 ASP.Net Core MVC를 사용하여 빌드됩니다.
+* 사용 편의성: 각 서비스는 웹 API 만들기를 기본적으로 지원하는 ASP.NET Core MVC를 사용하여 빌드됩니다.
 * 보안: 각 서비스는 SSL을 요구하지 않지만, Tailspin은 각 서비스에 대해 이를 요구할 수 있습니다. 
 * 버전 관리: 특정 버전의 웹 API에 대해 클라이언트를 작성하고 테스트할 수 있습니다.
 
@@ -142,8 +142,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 Tailspin은 Azure Portal을 사용하여 클러스터를 배포합니다. Service Fabric 클러스터 리소스 종류는 VM 확장 집합 및 부하 분산 장치를 포함하여 필요한 인프라를 모두 배포합니다. 권장되는 VM 크기는 Service Fabric 클러스터에 대한 프로비전 프로세스 중에 Azure Portal에 표시됩니다. VM은 VM 확장 집합에 배포되므로 사용자 로드가 증가함에 따라 강화되고 확장될 수 있습니다.
 
 > [!NOTE]
-> 앞에서 설명한 대로, 마이그레이션된 버전의 설문 조사 응용 프로그램에서 두 웹 프런트 엔드는 ASP.Net Core 및 웹 서버로 Kestrel을 사용하여 자체 호스팅되었습니다. 마이그레이션된 버전의 설문 조사 응용 프로그램은 역방향 프록시를 사용하지 않지만, IIS, Nginx 또는 Apache와 같은 역방향 프록시를 사용하는 것이 좋습니다. 자세한 내용은 [ASP.NET Core에서 Kestrel 웹 서버 구현에 대한 소개][kestrel-intro]를 참조하세요.
-> 리팩터링된 설문 조사 응용 프로그램에서 두 웹 프런트 엔드는 [WebListener][weblistener]가 있는 ASP.Net Core를 웹 서버로 사용하여 자체 호스팅되므로 역방향 프록시가 필요하지 않습니다.
+> 앞에서 설명한 대로, 마이그레이션된 버전의 설문 조사 응용 프로그램에서 두 웹 프런트 엔드는 ASP.NET Core 및 웹 서버로 Kestrel을 사용하여 자체 호스팅되었습니다. 마이그레이션된 버전의 설문 조사 응용 프로그램은 역방향 프록시를 사용하지 않지만, IIS, Nginx 또는 Apache와 같은 역방향 프록시를 사용하는 것이 좋습니다. 자세한 내용은 [ASP.NET Core에서 Kestrel 웹 서버 구현에 대한 소개][kestrel-intro]를 참조하세요.
+> 리팩터링된 설문 조사 응용 프로그램에서 두 웹 프런트 엔드는 [WebListener][weblistener]가 있는 ASP.NET Core를 웹 서버로 사용하여 자체 호스팅되므로 역방향 프록시가 필요하지 않습니다.
 
 ## <a name="next-steps"></a>다음 단계
 

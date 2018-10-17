@@ -1,14 +1,14 @@
 ---
 title: 컨테이너 기반 작업에 대한 CI/CD 파이프라인
-description: Jenkins, Azure Container Registry, Azure Kubernetes Service, Cosmos DB 및 Grafana를 사용하는 Node.js 웹앱용 DevOps 파이프라인을 구축하는 데 입증된 시나리오입니다.
+description: Jenkins, Azure Container Registry, Azure Kubernetes Service, Cosmos DB 및 Grafana를 사용하여 Node.js 웹앱에 대한 DevOps 파이프라인을 빌드합니다.
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: d659916e3af0caa2128db25faab441a2af8f3f6a
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.openlocfilehash: 3212fae2c68eef3a5ed4963d28c0d97ac8f332e0
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389386"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48818738"
 ---
 # <a name="cicd-pipeline-for-container-based-workloads"></a>컨테이너 기반 작업에 대한 CI/CD 파이프라인
 
@@ -18,7 +18,7 @@ ms.locfileid: "44389386"
 
 Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서비스를 사용하면, 최신의 응용 프로그램 개발 기술과 도구를 사용하여 고가용성 구현 프로세스를 간소화할 수 있습니다.
 
-## <a name="related-use-cases"></a>관련 사용 사례
+## <a name="relevant-use-cases"></a>관련 사용 사례
 
 이 시나리오에 적합한 사용 사례는 다음과 같습니다.
 
@@ -38,17 +38,17 @@ Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서�
 4. Jenkins 빌드 작업은 Azure Kubernetes Service의 동적 빌드 에이전트를 사용하여 컨테이너 빌드 프로세스를 수행합니다.
 5. 컨테이너 이미지는 소스 제어의 코드에서 만들어진 다음, Azure Container Registry로 푸시됩니다.
 6. Jenkins는 CD를 통해 업데이트된 이 컨테이너 이미지를 Kubernetes 클러스터에 배포합니다.
-7. Node.js 웹 응용 프로그램은 Azure Cosmos DB를 백 엔드로 사용합니다. Cosmos DB와 Azure Kubernetes Service는 모두 Azure Monitor에 메트릭을 보고합니다.
+7. Node.js 웹 응용 프로그램은 Cosmos DB를 백 엔드로 사용합니다. Cosmos DB와 Azure Kubernetes Service는 모두 Azure Monitor에 메트릭을 보고합니다.
 8. Grafana 인스턴스는 Azure Monitor의 데이터를 기반으로 하여 응용 프로그램 성능의 시각적 대시보드를 제공합니다.
 
 ### <a name="components"></a>구성 요소
 
 * [Jenkins][jenkins]는 Azure 서비스와 통합하여 CI 및 CD를 수행할 수 있게 하는 오픈 소스 자동화 서버입니다. 이 시나리오에서 Jenkins는 소스 제어에 대한 커밋에 따라 새 컨테이너 이미지를 만들도록 오케스트레이션하고, Azure Container Registry에 해당 이미지를 푸시한 다음, Azure Kubernetes Service에서 응용 프로그램 인스턴스를 업데이트합니다.
-* [Azure Linux Virtual Machines][azurevm-docs]는 Jenkins 및 Grafana 인스턴스를 실행하는 데 사용되는 IaaS 플랫폼입니다.
-* [Azure Container Registry][azureacr-docs]는 Azure Kubernetes Service 클러스터에서 사용되는 컨테이너 이미지를 저장하고 관리합니다. 이미지는 안전하게 저장되며, Azure 플랫폼을 통해 다른 지역으로 복제하여 배포 시간을 단축할 수 있습니다.
-* [Azure Kubernetes Service][azureaks-docs]는 컨테이너 오케스트레이션에 대한 전문 지식이 없어도 컨테이너화된 응용 프로그램을 배포하고 관리할 수 있는 관리되는 Kubernetes 플랫폼입니다. 호스팅되는 Kubernetes 서비스인 Azure는 상태 모니터링 및 유지 관리 같은 중요 작업을 처리합니다.
-* [Azure Cosmos DB][azurecosmosdb-docs]는 요구 사항에 맞게 다양한 데이터베이스 및 일관성 모델 중에서 선택할 수 있는 전역으로 분산된 다중 모델 데이터베이스입니다. Cosmos DB를 사용하면 데이터를 전역으로 복제할 수 있으며, 배포 및 구성할 클러스터 관리 또는 복제 구성 요소가 없습니다.
-* [Azure Monitor][azuremonitor-docs]는 성능을 추적하고, 보안을 유지하며, 추세를 파악하는 데 도움이 됩니다. Monitor에서 얻은 메트릭은 Grafana와 같은 다른 리소스 및 도구에서 사용할 수 있습니다.
+* [Azure Linux Virtual Machines][docs-virtual-machines]는 Jenkins 및 Grafana 인스턴스를 실행하는 데 사용되는 IaaS 플랫폼입니다.
+* [Azure Container Registry][docs-acr]는 Azure Kubernetes Service 클러스터에서 사용되는 컨테이너 이미지를 저장하고 관리합니다. 이미지는 안전하게 저장되며, Azure 플랫폼을 통해 다른 지역으로 복제하여 배포 시간을 단축할 수 있습니다.
+* [Azure Kubernetes Service][docs-aks]는 컨테이너 오케스트레이션에 대한 전문 지식이 없어도 컨테이너화된 응용 프로그램을 배포하고 관리할 수 있는 관리되는 Kubernetes 플랫폼입니다. 호스팅되는 Kubernetes 서비스인 Azure는 상태 모니터링 및 유지 관리 같은 중요 작업을 처리합니다.
+* [Azure Cosmos DB][docs-cosmos-db]는 요구 사항에 맞게 다양한 데이터베이스 및 일관성 모델 중에서 선택할 수 있는 전역으로 분산된 다중 모델 데이터베이스입니다. Cosmos DB를 사용하면 데이터를 전역으로 복제할 수 있으며, 배포 및 구성할 클러스터 관리 또는 복제 구성 요소가 없습니다.
+* [Azure Monitor][docs-azure-monitor]는 성능을 추적하고, 보안을 유지하며, 추세를 파악하는 데 도움이 됩니다. Monitor에서 얻은 메트릭은 Grafana와 같은 다른 리소스 및 도구에서 사용할 수 있습니다.
 * [Grafana][grafana]는 메트릭을 쿼리하고, 시각화하고, 경고하고, 이해할 수 있는 오픈 소스 솔루션입니다. Azure Monitor용 데이터 원본 플러그 인을 사용하면 Grafana가 Azure Kubernetes Service에서 실행되고 Cosmos DB를 사용하는 응용 프로그램의 성능을 모니터링하는 시각적 대시보드를 만들 수 있습니다.
 
 ### <a name="alternatives"></a>대안
@@ -129,18 +129,18 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오를 배포하�
 
 ## <a name="related-resources"></a>관련 리소스
 
-이 시나리오에서는 Azure Container Registry와 Azure Kubernetes Service를 사용하여 컨테이너 기반 응용 프로그램을 저장하고 실행했습니다. Azure Container Instances는 오케스트레이션 구성 요소를 프로비전하지 않고 컨테이너 기반 응용 프로그램을 실행하는 데에도 사용할 수 있습니다. 자세한 내용은 [Azure Container Instances 개요][azureaci-docs]를 참조하세요.
+이 시나리오에서는 Azure Container Registry와 Azure Kubernetes Service를 사용하여 컨테이너 기반 응용 프로그램을 저장하고 실행했습니다. Azure Container Instances는 오케스트레이션 구성 요소를 프로비전하지 않고 컨테이너 기반 응용 프로그램을 실행하는 데에도 사용할 수 있습니다. 자세한 내용은 [Azure Container Instances 개요][docs-aci]를 참조하세요.
 
 <!-- links -->
-[architecture]: ./media/devops-with-aks/architecture-devops-with-aks.png
+[architecture]: ./media/architecture-devops-with-aks.png
 [autoscaling]: ../../best-practices/auto-scaling.md
 [availability]: ../../checklist/availability.md
-[azureaci-docs]: /azure/container-instances/container-instances-overview
-[azureacr-docs]: /azure/container-registry/container-registry-intro
-[azurecosmosdb-docs]: /azure/cosmos-db/introduction
-[azureaks-docs]: /azure/aks/intro-kubernetes
-[azuremonitor-docs]: /azure/monitoring-and-diagnostics/monitoring-overview
-[azurevm-docs]: /azure/virtual-machines/linux/overview
+[docs-aci]: /azure/container-instances/container-instances-overview
+[docs-acr]: /azure/container-registry/container-registry-intro
+[docs-aks]: /azure/aks/intro-kubernetes
+[docs-azure-monitor]: /azure/monitoring-and-diagnostics/monitoring-overview
+[docs-cosmos-db]: /azure/cosmos-db/introduction
+[docs-virtual-machines]: /azure/virtual-machines/linux/overview
 [createsp]: /cli/azure/ad/sp#az-ad-sp-create
 [grafana]: https://grafana.com/
 [jenkins]: https://jenkins.io/

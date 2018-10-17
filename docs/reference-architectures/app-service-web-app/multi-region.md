@@ -4,12 +4,12 @@ description: Microsoft Azure에서 실행되고 고가용성을 요구하는 웹
 author: MikeWasson
 ms.date: 11/23/2016
 cardTitle: Run in multiple regions
-ms.openlocfilehash: 2efcc591695e1c592053ea32832fe15e624df2e1
-ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
+ms.openlocfilehash: 5493deea871f25fb6ea3531a22d92d83916930b1
+ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "43016018"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48876820"
 ---
 # <a name="run-a-web-application-in-multiple-regions"></a>여러 지역에서 웹 응용 프로그램 실행
 [!INCLUDE [header](../../_includes/header.md)]
@@ -96,7 +96,7 @@ Queue Storage의 경우 보조 지역에 백업 큐를 만듭니다. 장애 조�
 
 자세한 내용은 [Traffic Manager 모니터링 정보][tm-monitoring]를 참조하세요.
 
-Traffic Manager는 시스템에서 오류가 발생할 수 있는 지점입니다. 서비스가 실패하면 클라이언트가 가동 중지 시간 동안 응용 프로그램에 액세스할 수 없습니다. [Traffic Manager SLA(서비스 수준 계약)][tm-sla]를 검토하고 Traffic Manager만 사용하는 것이 고가용성을 위한 비즈니스 요구 사항을 충족하는지 확인합니다. 그렇지 않은 경우 다른 트래픽 관리 솔루션을 장애 복구(failback)로 추가합니다. Azure Traffic Manager 서비스가 실패하면 다른 트래픽 관리 서비스를 가리키도록 DNS의 CNAME(정식 이름) 레코드를 변경합니다. 이 단계는 수동으로 수행해야 하며 DNS 변경 사항이 전파될 때까지 응용 프로그램을 사용할 수 없습니다.
+Traffic Manager는 시스템에서 오류가 발생할 수 있는 지점입니다. 서비스가 실패하면 클라이언트가 가동 중지 시간 동안 응용 프로그램에 액세스할 수 없습니다. [Traffic Manager SLA(서비스 수준 계약)][tm-sla]를 검토하고 Traffic Manager만 사용하는 것이 고가용성을 위한 비즈니스 요구 사항을 충족하는지 확인합니다. 그렇지 않은 경우 다른 트래픽 관리 솔루션을 장애 복구(Failback)로 추가합니다. Azure Traffic Manager 서비스가 실패하면 다른 트래픽 관리 서비스를 가리키도록 DNS의 CNAME(정식 이름) 레코드를 변경합니다. 이 단계는 수동으로 수행해야 하며 DNS 변경 사항이 전파될 때까지 응용 프로그램을 사용할 수 없습니다.
 
 ### <a name="sql-database"></a>SQL Database
 SQL Database의 RPO(복구 지점 목표) 및 ERT(예상 복구 시간)에 대한 설명은 [Azure SQL Database의 무중단 업무 방식 개요][sql-rpo]에 나와 있습니다. 
@@ -165,6 +165,6 @@ azure network traffic-manager endpoint set --name <endpoint> --profile-name <pro
 [tm-monitoring]: /azure/traffic-manager/traffic-manager-monitoring
 [tm-ps]: /powershell/module/azurerm.trafficmanager
 [tm-routing]: /azure/traffic-manager/traffic-manager-routing-methods
-[tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager/v1_0/
-[traffic-manager]: https://azure.microsoft.com/services/traffic-manager/
+[tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager
+[traffic-manager]: https://azure.microsoft.com/services/traffic-manager
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/app-service-reference-architectures.vsdx

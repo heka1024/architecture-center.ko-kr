@@ -3,12 +3,12 @@ title: 변화를 위한 디자인
 description: 혁신적인 디자인은 지속적인 혁신의 핵심입니다.
 author: MikeWasson
 ms.date: 08/30/2018
-ms.openlocfilehash: bbd5699e257663514cf7bb8b856fe35f51799c73
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: df5a2d0756295a9632b3ea336527b2fbfb35318c
+ms.sourcegitcommit: f6be2825bf2d37dfe25cfab92b9e3973a6b51e16
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43325709"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48858149"
 ---
 # <a name="design-for-evolution"></a>진화를 위한 디자인
 

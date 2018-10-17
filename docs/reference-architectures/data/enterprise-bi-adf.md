@@ -3,12 +3,12 @@ title: SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 En
 description: Azure Data Factory를 사용하여 Azure에서 ELT 워크플로 자동화
 author: MikeWasson
 ms.date: 07/01/2018
-ms.openlocfilehash: ffd75ba8c57a9afbc6abad61f21f738c644c9bc8
-ms.sourcegitcommit: 58d93e7ac9a6d44d5668a187a6827d7cd4f5a34d
+ms.openlocfilehash: f004c02da93335e74b07b9720236832ad7f744db
+ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37142284"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48876905"
 ---
 # <a name="automated-enterprise-bi-with-sql-data-warehouse-and-azure-data-factory"></a>SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 Enterprise BI
 
@@ -204,7 +204,7 @@ SET [Integration].[Sale_Staging].[WWI Customer ID] =  CustomerHolder.[WWI Custom
 
 - `<data_factory_name>` 데이터 팩터리 이름.
 - `<analysis_server_name>` Analysis Services 서버 이름.
-- `<active_directory_upn>` Azure Active Directory UPN(사용자 계정 이름). 예: `user@contoso.com`
+- `<active_directory_upn>` Azure Active Directory UPN(사용자 계정 이름). 예: `user@contoso.com`.
 - `<data_warehouse_server_name>` SQL Data Warehouse 서버 이름.
 - `<data_warehouse_password>` SQL Data Warehouse 관리자 암호.
 - `<resource_group_name>` 리소스 그룹의 이름.

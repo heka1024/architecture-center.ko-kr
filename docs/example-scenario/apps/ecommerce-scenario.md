@@ -1,22 +1,22 @@
 ---
-title: Azure의 전자 상거래 프런트 엔드
-description: Azure에서 전자 상거래 사이트를 호스팅하는 데 입증된 시나리오입니다.
+title: Azure의 전자상거래 프런트 엔드
+description: Azure에서 전자상거래 사이트를 호스트합니다.
 author: masonch
 ms.date: 7/13/18
-ms.openlocfilehash: 340f60628bf932489a9fbd11ac3ff1be723a685c
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 6ca85665a5bf63bf71f5badc16406db5df2a34c2
+ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428077"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48819094"
 ---
-# <a name="e-commerce-frontend-on-azure"></a>Azure의 전자 상거래 프런트 엔드
+# <a name="an-e-commerce-front-end-on-azure"></a>Azure의 전자상거래 프런트 엔드
 
-이 예제 시나리오에서는 Azure PaaS(Platform-as-a-Service) 도구를 사용하여 전자 상거래 프런트 엔드를 구현하는 과정을 안내합니다. 대부분의 전자 상거래 웹 사이트는 시간 경과에 따른 계절성 및 트래픽 가변성에 직면하고 있습니다. 제품이나 서비스에 대한 수요가 예측 가능 여부에 관계없이 급격히 증가하는 경우 PaaS 도구를 사용하면 더 많은 고객과 더 많은 거래를 자동으로 처리할 수 있습니다. 또한 이 시나리오에서는 사용하는 용량에 대해서만 지불함으로써 경제성을 활용합니다.
+이 예제 시나리오에서는 Azure PaaS(Platform-as-a-Service) 도구를 사용하여 전자상거래 프런트 엔드를 구현하는 과정을 안내합니다. 대부분의 전자 상거래 웹 사이트는 시간 경과에 따른 계절성 및 트래픽 가변성에 직면하고 있습니다. 제품이나 서비스에 대한 수요가 예측 가능 여부에 관계없이 급격히 증가하는 경우 PaaS 도구를 사용하면 더 많은 고객과 더 많은 거래를 자동으로 처리할 수 있습니다. 또한 이 시나리오에서는 사용하는 용량에 대해서만 지불함으로써 경제성을 활용합니다.
 
 이 문서에서는 온라인 콘서트 발권 플랫폼인 *Relecloud Concerts*의 전자 상거래 응용 프로그램 샘플을 배포하는 데 함께 사용되는 다양한 Azure PaaS 구성 요소 및 고려 사항에 대해 알아볼 수 있습니다.
 
-## <a name="potential-use-cases"></a>잠재적인 사용 사례
+## <a name="relevant-use-cases"></a>관련 사용 사례
 
 이 시나리오에 적합한 사용 사례는 다음과 같습니다.
 
@@ -25,7 +25,7 @@ ms.locfileid: "47428077"
 
 ## <a name="architecture"></a>아키텍처
 
-![전자 상거래 응용 프로그램에 대한 샘플 시나리오 아키텍처][architecture-diagram]
+![전자 상거래 응용 프로그램에 대한 샘플 시나리오 아키텍처][architecture]
 
 이 시나리오에서는 전자 상거래 사이트에서 티켓을 구매하는 방법에 대해 설명하며, 시나리오를 통한 데이터 흐름은 다음과 같습니다.
 
@@ -52,7 +52,7 @@ ms.locfileid: "47428077"
 * [Cognitive Services - 감정 분석][docs-sentiment-analysis]은 Machine Learning API를 사용하고, 개발자가 응용 프로그램에 지능형 기능(예: 감정/비디오 감지, 얼굴/음성/시각 인식, 음성/언어 이해)을 쉽게 추가할 수 있게 합니다.
 * [Azure Search][docs-search]는 웹, 모바일 및 엔터프라이즈 응용 프로그램에서 이질적인 비공개 콘텐츠에 대한 풍부한 검색 환경을 제공하는 검색 기반 클라우드 솔루션입니다.
 * [저장소 Blob][docs-storage-blobs]은 텍스트 또는 이진 데이터와 같은 많은 양의 구조화되지 않은 데이터를 저장하도록 최적화됩니다.
-* [Redis Cache][docs-redis-cache]는 응용 프로그램 가까이에 있는 고속 저장소에 자주 액세스하는 데이터를 일시적으로 복사하여 백 엔드 데이터 저장소를 많이 사용하는 시스템의 성능과 확장성을 향상시킵니다.
+* [Redis Cache][docs-redis-cache]는 응용 프로그램 가까이에 있는 고속 저장소에 자주 액세스하는 데이터를 일시적으로 복사하여 백 엔드 데이터 저장소를 많이 사용하는 시스템의 성능과 확장성을 향상합니다.
 * [SQL Database][docs-sql-database]는 관계형 데이터, JSON, 공간 및 XML과 같은 구조를 지원하는 Microsoft Azure의 범용 관계형 데이터베이스 관리 서비스입니다.
 * [Application Insights][docs-application-insights]는 사용자가 앱에서 수행하는 작업을 파악하는 데 도움이 되는 기본 제공 분석 도구를 통해 성능 이상을 자동으로 감지하여 성능 및 유용성을 지속적으로 향상시킬 수 있도록 설계되었습니다.
 
@@ -69,7 +69,7 @@ ms.locfileid: "47428077"
 
 데이터 계층에 대한 다른 옵션은 다음과 같습니다.
 
-* [Cosmos DB][docs-cosmosdb] - 전역으로 분산된 Microsoft의 다중 모델 데이터베이스입니다. 이 서비스는 Mongo DB, Cassandra, Graph 데이터 또는 간단한 테이블 저장소와 같은 다른 데이터 모델을 실행하는 플랫폼을 제공합니다.
+* [Cosmos DB](/azure/cosmos-db/introduction): 글로벌하게 분산된 Microsoft의 다중 모델 데이터베이스입니다. 이 서비스는 Mongo DB, Cassandra, Graph 데이터 또는 간단한 테이블 저장소와 같은 다른 데이터 모델을 실행하는 플랫폼을 제공합니다.
 
 ## <a name="considerations"></a>고려 사항
 
@@ -120,11 +120,11 @@ ms.locfileid: "47428077"
 * [eShopOnContainers 참조 예제][microservices-ecommerce]
 
 <!-- links -->
+[architecture]: ./media/architecture-ecommerce-scenario.png
 [small-pricing]: https://azure.com/e/90fbb6a661a04888a57322985f9b34ac
 [medium-pricing]: https://azure.com/e/38d5d387e3234537b6859660db1c9973
 [large-pricing]: https://azure.com/e/f07f99b6c3134803a14c9b43fcba3e2f
 [app-service-reference-architecture]: ../../reference-architectures/app-service-web-app/basic-web-app.md
-[architecture-diagram]: ./media/architecture-diagram-ecommerce-solution.png
 [availability]: /azure/architecture/checklist/availability
 [circuit-breaker]: /azure/architecture/patterns/circuit-breaker
 [design-patterns-availability]: /azure/architecture/patterns/category/availability
@@ -136,7 +136,6 @@ ms.locfileid: "47428077"
 [docs-cdn]: /azure/cdn/cdn-overview
 [docs-container-instances]: /azure/container-instances/
 [docs-kubernetes-service]: /azure/aks/
-[docs-cosmosdb]: /azure/cosmos-db/
 [docs-functions]: /azure/azure-functions/functions-overview
 [docs-redis-cache]: /azure/redis-cache/cache-overview
 [docs-search]: /azure/search/search-what-is-azure-search
@@ -154,6 +153,6 @@ ms.locfileid: "47428077"
 [resiliency-app-service]: /azure/architecture/checklist/resiliency-per-service#app-service
 [resiliency]: /azure/architecture/checklist/resiliency
 [scalability]: /azure/architecture/checklist/scalability
-[secure-development]: https://www.microsoft.com/en-us/SDL/process/design.aspx
+[secure-development]: https://www.microsoft.com/SDL/process/design.aspx
 [sql-geo-replication]: /azure/sql-database/sql-database-geo-replication-overview
 [storage-geo-redudancy]: /azure/storage/common/storage-redundancy-grs
