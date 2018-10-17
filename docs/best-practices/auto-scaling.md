@@ -4,12 +4,12 @@ description: 자동 크기 조정이 응용 프로그램에 필요한 리소스�
 author: dragon119
 ms.date: 05/17/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: a8489aaabab2b8523fbc9f026f4f435bb6d1ad29
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 1afbb7d48329d84979aa72b7e0707442cacfa45e
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29478462"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429420"
 ---
 # <a name="autoscaling"></a>자동 확장
 [!INCLUDE [header](../_includes/header.md)]
@@ -70,14 +70,14 @@ Azure는 대부분의 계산 옵션에 대해 기본 제공 자동 크기 조정
 
 기본 제공 메트릭 목록에 대해서는 [Azure Monitor 자동 크기 조정 공용 메트릭][autoscale-metrics]을 참조하세요. Application Insights를 사용하여 사용자 지정 메트릭을 구현할 수도 있습니다. 
 
-PowerShell, Azure CLI, Azure Resource Manager 템플릿 또는 Azure Portal을 사용하여 자동 크기 조정 기능을 구성할 수 있습니다. 보다 자세한 제어를 위해서는 [Azure Resource Manager REST API](https://msdn.microsoft.com//library/azure/dn790568.aspx)를 사용합니다. [Azure 모니터링 서비스 관리 라이브러리](http://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring) 및 [Microsoft Insights 라이브러리](https://www.nuget.org/packages/Microsoft.Azure.Insights/)(미리 보기)는 다른 리소스에서 메트릭 수집을 허용하고 REST API를 사용하여 자동 크기 조정을 수행하는 SDK입니다. Azure Resource Manager 지원을 사용할 수 없는 리소스의 경우 또는 Azure Cloud Services를 사용하고 있는 경우 서비스 관리 REST API를 자동 크기 조정에 사용할 수 있습니다. 다른 경우에는 모두 Azure 리소스 관리자를 사용하세요.
+PowerShell, Azure CLI, Azure Resource Manager 템플릿 또는 Azure Portal을 사용하여 자동 크기 조정 기능을 구성할 수 있습니다. 보다 자세한 제어를 위해서는 [Azure Resource Manager REST API](https://msdn.microsoft.com//library/azure/dn790568.aspx)를 사용합니다. [Azure 모니터링 서비스 관리 라이브러리](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring) 및 [Microsoft Insights 라이브러리](https://www.nuget.org/packages/Microsoft.Azure.Insights/)(미리 보기)는 다른 리소스에서 메트릭 수집을 허용하고 REST API를 사용하여 자동 크기 조정을 수행하는 SDK입니다. Azure Resource Manager 지원을 사용할 수 없는 리소스의 경우 또는 Azure Cloud Services를 사용하고 있는 경우 서비스 관리 REST API를 자동 크기 조정에 사용할 수 있습니다. 다른 경우에는 모두 Azure 리소스 관리자를 사용하세요.
 
 Azure 자동 크기 조정을 사용하는 경우에는 다음 사항을 고려하세요.
 
 * 응용 프로그램에 대한 부하를 충분히 잘 예측할 수 있어서 예정된 자동 크기 조정을 사용하여 예상되는 최대 수요를 충족하도록 인스턴스를 추가 및 제거할 수 있는지 고려합니다. 이것이 불가능한 경우에는 예측 불가능한 수요 변화를 처리할 수 있게 런타임 메트릭을 기준으로 하는 반응형 자동 크기 조정을 사용합니다. 일반적으로 이 방법들을 결합할 수 있습니다. 예를 들어, 응용 프로그램이 가장 바쁠 것을 아는 시간 일정을 기반으로 하여 리소스를 추가하는 전략을 만듭니다. 이렇게 하면 새 인스턴스를 시작할 때 지체하지 않고, 필요할 때 용량을 사용할 수 있게 하는 데 도움이 됩니다. 각 예정된 규칙에 대해 해당 기간 동안 반응형 자동 크기 조정을 할 수 있게 하는 메트릭을 정의하여 응용 프로그램이 지속적이면서 수요를 예측할 수 없는 피크를 처리할 수 있게 합니다.
 * 종종 메트릭과 용량 요구 사항의 관계를 이해하기는 어려우며, 특히 응용 프로그램이 초기에 배포된 경우에 그렇습니다. 처음에 약간의 추가 용량을 프로비전한 후 자동 크기 조정 규칙을 모니터링하고 조정하여 용량을 실제 부하에 더 근접하게 합니다.
 * 자동 크기 조정 규칙을 구성하고 시간 경과에 따른 응용 프로그램의 성능 변화를 모니터링합니다. 이 모니터링 결과를 사용하여 필요한 경우 시스템 크기 조정 방법을 조정합니다. 그러나 자동 크기 조정은 즉각적인 프로세스가 아님을 명심하세요. 지정된 임계값을 초과하는(또는 미달하는) 평균 CPU 사용률과 같은 메트릭에 반응하는 데에는 시간이 걸립니다.
-* 측정된 트리거 특성(CPU 사용량이나 큐 길이 등)을 기반으로 하는 감지 메커니즘을 사용하는 자동 크기 조정 규칙은 즉각적인 값보다는 시간 경과에 따라 집계되는 값을 사용하여 자동 크기 조정 작업을 트리거합니다. 기본적으로 집계는 값의 평균입니다. 이는 시스템이 너무 신속하게 반응하거나 빠른 진동을 일으키는 것을 방지합니다. 또한 자동으로 시작된 새 인스턴스가 실행 모드로 안정되는 시간을 허용하여 새 인스턴스가 시작되는 동안 추가 자동 크기 조정 작업이 발생하는 것을 방지합니다. Azure Cloud Services 및 Azure Virtual Machines의 경우 집계에 대한 기본 기간은 45분이므로, 수요 급증에 응답하여 자동 크기 조정을 트리거하는 메트릭에 대해 이 기간을 확보할 수 있습니다. SDK를 사용하여 집계 기간을 변경할 수 있지만 25분 미만의 기간은 예기치 않은 결과를 초래할 수 있음에 주의하세요( [Azure 모니터링 서비스 관리 라이브러리를 사용하여 CPU 비율로 Cloud Services 자동 크기 조정](http://rickrainey.com/2013/12/15/auto-scaling-cloud-services-on-cpu-percentage-with-the-windows-azure-monitoring-services-management-library/)참조). Web Apps의 경우, 평균 기간은 더 짧아서 평균 트리거 측정값을 변경한 후 약 5분 후에 새 인스턴스를 사용할 수 있습니다.
+* 측정된 트리거 특성(CPU 사용량이나 큐 길이 등)을 기반으로 하는 감지 메커니즘을 사용하는 자동 크기 조정 규칙은 즉각적인 값보다는 시간 경과에 따라 집계되는 값을 사용하여 자동 크기 조정 작업을 트리거합니다. 기본적으로 집계는 값의 평균입니다. 이는 시스템이 너무 신속하게 반응하거나 빠른 진동을 일으키는 것을 방지합니다. 또한 자동으로 시작된 새 인스턴스가 실행 모드로 안정되는 시간을 허용하여 새 인스턴스가 시작되는 동안 추가 자동 크기 조정 작업이 발생하는 것을 방지합니다. Azure Cloud Services 및 Azure Virtual Machines의 경우 집계에 대한 기본 기간은 45분이므로, 수요 급증에 응답하여 자동 크기 조정을 트리거하는 메트릭에 대해 이 기간을 확보할 수 있습니다. SDK를 사용하여 집계 기간을 변경할 수 있지만 25분 미만으로 줄이면 예기치 않은 결과를 초래할 수 있습니다. Web Apps의 경우, 평균 기간은 더 짧아서 평균 트리거 측정값을 변경한 후 약 5분 후에 새 인스턴스를 사용할 수 있습니다.
 * 포털 대신 SDK를 사용하여 자동 크기 조정을 구성하면 규칙이 활성화된 동안 더 상세한 일정을 지정할 수 있습니다. 또한 고유의 메트릭을 만들고 사용자의 자동 크기 조정 규칙에 존재하는 내용과 함께 또는 별도로 사용할 수도 있습니다. 예를 들어, 초당 요청 수나 평균 메모리 가용성과 같은 대체 카운터를 사용하거나 특정 비즈니스 프로세스를 측정하는 사용자 지정 카운터를 사용하고자 할 수 있습니다.
 * Service Fabric의 크기를 자동으로 조정할 경우 클러스터의 노드 유형은 백 엔드에서 VM 확장 집합으로 구성되므로 각 노드 유형에 대한 자동 크기 조정 규칙을 설정해야 합니다. 자동 크기 조정을 수행하기 전에 포함해야 할 노드 수를 고려합니다. 기본 노드 형식에 대해 포함해야 할 최소 노드 수는 선택한 안정성 수준에 따라 달라집니다. 자세한 내용은 [자동 크기 조정 규칙을 사용하여 Service Fabric 클러스터 크기 조정](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down)을 참조하세요.
 * 포털을 사용하여 SQL Database 인스턴스 및 큐와 같은 리소스를 Cloud Service 인스턴스에 연결할 수 있습니다. 따라서 연결된 각 리소스에 대한 별도의 수동 및 자동 크기 조정 구성 옵션에 더 쉽게 액세스할 수 있습니다. 자세한 내용은 [방법: 클라우드 서비스에 리소스 연결](/azure/cloud-services/cloud-services-how-to-manage)을 참조하세요.

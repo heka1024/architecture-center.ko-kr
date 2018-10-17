@@ -3,12 +3,12 @@ title: 마이크로 서비스의 수집 및 워크플로
 description: 마이크로 서비스의 수집 및 워크플로
 author: MikeWasson
 ms.date: 12/08/2017
-ms.openlocfilehash: 6477c3f2b0cc6d37dcd4637dc0dde4f7a6e3cc74
-ms.sourcegitcommit: 94c769abc3d37d4922135ec348b5da1f4bbcaa0a
+ms.openlocfilehash: 1851d979ed23b35046474f299128064d1abb375e
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/13/2017
-ms.locfileid: "26678733"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47429488"
 ---
 # <a name="designing-microservices-ingestion-and-workflow"></a>마이크로 서비스 디자인: 수집 및 워크플로
 
@@ -58,7 +58,7 @@ Event Hubs에서 이렇게 높은 처리량을 구현하는 방법을 이해하�
 
 반면에 Event Hubs는 스트리밍 의미 체계를 사용합니다. 소비자는 자신의 속도에 맞게 독립적으로 스트림을 읽습니다. 각 소비자는 스트림에서 현재 위치를 추적하는 일을 담당합니다. 소비자는 미리 정의된 간격으로 영구 저장소에 현재 위치를 기록해야 합니다. 이렇게 하면 소비자에게 오류가 발생하는 경우(예: 소비자에게 충돌이나 호스트 장애가 발생하는 경우) 새 인스턴스가 마지막으로 기록된 위치에서 스트림 읽기를 다시 시작할 수 있습니다. 이러한 프로세스를 *검사점 설정*이라고 합니다. 
 
-성능을 위해 소비자는 일반적으로 각 메시지 이후에 검사점을 설정하지 않습니다. 대신 고정된 간격으로(예: *n* 메시지를 처리한 후 또는 *n*초마다) 검사점을 설정합니다. 결과적으로 소비자에게 오류가 발생하면 마지막 검사점에서 새 인스턴스를 항상 픽업하기 때문에 일부 이벤트는 두 번 처리될 수 있습니다. 여기에는 장단점이 있습니다. 검사점이 빈번하면 성능이 저하될 수 있지만 검사점이 드물면 오류가 발생한 후 더 많은 이벤트를 다시 재생합니다.  
+성능을 위해 소비자는 일반적으로 각 메시지 이후에 검사점을 설정하지 않습니다. 대신 고정된 간격으로(예: *n*개 메시지를 처리한 후 또는 *n*초마다) 검사점을 설정합니다. 결과적으로 소비자에게 오류가 발생하면 마지막 검사점에서 새 인스턴스를 항상 픽업하기 때문에 일부 이벤트는 두 번 처리될 수 있습니다. 여기에는 장단점이 있습니다. 검사점이 빈번하면 성능이 저하될 수 있지만 검사점이 드물면 오류가 발생한 후 더 많은 이벤트를 다시 재생합니다.  
 
 ![](./images/stream-semantics.png)
  
@@ -83,7 +83,7 @@ Event Hubs는 경쟁 소비자에 맞게 설계되지 않았습니다. 여러 �
 
 ### <a name="iothub-react"></a>IotHub React 
 
-[IotHub React](https://github.com/Azure/toketi-iothubreact)는 Event Hub의 이벤트를 읽는 Akka Streams 라이브러리입니다. Akka Streams는 [Reactive Streams](http://www.reactive-streams.org/) 사양을 구현하는 스트림 기반 프로그래밍 프레임워크입니다. 모든 스트리밍 작업이 비동기적으로 수행되고 파이프라인은 정상적으로 역 압력(backpressure)을 처리는 효율적인 스트리밍 파이프라인을 구축하는 방법을 제공합니다. 역 압력(backpressure)은 이벤트 원본이 다운스트림 소비자가 수신할 수 있는 것보다 빠른 속도로 이벤트를 생성하는 경우 발생하며 &mdash; 드론 배달 시스템의 트래픽이 급증하는 상황과 정확히 일치합니다. 백 엔드 서비스가 느려지면 IoTHub React가 느려집니다. 용량이 증가하면 IoTHub React는 파이프라인을 통해 더 많은 메시지를 푸시합니다.
+[IotHub React](https://github.com/Azure/toketi-iothubreact)는 Event Hub의 이벤트를 읽는 Akka Streams 라이브러리입니다. Akka Streams는 [Reactive Streams](https://www.reactive-streams.org/) 사양을 구현하는 스트림 기반 프로그래밍 프레임워크입니다. 모든 스트리밍 작업이 비동기적으로 수행되고 파이프라인은 정상적으로 역 압력(backpressure)을 처리는 효율적인 스트리밍 파이프라인을 구축하는 방법을 제공합니다. 역 압력(backpressure)은 이벤트 원본이 다운스트림 소비자가 수신할 수 있는 것보다 빠른 속도로 이벤트를 생성하는 경우 발생하며 &mdash; 드론 배달 시스템의 트래픽이 급증하는 상황과 정확히 일치합니다. 백 엔드 서비스가 느려지면 IoTHub React가 느려집니다. 용량이 증가하면 IoTHub React는 파이프라인을 통해 더 많은 메시지를 푸시합니다.
 
 Akka Streams는 Event Hubs의 스트리밍 이벤트의 매우 자연스러운 프로그래밍 모델이기도 합니다. 일괄 처리 이벤트를 반복하는 대신 각 이벤트에 적용할 작업 집합을 정의하여 Akka Streams에서 스트리밍을 처리하도록 합니다. Akka Streams는 *소스*, *흐름* 및 *싱크* 측면에서 스트리밍 파이프라인을 정의합니다. 원본은 출력 스트림을 생성하고, 흐름은 입력 스트림을 처리하고 출력 스트림을 생성하며, 싱크는 출력을 생성하지 않고 스트림을 소비합니다.
 

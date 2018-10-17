@@ -6,12 +6,12 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: tailspin
 pnp.series.next: claims
-ms.openlocfilehash: e85817626675cec4d126921c19a31a0983ecd62d
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: 70f4a96369c207740400b9dfe72e1e964507f729
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26582884"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428128"
 ---
 # <a name="authenticate-using-azure-ad-and-openid-connect"></a>Azure AD 및 OpenID Connect를 사용하여 인증
 
@@ -61,7 +61,7 @@ app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions {
 일부 설정은 런타임 구성 옵션에서 가져옵니다. 다음은 미들웨어 옵션의 의미입니다.
 
 * **ClientId**. Azure AD에 응용 프로그램을 등록할 때 얻은 응용 프로그램의 클라이언트 ID입니다.
-* **Authority**. 다중 테넌트 응용 프로그램의 경우 `https://login.microsoftonline.com/common/`으로 설정합니다. Azure AD 공용 끝점에 대한 URL로, Azure AD 테넌트의 사용자가 이를 통해 로그인할 수 있습니다. 공용 끝점에 대한 자세한 내용은 [이 블로그 게시물](http://www.cloudidentity.com/blog/2014/08/26/the-common-endpoint-walks-like-a-tenant-talks-like-a-tenant-but-is-not-a-tenant/)을 참조하세요.
+* **Authority**. 다중 테넌트 응용 프로그램의 경우 `https://login.microsoftonline.com/common/`으로 설정합니다. Azure AD 공용 엔드포인트에 대한 URL로, Azure AD 테넌트의 사용자가 이를 통해 로그인할 수 있습니다. 공용 엔드포인트에 대한 자세한 내용은 [이 블로그 게시물](https://www.cloudidentity.com/blog/2014/08/26/the-common-endpoint-walks-like-a-tenant-talks-like-a-tenant-but-is-not-a-tenant/)을 참조하세요.
 * **TokenValidationParameters**에서 **ValidateIssuer**를 false로 설정합니다. 이 경우 앱에서 ID 토큰의 발급자 값의 유효성을 검사해야 합니다. (토큰 자체의 유효성은 계속 미들웨어에서 검사합니다.) 발급자 유효성 검사에 대한 자세한 내용은 [발급자 확인](claims.md#issuer-validation)을 참조하세요.
 * **PostLogoutRedirectUri**. 로그아웃한 후 사용자를 리디렉션할 URL을 지정합니다. 이 URL은 익명 요청을 허용하는 페이지여야 하며, 일반적으로 홈페이지입니다.
 * **SignInScheme**. `CookieAuthenticationDefaults.AuthenticationScheme`로 설정합니다. 이 설정은 사용자가 인증된 후 사용자 클레임이 쿠키에 로컬로 저장됨을 의미합니다. 이 쿠키는 브라우저 세션 중에 사용자가 로그인을 유지하는 방법입니다.
@@ -99,7 +99,7 @@ public IActionResult SignIn()
 }
 ```
 
-그러면 미들웨어가 인증 끝점으로 리디렉션하는 302(Found) 응답을 반환합니다.
+그러면 미들웨어가 인증 엔드포인트로 리디렉션하는 302(Found) 응답을 반환합니다.
 
 ## <a name="user-login-sessions"></a>사용자 로그인 세션
 언급했듯이 사용자가 처음 로그인할 때, 쿠키 인증 미들웨어는 사용자 클레임을 쿠키에 씁니다. 그 후에는 쿠키를 읽어 HTTP 요청을 인증합니다.
@@ -139,21 +139,21 @@ ASP.NET의 OpenID Connect 미들웨어는 대부분의 프로토콜 정보를 �
 ### <a name="authentication-events"></a>인증 이벤트
 인증 프로세스 중에 OpenID Connect 미들웨어는 일련의 이벤트를 발생시킵니다.
 
-* **RedirectToIdentityProvider**. 미들웨어가 인증 끝점으로 리디렉션하기 직전에 호출됩니다. 이 이벤트를 사용하여 리디렉션 URL을 수정할 수 있습니다. 예를 들어 요청 매개변수를 추가할 수 있습니다. 예를 보려면 [관리자 동의 프롬프트 추가하기](signup.md#adding-the-admin-consent-prompt)를 참조하세요.
+* **RedirectToIdentityProvider**. 미들웨어가 인증 엔드포인트로 리디렉션하기 직전에 호출됩니다. 이 이벤트를 사용하여 리디렉션 URL을 수정할 수 있습니다. 예를 들어 요청 매개변수를 추가할 수 있습니다. 예를 보려면 [관리자 동의 프롬프트 추가하기](signup.md#adding-the-admin-consent-prompt)를 참조하세요.
 * **AuthorizationCodeReceived**. 인증 코드와 함께 호출됩니다.
 * **TokenResponseReceived**. 미들웨어가 IDP에서 액세스 토큰을 가져오고 토큰의 유효성을 검사하기 전에 호출됩니다. 인증 코드 흐름에만 적용됩니다.
 * **TokenValidated**. 미들웨어가 ID 토큰의 유효성을 검사한 후 호출됩니다. 이때 응용 프로그램에는 사용자에 대해 유효성 검증된 클레임 집합이 포함됩니다. 이 이벤트를 사용하여 클레임에 대한 추가 유효성 검사를 수행하거나 클레임을 변환할 수 있습니다. [클레임 작업](claims.md)을 참조하세요.
-* **UserInformationReceived**. 미들웨어가 사용자 정보 끝점에서 사용자 프로필을 가져오는 경우 호출됩니다. 인증 코드 흐름에만 적용되며 미들웨어 옵션에서 `GetClaimsFromUserInfoEndpoint = true` 인 경우에만 적용됩니다.
+* **UserInformationReceived**. 미들웨어가 사용자 정보 엔드포인트에서 사용자 프로필을 가져오는 경우 호출됩니다. 인증 코드 흐름에만 적용되며 미들웨어 옵션에서 `GetClaimsFromUserInfoEndpoint = true` 인 경우에만 적용됩니다.
 * **TicketReceived**. 인증이 완료되면 호출됩니다. 인증이 성공했다고 가정할 경우 마지막 이벤트입니다. 이 이벤트가 처리된 후에는 사용자가 앱에 로그인됩니다.
 * **AuthenticationFailed**. 인증에 실패하면 호출됩니다. 이 이벤트를 사용하여 인증 오류를 처리합니다. 예를 들어 오류 페이지로 리디렉션합니다.
 
 이러한 이벤트에 대한 콜백을 제공하려면 미들웨어에서 **Events** 옵션을 설정합니다. 이벤트 처리기를 선언하는 방법은 람다를 사용하여 인라인으로 선언하거나 **OpenIdConnectEvents**에서 파생되는 클래스에서 선언하는 두 가지 방법이 있습니다. 이벤트 콜백에 많은 논리가 있는 경우 두 번째 방법을 사용하는 것이 좋은데, 시작 클래스를 복잡하게 만들지 않기 때문입니다. 여기의 참조 구현에서는 이 방법을 사용합니다.
 
-### <a name="openid-connect-endpoints"></a>OpenID Connect 끝점
-Azure AD는 [OpenID Connect 검색](https://openid.net/specs/openid-connect-discovery-1_0.html)을 지원하는데, 여기에서 IDP(ID 공급자)는 [잘 알려진 끝점](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig)에서 JSON 메타데이터 문서를 반환합니다. 메타데이터 문서에는 다음과 같은 정보가 들어 있습니다.
+### <a name="openid-connect-endpoints"></a>OpenID Connect 엔드포인트트
+Azure AD는 [OpenID Connect 검색](https://openid.net/specs/openid-connect-discovery-1_0.html)을 지원하는데, 여기에서 IDP(ID 공급자)는 [잘 알려진 엔드포인트](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig)에서 JSON 메타데이터 문서를 반환합니다. 메타데이터 문서에는 다음과 같은 정보가 들어 있습니다.
 
-* 권한 부여 끝점의 URL. 사용자 인증을 위해 앱이 리디렉션되는 위치입니다.
-* 앱이 사용자를 로그아웃하기 위해서 가는 "세션 종료" 끝점의 URL입니다.
+* 권한 부여 엔드포인트의 URL. 사용자 인증을 위해 앱이 리디렉션되는 위치입니다.
+* 앱이 사용자를 로그아웃하기 위해서 가는 "세션 종료" 엔드포인트의 URL입니다.
 * 클라이언트가 IDP에서 가져온 OIDC 토큰의 유효성을 검사하기 위해 사용하는 서명 키를 가져올 URL입니다.
 
 기본적으로 OIDC 미들웨어는 이 메타데이터를 가져오는 방법을 알고 있습니다. 미들웨어에서 **Authority** 옵션을 설정하면 미들웨어는 메타데이터에 대한 URL을 구성합니다. (**MetadataAddress** 옵션을 설정하여 메타데이터 URL을 재정의할 수 있습니다.)
@@ -164,7 +164,7 @@ Azure AD는 [OpenID Connect 검색](https://openid.net/specs/openid-connect-disc
 * *하이브리드 흐름*은 클라이언트가 동일한 왕복에 있는 ID 토큰 및 인증 코드를 인증 서버로 가져올 수 있음을 의미합니다.
 * *폼 게시 응답 모드*는 인증 서버가 HTTP POST 요청을 사용하여 ID 토큰 및 인증 코드를 앱으로 보내는 것을 의미합니다. 값은 form-urlencoded입니다(content type = "application/x-www-form-urlencoded").
 
-OIDC 미들웨어가 권한 부여 끝점으로 리디렉션되면 리디렉션 URL은 OIDC에 필요한 모든 쿼리 문자열 매개 변수를 포함합니다. 하이브리드 흐름의 경우 다음과 같습니다.
+OIDC 미들웨어가 권한 부여 엔드포인트로 리디렉션되면 리디렉션 URL은 OIDC에 필요한 모든 쿼리 문자열 매개 변수를 포함합니다. 하이브리드 흐름의 경우 다음과 같습니다.
 
 * client_id. 이 값은 **ClientId** 옵션에서 설정됩니다.
 * scope = "openid profile", OIDC 요청이며 사용자의 프로필을 원한다는 것을 의미합니다.

@@ -6,12 +6,12 @@ ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: token-cache
 pnp.series.next: client-assertion
-ms.openlocfilehash: 08bf567085a940287de310f61b9f447d0ce5d5ec
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.openlocfilehash: 4b54f031d13449e4d87075af5606967da8b5d3df
+ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29477447"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47428927"
 ---
 # <a name="federate-with-a-customers-ad-fs"></a>고객의 AD FS로 페더레이션
 
@@ -48,7 +48,7 @@ Azure AD(Azure Active Directory)를 통해 Office365 및 Dynamics CRM Online 고
 ASP.NET 4에서 WS-Federation을 사용하는 예제는 [active-directory-dotnet-webapp-wsfederation 샘플][active-directory-dotnet-webapp-wsfederation]을 참조하세요.
 
 ## <a name="authentication-flow"></a>인증 흐름
-1. 사용자가 "로그인"을 클릭하면 응용 프로그램은 SaaS 공급자의 AD FS에서 OpenID Connect 끝점으로 리디렉션됩니다.
+1. 사용자가 "로그인"을 클릭하면 응용 프로그램은 SaaS 공급자의 AD FS에서 OpenID Connect 엔드포인트로 리디렉션됩니다.
 2. 사용자가 자신의 조직 사용자 이름("`alice@corp.contoso.com`")을 입력합니다. AD FS는 고객의 AD FS로 리디렉션하기 위해 홈 영역 검색을 사용하며 여기서 사용자는 자신의 자격 증명을 입력합니다.
 3. 고객의 AD FS는 WF-Federation(또는 SAML)을 사용하여 사용자 클레임을 SaaS 공급자의 AD FS로 보냅니다.
 4. 클레임은 OpenID Connect를 사용하여 AD FS에서 앱으로 흐릅니다. 여기에 WS-Federation에서 프로토콜 전환이 필요합니다.
@@ -89,9 +89,9 @@ Azure에서 유사한 토폴로지를 설정하기 위해서는 가상 네트워
 ## <a name="configure-openid-connect-authentication-with-ad-fs"></a>AD FS를 사용하여 OpenID Connect 인증 구성
 SaaS 공급자는 응용 프로그램 및 AD FS 간의 OpenID Connect를 사용하도록 설정해야 합니다. 이렇게 하려면 AD FS에서 응용 프로그램 그룹을 추가합니다.  이 [블로그 게시물]의 "OpenId Connect 로그인 AD FS를 위한 웹앱 설정" 아래에서 상세 지침을 확인할 수 있습니다. 
 
-그런 다음 OpenID Connect 미들웨어를 구성합니다. 메타데이터 끝점은 `https://domain/adfs/.well-known/openid-configuration`이며, 여기서 도메인은 SaaS 공급자의 AD FS 도메인입니다.
+그런 다음 OpenID Connect 미들웨어를 구성합니다. 메타데이터 엔드포인트는 `https://domain/adfs/.well-known/openid-configuration`이며, 여기서 도메인은 SaaS 공급자의 AD FS 도메인입니다.
 
-일반적으로 이것을 다른 OpenID Connect 끝점(예: AAD)과 결합할 수 있습니다. 사용자가 올바른 인증 끝점으로 보내지도록 두 개의 서로 다른 로그인 단추 또는 이를 구분하기 위한 기타 방법이 필요합니다.
+일반적으로 이것을 다른 OpenID Connect 엔드포인트(예: AAD)와 결합할 수 있습니다. 사용자가 올바른 인증 엔드포인트로 보내지도록 두 개의 서로 다른 로그인 단추 또는 이를 구분하기 위한 기타 방법이 필요합니다.
 
 ## <a name="configure-the-ad-fs-resource-partner"></a>AD FS 리소스 파트너 구성
 SaaS 공급자는 ADFS를 통한 연결을 원하는 각 고객을 위해 다음을 수행해야 합니다.
@@ -106,7 +106,7 @@ SaaS 공급자는 ADFS를 통한 연결을 원하는 각 고객을 위해 다음
 1. 서버 관리자에서 **도구**를 클릭하고 **AD FS 관리**를 선택합니다.
 2. 콘솔 트리의 **AD FS** 아래에서 **클레임 공급자 트러스트**를 마우스 오른쪽 단추로 클릭합니다. **클레임 공급자 트러스트 추가**를 선택합니다.
 3. **시작** 을 클릭하여 마법사를 시작합니다.
-4. "온라인으로 게시된 또는 로컬 네트워크에서 클레임 공급자에 대한 데이터 가져오기" 옵션을 선택합니다. 고객의 페더레이션 메타데이터 끝점 URI를 입력합니다. (예: `https://contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`) 이 정보는 고객으로부터 받아야 합니다.
+4. "온라인으로 게시된 또는 로컬 네트워크에서 클레임 공급자에 대한 데이터 가져오기" 옵션을 선택합니다. 고객의 페더레이션 메타데이터 엔드포인트 URI를 입력합니다. (예: `https://contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`) 이 정보는 고객으로부터 받아야 합니다.
 5. 기본 옵션을 사용하여 마법사를 완료합니다.
 
 ### <a name="edit-claims-rules"></a>클레임 규칙 편집
@@ -143,7 +143,7 @@ Set-ADFSClaimsProviderTrust -TargetName "name" -OrganizationalAccountSuffix @("s
 1. 서버 관리자에서 **도구**를 클릭하고 **AD FS 관리**를 선택합니다.
 2. 콘솔 트리의 **AD FS** 아래에서 **신뢰 당사자 트러스트**를 마우스 오른쪽 단추로 클릭합니다. **신뢰 당사자 트러스트 추가**를 선택합니다.
 3. **클레임 인식**을 선택하고 **시작**을 클릭합니다.
-4. **데이터 원본 선택** 페이지에서 "온라인으로 게시된 또는 로컬 네트워크에서 클레임 공급자에 대한 데이터 가져오기" 옵션을 선택합니다. SaaS 공급자의 페더레이션 메타데이터 끝점의 URI를 입력합니다.
+4. **데이터 원본 선택** 페이지에서 "온라인으로 게시된 또는 로컬 네트워크에서 클레임 공급자에 대한 데이터 가져오기" 옵션을 선택합니다. SaaS 공급자의 페더레이션 메타데이터 엔드포인트의 URI를 입력합니다.
    ![신뢰 당사자 트러스트 추가 마법사](./images/add-rp-trust.png)
 5. **표시 이름 지정** 페이지에서 이름을 입력합니다.
 6. **Access Control 정책 선택** 페이지에서 정책을 선택합니다. 조직에 있는 모든 사람을 허용하거나 특정 보안 그룹을 선택할 수 있습니다.
@@ -180,15 +180,15 @@ Set-ADFSClaimsProviderTrust -TargetName "name" -OrganizationalAccountSuffix @("s
 
 
 <!-- Links -->
-[Azure AD Connect]: /azure/active-directory/active-directory-aadconnect/
+[Azure AD Connect]: /azure/active-directory/hybrid/whatis-hybrid-identity
 [페더레이션 트러스트]: https://technet.microsoft.com/library/cc770993(v=ws.11).aspx
 [계정 파트너]: https://technet.microsoft.com/library/cc731141(v=ws.11).aspx
 [리소스 파트너]: https://technet.microsoft.com/library/cc731141(v=ws.11).aspx
 [인증 인스턴트]: https://msdn.microsoft.com/library/system.security.claims.claimtypes.authenticationinstant%28v=vs.110%29.aspx
-[만료 시간]: http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-25#section-4.1.
+[만료 시간]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-25#section-4.1.
 [이름 식별자]: https://msdn.microsoft.com/library/system.security.claims.claimtypes.nameidentifier(v=vs.110).aspx
 [active-directory-on-azure]: https://msdn.microsoft.com/library/azure/jj156090.aspx
-[블로그 게시물]: http://www.cloudidentity.com/blog/2015/08/21/OPENID-CONNECT-WEB-SIGN-ON-WITH-ADFS-IN-WINDOWS-SERVER-2016-TP3/
+[블로그 게시물]: https://www.cloudidentity.com/blog/2015/08/21/OPENID-CONNECT-WEB-SIGN-ON-WITH-ADFS-IN-WINDOWS-SERVER-2016-TP3/
 [AD FS 로그인 페이지 사용자 지정]: https://technet.microsoft.com/library/dn280950.aspx
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance
 [client assertion]: client-assertion.md
