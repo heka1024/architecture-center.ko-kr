@@ -3,12 +3,12 @@ title: Azure에서 웹 응용 프로그램 모니터링
 description: Azure App Service에 호스트되는 웹 응용 프로그램을 모니터링합니다.
 author: adamboeglin
 ms.date: 09/12/2018
-ms.openlocfilehash: b1beb5cf5e29ab1ceb760bf95eab85d819b69342
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.openlocfilehash: ea57ba50f4e9390d5527587752c3bebad01b6139
+ms.sourcegitcommit: 42797fffb82bbbf86f6deb1da52c61d456be631e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876854"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49313219"
 ---
 # <a name="web-application-monitoring-on-azure"></a>Azure에서 웹 응용 프로그램 모니터링
 
@@ -99,7 +99,7 @@ Application Insights의 원격 분석 데이터는 디버깅 동안 그리고 �
 
 배포 후에는 성능 지표의 [라이브 메트릭 스트림][Live Metrics Stream]을 볼 수 있습니다. 이 데이터는 저장되지 않습니다. 즉, 실시간 메트릭을 보는 것입니다. 하지만 원격 분석 데이터를 수집해 두었다가 나중에 분석할 수 있습니다. 라이브 스트림 데이터 요금은 없습니다.
 
-Log Analytics는 서비스에 수집된 데이터에 대해 GB(기가바이트)당 비용이 청구됩니다. 매달 Azure Log Analytics 서비스에 수집되는 데이터 5GB까지는 무료이고, 처음 31일 동안은 데이터가 Log Analytics 작업 영역에 무료로 보관됩니다.
+Log Analytics는 서비스에 수집된 데이터에 대해 GB(기가바이트)당 비용이 청구됩니다. 매달 Azure Log Analytics 서비스에 수집되는 데이터 5GB까지는 무료이고, 처음 31일 동안은 데이터가 Log Analytics 작업 영역에 무료로 보관됩니다. 
 
 ## <a name="next-steps"></a>다음 단계
 
