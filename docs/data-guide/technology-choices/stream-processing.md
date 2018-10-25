@@ -3,12 +3,12 @@ title: 스트림 처리 기술 선택
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: fd93418c62b584e79f229e9f42703d148aeb0eca
-ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
+ms.openlocfilehash: b78ebe253e927eece38930ba7f6186f485a956f7
+ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37091066"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49962919"
 ---
 # <a name="choosing-a-stream-processing-technology-in-azure"></a>Azure에서 스트림 처리 기술 선택
 
@@ -60,13 +60,12 @@ Azure에서 다음의 모든 데이터 저장소는 핵심 요구 사항을 충�
 
 | | Azure Stream Analytics | HDInsight(Spark Streaming 포함) | Azure Databricks의 Apache Spark | HDInsight(Storm 포함) | Azure 기능 | Azure App Service WebJobs |
 | --- | --- | --- | --- | --- | --- | --- | 
-| 기본 제공 임시/창 지원 | 예 | 예 | 예 | 예 | 아니오 | 아니오 |
+| 기본 제공 임시/창 지원 | yes | 예 | 예 | yes | 아니요 | 아니요 |
 | 입력 데이터 형식 | Avro, JSON 또는 CSV, UTF-8로 인코딩 | 사용자 지정 코드를 사용하는 모든 형식 | 사용자 지정 코드를 사용하는 모든 형식 | 사용자 지정 코드를 사용하는 모든 형식 | 사용자 지정 코드를 사용하는 모든 형식 | 사용자 지정 코드를 사용하는 모든 형식 |
 | 확장성 | [쿼리 파티션](/azure/stream-analytics/stream-analytics-parallelization) | 클러스터 크기에 따라 제한 | Databricks 클러스터 크기 조정 구성에 따라 제한 | 클러스터 크기에 따라 제한 | 최대 200개의 함수 앱 인스턴스를 병렬로 처리 | App Service 계획 용량에 따라 제한 | 
-| 지연 도착 및 순서가 벗어난 이벤트 처리 지원 | 예 | 예 | 예 | 예 | 아니오 | 아니오 |
+| 지연 도착 및 순서가 벗어난 이벤트 처리 지원 | yes | 예 | 예 | yes | 아니요 | 아니요 |
 
 참고 항목:
 
 - [실시간 메시지 수집 기술 선택](./real-time-ingestion.md)
-- [Apache Storm 및 Azure Stream Analytics 비교](/azure/stream-analytics/stream-analytics-comparison-storm)
 - [실시간 처리](../big-data/real-time-processing.md)

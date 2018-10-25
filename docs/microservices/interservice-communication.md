@@ -2,13 +2,13 @@
 title: 마이크로 서비스의 서비스 간 통신
 description: 마이크로 서비스의 서비스 간 통신
 author: MikeWasson
-ms.date: 12/08/2017
-ms.openlocfilehash: aff2fb7b2be25ca32d6224cee15363880cfb1488
-ms.sourcegitcommit: a8453c4bc7c870fa1a12bb3c02e3b310db87530c
+ms.date: 10/23/2018
+ms.openlocfilehash: 19a54ffc362a1fc88c3255c9346bd697a319b143
+ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/29/2017
-ms.locfileid: "27549130"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49962962"
 ---
 # <a name="designing-microservices-interservice-communication"></a>마이크로 서비스 디자인: 서비스 간 통신
 
@@ -99,7 +99,7 @@ ms.locfileid: "27549130"
 > [!NOTE]
 > 서비스 메시는 [특사 패턴](../patterns/ambassador.md)의 예입니다. &mdash; 이것은 응용 프로그램 대신 네트워크 요청을 보내는 도우미 서비스입니다. 
 
-현재 Kubernetes에서 서비스 메시에 대한 주요 옵션은 [linkerd](https://linkerd.io/) 및 [Istio](https://istio.io/)입니다. 이러한 기술은 모두 빠르게 진화하고 있습니다. 이 가이드를 작성할 당시 최신 Istio 릴리스는 0.2이므로 매우 새로운 기술입니다. linkerd와 Istio에 공통되는 몇 가지 기능은 다음과 같습니다. 
+현재 Kubernetes에서 서비스 메시에 대한 주요 옵션은 [linkerd](https://linkerd.io/) 및 [Istio](https://istio.io/)입니다. 이러한 기술은 모두 빠르게 진화하고 있습니다. linkerd와 Istio에 공통되는 몇 가지 기능은 다음과 같습니다. 
 
 - 관찰된 대기 시간이나 미해결 요청 수에 기반한 세션 수준의 부하 분산. 이를 통해 Kubernetes에 제공되는 계층 4 부하 분산보다 성능이 향상될 수 있습니다. 
 

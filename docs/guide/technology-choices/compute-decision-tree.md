@@ -2,13 +2,13 @@
 title: Azure 계산 서비스에 대한 의사 결정 트리
 description: 계산 서비스를 선택하기 위한 순서도
 author: MikeWasson
-ms.date: 06/13/2018
-ms.openlocfilehash: 689ec3f265e563273a75ad98268d03624a7b4536
-ms.sourcegitcommit: ce2fa8ac2d310f7078317cade12f1b89db1ffe06
+ms.date: 10/23/2018
+ms.openlocfilehash: 35002b4840b80bcc35b5baf36ec8e414ed8f20be
+ms.sourcegitcommit: 2ae794de13c45cf24ad60d4f4dbb193c25944eff
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36338186"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50001901"
 ---
 # <a name="decision-tree-for-azure-compute-services"></a>Azure 계산 서비스에 대한 의사 결정 트리
 
@@ -33,10 +33,6 @@ Azure에서 컨테이너 호스팅을 위한 옵션에 대한 자세한 내용�
 ![](../images/compute-decision-tree.svg)
 
 ## <a name="definitions"></a>정의
-
-- **그린필드**는 완전히 새롭고 처음부터 빌드된 소프트웨어 프로젝트를 설명합니다. 레거시 코드는 포함되지 않습니다. 
-
-- **브라운필드**는 기존 응용 프로그램을 기반으로 하는 소프트웨어 프로젝트를 설명합니다. 레거시 코드 또는 프레임워크를 상속할 수 있습니다.
 
 - **리프트 앤 시프트**는 응용 프로그램을 다시 디자인하거나 코드를 변경하지 않고 워크로드를 클라우드로 마이그레이션하는 전략입니다. *재 호스팅*이라고도 합니다. 자세한 내용은 [Azure 마이그레이션 센터](https://azure.microsoft.com/migration/)를 참조하세요.
 

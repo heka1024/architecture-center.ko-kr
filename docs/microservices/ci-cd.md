@@ -2,13 +2,13 @@
 title: 마이크로 서비스에 대한 CI/CD
 description: 마이크로 서비스에 대한 지속적인 통합 및 지속적인 업데이트
 author: MikeWasson
-ms.date: 12/08/2017
-ms.openlocfilehash: 7d8a81b7bc236e50d722a68a0115b9220d4e094f
-ms.sourcegitcommit: 786bafefc731245414c3c1510fc21027afe303dc
+ms.date: 10/23/2018
+ms.openlocfilehash: b411e687a111e55a5821d4fdc66975e80f73584b
+ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2017
-ms.locfileid: "26653065"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49962860"
 ---
 # <a name="designing-microservices-continuous-integration"></a>마이크로 서비스 디자인: 지속적인 통합
 
