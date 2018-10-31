@@ -4,12 +4,12 @@ description: Azure 리소스에 대한 명명 규칙 가상 머신, 저장소 �
 author: telmosampaio
 ms.date: 05/18/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 96402b86b9dc0c57599aae585b41d0d03581c333
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 7a94e7b3a54f48a8b1996415e194ecacb4261399
+ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429658"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49962979"
 ---
 # <a name="naming-conventions"></a>명명 규칙
 
@@ -78,7 +78,7 @@ Azure의 각 리소스 또는 서비스 유형은 명명 제한 및 범위 집�
 
 | 엔터티 | 범위 | 길이 | 대/소문자 구분 | 사용할 수 있는 문자 | 제안된 패턴 | 예 |
 | --- | --- | --- | --- | --- | --- | --- |
-|리소스 그룹 |구독 |1-90 |대/소문자 구분하지 않음 |영숫자, 밑줄, 괄호, 하이픈, 마침표(맨 끝 제외) 및 유니코드 문자 |`<service short name>-<environment>-rg` |`profx-prod-rg` |
+|리소스 그룹 |구독 |1-90 |대/소문자 구분하지 않음 |[여기](/rest/api/resources/resourcegroups/createorupdate)에 설명된 regex와 일치하는 영숫자, 밑줄, 괄호, 하이픈, 마침표(맨 끝에 있는 마침표는 제외) 및 유니코드 문자  |`<service short name>-<environment>-rg` |`profx-prod-rg` |
 |가용성 집합 |리소스 그룹 |1-80 |대/소문자 구분하지 않음 |영숫자, 밑줄 및 하이픈 |`<service-short-name>-<context>-as` |`profx-sql-as` |
 |태그 |연결된 엔터티 |512(이름), 256(값) |대/소문자 구분하지 않음 |영숫자 |`"key" : "value"` |`"department" : "Central IT"` |
 

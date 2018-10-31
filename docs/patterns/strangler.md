@@ -3,12 +3,12 @@ title: 스트랭글러 패턴
 description: 특정 기능을 새로운 응용 프로그램 및 서비스로 점진적으로 교체하여 레거시 시스템을 단계적으로 마이그레이션합니다.
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: d03e8a1ef9077b6e00ea5a17423bf7e09b68111a
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 0bf0b76a69f947419da83edd894a04dbea02371b
+ms.sourcegitcommit: 2ae794de13c45cf24ad60d4f4dbb193c25944eff
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582726"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50001884"
 ---
 # <a name="strangler-pattern"></a>스트랭글러 패턴
 
@@ -47,6 +47,7 @@ ms.locfileid: "26582726"
 
 ## <a name="related-guidance"></a>관련 지침
 
+- Martin Fowler의 [StranglerApplication](https://www.martinfowler.com/bliki/StranglerApplication.html) 관련 블로그 게시물
 - [손상 방지 레이어 패턴](./anti-corruption-layer.md)
 - [게이트웨이 라우팅 패턴](./gateway-routing.md)
 
