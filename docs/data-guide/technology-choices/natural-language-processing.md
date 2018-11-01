@@ -3,12 +3,12 @@ title: 자연어 처리 기술 선택
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: dacf7bf9cf3e9efed212f34da93c1470954965cf
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: bac0318a587a944c104360eb31223cc8755c1860
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29288855"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251773"
 ---
 # <a name="choosing-a-natural-language-processing-technology-in-azure"></a>Azure에서 자연어 처리 기술 선택
 
@@ -19,7 +19,8 @@ ms.locfileid: "29288855"
 Azure에서 다음 서비스는 NLP(자연어 처리) 기능을 제공합니다.
 
 - [Azure HDInsight(Spark 및 Spark MLlib 포함)](/azure/hdinsight/spark/apache-spark-overview)
-- [Microsoft Cognitive Services](/azure/#pivot=products&panel=cognitive)
+- [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)
+- [Microsoft Cognitive Services](/azure/cognitive-services/welcome)
 
 ## <a name="key-selection-criteria"></a>주요 선택 조건
 
@@ -41,23 +42,23 @@ Azure에서 다음 서비스는 NLP(자연어 처리) 기능을 제공합니다.
 
 | | Azure HDInsight | Microsoft Cognitive Services |
 | --- | --- | --- |
-| 미리 학습된 모델을 서비스로 제공합니다. | 아니요 | 예 |
-| REST API | 예 | 예 |
+| 미리 학습된 모델을 서비스로 제공합니다. | 아니요 | yes |
+| REST API | yes | yes |
 | 프로그래밍 기능 | Python, Scala, Java | C#, Java, Node.js, Python, PHP, Ruby |
-| 빅 데이터 집합 및 대형 문서의 처리를 지원합니다. | 예 | 아니오 |
+| 빅 데이터 집합 및 대형 문서의 처리를 지원합니다. | yes | 아니요 |
 
 ### <a name="low-level-natural-language-processing-capabilities"></a>기본적인 자연어 처리 기능
 
 | | Azure HDInsight | Microsoft Cognitive Services |  
 | --- | --- | --- | 
 | 토크나이저 | 예(Spark NLP) | 예(Linguistic Analysis API) |
-| 형태소 분석기 | 예(Spark NLP) | 아니오 |
+| 형태소 분석기 | 예(Spark NLP) | 아니요 |
 | 기본형 분석기 | 예(Spark NLP) | 아니요 |
 | 품사 태그 지정 | 예(Spark NLP) | 예(Linguistic Analysis API) |
-| TF/IDF(용어 빈도/역 문서 빈도) | 예(Spark MLlib) | 아니오 |
-| 문자열 유사성&mdash;편집 거리 계산 | 예(Spark MLlib) | 아니오 |
-| N-gram 계산 | 예(Spark MLlib) | 아니오 |
-| 중지 단어 제거 | 예(Spark MLlib) | 아니오 |
+| TF/IDF(용어 빈도/역 문서 빈도) | 예(Spark MLlib) | 아니요 |
+| 문자열 유사성&mdash;편집 거리 계산 | 예(Spark MLlib) | 아니요 |
+| N-gram 계산 | 예(Spark MLlib) | 아니요 |
+| 중지 단어 제거 | 예(Spark MLlib) | 아니요 |
 
 ### <a name="high-level-natural-language-processing-capabilities"></a>고급 자연어 처리 기능
 
@@ -67,7 +68,7 @@ Azure에서 다음 서비스는 NLP(자연어 처리) 기능을 제공합니다.
 | 토픽 검색 | 예(Spark NLP) | 예(Text Analytics API) |
 | 맞춤법 검사 | 예(Spark NLP) | 예(Bing Spell Check API) |
 | 정서 분석 | 예(Spark NLP) | 예(Text Analytics API) |
-| 언어 검색 | 아니오 | 예(Text Analytics API) |
+| 언어 검색 | 아니요 | 예(Text Analytics API) |
 | 영어 이외의 다국어 지원 | 아니요 | 예(API에 따라 다름) |
 
 ## <a name="see-also"></a>참고 항목

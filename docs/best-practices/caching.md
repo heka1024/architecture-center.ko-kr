@@ -4,12 +4,12 @@ description: 성능 및 확장성을 향상하기 위한 캐시에 대한 지침
 author: dragon119
 ms.date: 05/24/2017
 pnp.series.title: Best Practices
-ms.openlocfilehash: 4db85df7331c805af6acbe0673dbcb993a895e03
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: e1c47c735bd618fc46fef3f1ee234f83d3b15bdf
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429471"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251994"
 ---
 # <a name="caching"></a>구성
 
@@ -288,7 +288,7 @@ Azure Redis Cache와 세션 상태 제공자를 사용하면 다음을 포함하
 마찬가지로, Azure Redis Cache용 출력 캐시 공급자를 사용하면 ASP.NET 웹 응용 프로그램이 생성한 HTTP 응답을 저장할 수 있습니다. Azure Redis Cache와 출력 캐시 공급자를 사용하면 복잡한 HTML 출력을 렌더링하는 응용 프로그램의 응답 시간을 향상시킬 수 있습니다. 유사한 응답을 생성하는 응용 프로그램 인스턴스는 이 HTML 출력을 새로 생성하기 보다 캐시에서 공유 출력 조각을 사용할 수 있습니다. 자세한 내용은 [Azure Redis Cache에 대한 ASP.NET 출력 캐시 공급자](/azure/redis-cache/cache-aspnet-output-cache-provider/)를 참조하세요.
 
 ## <a name="building-a-custom-redis-cache"></a>사용자 지정 Redis 캐시 빌드
-Azure Redis Cache는 기본 Redis 서버에 외관의 역할을 합니다. 이것은 현재 구성의 고정된 집합을 지원하지만 Redis 클러스터링을 위해 제공되지 않습니다. Azure Redis Cache가 다루지 않는 고급 구성이 필요한 경우(예: 53GB보다 더 큰 캐시) Azure 가상 머신을 사용하여 사용자 고유의 Redis 서버를 빌드 및 호스트할 수 있습니다.
+Azure Redis Cache는 기본 Redis 서버에 외관의 역할을 합니다. Azure Redis Cache가 다루지 않는 고급 구성이 필요한 경우(예: 53GB보다 더 큰 캐시) Azure 가상 머신을 사용하여 사용자 고유의 Redis 서버를 빌드 및 호스트할 수 있습니다.
 
 복제를 구현하려는 경우 마스터 및 하위 노드 역할을 수행할 여러 VM을 만들어야 할 수 있기 때문에 이는 잠재적으로 복잡한 프로세스입니다. 또한 클러스터를 만들려는 경우 여러 마스터와 하위 서버가 필요합니다. 높은 수준의 가용성과 확장성을 제공하는 최소한의 클러스터된 복제 토폴로지는 세 쌍의 마스터/하위 서버로 구성된 6개 이상의 VM을 구성합니다(클러스터에 3개 이상의 마스터 노드를 포함해야 함).
 
