@@ -3,14 +3,14 @@ title: AWS 전문가를 위한 Azure
 description: Microsoft Azure 계정, 플랫폼 및 서비스의 기본 사항에 대해 알아봅니다. 또한 AWS 및 Azure 플랫폼 간의 주요 유사점과 차이점에 대해 알아봅니다. Azure에서 AWS 환경을 활용합니다.
 keywords: AWS 전문가, Azure 비교, AWS 비교, azure와 aws의 차이점, azure 및 aws
 author: lbrader
-ms.date: 03/24/2017
+ms.date: 09/19/2018
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 04157b9a647779ae47ad0aff8132289a30544acf
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 0735d24b223a5e5cab6030774280c038c28f35e6
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429641"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916688"
 ---
 # <a name="azure-for-aws-professionals"></a>AWS 전문가를 위한 Azure
 
