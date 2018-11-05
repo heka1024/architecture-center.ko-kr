@@ -3,12 +3,12 @@ title: CSV 및 JSON 파일 처리
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 02e684d562cfe555f9e3596ad0a2f1a00d05c7a7
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.openlocfilehash: b9a0deae5499a4df4e43e15914490b89e0e3a50c
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30298611"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251807"
 ---
 # <a name="working-with-csv-and-json-files-for-data-solutions"></a>데이터 솔루션용 CSV 및 JSON 파일 작업
 
@@ -44,6 +44,8 @@ CSV 및 JSON 파일 형식 둘 다, 서로 다른 시스템이나 장치 간에 
 ## <a name="working-with-csv-and-json-data-in-azure"></a>Azure에서 CSV 및 JSON 데이터 사용
 
 Azure에서는 사용자의 요구에 따라, CSV 및 JSON 파일을 사용하기 위한 몇 가지 솔루션을 제공합니다. 이러한 파일이 기본적으로 저장되는 위치는 Azure Storage 또는 Azure Data Lake Store입니다. 이러한 파일 및 다른 텍스트 기반 파일을 사용하는 대부분의 Azure 서비스는 개체 저장소 서비스와 통합됩니다. 그러나 경우에 따라, 데이터를 Azure SQL 또는 기타 데이터 저장소로 직접 가져오도록 선택할 수 있습니다. SQL Server에서는 본래부터 JSON 문서를 저장하고 사용할 수 있도록 지원하므로 [해당 파일 형식을 쉽게 가져오고 처리](/sql/relational-databases/json/import-json-documents-into-sql-server)할 수 있습니다. SQL 대량 가져오기와 같은 유틸리티를 사용하여 [CSV 파일을 쉽게 가져올](/sql/relational-databases/json/import-json-documents-into-sql-server) 수 있습니다.
+
+Azure SQL에 가져오지 않고 Azure Blob Storage에서 직접 JSON 파일을 쿼리할 수도 있습니다. 이 방법의 전체 예제는 [Azure SQL에서 JSON 파일 사용](https://medium.com/@mauridb/work-with-json-files-with-azure-sql-8946f066ddd4)을 참조하세요. 현재 이 옵션은 CSV 파일에 사용할 수 없습니다.
 
 시나리오에 따라, 데이터의 [일괄 처리](../big-data/batch-processing.md) 또는 [실시간 처리](../big-data/real-time-processing.md)를 수행할 수 있습니다.
 

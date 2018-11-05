@@ -5,14 +5,14 @@ author: MikeWasson
 pnp.series.title: Azure App Service
 pnp.series.prev: basic-web-app
 pnp.series.next: multi-region-web-app
-ms.date: 11/23/2016
+ms.date: 10/25/2018
 cardTitle: Improve scalability
-ms.openlocfilehash: 6459acebfa25491332e2118b9e8fe51d5fc79ff3
-ms.sourcegitcommit: 5d99b195388b7cabba383c49a81390ac48f86e8a
+ms.openlocfilehash: 208413a49fe4a3f9ca308fa1a939ba426e7fa636
+ms.sourcegitcommit: 065fa8ecb37c8be1827da861243ad6a33c75c99d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37958809"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50136695"
 ---
 # <a name="improve-scalability-in-a-web-application"></a>웹 응용 프로그램의 확장성 향상
 
@@ -22,20 +22,20 @@ ms.locfileid: "37958809"
 
 *이 아키텍처의 [Visio 파일][visio-download]을 다운로드합니다.*
 
-## <a name="architecture"></a>아키텍처  
+## <a name="architecture"></a>아키텍처
 
 이 아키텍처는 [기본 웹 응용 프로그램][basic-web-app]에 표시된 아키텍처를 기반으로 합니다. 다음 구성 요소가 포함되어 있습니다.
 
 * **리소스 그룹**. [리소스 그룹][resource-group]은 Azure 리소스에 대한 논리적 컨테이너입니다.
-* **[웹앱][app-service-web-app]** 및 **[API 앱][app-service-api-app]**. 일반적인 최신 응용 프로그램에는 웹 사이트와 하나 이상의 RESTful 웹 API가 모두 포함되어 있을 수 있습니다. AJAX를 통한 브라우저 클라이언트, 기본 클라이언트 응용 프로그램 또는 서버 쪽 응용 프로그램에서 웹 API를 사용할 수 있습니다. 웹 API 디자인에 대한 고려 사항은 [API 디자인 지침][api-guidance]을 참조하세요.    
-* **WebJob**. 백그라운드에서 장기 실행 작업을 실행하려면 [Azure WebJobs][webjobs]를 사용합니다. WebJob은 예약에 따라, 연속적으로 또는 큐에 메시지를 넣는 등 트리거에 대한 응답으로 실행될 수 있습니다. WebJob은 App Service 앱의 컨텍스트에서 백그라운드 프로세스로 실행됩니다.
-* **큐**. 여기에 표시된 아키텍처에서는 응용 프로그램이 [Azure Queue Storage][queue-storage] 큐에 메시지를 넣어 백그라운드 작업을 큐에 넣습니다. 메시지가 WebJob의 함수를 트리거합니다. 또는 Service Bus 큐를 사용할 수 있습니다. 비교하려면 [Azure 큐 및 Service Bus 큐 - 비교 및 대조][queues-compared]를 참조하세요.
+* **[웹앱][app-service-web-app]**. 일반적인 최신 응용 프로그램에는 웹 사이트와 하나 이상의 RESTful 웹 API가 모두 포함되어 있을 수 있습니다. AJAX를 통한 브라우저 클라이언트, 기본 클라이언트 응용 프로그램 또는 서버 쪽 응용 프로그램에서 웹 API를 사용할 수 있습니다. 웹 API 디자인에 대한 고려 사항은 [API 디자인 지침][api-guidance]을 참조하세요.
+* **함수 앱**. [함수 앱][functions]을 사용하여 백그라운드 작업을 실행합니다. 함수는 큐에 배치되는 타이머 이벤트 또는 메시지와 같은 트리거에 의해 호출됩니다. 장기 실행 상태 저장 작업의 경우 [Durable Functions][durable-functions]를 사용합니다.
+* **큐**. 여기에 표시된 아키텍처에서는 응용 프로그램이 [Azure Queue Storage][queue-storage] 큐에 메시지를 넣어 백그라운드 작업을 큐에 넣습니다. 메시지가 함수 앱을 트리거합니다. 또는 Service Bus 큐를 사용할 수 있습니다. 비교하려면 [Azure 큐 및 Service Bus 큐 - 비교 및 대조][queues-compared]를 참조하세요.
 * **캐시**. [Azure Redis Cache][azure-redis]의 반정적 데이터를 저장합니다.  
 * <strong>CDN</strong>. [Azure CDN(Content Delivery Network)][azure-cdn]을 사용하여 지연 시간을 단축하고 더 신속한 콘텐츠 배달을 위해 공개적으로 사용 가능한 콘텐츠를 캐시합니다.
-* **데이터 저장소**. 관계형 데이터의 경우 [Azure SQL Database][sql-db]를 사용합니다. 비관계형 데이터의 경우 [Cosmos DB][cosmosdb] 같은 NoSQL 저장소를 고려합니다.
+* **데이터 저장소**. 관계형 데이터의 경우 [Azure SQL Database][sql-db]를 사용합니다. 비관계형 데이터의 경우 [Cosmos DB][cosmosdb]를 사용하는 것이 좋습니다.
 * **Azure Search**. [Azure Search][azure-search]를 사용하여 검색 제안, 유사 항목 검색 및 언어별 검색과 같은 검색 기능을 추가합니다. Azure Search는 일반적으로 다른 데이터 저장소와 함께 사용되는데, 특히 기본 데이터 저장소에 엄격한 일관성이 필요한 경우 그렇습니다. 이러한 접근 방식에서는 신뢰할 수 있는 데이터를 다른 데이터 저장소에 저장하고 검색 인덱스를 Azure Search에 저장합니다. 또한 Azure Search는 여러 데이터 저장소의 단일 검색 인덱스를 통합하는 데 사용할 수 있습니다.  
-* **메일/SMS**. SendGrid 또는 Twilio와 같은 타사 서비스를 사용하여 응용 프로그램에 직접 이 기능을 빌드하는 대신 메일이나 SMS 메시지를 전송합니다.
 * **Azure DNS**. [Azure DNS][azure-dns]는 Microsoft Azure 인프라를 사용하여 이름 확인을 제공하는 DNS 도메인에 대한 호스팅 서비스입니다. Azure에 도메인을 호스트하면 다른 Azure 서비스와 동일한 자격 증명, API, 도구 및 대금 청구를 사용하여 DNS 레코드를 관리할 수 있습니다.
+* **Application Gateway** [Application Gateway](/azure/application-gateway/)는 계층 7 부하 분산 장치입니다. 이 아키텍처에서 HTTP 요청을 웹 프런트 엔드로 라우팅합니다. 또한 application Gateway는 일반적인 악용 및 취약점으로부터 응용 프로그램을 보호하는 WAF([웹 응용 프로그램 방화벽](/azure/application-gateway/waf-overview))을 제공합니다. 
 
 ## <a name="recommendations"></a>권장 사항
 
@@ -48,11 +48,6 @@ ms.locfileid: "37958809"
 > Basic, Standard 및 Premium 계획은 앱 단위가 아니라 계획의 VM 인스턴스에 대해 청구됩니다. [App Service 가격 책정][app-service-pricing]을 참조하세요.
 > 
 > 
-
-App Service Mobile Apps의 *간편한 테이블* 또는 *간편한 API* 기능을 사용하려는 경우 이를 위해 별도의 App Service 앱을 만듭니다.  이러한 기능은 특정 응용 프로그램 프레임워크에 의존하여 사용할 수 있습니다.
-
-### <a name="webjobs"></a>웹 작업
-별도의 App Service 계획 내에 있는 빈 App Service 앱에 리소스를 많이 사용하는 WebJob을 배포하는 것을 고려합니다. 이렇게 하면 WebJob에 전용 인스턴스가 제공됩니다. [백그라운드 작업 지침][webjobs-guidance]을 참조하세요.  
 
 ### <a name="cache"></a>캐시
 [Azure Redis Cache][azure-redis]를 사용하여 일부 데이터를 캐시하면 성능과 확장성을 향상할 수 있습니다. 다음에 대해 Redis Cache 사용을 고려합니다.
@@ -86,6 +81,8 @@ App Service Mobile Apps의 *간편한 테이블* 또는 *간편한 API* 기능�
 | 기본 쿼리를 요구하는 유연한 스키마를 사용하는 비관계형 데이터 |제품 카탈로그 |Azure Cosmos DB, MongoDB 또는 Apache CouchDB와 같은 문서 데이터베이스 |
 | 보다 풍부한 쿼리 지원, 엄격한 스키마 및/또는 강력한 일관성이 필요한 관계형 데이터 |제품 인벤토리 |Azure SQL Database |
 
+ [적절한 데이터 저장소 선택][datastore]을 참조하세요.
+
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
 Azure App Service의 주요 이점은 부하에 따라 응용 프로그램을 확장할 수 있다는 점입니다. 다음은 응용 프로그램 확장을 계획할 때 염두할 몇 가지 고려 사항입니다.
@@ -93,7 +90,7 @@ Azure App Service의 주요 이점은 부하에 따라 응용 프로그램을 �
 ### <a name="app-service-app"></a>App Service 앱
 솔루션에 여러 App Service 앱이 포함되어 있는 경우 App Service 계획이 분리되도록 배포하는 것을 고려합니다. 이러한 방식을 사용하면 개별 인스턴스에서 실행되므로 개별적으로 확장할 수 있습니다. 
 
-마찬가지로, 백그라운드 작업이 HTTP 요청을 처리하는 동일한 인스턴스에서 실행되지 않도록 WebJob을 고유한 계획에 넣는 것을 고려합니다.  
+마찬가지로, 백그라운드 작업이 HTTP 요청을 처리하는 동일한 인스턴스에서 실행되지 않도록 함수 앱을 고유한 계획에 배치하는 것이 좋습니다. 백그라운드 작업을 일시적으로 실행하는 경우 [소비 계획][functions-consumption-plan]을 사용하는 것이 좋습니다. 그러면 매시간이 아닌 실행의 수를 기준으로 요금이 청구됩니다. 
 
 ### <a name="sql-database"></a>SQL Database
 데이터베이스를 *분할*하여 SQL데이터베이스의 확장성을 높입니다. 분할은 데이터베이스를 가로로 분할합니다. 분할을 사용하면 [Elastic Database 도구][sql-elastic]로 데이터베이스를 가로로 확장할 수 있습니다. 분할의 잠재적 이점은 다음과 같습니다.
@@ -133,7 +130,6 @@ App Services에서는 응용 프로그램 코드를 작성할 필요 없이 기�
 [azure-redis]: https://azure.microsoft.com/services/cache/
 [azure-search]: https://azure.microsoft.com/documentation/services/search/
 [azure-search-scaling]: /azure/search/search-capacity-planning
-[background-jobs]: ../../best-practices/background-jobs.md
 [basic-web-app]: basic-web-app.md
 [basic-web-app-scalability]: basic-web-app.md#scalability-considerations
 [caching-guidance]: ../../best-practices/caching.md
@@ -142,6 +138,10 @@ App Services에서는 응용 프로그램 코드를 작성할 필요 없이 기�
 [cdn-guidance]: ../../best-practices/cdn.md
 [cors]: /azure/app-service-api/app-service-api-cors-consume-javascript
 [cosmosdb]: /azure/cosmos-db/
+[datastore]: ../..//guide/technology-choices/data-store-overview.md
+[durable-functions]: /azure/azure-functions/durable-functions-overview
+[functions]: /azure/azure-functions/functions-overview
+[functions-consumption-plan]: /azure/azure-functions/functions-scale#consumption-plan
 [queue-storage]: /azure/storage/storage-dotnet-how-to-use-queues
 [queues-compared]: /azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted
 [resource-group]: /azure/azure-resource-manager/resource-group-overview#resource-groups
@@ -151,6 +151,4 @@ App Services에서는 응용 프로그램 코드를 작성할 필요 없이 기�
 [tm]: https://azure.microsoft.com/services/traffic-manager/
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/app-service-reference-architectures.vsdx
 [web-app-multi-region]: ./multi-region.md
-[webjobs-guidance]: ../../best-practices/background-jobs.md
-[webjobs]: /azure/app-service/app-service-webjobs-readme
 [0]: ./images/scalable-web-app.png "확장성이 향상된 Azure의 웹 응용 프로그램"

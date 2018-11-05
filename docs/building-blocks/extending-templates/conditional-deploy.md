@@ -2,23 +2,23 @@
 title: 조건부로 Azure Resource Manager 템플릿의 리소스 배포
 description: 조건부로 매개 변수의 값에 종속되는 리소스를 배포하도록 Azure Resource Manager 템플릿의 기능을 확장하는 방법을 설명합니다.
 author: petertay
-ms.date: 06/09/2017
-ms.openlocfilehash: e911e7dc41b4f71ebfaf13a00f8cdbb5b4e2578b
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.date: 10/30/2018
+ms.openlocfilehash: 2c74e17a5f38f9225b696640a23b55b1285276bb
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582631"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251841"
 ---
 # <a name="conditionally-deploy-a-resource-in-an-azure-resource-manager-template"></a>조건부로 Azure Resource Manager 템플릿의 리소스 배포
 
 매개 변수 값이 있는지 여부와 같은 조건에 따라 리소스를 배포하도록 템플릿을 디자인해야 하는 시나리오가 있을 수 있습니다. 예를 들어 템플릿은 가상 네트워크를 배포하고, 피어링을 위한 다른 가상 네트워크를 지정하기 위한 매개 변수를 포함할 수 있습니다. 피어링에 대해 매개 변수 값을 지정하지 않은 경우 Resource Manager가 피어링 리소스를 배포하는 것을 원하지 않을 것입니다.
 
-이렇게 하려면 리소스에 [`condition` 요소][azure-resource-manager-condition]를 사용하여 매개 변수 배열의 길이를 테스트합니다. 길이가 0인 경우 `false`를 반환하여 배포를 방지하고, 0보다 큰 모든 값의 경우에는 `true`를 반환하여 배포를 허용합니다.
+이렇게 하려면 리소스에 [조건 요소][azure-resource-manager-condition]를 사용하여 매개 변수 배열의 길이를 테스트합니다. 길이가 0인 경우 `false`를 반환하여 배포를 방지하고, 0보다 큰 모든 값의 경우에는 `true`를 반환하여 배포를 허용합니다.
 
 ## <a name="example-template"></a>예제 템플릿
 
-이 내용을 설명하는 예제 템플릿을 살펴보겠습니다. 템플릿은 [`condition` 요소][azure-resource-manager-condition]를 사용하여 `Microsoft.Network/virtualNetworks/virtualNetworkPeerings` 리소스의 배포를 제어합니다. 이 리소스는 동일한 지역에 있는 두 Azure Virtual Network 간에 피어링을 만듭니다.
+이 내용을 설명하는 예제 템플릿을 살펴보겠습니다. 템플릿은 [조건 요소][azure-resource-manager-condition]를 사용하여 `Microsoft.Network/virtualNetworks/virtualNetworkPeerings` 리소스의 배포를 제어합니다. 이 리소스는 동일한 지역에 있는 두 Azure Virtual Network 간에 피어링을 만듭니다.
 
 템플릿의 각 섹션에 살펴보겠습니다.
 
@@ -40,12 +40,15 @@ ms.locfileid: "26582631"
 ```json
 "virtualNetworkPeerings": [
     {
-        "remoteVirtualNetwork": {
-            "name": "my-other-virtual-network"
-        },
-        "allowForwardedTraffic": true,
-        "allowGatewayTransit": true,
-        "useRemoteGateways": false
+      "name": "firstVNet/peering1",
+      "properties": {
+          "remoteVirtualNetwork": {
+              "id": "[resourceId('Microsoft.Network/virtualNetworks','secondVNet')]"
+          },
+          "allowForwardedTraffic": true,
+          "allowGatewayTransit": true,
+          "useRemoteGateways": false
+      }
     }
 ]
 ```
@@ -60,7 +63,7 @@ ms.locfileid: "26582631"
       "name": "[concat('vnp-', copyIndex())]",
       "condition": "[greater(length(parameters('virtualNetworkPeerings')), 0)]",
       "dependsOn": [
-        "virtualNetworks"
+        "firstVNet", "secondVNet"
       ],
       "copy": {
           "name": "iterator",
@@ -113,17 +116,29 @@ ms.locfileid: "26582631"
   },
 ```
 
-`workaround` 변수에는 `true` 및 `false`라는 2개의 속성이 포함됩니다. `true` 속성은 `virtualNetworkPeerings` 매개 변수 배열의 값으로 평가됩니다. `false` 속성은 유효성을 충족하는 `virtualNetworkPeerings` 매개 변수와 마찬가지로, `false`가 실제로 배열이라는 사실을 알기 위해 Resource Manager가 예상하는 명명된 속성을 포함하는 빈 개체로 평가됩니다. 
+`workaround` 변수에는 `true` 및 `false`라는 2개의 속성이 포함됩니다. `true` 속성은 `virtualNetworkPeerings` 매개 변수 배열의 값으로 평가됩니다. `false` 속성은 유효성 검사를 충족하는 `virtualNetworkPeerings` 매개 변수와 마찬가지로, `false`가 실제로 배열이라는 &mdash; 사실을 알기 위해 Resource Manager가 예상하는 명명된 속성을 포함하는 빈 개체로 평가됩니다. 
 
-`peerings` 변수는 `workaround` 변수를 한 번 더 사용하여, `virtualNetworkPeerings` 매개 변수 배열의 길이가 0보다 큰지 테스트합니다. 0보다 크면 `string`은 `true`이고, `workaround` 변수는 `virtualNetworkPeerings` 매개 변수 배열로 평가됩니다. 그렇지 않은 경우 `false`로 평가되고, `workaround` 변수는 배열의 첫 번째 요소에 있는 빈 개체로 평가됩니다.
+`peerings` 변수는 `workaround` 변수를 한 번 더 사용하여, `virtualNetworkPeerings` 매개 변수 배열의 길이가 0보다 큰지 테스트합니다. 0보다 크면 `string`은 `true`로 평가되고, `workaround` 변수는 `virtualNetworkPeerings` 매개 변수 배열로 평가됩니다. 그렇지 않은 경우 `false`로 평가되고, `workaround` 변수는 배열의 첫 번째 요소에 있는 빈 개체로 평가됩니다.
 
 유효성 검사 문제가 해결되었으므로, 중첩된 템플릿에서 `Microsoft.Network/virtualNetworks/virtualNetworkPeerings` 리소스의 배포를 간단히 지정하고, `virtualNetworkPeerings` 매개 변수 배열의 `name` 및 `properties`를 제공할 수 있습니다. 이 내용은 리소스의 `properties` 요소에 중첩된 `template` 요소에서 확인할 수 있습니다.
 
+## <a name="try-the-template"></a>템플릿 시도
+
+[GitHub][github]에서 예제 템플릿을 사용할 수 있습니다. 템플릿을 배포하려면 다음 [Azure CLI][cli] 명령을 실행합니다.
+
+```bash
+az group create --location <location> --name <resource-group-name>
+az group deployment create -g <resource-group-name> \
+    --template-uri https://raw.githubusercontent.com/mspnp/template-examples/master/example2-conditional/deploy.json
+```
+
 ## <a name="next-steps"></a>다음 단계
 
-* 이 기법은 [템플릿 구성 요소 프로젝트](https://github.com/mspnp/template-building-blocks) 및 [Azure 참조 아키텍처](/azure/architecture/reference-architectures/)에서도 구현됩니다. 이러한 참조 아키텍처를 사용하여 고유한 아키텍처를 만들거나 참조 아키텍처 중 하나를 배포할 수 있습니다.
+* 템플릿 매개 변수로 스칼라 값이 아닌 개체를 사용합니다. [Azure Resource Manager 템플릿에서 개체를 매개 변수로 사용](./objects-as-parameters.md)을 참조하세요.
 
 <!-- links -->
 [azure-resource-manager-condition]: /azure/azure-resource-manager/resource-group-authoring-templates#resources
 [azure-resource-manager-variable]: /azure/azure-resource-manager/resource-group-authoring-templates#variables
 [vnet-peering-resource-schema]: /azure/templates/microsoft.network/virtualnetworks/virtualnetworkpeerings
+[cli]: /cli/azure/?view=azure-cli-latest
+[github]: https://github.com/mspnp/template-examples

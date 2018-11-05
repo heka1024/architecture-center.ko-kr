@@ -2,13 +2,13 @@
 title: Azure Resource Manager 템플릿에서 개체를 매개 변수로 사용
 description: Azure Resource Manager 템플릿의 기능을 확장하여 개체를 매개 변수로 사용하는 방법을 설명합니다.
 author: petertay
-ms.date: 06/09/2017
-ms.openlocfilehash: dd53c55a26b2452c375d8d1e1a98886b15febaeb
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.date: 10/30/2018
+ms.openlocfilehash: c1955823b3474efa0abea1d9634add5f13d02eda
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876762"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251892"
 ---
 # <a name="use-an-object-as-a-parameter-in-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿에서 개체를 매개 변수로 사용
 
@@ -301,25 +301,21 @@ ms.locfileid: "48876762"
 
 ## <a name="try-the-template"></a>템플릿 시도
 
-이 템플릿으로 실험하려면 다음 단계를 따릅니다. 
+[GitHub][github]에서 예제 템플릿을 사용할 수 있습니다. 템플릿을 배포하려면 리포지토리를 복제하고, 다음 [Azure CLI][cli] 명령을 실행합니다.
 
-1.  Azure Portal로 이동하여 **+** 아이콘을 선택하고 **템플릿 배포** 리소스 종류를 검색하고 선택합니다.
-2.  **템플릿 배포** 페이지로 이동한 후 **만들기** 단추를 선택합니다. 그러면 **사용자 지정 배포** 블레이드가 열립니다.
-3.  **템플릿 편집** 단추를 선택합니다.
-4.  비어 있는 템플릿을 삭제합니다. 
-5.  샘플 템플릿을 복사하여 오른쪽 창에 붙여 넣습니다.
-6.  **저장** 단추를 선택합니다.
-7.  **사용자 지정 배포** 창으로 돌아가면 **매개 변수 편집** 단추를 선택합니다.
-8.  **매개 변수 편집** 블레이드에서 기존 템플릿을 삭제합니다.
-9.  위의 샘플 매개 변수 템플릿을 복사한 후 붙여 넣습니다.
-10. **저장** 단추를 선택합니다. 그러면 **사용자 지정 배포** 블레이드로 돌아갑니다.
-11. **사용자 지정 배포** 블레이드에서 구독을 선택하고, 새로 만들거나 기존 리소스 그룹을 사용하고, 위치를 선택합니다. 사용 약관을 검토하고 **동의함** 확인란을 선택합니다.
-12. **구입** 단추를 선택합니다.
+```bash
+git clone https://github.com/mspnp/template-examples.git
+cd template-examples/example3-object-param
+az group create --location <location> --name <resource-group-name>
+az group deployment create -g <resource-group-name> \
+    --template-uri https://raw.githubusercontent.com/mspnp/template-examples/master/example3-object-param/deploy.json \
+    --parameters deploy.parameters.json
+```
 
 ## <a name="next-steps"></a>다음 단계
 
-* 이러한 기술을 확장하여 [속성 개체 변환기 및 수집기](./collector.md)를 구현합니다. 변환기 및 수집기 기술은 보다 일반적이며 템플릿에서 연결할 수 있습니다.
-* 이 기법은 [템플릿 구성 요소 프로젝트](https://github.com/mspnp/template-building-blocks) 및 [Azure 참조 아키텍처](/azure/architecture/reference-architectures/)에서도 구현됩니다. 템플릿을 검토하여 이 기술을 구현하는 방법을 확인할 수 있습니다.
+- 개체 배열을 반복하고 JSON 스키마로 변환하는 템플릿을 만드는 방법을 알아봅니다. [Azure Resource Manager 템플릿에서 속성 변환기 및 수집기 구현](./collector.md)을 참조하세요.
+
 
 <!-- links -->
 [azure-resource-manager-authoring-templates]: /azure/azure-resource-manager/resource-group-authoring-templates
@@ -327,3 +323,5 @@ ms.locfileid: "48876762"
 [azure-resource-manager-create-multiple-instances]: /azure/azure-resource-manager/resource-group-create-multiple
 [azure-resource-manager-functions]: /azure/azure-resource-manager/resource-group-template-functions-resource
 [nsg]: /azure/virtual-network/virtual-networks-nsg
+[cli]: /cli/azure/?view=azure-cli-latest
+[github]: https://github.com/mspnp/template-examples

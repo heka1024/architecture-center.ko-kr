@@ -3,12 +3,12 @@ title: 대화형 데이터 탐색
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 2e3d61fa5e1903c7fee6ebc84db3fa7c28d515cb
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: be27df79d445cf9949318e4483ce0f95c26b6e09
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43325120"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251875"
 ---
 # <a name="interactive-data-exploration"></a>대화형 데이터 탐색
 
@@ -82,7 +82,7 @@ Azure의 대화형 데이터 탐색을 위해 다음과 같은 기술이 권장�
 ### <a name="analytics-and-reporting"></a>분석 및 보고
 
 - **Jupyter**. Jupyter 노트는 R, Python 또는 Scala 등의 언어로 코드를 실행하기 위한 브라우저 기반 인터페이스를 제공합니다. R Server 또는 Spark를 사용하여 데이터를 일괄로 처리하거나, Spark SQL을 사용하여 쿼리할 테이블 스키마를 정의할 때 데이터 쿼리를 위해 Jupyter를 선택하는 것이 적절할 수 있습니다. Spark를 사용할 경우, 포함된 SQL 문 뿐만 아니라 표준 Spark 데이터프레임 API 또는 Spark SQL API를 사용하여 데이터를 쿼리하고 시각화를 생성할 수 있습니다.
-- **드릴** 임시 데이터 탐색을 수행하려는 경우 [Apache Drill](https://drill.apache.org/)은 스키마가 없는 SQL 쿼리 엔진입니다. 스키마가 필요하지 않기 때문에 다양한 데이터 원본의 데이터를 쿼리할 수 있습니다. 엔진은 데이터의 구조를 자동으로 이해합니다.
+- **드릴** 임시 데이터 탐색을 수행하려는 경우 [Apache Drill](https://drill.apache.org/)은 스키마가 없는 SQL 쿼리 엔진입니다. 스키마가 필요하지 않기 때문에 다양한 데이터 원본의 데이터를 쿼리할 수 있습니다. 엔진은 데이터의 구조를 자동으로 이해합니다.  [Azure Blob Storage 플러그 인](https://drill.apache.org/docs/azure-blob-storage-plugin/)을 사용하여 Azure Blob Storage에서 드릴을 사용할 수 있습니다. 이렇게 하면 데이터를 이동하지 않고 Blob Storage의 데이터에 대해 쿼리를 실행할 수 있습니다. 
 - **대화형 Hive 클라이언트**. 대화형 Hive 클러스터를 사용하여 데이터를 쿼리하는 경우 Ambari 클러스터 대시보드, Beeline 명령줄 도구, Microsoft Excel이나 Power BI 같은 ODBC 기반 도구(Hive ODBC 드라이버 사용)에서 Hive 보기를 사용할 수 있습니다.
 
 자세한 내용은 [데이터 분석 및 보고 기술](../technology-choices/analysis-visualizations-reporting.md)을 참조하세요.

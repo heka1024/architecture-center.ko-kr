@@ -2,14 +2,14 @@
 title: 다중 지역 웹 응용 프로그램
 description: Microsoft Azure에서 실행되고 고가용성을 요구하는 웹 응용 프로그램을 위한 권장 아키텍처입니다.
 author: MikeWasson
-ms.date: 11/23/2016
+ms.date: 10/25/2018
 cardTitle: Run in multiple regions
-ms.openlocfilehash: 5493deea871f25fb6ea3531a22d92d83916930b1
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.openlocfilehash: 1ed69f4f7e79fe2025e2a10d50e851ac4c02f1a6
+ms.sourcegitcommit: 065fa8ecb37c8be1827da861243ad6a33c75c99d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876820"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50136661"
 ---
 # <a name="run-a-web-application-in-multiple-regions"></a>여러 지역에서 웹 응용 프로그램 실행
 [!INCLUDE [header](../../_includes/header.md)]
@@ -70,9 +70,7 @@ Azure 지역은 동일한 지역 내에서 다른 지역과 쌍을 이룹니다.
 [활성 지역 복제][sql-replication]를 사용하여 다른 지역에서 읽기 가능한 보조 복제본을 만듭니다. 최대 4개의 읽기 가능한 보조 복제본을 사용할 수 있습니다. 주 데이터베이스에 오류가 발생하거나 데이터베이스를 오프라인으로 전환해야 하는 경우 보조 데이터베이스로 장애 조치(failover)합니다. Elastic Database 풀에서 모든 데이터베이스에 대한 활성 지역 복제를 구성할 수 있습니다.
 
 ### <a name="cosmos-db"></a>Cosmos DB
-Cosmos DB는 지역 간 지역에서 복제를 지원합니다. 한 지역은 쓰기 가능으로 지정되고 다른 지역은 읽기 전용 복제본으로 지정됩니다.
-
-지역 가동 중단이 발생하면 다른 지역을 쓰기 지역으로 선택하여 장애 조치(failover)할 수 있습니다. 클라이언트 SDK에서는 현재 쓰기 지역에 쓰기 요청을 자동으로 보내므로 장애 조치(failover) 후에 클라이언트 구성을 업데이트할 필요가 없습니다. 자세한 내용은 [Azure Cosmos DB로 데이터를 전역적으로 배포하는 방법][cosmosdb-geo]을 참조하세요.
+Cosmos DB는 다중 마스터(여러 쓰기 지역)를 사용하여 지역 간에 지역 복제를 지원합니다. 또는 한 지역을 쓰기 가능 지역으로 지정하고 기타 지역을 읽기 전용 복제본으로 지정할 수 있습니다. 지역 가동 중단이 발생하면 다른 지역을 쓰기 지역으로 선택하여 장애 조치(failover)할 수 있습니다. 클라이언트 SDK에서는 현재 쓰기 지역에 쓰기 요청을 자동으로 보내므로 장애 조치(failover) 후에 클라이언트 구성을 업데이트할 필요가 없습니다. 자세한 내용은 [Azure Cosmos DB를 사용한 글로벌 데이터 분산][cosmosdb-geo]을 참조하세요.
 
 > [!NOTE]
 > 모든 복제본은 동일한 리소스 그룹에 속합니다.
@@ -136,10 +134,11 @@ Set-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
 
 자세한 내용은 [Azure Traffic Manager Cmdlet][tm-ps]을 참조하세요.
 
-**Azure CLI(명령줄 인터페이스)**
+**Azure CLI**
 
 ```bat
-azure network traffic-manager endpoint set --name <endpoint> --profile-name <profile> --resource-group <resource-group> --type AzureEndpoints --priority 3
+az network traffic-manager endpoint update --resource-group <resource-group> --profile-name <profile> \
+    --name <endpoint-name> --type azureEndpoints --priority 3
 ```    
 
 ### <a name="sql-database"></a>SQL Database

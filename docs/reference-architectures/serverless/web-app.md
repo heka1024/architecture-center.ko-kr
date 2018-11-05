@@ -3,12 +3,12 @@ title: 서버리스 웹 응용 프로그램
 description: 서버리스 웹 응용 프로그램 및 웹 API를 보여 주는 참조 아키텍처입니다.
 author: MikeWasson
 ms.date: 10/16/2018
-ms.openlocfilehash: c2b46a60a57381ac3fd3f77cffe53b2dab2dacd6
-ms.sourcegitcommit: 113a7248b9793c670b0f2d4278d30ad8616abe6c
+ms.openlocfilehash: 9ce80aa904b7a04f78127438f9898244c979c2b5
+ms.sourcegitcommit: 69fc16f2b3bd3e3ffeff5bba277a4204e125cf78
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49349958"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50150270"
 ---
 # <a name="serverless-web-application"></a>서버리스 웹 응용 프로그램 
 
@@ -148,20 +148,13 @@ public static Task<IActionResult> Run(
 
 - 함수 앱 내에서 Azure AD 인증을 사용하도록 설정합니다. 자세한 내용은 [Azure App Service의 인증 및 권한 부여][app-service-auth]를 참조하세요.
 
-- 액세스 토큰의 유효성을 검사하여 요청을 사전 승인하는 정책을 API Management에 추가합니다.
-
-    ```xml
-    <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-        <openid-config url="https://login.microsoftonline.com/[Azure AD tenant ID]/.well-known/openid-configuration" />
-        <required-claims>
-            <claim name="aud">
-                <value>[Application ID]</value>
-            </claim>
-        </required-claims>
-    </validate-jwt>
-    ```
+- 액세스 토큰의 유효성을 검사하여 요청을 사전 승인하는 [validate-jwt policy][apim-validate-jwt] 정책을 API Management에 추가합니다.
 
 자세한 내용은 [GitHub 추가 정보][readme]를 참조하세요.
+
+클라이언트 응용 프로그램 및 백 엔드 API의 경우 Azure AD에서 별도 앱 등록을 만드는 것이 좋습니다. 클라이언트 응용 프로그램에 API를 호출하는 권한을 부여합니다. 이 방법은 여러 API 및 클라이언트를 정의하고 각각에 대한 사용 권한을 제어할 유연성을 제공합니다. 
+
+API 내에서 [범위][scopes]를 사용하여 응용 프로그램이 사용자로부터 요청한 사용 권한을 세부적으로 제어할 수 있습니다. 예를 들어 API에는 `Read` 및 `Write` 범위가 포함될 수 있고, 특정 클라이언트 앱은 `Read` 권한만을 부여하도록 사용자에게 요청할 수 있습니다.
 
 ### <a name="authorization"></a>권한 부여
 
@@ -275,11 +268,21 @@ public static Task<IActionResult> Run(
 
 ## <a name="devops-considerations"></a>DevOps 고려 사항
 
+### <a name="deployment"></a>배포
+
+함수 앱을 배포하려면 [패키지 파일][functions-run-from-package]("패키지에서 실행")을 사용하는 것이 좋습니다. 이 방법을 사용하면 Blob Storage 컨테이너에 zip 파일을 업로드하고, Functions 런타임은 읽기 전용 파일 시스템으로 zip 파일을 탑재합니다. 실패한 배포로 인해 응용 프로그램이 일관성이 없는 상태로 남겨질 가능성을 줄일 수 있는 원자성 조작입니다. 한 번에 모든 파일이 교환되기 때문에 특히 Node.js 앱의 경우 콜드 시작 시간을 개선할 수도 있습니다.
+
 ### <a name="api-versioning"></a>API 버전 관리
 
-API는 서비스와 클라이언트 또는 해당 서비스의 소비자 간의 계약입니다. API 계약의 버전 관리를 지원합니다. 주요 API 변경 내용을 도입하는 경우 새로운 API 버전을 소개합니다. 새 버전은 원래 버전과 함께 별도의 함수 앱에 배포됩니다. 이렇게 하면 클라이언트 응용 프로그램을 중단하지 않고 기존 클라이언트를 새 API로 마이그레이션할 수 있습니다. 결국에는 이전 버전을 더 이상 사용하지 않을 수 있습니다. API 버전 관리에 대한 자세한 내용은 [RESTful 웹 API 버전 관리][api-versioning]를 참조하세요.
+API는 서비스와 클라이언트 간의 계약입니다. 이 아키텍처에서 API 계약은 API Management 계층에서 정의됩니다. API Management는 각각 별개이지만 상호 보완 관계인 두 가지 [버전 관리 개념][apim-versioning]을 지원합니다.
 
-API 변경을 차단하지 않는 업데이트의 경우 동일한 함수 앱의 스테이징 슬롯에 새 버전을 배포합니다. 배포가 성공했는지 확인한 다음, 준비된 버전을 프로덕션 버전으로 바꿉니다.
+- *버전*을 사용하면 API 소비자가 요구 사항에 따라 API 버전을 선택할 수 있습니다(예: v1 및 v2). 
+
+- *수정 버전*을 통해 API 관리자는 API에서 호환성이 손상되지 않는 변경 작업을 수행하고 변경 내용을 배포할 수 있으며, 변경 로그를 통해 API 소비자에게 변경 관련 정보를 제공할 수 있습니다.
+
+API에서 호환성이 손상되는 변경을 수행하는 경우 API Management에서 새 버전을 게시합니다. 새 버전은 원래 버전과 함께 별도의 함수 앱에 배포됩니다. 이렇게 하면 클라이언트 응용 프로그램을 중단하지 않고 기존 클라이언트를 새 API로 마이그레이션할 수 있습니다. 결국에는 이전 버전을 더 이상 사용하지 않을 수 있습니다. API Management는 URL 경로, HTTP 헤더 또는 쿼리 문자열과 같은 여러 [버전 관리 체계][apim-versioning-schemes]를 지원합니다. 일반적인 API 버전 관리에 대한 자세한 내용은 [RESTful 웹 API 버전 관리][api-versioning]를 참조하세요.
+
+API 변경을 차단하지 않는 업데이트의 경우 동일한 함수 앱의 스테이징 슬롯에 새 버전을 배포합니다. 배포가 성공했는지 확인한 다음, 준비된 버전을 프로덕션 버전으로 바꿉니다. API Management에서 수정 버전을 게시합니다.
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
@@ -292,6 +295,9 @@ API 변경을 차단하지 않는 업데이트의 경우 동일한 함수 앱의
 [apim-ip]: /azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules
 [api-geo]: /azure/api-management/api-management-howto-deploy-multi-region
 [apim-scale]: /azure/api-management/api-management-howto-autoscale
+[apim-validate-jwt]: /azure/api-management/api-management-access-restriction-policies#ValidateJWT
+[apim-versioning]: /azure/api-management/api-management-get-started-publish-versions
+[apim-versioning-schemes]: /azure/api-management/api-management-get-started-publish-versions#choose-a-versioning-scheme
 [app-service-auth]: /azure/app-service/app-service-authentication-overview
 [app-service-ip-restrictions]: /azure/app-service/app-service-ip-restrictions
 [app-service-security]: /azure/app-service/app-service-security
@@ -311,8 +317,10 @@ API 변경을 차단하지 않는 업데이트의 경우 동일한 함수 앱의
 [functions-cold-start]: https://blogs.msdn.microsoft.com/appserviceteam/2018/02/07/understanding-serverless-cold-start/
 [functions-https]: /azure/app-service/app-service-web-tutorial-custom-ssl#enforce-https
 [functions-proxy]: /azure-functions/functions-proxies
+[functions-run-from-package]: /azure/azure-functions/run-functions-from-deployment-package
 [functions-scale]: /azure/azure-functions/functions-scale
 [functions-timeout]: /azure/azure-functions/functions-scale#consumption-plan
+[functions-zip-deploy]: /azure/azure-functions/deployment-zip-push
 [graph]: https://developer.microsoft.com/graph/docs/concepts/overview
 [key-vault-web-app]: /azure/key-vault/tutorial-web-application-keyvault
 [microservices-domain-analysis]: ../../microservices/domain-analysis.md
@@ -321,6 +329,7 @@ API 변경을 차단하지 않는 업데이트의 경우 동일한 함수 앱의
 [partition-key]: /azure/cosmos-db/partition-data
 [pipelines]: /azure/devops/pipelines/index
 [ru]: /azure/cosmos-db/request-units
+[scopes]: /azure/active-directory/develop/v2-permissions-and-consent
 [static-hosting]: /azure/storage/blobs/storage-blob-static-website
 [static-hosting-preview]: https://azure.microsoft.com/blog/azure-storage-static-web-hosting-public-preview/
 [storage-https]: /azure/storage/common/storage-require-secure-transfer

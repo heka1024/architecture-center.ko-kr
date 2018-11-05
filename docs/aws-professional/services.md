@@ -5,20 +5,18 @@ keywords: 클라우드 서비스 비교, 클라우드 서비스 비교, 다중 �
 author: lbrader
 ms.date: 11/30/2017
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: d665adb946b9c93827fbc55243edc3a558668416
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 33b67f57c8c725cfb68c400b4e2b67102e5d4872
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819230"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251960"
 ---
 # <a name="aws-to-azure-services-comparison"></a>AWS와 Azure 서비스 비교 
 
 이 문서는 Microsoft Azure 서비스와 AWS(Amazon Web Services)를 비교하여 이해하는 데 도움이 됩니다. Azure 및 AWS를 통한 다중 클라우드 솔루션이나 Azure로의 마이그레이션을 계획 중이라면 모든 범주에서 AWS와 Azure의 IT 기능을 비교해 볼 수 있습니다.
 
 다음 표에는 일부 AWS 서비스에 대해 여러 Azure 서비스가 나열되어 있습니다. Azure 서비스는 서로 유사하지만 기능의 깊이와 범위는 다릅니다.
-
-[Azure 및 AWS 클라우드 서비스 맵 PDF 다운로드](https://aka.ms/awsazureguide)
 
 ## <a name="azure-and-aws-for-multicloud-solutions"></a>다중 클라우드 솔루션을 위한 Azure 및 AWS
 
@@ -102,7 +100,7 @@ AWS 사용자를 위한 Azure 개요는 [AWS 전문가를 위한 Azure 소개](i
 | <strong>&nbsp;</strong> |          없음           |                                                                                       [Power BI Embedded](https://azure.microsoft.com/services/power-bi-embedded/)                                                                                       |                                                               시각화 및 데이터 분석 도구를 응용 프로그램에 포함할 수 있게 합니다.                                                               |
 |         검색          |  Elasticsearch Service  |                                                                     [Marketplace - Elasticsearch](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=Elasticsearch)                                                                     |                                                                             Apache Lucene 기반의 확장성 있는 검색 서버입니다.                                                                             |
 | <strong>&nbsp;</strong> |       CloudSearch       |                                                                                               [Azure Search](https://azure.microsoft.com/services/search/)                                                                                               |                                                                 전체 텍스트 검색 및 관련 검색 분석과 기능을 제공합니다.                                                                 |
-|    Machine Learning     |    Machine Learning     |                          [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning/) <br/><br/>[Azure Machine Learning Workbench](https://azure.microsoft.com/services/machine-learning-services/)                           |                    종단 간 워크플로를 생성하여 복잡한 데이터 집합에서 발생할 수 있는 문제를 이해하는 데 사용될 수 있는 예측 모델을 만들고, 처리, 구체화 및 게시합니다.                    |
+|    Machine Learning     |    Machine Learning     |                          [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning/) <br/><br/>[Azure Machine Learning 서비스](https://azure.microsoft.com/services/machine-learning-services/)                           |                    종단 간 워크플로를 생성하여 복잡한 데이터 집합에서 발생할 수 있는 문제를 이해하는 데 사용될 수 있는 예측 모델을 만들고, 처리, 구체화 및 게시합니다.                    |
 |     데이터 검색      |          없음           |                                                                                            [Data Catalog](https://azure.microsoft.com/services/data-catalog/)                                                                                            |                                                     데이터 원본을 더 효율적으로 등록, 보강, 검색, 이해, 사용하는 기능을 제공합니다.                                                     |
 | <strong>&nbsp;</strong> |      Amazon Athena      |                                                                                  [Azure 데이터 레이크 분석](https://azure.microsoft.com/services/data-lake-analytics/)                                                                                  |                                                     표준 SQL을 데이터베이스 분석에 사용하는 서버 없는 대화형 쿼리 서비스를 제공합니다.                                                      |
 

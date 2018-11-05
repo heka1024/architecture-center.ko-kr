@@ -2,13 +2,13 @@
 title: Azure Resource Manager 템플릿의 리소스 업데이트
 description: Azure Resource Manager 템플릿의 기능을 확장하여 리소스를 업데이트하는 방법을 설명합니다.
 author: petertay
-ms.date: 06/09/2017
-ms.openlocfilehash: f235f0b4d54d65ccc2fa67876916e922d75f6d07
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.date: 10/31/2018
+ms.openlocfilehash: dc97534e658c9728ac617b4e52031e2553600458
+ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429041"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251824"
 ---
 # <a name="update-a-resource-in-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿의 리소스 업데이트
 
@@ -122,16 +122,13 @@ ms.locfileid: "47429041"
 
 ## <a name="try-the-template"></a>템플릿 시도
 
-이 템플릿으로 실험하려면 다음 단계를 따릅니다.
+[GitHub][github]에서 예제 템플릿을 사용할 수 있습니다. 템플릿을 배포하려면 다음 [Azure CLI][cli] 명령을 실행합니다.
 
-1.  Azure Portal로 이동하여 **+** 아이콘을 선택하고 **템플릿 배포** 리소스 종류를 검색하고 선택합니다.
-2.  **템플릿 배포** 페이지로 이동한 후 **만들기** 단추를 선택합니다. 그러면 **사용자 지정 배포** 블레이드가 열립니다.
-3.  **편집** 아이콘을 선택합니다.
-4.  비어 있는 템플릿을 삭제합니다.
-5.  샘플 템플릿을 복사하여 오른쪽 창에 붙여 넣습니다.
-6.  **저장** 단추를 선택합니다.
-7.  **사용자 지정 배포**창으로 돌아오지만 이번에는 일부 드롭다운 상자가 표시됩니다. 구독을 선택하고, 새로 만들거나 기존 리소스 그룹을 사용하고, 위치를 선택합니다. 사용 약관을 검토하고 **동의함** 단추를 클릭합니다.
-8.  **구입** 단추를 선택합니다.
+```bash
+az group create --location <location> --name <resource-group-name>
+az group deployment create -g <resource-group-name> \
+    --template-uri https://raw.githubusercontent.com/mspnp/template-examples/master/example1-update/deploy.json
+```
 
 배포가 완료된 후 포털에서 지정한 리소스 그룹을 엽니다. `firstVNet`라는 가상 네트워크와 `nic1`라는 NIC가 표시됩니다. `firstVNet`을 클릭한 후 `subnets`를 클릭합니다. 처음에 만들어진 `firstSubnet`이 표시된 후 `updateVNet` 리소스에 추가된 `secondSubnet`이 표시됩니다. 
 
@@ -145,4 +142,7 @@ ms.locfileid: "47429041"
 
 ## <a name="next-steps"></a>다음 단계
 
-* 이 기법은 [템플릿 구성 요소 프로젝트](https://github.com/mspnp/template-building-blocks) 및 [Azure 참조 아키텍처](/azure/architecture/reference-architectures/)에서도 구현됩니다. 이러한 참조 아키텍처를 사용하여 고유한 아키텍처를 만들거나 참조 아키텍처 중 하나를 배포할 수 있습니다.
+* 매개 변수 값이 있는지 여부와 같은 조건에 따라 리소스를 배포하는 방법을 알아봅니다. [조건부로 Azure Resource Manager 템플릿의 리소스 배포](./conditional-deploy.md)를 참조하세요.
+
+[cli]: /cli/azure/?view=azure-cli-latest
+[github]: https://github.com/mspnp/template-examples
