@@ -2,17 +2,17 @@
 title: ExpressRoute를 사용하여 온-프레미스 네트워크를 Azure에 연결
 description: Azure ExpressRoute를 사용하여 연결된 온-프레미스 네트워크 및 Azure Virtual Network를 포괄하는 보안 사이트 간 네트워크 아키텍처를 구현하는 방법입니다.
 author: telmosampaio
-ms.date: 11/28/2016
+ms.date: 10/22/2017
 pnp.series.title: Connect an on-premises network to Azure
 pnp.series.next: expressroute-vpn-failover
 pnp.series.prev: vpn
 cardTitle: ExpressRoute
-ms.openlocfilehash: 754542b37988e0cd2694ae84eb6b03d68c147243
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 16711acb179c05152fc5ef8c7bf3eeb8d067a382
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819179"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916620"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute"></a>ExpressRoute를 사용하여 온-프레미스 네트워크를 Azure에 연결
 

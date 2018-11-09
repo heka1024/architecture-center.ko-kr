@@ -2,13 +2,13 @@
 title: 데이터 손상 또는 우발적 삭제로부터 복구
 description: 데이터 손상 또는 실수로 인한 데이터 삭제로부터 데이터를 복구하는 방법을 이해하고 재해 복구에 대한 계획 뿐만 아니라 복원력 있고 항상 사용 가능한 내결함성 응용 프로그램을 설계하는 방법에 대한 문서입니다.
 author: MikeWasson
-ms.date: 01/10/2018
-ms.openlocfilehash: b0716de39fe69d607b9a63e51356d28bbcdbfeae
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.date: 11/11/2018
+ms.openlocfilehash: 1f3dd448ac6172727481c437fb8a113f25d83464
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31012429"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916286"
 ---
 # <a name="recover-from-data-corruption-or-accidental-deletion"></a>데이터 손상 또는 우발적 삭제로부터 복구 
 

@@ -5,12 +5,12 @@ author: MikeWasson
 ms:date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: client-assertion
-ms.openlocfilehash: b6d2e431da85f7c304747df2f804f1714596bfc6
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: a47b8835df1c970ac7c50af78aae73116d6a12b4
+ms.sourcegitcommit: d59e2631fb08665bc30f6b65bfc7e1b75935cbd5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429182"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021953"
 ---
 # <a name="use-azure-key-vault-to-protect-application-secrets"></a>Azure Key Vault를 사용하여 응용 프로그램 암호 보호
 
@@ -221,25 +221,25 @@ Surveys 응용 프로그램이 등록된 Azure AD 테넌트 내에서 관리자 
 ### <a name="update-the-user-secrets"></a>사용자 암호 업데이트
 솔루션 탐색기에서 Tailspin.Surveys.Web 프로젝트를 마우스 오른쪽 단추로 클릭하고 **사용자 암호 관리**를 선택합니다. secrets.json 파일에서 기존 JSON을 삭제하고 다음에 붙여 넣습니다.
 
-    ```
-    {
-      "AzureAd": {
-        "ClientId": "[Surveys web app client ID]",
-        "ClientSecret": "[Surveys web app client secret]",
-        "PostLogoutRedirectUri": "https://localhost:44300/",
-        "WebApiResourceId": "[App ID URI of your Surveys.WebAPI application]",
-        "Asymmetric": {
-          "CertificateThumbprint": "[certificate thumbprint. Example: 105b2ff3bc842c53582661716db1b7cdc6b43ec9]",
-          "StoreName": "My",
-          "StoreLocation": "CurrentUser",
-          "ValidationRequired": "false"
-        }
-      },
-      "KeyVault": {
-        "Name": "[key vault name]"
-      }
+```json
+{
+  "AzureAd": {
+    "ClientId": "[Surveys web app client ID]",
+    "ClientSecret": "[Surveys web app client secret]",
+    "PostLogoutRedirectUri": "https://localhost:44300/",
+    "WebApiResourceId": "[App ID URI of your Surveys.WebAPI application]",
+    "Asymmetric": {
+      "CertificateThumbprint": "[certificate thumbprint. Example: 105b2ff3bc842c53582661716db1b7cdc6b43ec9]",
+      "StoreName": "My",
+      "StoreLocation": "CurrentUser",
+      "ValidationRequired": "false"
     }
-    ```
+  },
+  "KeyVault": {
+    "Name": "[key vault name]"
+  }
+}
+```
 
 [대괄호] 안에 있는 항목을 올바른 값으로 바꿉니다.
 
@@ -258,7 +258,7 @@ Surveys 응용 프로그램이 등록된 Azure AD 테넌트 내에서 관리자 
 
 다음으로 솔루션 탐색기에서 Tailspin.Surveys.WebApi 프로젝트를 마우스 오른쪽 단추로 클릭하고 **사용자 암호 관리**를 선택합니다. 기존 JSON을 삭제하고 다음에 붙여 넣습니다.
 
-```
+```json
 {
   "AzureAd": {
     "ClientId": "[Surveys.WebAPI client ID]",

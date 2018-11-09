@@ -2,16 +2,16 @@
 title: 고가용성 하이브리드 네트워크 아키텍처 구현
 description: VPN Gateway 장애 조치(failover)를 사용하는 ExpressRoute를 사용하여 연결된 Azure 가상 네트워크 및 온-프레미스 네트워크를 포함하는 보안 사이트 간 네트워크 아키텍처를 구축하는 방법
 author: telmosampaio
-ms.date: 11/28/2016
+ms.date: 10/22/2017
 pnp.series.title: Connect an on-premises network to Azure
 pnp.series.prev: expressroute
 cardTitle: Improving availability
-ms.openlocfilehash: 31ed1dbf59c4fa2b7fa86b9ceb2fed7b36e75c8c
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 31bf471dbff3661face7d94fbec0973d81541ec7
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428825"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916416"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute-with-vpn-failover"></a>VPN 장애 조치(failover)를 사용하는 ExpressRoute를 사용하여 온-프레미스 네트워크를 Azure에 연결
 

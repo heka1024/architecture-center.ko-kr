@@ -2,15 +2,15 @@
 title: 실패 모드 분석
 description: Azure에 기반한 클라우드 솔루션에 대한 장애 모드 분석을 수행하기 위한 지침입니다.
 author: MikeWasson
-ms.date: 03/24/2017
+ms.date: 05/07/2018
 ms.custom: resiliency
 pnp.series.title: Design for Resiliency
-ms.openlocfilehash: 6598644828dffb68f01c2d0a2ce9fbdda932168a
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: c9a875de7807b50ee1efcd4b1c0b16357cd87f11
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429545"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916637"
 ---
 # <a name="failure-mode-analysis"></a>실패 모드 분석
 [!INCLUDE [header](../_includes/header.md)]

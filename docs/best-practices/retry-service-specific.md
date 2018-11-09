@@ -2,14 +2,14 @@
 title: 서비스 관련 재시도 지침
 description: 재시도 메커니즘 설정에 대한 서비스 관련 지침입니다.
 author: dragon119
-ms.date: 07/13/2016
+ms.date: 08/13/2018
 pnp.series.title: Best Practices
-ms.openlocfilehash: c5a9bc99c4693f35c38dabcf07b3465add6a8cb1
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 801bcc6e7a296cc9d68a46231461a6b37ebd7de5
+ms.sourcegitcommit: ca5283af555189e830eed7884c83d058fa7ebaa0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429553"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50757810"
 ---
 # <a name="retry-guidance-for-specific-services"></a>특정 서비스에 대한 다시 시도 지침
 

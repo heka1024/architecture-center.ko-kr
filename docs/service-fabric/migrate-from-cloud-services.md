@@ -2,13 +2,13 @@
 title: Azure Service Fabric으로 Azure Cloud Services 응용 프로그램 마이그레이션
 description: Azure Cloud Services에서 Azure Service Fabric으로 응용 프로그램을 마이그레이션하는 방법입니다.
 author: MikeWasson
-ms.date: 04/27/2017
-ms.openlocfilehash: b9ecbc88ae74da99a0ff3bb8814a9cb3422f79d5
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.date: 04/11/2018
+ms.openlocfilehash: a1b4e005b2dab67d8107f4002468e1d7622ae342
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31012691"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916450"
 ---
 # <a name="migrate-an-azure-cloud-services-application-to-azure-service-fabric"></a>Azure Service Fabric으로 Azure Cloud Services 응용 프로그램 마이그레이션 
 
@@ -224,7 +224,7 @@ Service Fabric 응용 프로그램에는 다음과 같은 구성 파일이 들�
 
 Service Fabric 클러스터가 [VM 확장 집합][vm-scale-sets]에 배포되었습니다. 크기 집합은 동일한 VM 집합을 배포하고 관리하는 데 사용할 수 있는 Azure Compute 리소스입니다. 
 
-앞서 언급했듯이 보안상의 이유로 Kestrel 웹 서버에는 역방향 프록시가 필요합니다. 이 다이어그램에는 다양한 계층 7 부하 분산 기능을 제공하는 Azure 서비스인 [Azure Application Gateway][application-gateway]가 나와 있습니다. 이 게이트웨이는 역방향 프록시 서비스 역할을 하며 클라이언트 연결을 종료하고 백 엔드 끝점으로 요청을 전달합니다. nginx와 같은 다양한 역방향 프록시 솔루션을 사용할 수도 있습니다.  
+앞서 언급했듯이 보안상의 이유로 Kestrel 웹 서버에는 역방향 프록시가 필요합니다. 이 다이어그램에는 다양한 계층 7 부하 분산 기능을 제공하는 Azure 서비스인 [Azure Application Gateway][application-gateway]가 나와 있습니다. 이 게이트웨이는 역방향 프록시 서비스 역할을 하며 클라이언트 연결을 종료하고 백 엔드 엔드포인트로 요청을 전달합니다. nginx와 같은 다양한 역방향 프록시 솔루션을 사용할 수도 있습니다.  
 
 ### <a name="layer-7-routing"></a>계층 7 라우팅
 

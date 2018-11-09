@@ -3,12 +3,12 @@ title: 서버리스 웹 응용 프로그램
 description: 서버리스 웹 응용 프로그램 및 웹 API를 보여 주는 참조 아키텍처입니다.
 author: MikeWasson
 ms.date: 10/16/2018
-ms.openlocfilehash: 9ce80aa904b7a04f78127438f9898244c979c2b5
-ms.sourcegitcommit: 69fc16f2b3bd3e3ffeff5bba277a4204e125cf78
+ms.openlocfilehash: d1af03811bda6267fd40ee17823ac8357829f988
+ms.sourcegitcommit: 949b9d3e5a9cdee1051e6be700ed169113e914ae
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50150270"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "50983399"
 ---
 # <a name="serverless-web-application"></a>서버리스 웹 응용 프로그램 
 
@@ -316,7 +316,7 @@ API 변경을 차단하지 않는 업데이트의 경우 동일한 함수 앱의
 [functions-bindings]: /azure/azure-functions/functions-triggers-bindings
 [functions-cold-start]: https://blogs.msdn.microsoft.com/appserviceteam/2018/02/07/understanding-serverless-cold-start/
 [functions-https]: /azure/app-service/app-service-web-tutorial-custom-ssl#enforce-https
-[functions-proxy]: /azure-functions/functions-proxies
+[functions-proxy]: /azure/azure-functions/functions-proxies
 [functions-run-from-package]: /azure/azure-functions/run-functions-from-deployment-package
 [functions-scale]: /azure/azure-functions/functions-scale
 [functions-timeout]: /azure/azure-functions/functions-scale#consumption-plan

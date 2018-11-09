@@ -3,12 +3,12 @@ title: Azure에서 고가용성 SharePoint Server 2016 팜 실행
 description: Azure에 고가용성 SharePoint Server 2016 팜을 설정하는 방법에 대한 검증된 사례입니다.
 author: njray
 ms.date: 07/26/2018
-ms.openlocfilehash: 1e44c2817a02cda919bfa94e0b8f07b73b35531f
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.openlocfilehash: 5db146956134f9b297b520d666d8dabbc8793caf
+ms.sourcegitcommit: 77d62f966d910cd5a3d11ade7ae5a73234e093f2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916501"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51293267"
 ---
 # <a name="run-a-high-availability-sharepoint-server-2016-farm-in-azure"></a>Azure에서 고가용성 SharePoint Server 2016 팜 실행
 

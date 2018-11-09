@@ -2,17 +2,17 @@
 title: VPN을 사용하여 온-프레미스 네트워크를 Azure에 연결
 description: VPN을 사용하여 연결된 온-프레미스 네트워크 및 Azure Virtual Network를 포괄하는 보안 사이트 간 네트워크 아키텍처를 구현하는 방법입니다.
 author: RohitSharma-pnp
-ms.date: 11/28/2016
+ms.date: 10/22/2018
 pnp.series.title: Connect an on-premises network to Azure
 pnp.series.next: expressroute
 pnp.series.prev: ./index
 cardTitle: VPN
-ms.openlocfilehash: 283fbd340d9d37c9521715e9512cc67793983585
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 6e705c40663eff421e79067f916a1ebad6e72822
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428958"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916553"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN 게이트웨이를 사용하여 온-프레미스 네트워크를 Azure에 연결
 

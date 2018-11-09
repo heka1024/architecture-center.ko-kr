@@ -2,13 +2,13 @@
 title: Azure 계산 서비스를 선택하기 위한 조건
 description: 여러 축에서 Azure 계산 서비스 비교
 author: MikeWasson
-ms.date: 06/13/2018
-ms.openlocfilehash: b7a5b08e1d9a9eba33003b3d478a61388a496272
-ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
+ms.date: 08/08/2018
+ms.openlocfilehash: dbd5314c4c77e83f5b45ef0b49e83860479c8f92
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "43016076"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916386"
 ---
 # <a name="criteria-for-choosing-an-azure-compute-service"></a>Azure 계산 서비스를 선택하기 위한 조건
 

@@ -2,15 +2,15 @@
 title: Azure에서 공유 서비스를 사용하여 허브-스포크 네트워크 토폴로지 구현
 description: Azure에서 공유 서비스를 사용하여 허브-스포크 네트워크 토폴로지를 구현하는 방법입니다.
 author: telmosampaio
-ms.date: 06/19/2018
+ms.date: 10/09/2018
 pnp.series.title: Implement a hub-spoke network topology with shared services in Azure
 pnp.series.prev: hub-spoke
-ms.openlocfilehash: 0238c5d6f28bacbc32268d4586b30395de36384b
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.openlocfilehash: 209791950c79760ea8aaafc77ff779d6207410ce
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876871"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916299"
 ---
 # <a name="implement-a-hub-spoke-network-topology-with-shared-services-in-azure"></a>Azure에서 공유 서비스를 사용하여 허브-스포크 네트워크 토폴로지 구현
 

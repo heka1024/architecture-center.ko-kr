@@ -2,12 +2,13 @@
 title: 데이터 저장소를 선택하는 기준
 description: Azure 계산 옵션 개요
 author: MikeWasson
-ms.openlocfilehash: 70f746f80c29623004620d83eb38747777df7f84
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.date: 06/01/2018
+ms.openlocfilehash: f8996cdeb937a28b3f3056da3921a3f89dd36b1a
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35252876"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916433"
 ---
 # <a name="criteria-for-choosing-a-data-store"></a>데이터 저장소를 선택하는 기준
 
