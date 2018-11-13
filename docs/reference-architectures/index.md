@@ -4,23 +4,23 @@ description: Azure의 일반 워크로드에 대한 참조 아키텍처, 청사�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: c5abe208d5d294559681700b57332a33f0bd15d5
-ms.sourcegitcommit: ca5283af555189e830eed7884c83d058fa7ebaa0
+ms.openlocfilehash: 43c780876e903f7d4f86d3877fb961b0dc0ba60b
+ms.sourcegitcommit: 877777094b554559dc9cb1f0d9214d6d38197439
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50757742"
+ms.lasthandoff: 11/11/2018
+ms.locfileid: "51527595"
 ---
 # <a name="azure-reference-architectures"></a>Azure 참조 아키텍처
 
 Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍처가 함께 그룹화됩니다. 각 아키텍처는 확장성, 가용성, 관리성 및 보안에 대한 고려 사항과 함께 권장 방법을 포함하고 있습니다. 또한 대부분은 배포 가능한 솔루션을 포함하고 있습니다.
 
-[AI](#ai-and-machine-learning) | [빅 데이터](#big-data-solutions) | [N 계층 응용 프로그램](#n-tier-applications) | [가상 네트워크](#virtual-networks) | [Active Directory](#extending-on-premises-active-directory-to-azure) | [VM 워크로드](#vm-workloads) | [웹 응용 프로그램](#web-applications)으로 이동합니다.
+이동: [AI](#ai-and-machine-learning) | [빅 데이터](#big-data-solutions) | [서버리스](##serverless-applications) | [가상 네트워크](#virtual-networks) | [VM 워크로드](#vm-workloads) | [SAP](#sap) | [웹앱](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
 
 ## <a name="ai-and-machine-learning"></a>AI 및 기계 학습
 
 <ul  class="panelContent cardsF">
-<!-- SQL Data Warehouse -->
+<!-- Batch scoring for deep learning models -->
 <li style="display: flex; flex-direction: column;">
     <a href="./ai/batch-scoring-deep-learning.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
@@ -34,6 +34,26 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                     <div class="cardText">
                         <h3>심층 학습 모델에 대한 Batch 평가</h3>
                         <p>비디오에 신경 스타일 전송을 적용하는 일괄 작업 실행을 자동화합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Batch scoring for deep learning models -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/realtime-scoring-python.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/python-powered-h.svg" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Python 모델의 실시간 점수 매기기</h3>
+                        <p>일반 Python 모델 또는 딥 러닝 모델을 사용하여 실시간으로 예측하는 웹 서비스로 Python 모델을 배포합니다.</p>
                     </div>
                 </div>
             </div>
@@ -106,64 +126,43 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
 </li>
 </ul>
 
-## <a name="n-tier-applications"></a>N 계층 응용 프로그램
+## <a name="serverless-applications"></a>서버리스 응용 프로그램
 
-<ul  class="panelContent cardsF">
+<ul class="panelContent cardsF">
+<!-- Serverless web application -->
 <li style="display: flex; flex-direction: column;">
-    <a href="./n-tier/n-tier-sql-server.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+    <a href="./serverless/web-app.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
             <div class="cardPadding" style="display: flex;">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="../_images/icons/windows.svg" height="140px" />
+                            <img src="../_images/icons/functions.svg" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>SQL Server를 통한 N 계층 응용 프로그램</h3>
-                        <p>Windows에서 SQL Server를 사용하여 N 계층 응용 프로그램에 대해 구성된 가상 머신입니다.</p>
+                        <h3>서버리스 웹 응용 프로그램</h3>
+                        <p>Azure Blob Storage의 정적 콘텐츠를 제공하고 Azure Functions를 사용하여 API를 구현하는 서버리스 웹 응용 프로그램입니다.</p>
                     </div>
                 </div>
             </div>
         </div>
     </a>
 </li>
-
-<!-- Multi-region Windows -->
+<!-- Serverless web application -->
 <li style="display: flex; flex-direction: column;">
-    <a href="./n-tier/multi-region-sql-server.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+    <a href="./serverless/event-processing.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
             <div class="cardPadding" style="display: flex;">
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="../_images/icons/windows.svg" height="140px" />
+                            <img src="../_images/icons/functions.svg" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>다중 지역 N 계층 응용 프로그램</h3>
-                        <p>고가용성을 위해 SQL Server AlwaysOn 가용성 그룹을 사용하여 두 지역에 배포된 N 계층 응용 프로그램입니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-
-<!-- N-tier Linux -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./n-tier/n-tier-cassandra.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/linux-penguin.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Cassandra를 통한 N 계층 응용 프로그램</h3>
-                        <p>Linux에서 Apache Cassandra를 사용하여 N 계층 응용 프로그램에 대해 구성된 가상 머신입니다.</p>
+                        <h3>Azure Functions를 사용한 이벤트 처리</h3>
+                        <p>데이터 스트림을 수집하고 데이터를 처리하는 Functions를 사용하는 이벤트 기반 아키텍처입니다.</p>
                     </div>
                 </div>
             </div>
@@ -316,7 +315,175 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
 </li>
 </ul>
 
-## <a name="extending-on-premises-active-directory-to-azure"></a>Azure로 온-프레미스 Active Directory 확장
+## <a name="vm-workloads"></a>VM 워크로드
+
+<ul  class="panelContent cardsF">
+<!-- n-tier windows -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./n-tier/n-tier-sql-server.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/windows.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>SQL Server를 통한 N 계층 응용 프로그램</h3>
+                        <p>Windows에서 SQL Server를 사용하여 N 계층 응용 프로그램에 대해 구성된 가상 머신입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Multi-region n-tier windows -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./n-tier/multi-region-sql-server.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/windows.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>다중 지역 N 계층 응용 프로그램</h3>
+                        <p>고가용성을 위해 SQL Server AlwaysOn 가용성 그룹을 사용하여 두 지역에 배포된 N 계층 응용 프로그램입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- N-tier Linux -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./n-tier/n-tier-cassandra.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/linux-penguin.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Cassandra를 통한 N 계층 응용 프로그램</h3>
+                        <p>Linux에서 Apache Cassandra를 사용하여 N 계층 응용 프로그램에 대해 구성된 가상 머신입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Jenkins -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./jenkins/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/jenkins.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Jenkins 빌드 서버</h3>
+                        <p>Azure의 확장성 있는 엔터프라이즈급 Jenkins 서버입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- SharePoint -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./sharepoint/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/sharepoint.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>SharePoint Server 2016 팜</h3>
+                        <p>Azure에서 SQL Server Always On 가용성 그룹을 사용하는 고가용성 SharePoint Server 2016 팜입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
+
+## <a name="sap"></a>SAP
+
+<ul  class="panelContent cardsF">
+<!-- SAP -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./sap/sap-netweaver.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/sap.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>SAP NetWeaver</h3>
+                        <p>재해 복구를 지원하는 고가용성 환경에 설치된 Windows의 SAP NetWeaver입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./sap/sap-s4hana.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/sap.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>SAP S/4HANA</h3>
+                        <p>재해 복구를 지원하는 고가용성 환경에 설치된 Linux의 SAP S/4HANA입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./sap/hana-large-instances.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/sap.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure의 SAP HANA(대규모 인스턴스)</h3>
+                        <p>HANA 대규모 인스턴스는 Azure 지역의 실제 서버에 배포됩니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
+
+## <a name="extend-on-premises-active-directory-to-azure"></a>온-프레미스 Active Directory를 Azure로 확장
 
 <ul class="panelContent cardsF">
 <!-- Azure AD -->
@@ -401,110 +568,6 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
 </li>
 </ul>
 
-## <a name="vm-workloads"></a>VM 워크로드
-
-<ul  class="panelContent cardsF">
-<!-- Jenkins -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./jenkins/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/jenkins.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Jenkins 빌드 서버</h3>
-                        <p>Azure의 확장성 있는 엔터프라이즈급 Jenkins 서버입니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<!-- SharePoint -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./sharepoint/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/sharepoint.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>SharePoint Server 2016 팜</h3>
-                        <p>Azure에서 SQL Server Always On 가용성 그룹을 사용하는 고가용성 SharePoint Server 2016 팜입니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<!-- SAP -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./sap/sap-netweaver.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/sap.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>SAP NetWeaver</h3>
-                        <p>재해 복구를 지원하는 고가용성 환경에 설치된 Windows의 SAP NetWeaver입니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./sap/sap-s4hana.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/sap.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>SAP S/4HANA</h3>
-                        <p>재해 복구를 지원하는 고가용성 환경에 설치된 Linux의 SAP S/4HANA입니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./sap/hana-large-instances.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/sap.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure의 SAP HANA(대규모 인스턴스)</h3>
-                        <p>HANA 대규모 인스턴스는 Azure 지역의 실제 서버에 배포됩니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-</ul>
-
-
 ## <a name="web-applications"></a>웹 응용 프로그램
 
 <ul  class="panelContent cardsF">
@@ -566,3 +629,4 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
     </a>
 </li>
 </ul>
+
