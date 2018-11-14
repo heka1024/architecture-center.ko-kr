@@ -1,22 +1,22 @@
 ---
 title: Azure 예제 시나리오
-description: 특정 비즈니스 사용 사례를 해결하는 예제 시나리오
+description: 특정 비즈니스 사용 사례의 예제 시나리오
 author: david-stanford
-ms:date: 08/01/2018
+ms:date: 11/01/2018
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 63a566126168dba382792967b3625bd6e085c054
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 01b2db150c66eaa7f8911361dd39786f53c39c07
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818839"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610501"
 ---
 # <a name="azure-example-scenarios"></a>Azure 예제 시나리오
 
-예제 시나리오에서는 Azure에서 특정 아키텍처 및 비즈니스 문제를 해결하는 과정을 설명합니다.  각 시나리오는 실제 고객 예제를 기반으로 하고 고유한 구현을 가속화하기 위해 쉽고 빠르게 지침을 읽을 수 있도록 제공하기 위한 것입니다.
+예제 시나리오에서는 Azure를 사용하여 특정 비즈니스 또는 기술적인 문제를 해결하는 방법을 보여줍니다. 각 시나리오는 실제 고객 예제를 기반으로 하고 고유한 구현을 가속화하기 위해 쉽고 빠르게 읽을 수 있는 지침을 제공합니다.
 
-각 시나리오 내에서 아키텍처 다이어그램, 데이터 흐름 및 모든 구성 요소의 세부 정보를 찾을 수 있습니다.  비즈니스 요구 사항, 솔루션의 대략적인 가격 책정 및 프로덕션 환경에서 솔루션을 실행하는 경우 고려 사항에 맞는 대안 기술에 대해 알아볼 수도 있습니다.  여러 시나리오에는 고유한 Azure 계정에 솔루션을 쉽게 배포하는 방법도 포함됩니다.
+각 시나리오에서는 아키텍처 다이어그램, 데이터 흐름 및 기술 구성 요소의 세부 정보를 찾습니다. 또한 유사한 문제를 해결하기 위한 프로덕션의 솔루션, 솔루션의 비용 요소 및 기타 옵션을 실행하는 경우 고려 사항에 대해 알아봅니다. 여러 시나리오는 고유한 Azure 구독에서 솔루션을 쉽게 배포하는 방법을 제공합니다.
 
 [AI 시나리오](#ai-scenarios) | [응용 프로그램 시나리오](#application-scenarios) | [데이터 시나리오](#data-scenarios) | [인프라 시나리오](#infrastructure-scenarios)로 이동합니다.
 
