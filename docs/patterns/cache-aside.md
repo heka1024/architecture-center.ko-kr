@@ -3,17 +3,17 @@ title: Cache-Aside
 description: 필요할 때 데이터를 데이터 저장소에서 캐시로 로드
 keywords: 디자인 패턴
 author: dragon119
-ms.date: 06/23/2017
+ms.date: 11/01/2018
 pnp.series.title: Cloud Design Patterns
 pnp.pattern.categories:
 - data-management
 - performance-scalability
-ms.openlocfilehash: d4d7c9dcd612c780e3e494509a57b6b4a0144423
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.openlocfilehash: 4c93ed02ff28e79cedc26f83364592baba96821d
+ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31012463"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916383"
 ---
 # <a name="cache-aside-pattern"></a>캐시 배제 패턴
 
@@ -70,7 +70,7 @@ Applications use a cache to improve repeated access to information held in a dat
 
 Microsoft Azure에서는 Azure Redis Cache를 사용해 응용 프로그램의 여러 인스턴스가 공유할 수 있는 분산 캐시를 생성할 수 있습니다. 
 
-Azure Redis Cache 인스턴스에 연결하려면 정적 `Connect` 메서드를 호출하고 연결 문자열을 제공합니다. 이 메서드는 연결을 나타내는 `ConnectionMultiplexer`를 반환합니다. 응용 프로그램의 `ConnectionMultiplexer` 인스턴스를 공유하는 방법은 다음 예제와 비슷하게 연결된 인스턴스를 반환하는 정적 속성을 갖는 것입니다. 이 방법은 스레드가 안전하도록 단일 연결된 인스턴스를 초기화하는 방법을 제공합니다.
+다음 코드 예제는 .NET 용으로 작성된 Redis 클라이언트 라이브러리인 [StackExchange.Redis] 클라이언트를 사용합니다. Azure Redis Cache 인스턴스에 연결하려면 정적 `ConnectionMultiplexer.Connect` 메서드를 호출하고 연결 문자열을 제공합니다. 이 메서드는 연결을 나타내는 `ConnectionMultiplexer`를 반환합니다. 응용 프로그램의 `ConnectionMultiplexer` 인스턴스를 공유하는 방법은 다음 예제와 비슷하게 연결된 인스턴스를 반환하는 정적 속성을 갖는 것입니다. 이 방법은 스레드가 안전하도록 단일 연결된 인스턴스를 초기화하는 방법을 제공합니다.
 
 ```csharp
 private static ConnectionMultiplexer Connection;
@@ -85,7 +85,7 @@ private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionM
 public static ConnectionMultiplexer Connection => lazyConnection.Value;
 ```
 
-다음 코드 예제의 `GetMyEntityAsync` 메서드는 Azure Redis Cache를 기반으로 하는 캐시 배제 패턴의 구현을 보여 줍니다. 이 메서드는 read-through 접근 방식을 사용해 캐시에서 개체를 검색합니다.
+다음 코드 예제의 `GetMyEntityAsync` 메서드는 캐시 배제 패턴의 구현을 보여줍니다. 이 메서드는 read-through 접근 방식을 사용해 캐시에서 개체를 검색합니다.
 
 개체 식별 키는 정수 ID입니다. `GetMyEntityAsync` 메서드는 이 키를 포함한 항목을 캐시에서 검색하려고 합니다. 일치하는 항목이 발견되면 해당 항목이 반환됩니다. 캐시에 일치하는 항목이 없으면 `GetMyEntityAsync` 메서드는 개체를 데이터 저장소에서 검색해 캐시에 추가한 후 반환합니다. 데이터 저장소의 종속성 때문에, 데이터 저장소에서 데이터를 실제로 읽는 코드는 여기에 표시되지 않습니다. 캐시된 항목을 만료 방식으로 구성하여 다른 위치에서 업데이트되더라도 오래되지 않도록 조치해야 합니다.
 
@@ -126,7 +126,7 @@ public async Task<MyEntity> GetMyEntityAsync(int id)
 }
 ```
 
->  위의 예제는 Azure Redis Cache API를 사용해 저장소에 액세스하고 캐시에서 정보를 검색합니다. 자세한 내용은 [Microsoft Azure Redis Cache 사용](https://docs.microsoft.com/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache) 및 [Redis Cache를 사용하여 웹앱을 만드는 방법](https://docs.microsoft.com/azure/redis-cache/cache-web-app-howto)을 참조하세요.
+>  이 예제에서는 Redis Cache를 사용하여 저장소에 액세스하고 캐시에서 정보를 검색합니다. 자세한 내용은 [Microsoft Azure Redis Cache 사용](https://docs.microsoft.com/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache) 및 [Redis Cache를 사용하여 웹앱을 만드는 방법](https://docs.microsoft.com/azure/redis-cache/cache-web-app-howto)을 참조하세요.
 
 아래에 표시된 `UpdateEntityAsync` 메서드는 응용 프로그램에서 값이 변경될 때 캐시의 개체를 무효화하는 방법을 보여 줍니다. 다음 코드는 원래 데이터 저장소를 업데이트한 다음, 캐시에서 캐시된 항목을 제거합니다.
 
@@ -155,3 +155,6 @@ public async Task UpdateEntityAsync(MyEntity entity)
 - [캐싱 지침](https://docs.microsoft.com/azure/architecture/best-practices/caching) 클라우드 솔루션에서 데이터를 캐시할 수 있는 방법에 대한 추가 정보뿐 아니라 캐시 구현 시 고려해야 하는 문제를 제공합니다.
 
 - [데이터 일관성 입문서](https://msdn.microsoft.com/library/dn589800.aspx). 보통 클라우드 응용 프로그램은 여러 데이터 저장소에 걸쳐 있는 데이터를 사용합니다. 이런 환경에서는 데이터 일관성의 관리와 유지가 시스템에서 중요한 측면으로 작용하는데, 구체적으로 동시성과 가용성 문제가 발생할 수 있습니다. 이 입문서는 분산 데이터의 일관성 문제를 설명할 뿐 아니라 응용 프로그램에서 일관성을 구현해 데이터의 가용성을 유지하는 방법도 요약하고 있습니다.
+
+
+[StackExchange.Redis]: https://github.com/StackExchange/StackExchange.Redis

@@ -2,17 +2,19 @@
 title: Azure Stream Analytics를 사용하는 스트림 처리
 description: Azure에서 종단간 스트림 처리 파이프라인 만들기
 author: MikeWasson
-ms.date: 08/09/2018
-ms.openlocfilehash: 82887bdd45f811ac733ead18c1f256098e575253
-ms.sourcegitcommit: c4106b58ad08f490e170e461009a4693578294ea
+ms.date: 11/06/2018
+ms.openlocfilehash: e16547ccdcb81007e154e341f09be555ac82d1a1
+ms.sourcegitcommit: 02ecd259a6e780d529c853bc1db320f4fcf919da
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40025509"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263765"
 ---
 # <a name="stream-processing-with-azure-stream-analytics"></a>Azure Stream Analytics를 사용하는 스트림 처리
 
-이 참조 아키텍처는 종단 간 스트림 처리 파이프라인을 보여줍니다. 파이프라인은 두 원본에서 데이터를 수집하고, 두 스트림에 있는 레코드의 상관 관계를 만들고, 시간 범위에서 이동 평균을 계산합니다. 추가 분석을 위해 결과가 저장됩니다. [**이 솔루션을 배포합니다**.](#deploy-the-solution)
+이 참조 아키텍처는 종단 간 스트림 처리 파이프라인을 보여줍니다. 파이프라인은 두 원본에서 데이터를 수집하고, 두 스트림에 있는 레코드의 상관 관계를 만들고, 시간 범위에서 이동 평균을 계산합니다. 추가 분석을 위해 결과가 저장됩니다. 
+
+이 아키텍처에 대한 참조 구현은 [GitHub][github]에서 사용할 수 있습니다. 
 
 ![](./images/stream-processing-asa/stream-processing-asa.png)
 
@@ -37,6 +39,8 @@ ms.locfileid: "40025509"
 ## <a name="data-ingestion"></a>데이터 수집
 
 데이터 원본을 시뮬레이션하기 위해 이 참조 아키텍처는 [뉴욕시 택시 데이터](https://uofi.app.box.com/v/NYCtaxidata/folder/2332218797) 데이터 집합<sup>[[1]](#note1)</sup>을 사용합니다. 이 데이터 집합에는 4년(2010 &ndash; 2013) 동안 뉴욕시의 택시 여정에 대한 데이터가 포함됩니다. 여기에는 승객 데이터 및 요금 데이터라는 두 가지 형식의 레코드가 포함됩니다. 승객 데이터에는 여정 기간, 여정 거리 및 승차 및 하차 위치가 포함됩니다. 요금 데이터에는 요금, 세금 및 팁 금액이 포함됩니다. 레코드 형식 모두의 공통 필드에는 등록 번호, 택시 라이선스 및 공급 업체 ID가 포함됩니다. 이러한 세 필드는 택시와 드라이버를 고유하게 식별합니다. 데이터가 CSV 형식으로 저장됩니다. 
+
+[1] <span id="note1">Donovan, Brian; Work, Dan (2016): 뉴욕시 택시 여정 데이터(2010-2013) University of Illinois at Urbana-Champaign https://doi.org/10.13012/J8PN93H8
 
 데이터 생성기는 레코드를 읽고 Azure Event Hubs로 전송하는 .NET Core 응용 프로그램입니다. 생성기는 승객 데이터를 JSON 형식으로 보내고, 요금 데이터를 CSV 형식으로 전송합니다. 
 
@@ -209,162 +213,7 @@ Event Hubs가 오른쪽 위 패널에 표시된 대로 요청을 제한합니다
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
-이 참조 아키텍처에 대한 배포는 [GitHub](https://github.com/mspnp/reference-architectures/tree/master/data)에서 사용할 수 있습니다. 
+참조 구현을 배포하고 실행하려면 [GitHub readme][github]의 단계를 따릅니다. 
 
-### <a name="prerequisites"></a>필수 조건
 
-1. [참조 아키텍처](https://github.com/mspnp/reference-architectures) GitHub 리포지토리의 zip 파일을 복제, 포크 또는 다운로드합니다.
-
-2. [Docker](https://www.docker.com/)를 설치하여 데이터 생성기를 실행합니다.
-
-3. [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)을 설치합니다.
-
-4. 명령 프롬프트, bash 프롬프트 또는 PowerShell 프롬프트에서 다음과 같은 Azure 계정에 로그인합니다.
-
-    ```
-    az login
-    ```
-
-### <a name="download-the-source-data-files"></a>원본 데이터 파일 다운로드
-
-1. GitHub 리포지토리의 `data/streaming_asa` 디렉터리에서 `DataFile`이라는 디렉터리를 만듭니다.
-
-2. 웹 브라우저를 열고 https://uofi.app.box.com/v/NYCtaxidata/folder/2332219935로 이동합니다.
-
-3. 이 페이지에서 **다운로드**를 클릭하여 해당 연도에 대한 모든 택시 데이터의 zip 파일을 다운로드합니다.
-
-4. `DataFile` 디렉터리에 zip 파일의 압축을 풉니다.
-
-    > [!NOTE]
-    > 이 zip 파일에는 다른 zip 파일이 포함됩니다. 자식 zip 파일의 압축을 풀지 마십시오.
-
-디렉터리 구조는 다음과 같이 표시됩니다.
-
-```
-/data
-    /streaming_asa
-        /DataFile
-            /FOIL2013
-                trip_data_1.zip
-                trip_data_2.zip
-                trip_data_3.zip
-                ...
-```
-
-### <a name="deploy-the-azure-resources"></a>Azure 리소스 배포
-
-1. 셸 또는 Windows 명령 프롬프트에서 다음 명령을 실행하고 로그인 프롬프트를 따릅니다.
-
-    ```bash
-    az login
-    ```
-
-2. GitHub 리포지토리의 `data/streaming_asa` 폴더로 이동합니다.
-
-    ```bash
-    cd data/streaming_asa
-    ```
-
-2. 다음 명령을 실행하여 Azure 리소스를 배포합니다.
-
-    ```bash
-    export resourceGroup='[Resource group name]'
-    export resourceLocation='[Location]'
-    export cosmosDatabaseAccount='[Cosmos DB account name]'
-    export cosmosDatabase='[Cosmod DB database name]'
-    export cosmosDataBaseCollection='[Cosmos DB collection name]'
-    export eventHubNamespace='[Event Hubs namespace name]'
-
-    # Create a resource group
-    az group create --name $resourceGroup --location $resourceLocation
-
-    # Deploy resources
-    az group deployment create --resource-group $resourceGroup \
-      --template-file ./azure/deployresources.json --parameters \
-      eventHubNamespace=$eventHubNamespace \
-      outputCosmosDatabaseAccount=$cosmosDatabaseAccount \
-      outputCosmosDatabase=$cosmosDatabase \
-      outputCosmosDatabaseCollection=$cosmosDataBaseCollection
-
-    # Create a database 
-    az cosmosdb database create --name $cosmosDatabaseAccount \
-        --db-name $cosmosDatabase --resource-group $resourceGroup
-
-    # Create a collection
-    az cosmosdb collection create --collection-name $cosmosDataBaseCollection \
-        --name $cosmosDatabaseAccount --db-name $cosmosDatabase \
-        --resource-group $resourceGroup
-    ```
-
-3. Azure Portal에서 만든 리소스 그룹으로 이동합니다.
-
-4. Stream Analytics 작업에 대한 블레이드를 엽니다.
-
-5. **시작**을 클릭하여 작업을 시작합니다. **지금**을 출력 시작 시간으로 선택합니다. 작업이 시작할 때까지 대기합니다.
-
-### <a name="run-the-data-generator"></a>데이터 생성기 실행
-
-1. Event Hub 연결 문자열을 가져옵니다. Azure Portal에서 또는 다음 CLI 명령을 실행하여 가져올 수 있습니다.
-
-    ```bash
-    # RIDE_EVENT_HUB
-    az eventhubs eventhub authorization-rule keys list \
-        --eventhub-name taxi-ride \
-        --name taxi-ride-asa-access-policy \
-        --namespace-name $eventHubNamespace \
-        --resource-group $resourceGroup \
-        --query primaryConnectionString
-
-    # FARE_EVENT_HUB
-    az eventhubs eventhub authorization-rule keys list \
-        --eventhub-name taxi-fare \
-        --name taxi-fare-asa-access-policy \
-        --namespace-name $eventHubNamespace \
-        --resource-group $resourceGroup \
-        --query primaryConnectionString
-    ```
-
-2. GitHub 리포지토리의 `data/streaming_asa/onprem` 디렉터리로 이동합니다.
-
-3. `main.env` 파일의 값을 다음과 같이 업데이트합니다.
-
-    ```
-    RIDE_EVENT_HUB=[Connection string for taxi-ride event hub]
-    FARE_EVENT_HUB=[Connection string for taxi-fare event hub]
-    RIDE_DATA_FILE_PATH=/DataFile/FOIL2013
-    MINUTES_TO_LEAD=0
-    PUSH_RIDE_DATA_FIRST=false
-    ```
-
-4. 다음 명령을 실행하여 Docker 이미지를 빌드합니다.
-
-    ```bash
-    docker build --no-cache -t dataloader .
-    ```
-
-5. 부모 디렉터리인 `data/stream_asa`로 다시 이동합니다.
-
-    ```bash
-    cd ..
-    ```
-
-6. 다음 명령을 실행하여 Docker 이미지를 실행합니다.
-
-    ```bash
-    docker run -v `pwd`/DataFile:/DataFile --env-file=onprem/main.env dataloader:latest
-    ```
-
-출력은 다음과 비슷합니다.
-
-```
-Created 10000 records for TaxiFare
-Created 10000 records for TaxiRide
-Created 20000 records for TaxiFare
-Created 20000 records for TaxiRide
-Created 30000 records for TaxiFare
-...
-```
-
-적어도 Stream Analytics 쿼리에서 정의된 기간인 5분 동안 프로그램을 실행할 수 있습니다. Stream Analytics 작업을 올바르게 실행 중인지 확인하려면 Azure Portal을 열고 Cosmos DB 데이터베이스로 이동합니다. **데이터 탐색기** 블레이드를 열고 데이터베이스를 확인합니다. 
-
-[1] <span id="note1">Donovan, Brian; Work, Dan (2016): 뉴욕시 택시 여정 데이터(2010-2013) University of Illinois at Urbana-Champaign https://doi.org/10.13012/J8PN93H8
+[github]: https://github.com/mspnp/reference-architectures/tree/master/data/streaming_asa

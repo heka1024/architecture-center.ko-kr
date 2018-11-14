@@ -2,17 +2,19 @@
 title: SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 Enterprise BI
 description: Azure Data Factory를 사용하여 Azure에서 ELT 워크플로 자동화
 author: MikeWasson
-ms.date: 07/01/2018
-ms.openlocfilehash: f004c02da93335e74b07b9720236832ad7f744db
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.date: 11/06/2018
+ms.openlocfilehash: 39089d80047b584ac590d285097020212ab72911
+ms.sourcegitcommit: 02ecd259a6e780d529c853bc1db320f4fcf919da
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876905"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263732"
 ---
 # <a name="automated-enterprise-bi-with-sql-data-warehouse-and-azure-data-factory"></a>SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 Enterprise BI
 
-이 참조 아키텍처는 [ELT](../../data-guide/relational-data/etl.md#extract-load-and-transform-elt)(추출-로드-변환) 파이프라인에서 증분 로드를 수행하는 방법을 보여줍니다. Azure Data Factory를 사용하여 ELT 파이프라인을 자동화합니다. 파이프라인은 증분 방식으로 최신 OLTP 데이터를 온-프레미스 SQL Server 데이터베이스에서 SQL Data Warehouse로 이동합니다. 트랜잭션 데이터는 분석을 위해 테이블 형식 모델로 변환됩니다. [**이 솔루션을 배포합니다**.](#deploy-the-solution)
+이 참조 아키텍처는 [ELT](../../data-guide/relational-data/etl.md#extract-load-and-transform-elt)(추출-로드-변환) 파이프라인에서 증분 로드를 수행하는 방법을 보여줍니다. Azure Data Factory를 사용하여 ELT 파이프라인을 자동화합니다. 파이프라인은 증분 방식으로 최신 OLTP 데이터를 온-프레미스 SQL Server 데이터베이스에서 SQL Data Warehouse로 이동합니다. 트랜잭션 데이터는 분석을 위해 테이블 형식 모델로 변환됩니다. 
+
+이 아키텍처에 대한 참조 구현은 [GitHub][github]에서 사용할 수 있습니다.
 
 ![](./images/enterprise-bi-sqldw-adf.png)
 
@@ -29,7 +31,7 @@ ms.locfileid: "48876905"
 
 ### <a name="data-sources"></a>데이터 원본
 
-**온-프레미스 SQL Server**. 원본 데이터는 SQL Server 데이터베이스 온-프레미스에 위치합니다. 온-프레미스 환경을 시뮬레이션하기 위해 이 아키텍처에 대한 배포 스크립트는 설치된 SQL Server를 사용하여 Azure에서 가상 머신을 프로비전합니다. [Wide World Importers OLTP 예제 데이터베이스][wwi]는 원본 데이터로 사용됩니다.
+**온-프레미스 SQL Server**. 원본 데이터는 SQL Server 데이터베이스 온-프레미스에 위치합니다. 온-프레미스 환경을 시뮬레이션하기 위해 이 아키텍처에 대한 배포 스크립트는 설치된 SQL Server를 사용하여 Azure에서 가상 머신을 프로비전합니다. [Wide World Importers OLTP 예제 데이터베이스][wwi]는 원본 데이터베이스로 사용됩니다.
 
 **외부 데이터**. 데이터 웨어하우스에 대한 일반적인 시나리오는 여러 데이터 원본을 통합하는 것입니다. 이 참조 아키텍처는 연도별 도시 인구를 포함하는 외부 데이터 집합을 로드하여 OLTP 데이터베이스의 데이터와 통합합니다. "각 지역의 매출 증가가 인구 증가와 일치하거나 초과합니까?" 같은 인사이트에 이 데이터를 사용할 수 있습니다.
 
@@ -55,7 +57,7 @@ Data Factory는 서비스 주체 또는 MSI(관리되는 서비스 ID)를 사용
 
 ## <a name="data-pipeline"></a>데이터 파이프라인
 
-[Azure Data Factory][adf]에서 파이프라인은 이 경우에 작업 &mdash;를 조정하는 데 사용된 활동의 논리적 그룹화로서 데이터를 SQL Data Warehouse로 로드하고 변환합니다. 
+[Azure Data Factory][adf]에서 파이프라인은 이 경우에 &mdash; 작업을 조정하는 데 사용된 활동의 논리적 그룹화로서 데이터를 SQL Data Warehouse로 로드하고 변환합니다. 
 
 이 참조 아키텍처에서는 자식 파이프라인의 시퀀스를 실행하는 마스터 파이프라인을 정의합니다. 각 자식 파이프라인은 하나 이상의 데이터 웨어하우스 테이블에 데이터를 로드합니다.
 
@@ -119,7 +121,7 @@ Azure Data Factory는 [Blob Storage 커넥터](/azure/data-factory/connector-azu
 
 3. 청크를 다시 어셈블하려면 T-SQL [PIVOT](/sql/t-sql/queries/from-using-pivot-and-unpivot) 연산자를 사용하여 행을 열로 변환한 다음, 각 도시에 대해 열 값을 연결합니다.
 
-문제는 각 도시가 지리 데이터의 크기에 따라 다른 수의 행으로 분할된다는 것입니다. PIVOT 연산자가 작동하려면 모든 도시에 동일한 수의 행이 있어야 합니다. 이 작업을 수행하려면 피벗 후에 모든 도시가 동일한 수의 열을 가질 수 있도록 T-SQL 쿼리([here][MergeLocation]을 볼 수 있는)가 빈 값이 있는 행을 채우기 위한 몇 가지 트릭을 수행합니다. 결과 쿼리는 한 번에 하나씩 행을 반복하는 것보다 훨씬 더 빠른 것으로 밝혀졌습니다.
+문제는 각 도시가 지리 데이터의 크기에 따라 다른 수의 행으로 분할된다는 것입니다. PIVOT 연산자가 작동하려면 모든 도시에 동일한 수의 행이 있어야 합니다. 이 작업을 수행하려면 피벗 후에 모든 도시가 동일한 수의 열을 가질 수 있도록 T-SQL 쿼리([여기][MergeLocation]서 확인 가능)가 빈 값이 있는 행을 채우기 위한 몇 가지 트릭을 수행합니다. 결과 쿼리는 한 번에 하나씩 행을 반복하는 것보다 훨씬 더 빠른 것으로 밝혀졌습니다.
 
 동일한 방식이 이미지 데이터에 사용됩니다.
 
@@ -186,7 +188,7 @@ SET [Integration].[Sale_Staging].[WWI Customer ID] =  CustomerHolder.[WWI Custom
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
-이 참조 아키텍처에 대한 배포는 [GitHub][ref-arch-repo-folder]에서 사용할 수 있습니다. 다음을 배포합니다.
+참조 구현을 배포하고 실행하려면 [GitHub readme][github]의 단계를 따릅니다. 다음을 배포합니다.
 
   * 온-프레미스 데이터베이스 서버를 시뮬레이션하는 Windows VM Power BI Desktop과 함께 SQL Server 2017 및 관련된 도구를 포함합니다.
   * SQL Server 데이터베이스에서 가져온 데이터를 저장할 Blob 저장소를 제공하는 Azure 저장소 계정
@@ -194,327 +196,8 @@ SET [Integration].[Sale_Staging].[WWI Customer ID] =  CustomerHolder.[WWI Custom
   * Azure Analysis Services 인스턴스
   * ELT 작업에 대한 Azure Data Factory 및 Data Factory 파이프라인
 
-### <a name="prerequisites"></a>필수 조건
-
-[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
-
-### <a name="variables"></a>variables
-
-이후 단계는 일부 사용자 정의 변수를 포함합니다. 이를 자신이 정의하는 값으로 바꿔야 합니다.
-
-- `<data_factory_name>` 데이터 팩터리 이름.
-- `<analysis_server_name>` Analysis Services 서버 이름.
-- `<active_directory_upn>` Azure Active Directory UPN(사용자 계정 이름). 예: `user@contoso.com`.
-- `<data_warehouse_server_name>` SQL Data Warehouse 서버 이름.
-- `<data_warehouse_password>` SQL Data Warehouse 관리자 암호.
-- `<resource_group_name>` 리소스 그룹의 이름.
-- `<region>` 리소스가 배포될 Azure 지역.
-- `<storage_account_name>` Storage 계정 이름 Storage 계정에 대한 [명명 규칙](../../best-practices/naming-conventions.md#naming-rules-and-restrictions)을 따라야 합니다.
-- `<sql-db-password>` SQL Server 로그인 암호.
-
-### <a name="deploy-azure-data-factory"></a>Azure Data Factory 배포
-
-1. [GitHub 리포지터리][ref-arch-repo]의 `data\enterprise_bi_sqldw_advanced\azure\templates` 폴더로 이동합니다.
-
-2. 다음 Azure CLI 명령을 실행하여 리소스 그룹을 만듭니다.  
-
-    ```bash
-    az group create --name <resource_group_name> --location <region>  
-    ```
-
-    SQL Data Warehouse, Azure Analysis Services 및 Data Factory v2를 지원하는 지역을 지정합니다. [지역별 Azure 제품](https://azure.microsoft.com/global-infrastructure/services/) 참조
-
-3. 다음 명령을 실행합니다.
-
-    ```
-    az group deployment create --resource-group <resource_group_name> \
-        --template-file adf-create-deploy.json \
-        --parameters factoryName=<data_factory_name> location=<location>
-    ```
-
-다음으로, Azure Portal을 사용하여 다음과 같이 Azure Data Factory [통합 런타임](/azure/data-factory/concepts-integration-runtime)에 대한 인증 키를 가져옵니다.
-
-1. [Azure Portal](https://portal.azure.com/)에서 Data Factory 인스턴스로 이동합니다.
-
-2. Data Factory 블레이드에서 **작성자 및 모니터링**을 클릭합니다. 이렇게 하면 다른 브라우저 창에서 Azure Data Factory 포털이 열립니다.
-
-    ![](./images/adf-blade.png)
-
-3. Azure Data Factory 포털에서 연필 아이콘("작성자")을 선택합니다. 
-
-4. **연결**을 클릭한 다음, **Integration Runtime**을 선택합니다.
-
-5. **sourceIntegrationRuntime**에서 연필 아이콘("편집")을 클릭합니다.
-
-    > [!NOTE]
-    > 포털의 상태가 "사용할 수 없음"으로 표시됩니다. 이는 온-프레미스 서버를 배포할 때까지 필요합니다.
-
-6. **Key1**을 찾아 인증 키의 값을 복사합니다.
-
-다음 단계에 대한 인증 키가 필요합니다.
-
-### <a name="deploy-the-simulated-on-premises-server"></a>시뮬레이션된 온-프레미스 서버 배포
-
-이 단계에서는 SQL Server 2017 및 관련 도구를 포함하는 시뮬레이션된 온-프레미스 서버로 VM을 배포합니다. 또한 [Wide World Importers OLTP 데이터베이스][wwi]를 SQL Server로 로드합니다.
-
-1. 리포지토리의 `data\enterprise_bi_sqldw_advanced\onprem\templates` 폴더로 이동합니다.
-
-2. `onprem.parameters.json` 파일에서 `adminPassword`을 검색합니다. SQL Server VM에 로그인하기 위한 암호입니다. 다른 암호로 값을 바꿉니다.
-
-3. 동일한 파일에서 `SqlUserCredentials`을 검색합니다. 이 속성은 SQL Server 계정 자격 증명을 지정합니다. 다른 값으로 암호를 바꿉니다.
-
-4. 아래와 같이 동일한 파일에서 Integration Runtime 인증 키를 `IntegrationRuntimeGatewayKey` 매개 변수에 붙여넣습니다.
-
-    ```json
-    "protectedSettings": {
-        "configurationArguments": {
-            "SqlUserCredentials": {
-                "userName": ".\\adminUser",
-                "password": "<sql-db-password>"
-            },
-            "IntegrationRuntimeGatewayKey": "<authentication key>"
-        }
-    ```
-
-5. 다음 명령을 실행합니다.
-
-    ```bash
-    azbb -s <subscription_id> -g <resource_group_name> -l <region> -p onprem.parameters.json --deploy
-    ```
-
-이 단계는 완료하는 데 20~30분 정도 걸릴 수 있습니다. 도구를 설치하고 데이터베이스를 복원하려면 [DSC](/powershell/dsc/overview) 스크립트 실행이 포함됩니다. 
-
-### <a name="deploy-azure-resources"></a>Azure 리소스 배포
-
-이 단계에서는 SQL Data Warehouse, Azure Analysis Services 및 Data Factory를 프로비전합니다.
-
-1. [GitHub 리포지터리][ref-arch-repo]의 `data\enterprise_bi_sqldw_advanced\azure\templates` 폴더로 이동합니다.
-
-2. 다음 Azure CLI 명령을 실행합니다. 꺾쇠 괄호 안에 표시된 매개 변수 값을 바꿉니다.
-
-    ```bash
-    az group deployment create --resource-group <resource_group_name> \
-     --template-file azure-resources-deploy.json \
-     --parameters "dwServerName"="<data_warehouse_server_name>" \
-     "dwAdminLogin"="adminuser" "dwAdminPassword"="<data_warehouse_password>" \ 
-     "storageAccountName"="<storage_account_name>" \
-     "analysisServerName"="<analysis_server_name>" \
-     "analysisServerAdmin"="<user@contoso.com>"
-    ```
-
-    - `storageAccountName` 매개 변수는 Storage 계정에 대한 [명명 규칙](../../best-practices/naming-conventions.md#naming-rules-and-restrictions)을 따라야 합니다. 
-    - `analysisServerAdmin` 매개 변수의 경우 Azure Active Directory UPN(사용자 계정 이름)을 사용합니다.
-
-3. 저장소 계정에서 액세스 키를 가져오려면 다음 Azure CLI 명령을 실행합니다. 이 키는 다음 단계에서 사용합니다.
-
-    ```bash
-    az storage account keys list -n <storage_account_name> -g <resource_group_name> --query [0].value
-    ```
-
-4. 다음 Azure CLI 명령을 실행합니다. 꺾쇠 괄호 안에 표시된 매개 변수 값을 바꿉니다. 
-
-    ```bash
-    az group deployment create --resource-group <resource_group_name> \
-    --template-file adf-pipeline-deploy.json \
-    --parameters "factoryName"="<data_factory_name>" \
-    "sinkDWConnectionString"="Server=tcp:<data_warehouse_server_name>.database.windows.net,1433;Initial Catalog=wwi;Persist Security Info=False;User ID=adminuser;Password=<data_warehouse_password>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" \
-    "blobConnectionString"="DefaultEndpointsProtocol=https;AccountName=<storage_account_name>;AccountKey=<storage_account_key>;EndpointSuffix=core.windows.net" \
-    "sourceDBConnectionString"="Server=sql1;Database=WideWorldImporters;User Id=adminuser;Password=<sql-db-password>;Trusted_Connection=True;"
-    ```
-
-    연결 문자열에는 바꿔야 될 하위 문자열이 꺾쇠 괄호로 표시돼 있습니다. `<storage_account_key>`의 경우 이전 단계에서 얻은 키를 사용합니다. `<sql-db-password>`의 경우는 이전에 `onprem.parameters.json` 파일에서 지정한 SQL Server 계정 암호를 사용합니다.
-
-### <a name="run-the-data-warehouse-scripts"></a>데이터 웨어하우스 스크립트 실행
-
-1. [Azure Portal](https://portal.azure.com/)에서 `sql-vm1`이라는 온-프레미스 VM을 찾습니다. VM에 대한 사용자 이름 및 암호는 `onprem.parameters.json` 파일에서 지정됩니다.
-
-2. **연결**을 클릭하고 원격 데스크톱을 사용하여 VM에 연결합니다.
-
-3. 원격 데스크톱 세션에서 명령 프롬프트를 열고 VM에서 다음 폴더로 이동합니다.
-
-    ```
-    cd C:\SampleDataFiles\reference-architectures\data\enterprise_bi_sqldw_advanced\azure\sqldw_scripts
-    ```
-
-4. 다음 명령 실행:
-
-    ```
-    deploy_database.cmd -S <data_warehouse_server_name>.database.windows.net -d wwi -U adminuser -P <data_warehouse_password> -N -I
-    ```
-
-    `<data_warehouse_server_name>` 및 `<data_warehouse_password>`의 경우 이전의 데이터 웨어하우스 서버 이름 및 암호를 사용합니다.
-
-이 단계를 확인하려면 SSMS(SQL Server Management Studio)를 사용하여 SQL Data Warehouse 데이터베이스에 연결할 수 있습니다. 데이터베이스 테이블 스키마를 참조해야 합니다.
-
-### <a name="run-the-data-factory-pipeline"></a>Data Factory 파이프라인 실행
-
-1. 동일한 원격 데스크톱 세션에서 PowerShell 창을 엽니다.
-
-2. 다음 PowerShell 명령을 실행합니다. 메시지가 표시되면 **예**를 선택합니다.
-
-    ```powershell
-    Install-Module -Name AzureRM -AllowClobber
-    ```
-
-3. 다음 PowerShell 명령을 실행합니다. 메시지가 표시되면 Azure 자격 증명을 입력합니다.
-
-    ```powershell
-    Connect-AzureRmAccount 
-    ```
-
-4. 다음 PowerShell 명령을 실행합니다. 꺽쇠 괄호 안의 값을 바꿉니다.
-
-    ```powershell
-    Set-AzureRmContext -SubscriptionId <subscription id>
-
-    Invoke-AzureRmDataFactoryV2Pipeline -DataFactory <data-factory-name> -PipelineName "MasterPipeline" -ResourceGroupName <resource_group_name>
-
-5. In the Azure Portal, navigate to the Data Factory instance that was created earlier.
-
-6. In the Data Factory blade, click **Author & Monitor**. This opens the Azure Data Factory portal in another browser window.
-
-    ![](./images/adf-blade.png)
-
-7. In the Azure Data Factory portal, click the **Monitor** icon. 
-
-8. Verify that the pipeline completes successfully. It can take a few minutes.
-
-    ![](./images/adf-pipeline-progress.png)
-
-
-## Build the Analysis Services model
-
-In this step, you will create a tabular model that imports data from the data warehouse. Then you will deploy the model to Azure Analysis Services.
-
-**Create a new tabular project**
-
-1. From your Remote Desktop session, launch SQL Server Data Tools 2015.
-
-2. Select **File** > **New** > **Project**.
-
-3. In the **New Project** dialog, under **Templates**, select  **Business Intelligence** > **Analysis Services** > **Analysis Services Tabular Project**. 
-
-4. Name the project and click **OK**.
-
-5. In the **Tabular model designer** dialog, select **Integrated workspace**  and set **Compatibility level** to `SQL Server 2017 / Azure Analysis Services (1400)`. 
-
-6. Click **OK**.
-
-
-**Import data**
-
-1. In the **Tabular Model Explorer** window, right-click the project and select **Import from Data Source**.
-
-2. Select **Azure SQL Data Warehouse** and click **Connect**.
-
-3. For **Server**, enter the fully qualified name of your Azure SQL Data Warehouse server. You can get this value from the Azure Portal. For **Database**, enter `wwi`. Click **OK**.
-
-4. In the next dialog, choose **Database** authentication and enter your Azure SQL Data Warehouse user name and password, and click **OK**.
-
-5. In the **Navigator** dialog, select the checkboxes for the **Fact.\*** and **Dimension.\*** tables.
-
-    ![](./images/analysis-services-import-2.png)
-
-6. Click **Load**. When processing is complete, click **Close**. You should now see a tabular view of the data.
-
-**Create measures**
-
-1. In the model designer, select the **Fact Sale** table.
-
-2. Click a cell in the the measure grid. By default, the measure grid is displayed below the table. 
-
-    ![](./images/tabular-model-measures.png)
-
-3. In the formula bar, enter the following and press ENTER:
-
-    ```
-    Total Sales:=SUM('Fact Sale'[Total Including Tax])
-    ```
-
-4. Repeat these steps to create the following measures:
-
-    ```
-    Number of Years:=(MAX('Fact CityPopulation'[YearNumber])-MIN('Fact CityPopulation'[YearNumber]))+1
-    
-    Beginning Population:=CALCULATE(SUM('Fact CityPopulation'[Population]),FILTER('Fact CityPopulation','Fact CityPopulation'[YearNumber]=MIN('Fact CityPopulation'[YearNumber])))
-    
-    Ending Population:=CALCULATE(SUM('Fact CityPopulation'[Population]),FILTER('Fact CityPopulation','Fact CityPopulation'[YearNumber]=MAX('Fact CityPopulation'[YearNumber])))
-    
-    CAGR:=IFERROR((([Ending Population]/[Beginning Population])^(1/[Number of Years]))-1,0)
-    ```
-
-    ![](./images/analysis-services-measures.png)
-
-For more information about creating measures in SQL Server Data Tools, see [Measures](/sql/analysis-services/tabular-models/measures-ssas-tabular).
-
-**Create relationships**
-
-1. In the **Tabular Model Explorer** window, right-click the project and select **Model View** > **Diagram View**.
-
-2. Drag the **[Fact Sale].[City Key]** field to the **[Dimension City].[City Key]** field to create a relationship.  
-
-3. Drag the **[Face CityPopulation].[City Key]** field to the **[Dimension City].[City Key]** field.  
-
-    ![](./images/analysis-services-relations-2.png)
-
-**Deploy the model**
-
-1. From the **File** menu, choose **Save All**.
-
-2. In **Solution Explorer**, right-click the project and select **Properties**. 
-
-3. Under **Server**, enter the URL of your Azure Analysis Services instance. You can get this value from the Azure Portal. In the portal, select the Analysis Services resource, click the Overview pane, and look for the **Server Name** property. It will be similar to `asazure://westus.asazure.windows.net/contoso`. Click **OK**.
-
-    ![](./images/analysis-services-properties.png)
-
-4. In **Solution Explorer**, right-click the project and select **Deploy**. Sign into Azure if prompted. When processing is complete, click **Close**.
-
-5. In the Azure portal, view the details for your Azure Analysis Services instance. Verify that your model appears in the list of models.
-
-    ![](./images/analysis-services-models.png)
-
-## Analyze the data in Power BI Desktop
-
-In this step, you will use Power BI to create a report from the data in Analysis Services.
-
-1. From your Remote Desktop session, launch Power BI Desktop.
-
-2. In the Welcome Scren, click **Get Data**.
-
-3. Select **Azure** > **Azure Analysis Services database**. Click **Connect**
-
-    ![](./images/power-bi-get-data.png)
-
-4. Enter the URL of your Analysis Services instance, then click **OK**. Sign into Azure if prompted.
-
-5. In the **Navigator** dialog, expand the tabular project, select the model, and click **OK**.
-
-2. In the **Visualizations** pane, select the **Table** icon. In the Report view, resize the visualization to make it larger.
-
-6. In the **Fields** pane, expand **Dimension City**.
-
-7. From **Dimension City**, drag **City** and **State Province** to the **Values** well.
-
-9. In the **Fields** pane, expand **Fact Sale**.
-
-10. From **Fact Sale**, drag **CAGR**, **Ending Population**,  and **Total Sales** to the **Value** well.
-
-11. Under **Visual Level Filters**, select **Ending Population**. Set the filter to "is greater than 100000" and click **Apply filter**.
-
-12. Under **Visual Level Filters**, select **Total Sales**. Set the filter to "is 0" and click **Apply filter**.
-
-![](./images/power-bi-report-2.png)
-
-The table now shows cities with population greater than 100,000 and zero sales. CAGR  stands for Compounded Annual Growth Rate and measures the rate of population growth per city. You could use this value to find cities with high growth rates, for example. However, note that the values for CAGR in the model aren't accurate, because they are derived from sample data.
-
-To learn more about Power BI Desktop, see [Getting started with Power BI Desktop](/power-bi/desktop-getting-started).
-
-
 [adf]: //azure/data-factory
-[azure-cli-2]: //azure/install-azure-cli
-[azbb-repo]: https://github.com/mspnp/template-building-blocks
-[azbb-wiki]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
+[github]: https://github.com/mspnp/reference-architectures/tree/master/data/enterprise_bi_sqldw_advanced
 [MergeLocation]: https://github.com/mspnp/reference-architectures/blob/master/data/enterprise_bi_sqldw_advanced/azure/sqldw_scripts/city/%5BIntegration%5D.%5BMergeLocation%5D.sql
-[ref-arch-repo]: https://github.com/mspnp/reference-architectures
-[ref-arch-repo-folder]: https://github.com/mspnp/reference-architectures/tree/master/data/enterprise_bi_sqldw_advanced
 [wwi]: //sql/sample/world-wide-importers/wide-world-importers-oltp-database
+

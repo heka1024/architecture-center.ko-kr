@@ -6,12 +6,12 @@ ms.date: 05/02/2018
 pnp.series.title: Identity management
 pnp.series.prev: azure-ad
 pnp.series.next: adds-forest
-ms.openlocfilehash: 1e19d03998a18d997c2840f573e7bc79b24efbbc
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: a96f13f8c7f3e79c6e5d50f17e662176257fdab3
+ms.sourcegitcommit: 02ecd259a6e780d529c853bc1db320f4fcf919da
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47427975"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263715"
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>AD DS(Active Directory Domain Services)를 Azure로 확장
 
@@ -46,7 +46,7 @@ UDR 및 NVA 구성에 대한 자세한 내용은 [Azure에 보안 하이브리�
 
 예상되는 인증 요청의 양에 따라 [VM 크기][vm-windows-sizes] 요구 사항을 결정합니다. 온-프레미스에서 AD DS를 호스팅하는 머신의 사양을 출발점으로 삼아 이를 Azure VM 크기와 매칭합니다. 배포가 완료되면 VM에 가해지는 실제 부하를 바탕으로 사용률을 모니터링하고 확대 또는 축소합니다. AD DS 도메인 컨트롤러의 크기 결정에 대한 자세한 내용은 [Active Directory Domain Services의 용량 계획][capacity-planning-for-adds]을 참조하세요.
 
-Active Directory의 데이터베이스, 로그 및 SYSVOL을 저장할 별도의 가상 데이터 디스크를 만듭니다. Active Directory의 데이터베이스, 로그 및 SYSVOL을 운영 체제와 동일한 디스크에 저장하지 않습니다. 기본적으로 VM에 연결된 데이터 디스크는 write-through 캐싱을 사용합니다. 그러나 이러한 유형의 캐싱은 AD DS의 요구 사항과 충돌할 수 있습니다. 따라서 데이터 디스크의 *호스트 캐시 기본 설정*을 *없음*으로 설정해야 합니다. 자세한 내용은 [Windows Server AD DS 데이터베이스 및 SYSVOL의 배치][adds-data-disks]를 참조하세요.
+Active Directory의 데이터베이스, 로그 및 SYSVOL을 저장할 별도의 가상 데이터 디스크를 만듭니다. Active Directory의 데이터베이스, 로그 및 SYSVOL을 운영 체제와 동일한 디스크에 저장하지 않습니다. 기본적으로 VM에 연결된 데이터 디스크는 write-through 캐싱을 사용합니다. 그러나 이러한 유형의 캐싱은 AD DS의 요구 사항과 충돌할 수 있습니다. 따라서 데이터 디스크의 *호스트 캐시 기본 설정*을 *없음*으로 설정해야 합니다. 자세한 내용은 [Azure Virtual Machines에 Windows Server Active Directory를 배포하기 위한 지침][adds-data-disks]을 참조하세요.
 
 도메인 컨트롤러로서 AD DS를 실행하는 VM을 2개 이상 배포하고 이를 [가용성 집합][availability-set]에 추가합니다.
 
@@ -169,7 +169,7 @@ AD DS 데이터베이스를 호스팅하는 디스크를 BitLocker 또는 Azure 
 [implementing-a-secure-hybrid-network-architecture]: ../dmz/secure-vnet-hybrid.md
 [implementing-a-secure-hybrid-network-architecture-with-internet-access]: ../dmz/secure-vnet-dmz.md
 
-[adds-data-disks]: https://msdn.microsoft.com/library/azure/jj156090.aspx#BKMK_PlaceDB
+[adds-data-disks]: https://msdn.microsoft.com/en-us/library/mt674703.aspx
 [ad-ds-operations-masters]: https://technet.microsoft.com/library/cc779716(v=ws.10).aspx
 [ad-ds-ports]: https://technet.microsoft.com/library/dd772723(v=ws.11).aspx
 [availability-set]: /azure/virtual-machines/virtual-machines-windows-create-availability-set

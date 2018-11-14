@@ -2,17 +2,15 @@
 title: 백그라운드 작업 지침
 description: 사용자 인터페이스와 독립적으로 실행되는 백그라운드 작업에 대한 지침.
 author: dragon119
-ms.date: 05/24/2017
-pnp.series.title: Best Practices
-ms.openlocfilehash: 57fd7a6cc400b53e51e08fb5a1377dce4ae61327
-ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
+ms.date: 11/05/2018
+ms.openlocfilehash: 0c48121a0d5cff33893a8f242c70f4a275c46f73
+ms.sourcegitcommit: d59e2631fb08665bc30f6b65bfc7e1b75935cbd5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251926"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021936"
 ---
 # <a name="background-jobs"></a>백그라운드 작업
-[!INCLUDE [header](../_includes/header.md)]
 
 다양한 유형의 응용 프로그램을 사용하려면 사용자 인터페이스(UI)와 독립적으로 실행되는 백그라운드 작업이 필요합니다. 이러한 작업의 예로 배치 작업, 집약적인 처리 작업, 워크플로 등의 장기 실행 프로세스가 있습니다. 백그라운드 작업은 사용자 조작 없이 실행할 수 있으며, 응용 프로그램은 작업을 시작한 다음 사용자의 조작 요청을 계속 처리할 수 있습니다. 따라서 응용 프로그램 UI에 대한 부담을 최소화하므로 가용성을 개선하고 대화형 응답 시간을 줄일 수 있습니다.
 
@@ -74,8 +72,7 @@ ms.locfileid: "50251926"
 * [**Azure Web Apps 및 WebJobs**](#azure-web-apps-and-webjobs). WebJobs를 사용하여 웹앱의 컨텍스트 내에서 서로 다른 형식의 스크립트 또는 실행 프로그램의 범위를 기반으로 사용자 지정 작업을 실행할 수 있습니다.
 * [**Azure Virtual Machines**](#azure-virtual-machines). Windows 서비스를 가지고 있거나 Windows 작업 Scheduler를 사용하려는 경우, 전용 가상 머신 내에서 백그라운드 작업을 호스트하는 것이 일반적입니다.
 * [**Azure Batch**](#azure-batch). Batch는 계산 집약적 작업이 관리되는 가상 머신 컬렉션에서 실행되도록 예약하는 플랫폼 서비스입니다. 이 기능은 계산 리소스 크기를 자동으로 조정할 수 있습니다.
-* [**Azure Container Service**](#azure-container-service). Azure Container Service는 Azure에서 컨테이너 호스팅 환경을 제공합니다. 
-* [**Azure Cloud Services**](#azure-cloud-services). 백그라운드 작업으로 실행하는 역할 내에서 코드를 작성할 수 있습니다.
+* [**AKS(Azure Kubernetes Service)**](#azure-kubernetes-service). Azure Kubernetes Service는 Azure 기반 Kubernetes를 위한 관리 호스팅 환경을 제공합니다. 
 
 다음 섹션에서는 이러한 각 옵션을 더 자세히 설명하며, 적절한 옵션을 선택하는 데 도움이 되는 고려 사항을 제공합니다.
 
@@ -110,11 +107,8 @@ Azure WebJob은 다음과 같은 특성을 가지고 있습니다.
 * 기본적으로 WebJobs 웹앱을 통해 확장됩니다. 그러나 **is_singleton** 구성 속성을 **true**로 설정하여 작업을 단일 인스턴스에서 실행되도록 구성할 수 있습니다. 단일 인스턴스 WebJobs는 확장을 원하지 않거나 인덱싱 다시 수행, 데이터 분석 및 유사한 작업 등 동시에 복수 인스턴스의 실행을 원하지 않는 작업에 유용합니다.
 * 작업이 웹앱의 성능에 미치는 영향을 최소화하려면 장기 실행 또는 리소스를 많이 사용할 수 있는 WebJobs를 호스트하기 위해 새 App Service 계획에 빈 Azure Web Apps 인스턴스를 만드는 것이 좋습니다.
 
-### <a name="more-information"></a>자세한 정보
-* [Azure WebJobs 권장 리소스](/azure/app-service-web/websites-webjobs-resources)는 WebJobs에 유용한 많은 리소스, 다운로드 및 샘플을 나열합니다.
-
 ### <a name="azure-virtual-machines"></a>Azure Virtual Machines
-백그라운드 작업은 Azure Web Apps 또는 Cloud Services에 배포되지 않도록 하는 방법으로 구현할 수 있습니다. 이러한 옵션은 불편할 수 있습니다. 일반적인 예로 Windows 서비스, 타사 유틸리티 및 실행 프로그램이 있습니다. 또한 응용 프로그램을 호스트하는 것과 다른 실행 환경을 위해 작성된 프로그램도 이러한 예에 포함될 수 있습니다. 예를 들어, Windows 또는 .NET 응용 프로그램에서 실행하려는 Unix 또는 Linux 프로그램이 그러한 프로그램입니다. Azure 가상 머신을 위한 다양한 운영 체제 중에서 선택하고 사용자 서비스 또는 실행 파일을 해당 가상 머신에서 실행할 수 있습니다.
+백그라운드 작업은 Azure Web Apps에 배포되지 않는 방법으로 구현할 수 있지만, 이러한 옵션은 불편할 수 있습니다. 일반적인 예로 Windows 서비스, 타사 유틸리티 및 실행 프로그램이 있습니다. 또한 응용 프로그램을 호스트하는 것과 다른 실행 환경을 위해 작성된 프로그램도 이러한 예에 포함될 수 있습니다. 예를 들어, Windows 또는 .NET 응용 프로그램에서 실행하려는 Unix 또는 Linux 프로그램이 그러한 프로그램입니다. Azure 가상 머신을 위한 다양한 운영 체제 중에서 선택하고 사용자 서비스 또는 실행 파일을 해당 가상 머신에서 실행할 수 있습니다.
 
 Virtual Machines를 사용할 때 선택하는 방법은 [Azure App Services, Cloud Services 및 Virtual Machines 비교](/azure/app-service-web/choose-web-site-cloud-service-vm/)를 참조하세요. [Virtual Machines를 위한 옵션에 대한 자세한 내용은 Azure의 Windows 가상 머신 크기](/azure/virtual-machines/windows/sizes)를 참조하세요. Virtual Machines에 사용할 수 있는 운영 체제 및 미리 작성된 이미지에 대한 자세한 내용은 [Azure Virtual Machines Marketplace](https://azure.microsoft.com/gallery/virtual-machines/)를 참조하세요.
 
@@ -133,7 +127,8 @@ Azure 가상 머신에서 백그라운드 작업을 배포할지 여부를 결�
 * Azure Portal에서 작업을 모니터링하는 기능은 없고 실패한 작업을 자동으로 다시 시작하는 기능도 없지만, [Azure Resource Manager Cmdlet](https://msdn.microsoft.com/library/mt125356.aspx)을 사용하여 가상 머신의 기본 상태를 모니터링하고 이를 관리할 수 있습니다. 그러나 계산 노드의 프로세스 및 스레드를 제어하는 기능은 없습니다. 일반적으로 가상 컴퓨터를 사용하려면 작업의 구현 및 가상 컴퓨터의 운영 체제에서 데이터를 수집하는 메커니즘을 구현하기 위해 추가적인 노력이 필요합니다. 적절할 수 있는 한 가지 해결책은 [System Center Management Pack for Azure](https://www.microsoft.com/download/details.aspx?id=50013)를 사용하는 것입니다.
 * HTTP 엔드포인트를 통해 표시되는 모니터링 프로브를 만드는 것을 고려할 수 있습니다. 이 프로브에 대한 코드는 상태 확인, 작업 정보 및 통계 수집 또는 오류 정보 정렬 및 관리 응용 프로그램에 해당 정보 반환을 수행할 수 있습니다. 자세한 내용은 [상태 엔드포인트 모니터링 패턴](../patterns/health-endpoint-monitoring.md)을 참조하세요.
 
-#### <a name="more-information"></a>자세한 정보
+자세한 내용은 다음을 참조하세요.
+
 * [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
 * [Azure Virtual Machines FAQ](/azure/virtual-machines/virtual-machines-linux-classic-faq?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 
@@ -149,15 +144,15 @@ Batch는 본질적인 병렬 워크로드에 잘 작동합니다. 또한 마지�
 
 Azure Batch 작업은 노드(VM) 풀에서 실행됩니다. 한 가지 방법은 필요할 때만 풀을 할당한 후 작업이 완료되면 삭제하는 것입니다. 이렇게 하면 노드가 유휴 상태가 되지 않으므로 활용률은 최대화되지만 작업은 노드가 할당될 때까지 대기해야 합니다. 또는 미리 풀을 만들 수 있습니다. 이 방법은 작업 시작에 소요되는 시간을 최소화하지만, 결과적으로 노드가 유휴 상태가 될 수 있습니다. 자세한 내용은 [풀 및 계산 노드 수명](/azure/batch/batch-api-basics#pool-and-compute-node-lifetime)을 참조하세요.
 
-#### <a name="more-information"></a>자세한 정보 
+자세한 내용은 다음을 참조하세요.
 
-* [Batch를 사용하여 본질적인 병렬 워크로드 실행](/azure/batch/batch-technical-overview) 
+* [Azure Batch란?](/azure/batch/batch-technical-overview) 
 * [Batch를 사용하여 대규모 병렬 계산 솔루션 개발](/azure/batch/batch-api-basics) 
 * [대규모 컴퓨팅 워크로드를 위한 Batch 및 HPC 솔루션](/azure/batch/batch-hpc-solutions)
 
-### <a name="azure-container-service"></a>Azure Container Service 
+### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Azure Container Service를 사용하여 컨테이너화된 응용 프로그램을 실행하도록 VM 클러스터를 구성하고 관리할 수 있습니다. 이 서비스는 오케스트레이션을 위해 Docker Swarm, DC/OS 또는 Kubernetes 옵션을 제공합니다. 
+AKS(Azure Kubernetes Service)는 호스트된 Kubernetes 환경을 관리하므로 컨테이너화된 애플리케이션을 쉽게 배포하고 관리할 수 있습니다. 
 
 컨테이너는 백그라운드 작업을 실행하는 데 유용할 수 있습니다. 몇 가지 이점은 다음과 같습니다. 
 
@@ -168,92 +163,15 @@ Azure Container Service를 사용하여 컨테이너화된 응용 프로그램�
 
 #### <a name="considerations"></a>고려 사항
 
-- 컨테이너 오케스트레이터를 사용하는 방법을 이해해야 합니다. DevOps 팀의 기술에 따라, 문제가 될 수도 있고 그렇지 않을 수도 있습니다.  
-- 컨테이너 서비스는 IaaS 환경에서 실행됩니다. 전용 VNet 내에 VM 클러스터를 프로비전합니다. 
+- 컨테이너 오케스트레이터를 사용하는 방법을 이해해야 합니다. DevOps 팀의 기술에 따라, 문제가 될 수도 있고 그렇지 않을 수도 있습니다.
 
-#### <a name="more-information"></a>자세한 정보 
+자세한 내용은 다음을 참조하세요.
 
-* [Azure Container Service를 사용한 Docker 컨테이너 호스팅 소개](/azure/container-service/container-service-intro) 
+* [Azure의 컨테이너 개요](https://azure.microsoft.com/overview/containers/) 
 * [개인 Docker 컨테이너 레지스트리 소개](/azure/container-registry/container-registry-intro) 
 
-### <a name="azure-cloud-services"></a>Azure Cloud Services 
-웹 역할 내에서 또는 별도 작업자 역할에서 백그라운드 작업을 실행할 수 있습니다. 작업자 역할을 사용할지 여부는 확장성과 탄력성, 작업 수명, 릴리스 주기, 보안, 내결함성, 경합, 복잡성 및 논리적 아키텍처를 고려하여 결정해야 합니다. 자세한 내용은 [Compute 리소스 통합 패턴](../patterns/compute-resource-consolidation.md)을 참조하세요.
-
-Cloud Services 역할 내에서 백그라운드 작업을 구현하는 여러 가지 방법이 있습니다.
-
-* 역할에 **RoleEntryPoint** 클래스의 구현을 만들고 해당 메서드를 사용하여 백그라운드 작업을 실행합니다. 작업은 WaIISHost.exe의 컨텍스트에서 실행되며, **CloudConfigurationManager** 클래스의 **GetSetting** 메서드를 사용하여 구성 설정을 로드할 수 있습니다. 자세한 내용은 [수명 주기](#lifecycle)를 참조하세요.
-* 시작 작업을 사용하여 응용 프로그램이 시작될 때 백그라운드 작업을 실행합니다. 작업을 백그라운드에서 계속 실행하게 하려면 **taskType** 속성을 **배경**으로 설정합니다. 이렇게 하지 않으면 응용 프로그램 시작 프로세스가 중단되며 작업이 완료되기를 기다립니다. 자세한 내용은 [Azure에서 시작 작업 실행](/azure/cloud-services/cloud-services-startup-tasks)을 참조하세요.
-* WebJobs SDK를 사용하여 백그라운드 작업을 시작 작업으로 시작되는 WebJobs로 구현합니다. 자세한 내용은 [Azure App Service에서 .NET WebJob 만들기](/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started)를 참조하세요.
-* 시작 작업을 사용하여 하나 이상의 백그라운드 작업을 실행하는 Windows 서비스를 설치합니다. 서비스가 백그라운드에서 실행하도록 **taskType** 속성을 **배경**으로 설정해야 합니다. 자세한 내용은 [Azure에서 시작 작업 실행](/azure/cloud-services/cloud-services-startup-tasks)을 참조하세요.
-
-웹 역할에서 백그라운드 작업을 실행하는 방법의 주된 장점은 추가 역할을 배포하라는 요구 사항이 없기 때문에 호스팅 비용이 절감된다는 것입니다.
-
-작업자 역할에서 백그라운드 작업을 실행하는 방법은 여러 가지 장점이 있습니다.
-
-* 각 유형의 역할에 대해 별도로 확장을 관리할 수 있습니다. 예를 들어 현재 부하를 지원하려면 웹 역할의 더 많은 인스턴스가 필요할 수 있지만, 백그라운드 작업을 실행하는 작업자 역할의 인스턴스는 감소합니다. UI 역할에서 별도로 백그라운드 작업 계산 인스턴스를 확장하면 허용 가능한 성능을 유지하면서도 호스팅 비용을 줄일 수 있습니다.
-* 즉, 웹 역할에서 백그라운드 작업에 대한 처리 오버헤드가 제거됩니다. UI를 제공하는 웹 역할은 응답성을 유지할 수 있으며, 따라서 지정된 양의 사용자 요청을 지원하는 데 필요한 인스턴스 수가 감소할 수 있습니다.
-* 중요한 부분의 분리를 구현할 수 있습니다. 각 역할 유형은 명확하게 정의되고 관련된 작업의 특정 집합을 구현할 수 있습니다. 따라서 각 역할 간에 코드 및 기능의 독립성이 감소하므로 코드를 더 쉽게 디자인 및 유지 관리할 수 있습니다.
-* 중요한 프로세스 및 데이터를 격리하는 것이 좋습니다. 예를 들어 UI를 구현하는 웹 역할은 작업자 역할에서 관리 및 제어하는 데이터에 액세스할 필요가 없습니다. 특히 [게이트키퍼 패턴](../patterns/gatekeeper.md) 같은 패턴을 사용하는 경우 보안 강화에 유용할 수 있습니다.  
-
-#### <a name="considerations"></a>고려 사항
-Cloud Services 웹 및 작업자 역할을 허용하는 경우 백그라운드 작업을 배포할 방법 및 위치를 선택할 때 다음 사항을 고려합니다.
-
-* 백그라운드 작업을 기존 웹 역할에서 호스트하면 단순히 이 작업에 대한 별도의 작업자 역할을 실행하는 비용을 절감할 수 있지만, 처리 및 다른 리소스에 대한 경합이 있는 경우 응용 프로그램의 성능과 가용성에 영향을 미칠 가능성이 있습니다. 별도 작업자 역할을 사용하면 장기 실행 또는 리소스를 많이 사용하는 백그라운드 작업의 영향으로부터 웹 역할이 보호됩니다.
-* **RoleEntryPoint** 클래스를 사용하여 백그라운드 작업을 호스트하면 이 작업을 쉽게 다른 역할로 이동할 수 있습니다. 예를 들어 웹 역할에서 클래스를 만들고 나중에 작업자 역할에서 작업을 실행해야 할 필요가 있는 경우, **RoleEntryPoint** 클래스 구현을 작업자 역할로 이동할 수 있습니다.
-* 시작 작업은 프로그램 또는 스크립트를 실행하도록 디자인됩니다. 백그라운드 작업을 실행 프로그램으로 배포하는 것은 특히 종속 어셈블리의 배포도 필요한 경우 더 어려울 수 있습니다. 시작 작업을 사용할 때 백그라운드 작업을 정의하는 스크립트를 배포하고 사용하는 것이 더 쉬울 수 있습니다.
-* 백그라운드 작업을 실패하게 만드는 예외는 호스트되는 방법에 따라 서로 다른 영향을 미칩니다.
-  * **RoleEntryPoint** 클래스 접근 방식을 사용하는 경우, 실패한 작업은 역할을 다시 시작하게 만들어 작업이 자동으로 다시 시작됩니다. 이 상황은 응용 프로그램의 가용성에 영향을 줄 수 있습니다. 이 문제를 방지하려면 **RoleEntryPoint** 클래스 및 모든 백그라운드 작업 내에 강력한 예외 처리를 포함시킵니다. 코드를 사용하여 실패하는 작업을 다시 시작하고(적절한 경우) 사용자 코드 내에서 실패로부터 정상적으로 복구할 수 없는 경우에만 예외를 발생시켜 역할을 다시 시작합니다.
-  * 시작 작업을 사용하면 사용자가 작업 실행 관리 및 실패 여부 검사를 책임져야 합니다.
-* 시작 작업의 관리 및 모니터링은 **RoleEntryPoint** 클래스 접근 방식을 사용하는 것보다 더 어렵습니다. 그러나 Azure WebJobs SDK에는 시작 작업을 통해 시작하는 WebJobs 관리를 쉽게 수행할 수 있는 대시보드가 포함되어 있습니다.
-
-#### <a name="lifecycle"></a>수명 주기 
- **RoleEntryPoint** 클래스를 사용하여 웹 및 작업자 역할을 사용하는 Cloud Services 응용 프로그램에 대한 백그라운드 작업을 구현하기로 결정한 경우, 해당 작업을 올바르게 사용하려면 이 클래스의 수명 주기를 이해해야 합니다.
-
-웹 및 작업자 역할은 시작, 실행 및 중지함에 따라 개별 단계의 집합을 거치게 됩니다. **RoleEntryPoint** 클래스는 이러한 단계가 실행되는 시기를 나타내는 일련의 이벤트를 표시합니다. 이러한 이벤트를 사용하여 사용자 지정 백그라운드 작업을 초기화, 실행 및 중지할 수 있습니다. 전체 주기는 다음과 같습니다.
-
-* Azure는 역할 어셈블리를 로드하고 **RoleEntryPoint**에서 파생된 클래스를 검색합니다.
-* 이 클래스를 발견하면 **RoleEntryPoint.OnStart()** 를 호출합니다. 사용자의 백그라운드 작업을 초기화하려면 이 메서드를 재정의합니다.
-* **OnStart** 메서드가 완료된 후 Azure는 응용 프로그램의 전역 파일(있는 경우, 예: ASP.NET을 실행하는 웹 역할의 Global.asax)에서 **Application_start()** 를 호출합니다.
-* Azure는 **OnStart()** 와 병렬로 실행하는 새 포그라운드에 대해 **RoleEntryPoint.Run()** 을 호출합니다. 사용자의 백그라운드 작업을 시작하려면 이 메서드를 재정의합니다.
-* Run 메서드가 종료되면 Azure는 먼저 응용 프로그램의 전역 파일(있는 경우)에서 **Application_End()** 를 호출한 다음 **RoleEntryPoint.OnStop()** 을 호출합니다. 사용자의 백그라운드 작업 중지, 리소스 정리, 개체 삭제 및 작업이 사용했을 수 있는 연결 닫기를 수행하려면 **OnStop**을 재정의합니다.
-* Azure 작업자 역할 호스트 프로세스는 중지됩니다. 이 시점에 역할이 재활용되고 다시 시작됩니다.
-
-**RoleEntryPoint** 클래스의 메서드 사용에 대한 더 자세한 내용 및 예제는 [Compute 리소스 통합 패턴](../patterns/compute-resource-consolidation.md)을 참조하세요.
-
-#### <a name="implementation-considerations"></a>구현 고려 사항
-
-웹 또는 작업자 역할에서 백그라운드 작업을 구현하는 경우 다음 사항을 고려하세요.
-
-* **RoleEntryPoint** 클래스의 기본 **Run** 메서드 구현에는 역할을 무기한 유지하는 **Thread.Sleep(Timeout.Infinite)** 호출이 포함되어 있습니다. **Run** 메서드(일반적으로 백그라운드 작업을 실행하기 위해 필요함)를 재정의할 경우에는 역할 인스턴스를 재활용하기를 원하지 않는 한 사용자의 코드가 메서드에서 종료하는 것을 허용해서는 안 됩니다.
-* **Run** 메서드의 일반적인 구현은 각 백그라운드 작업을 시작하는 코드 및 모든 백그라운드 작업의 상태를 주기적으로 확인하는 루프 구문을 포함하고 있습니다. 이러한 구현은 실패한 단계를 다시 시작하거나 작업이 완료되었음을 나타내는 취소 토큰을 모니터링할 수 있습니다.
-* 백그라운드 작업이 처리되지 않은 예외를 발생시킨 경우, 역할의 다른 백그라운드 작업이 계속 실행될 수 있도록 하면서 해당 작업을 재활용해야 합니다. 그러나 예외가 공유 저장소와 같은 작업 외부의 개체 손상으로 야기된 경우, 사용자의 **RoleEntryPoint** 클래스에 의해 예외를 처리하고, 모든 작업을 취소하고, **Run** 메서드의 종료를 허용해야 합니다. 이때 Azure는 역할을 다시 시작합니다.
-* 백그라운드 작업을 일시 중지 또는 중단하려면 **OnStop** 메서드를 사용합니다. 이를 위해 장기 실행 또는 다단계 작업을 중지해야 할 수 있으며, 이 작업을 데이터 불일치가 발생하지 않도록 수행할 수 있는 방법을 고려해야 합니다 역할 인스턴스가 사용자가 시작한 종료 이외의 이유로 중지된 경우, **OnStop** 메서드에서 실행되는 코드는 5분 이내에 완료되어야 하며, 5분이 지나면 강제 종료됩니다. 사용자의 코드가 이 시간 이내에 완료될 수 있는지 또는 완료될 때까지 실행하지 않고 견딜 수 있는지 확인해야 합니다.  
-* Azure Load Balancer는 **RoleEntryPoint.OnStart** 메서드가**true** 값을 반환하면 트래픽을 해당 역할 인스턴스로 전달하기 시작합니다. 따라서 **OnStart** 메서드의 모든 초기화 코드를 성공적으로 초기화되지 않은 역할 인스턴스가 트래픽을 수신하지 않도록 하는 것을 고려해야 합니다.
-* **RoleEntryPoint** 클래스의 메서드에 더하여 시작 작업을 사용할 수 있습니다. 시작 작업은 역할이 요청을 수신하기 전에 수행되므로 이러한 시작 작업을 사용하여 Azure 부하 분산 장치에서 변경해야 하는 설정을 초기화해야 합니다. 자세한 내용은 [Azure에서 시작 작업 실행](/azure/cloud-services/cloud-services-startup-tasks/)을 참조하세요.
-* 시작 작업에 오류가 있으면 역할을 계속 다시 시작하도록 강요할 수 있습니다. 이로 인해 이전 단계의 버전으로 다시 VIP(가상 IP) 주소 교환을 수행하지 못할 수 있습니다. 교환을 위해서는 역할에 단독 액세스해야 하는데, 역할이 다시 시작되는 동안에는 액세스가 불가능하기 때문입니다. 해결 방법:
-  
-  * 사용자 역할의 **OnStart** 및 **Run** 메서드 시작 부분에 다음 코드를 추가합니다.
-    
-    ```C#
-    var freeze = CloudConfigurationManager.GetSetting("Freeze");
-    if (freeze != null)
-    {
-      if (Boolean.Parse(freeze))
-      {
-        Thread.Sleep(System.Threading.Timeout.Infinite);
-      }
-    }
-    ```
-    
-  * 역할에 대한 ServiceDefinition.csdef 및 ServiceConfiguration.\*.cscfg 파일에 부울 값 **동결** 설정의 정의를 추가하고 해당 값을 **false**로 설정합니다. 역할이 반복된 다시 시작 모드로 전환된 경우에는 이 설정을 **true**로 변경하여 역할 실행을 중지하고 이전 버전으로 교환할 수 있습니다.
-
-#### <a name="more-information"></a>자세한 정보
-* [Compute 리소스 통합 패턴](../patterns/compute-resource-consolidation.md)
-* [Azure WebJobs SDK 시작](/azure/app-service-web/websites-dotnet-webjobs-sdk-get-started/)
-
-
 ## <a name="partitioning"></a>분할
-기존 계산 인스턴스(예: 웹앱, 웹 역할, 기존 작업자 역할 또는 가상 머신) 내에 백그라운드 작업을 포함하기로 결정한 경우, 이 결정이 계산 인스턴스 및 백그라운드 작업 자체의 품질 특성에 미치는 영향을 고려해야 합니다. 이러한 요소는 작업을 기존 계산 인스턴스와 공동 배치할지 아니면 별도 계산 인스턴스로 분리할지 결정하는 데 도움이 됩니다.
+기존 계산 인스턴스 내에 백그라운드 작업을 포함하기로 결정하는 경우 이 결정이 계산 인스턴스 및 백그라운드 작업 자체의 품질 특성에 미치는 영향을 고려해야 합니다. 이러한 요소는 작업을 기존 계산 인스턴스와 공동 배치할지 아니면 별도 계산 인스턴스로 분리할지 결정하는 데 도움이 됩니다.
 
 * **가용성**: 백그라운드 작업이 응용 프로그램의 다른 부분, 특히 UI 및 사용자 조작에 직접 관련된 다른 부분과 같은 수준의 가용성을 가질 필요는 없습니다. 백그라운드 작업은 작업이 큐에 대기 중이기 때문에 대기 시간, 연결 실패 시 다시 시도 및 가용성에 영향을 미치는 다른 요소에 대해 더 잘 견딜 수 있습니다. 그러나 큐를 차단하고 전체적으로 응용 프로그램에 영향을 미칠 수 있는 요청 백업을 방지하기에 충분한 용량이 있어야 합니다.
 * **확장성**: 백그라운드 작업의 확장성 요구 사항은 UI 및 응용 프로그램의 대화형 부분과는 다를 가능성이 있습니다. UI 확장은 최고 수요를 만족하기 위해 필요할 수 있지만, 미해결 백그라운드 작업을 계산 인스턴스 수가 적어 사용량이 적은 시간 동안 완료할 수 있습니다.
@@ -285,9 +203,8 @@ Cloud Services 웹 및 작업자 역할을 허용하는 경우 백그라운드 �
 ## <a name="resiliency-considerations"></a>복원력 고려 사항
 백그라운드 작업은 응용 프로그램에 신뢰할 수 있는 서비스를 제공하기 위해 복원력이 있어야 합니다. 백그라운드 작업을 계획 및 디자인할 때는 다음 사항을 고려합니다.
 
-* 백그라운드 작업은 데이터를 손상하거나 응용 프로그램에 불일치를 발생시키지 않고 역할 또는 서비스 다시 시작을 정상적으로 처리할 수 있어야 합니다. 장기 실행 또는 다단계 작업의 경우, 작업의 상태를 영구적 저장소에 저장하거나, 또는 적절한 경우 메시지를 큐에 저장하여 *검사점 설정*을 사용하는 것을 고려합니다. 예를 들어 메시지의 상태 정보를 큐에 영구적으로 저장하고 작업 진행에 따라 이 상태 정보를 증분 방식으로 업데이트하여 작업이 처음부터 다시 시작하는 대신에 마지막 알려진 양호한 검사점부터 처리되도록 할 수 있습니다. Azure Service Bus 큐를 사용하는 경우, 메시지 세션을 사용하여 같은 시나리오를 활용할 수 있습니다. 세션을 통해 [SetState](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate?view=azureservicebus-4.0.0) 및 [GetState](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate?view=azureservicebus-4.0.0) 메서드를 사용하여 응용 프로그램 처리 상태를 저장하고 검색할 수 있습니다. 신뢰할 수 있는 다단계 프로세스와 워크플로를 디자인하는 방법에 대 한 자세한 내용은 [Scheduler 에이전트 감독자 패턴](../patterns/scheduler-agent-supervisor.md)을 참조하세요.
-* 웹 또는 작업자 역할을 사용하여 복수의 백그라운드 작업을 호스트하는 경우, 사용자의 **실행** 메서드 재정의를 실패했거나 중단된 작업을 모니터링하도록 디자인하고 해당 작업을 다시 시작합니다. 이 방법이 사실상 불가능하고 작업자 역할을 하용 중인 경우, **Run** 메서드에서 종료하여 작업자 역할을 강제로 다시 시작합니다.
-* 큐를 사용하여 백그라운드 작업과 통신하는 경우, 큐는 응용 프로그램이 평시 부하보다 더 높은 상태에 있는 동안 작업에 보내진 요청을 저장하는 버퍼 역할을 할 수 있습니다. 이 방법으로 사용량이 적은 기간 동안 작업이 UI를 불러오게 할 수 있습니다. 또한 이렇게 하면 역할을 재활용해도 UI가 차단되지 않습니다. 자세한 내용은 [큐 기반 부하 평준화 패턴](../patterns/queue-based-load-leveling.md)을 참조하세요. 일부 작업이 다른 작업보다 더 중요 한 경우, 이러한 작업이 덜 중요한 작업보다 먼저 실행되도록 [우선순위 큐 패턴](../patterns/priority-queue.md)의 구현을 고려합니다.
+* 백그라운드 작업은 데이터를 손상하거나 애플리케이션에 불일치를 발생시키지 않고 다시 시작을 정상적으로 처리할 수 있어야 합니다. 장기 실행 또는 다단계 작업의 경우, 작업의 상태를 영구적 저장소에 저장하거나, 또는 적절한 경우 메시지를 큐에 저장하여 *검사점 설정*을 사용하는 것을 고려합니다. 예를 들어 메시지의 상태 정보를 큐에 영구적으로 저장하고 작업 진행에 따라 이 상태 정보를 증분 방식으로 업데이트하여 작업이 처음부터 다시 시작하는 대신에 마지막 알려진 양호한 검사점부터 처리되도록 할 수 있습니다. Azure Service Bus 큐를 사용하는 경우, 메시지 세션을 사용하여 같은 시나리오를 활용할 수 있습니다. 세션을 통해 [SetState](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate?view=azureservicebus-4.0.0) 및 [GetState](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate?view=azureservicebus-4.0.0) 메서드를 사용하여 응용 프로그램 처리 상태를 저장하고 검색할 수 있습니다. 신뢰할 수 있는 다단계 프로세스와 워크플로를 디자인하는 방법에 대 한 자세한 내용은 [Scheduler 에이전트 감독자 패턴](../patterns/scheduler-agent-supervisor.md)을 참조하세요.
+* 큐를 사용하여 백그라운드 작업과 통신하는 경우, 큐는 응용 프로그램이 평시 부하보다 더 높은 상태에 있는 동안 작업에 보내진 요청을 저장하는 버퍼 역할을 할 수 있습니다. 이 방법으로 사용량이 적은 기간 동안 작업이 UI를 불러오게 할 수 있습니다. 또한 다시 시작은 UI를 차단하지 않습니다. 자세한 내용은 [큐 기반 부하 평준화 패턴](../patterns/queue-based-load-leveling.md)을 참조하세요. 일부 작업이 다른 작업보다 더 중요 한 경우, 이러한 작업이 덜 중요한 작업보다 먼저 실행되도록 [우선순위 큐 패턴](../patterns/priority-queue.md)의 구현을 고려합니다.
 * 메시지 또는 프로세스 메시지에 의해 시작되는 백그라운드 작업은 순서에서 벗어난 메시지 도착, 반복적으로 오류를 발생시키는 메시지(흔히 *포이즌 메시지*라 함) 및 두 번 이상 전달된 메시지 등과 같은 불일치를 처리하도록 설계해야 합니다. 다음을 고려해 보세요.
   * 기존 데이터 값을 기반으로 데이터를 변경하는(예를 들어 기존 값에 값을 더함) 메시지 같은 특정 순서에 따라 처리해야 하는 메시지는 원래 보낸 순서대로 도착하지 않을 수 있습니다. 또는 이러한 메시지는 각 인스턴스에 대한 변화하는 부하로 인해 다른 순서로 백그라운드 작업의 다른 인스턴스에 의해 처리될 수 있습니다. 특정 순서에 따라 처리해야 하는 메시지는 시퀀스 번호, 키 또는 백그라운드 작업이 올바른 순서로 처리되도록 하기 위해 사용할 수 있는 일부 다른 표시기를 포함해야 합니다. Azure Service Bus를 사용하는 경우, 전달 순서를 보장하기 위해 메시지 세션을 사용할 수 있습니다. 그러나 가능하면 프로세스를 이 메시지 순서가 중요하지 않도록 디자인하는 것이 일반적으로 더 효율적입니다.
   * 일반적으로 백그라운드 작업은 큐의 메시지를 엿보고 메시지를 다른 메시지 소비자로부터 일시적으로 숨긴 다음, 해당 메시지가 성공적으로 처리된 후에 삭제합니다. 메시지를 처리할 때 백그라운드 작업이 실패한 경우, 해당 메시지는 엿보기 시간 제한이 만료된 후 큐에 다시 나타나며, 작업의 다른 인스턴스에 의해 또는 이 인스턴스의 다음 처리 주기 동안 처리됩니다. 메시지가 소비자에서 일관되게 오류를 발생시키면 해당 메시지 때문에 작업, 큐 및 큐가 꽉 찬 경우 결국 응용 프로그램 자체가 차단됩니다. 그러므로 큐에서 포이즌 메시지를 감지하여 제거해야 합니다. Azure Service Bus를 사용하는 경우, 오류를 야기하는 메시지를 연결된 배달 못한 메시지 큐로 자동 또는 수동으로 이동할 수 있습니다.
@@ -297,31 +214,20 @@ Cloud Services 웹 및 작업자 역할을 허용하는 경우 백그라운드 �
 ## <a name="scaling-and-performance-considerations"></a>확장 및 성능 고려 사항
 백그라운드 작업은 시스템이 부하를 받고 있을 때 지연된 작업으로 인해 응용 프로그램을 차단하거나 불일치를 야기하지 않을 만큼 충분한 성능을 제공해야 합니다. 일반적으로 백그라운드 작업을 호스트하는 계산 인스턴스를 확장하면 성능이 향상됩니다. 백그라운드 작업을 계획 및 디자인할 때는 확장성 및 성능에 관하여 다음 사항을 고려합니다.
 
-* Azure는 현재 수요와 부하 또는 Web Apps, Cloud Services 웹 및 작업자 역할, 그리고 Virtual Machines에서 호스트하는 배치의 경우 미리 정의된 일정을 기반으로 하는 자동 크기 조정을 지원합니다(확장 및 다시 축소 모두). 런타임 비용을 최소화하면서 응용 프로그램이 전체적으로 충분한 성능을 갖게 하려면 이 기능을 사용합니다.
-* 백그라운드 작업이 Cloud Services 응용 프로그램(예: UI 또는 데이터 액세스 계층 같은 구성 요소)의 다른 부분에서 다른 성능 용량을 가지는 경우, 백그라운드 작업을 별도 작업자 역할에서 함께 호스트하면 UI 및 백그라운드 작업이 부하를 독립적으로 관리하도록 크기 조정할 수 있습니다. 여러 백그라운드 작업이 서로 크게 다른 성능 기능을 가지는 경우, 작업을 별도 작업자 역할로 분할하고 각 역할 유형을 독립적으로 크기 조정하는 것을 고려하세요. 단, 참고로 이렇게 하면 모든 작업을 더 적은 수의 역할로 결합하는 방법에 비해 런타임 비용이 증가할 수 있습니다.
-* 단순히 역할의 크기만 조정하면 부하를 받을 때 성능 손실을 방지하기에 부족할 수 있습니다. 또한 전체 처리 체인의 단일 지점이 병목 상태가 되는 것을 방지하기 위해 저장소 큐 및 다른 리소스를 크기 조정해야 할 수 있습니다. 또한 저장소의 최대 처리량 및 응용 프로그램과 백그라운드 작업이 의존하는 다른 서비스 등 다른 제한도 고려해야 합니다.
+* Azure는 현재 수요와 부하 또는 Web Apps 및 Virtual Machines에 호스트되는 배포의 경우 미리 정의된 일정을 기반으로 자동 크기 조정을 지원합니다(확장 및 축소 모두). 런타임 비용을 최소화하면서 응용 프로그램이 전체적으로 충분한 성능을 갖게 하려면 이 기능을 사용합니다.
+* 백그라운드 작업이 애플리케이션의 다른 부분(예: UI 또는 데이터 액세스 계층 같은 구성 요소)에서 다른 성능 용량을 가지는 경우, 백그라운드 작업을 별도의 계산 서비스에 함께 호스팅하면 UI 및 백그라운드 작업이 부하를 독립적으로 관리하도록 크기 조정할 수 있습니다. 여러 백그라운드 작업의 성능 기능이 서로 크게 다른 경우 백그라운드 작업을 분할하고 각 유형을 독립적으로 크기 조정하는 방안을 고려해보세요. 하지만 이렇게 하면 런타임 비용이 증가할 수 있습니다.
+* 단순히 계산 리소스의 크기만 조정하면 부하를 받을 때 성능 손실을 방지하기에 부족할 수 있습니다. 또한 전체 처리 체인의 단일 지점이 병목 상태가 되는 것을 방지하기 위해 저장소 큐 및 다른 리소스를 크기 조정해야 할 수 있습니다. 또한 저장소의 최대 처리량 및 응용 프로그램과 백그라운드 작업이 의존하는 다른 서비스 등 다른 제한도 고려해야 합니다.
 * 백그라운드 작업은 크기 조정을 고려하여 디자인해야 합니다. 예를 들어 이러한 작업은 저장소 큐에서 수신 대기하거나 메시지를 해당 큐에 보내기 위해 사용 중인 저장소 큐 수를 동적으로 감지할 수 있어야 합니다.
 * 기본적으로 WebJobs는 자체의 연결된 Azure Web Apps 인스턴스를 통해 크기를 조정합니다. 그러나 WebJob을 단일 인스턴스로 실행하려면 JSON 데이터 **{"is_singleton": true}** 가 포함된 Settings.job 파일을 만들 수 있습니다. 이렇게 하면 연결된 웹앱의 여러 인스턴스가 있더라도 Azure가 WebJob의 인스턴스를 한 개만 실행하게 되며, 이는 단일 인스턴스로만 실행해야 하는 예약된 작업에 유용한 방법입니다.
 
 ## <a name="related-patterns"></a>관련된 패턴
-* [비동기 메시징 입문](https://msdn.microsoft.com/library/dn589781.aspx)
-* [자동 크기 조정 지침](https://msdn.microsoft.com/library/dn589774.aspx)
 * [트랜잭션 패턴 보상](../patterns/compensating-transaction.md)
 * [경쟁 소비자 패턴](../patterns/competing-consumers.md)
 * [Compute 분할 지침](https://msdn.microsoft.com/library/dn589773.aspx)
-* [Compute 리소스 통합 패턴](https://msdn.microsoft.com/library/dn589778.aspx)
 * [게이트키퍼 패턴](../patterns/gatekeeper.md)
 * [리더 선택 패턴](../patterns/leader-election.md)
 * [파이프 및 필터 패턴](../patterns/pipes-and-filters.md)
 * [우선순위 큐 패턴](../patterns/priority-queue.md)
 * [큐 기반 부하 평준화 패턴](../patterns/queue-based-load-leveling.md)
 * [Scheduler 에이전트 감독자 패턴](../patterns/scheduler-agent-supervisor.md)
-
-## <a name="more-information"></a>자세한 정보
-* [백그라운드 작업 실행](https://msdn.microsoft.com/library/ff803365.aspx)
-* [Azure Cloud Services 역할 수명 주기](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Windows-Azure-Cloud-Services-Role-Lifecycle) (비디오)
-* [Azure WebJobs SDK 정의](https://docs.microsoft.com/azure/app-service-web/websites-dotnet-webjobs-sdk)
-* [WebJob으로 백그라운드 작업 실행](https://docs.microsoft.com/azure/app-service-web/web-sites-create-web-jobs)
-* [Azure 큐 및 Service Bus 큐 - 비교 및 대조](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)
-* [클라우드 서비스에서 진단 기능을 사용하는 방법](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 
