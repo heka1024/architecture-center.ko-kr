@@ -3,13 +3,13 @@ title: Azure 및 AWS 서비스 비교 - 다중 클라우드
 description: Microsoft Azure Cloud Services가 AWS(Amazon Web Services)에 비해 다중 클라우드 솔루션 또는 Azure로의 마이그레이션 측면에서 어떻게 다른지 확인합니다. 각각의 IT 기능에 대해 알아봅니다.
 keywords: 클라우드 서비스 비교, 클라우드 서비스 비교, 다중 클라우드, Azure AWS 비교, Azure와 AWS 비교, IT 기능
 author: lbrader
-ms.date: 11/06/2018
-ms.openlocfilehash: abf3d8afb21fbf6d49423c0759613eeae6b53849
-ms.sourcegitcommit: 02ecd259a6e780d529c853bc1db320f4fcf919da
+ms.date: 11/09/2018
+ms.openlocfilehash: ddfbf637ba820a9785e6698c8655dda4d971aaa0
+ms.sourcegitcommit: cc234a522b7fc35af3bcacdc044c2e2b529e54ed
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263833"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51347630"
 ---
 # <a name="aws-to-azure-services-comparison"></a>AWS와 Azure 서비스 비교 
 
@@ -36,7 +36,7 @@ AWS 사용자를 위한 Azure 개요는 [AWS 전문가를 위한 Azure 소개](i
 |                  영역                   |                  AWS 서비스                   |                                                                                                                                                    Azure 서비스                                                                                                                                                    |                                                                                              설명                                                                                              |
 |-----------------------------------------|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |             가상 서버             |     EC2(Elastic Compute Cloud) 인스턴스      |                                                                                                                  [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)                                                                                                                   | 가상 서버에서는 사용자가 OS 및 서버 소프트웨어를 배포, 관리 및 유지 관리할 수 있습니다. 인스턴스 유형은 CPU/RAM 조합에 따라 달라집니다. 사용자는 사용한 양만큼 요금을 내며 유연하게 크기를 변경할 수 있습니다. |
-|         <strong>&nbsp;</strong>         |                Amazon Lightsail                |                                                                                                              [Azure Virtual Machines & 이미지](https://azure.microsoft.com/services/virtual-machines/)                                                                                                              |                                                    가상 머신을 빌드할 때 선택할 수 있는 가상 머신 템플릿 컬렉션입니다.                                                     |
+|         <strong>&nbsp;</strong>         |                Amazon Lightsail                |                                                                                                              [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute)                                                                                                              |                                                    Azure Marketplace에는 다양한 애플리케이션에 대해 미리 구성된 VM 이미지를 선택하는 영역이 포함됩니다.                                                     |
 |           Container instances           |          ECS(EC2 Container Service)           |                                                                                                                 [Azure Container Service](https://azure.microsoft.com/services/container-service/)                                                                                                                  |        Azure Container Instances는 가상 머신을 프로비전하거나 더 높은 수준의 오케스트레이션 서비스를 도입하지 않고도 Azure에서 컨테이너를 가장 빠르고 간단하게 실행하는 방법입니다.         |
 |         <strong>&nbsp;</strong>         |             EC2 컨테이너 레지스트리             |                                                                                                                [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)                                                                                                                 |                                            고객을 Docker 형식 이미지를 저장할 수 있게 합니다. Azure에 배포되는 모든 컨테이너 유형을 만드는 데 사용됩니다.                                             |
 | 마이크로 서비스/컨테이너 오케스트레이터 | EKS(Elastic Container Service for Kubernetes) |                                                                                                              [AKS(Azure Kubernetes Service)](https://azure.microsoft.com/services/kubernetes-service/)                                                                                                               |                  Kubernetes를 사용하여 오케스트레이션 및 컨테이너화된 응용 프로그램을 배포합니다. 자동 업그레이드 및 기본 제공 작업 콘솔을 통해 모니터링 및 클러스터 관리를 간소화합니다.                  |

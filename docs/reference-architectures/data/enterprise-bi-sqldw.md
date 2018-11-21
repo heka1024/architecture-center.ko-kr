@@ -3,14 +3,14 @@ title: SQL Data Warehouse를 사용하는 Enterprise BI
 description: Azure를 사용하여 온-프레미스에 저장된 관계형 데이터에서 비즈니스 정보 얻기
 author: MikeWasson
 ms.date: 11/06/2018
-ms.openlocfilehash: d5b680346267a17b5016b8897dc03ddcf18a7fe9
-ms.sourcegitcommit: 02ecd259a6e780d529c853bc1db320f4fcf919da
+ms.openlocfilehash: 2822cf6d2a75d521f182c267f4bf2bac462d2b7f
+ms.sourcegitcommit: 877777094b554559dc9cb1f0d9214d6d38197439
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263816"
+ms.lasthandoff: 11/11/2018
+ms.locfileid: "51527714"
 ---
-# <a name="enterprise-bi-with-sql-data-warehouse"></a>SQL Data Warehouse를 사용하는 Enterprise BI
+# <a name="enterprise-bi-in-azure-with-sql-data-warehouse"></a>SQL Data Warehouse를 사용하는 Azure의 Enterprise BI
 
 이 참조 아키텍처는 온-프레미스 SQL Server 데이터베이스에서 SQL Data Warehouse로 데이터를 이동하고 분석을 위해 데이터를 변경하는 [ELT](../../data-guide/relational-data/etl.md#extract-load-and-transform-elt)(추출 부하 변형) 파이프라인을 구현합니다. 
 
@@ -199,7 +199,7 @@ Azure Analysis Services는 Azure AD(Azure Active Directory)를 사용하여 Anal
 
 ## <a name="next-steps"></a>다음 단계
 
-- Azure Data Factory를 사용하여 ELT 파이프라인을 자동화합니다. [SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 Enterprise BI][adf=ra]를 참조하세요.
+- Azure Data Factory를 사용하여 ELT 파이프라인을 자동화합니다. [SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 Enterprise BI][adf-ra]를 참조하세요.
 
 <!-- links -->
 

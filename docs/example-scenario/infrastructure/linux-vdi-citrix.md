@@ -3,12 +3,12 @@ title: Citrix를 사용한 Linux 가상 데스크톱
 description: Azure에서 Citrix를 사용하여 Linux 데스크톱에 대해 VDI 환경을 빌드합니다.
 author: miguelangelopereira
 ms.date: 09/12/2018
-ms.openlocfilehash: 374d59f7a528bd89870baa601a49a30ea00a08f1
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 383642b05926c5a09abf0b2f95fef10539d95aec
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819145"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610654"
 ---
 # <a name="linux-virtual-desktops-with-citrix"></a>Citrix를 사용한 Linux 가상 데스크톱
 
@@ -96,7 +96,7 @@ ms.locfileid: "48819145"
 
 ## <a name="pricing"></a>가격
 
-- Citrix XenDestop 라이선스는 Azure 서비스 요금에 포함되지 않습니다.
+- Citrix XenDesktop 라이선스는 Azure 서비스 요금에 포함되지 않습니다.
 - Citrix NetScaler 라이선스는 종량제 모델에 포함됩니다.
 - 예약 인스턴스를 사용하면 솔루션의 계산 비용이 크게 감소합니다.
 - ExpressRoute 비용은 포함되지 않습니다.

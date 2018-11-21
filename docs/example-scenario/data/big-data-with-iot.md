@@ -3,12 +3,12 @@ title: 건축 산업에서 IoT 및 데이터 분석
 description: IoT 장치 및 데이터 분석을 사용하여 건축 프로젝트의 포괄적인 관리 및 작업을 제공합니다.
 author: alexbuckgit
 ms.date: 08/29/2018
-ms.openlocfilehash: 7ab0de50b0eba1ab420e450f3408fe5dc45f04ac
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 74868191687e63a54a69fdacb7276983d98faf74
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818499"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610926"
 ---
 # <a name="iot-and-data-analytics-in-the-construction-industry"></a>건축 산업에서 IoT 및 데이터 분석
 
@@ -29,7 +29,7 @@ IoT Hub 및 HDInsight 같은 관리되는 Azure 서비스를 사용하여 고객
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 솔루션을 사용하는 데 적합한 사용 사례는 다음과 같습니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 건설, 채굴 또는 장비 제조 시나리오
 * 저장 및 분석을 위한 대규모 장치 데이터 컬렉션
@@ -47,7 +47,7 @@ IoT Hub 및 HDInsight 같은 관리되는 Azure 서비스를 사용하여 고객
 4. 수집된 원시 데이터는 IoT Hub에서 Azure Blob 저장소로 직접 전송되어 그 즉시 검토 및 분석에 사용할 수 있습니다.
 5. IoT Hub를 통해 수집된 데이터는 Azure Stream Analytics 작업에서 거의 실시간으로 처리된 후 Azure SQL 데이터베이스에 저장됩니다.
 6. 분석가 및 최종 사용자는 스마트 건설 클라우드 웹 응용 프로그램을 사용하여 센서 데이터 및 이미지를 살펴보고 분석할 수 있습니다. 
-7. 일괄 처리 작업은 웹 응용 프로그램 사용자의 요청이 있을 시 시작됩니다. 일괄 처리 작업은 HDInsight 기반의 Apache Spark에서 실행되어 Cassandra 클러스터에 저장된 새 데이터를 분석합니다. 
+7. 일괄 처리 작업은 웹 응용 프로그램 사용자의 요청이 있을 시 시작됩니다. 일괄 처리 작업은 HDInsight 기반의 Apache Spark에서 실행되어 Cassandra 클러스터에 저장된 새 데이터를 분석합니다. 
 
 ### <a name="components"></a>구성 요소
 

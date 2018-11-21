@@ -3,12 +3,12 @@ title: Azure에서 실시간 부정 행위 감지
 description: Azure Event Hubs 및 Stream Analytics를 사용하여 부정 행위를 실시간으로 검색합니다.
 author: alexbuckgit
 ms.date: 07/05/2018
-ms.openlocfilehash: 4de988731aa1c5b0e4c0ba06fa5aed59e2bb7d81
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: bd9eb4d572651c4e57a0043226860623cd8d17e1
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818669"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610620"
 ---
 # <a name="real-time-fraud-detection-on-azure"></a>Azure에서 실시간 부정 행위 감지
 
@@ -22,7 +22,7 @@ Event Hubs 및 Stream Analytics와 같이 완전하게 관리되는 Azure 서비
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 시나리오에 적합한 사용 사례는 다음과 같습니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 통신 시나리오에서 휴대폰의 부정 전화 행위 감지
 * 은행 기관에서 신용 카드의 부정 거래 행위 식별
@@ -63,7 +63,7 @@ Azure Monitor는 다양한 Azure 서비스를 모니터링하기 위한 통합�
 
 이 시나리오의 구성 요소는 하이퍼스케일 수집 및 대규모 병렬 실시간 분석을 위해 설계되었습니다. Azure Event Hubs는 확장성이 뛰어나고, 대기 시간이 짧고 초당 수백만 개의 이벤트를 받고 처리할 수 있습니다. Event Hubs는 사용량 요구 사항에 맞게 처리량 단위 수를 [자동으로 확장](/azure/event-hubs/event-hubs-auto-inflate)할 수 있습니다. Azure Stream Analytics는 많은 원본에서 대량의 스트리밍 데이터를 분석할 수 있습니다. 스트리밍 작업을 실행하기 위해 할당된 [스트리밍 단위](/azure/stream-analytics/stream-analytics-streaming-unit-consumption)의 수를 늘려 Stream Analytics를 확장할 수 있습니다.
 
-확장 가능한 시나리오 설계에 대한 일반적인 지침은 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
+확장 가능한 솔루션 설계에 대한 일반적인 지침은 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
 
 ### <a name="security"></a>보안
 

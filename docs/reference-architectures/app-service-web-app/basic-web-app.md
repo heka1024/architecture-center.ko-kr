@@ -3,16 +3,14 @@ title: 기본 웹앱 응용 프로그램
 description: Microsoft Azure에서 실행되는 기본 웹 응용 프로그램에 권장하는 아키텍처입니다.
 author: MikeWasson
 ms.date: 12/12/2017
-cardTitle: Basic web application
-ms.openlocfilehash: 570ee23341bb956a4430f1dc91f30b5194d4b4f0
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 06c37d5d87befa553a9efbe14acea24db57ae8f8
+ms.sourcegitcommit: 877777094b554559dc9cb1f0d9214d6d38197439
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429053"
+ms.lasthandoff: 11/11/2018
+ms.locfileid: "51527731"
 ---
-# <a name="basic-web-application"></a>기본 웹앱 응용 프로그램
-[!INCLUDE [header](../../_includes/header.md)]
+# <a name="basic-web-application-in-azure"></a>Azure의 기본 웹 애플리케이션
 
 이 참조 아키텍처는 [Azure App Service][app-service] 및 [Azure SQL Database][sql-db]를 사용하는 웹 응용 프로그램에 관한 일련의 검증된 사례를 보여 줍니다. [**이 솔루션을 배포합니다.**](#deploy-the-solution)
 

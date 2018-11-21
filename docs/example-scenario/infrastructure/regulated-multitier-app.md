@@ -3,12 +3,12 @@ title: 규제 산업용 Windows 웹 응용 프로그램 보호
 description: 확장 집합, Application Gateway 및 부하 분산 장치를 사용하여 Azure의 Windows Server에서 안전한 다중 계층 웹 응용 프로그램을 빌드합니다.
 author: iainfoulds
 ms.date: 07/11/2018
-ms.openlocfilehash: 584b5891f9b3d8e174c3eb29835a525ae4a4f156
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: c7137988bd9b5e26718b4fe0955a3dca3dc638b8
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819009"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610722"
 ---
 # <a name="secure-windows-web-application-for-regulated-industries"></a>규제 산업용 Windows 웹 응용 프로그램 보호
 
@@ -18,7 +18,7 @@ ms.locfileid: "48819009"
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 시나리오에 적합한 사용 사례는 다음과 같습니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 보안 클라우드 환경에서 응용 프로그램 배포 현대화
 * 레거시 온-프레미스 응용 프로그램 및 서비스 관리 감소

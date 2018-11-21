@@ -3,12 +3,12 @@ title: Azure에서 Oracle 데이터베이스를 사용하여 SAP 프로덕션 �
 description: Oracle 데이터베이스를 사용하여 Azure에서 SAP 프로덕션 배포를 실행합니다.
 author: DharmeshBhagat
 ms.date: 9/12/2018
-ms.openlocfilehash: 4c0e054a9024cd50581acd5b472a09d6e98d2bed
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 75942b4d9b18b7bbe7a162826bcf4fe9ece22dce
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818574"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610909"
 ---
 # <a name="running-sap-production-workloads-using-an-oracle-database-on-azure"></a>Azure에서 Oracle 데이터베이스를 사용하여 SAP 프로덕션 워크로드 실행
 
@@ -20,7 +20,7 @@ SAP 시스템은 중요 업무용 비즈니스 응용 프로그램을 실행하�
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-다음과 같은 시나리오에는 이 예제를 고려해 보세요.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * SAP에서 실행되는 중요 업무용 워크로드.
 * 중요하지 않은 SAP 워크로드.

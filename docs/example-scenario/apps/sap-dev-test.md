@@ -3,12 +3,12 @@ title: Azure의 SAP 워크로드에 대한 개발/테스트 환경
 description: SAP 워크로드에 대한 개발/테스트 환경을 빌드합니다.
 author: AndrewDibbins
 ms.date: 7/11/18
-ms.openlocfilehash: b47e4cb527d3e4ecd74bee7bcf08f2794da56d6c
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.openlocfilehash: 1cfd15b0287a1979ae5ad60e41a0b1627a2e115c
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876802"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610807"
 ---
 # <a name="devtest-environments-for-sap-workloads-on-azure"></a>Azure의 SAP 워크로드에 대한 개발/테스트 환경
 
@@ -22,7 +22,7 @@ ms.locfileid: "48876802"
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 시나리오에 적합한 사용 사례는 다음과 같습니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 중요하지 않은 비생산적 SAP 워크로드(샌드박스, 개발, 테스트, 품질 보증)
 * 중요하지 않은 SAP 비즈니스 워크로드

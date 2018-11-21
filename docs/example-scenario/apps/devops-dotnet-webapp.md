@@ -3,12 +3,12 @@ title: Azure DevOps를 사용한 CI/CD 파이프라인
 description: Azure DevOps를 사용하여 Azure Web Apps에 .NET 앱을 빌드하고 릴리스합니다.
 author: christianreddington
 ms.date: 07/11/18
-ms.openlocfilehash: 80890784d4c97aac418cef4e49f9075dbef10b8a
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 97f16b2d3d9c15bc6f5db6fad4c9d8097243ad3d
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818941"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610790"
 ---
 # <a name="cicd-pipeline-with-azure-devops"></a>Azure DevOps를 사용한 CI/CD 파이프라인
 
@@ -109,7 +109,7 @@ Azure Web Apps에 호스팅하는 대안은 다음과 같습니다.
 
 ### <a name="resiliency"></a>복원력
 
-[일반적인 복원력 디자인 패턴][design-patterns-resiliency]을 검토하고, 적절할 경우 이를 구현하는 것이 좋습니다.
+적절할 경우 [일반적인 복원력 디자인 패턴][design-patterns-resiliency]을 구현하는 것이 좋습니다.
 
 Azure 아키텍처 센터에서 [App Service에 대한 다양한 권장 사례][resiliency-app-service]를 찾을 수 있습니다.
 

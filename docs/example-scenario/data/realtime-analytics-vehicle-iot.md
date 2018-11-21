@@ -1,14 +1,14 @@
 ---
 title: 실시간 자동차 IoT 데이터의 수집 및 처리
 description: IoT를 사용하여 실시간 차량 데이터를 수집하고 처리합니다.
-author: meeral
+author: msdpalam
 ms.date: 09/12/2018
-ms.openlocfilehash: 663332185f64987215384a1d4af4b7ed9b50847c
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.openlocfilehash: 6562e3277e6b6eb38993132284ad43542ef4c0d3
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876888"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610739"
 ---
 # <a name="ingestion-and-processing-of-real-time-automotive-iot-data"></a>실시간 자동차 IoT 데이터의 수집 및 처리
 
@@ -23,7 +23,7 @@ ms.locfileid: "48876888"
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-다음 사용 사례에는 위의 목표와 함께 이 시나리오를 고려해 보세요. 텔레매틱스 수집 및 처리 시스템을 만드는 경우:
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 차량 유지 관리 알림 및 경고.
 * 차량 승객에 대한 위치 기반 서비스(즉, SOS).
@@ -65,7 +65,7 @@ IoT 장치에서 생성된 이벤트(데이터 또는 메시지)는 심층 분�
 * 99.9% SLA를 제공하는 관리 [HDInsight Kafka](/azure/hdinsight/kafka/apache-kafka-introduction)는 Azure Managed Disks와 통합됩니다.
 * [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)는 처음부터 클라우드의 성능 및 비용 효율성에 최적화되었습니다. Databricks 런타임은 Azure에서 실행할 때 성능과 비용을 10-100배 개선할 수 있는 다음과 같은 여러 핵심 기능을 Apache Spark 워크로드에 추가합니다.
 * Azure Databricks는 Azure 데이터베이스 및 저장소([Azure SQL Data Warehouse](/azure/sql-data-warehouse), [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db), [Azure Data Lake Store](https://azure.microsoft.com/services/storage/data-lake-storage) 및 [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs))와 긴밀하게 통합됩니다.
-    * Spark 클러스터가 자동으로 비용을 최소화할 수 있는 자동 크기 조정 및 자동 종료.
+    * Spark 클러스터가 자동으로 비용을 최소화할 수 있는 자동 크기 조정 및 자동 종료
     * 캐싱, 인덱싱 및 고급 쿼리 최적화를 포함한 성능 최적화. 클라우드 또는 온-프레미스 환경에서 기존 Apache Spark 배포의 성능을 10-100배 개선할 수 있습니다.
     * Azure Active Directory와 통합하면 Azure Databricks를 사용하여 완전한 Azure 기반 솔루션을 실행할 수 있습니다.
     * Azure Databricks의 역할 기반 액세스는 노트북, 클러스터, 작업 및 데이터에 대한 세밀한 사용자 권한을 가능하게 합니다.

@@ -3,12 +3,12 @@ title: 확장성이 높고 안전한 Azure의 WordPress 웹 사이트
 description: 미디어 이벤트에 대해 확장성이 높고 안전한 WordPress 웹 사이트를 빌드합니다.
 author: david-stanford
 ms.date: 09/18/2018
-ms.openlocfilehash: f7dd73524b2b63cd7d38e8e03bfd4b8edac251a9
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 6ff39d09fa301c8c68ce2a644cc489c0e87a22fa
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818482"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610610"
 ---
 # <a name="highly-scalable-and-secure-wordpress-website"></a>확장성이 높고 안전한 WordPress 웹 사이트
 
@@ -16,7 +16,7 @@ ms.locfileid: "48818482"
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 시나리오에 적합한 사용 사례는 다음과 같습니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 트래픽 급증을 일으키는 미디어 이벤트.
 * 콘텐츠 관리 시스템으로 WordPress를 사용하는 블로그.

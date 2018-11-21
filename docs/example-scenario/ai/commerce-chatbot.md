@@ -3,12 +3,12 @@ title: Azure에서 호텔 예약을 위한 대화형 챗봇
 description: Azure Bot Service를 사용하여 상거래 응용 프로그램에 대해 대화형 챗봇을 빌드합니다.
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: 826aa36da5f30a871abd90fd8ab2b202ffdf93f0
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: a922a75d621672fcac95296b1d99112d68c91107
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819655"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610773"
 ---
 # <a name="conversational-chatbot-for-hotel-reservations-on-azure"></a>Azure에서 호텔 예약을 위한 대화형 챗봇
 
@@ -20,7 +20,7 @@ Bot Service 및 Language Understanding 또는 Speech API 서비스와 같은 Azu
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 시나리오에 적합한 사용 사례는 다음과 같습니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 식당 포장 메뉴 보기 및 음식 주문
 * 호텔 가용성 확인 및 객실 예약
@@ -96,7 +96,7 @@ Azure SQL Database에 저장된 미사용 정보는 TDE(투명한 데이터 암�
 
 ### <a name="deploy-infrastructure-components"></a>인프라 구성 요소 배포
 
-Azure Resource Manager 템플릿을 사용하여 인프라 구성 요소를 배포하려면 다음 단계를 수행합니다.
+Resource Manager 템플릿을 사용하여 인프라 구성 요소를 배포하려면 다음 단계를 수행합니다.
 
 1. **Azure에 배포** 단추를 클릭합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fapps%2Fcommerce-chatbot.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure Portal에서 템플릿 배포가 열릴 때까지 기다린 후에 다음 단계를 수행합니다.
@@ -149,7 +149,8 @@ az bot create \
 
 ## <a name="related-resources"></a>관련 리소스
 
-Azure Bot Service를 활용하는 방법에 대한 일단의 단계별 자습서는 설명서의 [자습서 노드][botservice-docs]를 참조하세요.
+Azure Bot Service에 대한 일련의 단계별 자습서는 설명서의 [자습서 섹션][botservice-docs]을 참조하세요.
+
 
 <!-- links -->
 [aadb2c-docs]: /azure/active-directory-b2c/active-directory-b2c-overview

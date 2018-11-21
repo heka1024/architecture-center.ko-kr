@@ -3,16 +3,14 @@ title: 다중 지역 웹 응용 프로그램
 description: Microsoft Azure에서 실행되고 고가용성을 요구하는 웹 응용 프로그램을 위한 권장 아키텍처입니다.
 author: MikeWasson
 ms.date: 10/25/2018
-cardTitle: Run in multiple regions
-ms.openlocfilehash: 1ed69f4f7e79fe2025e2a10d50e851ac4c02f1a6
-ms.sourcegitcommit: 065fa8ecb37c8be1827da861243ad6a33c75c99d
+ms.openlocfilehash: 7780a3d2f39f398d2776c783fbc3922c3353e44c
+ms.sourcegitcommit: 877777094b554559dc9cb1f0d9214d6d38197439
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50136661"
+ms.lasthandoff: 11/11/2018
+ms.locfileid: "51527663"
 ---
-# <a name="run-a-web-application-in-multiple-regions"></a>여러 지역에서 웹 응용 프로그램 실행
-[!INCLUDE [header](../../_includes/header.md)]
+# <a name="run-a-web-application-in-multiple-azure-regions"></a>여러 Azure 지역에서 웹 애플리케이션 실행
 
 이 참조 아키텍처는 여러 지역에서 Azure App Service 응용 프로그램을 실행하여 고가용성을 실현하는 방법을 보여 줍니다. 
 

@@ -3,12 +3,12 @@ title: Azure의 3D 비디오 렌더링
 description: Azure Batch 서비스를 사용하여 Azure에서 원시 HPC 워크로드를 실행합니다.
 author: adamboeglin
 ms.date: 07/13/2018
-ms.openlocfilehash: 1206fa7d931fca635118929d433abe232ec5ca9a
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 1ffdaa5467fec73a01b8caa18b71c2bc4e49abbe
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818632"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610688"
 ---
 # <a name="3d-video-rendering-on-azure"></a>Azure의 3D 비디오 렌더링
 
@@ -18,7 +18,7 @@ Batch는 Windows Server 또는 Linux 계산 노드 중 어느 것을 선택하�
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 시나리오는 다음과 비슷한 사용 사례에 사용하는 것이 좋습니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 3D 모델링
 * VFX(Visual FX) 렌더링

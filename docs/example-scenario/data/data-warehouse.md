@@ -3,12 +3,12 @@ title: 영업 및 마케팅에 대한 데이터 웨어하우징 및 분석
 description: 여러 원본의 데이터를 통합하고 데이터 분석을 최적화합니다.
 author: alexbuckgit
 ms.date: 09/15/2018
-ms.openlocfilehash: f9ca9785b65f18098a91aedc1f3157f49456a6e1
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: e4c0a37f61f3edfb1f29d26df546f02d31fd40f7
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818652"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610705"
 ---
 # <a name="data-warehousing-and-analytics-for-sales-and-marketing"></a>영업 및 마케팅에 대한 데이터 웨어하우징 및 분석
 
@@ -24,7 +24,7 @@ ms.locfileid: "48818652"
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 방법을 사용하여 다음 작업을 수행할 수도 있습니다.
+다음의 경우 이 방법을 사용할 수도 있습니다.
 
 * 데이터 웨어하우스를 믿을 수 있는 단일 데이터 원본으로 설정합니다.
 * 관계형 데이터 원본을 구조화되지 않은 다른 데이터 집합과 통합합니다.

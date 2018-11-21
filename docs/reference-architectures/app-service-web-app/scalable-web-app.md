@@ -2,19 +2,15 @@
 title: 확장 가능한 웹 응용 프로그램
 description: Microsoft Azure에서 실행되는 웹 응용 프로그램의 확장성을 향상합니다.
 author: MikeWasson
-pnp.series.title: Azure App Service
-pnp.series.prev: basic-web-app
-pnp.series.next: multi-region-web-app
 ms.date: 10/25/2018
-cardTitle: Improve scalability
-ms.openlocfilehash: 208413a49fe4a3f9ca308fa1a939ba426e7fa636
-ms.sourcegitcommit: 065fa8ecb37c8be1827da861243ad6a33c75c99d
+ms.openlocfilehash: dd1fa30b6ac8d978ad0151c8753951d848d60664
+ms.sourcegitcommit: 877777094b554559dc9cb1f0d9214d6d38197439
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50136695"
+ms.lasthandoff: 11/11/2018
+ms.locfileid: "51527612"
 ---
-# <a name="improve-scalability-in-a-web-application"></a>웹 응용 프로그램의 확장성 향상
+# <a name="improve-scalability-in-an-azure-web-application"></a>Azure 웹 애플리케이션에서 확장성 향상
 
 이 참조 아키텍처는 Azure App Service 웹 응용 프로그램의 확장성과 성능 향상을 위한 검증된 사례를 보여 줍니다.
 

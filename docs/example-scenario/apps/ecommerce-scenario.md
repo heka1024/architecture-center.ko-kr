@@ -3,12 +3,12 @@ title: Azure의 전자상거래 프런트 엔드
 description: Azure에서 전자상거래 사이트를 호스트합니다.
 author: masonch
 ms.date: 7/13/18
-ms.openlocfilehash: 6ca85665a5bf63bf71f5badc16406db5df2a34c2
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 7baaf4d2986a00ab72b60a540bcd9d864893b109
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819094"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610824"
 ---
 # <a name="an-e-commerce-front-end-on-azure"></a>Azure의 전자상거래 프런트 엔드
 
@@ -18,7 +18,7 @@ ms.locfileid: "48819094"
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 시나리오에 적합한 사용 사례는 다음과 같습니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 서로 다른 시간에 갑자기 집중되는 사용자를 처리할 수 있는 탄력적인 크기 조정이 필요한 응용 프로그램 구축
 * 전 세계의 여러 Azure 지역에서 고가용성으로 작동하도록 설계된 프로그램 구축
@@ -45,7 +45,7 @@ ms.locfileid: "48819094"
 
 * [Azure CDN][docs-cdn]은 사용자와 가까운 위치에서 캐시된 정적 콘텐츠를 제공하여 대기 시간을 줄입니다.
 * [Azure Traffic Manager][docs-traffic-manager]는 다른 Azure 지역의 서비스 엔드포인트에 대한 사용자 트래픽 분산을 제어합니다.
-* [App Services - Web Apps][docs-webapps]는 인프라를 관리할 필요 없이 자동 크기 조정 및 고가용성을 허용하는 웹 응용 프로그램을 호스팅합니다.
+* [App Services - Web Apps][docs-webapps]는 인프라를 관리할 필요 없이 자동 크기 조정 및 고가용성을 허용하는 웹 애플리케이션을 호스팅합니다.
 * [Azure Active Directory - B2C][docs-b2c]는 고객이 응용 프로그램에서 자신의 프로필을 등록, 로그인 및 관리하는 방법을 사용자 지정하고 제어할 수 있는 ID 관리 서비스입니다.
 * [Storage Queues][docs-storage-queues]는 응용 프로그램에서 액세스할 수 있는 많은 수의 큐 메시지를 저장합니다.
 * [Functions][docs-functions]는 응용 프로그램에서 인프라를 관리할 필요 없이 주문형으로 실행할 수 있도록 하는 서버리스 계산 옵션입니다.

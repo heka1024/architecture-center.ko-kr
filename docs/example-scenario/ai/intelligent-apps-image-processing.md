@@ -3,12 +3,12 @@ title: Azure에서 보험 청구에 대한 이미지 분류
 description: Azure 응용 프로그램에 이미지 처리를 빌드합니다.
 author: david-stanford
 ms.date: 07/05/2018
-ms.openlocfilehash: 31d328f8e5e27ea255024b7f461f2bfaeffc3ca7
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 9640f8b5454891ed00f669bada9f7c9c69b89734
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818539"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610535"
 ---
 # <a name="image-classification-for-insurance-claims-on-azure"></a>Azure에서 보험 청구에 대한 이미지 분류
 
@@ -20,10 +20,10 @@ Computer Vision API 및 Azure Functions와 같은 Azure 서비스를 사용하�
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 시나리오에 적합한 사용 사례는 다음과 같습니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
-* 패션 웹 사이트에 대한 이미지 분류
-* 게임의 스크린샷의 원격 분석 데이터 분류
+* 패션 웹 사이트에서 이미지 분류
+* 게임 스크린샷의 원격 분석 데이터 분류
 
 ## <a name="architecture"></a>아키텍처
 
@@ -56,9 +56,9 @@ Computer Vision API 및 Azure Functions와 같은 Azure 서비스를 사용하�
 
 이 시나리오에서 사용된 대부분의 구성 요소는 자동으로 크기 조정되는 관리 서비스입니다. 몇 가지 주목할 만한 예외: Azure Functions에는 최대 200개의 인스턴스 제한이 있습니다. 이 제한을 초과하여 확장해야 하는 경우 여러 지역 또는 앱 계획을 사용하는 것이 좋습니다.
 
-Cosmos DB는 프로비전된 RU(요청 단위)를 기준으로 자동으로 크기 조정되지 않습니다. 요구 사항 추정에 대한 지침은 설명서의 [요청 단위](/azure/cosmos-db/request-units)를 참조하세요. Cosmos DB의 크기 조정을 최대한 활용하려면 CosmosDB에서 [파티션 키](/azure/cosmos-db/partition-data)가 작동하는 원리를 이해해야 합니다.
+Cosmos DB는 프로비전된 RU(요청 단위)를 기준으로 자동으로 크기가 조정되지 않습니다. 요구 사항 추정에 대한 지침은 설명서의 [요청 단위](/azure/cosmos-db/request-units)를 참조하세요. Cosmos DB의 크기 조정을 최대한 활용하려면 CosmosDB에서 [파티션 키](/azure/cosmos-db/partition-data)가 작동하는 원리를 이해해야 합니다.
 
-NoSQL 데이터베이스는 가용성, 확장성 및 파티션에 대한 일관성을 자주 교환합니다(CAP 정리의 의미에서). 이 시나리오에서는 키-값 데이터 모델이 사용되며 대부분의 작업이 원자성 정의이므로 트랜잭션 일관성은 거의 필요하지 않습니다. [적절한 데이터 저장소 선택](../../guide/technology-choices/data-store-overview.md)에 대한 추가 지침은 Azure 아키텍처 센터에서 사용할 수 있습니다.  구현에 높은 일관성이 필요한 경우 CosmosDB에서 [일관성 수준을 선택](/azure/cosmos-db/consistency-levels)할 수 있습니다.
+NoSQL 데이터베이스는 가용성, 확장성 및 파티션에 대한 일관성을 자주 교환합니다(CAP 정리의 의미에서). 이 시나리오에서는 키-값 데이터 모델이 사용되며 대부분의 작업이 원자성 정의이므로 트랜잭션 일관성은 거의 필요하지 않습니다. [적절한 데이터 저장소 선택](../../guide/technology-choices/data-store-overview.md)에 대한 추가 지침은 Azure 아키텍처 센터에서 사용할 수 있습니다. 구현에 높은 일관성이 필요한 경우 CosmosDB에서 [일관성 수준을 선택](/azure/cosmos-db/consistency-levels)할 수 있습니다.
 
 확장 가능한 솔루션 설계에 대한 일반적인 지침은 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
 
@@ -86,9 +86,9 @@ NoSQL 데이터베이스는 가용성, 확장성 및 파티션에 대한 일관�
 
 ## <a name="related-resources"></a>관련 리소스
 
-이 시나리오의 단계별 학습 경로는 [Azure에서 서버를 사용하지 않는 웹앱 빌드][serverless]를 참조하세요.
+단계별 학습 경로는 [Azure에서 서버리스 웹앱 빌드][serverless]를 참조하세요.
 
-이 예제 시나리오를 프로덕션 환경에 배치하기 전에 Azure Functions [모범 사례][functions-best-practices]를 검토하세요.
+프로덕션 환경에서 이 예제 시나리오를 배포하기 전에 [Azure Functions에서 성능 및 안정성 최적화][functions-best-practices]를 위한 권장 사례를 검토합니다.
 
 <!-- links -->
 [architecture]: ./media/architecture-intelligent-apps-image-processing.png

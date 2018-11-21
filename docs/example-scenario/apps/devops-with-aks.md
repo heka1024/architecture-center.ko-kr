@@ -3,12 +3,12 @@ title: 컨테이너 기반 작업에 대한 CI/CD 파이프라인
 description: Jenkins, Azure Container Registry, Azure Kubernetes Service, Cosmos DB 및 Grafana를 사용하여 Node.js 웹앱에 대한 DevOps 파이프라인을 빌드합니다.
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: 3212fae2c68eef3a5ed4963d28c0d97ac8f332e0
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: db8de674ee2789c5b41cebebee5745ecc8544122
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818738"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610841"
 ---
 # <a name="cicd-pipeline-for-container-based-workloads"></a>컨테이너 기반 작업에 대한 CI/CD 파이프라인
 
@@ -20,7 +20,7 @@ Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서�
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 시나리오에 적합한 사용 사례는 다음과 같습니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 응용 프로그램 개발 사례를 마이크로 서비스, 컨테이너 기반 접근 방식으로 현대화
 * 응용 프로그램 개발 및 배포 수명 주기 가속화

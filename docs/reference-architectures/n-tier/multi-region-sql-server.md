@@ -3,16 +3,14 @@ title: 고가용성을 위한 다중 지역 N 계층 응용 프로그램
 description: 고가용성과 복원력을 위해 Azure의 여러 지역에 VM을 배포하는 방법
 author: MikeWasson
 ms.date: 07/19/2018
-pnp.series.title: Windows VM workloads
-pnp.series.prev: n-tier
-ms.openlocfilehash: 34dd47175e7fd0002cba577ad6c1034968ed4098
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 3b1c419182322b2fa0b555230465f41562e8e6c1
+ms.sourcegitcommit: 877777094b554559dc9cb1f0d9214d6d38197439
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819128"
+ms.lasthandoff: 11/11/2018
+ms.locfileid: "51527629"
 ---
-# <a name="multi-region-n-tier-application-for-high-availability"></a>고가용성을 위한 다중 지역 N 계층 응용 프로그램
+# <a name="n-tier-application-in-multiple-azure-regions-for-high-availability"></a>고가용성을 위한 여러 Azure 지역의 N 계층 애플리케이션
 
 이 참조 아키텍처는 가용성 및 강력한 재해 복구 인프라를 구축하기 위해, 여러 Azure 지역에서 N 계층 응용 프로그램을 실행하기 위한 일련의 검증된 사례를 보여 줍니다. 
 

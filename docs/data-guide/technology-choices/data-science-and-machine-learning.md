@@ -3,12 +3,12 @@ title: Machine Learning 기술 선택
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 995349c795066ec3067b20ad2615e40b0fb152db
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.openlocfilehash: 50167bafa49f8e6016f6ec12680db016830e2b81
+ms.sourcegitcommit: 9293350ab66fb5ed042ff363f7a76603bf68f568
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29288935"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577160"
 ---
 # <a name="choosing-a-machine-learning-technology-in-azure"></a>Azure에서 Machine Learning 기술 선택
 
@@ -109,6 +109,10 @@ Apache Spark에는 Machine Learning 모델을 위한 Spark MLlib, 프레임워�
 고려 사항:
 
 * Spark는 실행하는 전체 시간에 요금이 부과되는 HDinsight 클러스터에서 실행됩니다. Machine Learning 서비스를 가끔씩만 사용하는 경우에는 이것이 불필요한 비용일 수 있습니다.
+
+### <a name="azure-databricks"></a>Azure Databricks
+
+[Azure Databricks](/azure/azure-databricks/)는 Apache Spark 기반 분석 플랫폼입니다. "서비스로 제공되는 Spark"라고 생각하시면 됩니다. Azure 플랫폼에서 Spark를 사용하는 가장 쉬운 방법입니다. 기계 학습에 [MLFlow](https://www.mlflow.org/), [Databricks Runtime ML](https://docs.azuredatabricks.net/user-guide/clusters/mlruntime.html), Apache Spark MLlib 및 기타 기능을 사용할 수 있습니다. 자세한 내용은 [Azure Databricks: Machine Learning](https://docs.azuredatabricks.net/spark/latest/mllib/index.html)을 참조하세요. 
 
 ### <a name="web-service-in-a-container"></a>컨테이너의 웹 서비스
 

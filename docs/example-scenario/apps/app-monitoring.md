@@ -3,22 +3,22 @@ title: Azure에서 웹 응용 프로그램 모니터링
 description: Azure App Service에 호스트되는 웹 응용 프로그램을 모니터링합니다.
 author: adamboeglin
 ms.date: 09/12/2018
-ms.openlocfilehash: ea57ba50f4e9390d5527587752c3bebad01b6139
-ms.sourcegitcommit: 42797fffb82bbbf86f6deb1da52c61d456be631e
+ms.openlocfilehash: ba008035c37d1d4e2d2f823463344e4941c0b4c4
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49313219"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610757"
 ---
 # <a name="web-application-monitoring-on-azure"></a>Azure에서 웹 응용 프로그램 모니터링
 
-Azure의 PaaS(Platform as a Service) 제품은 고객 대신 계산 리소스를 관리하고, 어떤 면에서는 배포 모니터링 방법을 변경합니다. Azure는 여러 모니터링 서비스를 포함하고 있으며, 각 서비스는 특정 역할을 수행합니다. 이러한 서비스가 한 데 모여 응용 프로그램 및 응용 프로그램에서 사용하는 Azure 리소스로부터 원격 분석 데이터를 수집, 분석하고 그에 따라 조치를 취하는 포괄적인 솔루션을 제공합니다.
+Azure PaaS(Platform as a Service) 제품은 고객의 계산 리소스를 관리하고, 배포를 모니터링하는 방법에 영향을 줍니다. Azure는 여러 모니터링 서비스를 포함하고 있으며, 각 서비스는 특정 역할을 수행합니다. 이러한 서비스가 한 데 모여 애플리케이션 및 애플리케이션에서 사용하는 Azure 리소스로부터 원격 분석 데이터를 수집하고, 분석하고, 조치를 취하는 포괄적인 솔루션을 제공합니다.
 
 이 시나리오는 사용 가능한 모니터링 서비스를 해결하며 여러 데이터 원본에 사용될 데이터 흐름 모델에 대해 설명합니다. 모니터링과 관련하여, 여러 도구와 서비스가 Azure 배포에 사용됩니다. 이 시나리오에서는 즉시 사용 가능한 서비스를 선택하겠습니다. 다른 이유는 없고, 쉽게 사용할 수 있기 때문입니다. 다른 모니터링 옵션은 이 문서의 뒷부분에서 설명합니다.
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 시나리오에 적합한 사용 사례는 다음과 같습니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 - 원격 분석 데이터를 모니터링하는 웹 응용 프로그램 계측.
 - Azure에 배포된 응용 프로그램에 대한 프런트 엔드 및 백 엔드 원격 분석 수집.
@@ -48,7 +48,7 @@ Azure의 PaaS(Platform as a Service) 제품은 고객 대신 계산 리소스를
 
 ## <a name="considerations"></a>고려 사항
 
-가장 좋은 방법은 개발 시 [Application Insights SDK][Application Insights SDKs]를 사용하여 코드에 Application Insights를 추가하고 응용 프로그램별로 사용자 지정하는 것입니다. 이러한 오픈 소스 SDK는 대부분의 응용 프로그램 프레임워크에서 사용할 수 있습니다. 수집한 데이터를 강화하고 제어하려면 테스트 및 프로덕션 배포에 사용할 SDK를 개발 프로세스에 통합합니다. 주 요구 사항은 앱이 인터넷 주소를 사용하여 호스트된 Application Insights 수집 엔드포인트를 직접적으로 또는 간접적으로 살펴볼 수 있게 만들어주는 것입니다. 그 후 원격 분석 데이터를 추가하거나 기존 원격 분석 컬렉션을 보강할 수 있습니다.
+권장 사례는 개발하는 동안 [Application Insights SDK][Application Insights SDKs]를 사용하고 애플리케이션별로 사용자를 지정하여 코드에 Application Insights를 추가하는 것입니다. 이러한 오픈 소스 SDK는 대부분의 애플리케이션 프레임워크에서 지원됩니다. 수집한 데이터를 강화하고 제어하려면 테스트 및 프로덕션 배포에 사용할 SDK를 개발 프로세스에 통합합니다. 주 요구 사항은 앱이 인터넷 주소를 사용하여 호스트된 Application Insights 수집 엔드포인트를 직접적으로 또는 간접적으로 살펴볼 수 있게 만들어주는 것입니다. 그 후 원격 분석 데이터를 추가하거나 기존 원격 분석 컬렉션을 보강할 수 있습니다.
 
 쉽게 시작하는 또 다른 방법은 런타임 모니터링입니다. 수집된 원격 분석 데이터는 구성 파일을 통해 제어해야 합니다. 예를 들어 [Application Insights 상태 모니터][Application Insights Status Monitor] 같은 도구가 올바른 폴더에 SDK를 배포하고 모니터링을 시작하는 올바른 구성을 추가할 수 있게 해주는 런타임 메서드를 포함할 수 있습니다.
 
@@ -60,7 +60,7 @@ Azure Monitor, Application Insights, Log Analytics는 모두 [경고](/azure/mon
 
 ### <a name="alternatives"></a>대안
 
-이 문서에서는 편리하게 사용할 수 있는 모니터링 옵션과 인기 있는 기능에 대해 설명하지만, 자체 로깅 메커니즘을 만드는 옵션을 포함하여 다양한 선택지가 있습니다. 모범 사례는 솔루션에서 계층을 빌드할 때 모니터링 서비스를 추가하는 것입니다. 다음은 몇 가지 가능한 확장 및 대안입니다.
+이 문서에서는 편리하게 사용할 수 있는 모니터링 옵션과 인기 있는 기능에 대해 설명하지만, 자체 로깅 메커니즘을 만드는 옵션을 포함하여 다양한 선택지가 있습니다. 권장 사례는 솔루션에서 계층을 빌드할 때 모니터링 서비스를 추가하는 것입니다. 다음은 몇 가지 가능한 확장 및 대안입니다.
 
 - [Azure Monitor Data Source For Grafana][Azure Monitor Data Source For Grafana]를 사용하여 Azure Monitor 및 Application Insights 메트릭을 Grafana에 통합합니다.
 - [Data Dog][data-dog]은 Azure Monitor용 커넥터를 제공합니다.
@@ -72,7 +72,7 @@ Azure Monitor, Application Insights, Log Analytics는 모두 [경고](/azure/mon
 
 이 시나리오는 큰 부분을 모니터링하기 위한 PaaS 솔루션에 중점을 둡니다. 왜냐하면 이러한 솔루션은 간편하게 고객 대신 가용성 및 확장성을 처리하고 SLA(서비스 수준 계약)를 통해 지원되기 때문입니다. 예를 들어 App Services는 가용성에 대한 [SLA][SLA]를 보장합니다.
 
-Application Insights는 초당 처리할 수 있는 요청 수의 [한도][app-insights-limits]가 있습니다. 요청 한도를 초과하면 메시지 제한이 발생할 수 있습니다. 이를 방지하려면 데이터 속도를 줄이는 [필터링][message-filtering] 또는 [샘플링][message-sampling]을 구현하세요.
+Application Insights는 초당 처리할 수 있는 요청 수의 [한도][app-insights-limits]가 있습니다. 요청 한도를 초과하면 메시지 제한이 발생할 수 있습니다. 제한을 방지하기 위해 데이터 속도를 줄이도록 [필터링][message-filtering] 또는 [샘플링][message-sampling]을 구현합니다.
 
 그러나 실행하는 앱의 고가용성에 대한 고려 사항은 개발자의 책임입니다. 예를 들어 확장에 대한 정보는 기본 웹 응용 프로그램 참조 아키텍처의 [확장성 고려 사항](#scalability-considerations) 섹션을 참조하세요. 앱을 배포한 후에는 Application Insights를 사용하여 [앱의 가용성을 모니터링][monitor its availability]하는 테스트를 설정할 수 있습니다.
 
@@ -86,7 +86,7 @@ Application Insights는 초당 처리할 수 있는 요청 수의 [한도][app-i
 - 데이터 보존을 고려합니다. 예를 들어 Application Insights는 원격 분석 데이터를 90일 동안 보존합니다. Microsoft Power BI, 연속 내보내기 또는 REST API를 사용하여 액세스하려는 데이터를 더 오래 보관합니다. 저장소 요율이 적용됩니다.
 - Azure 리소스에 대한 액세스를 제한하여 데이터 액세스 권한과 특정 응용 프로그램에서 원격 분석 데이터를 볼 수 있는 사람을 제어합니다. 모니터링 원격 분석 데이터에 대한 액세스를 잠그려면 [Application Insights에서 리소스, 역할 및 액세스 제어][Resources, roles, and access control in Application Insights]를 참조하세요.
 - 사용자가 버전을 추가하지 못하도록 응용 프로그램 코드에서 읽기/쓰기 액세스를 제어하거나 응용 프로그램에서 데이터 수집을 제한하는 태그 마커를 고려합니다. Application Insights를 사용하면 리소스로 전송된 개별 데이터 항목을 제어하지 않기 때문에, 어떤 데이터에 액세스할 수 있는 사용자가 개별 리소스의 모든 데이터에 액세스할 수 있습니다.
-- 필요한 경우 Azure 리소스에 대한 정책 또는 비용 컨트롤을 강제 적용하는 [거버넌스](/azure/security/governance-in-azure) 메커니즘을 추가합니다. 예를 들어 정책 및 역할 기반 액세스 같은 보안 관련 모니터링을 위한 Log Analytics를 사용하거나 정책 정의를 만들고, 할당하고, 관리하는 [Azure Policy](/azure/azure-policy/azure-policy-introduction)를 사용합니다.
+- 필요한 경우 Azure 리소스에 대한 정책 또는 비용 컨트롤을 강제 적용하는 [거버넌스](/azure/security/governance-in-azure) 메커니즘을 추가합니다. 예를 들어 정책 및 역할 기반 액세스 제어와 같은 보안 관련 모니터링을 위해 Log Analytics를 사용하거나 [Azure Policy](/azure/azure-policy/azure-policy-introduction)를 사용하여 정책 정의를 만들고, 할당하고, 관리합니다.
 - Azure 리소스의 잠재적인 보안 문제를 모니터링하고 중앙에서 보안 상태를 살펴보려면 [Azure Security Center](/azure/security-center/security-center-intro) 사용을 고려합니다.
 
 ## <a name="pricing"></a>가격
@@ -97,7 +97,7 @@ Application Insights는 초당 처리할 수 있는 요청 수의 [한도][app-i
 
 Application Insights의 원격 분석 데이터는 디버깅 동안 그리고 개발자가 앱을 게시한 Azure Portal로 전송됩니다. 비용 없이 테스트 용도로 사용할 수 있도록 제한된 양의 원격 분석 데이터를 계측합니다. 표시기를 더 추가하려면 원격 분석 제한을 높이면 됩니다. 세밀하게 제어하는 방법은 [Application Insights의 샘플링][Sampling in Application Insights]을 참조하세요.
 
-배포 후에는 성능 지표의 [라이브 메트릭 스트림][Live Metrics Stream]을 볼 수 있습니다. 이 데이터는 저장되지 않습니다. 즉, 실시간 메트릭을 보는 것입니다. 하지만 원격 분석 데이터를 수집해 두었다가 나중에 분석할 수 있습니다. 라이브 스트림 데이터 요금은 없습니다.
+배포 후에는 성능 지표의 [라이브 메트릭 스트림][Live Metrics Stream]을 볼 수 있습니다. 이 데이터는 저장되지 않습니다. &mdash; 즉, 실시간 메트릭을 보는 것입니다. &mdash; 하지만 원격 분석 데이터를 수집해 두었다가 나중에 분석할 수 있습니다. 라이브 스트림 데이터 요금은 없습니다.
 
 Log Analytics는 서비스에 수집된 데이터에 대해 GB(기가바이트)당 비용이 청구됩니다. 매달 Azure Log Analytics 서비스에 수집되는 데이터 5GB까지는 무료이고, 처음 31일 동안은 데이터가 Log Analytics 작업 영역에 무료로 보관됩니다. 
 

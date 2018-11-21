@@ -3,12 +3,12 @@ title: Azure의 컴퓨터 지원 엔지니어링 서비스
 description: Azure에서 CAE(컴퓨터 지원 엔지니어링)에 대한 SaaS(Software-as-a-Service) 플랫폼을 제공합니다.
 author: alexbuckgit
 ms.date: 08/22/2018
-ms.openlocfilehash: d17ac218052c5b98e8790f1386be035618a2d957
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 8bdf7198223f7194d0cd717949699bb3a508674e
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818686"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610552"
 ---
 # <a name="a-computer-aided-engineering-service-on-azure"></a>Azure의 컴퓨터 지원 엔지니어링 서비스
 
@@ -26,7 +26,7 @@ ms.locfileid: "48818686"
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-다음은 이 아키텍처를 사용하는 다른 시나리오입니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 유전체학 연구
 * 날씨 시뮬레이션
@@ -37,7 +37,7 @@ ms.locfileid: "48818686"
 ![HPC 기능을 지원하는 SaaS 솔루션용 아키텍처][architecture]
 
 * 사용자는 [Apache Guacamole 서비스](https://guacamole.apache.org/)를 사용하는 HTML5 기반 RDP 연결을 통해 브라우저에서 NV 시리즈 VM(가상 머신)에 액세스할 수 있습니다. 이러한 VM 인스턴스는 렌더링 및 공동 작업을 위한 강력한 GPU를 제공합니다. 사용자는 고성능 모바일 컴퓨팅 장치 또는 랩톱을 사용하지 않고도 디자인을 편집하고 결과를 볼 수 있습니다. 스케줄러는 사용자가 정의한 추론을 기반으로 추가 VM을 작동합니다.
-* 데스크톱 CAD 세션에서, 사용자는 사용 가능한 HPC 클러스터 노드에서 실행할 워크로드를 제출할 수 있습니다. 이러한 워크로드는 스트레스 분석 또는 컴퓨팅 유체 역학 계산 같은 작업을 수행하므로 전용 온-프레미스 계산 클러스터가 필요 없습니다. 계산 리소스에 대한 활성 사용자 요구에 따라 부하 또는 큐 깊이를 기준으로 규모를 자동 조정하도록 클러스터 노드를 구성할 수 있습니다.
+* 데스크톱 CAD 세션에서, 사용자는 사용 가능한 HPC 클러스터 노드에서 실행할 워크로드를 제출할 수 있습니다. 이러한 워크로드는 스트레스 분석 또는 컴퓨팅 유체 역학 계산 같은 작업을 수행하므로 전용 온-프레미스 계산 클러스터가 필요 없습니다. 계산 리소스에 대한 활성 사용자 요구에 따라 부하 또는 큐 깊이를 기준으로 규모를 자동으로 조정하도록 클러스터 노드를 구성할 수 있습니다.
 * AKS(Azure Kubernetes Service)는 최종 사용자에게 제공되는 웹 리소스를 호스트하는 데 사용됩니다.
 
 ### <a name="components"></a>구성 요소

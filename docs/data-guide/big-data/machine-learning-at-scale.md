@@ -3,12 +3,12 @@ title: 대규모 Machine Learning
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 4e584da18893ac7405fa00863fe034e45b2e3903
-ms.sourcegitcommit: 7ced70ebc11aa0df0dc0104092d3cc6ad5c28bd6
+ms.openlocfilehash: a44785b61faec8a45160fa2895fbc03e2c580a77
+ms.sourcegitcommit: 9293350ab66fb5ed042ff363f7a76603bf68f568
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34062819"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577143"
 ---
 # <a name="machine-learning-at-scale"></a>대규모 Machine Learning
 
@@ -59,7 +59,7 @@ Machine Learning 모델을 만들고 배포하는 과정은 대화형 프로세�
 - Cognitive 도구 키트에서 제공하는 미리 학습된 신경망 모델을 사용합니다.
 - iOS 앱용 핵심 ML이 제공하는 직렬화된 모델을 포함합니다. 
 
-미리 작성된 모델이 사용자의 데이터 또는 시나리오에 맞지 않을 경우, Azure에서 Azure Machine Learning, HDInsight(Spark MLlib 및 MMLSpark 포함), Cognitive 도구 키트 및 SQL Machine Learning Services와 같은 옵션을 사용할 수 있습니다. 사용자 지정 모델을 사용하려는 경우, 모델 학습 및 운영화를 포함하는 파이프라인을 디자인해야 합니다. 
+미리 작성된 모델이 사용자의 데이터 또는 시나리오에 맞지 않을 경우 Azure Machine Learning, Spark MLlib 및 MMLSpark 포함 HDInsight, Azure Databricks, Cognitive Toolkit 및 SQL Machine Learning Services와 같은 Azure의 옵션을 사용할 수 있습니다. 사용자 지정 모델을 사용하려는 경우, 모델 학습 및 운영화를 포함하는 파이프라인을 디자인해야 합니다. 
 
 ![Azure의 모델 옵션](./images/machine-learning-model-training-and-deployment.png)
 

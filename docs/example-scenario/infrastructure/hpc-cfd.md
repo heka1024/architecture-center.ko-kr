@@ -3,12 +3,12 @@ title: Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션 실행
 description: Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션을 실행합니다.
 author: mikewarr
 ms.date: 09/20/2018
-ms.openlocfilehash: 5734e6fe707e3beb5e23f2ad2b4344ba289803bb
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: f32e055838d6c62584130f61a0d92b06cc46ec63
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818581"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610637"
 ---
 # <a name="running-computational-fluid-dynamics-cfd-simulations-on-azure"></a>Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션 실행
 
@@ -20,7 +20,7 @@ HPC 클러스터의 생성, 관리 및 최적화를 간소화하기 위해 Azure
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-CFD 응용 프로그램 사용할 수 있는 다음 산업에 이 시나리오를 고려해 보세요.
+CFD 애플리케이션에 대한 기타 관련 산업은 다음과 같습니다.
 
 * 항공학
 * 자동차

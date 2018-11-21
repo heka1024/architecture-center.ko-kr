@@ -3,30 +3,30 @@ title: 전자상거래에 대한 지능형 제품 검색 엔진
 description: 전자상거래 응용 프로그램에서 세계적 수준의 검색 환경을 제공합니다.
 author: jelledruyts
 ms.date: 09/14/2018
-ms.openlocfilehash: f18e9fd3705c24da71da747c46ab42f263fd06af
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: a57477c26665b4560671550f6fdd81c2d9505e71
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818756"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610671"
 ---
 # <a name="intelligent-product-search-engine-for-e-commerce"></a>전자상거래에 대한 지능형 제품 검색 엔진
 
 이 예제 시나리오에서는 전용 검색 서비스를 사용하여 전자상거래 고객의 검색 결과 관련성을 대폭 향상하는 방법을 보여줍니다.
 
-검색은 고객이 제품을 검색하고 궁극적으로 구매하는 주요 메커니즘이며, 검색 쿼리의 _의도_와 관련된 검색 결과를 가져오고, 실시간에 가까운 결과, 언어 분석, 지리적 위치, 필터링, 패싯, 자동 완성, 적중 항목 강조 표시 등을 제공하여 통합형 검색 환경을 검색 자이언트의 환경과 일치시키는 것이 중요합니다.
+검색은 고객이 제품을 검색하고 궁극적으로 구매하는 주요 메커니즘이며, 실시간에 가까운 결과, 언어 분석, 지리적 위치, 필터링, 패싯, 자동 완성, 적중 항목 강조 표시 등을 제공하여 검색 쿼리의 _의도_와 관련된 검색 결과 및 통합형 검색 환경을 검색 자이언트의 환경과 일치시키는 것이 중요합니다.
 
 SQL Server 또는 Azure SQL Database처럼 제품 데이터가 관계형 데이터베이스에 저장되는 일반적인 전자상거래 웹 응용 프로그램을 떠올려 보세요. `LIKE` 쿼리 또는 [전체 텍스트 검색][docs-sql-fts] 기능을 사용하여 데이터베이스 내에서 검색 쿼리를 처리하는 경우가 자주 있습니다. [Azure Search][docs-search]를 대신 사용하면 운영 데이터베이스가 쿼리 처리에서 해방되고, 고객에게 가능한 최상의 검색 환경을 제공하는 구현하기 까다로운 기능을 쉽게 활용할 수 있습니다. 또한 Azure Search가 PaaS(Platform as a Service) 구성 요소이므로 인프라 관리에 대해 걱정하거나 검색 전문가가 될 필요가 없습니다.
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-다음과 같은 다른 사용 사례의 디자인 패턴도 비슷합니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 사용자의 물리적 위치와 가까운 부동산 목록 또는 매장을 찾습니다.
 * _최신_ 정보에 더 높은 우선 순위를 부여하여 뉴스 사이트에서 문서를 검색하거나 스포츠 결과를 찾습니다.
 * 대형 리포지토리를 검색하여 정책 입안자 및 공증인 같은 _문서 중심_ 조직을 찾습니다.
 
-결국 어떤 형태로든 검색 기능이 있는 _모든_ 응용 프로그램은 전용 검색 서비스의 이점을 얻을 수 있습니다.
+결국 어떤 형태로든 검색 기능이 있는 _모든_ 애플리케이션은 전용 검색 서비스의 이점을 얻을 수 있습니다.
 
 ## <a name="architecture"></a>아키텍처
 
@@ -42,7 +42,7 @@ SQL Server 또는 Azure SQL Database처럼 제품 데이터가 관계형 데이�
 
 ### <a name="components"></a>구성 요소
 
-* [App Services - Web Apps][docs-webapps]는 인프라를 관리할 필요 없이 자동 크기 조정 및 고가용성을 허용하는 웹 응용 프로그램을 호스팅합니다.
+* [App Services - Web Apps][docs-webapps]는 인프라를 관리할 필요 없이 자동 크기 조정 및 고가용성을 허용하는 웹 애플리케이션을 호스팅합니다.
 * [SQL Database][docs-sql-database]는 관계형 데이터, JSON, 공간 및 XML과 같은 구조를 지원하는 Microsoft Azure의 범용 관계형 데이터베이스 관리 서비스입니다.
 * [Azure Search][docs-search]는 웹, 모바일 및 엔터프라이즈 응용 프로그램에서 이질적인 비공개 콘텐츠에 대한 풍부한 검색 환경을 제공하는 검색 기반 클라우드 솔루션입니다.
 * [Bot Service][docs-botservice]는 지능형 봇을 빌드, 테스트, 배포 및 관리할 수 있는 도구를 제공합니다.

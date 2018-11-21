@@ -3,12 +3,12 @@ title: Azure의 API 기반 아키텍처에 레거시 웹 응용 프로그램 마
 description: Azure API Management를 사용하여 레거시 웹 응용 프로그램을 현대화합니다.
 author: begim
 ms.date: 09/13/2018
-ms.openlocfilehash: 1aa7ea6dc895146e13677dd9867fb2530f0a8f04
-ms.sourcegitcommit: 62945777e519d650159f0f963a2489b6bb6ce094
+ms.openlocfilehash: f468b3c6dc1c58e03555613b152882316ae2a017
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48876793"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610586"
 ---
 # <a name="migrating-a-legacy-web-application-to-an-api-based-architecture-on-azure"></a>Azure의 API 기반 아키텍처에 레거시 웹 응용 프로그램 마이그레이션
 
@@ -20,7 +20,7 @@ ms.locfileid: "48876793"
 * 사내 개발 팀은 새 HTTP API를 통해 공개될 새 비즈니스 기능을 개발할 예정입니다.
 * 계약 개발 팀은 Azure에 호스트되는 새로운 브라우저 기반 UI를 빌드할 예정입니다.
 
-새 응용 프로그램 기능은 단계별로 제공될 예정입니다. 현재 전자상거래 비즈니스를 구동하는 기존의 브라우저 기반 클라이언트-서버 UI 기능(온-프레미스에 호스트됨)을 *점진적으로 대체*할 것입니다.
+새 응용 프로그램 기능은 단계별로 제공될 예정입니다. 이 기능은 현재 전자상거래 비즈니스를 구동하는 기존의 브라우저 기반 클라이언트-서버 UI 기능(온-프레미스에 호스트됨)을 점진적으로 대체할 것입니다.
 
 관리 팀은 불필요한 현대화를 원하지 않습니다. 범위 및 비용도 계속 제어할 수 있기를 원합니다. 이렇게 하기 위해, 기존 HTTP SOAP 서비스를 유지하기로 결정했습니다. 또한 기존 UI 변경을 최소화하려 합니다. [Azure APIM(API Management)][apim]을 활용하여 여러 프로젝트 요구 사항 및 제약 조건을 해결할 수 있습니다.
 
@@ -85,7 +85,8 @@ API Management는 개발자, 기본, 표준 및 프리미엄의 네 가지 계�
 
 ## <a name="related-resources"></a>관련 리소스
 
-방대한 Azure API Management [설명서 및 참조 문서][apim]를 확인하세요.
+방대한 Azure API Management [설명서 및 참조 문서][apim]를 검토하세요.
+
 
 <!-- links -->
 [architecture]: ./media/architecture-apim-api-scenario.png
