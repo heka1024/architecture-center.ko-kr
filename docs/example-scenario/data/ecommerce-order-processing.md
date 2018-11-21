@@ -3,12 +3,12 @@ title: Azure의 확장성 있는 주문 처리
 description: Azure Cosmos DB를 사용하여 확장성이 높은 주문 처리 파이프라인을 빌드합니다.
 author: alexbuckgit
 ms.date: 07/10/2018
-ms.openlocfilehash: fe642ffde733914389c36c5be50f35d242a22edf
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: 1c3bb2cc33be74f5ff8ee0513de4c3f7df70aa37
+ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818516"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51610858"
 ---
 # <a name="scalable-order-processing-on-azure"></a>Azure의 확장성 있는 주문 처리
 
@@ -20,7 +20,7 @@ Cosmos DB 및 HDInsight와 같은 관리되는 Azure 서비스를 사용하면 �
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 시나리오에 적합한 사용 사례는 다음과 같습니다.
+관련된 다른 사용 사례는 다음과 같습니다.
 
 * 전자 상거래 또는 소매 POS 백 엔드 시스템
 * 재고 관리 시스템
