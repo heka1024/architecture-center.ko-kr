@@ -4,18 +4,18 @@ description: Azure의 일반 워크로드에 대한 참조 아키텍처, 청사�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: 43c780876e903f7d4f86d3877fb961b0dc0ba60b
-ms.sourcegitcommit: 877777094b554559dc9cb1f0d9214d6d38197439
+ms.openlocfilehash: e7bbd797ba4b8bfc193b146f080cedf299dd47b4
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2018
-ms.locfileid: "51527595"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295517"
 ---
 # <a name="azure-reference-architectures"></a>Azure 참조 아키텍처
 
 Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍처가 함께 그룹화됩니다. 각 아키텍처는 확장성, 가용성, 관리성 및 보안에 대한 고려 사항과 함께 권장 방법을 포함하고 있습니다. 또한 대부분은 배포 가능한 솔루션을 포함하고 있습니다.
 
-이동: [AI](#ai-and-machine-learning) | [빅 데이터](#big-data-solutions) | [서버리스](##serverless-applications) | [가상 네트워크](#virtual-networks) | [VM 워크로드](#vm-workloads) | [SAP](#sap) | [웹앱](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
+이동: [AI](#ai-and-machine-learning) | [빅 데이터](#big-data-solutions) | [서버리스](#serverless-applications) | [가상 네트워크](#virtual-networks) | [VM 워크로드](#vm-workloads) | [SAP](#sap) | [웹앱](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
 
 ## <a name="ai-and-machine-learning"></a>AI 및 기계 학습
 
@@ -98,6 +98,26 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                     <div class="cardText">
                         <h3>Azure Data Factory를 사용하는 자동화된 Enterprise BI</h3>
                         <p>ELT 파이프라인을 자동화하여 온-프레미스 데이터베이스에서 증분 로드를 수행합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Databricks -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./data/stream-processing-databricks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/databricks.png" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Databricks를 사용하는 스트림 처리</h3>
+                        <p>두 스트림의 레코드를 조인하고, 결과를 강화하고, 이동 평균을 계산하는 스트림 처리 파이프라인입니다.</p>
                     </div>
                 </div>
             </div>

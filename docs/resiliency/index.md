@@ -4,12 +4,12 @@ description: Azure에서 고가용성 및 재해 복구를 제공하는 복원 �
 author: MikeWasson
 ms.date: 07/29/2018
 ms.custom: resiliency
-ms.openlocfilehash: b925748e1d3d4a8d490bbd5d7cb76f3961ffcfb2
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.openlocfilehash: 73600650dc96fe85ad59e286079a3523ef25d055
+ms.sourcegitcommit: 1b5411f07d74f0a0680b33c266227d24014ba4d1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916603"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52305964"
 ---
 # <a name="designing-resilient-applications-for-azure"></a>Azure용 복원 응용 프로그램 디자인
 
@@ -174,7 +174,9 @@ Azure에는 개별 VM에서 전체 영역에 이르는 모든 오류 수준에�
 
 **가용성 집합**. 디스크 또는 네트워크 전환이 실패한 경우 하드웨어 오류로부터 보호하려면 가용성 집합에 둘 이상의 VM을 배포합니다. 가용성 집합은 공통 전원 소스 및 네트워크 스위치를 공유하는 두 개 이상의 *장애 도메인*으로 구성됩니다. 가용성 집합의 VM은 장애 도메인에 분산되어 있으므로 하드웨어 오류가 하나의 장애 도메인에 영향을 주는 경우 네트워크 트래픽은 다른 오류 도메인에서 VM을 라우팅할 수 있습니다. 가용성 집합에 대한 자세한 내용은 [Azure에서 Windows 가상 머신의 가용성 관리](/azure/virtual-machines/windows/manage-availability)를 참조하세요.
 
-**가용성 영역**.  가용성 영역은 Azure 지역 내에서 물리적으로 별도 영역입니다. 각 가용성 영역에는 고유한 소스, 네트워크 및 냉각 장치가 있습니다. 가용성 영역 간에 VM을 배포하면 데이터 센터 전체의 오류로부터 응용 프로그램을 보호할 수 있습니다. 
+**가용성 영역**.  가용성 영역은 Azure 지역 내에서 물리적으로 별도 영역입니다. 각 가용성 영역에는 고유한 소스, 네트워크 및 냉각 장치가 있습니다. 가용성 영역 간에 VM을 배포하면 데이터 센터 전체의 오류로부터 응용 프로그램을 보호할 수 있습니다.
+
+**Azure Site Recovery**  비즈니스 연속성 및 재해 복구 요구 사항을 위해 다른 Azure 지역에 Azure Virtual Machines를 복제합니다. 규정 준수 요구 사항을 충족하도록 정기적인 DR 훈련을 수행할 수 있습니다. VM은 원본 지역에서 중단이 발생한 경우 애플리케이션을 복구할 수 있도록 선택한 지역에 지정된 설정을 사용하여 복제됩니다. 자세한 내용은 [ASR을 사용하여 Azure VM 복제][site-recovery]를 참조하세요.
 
 **쌍을 이루는 지역** 지역 가동 중단으로부터 응용 프로그램을 보호하려면 인터넷 트래픽을 서로 다른 지역에 배포하기 위해 Azure Traffic Manager를 사용하여 응용 프로그램을 여러 지역에 배포할 수 있습니다. 각 Azure 지역은 다른 지역과 쌍을 이룹니다. 이러한 지역은 함께 [지역 쌍](/azure/best-practices-availability-paired-regions)을 구성합니다. 브라질 남부를 제외하고 지역 쌍은 세금 및 법률 집행 관할 구역의 데이터 상주 요구 사항을 충족하기 위해 동일한 지리적 위치 내에 위치합니다.
 
@@ -202,9 +204,11 @@ Azure에는 개별 VM에서 전체 영역에 이르는 모든 오류 수준에�
 * Azure App Service 앱을 여러 인스턴스로 규모 확장합니다. App Service는 자동으로 인스턴스 간에 부하를 분산합니다. [기본 웹 응용 프로그램][ra-basic-web]을 참조하세요.
 * [Azure Traffic Manager][tm]를 사용하여 엔드포인트 집합에 트래픽을 분산합니다.
 
-**데이터 복제**. 데이터 복제는 데이터 저장소의 일시적이지 않은 오류를 처리하는 일반적인 전략입니다. Azure SQL Database, Cosmos DB, Apache Cassandra를 포함한 많은 저장소 기술이 기본적으로 복제 기능을 제공합니다. 읽기 및 쓰기 경로를 모두 고려해야 합니다. 저장소 기술에 따라 여러 개의 쓰기 가능한 복제본이 생길 수도 있고, 쓰기 가능한 복제본 하나와 읽기 전용 복제본 여러 개가 생길 수도 있습니다. 
+**데이터 복제**. 데이터 복제는 데이터 저장소의 일시적이지 않은 오류를 처리하는 일반적인 전략입니다. Azure SQL Database, Cosmos DB, Apache Cassandra를 포함한 많은 저장소 기술이 기본적으로 복제 기능을 제공합니다. 읽기 및 쓰기 경로를 모두 고려해야 합니다. 저장소 기술에 따라 여러 개의 쓰기 가능한 복제본이 생길 수도 있고, 쓰기 가능한 복제본 하나와 읽기 전용 복제본 여러 개가 생길 수도 있습니다.
 
-가용성을 최대화하기 위해 복제본을 여러 영역에 배치할 수 있습니다. 그러나 데이터를 복제할 때 대기 시간이 증가하게 됩니다. 일반적으로 지역 간 복제는 비동기적으로 수행되며, 이는 복제본 오류가 발생할 경우 궁극적으로 일관성 모델 및 데이터 손실 가능성이 있다는 의미입니다. 
+가용성을 최대화하기 위해 복제본을 여러 영역에 배치할 수 있습니다. 그러나 데이터를 복제할 때 대기 시간이 증가하게 됩니다. 일반적으로 지역 간 복제는 비동기적으로 수행되며, 이는 복제본 오류가 발생할 경우 궁극적으로 일관성 모델 및 데이터 손실 가능성이 있다는 의미입니다.
+
+[Azure Site Recovery][site-recovery]를 사용하여 Azure 지역 간에 Azure Virtual Machines를 복제할 수 있습니다. Site Recovery는 지속적으로 대상 지역에 데이터를 복제합니다. 기본 사이트에서 중단이 발생하면 보조 위치로 장애 조치(failover)합니다.
 
 **정상적으로 성능 저하**. 서비스에 오류가 발생하고 장애 조치(failover) 경로가 없는 경우 응용 프로그램이 정상적으로 성능을 내리고 계속해서 허용 가능한 수준의 사용자 환경을 제공할 수 있습니다. 예: 
 
@@ -355,3 +359,4 @@ Azure에는 개별 VM에서 전체 영역에 이르는 모든 오류 수준에�
 [tm]: https://azure.microsoft.com/services/traffic-manager/
 [tm-failover]: /azure/traffic-manager/traffic-manager-monitoring
 [tm-sla]: https://azure.microsoft.com/support/legal/sla/traffic-manager
+[site-recovery]:/azure/site-recovery/azure-to-azure-quickstart/

@@ -3,12 +3,12 @@ title: 캐싱 없음 안티패턴
 description: 동일한 데이터를 반복적으로 가져오면 성능과 확장성을 감소시킬 수 있습니다.
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: f94a9f3f9166e87949a0e60af818cd89796dc3e2
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: ec19cde567fb63248c121328322e834d99c841e8
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428951"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295585"
 ---
 # <a name="no-caching-antipattern"></a>캐싱 없음 안티패턴
 
@@ -59,7 +59,7 @@ public class PersonRepository : IPersonRepository
 - 읽기의 경우, 응용 프로그램은 캐시에서 데이터를 읽으려고 시도합니다. 데이터가 캐시에 없으면 응용 프로그램은 데이터 원본에서 데이터를 검색하여 캐시에 추가합니다.
 - 쓰기의 경우, 응용 프로그램은 변경 사항을 데이터 원본에 직접 쓰고 캐시에서 이전 값을 제거합니다. 다음에 필요할 때 검색되고 캐시에 추가됩니다.
 
-이 방식은 자주 변경되는 데이터에 적합합니다. 다음은 [Cache-Aside][cache-aside] 패턴을 사용하도록 업데이트된 이전 예제입니다.  
+이 방식은 자주 변경되는 데이터에 적합합니다. [Cache-Aside][cache-aside-pattern] 패턴을 사용하도록 업데이트된 이전 예제는 다음과 같습니다.  
 
 ```csharp
 public class CachedPersonRepository : IPersonRepository
