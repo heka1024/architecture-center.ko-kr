@@ -2,17 +2,17 @@
 title: 마이크로 서비스 아키텍처 스타일
 description: Azure에서 마이크로 서비스 아키텍처의 혜택, 과제 및 모범 사례를 설명합니다.
 author: MikeWasson
-ms.date: 08/30/2018
-ms.openlocfilehash: fb23ac3e408f3a202d925a1bf684bc30d423f218
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.date: 11/13/2018
+ms.openlocfilehash: 4e5d50f829323829c953977257e690354566ebf6
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43325446"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295534"
 ---
 # <a name="microservices-architecture-style"></a>마이크로 서비스 아키텍처 스타일
 
-마이크로 서비스 아키텍처는 작은 자율 서비스 컬렉션으로 구성됩니다. 각 서비스는 자체 포함되며 단일 비즈니스 기능을 구현해야 합니다. Azure에서 마이크로 서비스 아키텍처를 빌드하는 방법에 대한 자세한 지침은 [Azure에서 마이크로 서비스 설계, 구축 및 운영](../../microservices/index.md)을 참조하세요.
+마이크로 서비스 아키텍처는 작은 자율 서비스 컬렉션으로 구성됩니다. 각 서비스는 자체 포함되며 단일 비즈니스 기능을 구현해야 합니다. 
 
 ![](./images/microservices-logical.svg)
  
@@ -111,39 +111,9 @@ API 게이트웨이를 사용할 경우의 장점은 다음과 같습니다.
 
 - 실패를 격리합니다. 복원 전략을 사용하여 한 서비스 내의 실패가 계단식으로 연속되지 않도록 합니다. [복원력 패턴][resiliency-patterns] 및 [복원력 있는 응용 프로그램 디자인][resiliency-overview]을 참조하세요.
 
-## <a name="microservices-using-azure-container-service"></a>Azure Container Service를 사용하는 마이크로 서비스 
+## <a name="next-steps"></a>다음 단계
 
-[Azure Container Service](/azure/container-service/)를 사용하여 Docker 클러스터를 구성 및 프로비전할 수 있습니다. Azure Container Service는 Kubernetes, DC/OS 및 Docker Swarm을 포함하여 여러 인기 컨테이너 오케스트레이터를 지원합니다.
-
-![](./images/microservices-acs.png)
- 
-**공용 노드**. 이 노드는 공용 부하 분산 장치를 통해 연결할 수 있습니다. API 게이트웨이는 이 노드에 호스트됩니다.
-
-**백 엔드 노드**. 이 노드는 클라이언트가 API 게이트웨이를 통해 연결하는 서비스를 실행합니다. 이 노드는 인터넷 트래픽을 직접 받지 않습니다. 백 엔드 노드에는 각각 다른 하드웨어 프로필을 사용하는 두 개 이상의 VM 풀이 포함될 수 있습니다. 예를 들어 일반 계산 워크로드, 높은 CPU 워크로드 및 높은 메모리 워크로드를 위해 개별 풀을 만들 수 있습니다. 
-
-**관리 VM**. 이 VM은 컨테이너 오케스트레이터의 마스터 노드를 실행합니다. 
-
-**네트워킹**. 공용 노드, 백 엔드 노드 및 관리 VM은 동일한 VNet(가상 네트워크) 내의 개별 서브넷에 배치됩니다. 
-
-**부하 분산 장치**.  외부 연결 부하 분산 장치는 공용 노드 앞에 배치되고, 공용 노드에 인터넷 요청을 분배합니다. 다른 부하 분산 장치는 관리 VM 앞에 배치되어 NAT 규칙을 사용하여 관리 VM에 대한 ssh(보안 셸) 트래픽을 허용합니다.
-
-안정성과 확장성을 위해 각 서비스가 여러 VM에 복제됩니다. 그러나 서비스는 모놀리식 응용 프로그램에 비해 상대적으로 경량이므로 일반적으로 여러 서비스가 단일 VM에 포함됩니다. 밀도가 높을수록 리소스 사용률이 향상됩니다. 특정 서비스가 많은 리소스를 사용하지 않는 경우 해당 서비스를 실행하기 위해 전체 VM을 사용할 필요가 없습니다.
-
-다음 다이어그램은 네 가지 서비스(각기 다른 도형으로 표시됨)를 실행하는 세 개의 노드를 보여 줍니다. 각 서비스에 두 개 이상의 인스턴스가 있습니다. 
- 
-![](./images/microservices-node-density.png)
-
-## <a name="microservices-using-azure-service-fabric"></a>Azure Service Fabric을 사용하는 마이크로 서비스
-
-다음 다이어그램은 [Azure Service Fabric](/azure/service-fabric/)을 사용하는 마이크로 서비스 아키텍처를 보여 줍니다.
-
-![](./images/service-fabric.png)
-
-Service Fabric 클러스터는 하나 이상의 VM 확장 집합에 배포됩니다. VM 유형을 섞어서 사용하기 위해 클러스터에 두 개 이상의 VM 확장 집합을 포함할 수도 있습니다. API 게이트웨이는 Service Fabric 클러스터의 앞에 배치되고 외부 부하 분산 장치가 클라이언트 요청을 수신합니다.
-
-Service Fabric 런타임은 서비스 배치, 노드 장애 조치(failover) 및 상태 모니터링을 비롯한 클러스터 관리를 수행합니다. 런타임은 클러스터 노드 자체에 배포됩니다. 별도의 클러스터 관리 VM 집합이 없습니다.
-
-서비스는 Service Fabric에 빌드된 역방향 프록시를 사용하여 서로 통신합니다. Service Fabric은 명명된 서비스의 엔드포인트를 확인할 수 있는 검색 서비스를 제공합니다.
+Azure에서 마이크로 서비스 아키텍처를 빌드하는 방법에 대한 자세한 지침은 [Azure에서 마이크로 서비스 설계, 구축 및 운영](../../microservices/index.md)을 참조하세요.
 
 
 <!-- links -->

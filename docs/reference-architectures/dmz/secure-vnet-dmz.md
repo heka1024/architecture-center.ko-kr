@@ -7,12 +7,12 @@ pnp.series.title: Network DMZ
 pnp.series.next: nva-ha
 pnp.series.prev: secure-vnet-hybrid
 cardTitle: DMZ between Azure and the Internet
-ms.openlocfilehash: d12c76a08f028d54784de330c62311f294802cb9
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.openlocfilehash: 8d394d8cacd17b3af2b3de13ecb2c3181ef568ba
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916334"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295629"
 ---
 # <a name="dmz-between-azure-and-the-internet"></a>Azure와 인터넷 간의 DMZ
 
@@ -90,7 +90,7 @@ NVA 수준에서 응용 프로그램 연결을 종료하고 백 엔드 계층 �
 
 ### <a name="deploy-resources"></a>리소스 배포
 
-1. 참조 아키텍처 GitHub 리포지토리의 `/dmz/secure-vnet-hybrid` 폴더로 이동합니다.
+1. 참조 아키텍처 GitHub 리포지토리의 `/dmz/secure-vnet-dmz` 폴더로 이동합니다.
 
 2. 다음 명령 실행:
 

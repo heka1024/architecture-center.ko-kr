@@ -7,12 +7,12 @@ ms.date: 11/28/2016
 pnp.series.next: adds-extend-domain
 pnp.series.prev: ./index
 cardTitle: Integrate on-premises AD with Azure AD
-ms.openlocfilehash: 5bb0fb990418a28170a8baeffd22e480fb664fda
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: c265870b9a664afbde561d324ae42fd3a2d9a87e
+ms.sourcegitcommit: 1287d635289b1c49e94f839b537b4944df85111d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48818958"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52332360"
 ---
 # <a name="integrate-on-premises-active-directory-domains-with-azure-active-directory"></a>Azure Active Directory와 온-프레미스 Active Directory 도메인 통합
 
@@ -218,7 +218,7 @@ Azure AD Connect 관리에 대한 자세한 내용과 팁은 [Azure AD Connect �
 
 이러한 권장 사항 및 고려 사항을 구현하는 참조 아키텍처에 대한 배포는 GitHub에서 사용할 수 있습니다. 이 참조 아키텍처는 테스트 및 실험에 사용할 수 있는 시뮬레이션된 온-프레미스 네트워크를 Azure에 배포합니다. 참조 아키텍처는 아래 지침에 따라 Windows 또는 Linux VM과 함께 배포할 수 있습니다. 
 
-1. 아래 단추를 클릭합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fidentity%2Fazure-ad%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+1. 아래 단추를 클릭합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fidentity-reference-architectures%2Fmaster%2Fazure-ad%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure 포털에서 링크가 열렸으면 일부 설정에 대한 값을 입력해야 합니다. 
    * **리소스 그룹** 이름이 매개 변수 파일에 이미 정의되어 있으므로 **새로 만들기**를 선택하고 텍스트 상자에 `ra-aad-onpremise-rg`를 입력합니다.
    * **위치** 드롭다운 상자에서 하위 지역을 선택합니다.
