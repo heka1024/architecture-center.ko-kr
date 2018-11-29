@@ -5,12 +5,12 @@ author: david-stanford
 ms:date: 11/01/2018
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 01b2db150c66eaa7f8911361dd39786f53c39c07
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.openlocfilehash: 5fcfc1566256a54d9907c66dbb550616f0155a3f
+ms.sourcegitcommit: 16bc6a91b6b9565ca3bcc72d6eb27c2c4ae935e4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610501"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52550515"
 ---
 # <a name="azure-example-scenarios"></a>Azure 예제 시나리오
 
@@ -27,9 +27,9 @@ ms.locfileid: "51610501"
                 <div class="card">
                     <div class="cardText">
                         <h3>새로운 시나리오</h3>
-                        <a class="barLink" href="/azure/architecture/example-scenario/apps/decentralized-trust" data-linktype="absolute-path">Azure의 은행 간에 분산 트러스트</a>
-                        <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/wordpress" data-linktype="absolute-path">확장성이 높고 안전한 Azure의 WordPress 웹 사이트</a>
-                        <a class="barLink" href="/azure/architecture/example-scenario/data/data-warehouse" data-linktype="absolute-path">영업 및 마케팅에 대한 데이터 웨어하우징 및 분석</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery" data-linktype="absolute-path">HA 및 DR용으로 빌드된 다중 계층 웹 애플리케이션</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/data/hybrid-etl-with-adf" data-linktype="absolute-path">온-프레미스 SSIS 및 Data Factory를 사용한 하이브리드 ETL</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/apps/decentralized-trust" data-linktype="absolute-path">Azure에서 은행 간에 트러스트 분산</a>
                     </div>
                 </div>
             </div>
@@ -41,9 +41,9 @@ ms.locfileid: "51610501"
                 <div class="card">
                     <div class="cardText">
                         <h3>상위 시나리오</h3>
-                        <a class="barLink" href="/azure/architecture/example-scenario/ai/intelligent-apps-image-processing" data-linktype="absolute-path">보험 청구에 대한 이미지 분류</a>
-                        <a class="barLink" href="/azure/architecture/example-scenario/apps/commerce-chatbot" data-linktype="absolute-path">호텔 예약에 대한 대화형 챗봇</a>
-                        <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/regulated-multitier-app" data-linktype="absolute-path">규제 산업용 Windows 웹 응용 프로그램 보호</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/infrastructure/regulated-multitier-app" data-linktype="absolute-path">규제된 업계에 대한 Windows 웹 애플리케이션 보호</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/apps/devops-dotnet-webapp" data-linktype="absolute-path">Azure DevOps를 사용한 CI/CD 파이프라인</a>
+                        <a class="barLink" href="/azure/architecture/example-scenario/data/fraud-detection" data-linktype="absolute-path">Azure에서 실시간 부정 행위 감지</a>
                     </div>
                 </div>
             </div>
@@ -80,4 +80,4 @@ ms.locfileid: "51610501"
     </li>
 </ul>
 
-[!INCLUDE [notes](./articles.md)]
+[!INCLUDE [articles](../../includes/scenario_articles.md)]
