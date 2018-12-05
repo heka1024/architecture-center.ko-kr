@@ -3,16 +3,16 @@ title: 서버리스 웹 응용 프로그램
 description: 서버리스 웹 응용 프로그램 및 웹 API를 보여 주는 참조 아키텍처입니다.
 author: MikeWasson
 ms.date: 10/16/2018
-ms.openlocfilehash: d1af03811bda6267fd40ee17823ac8357829f988
-ms.sourcegitcommit: 949b9d3e5a9cdee1051e6be700ed169113e914ae
+ms.openlocfilehash: 9263c8bec794e4b2bb9f397289b23307eb02f0c7
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "50983399"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295687"
 ---
 # <a name="serverless-web-application"></a>서버리스 웹 응용 프로그램 
 
-이 참조 아키텍처에서는 서버리스 웹 응용 프로그램을 보여 줍니다. 이 응용 프로그램은 Azure Blob Storage의 정적 콘텐츠를 제공하고 Azure Functions를 사용하여 API를 구현합니다. API는 Cosmos DB에서 데이터를 읽고 결과를 웹앱에 반환합니다. 이 아키텍처에 대한 참조 구현은 [GitHub][github]에서 사용할 수 있습니다.
+이 참조 아키텍처에서는 [서버리스](https://azure.microsoft.com/solutions/serverless/) 웹 애플리케이션을 보여줍니다. 이 응용 프로그램은 Azure Blob Storage의 정적 콘텐츠를 제공하고 Azure Functions를 사용하여 API를 구현합니다. API는 Cosmos DB에서 데이터를 읽고 결과를 웹앱에 반환합니다. 이 아키텍처에 대한 참조 구현은 [GitHub][github]에서 사용할 수 있습니다.
 
 ![](./_images/serverless-web-app.png)
  

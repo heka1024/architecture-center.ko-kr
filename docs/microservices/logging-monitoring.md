@@ -3,12 +3,12 @@ title: 마이크로 서비스에서 로깅 및 모니터링
 description: 마이크로 서비스에서 로깅 및 모니터링
 author: MikeWasson
 ms.date: 10/23/2018
-ms.openlocfilehash: c2a935f51c57936977fb4402de2113938351069c
-ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
+ms.openlocfilehash: 9d385a141edb34b2b0f4badb7dfcaf53baac2666
+ms.sourcegitcommit: 1b5411f07d74f0a0680b33c266227d24014ba4d1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49962877"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52305913"
 ---
 # <a name="designing-microservices-logging-and-monitoring"></a>마이크로 서비스 디자인: 로깅 및 모니터링
 

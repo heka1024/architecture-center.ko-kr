@@ -3,12 +3,12 @@ title: ETL(추출, 변환 및 로드)
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 1879b649fa3dfdf5c00f8ee30e53b83f7139fbf0
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.openlocfilehash: b10b0cb3cbc98ff9fadda6915b01b6f6564c4d00
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30298641"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295551"
 ---
 # <a name="extract-transform-and-load-etl"></a>ETL(추출, 변환 및 로드)
 
@@ -79,3 +79,10 @@ ELT 파이프라인의 최종 단계는 일반적으로 지원해야 하는 쿼�
 - [OLAP(온라인 분석 처리) 데이터 저장소](./online-analytical-processing.md#olap-in-azure)
 - [데이터 웨어하우스](./data-warehousing.md)
 - [파이프라인 오케스트레이션](../technology-choices/pipeline-orchestration-data-movement.md)
+
+## <a name="next-steps"></a>다음 단계
+
+다음 참조 아키텍처는 Azure의 엔드투엔드 ELT 파이프라인을 보여줍니다.
+
+- [SQL Data Warehouse를 사용하는 Azure의 Enterprise BI](../../reference-architectures/data/enterprise-bi-sqldw.md)
+- [SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 Enterprise BI](../../reference-architectures/data/enterprise-bi-adf.md)

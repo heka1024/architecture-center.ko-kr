@@ -3,12 +3,12 @@ title: 빅 데이터 아키텍처 스타일
 description: Azure에서 빅 데이터 아키텍처의 이점, 과제 및 모범 사례를 설명합니다.
 author: MikeWasson
 ms.date: 08/30/2018
-ms.openlocfilehash: 073a1a88f1aaca7f09bd1f47ba79216b0727ca24
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.openlocfilehash: 107ea7ad4e97a891236596291b0cee41a72eb865
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43325374"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295568"
 ---
 # <a name="big-data-architecture-style"></a>빅 데이터 아키텍처 스타일
 
@@ -124,6 +124,10 @@ IoT(사물 인터넷)는 빅 데이터 솔루션의 특수화된 하위 집합�
 - 일부 IoT 솔루션에서는 **명령 및 제어 메시지**를 장치에 전송할 수 있습니다.
 
 > 이 섹션에서는 IoT를 개괄적으로 설명했으며, 고려해야 할 여러 가지 세부 사항과 과제가 있습니다. 자세한 참조 아키텍처와 토론을 보려면 [Microsoft Azure IoT 참조 아키텍처][iot-ref-arch](PDF 다운로드)를 참조하세요.
+
+## <a name="next-steps"></a>다음 단계
+
+- [빅 데이터 아키텍처](../../data-guide/big-data/index.md)에 대해 자세히 알아보세요.
 
  <!-- links -->
 

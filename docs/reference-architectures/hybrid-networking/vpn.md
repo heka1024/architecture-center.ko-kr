@@ -7,12 +7,12 @@ pnp.series.title: Connect an on-premises network to Azure
 pnp.series.next: expressroute
 pnp.series.prev: ./index
 cardTitle: VPN
-ms.openlocfilehash: 6e705c40663eff421e79067f916a1ebad6e72822
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.openlocfilehash: a494ff952dd6c8be3b38c2ca7f6740a44b5b30e1
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916553"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295670"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN 게이트웨이를 사용하여 온-프레미스 네트워크를 Azure에 연결
 
@@ -413,7 +413,7 @@ Azure VPN 게이트웨이에 문제가 있는지 판단할 때 다음과 같은 
 
     ![[3]][3]
 
-    결과를 VPN 게이트웨이에서 사용할 수 있는 대역폭(기본 및 표준 SKU: 100Mbps, 고성능 SKU: 200Mbps)과 비교합니다.
+    결과를 VPN 게이트웨이에 제공되는 대역폭(100Mbps의 기본 SKU부터 1.25Gbps의 VpnGw3 SKU까지)과 비교합니다.
 
     ![[4]][4]
 

@@ -3,16 +3,16 @@ title: Azure Functions를 사용한 서버리스 이벤트 처리
 description: 서버리스 이벤트 수집 및 처리를 보여 주는 참조 아키텍처입니다.
 author: MikeWasson
 ms.date: 10/16/2018
-ms.openlocfilehash: 2bb7600fbed95e4b9368cf342c0bc6a75c5f8755
-ms.sourcegitcommit: 113a7248b9793c670b0f2d4278d30ad8616abe6c
+ms.openlocfilehash: 76c8b9c1244c987c96e38e50ecad7814cc49cd88
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49349941"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295653"
 ---
 # <a name="serverless-event-processing-using-azure-functions"></a>Azure Functions를 사용한 서버리스 이벤트 처리
 
-이 참조 아키텍처에서는 데이터 스트림을 수집하고, 데이터를 처리하고, 결과를 백 엔드 데이터베이스에 기록하는 서버리스 이벤트 구동 아키텍처를 보여 줍니다. 이 아키텍처에 대한 참조 구현은 [GitHub][github]에서 사용할 수 있습니다.
+이 참조 아키텍처에서는 데이터 스트림을 수집하고, 데이터를 처리하고, 결과를 백 엔드 데이터베이스에 기록하는 [서버리스](https://azure.microsoft.com/solutions/serverless/) 이벤트 구동 아키텍처를 보여줍니다. 이 아키텍처에 대한 참조 구현은 [GitHub][github]에서 사용할 수 있습니다.
 
 ![](./_images/serverless-event-processing.png)
 

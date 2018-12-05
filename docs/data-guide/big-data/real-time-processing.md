@@ -3,12 +3,12 @@ title: 실시간 처리
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: 4abb159924f902b5babe0673cc021e80b00c8529
-ms.sourcegitcommit: e9d9e214529edd0dc78df5bda29615b8fafd0e56
+ms.openlocfilehash: 1499fecc20dcbf51472b92bb588b91db0fb58a7f
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37090988"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295602"
 ---
 # <a name="real-time-processing"></a>실시간 처리
 
@@ -76,3 +76,8 @@ ms.locfileid: "37090988"
 
 순수한 실시간 솔루션에서 대부분의 처리 오케스트레이션은 메시지 수집 및 스트림 처리 구성 요소에 의해 관리됩니다. 그러나 일괄 처리 및 실시간 처리를 결합하는 람다 아키텍처에서는 Azure Data Factory 또는 Apache Oozie Sqoop 등의 오케스트레이션 프레임워크를 사용하여 캡처된 실시간 데이터에 대한 일괄 처리 워크플로 관리해야 할 수 있습니다.
 
+## <a name="next-steps"></a>다음 단계
+
+다음 참조 아키텍처는 엔드투엔드 스트림 처리 파이프라인을 보여줍니다.
+
+- [Azure Stream Analytics를 사용하는 스트림 처리](../../reference-architectures/data/stream-processing-stream-analytics.md)

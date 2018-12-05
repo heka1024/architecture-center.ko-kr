@@ -4,12 +4,12 @@ description: 설계하는 동안 복원력 문제에 대한 지침을 제공하�
 author: petertaylor9999
 ms.date: 01/10/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 15ad749c12dc8a45c9e7e08376452685d8ad7c9b
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.openlocfilehash: ce538a0b234a5b120415980e983096f567f9cf86
+ms.sourcegitcommit: 1b5411f07d74f0a0680b33c266227d24014ba4d1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819026"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52305947"
 ---
 # <a name="resiliency-checklist"></a>복원력 검사 목록
 
@@ -43,6 +43,8 @@ ms.locfileid: "48819026"
 
 **각 응용 프로그램 계층에 대해 가용성 집합을 사용합니다.** 인스턴스를 [가용성 집합][availability-sets]에 배치하면 더 높은 [SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)를 제공합니다. 
 
+**Azure Site Recovery를 사용하여 VM 복제.** [Site Recovery][site-recovery]를 사용하여 Azure VM을 복제할 때 모든 VM 디스크가 지속적으로 대상 지역에 비동기적으로 복제됩니다. 복구 지점은 몇 분 간격으로 생성됩니다. 이렇게 하면 시간 순으로 RPO(복구 지점 목표)가 제공됩니다.
+
 **여러 지역에 걸쳐 응용 프로그램을 배포하는 것을 고려합니다.** 응용 프로그램이 단일 지역에 배포되면 전체 지역이 사용할 수 없게 되는 드문 경우에 응용 프로그램도 사용할 수 없습니다. 이러한 상황이 응용 프로그램의 SLA의 조항에 따라 허용되지 않을 수 있습니다. 그러한 경우 응용 프로그램 및 해당 서비스를 여러 지역에 걸쳐 배포하는 것을 고려합니다. 다중 지역 배포는 능동-능동 패턴(여러 활성 인스턴스에 걸쳐 요청을 배포) 또는 능동-수동 패턴(기본 인스턴스가 실패할 경우 “관심 있음” 인스턴스를 예비로 보관)을 사용할 수 있습니다. 응용 프로그램 서비스의 여러 인스턴스를 지역 쌍에 걸쳐 배포하는 것이 좋습니다. 자세한 내용은 [BCDR(비즈니스 연속성 및 재해 복구): Azure 쌍을 이루는 지역](/azure/best-practices-availability-paired-regions)을 참조하세요.
 
 **Azure Traffic Manager를 사용하여 응용 프로그램의 트래픽을 다른 지역으로 경로 설정합니다.**  [Azure Traffic Manager][traffic-manager]는 DNS 수준에서 부하 분산을 수행하며 트래픽을 사용자가 지정하는 [트래픽 라우팅][traffic-manager-routing] 방법 및 응용 프로그램 엔드포인트의 상태를 기반으로 서로 다른 지역에 경로 설정합니다. Traffic Manager가 없으면 배포가 단일 지역으로 제한되어 크기가 제한되고 일부 사용자에 대한 대기 시간이 증가하며, 지역 전체 서비스가 중단된 경우 응용 프로그램 가동 중지 시간이 야기됩니다.
@@ -64,7 +66,7 @@ ms.locfileid: "48819026"
 
 ## <a name="data-management"></a>데이터 관리
 
-**응용 프로그램의 데이터 원본에 대한 복제 방법을 이해합니다.** 응용 프로그램 데이터가 서로 다른 데이터 원본에 저장되고 가용성 요구 사항도 서로 다릅니다. [Azure Storage 복제](/azure/storage/storage-redundancy/) 및 [SQL Database 활성 지역 복제](/azure/sql-database/sql-database-geo-replication-overview/)를 포함하여 Azure에서 각 유형의 데이터 저장장치에 대한 복제 방법을 평가하여 응용 프로그램의 데이터 요구 사항이 충족되는지 확인합니다.
+**응용 프로그램의 데이터 원본에 대한 복제 방법을 이해합니다.** 응용 프로그램 데이터가 서로 다른 데이터 원본에 저장되고 가용성 요구 사항도 서로 다릅니다. [Azure Storage 복제](/azure/storage/storage-redundancy/) 및 [SQL Database 활성 지역 복제](/azure/sql-database/sql-database-geo-replication-overview/)를 포함하여 Azure에서 각 유형의 데이터 저장장치에 대한 복제 방법을 평가하여 응용 프로그램의 데이터 요구 사항이 충족되는지 확인합니다. [Site Recovery][site-recovery]를 사용하여 Azure VM을 복제할 때 모든 VM 디스크가 지속적으로 대상 지역에 비동기적으로 복제됩니다. 복구 지점은 몇 분 간격으로 생성됩니다. 
 
 **프로덕션 및 백업 데이터 둘 다에 대해 액세스 권한을 가진 단일 사용자 계정이 없는지 확인합니다.** 단일 사용자 계정 하나가 프로덕션 및 백업 원본 둘 다에 대한 쓰기 권한을 가진 경우 데이터 백업이 손상됩니다. 악의적인 사용자는 모든 데이터를 고의로 삭제할 수 있는 반면, 정규 사용자는 해당 데이터를 실수로 삭제할 수 있습니다. 쓰기 액세스를 요구하는 사용자만이 쓰기 액세스 권한을 갖고 이 권한이 프로덕션 또는 백업에만 적용되고 둘 다에 함께 적용되지는 않도록 하려면 응용 프로그램을 각 사용자 계정의 사용 권한을 제한하도록 설계합니다.
 
@@ -87,7 +89,7 @@ ms.locfileid: "48819026"
 
 ## <a name="testing"></a>테스트
 
-**응용 프로그램에 대한 장애 조치 및 장애 복구 테스트를 수행합니다.** 장애 조치 및 장애 복구를 완전하게 테스트하지 않은 경우 응용 프로그램의 의존 서비스가 재해 복구 중에 동기화된 방법으로 백업된다고 확신할 수 없습니다. 응용 프로그램의 종속 서비스가 장애 조치 및 장애 복구를 올바른 순서로 수행하는지 확인합니다.
+**응용 프로그램에 대한 장애 조치 및 장애 복구 테스트를 수행합니다.** 장애 조치 및 장애 복구를 완전하게 테스트하지 않은 경우 응용 프로그램의 의존 서비스가 재해 복구 중에 동기화된 방법으로 백업된다고 확신할 수 없습니다. 응용 프로그램의 종속 서비스가 장애 조치 및 장애 복구를 올바른 순서로 수행하는지 확인합니다. [Azure Site Recovery][site-recovery]를 사용하여 VM을 복제하는 경우 테스트 장애 조치(failover)를 수행하여 재해 복구 훈련을 정기적으로 실행하세요. 자세한 내용은 [Azure로 재해 복구 훈련 실행][site-recovery-test]을 참조하세요.
 
 **응용 프로그램에 대한 오류-삽입 테스트를 수행합니다.** 응용 프로그램은 인증서 만료, VM의 시스템 리소스 소모, 저장소 고장 등 많은 다른 이유로 실패할 수 있습니다. 실제 고장을 시뮬레이션 또는 트리거하여 프로덕션에 가능하면 근접한 환경에서 응용 프로그램을 테스트합니다. 예를 들어 인증서를 삭제하거나 인위적으로 시스템 리소스를 사용하거나 저장소 원본을 삭제합니다. 단독 및 조합 등 모든 유형의 결함에서 복구하는 응용 프로그램의 기능을 확인합니다. 오류가 시스템을 통해 전파되거나 종속 연결되지 않는지 확인합니다.
 
@@ -176,6 +178,8 @@ ms.locfileid: "48819026"
 [resource-manager]: /azure/azure-resource-manager/resource-group-overview/
 [retry-pattern]: ../patterns/retry.md
 [retry-service-guidance]: ../best-practices/retry-service-specific.md
+[site-recovery]: /azure/site-recovery/
+[site-recovery-test]: /azure/site-recovery/site-recovery-test-failover-to-azure
 [traffic-manager]: /azure/traffic-manager/traffic-manager-overview/
 [traffic-manager-routing]: /azure/traffic-manager/traffic-manager-routing-methods/
 [vmss-autoscale]: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview/

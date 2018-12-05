@@ -4,12 +4,12 @@ description: 다양한 Azure 서비스에 대한 복원력 지침을 제공하�
 author: petertaylor9999
 ms.date: 03/02/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 50808a837132e905cc89c3c43d40852a04f4885c
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.openlocfilehash: 53a37595bd6e70fa3a43e9a72b2ae47d2225009f
+ms.sourcegitcommit: 1b5411f07d74f0a0680b33c266227d24014ba4d1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916705"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52305930"
 ---
 # <a name="resiliency-checklist-for-specific-azure-services"></a>특정 Azure 서비스에 대한 복원력 검사 목록
 
@@ -139,6 +139,8 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 **각 응용 프로그램 계층을 별도의 가용성 집합에 배치합니다.** N 계층 응용 프로그램에서 서로 다른 계층의 VM을 동일한 가용성 집합에 배치하지 마세요. 가용성 집합의 VM은 장애 도메인(FD) 및 업데이트 도메인(UD)에 걸쳐 배치됩니다. 그러나 FD와 UD의 중복성 이점을 활용하려면 가용성 집합의 모든 VM이 동일한 클라이언트 요청을 처리할 수 있어야 합니다.
 
+**Azure Site Recovery를 사용하여 VM 복제.** [Site Recovery][site-recovery]를 사용하여 Azure VM을 복제할 때 모든 VM 디스크가 지속적으로 대상 지역에 비동기적으로 복제됩니다. 복구 지점은 몇 분 간격으로 생성됩니다. 이렇게 하면 시간 순으로 RPO(복구 지점 목표)가 제공됩니다. 프로덕션 애플리케이션 또는 진행 중인 복제에 영향을 주지 않고 재해 복구 훈련을 원하는 만큼 수행할 수 있습니다. 자세한 내용은 [Azure로 재해 복구 훈련 실행][site-recovery-test]을 참조하세요.
+
 **성능 요구 사항을 기반으로 올바른 VM 크기를 선택합니다.** 기존 워크로드를 Azure로 이동할 때 온-프레미스 서버와 가장 근접하게 일치하는 VM 크기부터 사용하기 시작합니다. 그런 다음 CPU, 메모리 및 디스크 IOPS에 따라 실제 워크로드의 성능을 측정하고 필요에 따라 크기를 조정합니다. 이렇게 하면 해당 응용 프로그램이 클라우드 환경에서 예상한 대로 작동합니다. 또한 여러 NIC가 필요한 경우 각 크기에 대한 NIC 제한을 알아야 합니다.
 
 **VHD에 Managed Disks를 사용합니다.** [Managed Disks][managed-disks]는 디스크들이 서로 충분히 격리되어 단일 실패 지점을 방지하므로 가용성 집합의 VM에 대해 더 나은 신뢰성을 제공합니다. 또한 Managed Disks는 저장소 계정에서 만든 VHD의 IOPS 제한이 적용되지 않습니다. 자세한 내용은 [Azure에서 Windows 가상 머신의 가용성 관리][vm-manage-availability]를 참조하세요.
@@ -166,6 +168,8 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 [diagnostics-logs]: /azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs/
 [managed-disks]: /azure/storage/storage-managed-disks-overview
 [search-optimization]: /azure/search/search-performance-optimization/
+[site-recovery]: /azure/site-recovery/
+[site-recovery-test]: /azure/site-recovery/site-recovery-test-failover-to-azure
 [sql-backup]: /azure/sql-database/sql-database-automated-backups/
 [sql-restore]: /azure/sql-database/sql-database-recovery-using-backups/
 [vm-manage-availability]: /azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set

@@ -3,12 +3,12 @@ title: 일괄 처리
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: d6843bf4e20c3eb26e61cfa09300ad533e969c2e
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.openlocfilehash: eecee13e9b22b0382a0128e1c6ab8b960cbd4fea
+ms.sourcegitcommit: 16bc6a91b6b9565ca3bcc72d6eb27c2c4ae935e4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30298661"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52550481"
 ---
 # <a name="batch-processing"></a>일괄 처리
 
@@ -30,7 +30,7 @@ ms.locfileid: "30298661"
 
 - **시간 조각 조정.** 종종 원본 데이터는 연도, 월, 일, 시간 등을 기준으로 구성되는 처리 기간을 반영하는 폴더 계층 구조에 배치됩니다. 경우에 따라 데이터 늦게 도착할 수도 있습니다. 예를 들어, 웹 서버에서 오류가 발생하면 3월 7일에 대한 로그는 3월 9일까지 처리되기 위한 폴더에 저장되지 않습니다. 단지 너무 늦었기 때문에 무시될까요? 다운스트림 처리 논리가 잘못된 순서의 레코드를 처리할 수 있나요?
 
-## <a name="architecture"></a>건축
+## <a name="architecture"></a>아키텍처
 
 일괄 처리 아키텍처는 위 다이어그램에 표시되는 다음 논리적 구성 요소를 갖습니다.
 
@@ -75,7 +75,7 @@ ms.locfileid: "30298661"
 
 ### <a name="analytics-and-reporting"></a>분석 및 보고
 
-- **Azure Analysis Services**. 많은 빅 데이터 솔루션에서는 보고서, 대시보드 및 대화형 "조각화 및 분석" 방식의 분석의 기준이 될 수 있는 중앙 집중식 OLAP(온라인 분석 처리) 데이터 모델(큐브라고도 함)을 포함하여 기존 엔터프라이즈 비즈니스 인텔리전스 아키텍처를 에뮬레이트합니다. Azure Analysis Services는 이 요구를 충족하기 위해 다차원 및 테이블 형식 모델 생성을 지원합니다.
+- **Azure Analysis Services**. 많은 빅 데이터 솔루션에서는 보고서, 대시보드 및 대화형 "조각화 및 분석" 방식의 분석의 기준이 될 수 있는 중앙 집중식 OLAP(온라인 분석 처리) 데이터 모델(큐브라고도 함)을 포함하여 기존 엔터프라이즈 비즈니스 인텔리전스 아키텍처를 에뮬레이트합니다. Azure Analysis Services는 이 요구 사항을 충족하도록 테이블 형식 모델 만들기를 지원합니다.
 - **Power BI**. Power BI는 데이터 분석가가 OLAP 모델에서 또는 분석 데이터 저장소에서 직접, 데이터 모델을 기준으로 대화형 데이터 시각화를 만들 수 있도록 합니다.
 - **Microsoft Excel**. Microsoft Excel은 전 세계적으로 가장 널리 사용되는 소프트웨어 응용 프로그램 중 하나로, 다양한 데이터 분석 및 시각화 기능을 제공합니다. 데이터 분석가는 Excel을 사용하여 분석 데이터 저장소에서 문서 데이터 모델을 작성하거나 OLAP 데이터 모델의 데이터를 대화형 피벗 테이블 및 차트로 검색할 수 있습니다.
 

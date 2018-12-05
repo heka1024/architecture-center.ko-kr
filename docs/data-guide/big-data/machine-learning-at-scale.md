@@ -3,12 +3,12 @@ title: 대규모 Machine Learning
 description: ''
 author: zoinerTejada
 ms:date: 02/12/2018
-ms.openlocfilehash: a44785b61faec8a45160fa2895fbc03e2c580a77
-ms.sourcegitcommit: 9293350ab66fb5ed042ff363f7a76603bf68f568
+ms.openlocfilehash: f2d35f7344a1e760fc6d3ce2292f33b8d3dd7df7
+ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577143"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52295495"
 ---
 # <a name="machine-learning-at-scale"></a>대규모 Machine Learning
 
@@ -68,3 +68,10 @@ Azure의 ML에 대한 기술 선택 목록을 보려면 다음 항목을 참조�
 - [Cognitive Services 기술 선택](../technology-choices/cognitive-services.md)
 - [Machine Learning 기술 선택](../technology-choices/data-science-and-machine-learning.md)
 - [자연어 처리 기술 선택](../technology-choices/natural-language-processing.md)
+
+## <a name="next-steps"></a>다음 단계
+
+다음 참조 아키텍처는 Azure의 기계 학습 시나리오를 보여줍니다.
+
+- [Azure의 딥러닝 모델 일괄 채점](../../reference-architectures/ai/batch-scoring-deep-learning.md)
+- [Azure의 Python Scikit-Learn 및 딥러닝 모델의 실시간 채점](../../reference-architectures/ai/realtime-scoring-python.md)
