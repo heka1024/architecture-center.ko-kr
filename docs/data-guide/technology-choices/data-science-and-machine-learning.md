@@ -90,7 +90,7 @@ Azure Machine Learning Studio는 데이터 실험을 만들고, Machine Learning
 
 고려 사항:
 
-* 제한된 확장성. 학습 데이터 집합의 최대 크기는 10GB입니다.
+* 제한된 확장성. 학습 데이터 세트의 최대 크기는 10GB입니다.
 * 온라인 전용 오프라인 개발 환경은 없습니다.
 
 ## <a name="tools-and-services-for-deploying-machine-learning-models"></a>Machine Learning 모델을 배포하기 위한 도구 및 서비스

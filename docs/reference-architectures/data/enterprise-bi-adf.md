@@ -107,7 +107,7 @@ HAVING COUNT(RowNumber) = 4)
 
 ## <a name="external-data-sources"></a>외부 데이터 원본
 
-데이터 웨어하우스는 종종 여러 소스의 데이터를 통합합니다. 이 참조 아키텍처는 인구 통계 데이터를 포함하는 외부 데이터 원본을 로드합니다. 이 데이터 집합은 [WorldWideImportersDW](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/wide-world-importers/sample-scripts/polybase) 샘플의 일부로 Azure Blob Storage에서 사용할 수 있습니다.
+데이터 웨어하우스는 종종 여러 소스의 데이터를 통합합니다. 이 참조 아키텍처는 인구 통계 데이터를 포함하는 외부 데이터 원본을 로드합니다. 이 데이터 세트는 [WorldWideImportersDW](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/wide-world-importers/sample-scripts/polybase) 샘플의 일부로 Azure Blob Storage에서 사용할 수 있습니다.
 
 Azure Data Factory는 [Blob Storage 커넥터](/azure/data-factory/connector-azure-blob-storage)를 사용하여 Blob Storage에서 직접 복사할 수 있습니다. 그러나 커넥터는 연결 문자열 또는 공유 액세스 서명이 필요하므로 공용 읽기 액세스를 사용하여 BLOB을 복사하는 데 사용할 수 없습니다. 해결 방법으로 PolyBase를 사용하여 Blob 저장소에서 외부 테이블을 만든 다음, 외부 테이블을 SQL Data Warehouse에 복사할 수 있습니다. 
 

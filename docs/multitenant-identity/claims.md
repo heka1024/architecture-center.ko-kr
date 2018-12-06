@@ -2,16 +2,16 @@
 title: 다중 테넌트 응용 프로그램에서 클레임 기반 ID 작업
 description: 발급자 유효성 검사 및 권한 부여에 클레임을 사용하는 방법
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authenticate
 pnp.series.next: signup
-ms.openlocfilehash: 46c43c9bfa4514f206b5e7eabd9223ad4c61628b
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 3ed6c7c9a48f3617f82112e76878c770099fde3e
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429375"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902428"
 ---
 # <a name="work-with-claims-based-identities"></a>클레임 기반 ID 사용
 

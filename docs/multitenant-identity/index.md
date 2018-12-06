@@ -2,15 +2,15 @@
 title: 다중 테넌트 응용 프로그램에 대한 ID 관리
 description: 다중 테넌트 앱에서 인증, 권한 부여 및 ID 관리에 대한 모범 사례입니다.
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.next: tailspin
-ms.openlocfilehash: 9c2efe9aea9da53177478161b90406d0c2021550
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 24e09720d3257cbfae350995fa5238663da1d26e
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429437"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902054"
 ---
 # <a name="manage-identity-in-multitenant-applications"></a>다중 테넌트 응용 프로그램의 ID 관리
 
@@ -46,7 +46,7 @@ Azure AD(Azure Active Directory)에는 이러한 모든 시나리오를 지원�
 이 지침에서는 [Azure AD(Azure Active Directory)][AzureAD]를 사용하여 로그인 및 인증을 처리하는 방식으로 다중 테넌트 응용 프로그램에서 사용자 ID를 관리하는 방법을 보여 줍니다.
 
 ## <a name="what-is-multitenancy"></a>다중 테넌트 지원이란?
-*테넌트*는 사용자 그룹입니다. SaaS 응용 프로그램에서 테넌트는 응용 프로그램의 고객 또는 구독자입니다. *다중 테넌트*는 여러 테넌트가 동일한 실제 앱 인스턴스를 공유하는 아키텍처입니다. 각 테넌트는 실제 리소스(예: VM 또는 저장소)를 공유하지만 응용 프로그램의 고유한 논리 인스턴스를 가져옵니다.
+*테넌트* 는 사용자 그룹입니다. SaaS 응용 프로그램에서 테넌트는 응용 프로그램의 고객 또는 구독자입니다. *다중 테넌트 지원* 은 여러 테넌트가 응용 프로그램의 동일한 실제 인스턴스를 공유하는 아키텍처입니다. 각 테넌트는 실제 리소스(예: VM 또는 저장소)를 공유하지만 응용 프로그램의 고유한 논리 인스턴스를 가져옵니다.
 
 일반적으로 응용 프로그램 데이터는 다른 테넌트와 공유되는 것이 아니라 테넌트 내의 사용자 간에 공유됩니다.
 

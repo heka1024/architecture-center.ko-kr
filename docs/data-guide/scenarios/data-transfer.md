@@ -2,13 +2,13 @@
 title: 데이터 전송 기술 선택
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 53dcf8a69ad8ae100dbdbb230a9280efd419342a
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.date: 02/12/2018
+ms.openlocfilehash: d5fbdc3a49ab16be2626b772ffd1af782963a2f0
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35252756"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902683"
 ---
 # <a name="transferring-data-to-and-from-azure"></a>Azure에서의 데이터 전송
 
@@ -84,9 +84,9 @@ Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 �
 | | Azure Import/Export 서비스 | Azure Data Box |
 | --- | --- | --- |
 | 폼 팩터 | 내부 SATA HDD 또는 SDD | 안전한, 변조 방지, 단일 하드웨어 어플라이언스 |
-| Microsoft에서 배송 내부 프로세스 관리 | 아니오 | 예 |
-| 파트너 제품과의 통합 | 아니오 | 예 |
-| 사용자 지정 어플라이언스 | 아니오 | 예 |
+| Microsoft에서 배송 내부 프로세스 관리 | 아니요 | yes |
+| 파트너 제품과의 통합 | 아니요 | yes |
+| 사용자 지정 어플라이언스 | 아니요 | yes |
 
 ### <a name="command-line-tools"></a>명령줄 도구.
 
@@ -94,26 +94,26 @@ Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 �
 
 | | Distcp | Sqoop | Hadoop CLI |
 | --- | --- | --- | --- |
-| 빅 데이터에 최적화 | 예 | 예 |  예 |
-| 관계형 데이터베이스로 복사 |  아니오 | 예 | 아니오 |
-| 관계형 데이터베이스에서 복사 |  아니오 | 예 | 아니오 |
-| Blob 저장소로 복사 |  예 | 예 | 예 |
-| Blob 저장소에서 복사 | 예 |  예 | 아니오 |
-| Data Lake Store로 복사 | 예 | 예 | 예 |
-| Data Lake Store에서 복사 | 예 | 예 | 아니오 |
+| 빅 데이터에 최적화 | yes | 예 |  yes |
+| 관계형 데이터베이스로 복사 |  아니요 | yes | 아니요 |
+| 관계형 데이터베이스에서 복사 |  아니요 | yes | 아니요 |
+| Blob 저장소로 복사 |  yes | 예 | yes |
+| Blob 저장소에서 복사 | yes |  yes | 아니요 |
+| Data Lake Store로 복사 | yes | 예 | yes |
+| Data Lake Store에서 복사 | yes | yes | 아니요 |
 
 **기타**
 
 | | Azure CLI | AzCopy | PowerShell | AdlCopy | PolyBase |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 호환 플랫폼 | Linux, OS X, Windows | Linux, Windows | Windows | Linux, OS X, Windows | SQL Server, Azure SQL Data Warehouse | 
-| 빅 데이터에 최적화 | 아니오 | 아니요 | 아니오 | 예 <sup>1</sup> | 예 <sup>2</sup> |
-| 관계형 데이터베이스로 복사 | 아니오 | 아니요 | 아니요 | 아니요 | 예 | 
-| 관계형 데이터베이스에서 복사 | 아니오 | 아니요 | 아니요 | 아니요 | 예 | 
-| Blob 저장소로 복사 | 예 | 예 | 예 | 아니오 | 예 | 
-| Blob 저장소에서 복사 | 예 | 예 | 예 | 예 | 예 |
-| Data Lake Store로 복사 | 아니오 | 아니요 | 예 | 예 |  예 | 
-| Data Lake Store에서 복사 | 아니오 | 아니요 | 예 | 예 | 예 | 
+| 빅 데이터에 최적화 | 아니요 | 아니요 | 아니요 | 예 <sup>1</sup> | 예 <sup>2</sup> |
+| 관계형 데이터베이스로 복사 | 아니요 | 아니요 | 아니요 | 아니요 | yes | 
+| 관계형 데이터베이스에서 복사 | 아니요 | 아니요 | 아니요 | 아니요 | yes | 
+| Blob 저장소로 복사 | yes | 예 | yes | 아니요 | yes | 
+| Blob 저장소에서 복사 | yes | 예 | 예 | 예 | yes |
+| Data Lake Store로 복사 | 아니요 | 아니요 | 예 | 예 |  yes | 
+| Data Lake Store에서 복사 | 아니요 | 아니요 | 예 | 예 | yes | 
 
 
 [1] AdlCopy는 Data Lake Analytics 계정과 함께 사용할 경우 빅 데이터를 전송하는 데 최적화되어 있습니다.
@@ -124,17 +124,17 @@ Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 �
 
 | | Azure Storage 탐색기 | Azure Portal * | Azure 데이터 팩터리 |
 | --- | --- | --- | --- |
-| 빅 데이터에 최적화 | 아니오 | 아니요 | 예 | 
-| 관계형 데이터베이스로 복사 | 아니오 | 아니요 | 예 |
-| 관계형 데이터베이스로 복사 | 아니오 | 아니요 | 예 |
-| Blob 저장소로 복사 | 예 | 아니오 | 예 |
-| Blob 저장소에서 복사 | 예 | 아니오 | 예 |
-| Data Lake Store로 복사 | 아니오 | 아니요 | 예 |
-| Data Lake Store에서 복사 | 아니오 | 아니요 | 예 |
-| Blob 저장소로 업로드 | 예 | 예 | 예 |
-| Data Lake Store로 업로드 | 예 | 예 | 예 |
-| 데이터 전송 조정 | 아니오 | 아니요 | 예 |
-| 사용자 지정 데이터 변환 | 아니오 | 아니요 | 예 |
+| 빅 데이터에 최적화 | 아니요 | 아니요 | yes | 
+| 관계형 데이터베이스로 복사 | 아니요 | 아니요 | yes |
+| 관계형 데이터베이스로 복사 | 아니요 | 아니요 | yes |
+| Blob 저장소로 복사 | yes | 아니요 | yes |
+| Blob 저장소에서 복사 | yes | 아니요 | yes |
+| Data Lake Store로 복사 | 아니요 | 아니요 | yes |
+| Data Lake Store에서 복사 | 아니요 | 아니요 | yes |
+| Blob 저장소로 업로드 | yes | 예 | yes |
+| Data Lake Store로 업로드 | yes | 예 | yes |
+| 데이터 전송 조정 | 아니요 | 아니요 | yes |
+| 사용자 지정 데이터 변환 | 아니요 | 아니요 | yes |
 | 가격 책정 모델 | 무료 | 무료 | 사용당 지급 |
 
 \* 이 경우의 Azure Portal은 Blob 저장소 및 Data Lake Store에 대해 웹 기반 탐색 도구를 사용하는 것을 의미합니다.

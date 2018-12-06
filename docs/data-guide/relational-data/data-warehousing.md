@@ -75,7 +75,7 @@ MPP 시스템은 계산 노드(자체 CUP, 메모리 및 I/O 하위 시스템 �
 
 사용할 SMP 솔루션을 결정할 때는 [Azure SQL 데이터베이스 및 Azure VM의 SQL Server에서 자세히 보기](/azure/sql-database/sql-database-paas-vs-sql-server-iaas#a-closer-look-at-azure-sql-database-and-sql-server-on-azure-vms)를 참조하세요. 
 
-워크로드가 계산 및 메모리 집약적인 소형 및 중형 데이터 집합에도 Azure SQL Data Warehouse를 사용할 수 있습니다. SQL Data Warehouse 패턴 및 일반적인 시나리오에 대해 읽어보세요.
+워크로드가 계산 및 메모리 집약적인 소형 및 중형 데이터 세트에도 Azure SQL Data Warehouse를 사용할 수 있습니다. SQL Data Warehouse 패턴 및 일반적인 시나리오에 대해 읽어보세요.
 
 - [SQL Data Warehouse 패턴 및 안티패턴](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns/)
 - [SQL Data Warehouse 로딩 패턴 및 전략](https://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/)
