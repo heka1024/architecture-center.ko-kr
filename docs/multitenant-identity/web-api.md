@@ -2,16 +2,16 @@
 title: 다중 테넌트 응용 프로그램에서 백 엔드 웹 API 보안 유지
 description: 백 엔드 웹 API의 보안을 유지하는 방법
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authorize
 pnp.series.next: token-cache
-ms.openlocfilehash: 2d02ff7be04c6ebec888039453fe1ac7e957b301
-ms.sourcegitcommit: f7fa67e3bdbc57d368edb67bac0e1fdec63695d2
+ms.openlocfilehash: e738eb94b5978efa4e7a4bebcc72daa7968ac904
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37843677"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52901595"
 ---
 # <a name="secure-a-backend-web-api"></a>백 엔드 웹 API의 보안 유지
 

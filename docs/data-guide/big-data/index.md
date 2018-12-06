@@ -2,13 +2,13 @@
 title: 빅 데이터 아키텍처
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 2a1336faea81470b082d4eef8e2cc53a082c63c7
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.date: 02/12/2018
+ms.openlocfilehash: f0c90d88c1350d12b03531ae009f952ea823bc30
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30298858"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902394"
 ---
 # <a name="big-data-architectures"></a>빅 데이터 아키텍처
 
@@ -37,7 +37,7 @@ ms.locfileid: "30298858"
 
 대부분의 빅 데이터 아키텍처에는 다음 구성 요소의 일부 또는 전체가 포함됩니다.
 
-* **데이터 원본**. 모든 빅 데이터 솔루션은 하나 이상의 데이터 원본으로 시작합니다. 이러한 예로 다음이 포함됩니다.
+* **데이터 원본**. 모든 빅 데이터 솔루션은 하나 이상의 데이터 원본으로 시작합니다. 다음은 이러한 템플릿의 예입니다.
 
     * 응용 프로그램 데이터 저장소(예: 관계형 데이터베이스)
     * 응용 프로그램에서 생성하는 정적 파일(예: 웹 서버 로그 파일)

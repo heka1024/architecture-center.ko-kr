@@ -2,16 +2,16 @@
 title: Azure AD에서 액세스 토큰을 가져오는 데 클라이언트 어설션 사용
 description: 클라이언트 어설션을 사용하여 Azure AD에서 액세스 토큰을 가져오는 방법을 알아봅니다.
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: adfs
 pnp.series.next: key-vault
-ms.openlocfilehash: 9fe1ee2ec5a540edc41c3a310476507f8d862f0c
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.openlocfilehash: 58eed82c982fe1c6cba0f04b237d92d117a26fd4
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582696"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902275"
 ---
 # <a name="use-client-assertion-to-get-access-tokens-from-azure-ad"></a>Azure AD에서 액세스 토큰을 가져오는 데 클라이언트 어설션 사용
 
@@ -41,7 +41,7 @@ resource=https://tailspin.onmicrosoft.com/surveys.webapi
 
 그러나 Azure 구독에 액세스할 수 있는 모든 사람이 앱 설정을 볼 수 있습니다. 또한 암호를 소스 제어(예: 배포 스크립트)로 체크 인하고 전자 메일 등으로 공유하려는 유혹이 항상 있습니다.
 
-보안을 강화하기 위해 클라이언트 암호 대신 [클라이언트 어설션]을 사용할 수 있습니다. 클라이언트 어설션을 사용하는 경우 클라이언트는 X.509 인증서를 사용하여 토큰 요청을 증명합니다. 클라이언트 인증서는 웹 서버에 설치됩니다. 일반적으로 누구도 클라이언트 암호를 고의로 노출하지 못하도록 하는 것보다 인증서에 대한 액세스를 제한하는 것이 더 쉽습니다. 웹앱에서 인증서를 구성하는 방법에 대한 자세한 내용은 [Azure 웹 사이트 응용 프로그램에서 인증서 사용][using-certs-in-websites]을 참조하세요.
+보안을 강화하기 위해 클라이언트 암호 대신 [클라이언트 어설션] 을 사용할 수 있습니다. 클라이언트 어설션을 사용하는 경우 클라이언트는 X.509 인증서를 사용하여 토큰 요청을 증명합니다. 클라이언트 인증서는 웹 서버에 설치됩니다. 일반적으로 누구도 클라이언트 암호를 고의로 노출하지 못하도록 하는 것보다 인증서에 대한 액세스를 제한하는 것이 더 쉽습니다. 웹앱에서 인증서를 구성하는 방법에 대한 자세한 내용은 [Azure 웹 사이트 응용 프로그램에서 인증서 사용][using-certs-in-websites]을 참조하세요.
 
 다음은 클라이언트 어설션을 사용한 토큰 요청입니다.
 

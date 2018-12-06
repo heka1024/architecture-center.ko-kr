@@ -2,13 +2,13 @@
 title: OLTP(온라인 트랜잭션 처리)
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 8650b919fc1a59240343015493a1fe41c8729a72
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.date: 02/12/2018
+ms.openlocfilehash: be24bc173359539785385de4a188e7536f6d2ffe
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30848702"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902768"
 ---
 # <a name="online-transaction-processing-oltp"></a>OLTP(온라인 트랜잭션 처리)
 
@@ -34,10 +34,10 @@ ms.locfileid: "30848702"
 | 스키마 | 쓰기 시 스키마, 강력하게 적용|
 | 일관성 | 강력한 일관성 ACID 보장 |
 | 무결성 | 높은 무결성 |
-| 트랜잭션 사용 | 예 |
+| 트랜잭션 사용 | yes |
 | 잠금 전략 | 비관적 또는 낙관적|
-| 업데이트 가능 | 예 |
-| 추가 가능 | 예 |
+| 업데이트 가능 | yes |
+| 추가 가능 | yes |
 | 워크로드 | 과도 쓰기, 보통 읽기 |
 | 인덱싱 | 기본 및 보조 인덱스 |
 | 데이터 크기 | 소규모~중간 규모 |
@@ -98,7 +98,7 @@ Azure에서 다음의 모든 데이터 저장소는 OLTP 및 트랜잭션 데이
 
 |                              | Azure SQL Database | Azure Virtual Machine의 SQL Server | Azure Database for MySQL | Azure Database for PostgreSQL |
 |------------------------------|--------------------|----------------------------------------|--------------------------|-------------------------------|
-|      관리되는 서비스인지 여부      |        예         |                   아니요                   |           예            |              예              |
+|      관리되는 서비스인지 여부      |        yes         |                   아니요                   |           예            |              yes              |
 |       플랫폼에서 실행       |        해당 없음         |         Windows, Linux, Docker         |           해당 없음            |              해당 없음              |
 | 프로그래밍 기능 <sup>1</sup> |   T-SQL, .NET, R   |         T-SQL, .NET, R, Python         |  T-SQL, .NET, R, Python  |              SQL              |
 
@@ -109,40 +109,40 @@ Azure에서 다음의 모든 데이터 저장소는 OLTP 및 트랜잭션 데이
 | | Azure SQL Database | Azure Virtual Machine의 SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- |
 | 최대 데이터베이스 인스턴스 크기 | [4TB](/azure/sql-database/sql-database-resource-limits) | 256TB | [1 TB](/azure/mysql/concepts-limits) | [1 TB](/azure/postgresql/concepts-limits) |
-| 용량 풀 지원 여부  | 예 | 예 | 아니오 | 아니오 |
-| 클러스터 스케일 아웃 지원 여부  | 아니오 | 예 | 아니요 | 아니오 |
-| 동적 확장성(강화)  | 예 | 아니오 | 예 | 예 |
+| 용량 풀 지원 여부  | yes | yes | 아니요 | 아니요 |
+| 클러스터 스케일 아웃 지원 여부  | 아니요 | yes | 아니요 | 아니요 |
+| 동적 확장성(강화)  | yes | 아니요 | 예 | yes |
 
 ### <a name="analytic-workload-capabilities"></a>분석 워크로드 기능
 
 | | Azure SQL Database | Azure Virtual Machine의 SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- | 
-| 임시 테이블 | 예 | 예 | 아니오 | 아니오 |
-| 메모리 내(메모리 최적화) 테이블 | 예 | 예 | 아니오 | 아니오 |
-| Columnstore 지원 여부 | 예 | 예 | 아니오 | 아니요 |
-| 적응 쿼리 처리 | 예 | 예 | 아니오 | 아니요 |
+| 임시 테이블 | yes | yes | 아니요 | 아니요 |
+| 메모리 내(메모리 최적화) 테이블 | yes | yes | 아니요 | 아니요 |
+| Columnstore 지원 여부 | yes | yes | 아니요 | 아니요 |
+| 적응 쿼리 처리 | yes | yes | 아니요 | 아니요 |
 
 ### <a name="availability-capabilities"></a>가용성 기능
 
 | | Azure SQL Database | Azure Virtual Machine의 SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- | 
-| 읽기 가능 보조 복제본 | 예 | 예 | 아니오 | 아니오 | 
-| 지리적 복제 | 예 | 예 | 아니오 | 아니오 | 
-| 보조 복제본으로 자동 장애 조치(Failover) | 예 | 아니요 | 아니요 | 아니오|
-| 지정 시간 복원 | 예 | 예 | 예 | 예 |
+| 읽기 가능 보조 복제본 | yes | yes | 아니요 | 아니요 | 
+| 지리적 복제 | yes | yes | 아니요 | 아니요 | 
+| 보조 복제본으로 자동 장애 조치(Failover) | yes | 아니요 | 아니요 | 아니요|
+| 지정 시간 복원 | yes | 예 | 예 | yes |
 
 ### <a name="security-capabilities"></a>보안 기능
 
 |                                                                                                             | Azure SQL Database | Azure Virtual Machine의 SQL Server | Azure Database for MySQL | Azure Database for PostgreSQL |
 |-------------------------------------------------------------------------------------------------------------|--------------------|----------------------------------------|--------------------------|-------------------------------|
-|                                             행 수준 보안                                              |        예         |                  예                   |           예            |              예              |
-|                                                데이터 마스킹                                                 |        예         |                  예                   |            아니요            |              아니오               |
-|                                         투명한 데이터 암호화                                         |        예         |                  예                   |           예            |              예              |
-|                                  특정 IP 주소로 액세스 제한                                   |        예         |                  예                   |           예            |              예              |
-|                                  VNET 액세스만 허용하도록 액세스 제한                                  |        예         |                  예                   |            아니오            |              아니오               |
-|                                    Azure Active Directory 인증                                    |        예         |                  예                   |            아니오            |              아니요               |
-|                                       Active Directory 인증                                       |         아니오         |                  예                   |            아니오            |              아니요               |
-|                                         Multi-Factor Authentication                                         |        예         |                  예                   |            아니오            |              아니오               |
-| [상시 암호화](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 지원 여부 |        예         |                  예                   |           예            |              아니오               |
-|                                                 개인 IP                                                  |         아니오         |                  예                   |           예            |              아니오               |
+|                                             행 수준 보안                                              |        yes         |                  예                   |           예            |              yes              |
+|                                                데이터 마스킹                                                 |        yes         |                  yes                   |            아니요            |              아니요               |
+|                                         투명한 데이터 암호화                                         |        yes         |                  예                   |           예            |              yes              |
+|                                  특정 IP 주소로 액세스 제한                                   |        yes         |                  예                   |           예            |              yes              |
+|                                  VNET 액세스만 허용하도록 액세스 제한                                  |        yes         |                  yes                   |            아니요            |              아니요               |
+|                                    Azure Active Directory 인증                                    |        yes         |                  yes                   |            아니요            |              아니요               |
+|                                       Active Directory 인증                                       |         아니요         |                  yes                   |            아니요            |              아니요               |
+|                                         Multi-Factor Authentication                                         |        yes         |                  yes                   |            아니요            |              아니요               |
+| [상시 암호화](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 지원 여부 |        yes         |                  예                   |           yes            |              아니요               |
+|                                                 개인 IP                                                  |         아니요         |                  예                   |           yes            |              아니요               |
 

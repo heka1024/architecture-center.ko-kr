@@ -2,13 +2,13 @@
 title: 스트림 처리 기술 선택
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: b78ebe253e927eece38930ba7f6186f485a956f7
-ms.sourcegitcommit: fdcacbfdc77370532a4dde776c5d9b82227dff2d
+ms.date: 02/12/2018
+ms.openlocfilehash: 2e0d142bc5cd462703ef1ca4530a2104efdf3be3
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49962919"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902630"
 ---
 # <a name="choosing-a-stream-processing-technology-in-azure"></a>Azure에서 스트림 처리 기술 선택
 
@@ -22,7 +22,7 @@ Azure에서 다음의 모든 데이터 저장소는 핵심 요구 사항을 충�
 - [HDInsight(Spark Streaming 포함)](/azure/hdinsight/spark/apache-spark-streaming-overview)
 - [Azure Databricks의 Apache Spark](/azure/azure-databricks/)
 - [HDInsight(Storm 포함)](/azure/hdinsight/storm/apache-storm-overview)
-- [Azure 기능](/azure/azure-functions/functions-overview)
+- [Azure Functions](/azure/azure-functions/functions-overview)
 - [Azure App Service WebJobs](/azure/app-service/web-sites-create-web-jobs)
 
 ## <a name="key-selection-criteria"></a>주요 선택 조건

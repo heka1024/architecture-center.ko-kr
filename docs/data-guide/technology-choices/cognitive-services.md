@@ -2,13 +2,13 @@
 title: Cognitive Services 기술 선택
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 055769188fbd6742b94094ee18766293812849fa
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.date: 02/12/2018
+ms.openlocfilehash: 0551bf05cb47cb3972b0d5f2e5226e23cbdacc68
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30847784"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902553"
 ---
 # <a name="choosing-a-microsoft-cognitive-services-technology"></a>Microsoft Cognitive Services 기술 선택
 
@@ -76,7 +76,7 @@ Azure에는 수십 가지의 Cognitive Services가 제공됩니다. 이러한 �
 |               Bing Video Search API               |       텍스트(웹 검색 쿼리)       |                                                                            비디오를 검색합니다.                                                                             |
 |                Bing Web Search API                |       텍스트(웹 검색 쿼리)       |                                                        수십억 개의 웹 문서에서 향상된 검색 세부 정보를 얻습니다.                                                        |
 |                  Bing Speech API                  |           텍스트 또는 음성            |                                                                  음성을 텍스트로 변환하고 다시 음성으로 변환합니다.                                                                   |
-|              화자 인식 API              |               음성                |                                                       음성을 사용하여 개별 화자를 식별하고 인증합니다.                                                        |
+|              Speaker Recognition API              |               음성                |                                                       음성을 사용하여 개별 화자를 식별하고 인증합니다.                                                        |
 |               Translator Speech API               |               음성                |                                                                   실시간 음성 번역을 수행합니다.                                                                   |
 |                Computer Vision API                |    이미지(또는 비디오의 프레임)    | 이미지에서 실행 가능한 정보를 추출하고, 사진 설명을 자동으로 만들고, 태그를 파생하고, 연예인을 인식하고, 텍스트를 추출하고, 정확한 축소판 그림을 만듭니다. |
 |                 Content Moderator                 |        텍스트, 이미지 또는 비디오        |                                                               자동화된 이미지, 텍스트 및 비디오 조정                                                                |

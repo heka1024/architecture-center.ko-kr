@@ -2,13 +2,13 @@
 title: OLAP(온라인 분석 처리)
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 92b71934f2081e95c3c9b0d4dc9edeb3885b12e8
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.date: 02/12/2018
+ms.openlocfilehash: beed0d642e85096efc0b6fe492181b8dcd771d2d
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30846810"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902601"
 ---
 # <a name="online-analytical-processing-olap"></a>OLAP(온라인 분석 처리)
 
@@ -56,7 +56,7 @@ OLAP(온라인 분석 처리)는 대규모 비즈니스 데이터베이스를 �
 | 요구 사항 | 설명 |
 | --- | --- |
 | 스키마 | 쓰기 시 스키마, 강력하게 적용|
-| 트랜잭션 사용 | 아니오 |
+| 트랜잭션 사용 | 아니요 |
 | 잠금 전략 | 없음 |
 | 업데이트 가능 | 아니요(일반적으로 큐브를 다시 계산해야 함) |
 | 추가 가능 | 아니요(일반적으로 큐브를 다시 계산해야 함) |
@@ -127,13 +127,13 @@ SSAS(SQL Server Analysis Services)는 비즈니스 인텔리전스 응용 프로
 
 | | Azure Analysis Services | SQL Server Analysis Services | SQL Server(columnstore 인덱스 포함) | Azure SQL Database(columnstore 인덱스 포함) |
 | --- | --- | --- | --- | --- |
-| 관리되는 서비스인지 여부 | 예 | 아니오 | 아니요 | 예 |
-| 다차원 큐브 지원 여부 | 아니오 | 예 | 아니요 | 아니오 |
-| 테이블 형식 의미 체계 모델 지원 여부 | 예 | 예 | 아니오 | 아니오 |
-| 여러 데이터 원본을 쉽게 통합 | 예 | 예 | 아니요 <sup>1</sup> | 아니요 <sup>1</sup> |
-| 실시간 분석 지원 | 아니오 | 아니요 | 예 | 예 |
-| 원본에서 데이터를 복사하는 프로세스 필요 | 예 | 예 | 아니오 | 아니요 |
-| Azure AD 통합 | 예 | 아니오 | 아니요 <sup>2</sup> | 예 |
+| 관리되는 서비스인지 여부 | yes | 아니요 | 아니요 | yes |
+| 다차원 큐브 지원 여부 | 아니요 | yes | 아니요 | 아니요 |
+| 테이블 형식 의미 체계 모델 지원 여부 | yes | yes | 아니요 | 아니요 |
+| 여러 데이터 원본을 쉽게 통합 | yes | yes | 아니요 <sup>1</sup> | 아니요 <sup>1</sup> |
+| 실시간 분석 지원 | 아니요 | 아니요 | 예 | yes |
+| 원본에서 데이터를 복사하는 프로세스 필요 | yes | yes | 아니요 | 아니요 |
+| Azure AD 통합 | yes | 아니요 | 아니요 <sup>2</sup> | yes |
 
 [1] SQL Server 및 Azure SQL Database는 여러 외부 데이터 원본에서 쿼리하거나 이러한 원본을 통합하는 데 사용할 수 없지만, [SSIS](/sql/integration-services/sql-server-integration-services) 또는 [Azure Data Factory](/azure/data-factory/)를 사용하여 이 작업을 자동으로 수행하는 파이프라인을 여전히 구축할 수 있습니다. Azure VM에서 호스트되는 SQL Server의 경우 연결된 서버 및 [PolyBase](/sql/relational-databases/polybase/polybase-guide)와 같은 추가 옵션을 사용할 수 있습니다. 자세한 내용은 [파이프라인 오케스트레이션, 제어 흐름 및 데이터 이동](../technology-choices/pipeline-orchestration-data-movement.md)을 참조하세요.
 
@@ -143,7 +143,7 @@ SSAS(SQL Server Analysis Services)는 비즈니스 인텔리전스 응용 프로
 
 |                                                  | Azure Analysis Services | SQL Server Analysis Services | SQL Server(columnstore 인덱스 포함) | Azure SQL Database(columnstore 인덱스 포함) |
 |--------------------------------------------------|-------------------------|------------------------------|-------------------------------------|---------------------------------------------|
-| 고가용성을 위한 중복 지역 서버 |           예           |              아니오              |                 예                 |                     예                     |
-|             쿼리 확장 지원 여부             |           예           |              아니요              |                 예                 |                     아니오                      |
-|          동적 확장성(강화)          |           예           |              아니요              |                 예                 |                     아니요                      |
+| 고가용성을 위한 중복 지역 서버 |           yes           |              아니요              |                 예                 |                     yes                     |
+|             쿼리 확장 지원 여부             |           yes           |              아니요              |                 yes                 |                     아니요                      |
+|          동적 확장성(강화)          |           yes           |              아니요              |                 yes                 |                     아니요                      |
 

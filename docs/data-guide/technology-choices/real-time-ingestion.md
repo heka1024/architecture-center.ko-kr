@@ -2,13 +2,13 @@
 title: 실시간 메시지 수집 기술 선택
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 5eaac023e28fc502e5a4e6ebc17e32832f7557c0
-ms.sourcegitcommit: bb348bd3a8a4e27ef61e8eee74b54b07b65dbf98
+ms.date: 02/12/2018
+ms.openlocfilehash: 64d6fca0a8ffac45f605e90a11cd2b3e53db287f
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "34422986"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52901629"
 ---
 # <a name="choosing-a-real-time-message-ingestion-technology-in-azure"></a>Azure에서 실시간 메시지 수집 기술 선택
 
@@ -63,9 +63,9 @@ Kafka의 몇 가지 일반적인 사용 사례는 다음과 같습니다.
 
 | | IoT Hub | Event Hubs | HDInsight의 Kafka |
 | --- | --- | --- | --- |
-| 클라우드-장치 통신 | 예 | 아니오 | 아니오 |
-| 장치에서 시작한 파일 업로드 | 예 | 아니오 | 아니오 |
-| 장치 상태 정보 | [장치 쌍](/azure/iot-hub/iot-hub-devguide-device-twins) | 아니오 | 아니오 |
+| 클라우드-장치 통신 | yes | 아니요 | 아니요 |
+| 장치에서 시작한 파일 업로드 | yes | 아니요 | 아니요 |
+| 장치 상태 정보 | [장치 쌍](/azure/iot-hub/iot-hub-devguide-device-twins) | 아니요 | 아니요 |
 | 프로토콜 지원 | MQTT, AMQP, HTTPS <sup>1</sup> | AMQP, HTTPS | [Kafka Protocol](https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol) |
 | 보안 | 장치 단위 ID. 취소 가능한 액세스 제어 | 공유 액세스 정책. 게시자 정책을 통해 취소 제한 | SASL을 사용한 인증, 플러그 가능 인증, 외부 인증 서비스와의 통합 지원 |
 

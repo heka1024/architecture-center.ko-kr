@@ -2,13 +2,13 @@
 title: 데이터 웨어하우징 및 데이터 마트
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 9b90d77ce1a81cd4a7532f5d4230ada8b4991d13
-ms.sourcegitcommit: 85334ab0ccb072dac80de78aa82bcfa0f0044d3f
+ms.date: 02/12/2018
+ms.openlocfilehash: 92f8ab8d828dd4b30c43a07e15959e5670852195
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35252808"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902785"
 ---
 # <a name="data-warehousing-and-data-marts"></a>데이터 웨어하우징 및 데이터 마트
 
@@ -120,13 +120,13 @@ MPP 시스템은 계산 노드(자체 CUP, 메모리 및 I/O 하위 시스템 �
 
 | | Azure SQL Database | SQL Server(VM) | SQL Data Warehouse | HDInsight의 Apache Hive | HDInsight의 Hive LLAP |
 | --- | --- | --- | --- | --- | --- | -- |
-| 관리되는 서비스인지 여부 | 예 | 아니오 | 예 | 예 <sup>1</sup> | 예 <sup>1</sup> |
-| 데이터 오케스트레이션 필요(데이터 사본/기록 데이터 보유) | 아니오 | 아니요 | 예 | 예 | 예 |
-| 여러 데이터 원본을 쉽게 통합 | 아니오 | 아니요 | 예 | 예 | 예 |
-| 계산 일시 중지 지원 여부 | 아니오 | 아니요 | 예 | 아니요 <sup>2</sup> | 아니요 <sup>2</sup> |
-| 관계형 데이터 저장소 | 예 | 예 |  예 | 아니오 | 아니오 |
-| 실시간 보고 | 예 | 예 | 아니오 | 아니요 | 예 |
-| 유연한 백업/복원 지점 | 예 | 예 | 아니요 <sup>3</sup> | 예 <sup>4</sup> | 예 <sup>4</sup> |
+| 관리되는 서비스인지 여부 | yes | 아니요 | yes | 예 <sup>1</sup> | 예 <sup>1</sup> |
+| 데이터 오케스트레이션 필요(데이터 사본/기록 데이터 보유) | 아니요 | 아니요 | 예 | 예 | yes |
+| 여러 데이터 원본을 쉽게 통합 | 아니요 | 아니요 | 예 | 예 | yes |
+| 계산 일시 중지 지원 여부 | 아니요 | 아니요 | yes | 아니요 <sup>2</sup> | 아니요 <sup>2</sup> |
+| 관계형 데이터 저장소 | yes | 예 |  yes | 아니요 | 아니요 |
+| 실시간 보고 | yes | yes | 아니요 | 아니요 | yes |
+| 유연한 백업/복원 지점 | yes | yes | 아니요 <sup>3</sup> | 예 <sup>4</sup> | 예 <sup>4</sup> |
 | SMP/MPP | SMP | SMP | MPP | MPP | MPP |
 
 [1] 수동 구성 및 크기 조정
@@ -141,10 +141,10 @@ MPP 시스템은 계산 노드(자체 CUP, 메모리 및 I/O 하위 시스템 �
 
 | | Azure SQL Database | SQL Server(VM) |  SQL Data Warehouse | HDInsight의 Apache Hive | HDInsight의 Hive LLAP |
 | --- | --- | --- | --- | --- | --- | -- |
-| 고가용성을 위한 중복 지역 서버  | 예 | 예 | 예 | 아니오 | 아니오 |
-| 쿼리 스케일 아웃 지원 여부(분산 쿼리)  | 아니오 | 아니요 | 예 | 예 | 예 |
-| 동적 확장성 | 예 | 아니오 | 예 <sup>1</sup> | 아니오 | 아니오 |
-| 데이터의 메모리 내 캐싱 지원 여부 | 예 |  예 | 아니오 | 예 | 예 |
+| 고가용성을 위한 중복 지역 서버  | yes | 예 | yes | 아니요 | 아니요 |
+| 쿼리 스케일 아웃 지원 여부(분산 쿼리)  | 아니요 | 아니요 | 예 | 예 | yes |
+| 동적 확장성 | yes | 아니요 | 예 <sup>1</sup> | 아니요 | 아니요 |
+| 데이터의 메모리 내 캐싱 지원 여부 | yes |  yes | 아니요 | 예 | yes |
 
 [1] SQL Data Warehouse에서는 DWU(데이터 웨어하우스 단위) 수를 조정하여 강화 및 축소할 수 있습니다. [Azure SQL Data Warehouse의 계산 능력 관리](/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview)를 참조하세요.
 
@@ -153,12 +153,12 @@ MPP 시스템은 계산 노드(자체 CUP, 메모리 및 I/O 하위 시스템 �
 |                         |           Azure SQL Database            |  가상 컴퓨터의 SQL Server  | SQL Data Warehouse |   HDInsight의 Apache Hive    |    HDInsight의 Hive LLAP     |
 |-------------------------|-----------------------------------------|-----------------------------------|--------------------|-------------------------------|-------------------------------|
 |     인증      | SQL/Azure AD(Azure Active Directory) | SQL / Azure AD / Active Directory |   SQL / Azure AD   | 로컬/Azure AD <sup>1</sup> | 로컬/Azure AD <sup>1</sup> |
-|      권한 부여      |                   예                   |                예                |        예         |              예              |       예 <sup>1</sup>        |
-|        감사         |                   예                   |                예                |        예         |              예              |       예 <sup>1</sup>        |
+|      권한 부여      |                   yes                   |                예                |        예         |              yes              |       예 <sup>1</sup>        |
+|        감사         |                   yes                   |                예                |        예         |              yes              |       예 <sup>1</sup>        |
 | 휴지 상태의 암호화 |            예 <sup>2</sup>             |         예 <sup>2</sup>          |  예 <sup>2</sup>  |       예 <sup>2</sup>        |       예 <sup>1</sup>        |
-|   행 수준 보안    |                   예                   |                예                |        예         |              아니오               |       예 <sup>1</sup>        |
-|   방화벽 지원 여부    |                   예                   |                예                |        예         |              예              |       예 <sup>3</sup>        |
-|  동적 데이터 마스킹   |                   예                   |                예                |        예         |              아니오               |       예 <sup>1</sup>        |
+|   행 수준 보안    |                   yes                   |                예                |        yes         |              아니요               |       예 <sup>1</sup>        |
+|   방화벽 지원 여부    |                   yes                   |                예                |        예         |              yes              |       예 <sup>3</sup>        |
+|  동적 데이터 마스킹   |                   yes                   |                예                |        yes         |              아니요               |       예 <sup>1</sup>        |
 
 [1] [도메인 가입 HDInsight 클러스터](/azure/hdinsight/domain-joined/apache-domain-joined-introduction)를 사용해야 합니다.
 

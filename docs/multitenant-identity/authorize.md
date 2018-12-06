@@ -2,16 +2,16 @@
 title: 다중 테넌트 응용 프로그램의 권한 부여
 description: 다중 테넌트 응용 프로그램에서 권한 부여를 수행하는 방법
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: app-roles
 pnp.series.next: web-api
-ms.openlocfilehash: 321dc52a3e6f803a032288c2341e490cdba8c20a
-ms.sourcegitcommit: 9a2d56ac7927f0a2bbfee07198d43d9c5cb85755
+ms.openlocfilehash: bbf702fe6651625a1aeceff7e4e321dd08c38544
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36327656"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902496"
 ---
 # <a name="role-based-and-resource-based-authorization"></a>역할 기반 및 리소스 기반 권한 부여
 
@@ -22,7 +22,7 @@ ms.locfileid: "36327656"
 * **역할 기반 권한 부여**. 사용자에게 할당된 역할에 따라 작업에 대한 권한을 부여합니다. 예를 들어 일부 작업에는 관리자 역할이 필요합니다.
 * **리소스 기반 권한 부여**. 특정 리소스에 따라 작업에 대한 권한을 부여합니다. 예를 들어 모든 리소스에는 소유자가 있습니다. 소유자는 리소스를 삭제할 수 있지만 다른 사용자는 삭제할 수 없습니다.
 
-일반적인 앱에서는 두 가지가 혼용됩니다. 예를 들어 리소스를 삭제하려면 사용자가 리소스 소유자 *또는* 관리자여야 합니다.
+일반적인 앱에서는 두 가지가 혼용됩니다. 예를 들어 리소스를 삭제하려면 사용자는 리소스 소유자 *또는* 관리자여야 합니다.
 
 ## <a name="role-based-authorization"></a>역할 기반 권한 부여
 [Tailspin Surveys][Tailspin] 응용 프로그램은 다음 역할을 정의합니다.
@@ -31,7 +31,7 @@ ms.locfileid: "36327656"
 * 작성자. 새 설문 조사를 만들 수 있습니다.
 * 읽기 권한자. 해당 테넌트에 속하는 모든 설문 조사를 읽을 수 있습니다.
 
-역할은 응용 프로그램의 *사용자*에게 적용됩니다. Surveys 응용 프로그램에서 사용자는 관리자, 작성자 또는 읽기 권한자입니다.
+역할은 응용 프로그램의 *사용자* 에게 적용됩니다. Surveys 응용 프로그램에서 사용자는 관리자, 작성자 또는 읽기 권한자입니다.
 
 역할을 정의하고 관리하는 방법에 대한 자세한 내용은 [응용 프로그램 역할]을 참조하세요.
 
@@ -59,7 +59,7 @@ public class SurveyCreatorRequirement : AuthorizationHandler<SurveyCreatorRequir
 
 이 클래스는 사용자가 새 설문 조사를 만들 수 있는 요구 사항을 정의합니다. 사용자는 SurveyAdmin 또는 SurveyCreator 역할을 가져야 합니다.
 
-시작 클래스에서 하나 이상의 요구 사항을 포함하는 명명된 정책을 정의합니다. 여러 요구 사항이 있는 경우 사용자가 *모든* 요구 사항을 충족해야 권한이 부여됩니다. 다음 코드는 두 개의 정책을 정의합니다.
+시작 클래스에서 하나 이상의 요구 사항을 포함하는 명명된 정책을 정의합니다. 여러 요구 사항이 있는 경우 사용자는 *모든* 요구 사항을 충족해야 권한이 부여됩니다. 다음 코드는 두 개의 정책을 정의합니다.
 
 ```csharp
 services.AddAuthorization(options =>
@@ -112,7 +112,7 @@ public IActionResult Create()
 * 정책은 단순한 역할 멤버 자격으로 표현할 수 없는 보다 복잡한 권한 부여 의사 결정(예: 만 21세 이상의 나이)을 지원합니다.
 
 ## <a name="resource-based-authorization"></a>리소스 기반 권한 부여
-*리소스 기반 권한 부여*는 작업의 영향을 받는 특정 리소스에 따라 권한 부여가 달라질 때마다 발생합니다. Tailspin Surveys 응용 프로그램의 모든 설문 조사에는 소유자와 참가자(0명~여러 명)가 있습니다.
+*리소스 기반 권한 부여* 는 작업의 영향을 받는 특정 리소스에 따라 권한 부여가 달라질 때마다 발생합니다. Tailspin Surveys 응용 프로그램의 모든 설문 조사에는 소유자와 참가자(0명~여러 명)가 있습니다.
 
 * 소유자는 설문 조사를 읽고, 업데이트하고, 게시하고, 게시를 취소할 수 있습니다.
 * 소유자는 설문 조사에 참가자를 할당할 수 있습니다.
@@ -155,10 +155,10 @@ if (await _authorizationService.AuthorizeAsync(User, survey, Operations.Read) ==
 다음은 Surveys 응용 프로그램의 예입니다. 이 응용 프로그램에서는 몇 가지 사용 권한 유형을 정의합니다.
 
 * 관리자
-* 기여자
+* 참가자
 * 작성자
 * 소유자
-* 판독기
+* 읽기 권한자
 
 또한 설문 조사에서 가능한 작업 집합을 정의합니다.
 

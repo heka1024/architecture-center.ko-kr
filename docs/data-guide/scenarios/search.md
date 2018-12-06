@@ -2,13 +2,13 @@
 title: 검색을 위해 자유 형식 텍스트 처리
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: e53730bd2e179c82399e0f92b6c5ce7f451a2f46
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.date: 02/12/2018
+ms.openlocfilehash: 2e61713dccb6064968bfb906fb17b0bd62ae013d
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29288815"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902037"
 ---
 # <a name="processing-free-form-text-for-search"></a>검색을 위해 자유 형식 텍스트 처리
 
@@ -26,7 +26,7 @@ ms.locfileid: "29288815"
 - 자유 형식 텍스트 문서 컬렉션의 처리는 일반적으로 시간이 오래 걸릴 뿐만 아니라 계산도 많이 수반됩니다.
 - 자유 형식 텍스트를 효율적으로 검색하기 위해 검색 인덱스는 비슷한 구성을 갖는 용어를 기준으로 유사 항목 검색을 지원해야 합니다. 예를 들어, 검색 인덱스는 표준형 및 언어적 형태소 분석을 사용하여 작성되므로 "run"을 쿼리하면 "ran" 및 "running"을 포함하는 문서가 일치하는 항목으로 검색됩니다.
 
-## <a name="architecture"></a>건축
+## <a name="architecture"></a>아키텍처
 
 대부분의 시나리오에서 원본 텍스트 문서는 Azure Storage 또는 Azure Data Lake Store와 같은 개체 저장소에 로드됩니다. 예외는 SQL Server 또는 Azure SQL Database 내에서 전체 텍스트 검색을 사용하는 것입니다. 이 경우 문서 데이터는 데이터베이스에서 관리되는 테이블에 로드됩니다. 일단 저장되면 문서는 일괄로 처리되어 인덱스를 생성합니다.
 

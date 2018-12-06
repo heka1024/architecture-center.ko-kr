@@ -2,13 +2,13 @@
 title: 시계열 데이터
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 80ff6c45988062afcb0eb92cc79e640d39dbb21f
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.date: 02/12/2018
+ms.openlocfilehash: 9664940729430b08d7be52564e4971ec5e2b94d8
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30298110"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52901969"
 ---
 # <a name="time-series-solutions"></a>시계열 솔루션
 
@@ -56,7 +56,7 @@ IoT 장치에서 수집된 데이터는 시계열 저장 및 분석에 기본적
 * 시계열 데이터는 용량이 매우 큰 경우가 많으며 IoT 시나리오에서 특히 그렇습니다. 시계열 데이터를 저장, 인덱싱, 쿼리, 분석 및 시각화하는 것은 어려울 수 있습니다. 
 * 시장 출시 시간과 전반적인 비용 투자를 최소화하면서, 고속 저장과 실시간 분석을 처리하기 위한 강력한 계산 작업을 적절히 조합하는 것은 어려울 수 있습니다.
 
-## <a name="architecture"></a>건축
+## <a name="architecture"></a>아키텍처
 
 IoT를 비롯하여 시계열 데이터가 사용되는 많은 시나리오에서 데이터는 실시간으로 캡처됩니다. 따라서 [실시간 처리](../big-data/real-time-processing.md) 아키텍처가 적절합니다. 
 

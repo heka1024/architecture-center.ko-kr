@@ -2,13 +2,13 @@
 title: 비관계형 데이터 및 NoSQL
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 2c284099bd7e8bbb85f1252a24d699d9fca09eae
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.date: 02/12/2018
+ms.openlocfilehash: f5655f7245b7150941969b1bc7917d540ab84343
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30298671"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902759"
 ---
 # <a name="non-relational-data-and-nosql"></a>비관계형 데이터 및 NoSQL
 
@@ -147,8 +147,8 @@ ms.locfileid: "30298671"
 | 액세스 패턴 | 임의 액세스 | tall/wide 데이터 집계 | 임의 액세스 | 임의 액세스 |
 | 인덱싱 | 기본 및 보조 인덱스 | 기본 및 보조 인덱스 | 기본 인덱스만 | 기본 및 보조 인덱스 | 
 | 데이터 모양 | 문서 | 열이 포함된 열 패밀리가 있는 테이블 형식 | 키 및 값 | 모서리와 꼭짓점을 포함하는 그래프 | 
-| 스파스 | 예 | 예 | 예 | 아니오 | 
-| 넓게(많은 열/특성) | 예 | 예 | 아니요 | 아니오 |  
+| 스파스 | yes | 예 | yes | 아니요 | 
+| 넓게(많은 열/특성) | yes | yes | 아니요 | 아니요 |  
 | 데이터 크기 | 작음(KB) ~ 중간(낮은 MB) | 중간(MB) ~ 큰(낮은 GB) | 작음(KB) | 작음(KB) | 
 | 전체 최대 크기 | 매우 큼(PB) | 매우 큼(PB) | 매우 큼(PB) | 큼(TB) | 
 
@@ -162,8 +162,8 @@ ms.locfileid: "30298671"
 | 액세스 패턴 | 임의 액세스 및 집계 | 순차적 액세스 | 임의 액세스 | 
 | 인덱싱 | 기본 및 보조 인덱스 | 기본 인덱스만 | 해당 없음 |
 | 데이터 모양 | 테이블 형식 | Blob 및 메타데이터 | 문서 |
-| 스파스 | 아니요 | 해당 없음 | 아니오 | 
-| 넓게(많은 열/특성) |  아니오 | 예 | 예 |  
+| 스파스 | 아니요 | 해당 없음 | 아니요 | 
+| 넓게(많은 열/특성) |  아니요 | 예 | yes |  
 | 데이터 크기 | 작음(KB) | 큼(TB) ~ 매우 큼(TB) | 작음(KB) |
 | 전체 최대 크기 | 큼(낮은 TB)  | 매우 큼(PB) | 큼(낮은 TB) | 
 

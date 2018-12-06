@@ -2,13 +2,13 @@
 title: 자연어 처리
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 0afd8ac9a8a2e56f79ade0b2e10328630866c03c
-ms.sourcegitcommit: 51f49026ec46af0860de55f6c082490e46792794
+ms.date: 02/12/2018
+ms.openlocfilehash: 32f2a5e3a0baddc765fb36ccc42fe2626faa5eba
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30297974"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52901442"
 ---
 # <a name="natural-language-processing"></a>자연어 처리
 
@@ -33,7 +33,7 @@ NLP를 사용하여 자유 형식 텍스트에서 정보를 추출할 때는 일
 - 자유 형식 텍스트 문서 컬렉션의 처리는 일반적으로 시간이 오래 걸릴 뿐만 아니라 계산 리소스도 많이 소비됩니다.
 - 표준화된 문서 형식이 없는 경우, 자유 형식 텍스트 처리를 사용하여 문서에서 특정 팩트는 추출함으로써 일관되게 정확한 결과를 얻는 것이 매울 어려울 수 있습니다. 예를 들어, 청구서에 표시되는 텍스트를 생각해 보세요. 공급업체 번호에 포함되어 있는 송장 번호와 송장 날짜를 올바르게 추출하는 프로세스를 빌드하는 것은 어려울 수 있습니다.
 
-## <a name="architecture"></a>건축
+## <a name="architecture"></a>아키텍처
 
 NLP 솔루션에서는 텍스트 단락이 포함된 문서에 대해 자유 형식 텍스트 처리가 수행됩니다. 전체 아키텍처는 [일괄 처리](../big-data/batch-processing.md) 또는 [실시간 스트림 처리](../big-data/real-time-processing.md) 아키텍처일 수 있습니다.
 

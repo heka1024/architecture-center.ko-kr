@@ -2,13 +2,13 @@
 title: 데이터 솔루션 보안
 description: ''
 author: zoinerTejada
-ms:date: 02/12/2018
-ms.openlocfilehash: 57897c31a8abdcd801874bf92d60360f7a80d1fa
-ms.sourcegitcommit: 90cf2de795e50571d597cfcb9b302e48933e7f18
+ms.date: 02/12/2018
+ms.openlocfilehash: 453897d1dde205ec8eb094df06ec66da43f7de7b
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/14/2018
-ms.locfileid: "29288925"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52901646"
 ---
 # <a name="securing-data-solutions"></a>데이터 솔루션 보안
 
@@ -82,7 +82,7 @@ RBAC([역할 기반 액세스 제어](/azure/active-directory/role-based-access-
 
 NSG([네트워크 보안 그룹](/azure/virtual-network/virtual-networks-nsg))를 사용하여 잠재적인 공격 벡터의 수를 줄일 수 있습니다. 네트워크 보안 그룹에는 원본 또는 대상 IP 주소, 포트 및 프로토콜에 따라 인바운드 또는 아웃바운드 네트워크 트래픽을 허용하거나 거부하는 보안 규칙 목록이 포함되어 있습니다. 
 
-사용자의 가상 네트워크에서 들어오는 트래픽만 이러한 리소스에 액세스할 수 있도록 [Virtual Network 서비스 끝점](/azure/virtual-network/virtual-network-service-endpoints-overview)을 사용하여 Azure SQL 또는 Azure Storage 리소스의 보안을 유지합니다.
+사용자의 가상 네트워크에서 들어오는 트래픽만 이러한 리소스에 액세스할 수 있도록 [Virtual Network 서비스 엔드포인트](/azure/virtual-network/virtual-network-service-endpoints-overview)를 사용하여 Azure SQL 또는 Azure Storage 리소스의 보안을 유지합니다.
 
 Azure VNet(Virtual Network) 내의 VM은 [가상 네트워크 피어링](/azure/virtual-network/virtual-network-peering-overview)을 사용하여 다른 VNet과 안전하게 통신할 수 있습니다. 피어링된 가상 네트워크 간의 네트워크 트래픽이 개인 전용입니다. 가상 네트워크 간의 트래픽이 Microsoft 백본 네트워크에서 유지됩니다.
 

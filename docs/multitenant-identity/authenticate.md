@@ -2,16 +2,16 @@
 title: 다중 테넌트 응용 프로그램의 인증
 description: 다중 테넌트 응용 프로그램이 Azure AD에서 사용자를 인증하는 방법
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: tailspin
 pnp.series.next: claims
-ms.openlocfilehash: 70f4a96369c207740400b9dfe72e1e964507f729
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 58ccf75cd34f8efec17898c85295587da282cf45
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428128"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902717"
 ---
 # <a name="authenticate-using-azure-ad-and-openid-connect"></a>Azure AD 및 OpenID Connect를 사용하여 인증
 
@@ -161,8 +161,8 @@ Azure AD는 [OpenID Connect 검색](https://openid.net/specs/openid-connect-disc
 ### <a name="openid-connect-flows"></a>OpenID connect 흐름
 기본적으로 OIDC 미들웨어는 폼 게시 응답 모드로 하이브리드 흐름을 사용합니다.
 
-* *하이브리드 흐름*은 클라이언트가 동일한 왕복에 있는 ID 토큰 및 인증 코드를 인증 서버로 가져올 수 있음을 의미합니다.
-* *폼 게시 응답 모드*는 인증 서버가 HTTP POST 요청을 사용하여 ID 토큰 및 인증 코드를 앱으로 보내는 것을 의미합니다. 값은 form-urlencoded입니다(content type = "application/x-www-form-urlencoded").
+* *하이브리드 흐름* 은 클라이언트가 동일한 왕복에 있는 ID 토큰 및 인증 코드를 인증 서버로 가져올 수 있음을 의미합니다.
+* *폼 게시 응답 모드* 는 인증 서버가 HTTP POST 요청을 사용하여 ID 토큰 및 인증 코드를 앱으로 보내는 것을 의미합니다. 값은 form-urlencoded입니다(content type = "application/x-www-form-urlencoded").
 
 OIDC 미들웨어가 권한 부여 엔드포인트로 리디렉션되면 리디렉션 URL은 OIDC에 필요한 모든 쿼리 문자열 매개 변수를 포함합니다. 하이브리드 흐름의 경우 다음과 같습니다.
 

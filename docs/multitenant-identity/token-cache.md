@@ -2,24 +2,24 @@
 title: 다중 테넌트 응용 프로그램에서 액세스 토큰 캐시
 description: 백 엔드 Web API 호출에 사용되는 액세스 토큰 캐시
 author: MikeWasson
-ms:date: 07/21/2017
+ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: web-api
 pnp.series.next: adfs
-ms.openlocfilehash: cffc15686ef9d77fafb40982efdbcd4a79f5aaf2
-ms.sourcegitcommit: 8ab30776e0c4cdc16ca0dcc881960e3108ad3e94
+ms.openlocfilehash: 950b638e629ad97e24b05e781da844bc110bad91
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26582883"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52901714"
 ---
 # <a name="cache-access-tokens"></a>액세스 토큰 캐시
 
 [![GitHub](../_images/github.png) 샘플 코드][sample application]
 
-OAuth 액세스 토큰을 사용하려면 토큰 끝점에 대해 HTTP 요청을 실행해야 하므로 비교적 비용이 많이 듭니다. 따라서 가능한 경우 토큰을 캐시하는 것이 좋습니다. ADAL([Azure AD 인증 라이브러리][ADAL])은 새로 고침 토큰을 포함하여 Azure AD에서 가져온 토큰을 자동으로 캐시합니다.
+OAuth 액세스 토큰을 사용하려면 토큰 엔드포인트에 대해 HTTP 요청을 실행해야 하므로 비교적 비용이 많이 듭니다. 따라서 가능한 경우 토큰을 캐시하는 것이 좋습니다. ADAL([Azure AD 인증 라이브러리][ADAL])은 새로 고침 토큰을 포함하여 Azure AD에서 가져온 토큰을 자동으로 캐시합니다.
 
-ADAL은 기본 토큰 캐시 구현을 제공합니다. 그러나 이 토큰 캐시는 네이티브 클라이언트 앱을 위한 것이므로 웹앱에는 적합하지 **않습니다**.
+ADAL은 기본 토큰 캐시 구현을 제공합니다. 그러나 이 토큰 캐시는 네이티브 클라이언트 앱을 위한 것이므로 웹앱에는 적합하지 **않습니다** .
 
 * 정적 인스턴스이며, 스레드로부터 안전하지 않습니다.
 * 모든 사용자의 토큰이 동일한 사전으로 이동하므로 많은 사용자로 확장되지 않습니다.
