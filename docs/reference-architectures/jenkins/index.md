@@ -1,18 +1,20 @@
 ---
 title: Azure에서 Jenkins 서버 실행
-description: 이 참조 아키텍처는 SSO(Single Sign-On)로 보호된 Azure에서 확장성 있는 엔터프라이즈급 Jenkins 서버를 배포하고 작동하는 방법을 보여 줍니다.
+titleSuffix: Azure Reference Architectures
+description: SSO(Single Sign-On)로 보호된 Azure에서 확장성 있는 엔터프라이즈급 Jenkins 서버를 배포하고 작동하는 방법을 보여주는 권장된 아키텍처입니다.
 author: njray
 ms.date: 04/30/2018
-ms.openlocfilehash: 89839b0f1c9624176a7b51dca53713070c88b154
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.custom: seodec18
+ms.openlocfilehash: 9dc4eb27f6c2bc8896770a2d0cd01b738c18c593
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916399"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120274"
 ---
 # <a name="run-a-jenkins-server-on-azure"></a>Azure에서 Jenkins 서버 실행
 
-이 참조 아키텍처는 SSO(Single Sign-On)로 보호된 Azure에서 확장성 있는 엔터프라이즈급 Jenkins 서버를 배포하고 작동하는 방법을 보여 줍니다. 이 아키텍처는 또한 Jenkins 서버의 상태를 모니터링하는 데 Azure Monitor를 사용합니다. [**이 솔루션을 배포합니다**.](#deploy-the-solution)
+이 참조 아키텍처는 SSO(Single Sign-On)로 보호된 Azure에서 확장성 있는 엔터프라이즈급 Jenkins 서버를 배포하고 작동하는 방법을 보여 줍니다. 이 아키텍처는 또한 Jenkins 서버의 상태를 모니터링하는 데 Azure Monitor를 사용합니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
 
 ![Azure에서 실행 중인 Jenkins 서버][0]
 
@@ -26,28 +28,27 @@ ms.locfileid: "50916399"
 
 이 아키텍처는 다음과 같은 구성 요소로 구성됩니다.
 
-- **리소스 그룹.** [리소스 그룹][rg]은 Azure 자산을 수명, 소유자를 비롯한 기준으로 관리할 수 있도록 Azure 자산을 그룹화하는 데 사용됩니다. 리소스 그룹을 사용하여 Azure 자산을 그룹 단위로 배포 및 모니터링하고, 리소스 그룹별로 청구 비용을 추적할 수 있습니다. 리소스를 하나의 집합으로 삭제할 수도 있습니다. 이러한 기능은 테스트 배포에서 매우 유용합니다.
+- **리소스 그룹**. [리소스 그룹][rg]은 Azure 자산을 수명, 소유자를 비롯한 기준으로 관리할 수 있도록 Azure 자산을 그룹화하는 데 사용됩니다. 리소스 그룹을 사용하여 Azure 자산을 그룹 단위로 배포 및 모니터링하고, 리소스 그룹별로 청구 비용을 추적할 수 있습니다. 리소스를 하나의 집합으로 삭제할 수도 있습니다. 이러한 기능은 테스트 배포에서 매우 유용합니다.
 
 - **Jenkins 서버**. 가상 머신은 [Jenkins][azure-market]를 자동화 서버로 실행하고 Jenkins 마스터 역할을 수행하도록 배포됩니다. 이 참조 아키텍처는 Azure의 Linux(Ubuntu 16.04 LTS) 가상 머신에 설치된 [Azure의 Jenkins용 솔루션 템플릿][solution]을 사용합니다. 다른 Jenkins 제품은 Azure Marketplace에서 제공됩니다.
 
   > [!NOTE]
   > Nginx는 VM에 설치되어 Jenkins에 대한 역방향 프록시 역할을 합니다. Jenkins 서버에 SSL을 사용하도록 Nginx를 구성할 수 있습니다.
-  > 
-  > 
+  >
 
 - **가상 네트워크**. [가상 네트워크][vnet]는 Azure 리소스를 서로 연결하고 논리적 격리를 제공합니다. 이 아키텍처에서 Jenkins 서버는 가상 네트워크에서 실행됩니다.
 
 - **서브넷**. Jenkins 서버는 성능에 영향을 미치지 않으면서 네트워크 트래픽을 보다 쉽게 관리하고 분리할 수 있도록 [서브넷][subnet]에 격리됩니다.
 
-- <strong>NSG</strong>. NSG([네트워크 보안 그룹][nsg])를 사용하여 네트워크 트래픽을 인터넷에서 가상 네트워크의 서브넷으로 제한합니다.
+- **NSG**. NSG([네트워크 보안 그룹][nsg])를 사용하여 네트워크 트래픽을 인터넷에서 가상 네트워크의 서브넷으로 제한합니다.
 
 - **관리 디스크**. [관리 디스크][managed-disk]는 응용 프로그램 저장소 및 Jenkins 서버의 상태를 유지하고 재해 복구를 제공하는 데 사용된 영구 VHD(가상 하드 디스크)입니다. 데이터 디스크는 Azure Storage에 저장됩니다. 고성능을 위해 [프리미엄 저장소][premium]를 사용하는 것이 좋습니다.
 
 - **Azure Blob Storage**. [Windows Azure Storage 플러그 인][configure-storage]은 Azure Blob Storage를 사용하여 다른 Jenkins 빌드로 생성 및 공유되는 빌드 아티팩트를 저장합니다.
 
-- <strong>Azure AD(Azure Active Directory)</strong>. [Azure AD][azure-ad]는 SSO를 설정할 수 있도록 사용자 인증을 지원합니다. Azure AD [서비스 주체][service-principal]는 RBAC([역할 기반 액세스 제어][rbac])를 사용하여 워크플로에서 각 역할 권한 부여에 대한 정책 및 사용 권한을 정의합니다. 각 서비스 주체는 Jenkins 작업과 연결됩니다.
+- **Azure AD(Azure Active Directory)**. [Azure AD][azure-ad]는 SSO를 설정할 수 있도록 사용자 인증을 지원합니다. Azure AD [서비스 주체][service-principal]는 RBAC([역할 기반 액세스 제어][rbac])를 사용하여 워크플로에서 각 역할 권한 부여에 대한 정책 및 사용 권한을 정의합니다. 각 서비스 주체는 Jenkins 작업과 연결됩니다.
 
-- **Azure Key Vault.** 비밀이 요구될 때 Azure 자원을 프로비전하는 데 사용되는 비밀 및 암호화 키를 관리하기 위해 이 아키텍처는 [Key Vault][key-vault]를 사용합니다. 파이프라인에 있는 응용 프로그램과 관련된 비밀을 저장하는 추가 도움말은 Jenkins의 [Azure 자격 증명][configure-credential] 플러그 인을 참조하세요.
+- **Azure Key Vault** 비밀이 요구될 때 Azure 자원을 프로비전하는 데 사용되는 비밀 및 암호화 키를 관리하기 위해 이 아키텍처는 [Key Vault][key-vault]를 사용합니다. 파이프라인에 있는 응용 프로그램과 관련된 비밀을 저장하는 추가 도움말은 Jenkins의 [Azure 자격 증명][configure-credential] 플러그 인을 참조하세요.
 
 - **Azure 모니터링 서비스**. 이 서비스는 Jenkins를 호스팅하는 Azure 가상 머신을 [모니터링][monitor]합니다. 이 배포는 가상 머신 상태 및 CPU 사용률을 모니터링하고 경고를 보냅니다.
 
@@ -73,25 +74,25 @@ Azure Marketplace에서 설치되는 Jenkins [Windows Azure Storage 플러그 �
 
 Azure에서 Jenkins를 위한 솔루션 템플릿은 여러 Azure 플러그 인을 설치합니다. Azure DevOps 팀은 솔루션 템플릿과, Azure Marketplace의 다른 Jenkins 제품은 물론 온-프레미스에 설정된 모든 Jenkins 마스터와 작동하는 플러그 인을 빌드하고 유지 관리합니다.
 
--   [Azure AD 플러그 인][configure-azure-ad]을 통해 Jenkins 서버가 Azure AD에 따라 사용자에 대한 SSO를 지원하도록 할 수 있습니다.
+- [Azure AD 플러그 인][configure-azure-ad]을 통해 Jenkins 서버가 Azure AD에 따라 사용자에 대한 SSO를 지원하도록 할 수 있습니다.
 
--   [Azure VM 에이전트][configure-agent] 플러그 인은 Azure Resource Manager 템플릿을 사용하여 Azure 가상 머신에 Jenkins 에이전트를 만듭니다.
+- [Azure VM 에이전트][configure-agent] 플러그 인은 Azure Resource Manager 템플릿을 사용하여 Azure 가상 머신에 Jenkins 에이전트를 만듭니다.
 
--   [Azure 자격 증명][configure-credential] 플러그 인을 사용하여 Jenkins에 Azure 서비스 주체를 저장할 수 있습니다.
+- [Azure 자격 증명][configure-credential] 플러그 인을 사용하여 Jenkins에 Azure 서비스 주체를 저장할 수 있습니다.
 
--   [Windows Azure Storage 플러그 인][configure-storage]은 [Azure Blob Storage][blob]로 빌드 아티팩트를 업로드하고 Azure Blob Storage에서 빌드 종속성을 다운로드합니다.
+- [Windows Azure Storage 플러그 인][configure-storage]은 [Azure Blob Storage][blob]로 빌드 아티팩트를 업로드하고 Azure Blob Storage에서 빌드 종속성을 다운로드합니다.
 
 또한 Azure 리소스를 사용하는 사용 가능한 모든 Azure 플러그 인의 증가하는 목록을 검토하는 것이 좋습니다. 모든 최신 목록을 보려면, [Jenkins 플러그 인 인덱스][index]를 방문하여 Azure를 검색하세요. 예를 들어 배포를 위해 다음 플러그 인을 사용할 수 있습니다.
 
--   [Azure Container 에이전트][container-agents]를 통해 컨테이너를 Jenkins에서 에이전트로 실행할 수 있습니다.
+- [Azure Container 에이전트][container-agents]를 통해 컨테이너를 Jenkins에서 에이전트로 실행할 수 있습니다.
 
--   [Kubernetes 연속 배포](https://aka.ms/azjenkinsk8s)는 리소스 구성을 Kubernetes 클러스터에 배포합니다.
+- [Kubernetes 연속 배포](https://aka.ms/azjenkinsk8s)는 리소스 구성을 Kubernetes 클러스터에 배포합니다.
 
--   [Azure Container Service][acs]는 Kubernetes를 사용한 Azure Container Service, Marathon을 사용한 DC/OS 또는 Docker Swarm에 구성을 배포합니다.
+- [Azure Container Service][acs]는 Kubernetes를 사용한 Azure Container Service, Marathon을 사용한 DC/OS 또는 Docker Swarm에 구성을 배포합니다.
 
--   [Azure Functions][functions]는 프로젝트를 Azure Function에 배포합니다.
+- [Azure Functions][functions]는 프로젝트를 Azure Function에 배포합니다.
 
--   [Azure App Service][app-service]는 Azure App Service에 배포합니다.
+- [Azure App Service][app-service]는 Azure App Service에 배포합니다.
 
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
@@ -105,20 +106,19 @@ Jenkins는 매우 큰 워크로드를 지원하도록 확장할 수 있습니다
 
 또한 Azure Storage를 사용하여 다른 빌드 에이전트에 의해 파이프라인의 다음 단계에서 사용할 수 있는 빌드 아티팩트를 공유합니다.
 
-### <a name="scaling-the-jenkins-server"></a>Jenkins 서버 크기 조정 
+### <a name="scaling-the-jenkins-server"></a>Jenkins 서버 크기 조정
 
-VM 크기를 변경하여 Jenkins 서버 VM의 규모를 확장 또는 축소할 수 있습니다. [Azure의 Jenkins용 솔루션 템플릿][azure-market]은 기본적으로 DS2 v2 크기(2개의 CPU, 7GB 포함)를 지정합니다. 이 크기로 중소 규모의 팀 워크로드를 처리합니다. 서버를 빌드할 때 다른 옵션을 선택하여 VM 크기를 변경합니다. 
+VM 크기를 변경하여 Jenkins 서버 VM의 규모를 확장 또는 축소할 수 있습니다. [Azure의 Jenkins용 솔루션 템플릿][azure-market]은 기본적으로 DS2 v2 크기(2개의 CPU, 7GB 포함)를 지정합니다. 이 크기로 중소 규모의 팀 워크로드를 처리합니다. 서버를 빌드할 때 다른 옵션을 선택하여 VM 크기를 변경합니다.
 
 올바른 서버 크기를 선택하는 것은 예상된 워크로드 크기에 따라 달라집니다. Jenkins 커뮤니티는 요구 사항에 가장 잘 맞는 구성을 식별할 수 있도록 [선택 가이드][selection-guide]를 유지 관리합니다. Azure에서는 모든 요구 사항을 충족하도록 수많은 [Linux VM용 크기][sizes-linux]를 제공합니다. Jenkins 마스터의 크기 조정에 대한 자세한 내용은 Jenkins 마스터 크기 조정에 대한 자세한 내용을 포함하는 [모범 사례][best-practices]의 Jenkins 커뮤니티를 참조하세요.
-
 
 ## <a name="availability-considerations"></a>가용성 고려 사항
 
 Jenkins 서버의 컨텍스트에서 가용성이란 테스트 결과, 만든 라이브러리, 기타 아티팩트 등의 워크플로와 연결된 모든 상태 정보를 복원할 수 있다는 뜻입니다. Jenkins 서버가 중단되었을 때 워크플로를 복구할 수 있도록 중요한 워크플로 상태 또는 아티팩트를 유지해야 합니다. 가용성 요구 사항을 평가하려면 두 가지 공통 메트릭을 고려합니다.
 
--   RTO(복구 시간 목표)는 Jenkins 없이 얼마나 오래 갈 수 있는지 지정합니다.
+- RTO(복구 시간 목표)는 Jenkins 없이 얼마나 오래 갈 수 있는지 지정합니다.
 
--   RPO(복구 지점 목표)는 서비스 중단으로 인해 Jenkins에 영향을 줄 경우 잃을 수 있는 데이터 양을 나타냅니다.
+- RPO(복구 지점 목표)는 서비스 중단으로 인해 Jenkins에 영향을 줄 경우 잃을 수 있는 데이터 양을 나타냅니다.
 
 실제로 RTO와 RPO는 중복성과 백업을 의미합니다. 가용성은 Azure의 일부인 하드웨어 복구의 문제가 아니라 Jenkins 서버의 상태를 유지하는 것을 보장합니다. Microsoft에서는 단일 VM 인스턴스를 위한 [SLA(서비스 수준 계약)][sla]를 제공합니다. 이 SLA가 가동 시간 요구 사항을 충족시키지 못하는 경우 재해 복구 계획을 수립했는지 확인하거나 [다중 마스터 Jenkins 서버][multi-master] 배포(이 문서에서는 다루지 않음)를 사용하는 것을 고려하세요.
 
@@ -128,19 +128,19 @@ Jenkins 서버의 컨텍스트에서 가용성이란 테스트 결과, 만든 �
 
 다음과 같은 방법을 사용하여 기본 Jenkins 서버의 보안을 잠글 수 있습니다. 기본 상태에서는 안전하지 않기 때문입니다.
 
--   Jenkins 서버에 로그인하는 안전한 방법을 설정합니다. 이 아키텍처에서 HTTP를 사용하고 공용 IP를 보유하고 있지만, HTTP는 기본적으로 안전하지 않습니다. 보안 로그온에 사용되는 [Nginx 서버에 HTTPS][nginx]를 설정하는 것이 좋습니다.
+- Jenkins 서버에 로그인하는 안전한 방법을 설정합니다. 이 아키텍처에서 HTTP를 사용하고 공용 IP를 보유하고 있지만, HTTP는 기본적으로 안전하지 않습니다. 보안 로그온에 사용되는 [Nginx 서버에 HTTPS][nginx]를 설정하는 것이 좋습니다.
 
     > [!NOTE]
     > 서버에 SSL을 추가할 경우 Jenkins 서브넷에 대해 NSG 규칙을 만들어 포트 443을 엽니다. 자세한 내용은 [Azure Portal을 사용하여 가상 머신에 대한 포털을 여는 방법][port443]을 참조하세요.
-    > 
+    >
 
--   Jenkins 구성이 교차 사이트 요청 위조를 방지하는지 확인합니다(Jenkins 관리 \> 전역 보안 구성). 이는 Microsoft Jenkins 서버의 기본값입니다.
+- Jenkins 구성이 교차 사이트 요청 위조를 방지하는지 확인합니다(Jenkins 관리 \> 전역 보안 구성). 이는 Microsoft Jenkins 서버의 기본값입니다.
 
--   [매트릭스 권한 부여 전략 플러그 인][matrix]을 사용하여 Jenkins 대시보드에 대한 읽기 전용 액세스를 구성합니다.
+- [매트릭스 권한 부여 전략 플러그 인][matrix]을 사용하여 Jenkins 대시보드에 대한 읽기 전용 액세스를 구성합니다.
 
--   Key Vault를 사용하여 Azure 자산, 파이프라인의 에이전트 및 타사 구성 요소의 비밀을 처리하도록 [Azure 자격 증명][configure-credential] 플러그 인을 설치합니다.
+- Key Vault를 사용하여 Azure 자산, 파이프라인의 에이전트 및 타사 구성 요소의 비밀을 처리하도록 [Azure 자격 증명][configure-credential] 플러그 인을 설치합니다.
 
--   RBAC를 사용하여 서비스 사용자의 액세스 권한을 작업 실행에 필요한 최소 수준으로 제한합니다. 이렇게 하면 rogue 작업의 손상 범위를 제한할 수 있습니다.
+- RBAC를 사용하여 서비스 사용자의 액세스 권한을 작업 실행에 필요한 최소 수준으로 제한합니다. 이렇게 하면 rogue 작업의 손상 범위를 제한할 수 있습니다.
 
 Jenkins 작업에서는 Azure Container Service와 같은 권한 부여를 요구하는 Azure 서비스에 액세스하는 데 보통 비밀을 요구합니다. [Azure 자격 증명 플러그 인][configure-credential]과 함께 [Key Vault][key-vault]를 사용하여 이러한 비밀은 안전하게 관리합니다. Key Vault를 사용하여 서비스 주체 자격 증명, 암호, 토큰 및 기타 비밀을 저장합니다.
 
@@ -158,9 +158,9 @@ Azure는 전체 인프라를 [모니터링 및 진단][monitoring-diag]하는 �
 
 커뮤니티는 질문에 대답하고 성공적인 배포를 설정하는 데 도움을 줄 수 있습니다. 다음을 고려해 보세요.
 
--   [Jenkins 커뮤니티 블로그](https://jenkins.io/node/)
--   [Azure 포럼](https://azure.microsoft.com/support/forums/)
--   [Stack Overflow Jenkins](https://stackoverflow.com/tags/jenkins/info)
+- [Jenkins 커뮤니티 블로그](https://jenkins.io/node/)
+- [Azure 포럼](https://azure.microsoft.com/support/forums/)
+- [Stack Overflow Jenkins](https://stackoverflow.com/tags/jenkins/info)
 
 Jenkins 커뮤니티의 더 많은 모범 사례는 [Jenkins 모범 사례][jenkins-best]를 참조하세요.
 
@@ -170,15 +170,15 @@ Jenkins 커뮤니티의 더 많은 모범 사례는 [Jenkins 모범 사례][jenk
 
 ### <a name="prerequisites"></a>필수 조건
 
-- 이 참조 아키텍처에는 Azure 구독이 필요합니다. 
+- 이 참조 아키텍처에는 Azure 구독이 필요합니다.
 - Azure 서비스 주체를 만들려면 배포된 Jenkins 서버와 연결된 Azure AD 테넌트에 대한 관리자 권한이 있어야 합니다.
 - 이러한 지침에서는 Jenkins 관리자가 참가자 권한 이상을 보유하는 Azure 사용자라고 가정합니다.
 
 ### <a name="step-1-deploy-the-jenkins-server"></a>1단계: Jenkins 서버 배포
 
-1.  웹 브라우저에서 [Jenkins의 Azure Marketplace 이미지][azure-market]를 열고 페이지의 왼쪽에서 **지금 가져오기**를 선택합니다.
+1. 웹 브라우저에서 [Jenkins의 Azure Marketplace 이미지][azure-market]를 열고 페이지의 왼쪽에서 **지금 가져오기**를 선택합니다.
 
-2.  가격 책정 세부 정보를 검토하고 **계속**을 선택한 후 **만들기**를 선택하여 Azure Portal에서 Jenkins 서버를 구성합니다.
+2. 가격 책정 세부 정보를 검토하고 **계속**을 선택한 후 **만들기**를 선택하여 Azure Portal에서 Jenkins 서버를 구성합니다.
 
 자세한 지침은 [Azure Portal에서 Azure Linux VM에 Jenkins 서버 만들기][create-jenkins]를 참조하세요. 이 참조 아키텍처의 경우 관리자 로그온으로 서버를 시작하고 실행하는 것으로 충분합니다. 그런 다음 다른 여러 서비스를 사용하도록 프로비전할 수 있습니다.
 
@@ -261,4 +261,4 @@ Microsoft Jenkins 제품 그룹은 Jenkins 상태를 저장하는 데 사용되�
 [subnet]: /azure/virtual-network/virtual-network-manage-subnet
 [vm-agent]: https://wiki.jenkins.io/display/JENKINS/Azure+VM+Agents+plugin
 [vnet]: /azure/virtual-network/virtual-networks-overview
-[0]: ./images/jenkins-server.png 
+[0]: ./images/jenkins-server.png

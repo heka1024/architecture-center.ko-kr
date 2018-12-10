@@ -1,16 +1,17 @@
 ---
-title: 온-프레미스 네트워크를 Azure에 연결하기 위한 솔루션 선택
+title: Azure에 온-프레미스 네트워크 연결
+titleSuffix: Azure Reference Architectures
 description: 온-프레미스 네트워크를 Azure에 연결하기 위한 참조 아키텍처를 비교합니다.
 author: telmosampaio
 ms.date: 07/02/2018
-ms.openlocfilehash: a9e2a212d65530e714635bbfae3a57766e77c3a6
-ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
+ms.openlocfilehash: de509b6d95805f4fc871f6dbd76a87d2c0bec6f1
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52295492"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53119917"
 ---
-# <a name="connect-an-on-premises-network-to-azure"></a>Azure에 온-프레미스 네트워크 연결
+# <a name="choose-a-solution-for-connecting-an-on-premises-network-to-azure"></a>온-프레미스 네트워크를 Azure에 연결하기 위한 솔루션 선택
 
 이 문서에서는 온-프레미스 네트워크를 Azure VNet(Virtual Network)에 연결하는 옵션을 비교합니다. 각 옵션에서 자세한 참조 아키텍처를 사용할 수 있습니다.
 
@@ -75,11 +76,9 @@ ms.locfileid: "52295492"
 
 - [ExpressRoute 및 VPN 장애 조치를 사용하는 하이브리드 네트워크](./expressroute-vpn-failover.md)
 
-
 ## <a name="hub-spoke-network-topology"></a>허프 스포크 네트워크 토폴로지
 
 허브-스포크 네트워크 토폴로지는 ID 및 보안과 같은 서비스를 공유하는 동안 워크로드를 격리하는 방법입니다. 허브는 Azure의 VNet(가상 네트워크)로서 사용자의 온-프레미스 네트워크에 대한 연결의 중심으로 기능합니다. 스포크는 허브와 피어링된 VNet입니다. 개별 작업을 스포크로 배포하는 반면 공유 서비스는 허브에 배포됩니다.
-
 
 **참조 아키텍처**
 
