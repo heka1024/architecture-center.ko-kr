@@ -2,13 +2,13 @@
 title: Azure Databricks를 사용하는 스트림 처리
 description: Azure Databricks를 사용하여 Azure에서 엔드투엔드 스트림 처리 파이프라인 만들기
 author: petertaylor9999
-ms.date: 11/01/2018
-ms.openlocfilehash: a7e9df57572c9b3a3b0e4f418f148449aa40b04c
-ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
+ms.date: 11/30/2018
+ms.openlocfilehash: 0640e900c212d2b75cc9cdd5bec3a4f7c050490d
+ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52295747"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52902836"
 ---
 # <a name="stream-processing-with-azure-databricks"></a>Azure Databricks를 사용하는 스트림 처리
 
@@ -269,7 +269,7 @@ StreamingMetricsListener의 메서드는 구조적 스트리밍 이벤트가 발
 
 ### <a name="latency-and-throughput-for-streaming-queries"></a>스트리밍 쿼리의 대기 시간 및 처리량 
 
-```
+```shell
 taxijob_CL
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
 | project  mdc_inputRowsPerSecond_d, mdc_durationms_triggerExecution_d  
@@ -277,7 +277,7 @@ taxijob_CL
 ``` 
 ### <a name="exceptions-logged-during-stream-query-execution"></a>스트림 쿼리를 실행하는 동안 기록된 예외
 
-```
+```shell
 taxijob_CL
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
 | where Level contains "Error" 
@@ -285,7 +285,7 @@ taxijob_CL
 
 ### <a name="accumulation-of-malformed-fare-and-ride-data"></a>잘못된 형식의 요금 및 승객 데이터의 누적
 
-```
+```shell
 SparkMetric_CL 
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
 | render timechart 
@@ -298,7 +298,8 @@ SparkMetric_CL
 ```
 
 ### <a name="job-execution-to-trace-resiliency"></a>복원력을 추적하는 작업 실행
-```
+
+```shell
 SparkMetric_CL 
 | where TimeGenerated > startofday(datetime(<date>)) and TimeGenerated < endofday(datetime(<date>))
 | render timechart 
@@ -307,11 +308,11 @@ SparkMetric_CL
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
-이 참조 아키텍처에 대한 배포는 [GitHub](https://github.com/mspnp/reference-architectures/tree/master/data)에서 사용할 수 있습니다. 
+이 참조 아키텍처에 대한 배포는 [GitHub](https://github.com/mspnp/azure-databricks-streaming-analytics)에서 사용할 수 있습니다. 
 
 ### <a name="prerequisites"></a>필수 조건
 
-1. [참조 아키텍처](https://github.com/mspnp/reference-architectures) GitHub 리포지토리의 zip 파일을 복제, 포크 또는 다운로드합니다.
+1. [Azure Databricks를 사용한 스트림 처리](https://github.com/mspnp/azure-databricks-streaming-analytics) GitHub 리포지토리를 복제, 포크 또는 다운로드합니다.
 
 2. [Docker](https://www.docker.com/)를 설치하여 데이터 생성기를 실행합니다.
 
@@ -320,7 +321,7 @@ SparkMetric_CL
 4. [Databricks CLI](https://docs.databricks.com/user-guide/dev-tools/databricks-cli.html)를 설치합니다.
 
 5. 명령 프롬프트, bash 프롬프트 또는 PowerShell 프롬프트에서 다음과 같은 Azure 계정에 로그인합니다.
-    ```
+    ```shell
     az login
     ```
 6. 다음 리소스를 사용하여 Java IDE를 설치합니다.
@@ -330,7 +331,7 @@ SparkMetric_CL
 
 ### <a name="download-the-new-york-city-taxi-and-neighborhood-data-files"></a>뉴욕시 택시 및 환경 데이터 파일을 다운로드
 
-1. 로컬 파일 시스템의 `data/streaming_azuredatabricks` 디렉터리 아래에 `DataFile` 디렉터리를 만듭니다.
+1. 로컬 파일 시스템에서 복제된 Github 리포지토리의 루트에 `DataFile`이라는 디렉터리를 만듭니다.
 
 2. 웹 브라우저를 열고 https://uofi.app.box.com/v/NYCtaxidata/folder/2332219935로 이동합니다.
 
@@ -343,15 +344,13 @@ SparkMetric_CL
 
     디렉터리 구조는 다음과 같이 표시됩니다.
 
-    ```
-    /data
-        /streaming_azuredatabricks
-            /DataFile
-                /FOIL2013
-                    trip_data_1.zip
-                    trip_data_2.zip
-                    trip_data_3.zip
-                    ...
+    ```shell
+    /DataFile
+        /FOIL2013
+            trip_data_1.zip
+            trip_data_2.zip
+            trip_data_3.zip
+            ...
     ```
 
 5. 웹 브라우저를 열고 https://www.zillow.com/howto/api/neighborhood-boundaries.htm로 이동합니다. 
@@ -368,10 +367,10 @@ SparkMetric_CL
     az login
     ```
 
-2. GitHub 리포지토리의 `data/streaming_azuredatabricks` 폴더로 이동합니다.
+2. GitHub 리포지토리의 `azure` 폴더로 이동합니다.
 
     ```bash
-    cd data/streaming_azuredatabricks
+    cd azure
     ```
 
 3. 다음 명령을 실행하여 Azure 리소스를 배포합니다.
@@ -390,7 +389,7 @@ SparkMetric_CL
 
     # Deploy resources
     az group deployment create --resource-group $resourceGroup \
-        --template-file ./azure/deployresources.json --parameters \
+        --template-file deployresources.json --parameters \
         eventHubNamespace=$eventHubNamespace \
         databricksWorkspaceName=$databricksWorkspaceName \
         cosmosDatabaseAccount=$cosmosDatabaseAccount \
@@ -439,7 +438,7 @@ SparkMetric_CL
 4. **테이블을 만들려면 CQL 명령을 입력** 섹션에서, `newyorktaxi` 옆에 있는 텍스트 상자에 `neighborhoodstats`를 입력합니다.
 
 5. 아래 텍스트 상자에 다음을 입력합니다.
-```
+```shell
 (neighborhood text, window_end timestamp, number_of_rides bigint,total_fare_amount double, primary key(neighborhood, window_end))
 ```
 6. **처리량(1,000-1,000,000RU/s)** 텍스트 상자에 `4000` 값을 입력합니다.
@@ -451,17 +450,17 @@ SparkMetric_CL
 먼저 EventHub의 비밀을 입력합니다.
 
 1. 필수 구성 요소의 2단계에서 설치한 **Azure Databricks CLI**를 사용하여 Azure Databricks 비밀 범위를 만듭니다.
-    ```
+    ```shell
     databricks secrets create-scope --scope "azure-databricks-job"
     ```
 2. 택시 승객 EventHub의 비밀을 추가합니다.
-    ```
+    ```shell
     databricks secrets put --scope "azure-databricks-job" --key "taxi-ride"
     ```
     실행되면 이 명령이 vi 편집기를 엽니다. *Azure 리소스 배포* 섹션의 4단계에서 나오는 **eventHubs** 출력 섹션의 **taxi-ride-eh** 값을 입력합니다. vi를 저장하고 종료합니다.
 
 3. 택시 요금 EventHub의 비밀을 추가합니다.
-    ```
+    ```shell
     databricks secrets put --scope "azure-databricks-job" --key "taxi-fare"
     ```
     실행되면 이 명령이 vi 편집기를 엽니다. *Azure 리소스 배포* 섹션의 4단계에서 나오는 **eventHubs** 출력 섹션의 **taxi-fare-eh** 값을 입력합니다. vi를 저장하고 종료합니다.
@@ -471,13 +470,13 @@ SparkMetric_CL
 1. Azure Portal에서, **Azure 리소스 배포** 섹션의 3단계에서 지정한 리소스 그룹으로 이동합니다. Azure Cosmos DB 계정을 클릭합니다.
 
 2. **Azure Databricks CLI**를 사용하여 Cosmos DB 사용자 이름의 비밀을 추가합니다.
-    ```
+    ```shell
     databricks secrets put --scope azure-databricks-job --key "cassandra-username"
     ```
 실행되면 이 명령이 vi 편집기를 엽니다. *Azure 리소스 배포* 섹션의 4단계에서 나오는 **CosmosDb** 출력 섹션의 **사용자 이름** 값을 입력합니다. vi를 저장하고 종료합니다.
 
 3. 다음으로 Cosmos DB 암호의 비밀을 추가합니다.
-    ```
+    ```shell
     databricks secrets put --scope azure-databricks-job --key "cassandra-password"
     ```
 
@@ -493,7 +492,7 @@ SparkMetric_CL
     dbfs mkdirs dbfs:/azure-databricks-jobs
     ```
 
-2. data/streaming_azuredatabricks/DataFile로 이동하여 다음을 입력합니다.
+2. `DataFile` 디렉터리로 이동하고 다음을 입력합니다.
     ```bash
     dbfs cp ZillowNeighborhoods-NY.zip dbfs:/azure-databricks-jobs
     ```
@@ -502,37 +501,37 @@ SparkMetric_CL
 
 이 섹션에서는 Log Analytics 작업 영역 ID 및 기본 키가 필요합니다. 작업 영역 ID는 *Azure 리소스 배포* 섹션의 4단계에서 나오는 **logAnalytics** 출력 섹션의 **workspaceId** 값입니다. 기본 키는 출력 섹션의 **비밀**입니다. 
 
-1. log4j 로깅을 구성하려면 data\streaming_azuredatabricks\azure\AzureDataBricksJob\src\main\resources\com\microsoft\pnp\azuredatabricksjob\log4j.properties를 엽니다. 다음 두 값을 편집합니다.
-    ```
+1. log4j 로깅을 구성하려면 `\azure\AzureDataBricksJob\src\main\resources\com\microsoft\pnp\azuredatabricksjob\log4j.properties`를 엽니다. 다음 두 값을 편집합니다.
+    ```shell
     log4j.appender.A1.workspaceId=<Log Analytics workspace ID>
     log4j.appender.A1.secret=<Log Analytics primary key>
     ```
 
-2. 사용자 지정 로깅을 구성하려면 data\streaming_azuredatabricks\azure\azure-databricks-monitoring\scripts\metrics.properties를 엽니다. 다음 두 값을 편집합니다.
-    ``` 
+2. 사용자 지정 로깅을 구성하려면 `\azure\azure-databricks-monitoring\scripts\metrics.properties`를 엽니다. 다음 두 값을 편집합니다.
+    ```shell
     *.sink.loganalytics.workspaceId=<Log Analytics workspace ID>
     *.sink.loganalytics.secret=<Log Analytics primary key>
     ```
 
 ### <a name="build-the-jar-files-for-the-databricks-job-and-databricks-monitoring"></a>Databricks 작업 및 Databricks 모니터링에 대한 .jar 파일 빌드
 
-1. Java IDE를 사용하여 **data/streaming_azuredatabricks** 디렉터리의 루트에 있는 **pom.xml**이라는 Maven 프로젝트 파일을 가져옵니다. 
+1. Java IDE를 사용하여 루트 디렉터리에 있는 **pom.xml**이라는 Maven 프로젝트 파일을 가져옵니다. 
 
 2. 클린 빌드를 수행합니다. 이 빌드의 출력은 **azure-databricks-job-1.0-SNAPSHOT.jar** 및 **azure-databricks-monitoring-0.9.jar**라는 이름의 파일입니다. 
 
 ### <a name="configure-custom-logging-for-the-databricks-job"></a>Databricks 작업에 대한 사용자 지정 로깅 구성
 
 1. **Databricks CLI**에 다음 명령을 입력하여 **azure-databricks-monitoring-0.9.jar** 파일을 Databricks 파일 시스템으로 복사합니다.
-    ```
+    ```shell
     databricks fs cp --overwrite azure-databricks-monitoring-0.9.jar dbfs:/azure-databricks-job/azure-databricks-monitoring-0.9.jar
     ```
 
-2. 다음 명령을 입력하여 data\streaming_azuredatabricks\azure\azure-databricks-monitoring\scripts\metrics.properties의 사용자 지정 로깅 속성을 Databricks 파일 시스템으로 복사합니다.
-    ```
+2. 다음 명령을 입력하여 `\azure\azure-databricks-monitoring\scripts\metrics.properties`의 사용자 지정 로깅 속성을 Databricks 파일 시스템으로 복사합니다.
+    ```shell
     databricks fs cp --overwrite metrics.properties dbfs:/azure-databricks-job/metrics.properties
     ```
 
-3. Databricks 클러스터의 이름을 아직 결정하지 않은 경우 지금 결정해야 합니다. 클러스터의 Databricks 파일 시스템 경로에 이름을 입력합니다. 다음 명령을 입력하여 data\streaming_azuredatabricks\azure\azure-databricks-monitoring\scripts\spark.metrics의 초기화 스크립트를 Databricks 파일 시스템으로 복사합니다.
+3. Databricks 클러스터의 이름을 아직 결정하지 않은 경우 지금 결정해야 합니다. 클러스터의 Databricks 파일 시스템 경로에 이름을 입력합니다. 다음 명령을 입력하여 `\azure\azure-databricks-monitoring\scripts\spark.metrics`의 초기화 스크립트를 Databricks 파일 시스템으로 복사합니다.
     ```
     databricks fs cp --overwrite spark-metrics.sh dbfs:/databricks/init/<cluster-name>/spark-metrics.sh
     ```
@@ -576,7 +575,7 @@ SparkMetric_CL
 5. **기본 클래스** 필드에 **com.microsoft.pnp.TaxiCabReader**를 입력합니다.
 
 6. 인수 필드에 다음을 입력합니다.
-    ```
+    ```shell
     -n jar:file:/dbfs/azure-databricks-jobs/ZillowNeighborhoods-NY.zip!/ZillowNeighborhoods-NY.shp --taxi-ride-consumer-group taxi-ride-eh-cg --taxi-fare-consumer-group taxi-fare-eh-cg --window-interval "1 minute" --cassandra-host <Cosmos DB Cassandra host name from above> 
     ``` 
 
@@ -629,11 +628,11 @@ SparkMetric_CL
 
 ### <a name="run-the-data-generator"></a>데이터 생성기 실행
 
-1. GitHub 리포지토리의 `data/streaming_azuredatabricks/onprem` 디렉터리로 이동합니다.
+1. GitHub 리포지토리의 `onprem` 디렉터리로 이동합니다.
 
 2. **main.env** 파일의 값을 다음과 같이 업데이트합니다.
 
-    ```
+    ```shell
     RIDE_EVENT_HUB=[Connection string for the taxi-ride event hub]
     FARE_EVENT_HUB=[Connection string for the taxi-fare event hub]
     RIDE_DATA_FILE_PATH=/DataFile/FOIL2013
@@ -648,7 +647,7 @@ SparkMetric_CL
     docker build --no-cache -t dataloader .
     ```
 
-4. 부모 디렉터리인 `data/stream_azuredatabricks`로 다시 이동합니다.
+4. 부모 디렉터리로 다시 이동합니다.
 
     ```bash
     cd ..
