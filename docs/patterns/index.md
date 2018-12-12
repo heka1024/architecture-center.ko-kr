@@ -2,13 +2,13 @@
 title: 클라우드 디자인 패턴
 description: Microsoft Azure에 대한 클라우드 디자인 패턴
 keywords: Azure
-ms.date: 06/23/2017
-ms.openlocfilehash: 308e9bc784fc791d04adcecaae64bf258edeb20b
-ms.sourcegitcommit: ae8a1de6f4af7a89a66a8339879843d945201f85
+ms.date: 12/10/2018
+ms.openlocfilehash: 26ee59ef15fc63bb5e823cd85f610cd9ad01177a
+ms.sourcegitcommit: 9a15af3a25f25b8730968d32cbb006434b183e18
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43326200"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53234053"
 ---
 # <a name="cloud-design-patterns"></a>클라우드 디자인 패턴
 
@@ -104,6 +104,7 @@ ms.locfileid: "43326200"
 |              [구체화된 뷰](./materialized-view.md)              |                                        데이터가 필요한 쿼리 작업에 대해 이상적으로 포맷되지 않은 경우 하나 이상의 데이터 저장소에 있는 데이터에 대한 미리 채워진 뷰를 생성합니다.                                        |
 |              [파이프 및 필터](./pipes-and-filters.md)              |                                                        복잡한 처리를 수행하는 작업을 재사용 가능한 일련의 별도 요소로 분류합니다.                                                        |
 |                 [우선 순위 큐](./priority-queue.md)                 |                                 우선 순위가 높은 요청을 우선 순위가 낮은 요청보다 먼저 받아서 처리하도록 서비스로 전송된 요청의 우선 순위를 지정합니다.                                  |
+| [게시자/구독자](./publisher-subscriber.md) | 애플리케이선이 발신자를 수신자에게 연결하지 않고 여러 관심있는 소비자에게 이벤트를 비동기식으로 알릴 수 있습니다. |
 |      [큐 기반 부하 평준화](./queue-based-load-leveling.md)      |                                               작업 그리고 그 작업이 일시적인 높은 부하를 부드럽게 처리하기 위해 호출하는 서비스 사이에서 버퍼 역할을 하는 큐를 사용합니다.                                               |
 |                          [다시 시도](./retry.md)                          |               이전에 실패한 작업을 투명하게 다시 시도하여 서비스 또는 네트워크 리소스에 연결하려 할 때 응용 프로그램을 사용하여 예상된 일시적 오류를 처리합니다.                |
 |     [Scheduler 에이전트 감독자](./scheduler-agent-supervisor.md)     |                                                              서비스 및 기타 원격 리소스의 분산된 집합에서 일련의 작업을 조정합니다.                                                               |
