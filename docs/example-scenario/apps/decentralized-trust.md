@@ -3,12 +3,13 @@ title: Azure의 은행 간에 분산 트러스트
 description: 중앙 집중식 데이터베이스로 재분류하지 않고 통신 및 정보 공유에 대해 신뢰할 수 있는 환경을 설정합니다.
 author: vitoc
 ms.date: 09/09/2018
-ms.openlocfilehash: bc472bc5bafc3eb20e583f41d71ed783725a039e
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.custom: csa-team
+ms.openlocfilehash: 91c41f7bd6bd6f4eb8cd00859f7ce9065f8a86be
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610569"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004731"
 ---
 # <a name="decentralized-trust-between-banks-on-azure"></a>Azure의 은행 간에 분산 트러스트
 
