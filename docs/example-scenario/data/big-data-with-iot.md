@@ -1,6 +1,6 @@
 ---
 title: 건축 산업에서 IoT 및 데이터 분석
-description: IoT 장치 및 데이터 분석을 사용하여 건축 프로젝트의 포괄적인 관리 및 작업을 제공합니다.
+description: IoT 디바이스 및 데이터 분석을 사용하여 건축 프로젝트의 포괄적인 관리 및 작업을 제공합니다.
 author: alexbuckgit
 ms.date: 08/29/2018
 ms.openlocfilehash: 74868191687e63a54a69fdacb7276983d98faf74
@@ -12,7 +12,7 @@ ms.locfileid: "51610926"
 ---
 # <a name="iot-and-data-analytics-in-the-construction-industry"></a>건축 산업에서 IoT 및 데이터 분석
 
-이 예제 시나리오는 여러 IoT 장치의 데이터를 포괄적인 데이터 분석 아키텍처에 통합하여 의사 결정을 개선하고 자동화하는 솔루션을 빌드하는 조직과 관련이 있습니다. 잠재적인 응용 프로그램에는 여러 IoT 기반 데이터 입력에서 대량의 데이터를 수집하는 건설, 채굴, 제조 또는 기타 산업 솔루션이 포함됩니다.
+이 예제 시나리오는 여러 IoT 디바이스의 데이터를 포괄적인 데이터 분석 아키텍처에 통합하여 의사 결정을 개선하고 자동화하는 솔루션을 빌드하는 조직과 관련이 있습니다. 잠재적인 응용 프로그램에는 여러 IoT 기반 데이터 입력에서 대량의 데이터를 수집하는 건설, 채굴, 제조 또는 기타 산업 솔루션이 포함됩니다.
 
 이 시나리오에서는 한 건설 장비 제조업체가 IoT 및 GPS 기술을 사용하여 원격 분석 데이터를 전송하는 차량, 계량기 및 드론을 빌드합니다. 이 회사는 운영 상태 및 장비 상태를 보다 정확하게 모니터링할 수 있도록 데이터 아키텍처를 현대화하려고 합니다. 온-프레미스 인프라를 사용하여 이 회사의 레거시 솔루션을 대체하려면 시간과 노력이 많이 필요하며, 예상되는 데이터 볼륨을 처리하기에 충분한 규모로 확장할 수 없습니다.
 
@@ -32,7 +32,7 @@ IoT Hub 및 HDInsight 같은 관리되는 Azure 서비스를 사용하여 고객
 관련된 다른 사용 사례는 다음과 같습니다.
 
 * 건설, 채굴 또는 장비 제조 시나리오
-* 저장 및 분석을 위한 대규모 장치 데이터 컬렉션
+* 저장 및 분석을 위한 대규모 디바이스 데이터 컬렉션
 * 대규모 데이터 세트의 수집 및 분석
 
 ## <a name="architecture"></a>아키텍처
@@ -51,8 +51,8 @@ IoT Hub 및 HDInsight 같은 관리되는 Azure 서비스를 사용하여 고객
 
 ### <a name="components"></a>구성 요소
 
-* [IoT Hub](/azure/iot-hub/about-iot-hub)는 장치별 ID를 사용하여 클라우드 플랫폼과 건설 장비 및 기타 현장 요소 간에 안전한 양방향 통신이 가능하도록 중앙 메시지 허브 역할을 합니다. IoT Hub는 각 장치에 대한 데이터를 신속하게 데이터 분석 파이프라인으로 수집할 수 있습니다. 
-* [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction)는 장치 및 다른 데이터 원본에서 스트림하는 대량의 데이터를 분석할 수 있는 이벤트 처리 엔진입니다. 또한 데이터 스트림에서 정보를 추출하여 패턴과 관계를 식별할 수 있습니다. 이 시나리오에서는 Stream Analytics가 IoT 장치에서 데이터를 수집 및 분석하고 Azure SQL Database에 결과를 저장합니다. 
+* [IoT Hub](/azure/iot-hub/about-iot-hub)는 장치별 ID를 사용하여 클라우드 플랫폼과 건설 장비 및 기타 현장 요소 간에 안전한 양방향 통신이 가능하도록 중앙 메시지 허브 역할을 합니다. IoT Hub는 각 디바이스에 대한 데이터를 신속하게 데이터 분석 파이프라인으로 수집할 수 있습니다. 
+* [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction)는 장치 및 다른 데이터 원본에서 스트림하는 대량의 데이터를 분석할 수 있는 이벤트 처리 엔진입니다. 또한 데이터 스트림에서 정보를 추출하여 패턴과 관계를 식별할 수 있습니다. 이 시나리오에서는 Stream Analytics가 IoT 디바이스에서 데이터를 수집 및 분석하고 Azure SQL Database에 결과를 저장합니다. 
 * [Azure SQL Database](/azure/sql-database/sql-database-technical-overview)는 IoT 장치 및 계량기 데이터를 분석한 결과를 포함하며, 분석가 및 사용자는 Azure 기반 웹 응용 프로그램을 통해 결과를 볼 수 있습니다. 
 * [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)는 IoT 허브 장치에서 수집된 이미지 데이터를 저장합니다. 이미지 데이터는 웹 응용 프로그램을 통해 볼 수 있습니다.
 * [Traffic Manager](/azure/traffic-manager/traffic-manager-overview)는 다른 Azure 지역의 서비스 엔드포인트에 대한 사용자 트래픽 분산을 제어합니다.

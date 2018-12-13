@@ -61,14 +61,14 @@ AWS 계정과 마찬가지로, 구독의 기본 서비스 할당량 및 제한�
 
 ## <a name="resource-management"></a>리소스 관리
 
-Azure에서 말하는 "리소스"라는 용어는 AWS와 똑같은 의미로 사용됩니다. 즉, 모든 계산 인스턴스, 저장소 개체, 네트워킹 장치 또는 플랫폼 내에서 만들거나 구성할 수 있는 기타 엔터티를 의미합니다.
+Azure에서 말하는 "리소스"라는 용어는 AWS와 똑같은 의미로 사용됩니다. 즉, 모든 계산 인스턴스, 저장소 개체, 네트워킹 디바이스 또는 플랫폼 내에서 만들거나 구성할 수 있는 기타 엔터티를 의미합니다.
 
 Azure 리소스는 [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) 또는 기존 Azure [클래식 배포 모델](/azure/azure-resource-manager/resource-manager-deployment-model)을 사용하여 배포 및 관리됩니다.
 모든 새 리소스는 Resource Manager 모델을 사용하여 만듭니다.
 
 ### <a name="resource-groups"></a>리소스 그룹
 
-Azure와 AWS 둘 다 VM, 저장소, 가상 네트워킹 장치 등의 리소스를 구성하는 "리소스 그룹"이라는 엔터티를 갖고 있습니다. 그러나 [Azure 리소스 그룹](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)을 AWS 리소스 그룹과 직접 비교하는 것은 무리입니다.
+Azure와 AWS 둘 다 VM, 저장소, 가상 네트워킹 디바이스 등의 리소스를 구성하는 "리소스 그룹"이라는 엔터티를 갖고 있습니다. 그러나 [Azure 리소스 그룹](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)을 AWS 리소스 그룹과 직접 비교하는 것은 무리입니다.
 
 AWS는 한 리소스를 여러 리소스 그룹에 태깅할 수 있지만 Azure 리소스는 항상 한 리소스 그룹에만 연결됩니다. 한 리소스 그룹에서 생성된 리소스를 다른 그룹으로 이동할 수 있지만, 한 번에 한 리소스 그룹에만 소속될 수 있습니다. 리소스 그룹은 Azure Resource Manager가 사용하는 기본적인 그룹화 방법입니다.
 
@@ -346,7 +346,7 @@ AWS는 알림, 트랜잭션 또는 마케팅 전자 메일을 보낼 수 있는 
 
 #### <a name="simple-queueing-service"></a>Simple Queueing Service
 
-AWS SQS(AWS Simple Queueing Service)는 AWS 플랫폼 내부의 응용 프로그램, 서비스 및 장치를 연결하는 메시지 시스템을 제공합니다. Azure에도 비슷한 기능을 제공하는 두 가지 서비스가 있습니다.
+AWS SQS(AWS Simple Queueing Service)는 AWS 플랫폼 내부의 응용 프로그램, 서비스 및 디바이스를 연결하는 메시지 시스템을 제공합니다. Azure에도 비슷한 기능을 제공하는 두 가지 서비스가 있습니다.
 
 -   [큐 저장소](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-queues/) - Azure 플랫폼 내부의 응용 프로그램 구성 요소 간 통신을 허용하는 클라우드 메시지 서비스입니다.
 
@@ -354,7 +354,7 @@ AWS SQS(AWS Simple Queueing Service)는 AWS 플랫폼 내부의 응용 프로그
 
 #### <a name="device-farm"></a>Device Farm
 
-AWS Device Farm은 장치 간 테스트 서비스를 제공합니다. Azure에서는 [Xamarin Test Cloud](https://www.xamarin.com/test-cloud)가 모바일 장치에 이와 비슷한 장치 간 프런트 엔드 테스트를 제공합니다.
+AWS Device Farm은 디바이스 간 테스트 서비스를 제공합니다. Azure에서는 [Xamarin Test Cloud](https://www.xamarin.com/test-cloud)가 모바일 디바이스에 이와 비슷한 디바이스 간 프런트 엔드 테스트를 제공합니다.
 
 프런트 엔드 테스트 외에도 [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/)가 Linux 및 Windows 환경을 위한 백 엔드 테스트 리소스를 제공합니다.
 
