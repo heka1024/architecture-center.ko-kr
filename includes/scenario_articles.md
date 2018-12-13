@@ -110,11 +110,11 @@
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="./apps/media/architecture-devops-dotnet-webapp.png" height="140px" />
+                            <img src="./apps/media/architecture-devops-dotnet-webapp.svg" height="140px" />
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure DevOps를 사용한 CI/CD 파이프라인</h3>
+                        <h3>Azure DevOps를 사용하여 CI/CD 파이프라인 설계</h3>
                         <p>Azure DevOps를 사용하여 Azure Web Apps에 .NET 앱을 빌드하고 릴리스합니다.</p>
                     </div>
                 </div>
@@ -430,7 +430,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>규제 산업용 Windows 웹 응용 프로그램 보호</h3>
+                        <h3>Azure에서 Windows 가상 머신으로 안전한 웹앱 빌드</h3>
                         <p>확장 집합, Application Gateway 및 부하 분산 장치를 사용하여 Azure의 Windows Server에서 안전한 다중 계층 웹 응용 프로그램을 빌드합니다.</p>
                     </div>
                 </div>
