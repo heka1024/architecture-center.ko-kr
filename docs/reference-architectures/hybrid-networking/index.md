@@ -27,7 +27,7 @@ ms.locfileid: "53119917"
 
 **과제**
 
-- 온-프레미스 VPN 장치가 필요합니다.
+- 온-프레미스 VPN 디바이스가 필요합니다.
 - Microsoft에서는 각 VPN Gateway에 99.9%의 가용성을 보장하지만, 이 [SLA](https://azure.microsoft.com/support/legal/sla/vpn-gateway/)는 게이트웨이에 대한 네트워크 연결이 아닌 VPN Gateway만 다룹니다.
 - 현재 Azure VPN Gateway를 통한 VPN 연결은 최대 1.25Gbps의 대역폭을 지원합니다. 이러한 처리량을 초과할 것으로 예상되는 경우 여러 VPN 연결에 걸쳐 Azure 가상 네트워크를 분할해야 할 수 있습니다.
 

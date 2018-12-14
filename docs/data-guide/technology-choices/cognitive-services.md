@@ -31,7 +31,7 @@ Cognitive Services에는 다음이 포함됩니다.
 
 고려 사항:
 
-* 웹을 통해서만 사용할 수 있습니다. 일반적으로 인터넷 연결이 필요합니다. 예외는 장치 및 IoT Edge에서 예측을 위해 학습된 모델을 내보낼 수 있는 Custom Vision Service입니다.
+* 웹을 통해서만 사용할 수 있습니다. 일반적으로 인터넷 연결이 필요합니다. 예외는 디바이스 및 IoT Edge에서 예측을 위해 학습된 모델을 내보낼 수 있는 Custom Vision Service입니다.
 * 풍부한 사용자 지정이 지원되지만 사용 가능한 서비스가 모든 예측 분석 요구 사항에 부합되지 않을 수도 있습니다.
 
 ## <a name="what-are-your-options-when-choosing-amongst-the-cognitive-services"></a>Cognitive Services 중에서 선택할 때 어떤 옵션이 있나요?

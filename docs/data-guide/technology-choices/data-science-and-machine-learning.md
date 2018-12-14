@@ -35,7 +35,7 @@ Azure 노트는 데이터 과학자가 클라우드 기반 라이브러리에서
 
 * 무료 서비스&mdash;Azure 구독이 필요하지 않습니다.
 * Jupyter 및 지원하는 R 또는 Python 배포를 로컬로 설치할 필요가 없음&mdash;브라우저만 사용하면 됩니다.
-* 자체 온라인 라이브러리를 관리하고 모든 장치에서 액세스할 수 있습니다.
+* 자체 온라인 라이브러리를 관리하고 모든 디바이스에서 액세스할 수 있습니다.
 * 공동 작업자와 노트를 공유합니다.
 
 고려 사항:
@@ -61,13 +61,13 @@ Azure Machine Learning은 Machine Learning 실험 및 모델을 관리하기 위
 
 Azure Machine Learning Workbench에서 대화형 데이터 준비 도구를 사용하여 일반적인 데이터 변환 작업을 단순화하고, 확장 가능한 Docker 컨테이너 또는 Spark에서 모델 학습 스크립트를 로컬로 실행하도록 스크립트 실행 환경을 구성할 수 있습니다.
 
-모델을 배포할 준비가 되면, Workbench 환경을 사용하여 모델을 패키지하고 Docker 컨테이너, Azure HDinsight의 Spark, Microsoft Machine Learning Server 또는 SQL Server에 웹 서비스로 배포합니다. 그런 다음 Azure Machine Learning 모델 관리 서비스를 사용하여 클라우드, 에지 장치 또는 엔터프라이즈 전체에서 모델 배포를 추적하고 관리할 수 있습니다.
+모델을 배포할 준비가 되면, Workbench 환경을 사용하여 모델을 패키지하고 Docker 컨테이너, Azure HDinsight의 Spark, Microsoft Machine Learning Server 또는 SQL Server에 웹 서비스로 배포합니다. 그런 다음, Azure Machine Learning 모델 관리 서비스를 사용하여 클라우드, 에지 디바이스 또는 엔터프라이즈 전체에서 모델 배포를 추적하고 관리할 수 있습니다.
 
 주요 이점:
 
 * 스크립트 및 실행 기록이 중앙에서 관리되므로 모델 버전을 쉽게 비교할 수 있습니다.
 * 시각적 편집기를 통해 대화형 데이터를 변환합니다.
-* 클라우드 또는 에지 장치로 모델을 쉽게 배포 및 관리합니다.
+* 클라우드 또는 에지 디바이스로 모델을 쉽게 배포 및 관리합니다.
 
 고려 사항:
 * 모델 관리 모델과 워크벤치 도구 환경을 어느 정도 숙지합니다.
@@ -116,12 +116,12 @@ Apache Spark에는 Machine Learning 모델을 위한 Spark MLlib, 프레임워�
 
 ### <a name="web-service-in-a-container"></a>컨테이너의 웹 서비스
 
-Docker 컨테이너에서 Python 웹 서비스로 Machine Learning 모델을 배포할 수 있습니다. Azure 또는 에지 장치에 모델을 배포할 수 있습니다. 이 경우 모델이 작동하는 데이터와 함께 로컬로 데이터를 사용할 수 있습니다.
+Docker 컨테이너에서 Python 웹 서비스로 Machine Learning 모델을 배포할 수 있습니다. Azure 또는 에지 디바이스에 모델을 배포할 수 있습니다. 이 경우 모델이 작동하는 데이터와 함께 로컬로 데이터를 사용할 수 있습니다.
 
 주요 이점:
 
 * 컨테이너는 서비스를 패키지 및 배포하는 간단하면서 비용 효율적인 방법입니다.
-* 에지 장치에 배포하는 기능을 사용하면 예측 논리를 데이터에 좀 더 가까운 위치로 이동할 수 있습니다.
+* 에지 디바이스에 배포하는 기능을 사용하면 예측 논리를 데이터에 좀 더 가까운 위치로 이동할 수 있습니다.
 * Azure Machine Learning Workbench에서 직접 컨테이너에 배포할 수 있습니다.
 
 고려 사항:

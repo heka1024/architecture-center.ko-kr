@@ -80,7 +80,7 @@ ms.locfileid: "52901731"
 조직에서는 해당 네트워크 공유를 클라우드로 완전히 이동하려고 할 수도 있습니다. 네트워크 공유에 액세스하는 응용 프로그램도 클라우드에 있다면 이러한 방식이 적절할 수 있습니다. 이 절차는 [데이터 오케스트레이션](../technology-choices/pipeline-orchestration-data-movement.md) 도구를 사용하여 수행할 수 있습니다.
 
 
-[Azure StorSimple](/azure/storsimple/)은 온-프레미스 장치 및 Azure 클라우드 저장소 간의 저장소 태스크를 관리하는 가장 완전한 통합 저장소 솔루션을 제공합니다. StorSimple은 다양한 문제 및 엔터프라이즈 저장소 및 데이터 보호와 관련된 비용을 제거하는 효과적이고, 비용 효율적이며, 관리가 용이한 저장소 영역 네트워크(SAN) 솔루션입니다. 소유 StorSimple 8000 시리즈 장치를 사용하고, 클라우드 서비스와 통합되며, 통합 관리 도구 집합을 제공합니다.
+[Azure StorSimple](/azure/storsimple/)은 온-프레미스 장치 및 Azure 클라우드 저장소 간의 저장소 태스크를 관리하는 가장 완전한 통합 저장소 솔루션을 제공합니다. StorSimple은 다양한 문제 및 엔터프라이즈 저장소 및 데이터 보호와 관련된 비용을 제거하는 효과적이고, 비용 효율적이며, 관리가 용이한 저장소 영역 네트워크(SAN) 솔루션입니다. 소유 StorSimple 8000 시리즈 디바이스를 사용하고, 클라우드 서비스와 통합되며, 통합 관리 도구 집합을 제공합니다.
 
 클라우드 기반 파일 저장소와 함께 온-프레미스 네트워크 공유를 사용하는 또 다른 방법은 [Azure Files](/azure/storage/files/storage-files-introduction)입니다. Azure Files는 표준 [SMB(서버 메시지 블록)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx?f=255&MSPPError=-2147217396) 프로토콜(CIFS라고도 함)을 사용하여 액세스할 수 있는 완전하게 관리되는 파일 공유를 제공합니다. Azure Files를 로컬 컴퓨터에 파일 공유로 탑재하거나, 로컬 또는 네트워크 공유 파일에 액세스하는 기존 응용 프로그램과 함께 사용할 수 있습니다.
 

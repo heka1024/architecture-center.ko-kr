@@ -30,13 +30,13 @@ ms.locfileid: "52901629"
 
 IoT Hub의 기능은 다음과 같습니다.
 
-* 다수의 장치-클라우드 및 클라우드-장치 통신 옵션. 이러한 옵션에는 단방향 메시징, 파일 전송 및 요청-회신 메서드가 포함됩니다.
+* 다수의 디바이스-클라우드 및 클라우드-디바이스 통신 옵션. 이러한 옵션에는 단방향 메시징, 파일 전송 및 요청-회신 메서드가 포함됩니다.
 * 다른 Azure 서비스로의 메시지 라우팅
-* 장치 메타데이터와 동기화된 상태 정보에 대한 쿼리 가능한 저장소
+* 디바이스 메타데이터와 동기화된 상태 정보에 대한 쿼리 가능한 저장소
 * 장치 단위 보안 키 또는 X.509 인증서를 사용하는 보안 통신 및 액세스 제어
-* 장치 연결 및 장치 ID 관리 이벤트에 대한 모니터링
+* 디바이스 연결 및 디바이스 ID 관리 이벤트에 대한 모니터링
 
-메시지 수집 측면에서 IoT Hub는 Event Hubs와 비슷합니다. 그러나 메시지 수집 뿐만 아니라 IoT 장치 연결을 관리하도록 특수하게 디자인되었습니다. 자세한 내용은 [Azure IoT Hub 및 Azure Event Hubs의 비교](/azure/iot-hub/iot-hub-compare-event-hubs)를 참조하세요. 
+메시지 수집 측면에서 IoT Hub는 Event Hubs와 비슷합니다. 그러나 메시지 수집 뿐만 아니라 IoT 디바이스 연결을 관리하도록 특수하게 디자인되었습니다. 자세한 내용은 [Azure IoT Hub 및 Azure Event Hubs의 비교](/azure/iot-hub/iot-hub-compare-event-hubs)를 참조하세요. 
 
 ## <a name="kafka-on-hdinsight"></a>HDInsight의 Kafka
 
@@ -53,9 +53,9 @@ Kafka의 몇 가지 일반적인 사용 사례는 다음과 같습니다.
 
 선택 옵션의 범위를 좁히려면 먼저 다음 질문에 답변합니다.
 
-- IoT 장치와 Azure 간에 양방향 통신이 필요한가요? 그렇다면 IoT Hub를 선택합니다.
+- IoT 디바이스와 Azure 간에 양방향 통신이 필요한가요? 그렇다면 IoT Hub를 선택합니다.
 
-- 개별 장치에 대한 액세스를 관리하고, 특정 장치에 대한 액세스 권한을 취소할 수 있어야 하나요? 그렇다면 IoT Hub를 선택합니다.
+- 개별 디바이스에 대한 액세스를 관리하고, 특정 디바이스에 대한 액세스 권한을 취소할 수 있어야 하나요? 그렇다면 IoT Hub를 선택합니다.
 
 ## <a name="capability-matrix"></a>기능 매트릭스
 
@@ -64,7 +64,7 @@ Kafka의 몇 가지 일반적인 사용 사례는 다음과 같습니다.
 | | IoT Hub | Event Hubs | HDInsight의 Kafka |
 | --- | --- | --- | --- |
 | 클라우드-장치 통신 | yes | 아니요 | 아니요 |
-| 장치에서 시작한 파일 업로드 | yes | 아니요 | 아니요 |
+| 디바이스에서 시작한 파일 업로드 | yes | 아니요 | 아니요 |
 | 디바이스 상태 정보 | [장치 쌍](/azure/iot-hub/iot-hub-devguide-device-twins) | 아니요 | 아니요 |
 | 프로토콜 지원 | MQTT, AMQP, HTTPS <sup>1</sup> | AMQP, HTTPS | [Kafka Protocol](https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol) |
 | 보안 | 장치 단위 ID. 취소 가능한 액세스 제어 | 공유 액세스 정책. 게시자 정책을 통해 취소 제한 | SASL을 사용한 인증, 플러그 가능 인증, 외부 인증 서비스와의 통합 지원 |

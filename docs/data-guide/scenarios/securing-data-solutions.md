@@ -40,7 +40,7 @@ ms.locfileid: "52901646"
 * 암호 관리를 배포합니다.
 * 사용자에 대해 MFA(Multi-Factor Authentication)를 적용합니다.
 * RBAC(역할 기반 액세스 제어)를 사용합니다.
-* 사용자 위치, 장치 유형, 패치 수준 등과 관련된 추가 속성을 포함하는 사용자 ID의 기본 개념을 향상시키는 조건부 액세스 정책을 구성해야 합니다.
+* 사용자 위치, 디바이스 유형, 패치 수준 등과 관련된 추가 속성을 포함하는 사용자 ID의 기본 개념을 향상시키는 조건부 액세스 정책을 구성해야 합니다.
 * Resource Manager를 사용하여 리소스가 만들어지는 위치를 제어합니다.
 * 의심스러운 활동을 적극적으로 모니터링
 
@@ -66,7 +66,7 @@ ms.locfileid: "52901646"
 
 ### <a name="rights-management"></a>권한 관리
 
-[Azure Rights Management](/information-protection/understand-explore/what-is-azure-rms)는 암호화, ID 및 권한 부여 정책을 사용하여 파일 및 전자 메일을 보호하는 클라우드 기반 서비스입니다. 이 기능은 휴대폰, 태블릿 및 PC를 비롯한 여러 장치에서 작동합니다. 정보가 조직의 경계를 벗어나더라도 데이터가 계속 보호되므로 조직 내부 및 외부에서 정보를 보호할 수 있습니다.
+[Azure Rights Management](/information-protection/understand-explore/what-is-azure-rms)는 암호화, ID 및 권한 부여 정책을 사용하여 파일 및 전자 메일을 보호하는 클라우드 기반 서비스입니다. 이 기능은 휴대폰, 태블릿 및 PC를 비롯한 여러 디바이스에서 작동합니다. 정보가 조직의 경계를 벗어나더라도 데이터가 계속 보호되므로 조직 내부 및 외부에서 정보를 보호할 수 있습니다.
 
 ### <a name="access-control"></a>Access Control
 

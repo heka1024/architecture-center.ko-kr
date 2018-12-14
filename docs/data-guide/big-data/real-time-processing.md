@@ -43,7 +43,7 @@ ms.locfileid: "52901620"
 ### <a name="real-time-message-ingestion"></a>실시간 메시지 수집
 
 - **Azure Event Hubs** - Azure Event Hubs는 초당 수백만 개의 이벤트 메시지를 수집하기 위한 메시지 큐 솔루션입니다. 캡처한 이벤트 데이터는 여러 소비자가 동시에 처리할 수 있습니다.
-- **Azure IoT Hub** - Azure IoT Hub는 인터넷에 연결된 장치 간의 양방향 통신과 동시에 연결된 수백만 대의 장치를 처리할 수 있는 확장 가능한 메시지 큐를 제공합니다.
+- **Azure IoT Hub** - Azure IoT Hub는 인터넷에 연결된 디바이스 간의 양방향 통신과 동시에 연결된 수백만 대의 디바이스를 처리할 수 있는 확장 가능한 메시지 큐를 제공합니다.
 - **Apache Kafka**. Kafka는 다중 메시지 생산자에서 들어온 초당 수백만 개의 메시지를 처리하여 여러 소비자에게 전송하기 위해 확장될 수 있는 오픈 소스 메시지 큐 및 스트림 처리 응용 프로그램입니다. Kafka는 Azure에서 HDInsight 클러스터 유형으로 사용할 수 있습니다.
 
 자세한 내용은 [실시간 메시지 수집](../technology-choices/real-time-ingestion.md)을 참조하세요.
