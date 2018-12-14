@@ -41,7 +41,7 @@ Event Hubs 및 Stream Analytics와 같이 완전하게 관리되는 Azure 서비
 
 ### <a name="components"></a>구성 요소
 
-* [Azure Event Hubs][docs-event-hubs]는 초당 수백만 개의 이벤트를 받고 처리할 수 있는 실시간 스트리밍 플랫폼 및 이벤트 수집 서비스입니다. Event Hubs는 분산된 소프트웨어와 장치에서 생성된 이벤트, 데이터 또는 원격 분석을 처리하고 저장할 수 있습니다. 이 시나리오에서 Event Hubs에서 모든 전화 통화 메타데이터를 수신하여 부정 행위에 대해 분석합니다.
+* [Azure Event Hubs][docs-event-hubs]는 초당 수백만 개의 이벤트를 받고 처리할 수 있는 실시간 스트리밍 플랫폼 및 이벤트 수집 서비스입니다. Event Hubs는 분산된 소프트웨어와 디바이스에서 생성된 이벤트, 데이터 또는 원격 분석을 처리하고 저장할 수 있습니다. 이 시나리오에서 Event Hubs에서 모든 전화 통화 메타데이터를 수신하여 부정 행위에 대해 분석합니다.
 * [Azure Stream Analytics][docs-stream-analytics]는 장치 및 다른 데이터 원본에서 스트림하는 대량의 데이터를 분석할 수 있는 이벤트 처리 엔진입니다. 또한 데이터 스트림에서 정보를 추출하여 패턴과 관계를 식별할 수 있습니다. 이러한 패턴은 다른 다운스트림 작업을 트리거할 수 있습니다. 이 시나리오에서는 Stream Analytics에서 Event Hubs로부터의 입력 스트림을 변환하여 부정 행위 호출을 식별합니다.
 * [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)는 Stream Analytics 작업의 결과를 저장하기 위해 이 시나리오에서 사용됩니다.
 
