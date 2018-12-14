@@ -4,12 +4,12 @@ description: Azure의 일반 워크로드에 대한 참조 아키텍처, 청사�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: efac05ff95431f9551c6fb76939dbb91cfa01d1d
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: 6a86256c504737b5f747a690d27fdf178ac8b4fe
+ms.sourcegitcommit: 8d951fd7e9534054b160be48a1881ae0857561ef
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307020"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53329384"
 ---
 # <a name="azure-reference-architectures"></a>Azure 참조 아키텍처
 
@@ -683,6 +683,25 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                     <div class="cardText">
                         <h3>고가용성 웹 응용 프로그램</h3>
                         <p>여러 지역에서 App Service 웹앱을 실행하여 고가용성을 달성합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./app-service-web-app/app-monitoring.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/app-service.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure에서 웹 응용 프로그램 모니터링</h3>
+                        <p>Azure App Service에 호스트되는 웹 응용 프로그램을 모니터링합니다.</p>
                     </div>
                 </div>
             </div>
