@@ -1,47 +1,44 @@
 ---
 title: VPN을 사용하여 온-프레미스 네트워크를 Azure에 연결
-description: VPN을 사용하여 연결된 온-프레미스 네트워크 및 Azure Virtual Network를 포괄하는 보안 사이트 간 네트워크 아키텍처를 구현하는 방법입니다.
+titleSuffix: Azure Reference Architectures
+description: VPN을 사용하여 연결된 온-프레미스 네트워크 및 Azure Virtual Network를 포괄하는 보안 사이트 간 네트워크 아키텍처를 구현합니다.
 author: RohitSharma-pnp
 ms.date: 10/22/2018
-pnp.series.title: Connect an on-premises network to Azure
-pnp.series.next: expressroute
-pnp.series.prev: ./index
-cardTitle: VPN
-ms.openlocfilehash: a494ff952dd6c8be3b38c2ca7f6740a44b5b30e1
-ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
+ms.openlocfilehash: a1bb2e250cb261e1a56abfb58b099fd078c068e5
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52295670"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120444"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN 게이트웨이를 사용하여 온-프레미스 네트워크를 Azure에 연결
 
-이 참조 아키텍처에서는 사이트 간 VPN(가상 사설 네트워크)을 사용하여 온-프레미스 네트워크를 Azure로 확장하는 방법을 설명합니다. IPSec VPN 터널을 통해 온-프레미스 네트워크와 Azure 가상 네트워크(VNet) 사이에서 트래픽이 흐릅니다. [**이 솔루션을 배포합니다**.](#deploy-the-solution)
+이 참조 아키텍처에서는 사이트 간 VPN(가상 사설 네트워크)을 사용하여 온-프레미스 네트워크를 Azure로 확장하는 방법을 설명합니다. IPSec VPN 터널을 통해 온-프레미스 네트워크와 Azure 가상 네트워크(VNet) 사이에서 트래픽이 흐릅니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
 
-![[0]][0]
+![온-프레미스 인프라와 Azure 인프라를 포괄하는 하이브리드 네트워크](./images/vpn.png)
 
 *이 아키텍처의 [Visio 파일][visio-download]을 다운로드합니다.*
 
-## <a name="architecture"></a>아키텍처 
+## <a name="architecture"></a>아키텍처
 
 이 아키텍처는 다음 구성 요소로 구성됩니다.
 
-* **온-프레미스 네트워크**. 조직 내에서 실행되는 개인 로컬 영역 네트워크입니다.
+- **온-프레미스 네트워크**. 조직 내에서 실행되는 개인 로컬 영역 네트워크입니다.
 
-* **VPN 어플라이언스**. 온-프레미스 네트워크에 외부 연결을 제공하는 장치 또는 서비스입니다. VPN 어플라이언스는 하드웨어 장치일 수도 있고 Windows Server 2012의 RRAS(라우팅 및 원격 액세스 서비스)와 같은 소프트웨어 솔루션일 수도 있습니다. 지원되는 VPN 어플라이언스 목록 및 VPN 어플라이언스가 Azure VPN 게이트웨이에 연결되도록 구성하는 방법은 [사이트 간 VPN 게이트웨이 연결을 위한 VPN 장치 정보][vpn-appliance] 문서에서 선택한 장치에 대한 지침을 참조하세요.
+- **VPN 어플라이언스**. 온-프레미스 네트워크에 외부 연결을 제공하는 장치 또는 서비스입니다. VPN 어플라이언스는 하드웨어 장치일 수도 있고 Windows Server 2012의 RRAS(라우팅 및 원격 액세스 서비스)와 같은 소프트웨어 솔루션일 수도 있습니다. 지원되는 VPN 어플라이언스 목록 및 VPN 어플라이언스가 Azure VPN 게이트웨이에 연결되도록 구성하는 방법은 [사이트 간 VPN 게이트웨이 연결을 위한 VPN 장치 정보][vpn-appliance] 문서에서 선택한 장치에 대한 지침을 참조하세요.
 
-* **가상 네트워크(VNet)**. Azure VPN 게이트웨이의 클라우드 응용 프로그램과 구성 요소는 동일한 [VNet][azure-virtual-network]에 존재합니다.
+- **가상 네트워크(VNet)**. Azure VPN 게이트웨이의 클라우드 응용 프로그램과 구성 요소는 동일한 [VNet][azure-virtual-network]에 존재합니다.
 
-* **Azure VPN 게이트웨이**. [VPN 게이트웨이][azure-vpn-gateway] 서비스를 사용하면 VPN 어플라이언스를 통해 VNet을 온-프레미스 네트워크에 연결할 수 있습니다. 자세한 내용은 [온-프레미스 네트워크를 Microsoft Azure virtual network에 연결][connect-to-an-Azure-vnet]을 참조하세요. VPN 게이트웨이에는 다음과 같은 요소가 포함되어 있습니다.
-  
-  * **가상 네트워크 게이트웨이**. VNet을 위한 가상 VPN 어플라이언스를 제공하는 리소스입니다. 온-프레미스 네트워크에서 VNet으로 트래픽을 라우팅하는 역할을 담당합니다.
-  * **로컬 네트워크 게이트웨이**. 온-프레미스 VPN 어플라이언스가 추상화된 것입니다. 클라우드 응용 프로그램에서 온-프레미스 네트워크로 흐르는 네트워크 트래픽은 이 게이트웨이를 통과하도록 라우팅됩니다.
-  * **연결**. 이 연결에는 연결 유형(IPSec) 및 트래픽을 암호화하기 위해 온-프레미스 VPN 어플라이언스와 공유되는 키를 지정하는 속성이 있습니다.
-  * **게이트웨이 서브넷**. 가상 네트워크 게이트웨이는 자체 서브넷에 존재합니다. 자체 서브넷은 아래의 권장 사항 섹션에서 설명하는 다양한 요구 사항에 따라 달라집니다.
+- **Azure VPN 게이트웨이**. [VPN 게이트웨이][azure-vpn-gateway] 서비스를 사용하면 VPN 어플라이언스를 통해 VNet을 온-프레미스 네트워크에 연결할 수 있습니다. 자세한 내용은 [온-프레미스 네트워크를 Microsoft Azure virtual network에 연결][connect-to-an-Azure-vnet]을 참조하세요. VPN 게이트웨이에는 다음과 같은 요소가 포함되어 있습니다.
 
-* **클라우드 응용 프로그램**. Azure에 호스팅된 응용 프로그램입니다. Azure Load Balancer를 통해 여러 서브넷이 연결된 여러 계층이 포함될 수 있습니다. 응용 프로그램 인프라에 대한 자세한 내용은 [Windows VM 워크로드 실행][windows-vm-ra] 및 [Linux VM 워크로드 실행][linux-vm-ra]을 참조하세요.
+  - **가상 네트워크 게이트웨이**. VNet을 위한 가상 VPN 어플라이언스를 제공하는 리소스입니다. 온-프레미스 네트워크에서 VNet으로 트래픽을 라우팅하는 역할을 담당합니다.
+  - **로컬 네트워크 게이트웨이**. 온-프레미스 VPN 어플라이언스가 추상화된 것입니다. 클라우드 응용 프로그램에서 온-프레미스 네트워크로 흐르는 네트워크 트래픽은 이 게이트웨이를 통과하도록 라우팅됩니다.
+  - **연결**. 이 연결에는 연결 유형(IPSec) 및 트래픽을 암호화하기 위해 온-프레미스 VPN 어플라이언스와 공유되는 키를 지정하는 속성이 있습니다.
+  - **게이트웨이 서브넷**. 가상 네트워크 게이트웨이는 자체 서브넷에 존재합니다. 자체 서브넷은 아래의 권장 사항 섹션에서 설명하는 다양한 요구 사항에 따라 달라집니다.
 
-* **내부 부하 분산 장치**. VPN 게이트웨이에서 전송되는 네트워크 트래픽은 내부 부하 분산 장치를 통해 클라우드 응용 프로그램으로 라우팅됩니다. 부하 분산 장치는 응용 프로그램의 프론트 엔드 서브넷에 위치합니다.
+- **클라우드 응용 프로그램**. Azure에 호스팅된 응용 프로그램입니다. Azure Load Balancer를 통해 여러 서브넷이 연결된 여러 계층이 포함될 수 있습니다. 응용 프로그램 인프라에 대한 자세한 내용은 [Windows VM 워크로드 실행][windows-vm-ra] 및 [Linux VM 워크로드 실행][linux-vm-ra]을 참조하세요.
+
+- **내부 부하 분산 장치**. VPN 게이트웨이에서 전송되는 네트워크 트래픽은 내부 부하 분산 장치를 통해 클라우드 응용 프로그램으로 라우팅됩니다. 부하 분산 장치는 응용 프로그램의 프론트 엔드 서브넷에 위치합니다.
 
 ## <a name="recommendations"></a>권장 사항
 
@@ -56,12 +53,11 @@ ms.locfileid: "52295670"
 1. VNet 주소 공간의 변수 비트를 게이트웨이 서브넷에 의해 사용되는 비트까지 모두 1로 설정하고, 나머지 비트를 0으로 설정합니다.
 2. 결과 비트를 10진수로 변환한 다음 이것을 게이트웨이 서브넷의 크기로 설정된 접두사 길이를 사용하여 주소 공간으로 표현합니다.
 
-예를 들어 IP 주소 범위가 10.20.0.0/16인 VNet에 1단계를 적용하면 10.20.0b11111111.0b11100000이 됩니다.  이것을 10진수로 변환한 다음 주소 공간으로 표현하면 10.20.255.224/27이 됩니다. 
+예를 들어 IP 주소 범위가 10.20.0.0/16인 VNet에 1단계를 적용하면 10.20.0b11111111.0b11100000이 됩니다.  이것을 10진수로 변환한 다음 주소 공간으로 표현하면 10.20.255.224/27이 됩니다.
 
 > [!WARNING]
 > 게이트웨이 서브넷에는 VM을 배포하지 않습니다. 또한, 이 서브넷에 NSG을 할당하지 않습니다. NSG를 할당하면 게이트웨이의 작동이 중지됩니다.
-> 
-> 
+>
 
 ### <a name="virtual-network-gateway"></a>가상 네트워크 게이트웨이
 
@@ -77,15 +73,13 @@ ms.locfileid: "52295670"
 
 > [!NOTE]
 > 게이트웨이를 만든 뒤에는 게이트웨이 유형을 변경하려면 게이트웨이를 삭제하고 다시 만들어야 합니다.
-> 
-> 
+>
 
 사용자의 처리량 요구 사항에 가장 가까운 Azure VPN 게이트웨이 SKU를 선택합니다. 자세한 내용은 [게이트웨이 SKU][azure-gateway-skus]를 참조하세요.
 
 > [!NOTE]
 > 기본 SKU는 Azure ExpressRoute와 호환되지 않습니다. 게이트웨이를 만든 뒤에 [SKU를 변경][changing-SKUs]할 수 있습니다.
-> 
-> 
+>
 
 요금은 게이트웨이가 프로비전되고 사용된 시간에 따라 청구됩니다. [VPN 게이트웨이 가격][azure-gateway-charges]을 참조하세요.
 
@@ -103,9 +97,9 @@ ms.locfileid: "52295670"
 
 연결을 테스트하여 다음을 확인합니다.
 
-* 온-프레미스 VPN 어플라이언스가 Azure VPN 게이트웨이를 통해 트래픽을 클라우드 응용 프로그램으로 올바르게 라우팅합니다.
-* VNet이 트래픽을 온-프레미스 네트워크로 올바르게 라우팅합니다.
-* 두 방향에서 금지된 트래픽이 올바르게 차단됩니다.
+- 온-프레미스 VPN 어플라이언스가 Azure VPN 게이트웨이를 통해 트래픽을 클라우드 응용 프로그램으로 올바르게 라우팅합니다.
+- VNet이 트래픽을 온-프레미스 네트워크로 올바르게 라우팅합니다.
+- 두 방향에서 금지된 트래픽이 올바르게 차단됩니다.
 
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
@@ -123,7 +117,7 @@ Azure VPN 게이트웨이에서 온-프레미스 네트워크에 계속해서 �
 
 조직에 여러 개의 온-프레미스 사이트가 있는 경우 하나 이상의 Azure VNet에 [다중 사이트 연결][vpn-gateway-multi-site]을 만듭니다. 이렇게 하려면 동적(경로 기반) 라우팅이 필요하므로 온-프레미스 VPN 게이트웨이가 이 기능을 지원하는지 확인해야 합니다.
 
-서비스 수준 계약에 대한 자세한 내용은 [VPN 게이트웨이의 SLA][sla-for-vpn-gateway]를 참조하세요. 
+서비스 수준 계약에 대한 자세한 내용은 [VPN 게이트웨이의 SLA][sla-for-vpn-gateway]를 참조하세요.
 
 ## <a name="manageability-considerations"></a>관리 효율성 고려 사항
 
@@ -133,7 +127,7 @@ Azure VPN 게이트웨이에서 온-프레미스 네트워크에 계속해서 �
 
 Azure Portal에서 제공되는 감사 로크를 사용하여 Azure VPN 게이트웨이의 운영 로그를 모니터링합니다. 로컬 네트워크 게이트웨이, Azure 네트워크 게이트웨이 및 연결 각각에 대한 개별적인 로그도 사용 가능합니다. 이 정보는 게이트웨이에 적용된 변경 사항을 추적하는 데 사용할 수 있고, 잘 작동하는 게이트웨이가 어떤 이유로 작동이 중단되는 경우에도 유용합니다.
 
-![[2]][2]
+![Azure Portal의 감사 로그](../_images/guidance-hybrid-network-vpn/audit-logs.png)
 
 연결을 모니터링하고 연결 장애 이벤트를 추적합니다. [Nagios][nagios]와 같은 모니터링 패키지를 사용하여 이 정보를 캡처 및 보고할 수 있습니다.
 
@@ -143,8 +137,7 @@ Azure Portal에서 제공되는 감사 로크를 사용하여 Azure VPN 게이�
 
 > [!NOTE]
 > 현재 Azure Key Vault를 사용하여 Azure VPN 게이트웨이의 키를 사전에 공유할 수 없습니다.
-> 
-> 
+>
 
 온-프레미스 VPN 어플라이언스가 [Azure VPN 게이트웨이와 호환되는][vpn-appliance-ipsec] 암호화 방법을 사용하는지 확인해야 합니다. 정책 기반 라우팅의 경우 Azure VPN 게이트웨이는 AES256, AES128 및 3DES 암호화 알고리즘을 지원합니다. 경로 기반 게이트웨이의 경우 AES256 및 3DES를 지원합니다.
 
@@ -154,11 +147,9 @@ VNet의 응용 프로그램이 인터넷으로 데이터를 전송하는 경우�
 
 > [!NOTE]
 > 강제 터널링은 Azure 서비스(저장소 서비스 등)와 Windows 라이선스 관리자로의 연결에 영향을 줄 수 있습니다.
-> 
-> 
+>
 
-
-## <a name="troubleshooting"></a>문제 해결 
+## <a name="troubleshooting"></a>문제 해결
 
 일반적인 VPN 관련 오류를 해결하려면 [일반적인 VPN 관련 오류 해결][troubleshooting-vpn-errors]을 참조하세요.
 
@@ -176,7 +167,7 @@ VNet의 응용 프로그램이 인터넷으로 데이터를 전송하는 경우�
 
         - Inability to connect, possibly due to an incorrect IP address specified for the Azure VPN gateway in the RRAS VPN network interface configuration.
 
-        ```
+        ```console
         EventID            : 20111
         MachineName        : on-prem-vm
         Data               : {41, 3, 0, 0}
@@ -208,7 +199,7 @@ VNet의 응용 프로그램이 인터넷으로 데이터를 전송하는 경우�
 
         - The wrong shared key being specified in the RRAS VPN network interface configuration.
 
-        ```
+        ```console
         EventID            : 20111
         MachineName        : on-prem-vm
         Data               : {233, 53, 0, 0}
@@ -232,15 +223,15 @@ VNet의 응용 프로그램이 인터넷으로 데이터를 전송하는 경우�
         Container          :
         ```
 
-    다음 PowerShell 명령을 사용하여 RRAS 서비스를 통해 연결하려는 시도에 대한 이벤트 로그 정보를 얻을 수 있습니다. 
+    다음 PowerShell 명령을 사용하여 RRAS 서비스를 통해 연결하려는 시도에 대한 이벤트 로그 정보를 얻을 수 있습니다.
 
-    ```
+    ```powershell
     Get-EventLog -LogName Application -Source RasClient | Format-List -Property *
     ```
 
     연결 장애가 발생하면 이 로그에 다음과 비슷한 오류가 포함됩니다.
 
-    ```
+    ```console
     EventID            : 20227
     MachineName        : on-prem-vm
     Data               : {}
@@ -264,13 +255,13 @@ VNet의 응용 프로그램이 인터넷으로 데이터를 전송하는 경우�
 
     VPN 어플라이언스가 Azure VPN 게이트웨이를 통해 트래픽을 올바르게 라우팅하지 않고 있을 수 있습니다. [PsPing][psping]과 같은 도구를 사용하여 VPN 게이트웨이의 연결 및 라우팅을 확인합니다. 예를 들어 온-프레미스 머신에서 VNet에 위치한 웹 서버로의 연결을 테스트하려면 다음 명령을 실행합니다(`<<web-server-address>>`를 웹 서버의 주소로 대체합니다).
 
-    ```
+    ```console
     PsPing -t <<web-server-address>>:80
     ```
 
     온-프레미스 머신이 웹 서버로 트래픽을 올바르게 라우팅하고 있다면 다음과 같은 출력이 표시됩니다.
 
-    ```
+    ```console
     D:\PSTools>psping -t 10.20.0.5:80
 
     PsPing v2.01 - PsPing - ping, latency, bandwidth measurement utility
@@ -290,7 +281,7 @@ VNet의 응용 프로그램이 인터넷으로 데이터를 전송하는 경우�
 
     온-프레미스 머신이 해당 목적지와 올바르게 통신하지 못하고 있다면 다음과 같은 메시지가 표시됩니다.
 
-    ```
+    ```console
     D:\PSTools>psping -t 10.20.1.6:80
 
     PsPing v2.01 - PsPing - ping, latency, bandwidth measurement utility
@@ -320,7 +311,7 @@ Azure VPN 게이트웨이에 문제가 있는지 판단할 때 다음과 같은 
 
     다음 Azure CLI 명령을 사용하여 Azure VPN 게이트웨이에 저장된 공유 키를 확인할 수 있습니다.
 
-    ```
+    ```azurecli
     azure network vpn-connection shared-key show <<resource-group>> <<vpn-connection-name>>
     ```
 
@@ -330,13 +321,13 @@ Azure VPN 게이트웨이에 문제가 있는지 판단할 때 다음과 같은 
 
     다음 Azure CLI 명령을 사용하여 서브넷 정보를 확인할 수 있습니다.
 
-    ```
+    ```azurecli
     azure network vnet subnet show -g <<resource-group>> -e <<vnet-name>> -n GatewaySubnet
     ```
 
     *Network Security Group id*라는 이름을 갖는 데이터 필드가 없는지 확인합니다. 다음은 NSG가 할당된 *GatewaySubnet*의 인스턴스의 결과입니다(*VPN-Gateway-Group*). 이렇게 구성되어 있으면 이 NSG에 대해 규칙이 정의되어 있는 경우 게이트웨이가 올바르게 작동하지 않을 수 있습니다.
 
-    ```
+    ```console
     C:\>azure network vnet subnet show -g profx-prod-rg -e profx-vnet -n GatewaySubnet
         info:    Executing command network vnet subnet show
         + Looking up virtual network "profx-vnet"
@@ -353,7 +344,7 @@ Azure VPN 게이트웨이에 문제가 있는지 판단할 때 다음과 같은 
 
     이러한 가상 머신이 속한 서브넷에 연결된 NSG 규칙이 있는지 확인합니다. 다음 Azure CLI 명령을 사용하여 모든 NSG 규칙을 확인할 수 있습니다.
 
-    ```
+    ```azurecli
     azure network nsg show -g <<resource-group>> -n <<nsg-name>>
     ```
 
@@ -361,13 +352,13 @@ Azure VPN 게이트웨이에 문제가 있는지 판단할 때 다음과 같은 
 
     다음 Azure PowerShell 명령을 사용하여 Azure VPN 연결의 현재 상태를 확인할 수 있습니다. `<<connection-name>>` 매개 변수는 가상 네트워크 게이트웨이와 로컬 게이트웨이를 연결하는 Azure VPN 연결의 이름입니다.
 
-    ```
+    ```powershell
     Get-AzureRmVirtualNetworkGatewayConnection -Name <<connection-name>> - ResourceGroupName <<resource-group>>
     ```
 
     다음 스니펫에서는 게이트웨이가 연결되어 있는 경우(첫 번째 예제)와 연결이 해제된 경우(두 번째 예제)에 생성되는 출력을 보여줍니다.
 
-    ```
+    ```powershell
     PS C:\> Get-AzureRmVirtualNetworkGatewayConnection -Name profx-gateway-connection -ResourceGroupName profx-prod-rg
 
     AuthorizationKey           :
@@ -385,7 +376,7 @@ Azure VPN 게이트웨이에 문제가 있는지 판단할 때 다음과 같은 
     ...
     ```
 
-    ```
+    ```powershell
     PS C:\> Get-AzureRmVirtualNetworkGatewayConnection -Name profx-gateway-connection2 -ResourceGroupName profx-prod-rg
 
     AuthorizationKey           :
@@ -411,11 +402,11 @@ Azure VPN 게이트웨이에 문제가 있는지 판단할 때 다음과 같은 
 
     이것을 확인하는 방법은 온-프레미스에서 실행 중인 VPN 어플라이언스에 따라 달라집니다. 예를 들어 Windows Server 2012에서 RRAS를 사용하고 있는 경우 Performance Monitor를 사용하여 VPN 연결을 통해 송수신되고 있는 데이터의 양을 추적할 수 있습니다. *RAS 총계* 개체를 사용하여 *수신된 바이트/초* 카운터와 *송신된 바이트/초* 카운터를 선택합니다.
 
-    ![[3]][3]
+    ![VPN 네트워크 트래픽 모니터링을 위한 성능 카운터](../_images/guidance-hybrid-network-vpn/RRAS-perf-counters.png)
 
     결과를 VPN 게이트웨이에 제공되는 대역폭(100Mbps의 기본 SKU부터 1.25Gbps의 VpnGw3 SKU까지)과 비교합니다.
 
-    ![[4]][4]
+    ![VPN 네트워크 성능 그래프 예](../_images/guidance-hybrid-network-vpn/RRAS-perf-graph.png)
 
 - **응용 프로그램 부하에 맞는 올바른 VM 개수와 크기를 배포했는지 확인합니다.**
 
@@ -427,21 +418,22 @@ Azure VPN 게이트웨이에 문제가 있는지 판단할 때 다음과 같은 
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
-
-**필수 조건.** 적절한 네트워크 어플라이언스를 사용하여 기존 온-프레미스 인프라가 이미 구성된 상태여야 합니다.
+**필수 조건**. 적절한 네트워크 어플라이언스를 사용하여 기존 온-프레미스 인프라가 이미 구성된 상태여야 합니다.
 
 솔루션을 배포하려면 다음 단계를 수행합니다.
 
+<!-- markdownlint-disable MD033 -->
+
 1. 아래 단추를 클릭합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fhybrid-networking%2Fvpn%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
-2. Azure Portal에서 링크가 열릴 때까지 기다린 후 다음 단계를 수행합니다. 
-   * **리소스 그룹** 이름이 매개 변수 파일에 이미 정의되어 있으므로 **새로 만들기**를 선택하고 텍스트 상자에 `ra-hybrid-vpn-rg`를 입력합니다.
-   * **위치** 드롭다운 상자에서 하위 지역을 선택합니다.
-   * **템플릿 루트 Uri** 또는 **매개 변수 루트 Uri** 텍스트 상자를 편집하지 마세요.
-   * 사용 약관을 검토한 후 **위에 명시된 사용 약관에 동의함** 확인란을 클릭합니다.
-   * **구매** 단추를 클릭합니다.
+2. Azure Portal에서 링크가 열릴 때까지 기다린 후 다음 단계를 수행합니다.
+   - **리소스 그룹** 이름이 매개 변수 파일에 이미 정의되어 있으므로 **새로 만들기**를 선택하고 텍스트 상자에 `ra-hybrid-vpn-rg`를 입력합니다.
+   - **위치** 드롭다운 상자에서 하위 지역을 선택합니다.
+   - **템플릿 루트 Uri** 또는 **매개 변수 루트 Uri** 텍스트 상자를 편집하지 마세요.
+   - 사용 약관을 검토한 후 **위에 명시된 사용 약관에 동의함** 확인란을 클릭합니다.
+   - **구매** 단추를 클릭합니다.
 3. 배포가 완료될 때가지 기다립니다.
 
-
+<!-- markdownlint-enable MD033 -->
 
 <!-- links -->
 
@@ -489,7 +481,3 @@ Azure VPN 게이트웨이에 문제가 있는지 판단할 때 다음과 같은 
 [virtualNetworkGateway-parameters]: https://github.com/mspnp/hybrid-networking/vpn/parameters/virtualNetworkGateway.parameters.json
 [azure-cli]: https://azure.microsoft.com/documentation/articles/xplat-cli-install/
 [CIDR]: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
-[0]: ./images/vpn.png "온-프레미스 인프라와 Azure 인프라를 포괄하는 하이브리드 네트워크"
-[2]: ../_images/guidance-hybrid-network-vpn/audit-logs.png "Azure Portal의 감사 로그"
-[3]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-counters.png "VPN 네트워크 트래픽 모니터링을 위한 성능 카운터"
-[4]: ../_images/guidance-hybrid-network-vpn/RRAS-perf-graph.png "VPN 네트워크 성능 그래프 예"
