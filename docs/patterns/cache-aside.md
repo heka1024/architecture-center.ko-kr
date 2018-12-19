@@ -70,7 +70,7 @@ Applications use a cache to improve repeated access to information held in a dat
 
 Microsoft Azure에서는 Azure Redis Cache를 사용해 응용 프로그램의 여러 인스턴스가 공유할 수 있는 분산 캐시를 생성할 수 있습니다. 
 
-다음 코드 예제는 .NET 용으로 작성된 Redis 클라이언트 라이브러리인 [StackExchange.Redis] 클라이언트를 사용합니다. Azure Redis Cache 인스턴스에 연결하려면 정적 `ConnectionMultiplexer.Connect` 메서드를 호출하고 연결 문자열을 제공합니다. 이 메서드는 연결을 나타내는 `ConnectionMultiplexer`를 반환합니다. 응용 프로그램의 `ConnectionMultiplexer` 인스턴스를 공유하는 방법은 다음 예제와 비슷하게 연결된 인스턴스를 반환하는 정적 속성을 갖는 것입니다. 이 방법은 스레드가 안전하도록 단일 연결된 인스턴스를 초기화하는 방법을 제공합니다.
+다음 코드 예제는 .NET 용으로 작성된 Redis 클라이언트 라이브러리인 [StackExchange.Redis] 클라이언트를 사용합니다. Azure Redis Cache 인스턴스에 연결하려면 정적 `ConnectionMultiplexer.Connect` 메서드를 호출하고 연결 문자열을 제공합니다. 이 메서드는 연결을 나타내는 `ConnectionMultiplexer`를 반환합니다. 애플리케이션의 `ConnectionMultiplexer` 인스턴스를 공유하는 방법은 다음 예제와 비슷하게 연결된 인스턴스를 반환하는 정적 속성을 갖는 것입니다. 이 방법은 스레드가 안전하도록 단일 연결된 인스턴스를 초기화하는 방법을 제공합니다.
 
 ```csharp
 private static ConnectionMultiplexer Connection;
