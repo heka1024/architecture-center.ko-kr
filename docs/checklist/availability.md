@@ -1,19 +1,20 @@
 ---
 title: 가용성 검사 목록
+titleSuffix: Azure Design Review Framework
 description: 설계하는 동안 가용성 문제에 대한 지침을 제공하는 검사 목록입니다.
 author: dragon119
-ms.date: 01/10/2018
+ms.date: 11/26/2018
 ms.custom: checklist
-ms.openlocfilehash: 5a819c5612fba9623c239bcc43f9004cd97dfb76
-ms.sourcegitcommit: 1b5411f07d74f0a0680b33c266227d24014ba4d1
+ms.openlocfilehash: 37e61b35d73007b9bac1ebaecfbf42792ae3903b
+ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52305896"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53307234"
 ---
 # <a name="availability-checklist"></a>가용성 검사 목록
 
-가용성은 시스템의 기능 및 활성화 된 시간의 비율을 말하며 [소프트웨어 품질 핵심 요소](../guide/pillars.md) 중 하나입니다. 이 검사 목록을 사용하여 가용성 관점에서 응용 프로그램 아키텍처를 검토 합니다. 
+가용성은 시스템의 기능 및 활성화 된 시간의 비율을 말하며 [소프트웨어 품질 핵심 요소](../guide/pillars.md) 중 하나입니다. 이 검사 목록을 사용하여 가용성 관점에서 응용 프로그램 아키텍처를 검토 합니다.
 
 ## <a name="application-design"></a>응용 프로그램 설계
 
@@ -29,7 +30,7 @@ ms.locfileid: "52305896"
 
 **응용 프로그램이 무리없이 성능이 저하되도록 설계합니다.** 응용 프로그램에서 부하가 하나 이상의 부분 용량을 초과하여 가용성을 감소시키고 연결이 실패할 수 있습니다. 크기 조정은 이를 완화하는데 도움이 되지만 리소스 가용성 또는 비용 같은 다른 요인에 의해 제한에 도달할 수 있습니다. 응용 프로그램이 리소스 제한에 도달한 경우 해당 사용자에게 충격을 최소화할 수 있는 조치를 해야 합니다. 예를 들어, 전자 상거래 시스템에서 주문 처리 하위 시스템이 부담을 받거나 실패하면 다른 기능을 계속 허용하는 동안 임시로 사용하지 않을 수 있습니다(예: 제품 카탈로그 찾아보기). 예를 들어 주문 하위 시스템을 다시 사용할 수 있는 경우 주문을 제출할 수 있지만 나중에 처리하기 위해 저장하는 것처럼 결함이 있는 하위 시스템에 요청을 연기하는 것이 적절할 수 있습니다.
 
-**빠른 버스트 이벤트를 정상적으로 처리 합니다.** 대부분 응용 프로그램은 시간에 따라 변화하는 워크로드를 처리해야 합니다. 자동 크기 조정은 부하를 처리를 도울 수 있지만 추가 인스턴스를 온라인 상태로 전환하고 요청을 처리하는 데 약간의 시간이 걸릴 수 있습니다. 응용 프로그램이 사용하는 서비스에 대한 큐 요청에 맞고 큐가 전체 용량에 가까운 경우 정상적으로 저하되도록 설계하여 응용 프로그램에 부담을 주는 갑작스럽고 예상하지 않은 활동의 버스트를 방지합니다. 버스트하지 않은 조건에서 사용 가능한 충분한 성능 및 용량이 있는지 확인하여 큐를 비우고 처리되지 않은 요청을 처리합니다. 자세한 내용은 [큐 기반 부하 평준화 패턴](https://msdn.microsoft.com/library/dn589783.aspx)을 참조하십시오.
+**빠른 버스트 이벤트를 정상적으로 처리 합니다.** 대부분 응용 프로그램은 시간에 따라 변화하는 워크로드를 처리해야 합니다. 자동 크기 조정은 부하를 처리를 도울 수 있지만 추가 인스턴스를 온라인 상태로 전환하고 요청을 처리하는 데 약간의 시간이 걸릴 수 있습니다. 응용 프로그램이 사용하는 서비스에 대한 큐 요청에 맞고 큐가 전체 용량에 가까운 경우 정상적으로 저하되도록 설계하여 응용 프로그램에 부담을 주는 갑작스럽고 예상하지 않은 활동의 버스트를 방지합니다. 버스트하지 않은 조건에서 사용 가능한 충분한 성능 및 용량이 있는지 확인하여 큐를 비우고 처리되지 않은 요청을 처리합니다. 자세한 내용은 [큐 기반 부하 평준화 패턴](../patterns/queue-based-load-leveling.md)을 참조하십시오.
 
 ## <a name="deployment-and-maintenance"></a>배포 및 유지 관리
 
@@ -55,7 +56,7 @@ ms.locfileid: "52305896"
 
 **주기적인 백업 및 지정 시간 복원을 사용합니다**. 정기적으로 다른 위치에 보존되지 않은 데이터를 자동으로 백업하고 안정적으로 데이터와 응용 프로그램 자체에 모두 일어날 수 있는 실패를 확인합니다. 백업이 RPO(복구 지점 목표)를 충족하는지 확인합니다. 인간적 오류나 악의적인 작업으로 모든 복제본의 데이터가 손상될 수 있기 때문에, 데이터 복제는 백업 기능이 아닙니다. 전송 중 및 저장소에 있는 데이터를 보호하려면 백업 프로세스가 안전해야 합니다. 데이터베이스 또는 데이터 저장소의 부분은 일반적으로 트랜잭션 로그를 사용하여 이전 특정 시점으로 복구될 수 있습니다. 자세한 내용은 [데이터 손상 또는 우발적 삭제로부터 복구](../resiliency/recovery-data-corruption.md)를 참조하세요
 
-**Azure Site Recovery를 사용하여 VM 디스크 복제.** [Site Recovery][site-recovery]를 사용하여 Azure VM을 복제할 때 모든 VM 디스크가 지속적으로 대상 지역에 비동기적으로 복제됩니다. 복구 지점은 몇 분 간격으로 생성됩니다. 이렇게 하면 RPO가 시간 순으로 제공됩니다. 
+**Azure Site Recovery를 사용하여 VM 디스크 복제.** [Site Recovery][site-recovery]를 사용하여 Azure VM을 복제할 때 모든 VM 디스크가 지속적으로 대상 지역에 비동기적으로 복제됩니다. 복구 지점은 몇 분 간격으로 생성됩니다. 이렇게 하면 RPO가 시간 순으로 제공됩니다.
 
 ## <a name="errors-and-failures"></a>오류 및 실패
 
@@ -87,4 +88,3 @@ ms.locfileid: "52305896"
 [availability-sets]:/azure/virtual-machines/virtual-machines-windows-manage-availability/
 [site-recovery]: /azure/site-recovery/
 [site-recovery-test]: /azure/site-recovery/site-recovery-test-failover-to-azure
-
