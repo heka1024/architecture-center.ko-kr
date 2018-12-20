@@ -1,52 +1,54 @@
 ---
 title: Apache Cassandra를 통한 N 계층 응용 프로그램
-description: Microsoft Azure에서 N 계층 아키텍처에 대한 Linux VM 실행 방법
+titleSuffix: Azure Reference Architectures
+description: Microsoft Azure에서 Apache Cassandra를 사용하는 N 계층 아키텍처에서 Linux Virtual Machines를 실행합니다.
 author: MikeWasson
 ms.date: 11/12/2018
-ms.openlocfilehash: ec2d6f8310e5b7ae5b135aa0e16f14f572149f7f
-ms.sourcegitcommit: 9293350ab66fb5ed042ff363f7a76603bf68f568
+ms.custom: seodec18
+ms.openlocfilehash: bbd1029fe17b5d88d54246127c5d8983a573b012
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577177"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120172"
 ---
 # <a name="linux-n-tier-application-in-azure-with-apache-cassandra"></a>Apache Cassandra를 사용하는 Azure의 Linux N계층 애플리케이션
 
-이 참조 아키텍처에서는 데이터 계층에 대해 Linux에서 Apache Cassandra를 사용하여 N 계층 응용 프로그램을 위해 구성되는 VM 및 가상 네트워크를 배포하는 방법을 보여 줍니다. [**이 솔루션을 배포합니다**.](#deploy-the-solution) 
+이 참조 아키텍처에서는 데이터 계층에 대해 Linux에서 Apache Cassandra를 사용하여 N 계층 애플리케이션을 위해 구성되는 VM(VM) 및 가상 네트워크를 배포하는 방법을 보여 줍니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
 
-![[0]][0]
+![Microsoft Azure를 사용하는 N계층 아키텍처](./images/n-tier-cassandra.png)
 
 *이 아키텍처의 [Visio 파일][visio-download]을 다운로드합니다.*
 
-## <a name="architecture"></a>아키텍처 
+## <a name="architecture"></a>아키텍처
 
 이 아키텍처의 구성 요소는 다음과 같습니다.
 
-* **리소스 그룹.** [리소스 그룹][resource-manager-overview]은 리소스를 수명, 소유자를 비롯한 기준으로 관리할 수 있도록 리소스를 그룹화하는 데 사용됩니다.
+- **리소스 그룹**. [리소스 그룹][resource-manager-overview]은 리소스를 수명, 소유자를 비롯한 기준으로 관리할 수 있도록 리소스를 그룹화하는 데 사용됩니다.
 
-* **VNet(가상 네트워크) 및 서브넷.** 모든 Azure VM은 VNet에 배포되어 서브넷으로 분할될 수 있습니다. 각 계층에 대해 별도의 서브넷을 만듭니다. 
+- **VNet(가상 네트워크) 및 서브넷**. 모든 Azure VM은 VNet에 배포되어 서브넷으로 분할될 수 있습니다. 각 계층에 대해 별도의 서브넷을 만듭니다.
 
-* **NSG.** [NSG(네트워크 보안 그룹)][nsg]을 사용하여 VNet 내 네트워크 트래픽을 제한합니다. 예를 들어 여기에 표시된 3계층 아키텍처에서 데이터베이스 계층은 비즈니스 계층 및 관리 서브넷의 트래픽을 허용하지만 웹 프론트 엔드의 트래픽은 허용하지 않습니다.
+- **NSG**. [NSG(네트워크 보안 그룹)][nsg]을 사용하여 VNet 내 네트워크 트래픽을 제한합니다. 예를 들어 여기에 표시된 3계층 아키텍처에서 데이터베이스 계층은 비즈니스 계층 및 관리 서브넷의 트래픽을 허용하지만 웹 프론트 엔드의 트래픽은 허용하지 않습니다.
 
-* **DDoS Protection** Azure 플랫폼이 DDoS(분산 서비스 거부) 공격에 대한 기본 보호를 제공하지만 [DDoS Protection 표준][ddos]을 사용하는 것이 좋습니다. 그러면 DDoS 완화를 강화하게 됩니다. [보안 고려사항](#security-considerations)을 참조하세요.
+- **DDoS Protection** Azure 플랫폼이 DDoS(분산 서비스 거부) 공격에 대한 기본 보호를 제공하지만 [DDoS Protection 표준][ddos]을 사용하는 것이 좋습니다. 그러면 DDoS 완화를 강화하게 됩니다. [보안 고려사항](#security-considerations)을 참조하세요.
 
-* **가상 머신**. VM 구성 권장 사항은 [Azure에서 Windows VM 실행](./windows-vm.md) 및 [Azure에서 Linux VM 실행](./linux-vm.md)을 참조하세요.
+- **가상 머신**. VM 구성 권장 사항은 [Azure에서 Windows VM 실행](./windows-vm.md) 및 [Azure에서 Linux VM 실행](./linux-vm.md)을 참조하세요.
 
-* **가용성 집합.** 각 계층에 [가용성 집합][azure-availability-sets]을 만들고, 각 계층에서 적어도 두 개의 VM을 프로비전하면 VM은 높은 [SLA(서비스 수준 계약)][vm-sla]에도 적합해집니다.
+- **가용성 집합**. 각 계층에 [가용성 집합][azure-availability-sets]을 만들고, 각 계층에서 적어도 두 개의 VM을 프로비전하면 VM은 높은 [SLA(서비스 수준 계약)][vm-sla]에도 적합해집니다.
 
-* **Azure 부하 분산 장치.** [부하 분산 장치][load-balancer]는 들어오는 인터넷 요청을 VM 인스턴스로 분산합니다. [공용 부하 분산 장치][load-balancer-external]를 사용하여 들어오는 인터넷 트래픽을 웹 계층에 분산하고, [내부 부하 분산 장치][load-balancer-internal]를 사용하여 네트워크 트래픽을 웹 계층에서 비즈니스 계층으로 분산합니다.
+- **Azure 부하 분산 장치**. [부하 분산 장치][load-balancer]는 들어오는 인터넷 요청을 VM 인스턴스로 분산합니다. [공용 부하 분산 장치][load-balancer-external]를 사용하여 들어오는 인터넷 트래픽을 웹 계층에 분산하고, [내부 부하 분산 장치][load-balancer-internal]를 사용하여 네트워크 트래픽을 웹 계층에서 비즈니스 계층으로 분산합니다.
 
-* **공용 IP 주소**. 공용 IP 주소는 공용 부하 분산 장치에서 인터넷 트래픽을 받는 데 필요합니다.
+- **공용 IP 주소**. 공용 IP 주소는 공용 부하 분산 장치에서 인터넷 트래픽을 받는 데 필요합니다.
 
-* **Jumpbox.** [요새 호스트]라고도 합니다. 관리자가 다른 VM에 연결할 때 사용하는 네트워크의 보안 VM입니다. Jumpbox는 안전 목록에 있는 공용 IP 주소의 원격 트래픽만 허용하는 NSG를 사용합니다. NSG에서 SSH 트래픽을 허용해야 합니다.
+- **Jumpbox**. [요새 호스트]라고도 합니다. 관리자가 다른 VM에 연결할 때 사용하는 네트워크의 보안 VM입니다. jumpbox는 안전 목록에 있는 공용 IP 주소의 원격 트래픽만 허용하는 NSG를 사용합니다. NSG에서 SSH 트래픽을 허용해야 합니다.
 
-* **Apache Cassandra 데이터베이스**. 복제 및 장애 조치(failover)를 사용하여 데이터 계층에서 높은 가용성을 제공합니다.
+- **Apache Cassandra 데이터베이스**. 복제 및 장애 조치(failover)를 사용하여 데이터 계층에서 높은 가용성을 제공합니다.
 
-* **Azure DNS**. [Azure DNS][azure-dns]는 DNS 도메인에 대한 호스팅 서비스입니다. 이 서비스는 Microsoft Azure 인프라를 사용하여 이름 확인을 제공합니다. Azure에 도메인을 호스트하면 다른 Azure 서비스와 동일한 자격 증명, API, 도구 및 대금 청구를 사용하여 DNS 레코드를 관리할 수 있습니다.
+- **Azure DNS**. [Azure DNS][azure-dns]는 DNS 도메인에 대한 호스팅 서비스입니다. 이 서비스는 Microsoft Azure 인프라를 사용하여 이름 확인을 제공합니다. Azure에 도메인을 호스트하면 다른 Azure 서비스와 동일한 자격 증명, API, 도구 및 대금 청구를 사용하여 DNS 레코드를 관리할 수 있습니다.
 
 ## <a name="recommendations"></a>권장 사항
 
-개발자의 요구 사항이 여기에 설명된 아키텍처와 다를 수 있습니다. 여기서 추천하는 권장 사항을 단지 시작점으로 활용하세요. 
+개발자의 요구 사항이 여기에 설명된 아키텍처와 다를 수 있습니다. 여기서 추천하는 권장 사항을 단지 시작점으로 활용하세요.
 
 ### <a name="vnet--subnets"></a>VNet/서브넷
 
@@ -64,10 +66,10 @@ VNet을 만들 때는 각 서브넷에 포함된 리소스에 몇 개의 IP 주�
 
 ### <a name="network-security-groups"></a>네트워크 보안 그룹
 
-NSG 규칙을 사용하여 계층 사이의 트래픽을 제한합니다. 위에 표시된 3계층 아키텍처에서 웹 계층은 데이터베이스 계층과 직접 통신하지 않습니다. 이를 위해서는 데이터베이스 계층에서 웹 계층 서브넷으로부터 수신되는 트래픽을 차단해야 합니다.  
+NSG 규칙을 사용하여 계층 사이의 트래픽을 제한합니다. 위에 표시된 3계층 아키텍처에서 웹 계층은 데이터베이스 계층과 직접 통신하지 않습니다. 이를 위해서는 데이터베이스 계층에서 웹 계층 서브넷으로부터 수신되는 트래픽을 차단해야 합니다.
 
-1. VNet의 모든 인바운드 트래픽을 거부합니다. (규칙에 `VIRTUAL_NETWORK` 태그를 사용합니다.) 
-2. 비즈니스 계층 서브넷의 인바운드 트래픽을 허용합니다.  
+1. VNet의 모든 인바운드 트래픽을 거부합니다. (규칙에 `VIRTUAL_NETWORK` 태그를 사용합니다.)
+2. 비즈니스 계층 서브넷의 인바운드 트래픽을 허용합니다.
 3. 데이터베이스 계층 서브넷 자체의 인바운드 트래픽을 허용합니다. 이 규칙은 데이터베이스 복제와 장애 조치에 필요한 데이터베이스 VM 간 통신을 허용합니다.
 4. jumpbox 서브넷에서 ssh 트래픽(22 포트)을 허용합니다. 관리자는 이 규칙을 사용하여 jumpbox에서 데이터베이스 계층에 연결할 수 있습니다.
 
@@ -75,18 +77,17 @@ NSG 규칙을 사용하여 계층 사이의 트래픽을 제한합니다. 위에
 
 ### <a name="cassandra"></a>Cassandra
 
-프로덕션 사용의 경우 [DataStax Enterprise][datastax]를 권장하나, 이러한 권장 사항은 모든 Cassandra 버전에 적용됩니다. Azure에서 DataStax 실행에 관한 자세한 내용은 [Azure용 DataStax Enterprise 배포 가이드][cassandra-in-azure]를 참조하세요. 
+프로덕션 사용의 경우 [DataStax Enterprise][datastax]를 권장하나, 이러한 권장 사항은 모든 Cassandra 버전에 적용됩니다. Azure에서 DataStax 실행에 관한 자세한 내용은 [Azure용 DataStax Enterprise 배포 가이드][cassandra-in-azure]를 참조하세요.
 
-Cassandra 클러스터에 대한 VM을 가용성 집합에 배치하여 Cassandra 복제본이 여러 오류 도메인 및 업그레이드 도메인에 분산되도록 합니다. 장애 도메인 및 업그레이드 도메인에 대한 자세한 내용은 [Virtual Machines의 가용성 관리][azure-availability-sets]를 참조하세요. 
+Cassandra 클러스터에 대한 VM을 가용성 집합에 배치하여 Cassandra 복제본이 여러 오류 도메인 및 업그레이드 도메인에 분산되도록 합니다. 장애 도메인 및 업그레이드 도메인에 대한 자세한 내용은 [Virtual Machines의 가용성 관리][azure-availability-sets]를 참조하세요.
 
-가용성 집합당 오류 도메인(최대) 및 가용성 집합당 업그레이드 도메인 18개를 구성합니다. 그러면 오류 도메인에 균등하게 분산될 수 있는 업그레이드 도메인의 최대 수가 제공됩니다.   
+가용성 집합당 오류 도메인(최대) 및 가용성 집합당 업그레이드 도메인 18개를 구성합니다. 그러면 오류 도메인에 균등하게 분산될 수 있는 업그레이드 도메인의 최대 수가 제공됩니다.
 
 노드를 랙 인식 모드로 구성합니다. 오류 도메인을 `cassandra-rackdc.properties` 파일의 랙에 매핑합니다.
 
 클러스터 앞에 부하 분산 장치가 필요하지 않습니다. 클라이언트는 클러스터의 노드에 직접 연결합니다.
 
 고가용성을 위해 하나 이상의 Azure 지역에 Cassandra를 배포합니다. 각 지역 내의 노드는 지역 내의 복원력을 위해 장애 및 업그레이드 도메인을 사용하여 랙 인식 모드로 구성됩니다.
-
 
 ### <a name="jumpbox"></a>Jumpbox
 
@@ -121,10 +122,10 @@ jumpbox를 보호하려면 안전한 공용 IP 주소 집합의 ssh 연결만 �
 
 다음은 부하 분산 장치 상태 프로브에 대한 몇 가지 권장 사항입니다.
 
-* 프로브는 HTTP와 TCP를 모두 테스트할 수 있습니다. VM이 HTTP 서버를 실행 중인 경우에는 HTTP 프로브를 만들고, HTTP 서버를 실행하지 않는 경우에는 TCP 프로브를 만듭니다.
-* HTTP 프로브를 만들 때는 HTTP 엔드포인트로 향하는 경로를 지정합니다. 프로브는 이 경로에서 HTTP 200 응답을 확인합니다. 경로는 루트 경로("/")일 수도 있고, 응용 프로그램의 상태를 확인하는 사용자 지정 로직을 구현하는 상태 모니터링 엔드포인트일 수도 있습니다. 엔드포인트는 익명의 HTTP 요청을 허용해야 합니다.
-* 프로브는 [알려진 IP 주소][health-probe-ip]인 168.63.129.16에서 전송됩니다. 모든 방화벽 정책 또는 NSG 규칙에서 이 IP 주소 간에 이동하는 트래픽을 차단하지 않도록 합니다.
-* [상태 프로브 로그][health-probe-log]를 사용하여 상태 프로브의 상태를 확인합니다. Azure Portal에서 각 부하 분산 장치에 대해 로깅을 활성화합니다. 로그는 Azure Blob Storage에 쓰기됩니다. 로그에서는 실패한 프로브 응답으로 인해 네트워크 트래픽을 가져오지 않는 VM 개수를 보여줍니다.
+- 프로브는 HTTP와 TCP를 모두 테스트할 수 있습니다. VM이 HTTP 서버를 실행 중인 경우에는 HTTP 프로브를 만들고, HTTP 서버를 실행하지 않는 경우에는 TCP 프로브를 만듭니다.
+- HTTP 프로브를 만들 때는 HTTP 엔드포인트로 향하는 경로를 지정합니다. 프로브는 이 경로에서 HTTP 200 응답을 확인합니다. 경로는 루트 경로("/")일 수도 있고, 응용 프로그램의 상태를 확인하는 사용자 지정 로직을 구현하는 상태 모니터링 엔드포인트일 수도 있습니다. 엔드포인트는 익명의 HTTP 요청을 허용해야 합니다.
+- 프로브는 [알려진 IP 주소][health-probe-ip]인 168.63.129.16에서 전송됩니다. 모든 방화벽 정책 또는 NSG 규칙에서 이 IP 주소 간에 이동하는 트래픽을 차단하지 않도록 합니다.
+- [상태 프로브 로그][health-probe-log]를 사용하여 상태 프로브의 상태를 확인합니다. Azure Portal에서 각 부하 분산 장치에 대해 로깅을 활성화합니다. 로그는 Azure Blob Storage에 쓰기됩니다. 로그에서는 실패한 프로브 응답으로 인해 네트워크 트래픽을 가져오지 않는 VM 개수를 보여줍니다.
 
 Cassandra 클러스터의 경우 장애 조치(failover) 시나리오는 애플리케이션에서 사용된 일관성 수준 및 복제 수에 따라 달라집니다. Cassandra의 일관성 수준 및 사용에 대해서는 [Configuring data consistency][cassandra-consistency](데이터 일관성 구성) 및 [Cassandra: How many nodes are talked to with Quorum?][cassandra-consistency-usage](Cassandra: Quorum과 연결되는 노드 수)을 참조하세요. Cassandra의 데이터 가용성은 응용 프로그램 및 복제 방법에서 사용되는 일관성 수준에 의해 결정됩니다. Cassandra의 복제에 대해서는 [Data Replication in NoSQL Databases Explained][cassandra-replication](NoSQL 데이터베이스의 데이터 복제 설명)를 참조하세요.
 
@@ -142,7 +143,7 @@ Cassandra 클러스터의 경우 장애 조치(failover) 시나리오는 애플�
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
-이 참조 아키텍처에 대한 배포는 [GitHub][github-folder]에서 사용할 수 있습니다. 
+이 참조 아키텍처에 대한 배포는 [GitHub][github-folder]에서 사용할 수 있습니다.
 
 ### <a name="prerequisites"></a>필수 조건
 
@@ -158,13 +159,14 @@ N 계층 응용 프로그램에 대한 Linux VM 참조 아키텍처를 배포하
 
 3. 아래에 표시된 대로 **azbb** 도구를 사용하여 참조 아키텍처를 배포합니다.
 
-   ```bash
+   ```azurecli
    azbb -s <your subscription_id> -g <your resource_group_name> -l <azure region> -p n-tier-linux.json --deploy
    ```
 
 Azure 구성 요소를 사용하여 이 샘플 참조 아키텍처를 배포하는 방법에 대한 자세한 내용은 [GitHub 리포지토리][git]를 방문하세요.
 
 <!-- links -->
+
 [dmz]: ../dmz/secure-vnet-dmz.md
 [multi-vm]: ./multi-vm.md
 [naming conventions]: /azure/guidance/guidance-naming-conventions
@@ -193,9 +195,8 @@ Azure 구성 요소를 사용하여 이 샘플 참조 아키텍처를 배포하�
 [공용 IP 주소]: /azure/virtual-network/virtual-network-ip-addresses-overview-arm
 [vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx
-[0]: ./images/n-tier-cassandra.png "Microsoft Azure를 사용하는 N 계층 아키텍처"
 
-[resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview 
+[resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview
 [vmss]: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview
 [load-balancer]: /azure/load-balancer/load-balancer-get-started-internet-arm-cli
 [load-balancer-hashing]: /azure/load-balancer/load-balancer-overview#load-balancer-features

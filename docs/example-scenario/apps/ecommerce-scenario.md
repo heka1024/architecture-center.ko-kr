@@ -3,12 +3,13 @@ title: Azure의 전자상거래 프런트 엔드
 description: Azure에서 전자상거래 사이트를 호스트합니다.
 author: masonch
 ms.date: 7/13/18
-ms.openlocfilehash: 7baaf4d2986a00ab72b60a540bcd9d864893b109
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.custom: fasttrack
+ms.openlocfilehash: e48f7607fcef6e5048c57f4f8f63b2f6bdd4f183
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610824"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004856"
 ---
 # <a name="an-e-commerce-front-end-on-azure"></a>Azure의 전자상거래 프런트 엔드
 
@@ -69,7 +70,7 @@ ms.locfileid: "51610824"
 
 데이터 계층에 대한 다른 옵션은 다음과 같습니다.
 
-* [Cosmos DB](/azure/cosmos-db/introduction): 글로벌하게 분산된 Microsoft의 다중 모델 데이터베이스입니다. 이 서비스는 Mongo DB, Cassandra, Graph 데이터 또는 간단한 테이블 저장소와 같은 다른 데이터 모델을 실행하는 플랫폼을 제공합니다.
+* [Cosmos DB](/azure/cosmos-db/introduction): 전역적으로 배포된 Microsoft의 멀티모델 데이터베이스입니다. 이 서비스는 Mongo DB, Cassandra, Graph 데이터 또는 간단한 테이블 저장소와 같은 다른 데이터 모델을 실행하는 플랫폼을 제공합니다.
 
 ## <a name="considerations"></a>고려 사항
 
@@ -112,7 +113,7 @@ ms.locfileid: "51610824"
 
 * [소형][small-pricing]: 이 가격 책정 예제는 최소 프로덕션 수준 인스턴스를 구축하는 데 필요한 구성 요소를 나타냅니다. 여기서는 매월 수천 명에 불과한 적은 수의 사용자를 가정합니다. 앱에서 자동 크기 조정을 사용하는 데 충분한 표준 웹앱의 단일 인스턴스를 사용합니다. 다른 각 구성 요소는 최소 비용을 허용하지만 SLA를 지원하고 프로덕션 수준 워크로드를 처리할 수 있을 만큼 충분한 용량을 보장하는 기본 계층으로 조정됩니다.
 * [중형][medium-pricing]: 이 가격 책정 예제는 보통 크기의 배포를 암시하는 구성 요소를 나타냅니다. 여기서는 한 달 동안 시스템을 사용하는 시용자가 약 10만 명이라고 예상합니다. 보통의 표준 계층이 있는 단일 앱 서비스 인스턴스에서 필요한 트래픽이 처리됩니다. 또한 인지 및 검색 서비스의 중간 계층이 계산기에 추가됩니다.
-* [대형][large-pricing]: 이 가격 책정 예제는 매월 테라바이트 단위의 데이터를 이동하는 수백만 명의 사용자가 주문하는 수준의 대규모 응용 프로그램을 나타냅니다. 이 고성능 사용 수준에서는 여러 지역에 배포되어 트래픽 관리자에서 제어되는 프리미엄 계층 웹앱이 필요합니다. 데이터는 저장소, 데이터베이스 및 CDN으로 구성되며, 이러한 구성 요소는 테라바이트 단위의 데이터로 구성됩니다.
+* [대형][large-pricing]: 이 가격 책정 예제는 매월 테라바이트 단위의 데이터를 이동하는 수백만 명의 사용자가 주문하는 수준의 대규모 애플리케이션을 나타냅니다. 이 고성능 사용 수준에서는 여러 지역에 배포되어 트래픽 관리자에서 제어되는 프리미엄 계층 웹앱이 필요합니다. 데이터는 저장소, 데이터베이스 및 CDN으로 구성되며, 이러한 구성 요소는 테라바이트 단위의 데이터로 구성됩니다.
 
 ## <a name="related-resources"></a>관련 리소스
 

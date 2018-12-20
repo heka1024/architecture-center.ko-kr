@@ -1,46 +1,45 @@
 ---
 title: AD DS(Active Directory Domain Services)를 Azure로 확장
+titleSuffix: Azure Reference Architectures
 description: 온-프레미스 Active Directory 도메인을 Azure로 확장
 author: telmosampaio
 ms.date: 05/02/2018
-pnp.series.title: Identity management
-pnp.series.prev: azure-ad
-pnp.series.next: adds-forest
-ms.openlocfilehash: ff3ef7565b692ad63b7ff779497df0f85d3bca3a
-ms.sourcegitcommit: 1287d635289b1c49e94f839b537b4944df85111d
+ms.custom: seodec18
+ms.openlocfilehash: 69ce95fcf74579f6446cf99dad9ed53ced31fde7
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52332309"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120410"
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>AD DS(Active Directory Domain Services)를 Azure로 확장
 
-이 참조 아키텍처에서는 Active Directory 환경을 Azure로 확장하여 AD DS(Active Directory Domain Services)를 사용하여 분산 인증 서비스를 제공하는 방법을 설명합니다. [**이 솔루션을 배포합니다**.](#deploy-the-solution)
+이 참조 아키텍처에서는 Active Directory 환경을 Azure로 확장하여 AD DS(Active Directory Domain Services)를 사용하여 분산 인증 서비스를 제공하는 방법을 설명합니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
 
-[![0]][0] 
+![Active Directory로 하이브리드 네트워크 아키텍처 보안](./images/adds-extend-domain.png)
 
 *이 아키텍처의 [Visio 파일][visio-download]을 다운로드합니다.*
 
-AD DS는 보안 도메인에 포함된 사용자, 컴퓨터, 응용 프로그램 및 기타 ID를 인증하는 데 사용됩니다. AD DS는 온-프레미스에서 호스팅할 수 있지만, 응용 프로그램의 일부는 온-프레미스에 호스팅되어 있고 일부는 Azure에 호스팅되어 있는 경우에는 이 기능을 Azure에 복제하는 것이 효율적일 수 있습니다. 이렇게 하면 클라우드에서 온-프레미스에서 실행 중인 AD DS로 인증 및 로컬 인증 요청을 돌려보낼 때 발생하는 대기 시간을 줄일 수 있습니다. 
+AD DS는 보안 도메인에 포함된 사용자, 컴퓨터, 응용 프로그램 및 기타 ID를 인증하는 데 사용됩니다. AD DS는 온-프레미스에서 호스팅할 수 있지만, 응용 프로그램의 일부는 온-프레미스에 호스팅되어 있고 일부는 Azure에 호스팅되어 있는 경우에는 이 기능을 Azure에 복제하는 것이 효율적일 수 있습니다. 이렇게 하면 클라우드에서 온-프레미스에서 실행 중인 AD DS로 인증 및 로컬 인증 요청을 돌려보낼 때 발생하는 대기 시간을 줄일 수 있습니다.
 
 이 아키텍처는 일반적으로 온-프레미스 네트워크와 Azure 가상 네트워크가 VPN 또는 ExpressRoute 연결을 통해 연결된 경우에 사용됩니다. 이 아키텍처는 양방향 복제도 지원합니다. 즉, 온-프레미스나 클라우드 중 한 곳에서 변경을 수행해도 온-프레미스와 클라우드의 데이터가 동일하게 유지됩니다. 일반적으로 이 아키텍처는 온-프레미스와 Azure 사이에 기능이 분산된 하이브리드 응용 프로그램 및 Active Directory를 사용하여 인증을 수행하는 응용 프로그램과 서비스에 사용됩니다.
 
-추가 고려 사항은 [온-프레미스 Active Directory를 Azure와 통합하기 위한 솔루션 선택][considerations]을 참조하세요. 
+추가 고려 사항은 [온-프레미스 Active Directory를 Azure와 통합하기 위한 솔루션 선택][considerations]을 참조하세요.
 
-## <a name="architecture"></a>아키텍처 
+## <a name="architecture"></a>아키텍처
 
 이 아키텍처는 [Azure와 인터넷 사이의 DMZ][implementing-a-secure-hybrid-network-architecture-with-internet-access]에 제시된 아키텍처를 확장합니다. 이 아키텍처에는 다음과 같은 구성 요소가 있습니다.
 
-* **온-프레미스 네트워크**. 온-프레미스 네트워크에는 온-프레미스에 위치한 구성 요소에 대해 인증 및 권한 부여를 수행하는 로컬 Active Directory 서버가 포함됩니다.
-* **Active Directory 서버**. 클라우드에서 VM으로서 실행되는 디렉터리 서비스(AD DS)를 구현하는 도메인 컨트롤러입니다. Active Directory 서버는 Azure 가상 네트워크에서 실행되는 구성 요소에 인증을 제공할 수 있습니다.
-* **Active Directory 서브넷**. AD DS 서버는 별도의 서브넷에 호스팅됩니다. NSG(네트워크 보안 그룹) 규칙은 AD DS 서버를 보호하고 예상치 못한 소스로부터 전달되는 트래픽에 대한 방화벽을 제공합니다.
-* **Azure 게이트웨이 및 Active Directory 동기화**. Azure 게이트웨이는 온-프레미스 네트워크와 Azure VNet 사이에 연결을 제공합니다. 이러한 연결은 [VPN 연결][azure-vpn-gateway] 또는 [Azure ExpressRoute][azure-expressroute]일 수 있습니다. 클라우드와 온-프레미스에 존재하는 Active Directory 서버 사이에 이루어지는 모든 동기화 요청은 게이트웨이를 통과합니다. UDR(사용자 정의 경로)이 Azure로 전달되는 온-프레미스 트래픽의 라우팅을 처리합니다. Active Directory 서버로 송수신되는 트래픽은 이 시나리오에서 사용되는 NVA(네트워크 가상 어플라이언스)를 통과하지 않습니다.
+- **온-프레미스 네트워크**. 온-프레미스 네트워크에는 온-프레미스에 위치한 구성 요소에 대해 인증 및 권한 부여를 수행하는 로컬 Active Directory 서버가 포함됩니다.
+- **Active Directory 서버**. 클라우드에서 VM으로서 실행되는 디렉터리 서비스(AD DS)를 구현하는 도메인 컨트롤러입니다. Active Directory 서버는 Azure 가상 네트워크에서 실행되는 구성 요소에 인증을 제공할 수 있습니다.
+- **Active Directory 서브넷**. AD DS 서버는 별도의 서브넷에 호스팅됩니다. NSG(네트워크 보안 그룹) 규칙은 AD DS 서버를 보호하고 예상치 못한 소스로부터 전달되는 트래픽에 대한 방화벽을 제공합니다.
+- **Azure 게이트웨이 및 Active Directory 동기화**. Azure 게이트웨이는 온-프레미스 네트워크와 Azure VNet 사이에 연결을 제공합니다. 이러한 연결은 [VPN 연결][azure-vpn-gateway] 또는 [Azure ExpressRoute][azure-expressroute]일 수 있습니다. 클라우드와 온-프레미스에 존재하는 Active Directory 서버 사이에 이루어지는 모든 동기화 요청은 게이트웨이를 통과합니다. UDR(사용자 정의 경로)이 Azure로 전달되는 온-프레미스 트래픽의 라우팅을 처리합니다. Active Directory 서버로 송수신되는 트래픽은 이 시나리오에서 사용되는 NVA(네트워크 가상 어플라이언스)를 통과하지 않습니다.
 
-UDR 및 NVA 구성에 대한 자세한 내용은 [Azure에 보안 하이브리드 네트워크 아키텍처 구현][implementing-a-secure-hybrid-network-architecture]을 참조하세요. 
+UDR 및 NVA 구성에 대한 자세한 내용은 [Azure에 보안 하이브리드 네트워크 아키텍처 구현][implementing-a-secure-hybrid-network-architecture]을 참조하세요.
 
 ## <a name="recommendations"></a>권장 사항
 
-대부분의 시나리오의 경우 다음 권장 사항을 적용합니다. 이러한 권장 사항을 재정의하라는 특정 요구 사항이 있는 경우가 아니면 따릅니다. 
+대부분의 시나리오의 경우 다음 권장 사항을 적용합니다. 이러한 권장 사항을 재정의하라는 특정 요구 사항이 있는 경우가 아니면 따릅니다.
 
 ### <a name="vm-recommendations"></a>VM 권장 사항
 
@@ -56,10 +55,9 @@ Active Directory의 데이터베이스, 로그 및 SYSVOL을 저장할 별도의
 
 > [!NOTE]
 > AD DS에 대해 공용 IP 주소를 사용하여 VM NIC를 구성하지 않습니다. 자세한 내용은 [보안 고려 사항][security-considerations]을 참조하세요.
-> 
-> 
+>
 
-Active Directory 서브넷 NSG에는 온-프레미스에서 수신되는 트래픽을 허용하는 규칙이 필요합니다. AD DS에 의해 사용되는 포트에 대한 자세한 내용은 [Active Directory 및 Active Directory Domain Services 포트 요구 사항][ad-ds-ports]을 참조하세요. 또한, UDR 테이블이 이 아키텍처에서 사용되는 NVA를 통과하여 AD DS 트래픽을 라우팅하지 않도록 해야 합니다. 
+Active Directory 서브넷 NSG에는 온-프레미스에서 수신되는 트래픽을 허용하는 규칙이 필요합니다. AD DS에 의해 사용되는 포트에 대한 자세한 내용은 [Active Directory 및 Active Directory Domain Services 포트 요구 사항][ad-ds-ports]을 참조하세요. 또한, UDR 테이블이 이 아키텍처에서 사용되는 NVA를 통과하여 AD DS 트래픽을 라우팅하지 않도록 해야 합니다.
 
 ### <a name="active-directory-site"></a>Active Directory 사이트
 
@@ -75,7 +73,7 @@ Azure에 배포한 도메인 컨트롤러에는 작업 마스터 역할을 할�
 
 ### <a name="monitoring"></a>모니터링
 
-도메인 컨트롤러 VM과 AD DS Services의 리소스를 모니터링하고 문제 발생 시 이를 신속하게 해결할 계획을 도출합니다. 자세한 내용은 [Active Directory 모니터링][monitoring_ad]을 참조하세요. 모니터링 서버에 [Microsoft Systems Center][microsoft_systems_center]와 같은 도구를 설치하여(아키텍처 다이어그램 참조) 이러한 작업을 수행할 수도 있습니다.  
+도메인 컨트롤러 VM과 AD DS Services의 리소스를 모니터링하고 문제 발생 시 이를 신속하게 해결할 계획을 도출합니다. 자세한 내용은 [Active Directory 모니터링][monitoring_ad]을 참조하세요. 모니터링 서버에 [Microsoft Systems Center][microsoft_systems_center]와 같은 도구를 설치하여(아키텍처 다이어그램 참조) 이러한 작업을 수행할 수도 있습니다.
 
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
@@ -121,11 +119,11 @@ AD DS 데이터베이스를 호스팅하는 디스크를 BitLocker 또는 Azure 
 
 ### <a name="deploy-the-azure-vnet"></a>Azure VNet에 배포
 
-1. `azure.json` 파일을 엽니다.  `adminPassword` 및 `Password` 인스턴스를 검색하고 암호 값을 추가합니다. 
+1. `azure.json` 파일을 엽니다.  `adminPassword` 및 `Password` 인스턴스를 검색하고 암호 값을 추가합니다.
 
-2. 동일한 파일에서 `sharedKey` 인스턴스를 검색하고 VPN 연결에 대한 공유 키를 입력합니다. 
+2. 동일한 파일에서 `sharedKey` 인스턴스를 검색하고 VPN 연결에 대한 공유 키를 입력합니다.
 
-    ```bash
+    ```json
     "sharedKey": "",
     ```
 
@@ -149,16 +147,16 @@ AD DS 데이터베이스를 호스팅하는 디스크를 BitLocker 또는 Azure 
 
 4. 원격 데스크톱 세션 내에서 `adds-vm1`이라는 VM의 IP 주소인 10.0.4.4에 대한 다른 원격 데스크톱 세션을 엽니다. 사용자 이름은 `contoso\testuser`이고, 암호는 `azure.json` 매개 변수 파일에서 지정한 것입니다.
 
-5. `adds-vm1`에 대한 원격 데스크톱 세션 내에서 **서버 관리자**로 이동하고 **관리할 다른 서버 추가**를 클릭합니다. 
+5. `adds-vm1`에 대한 원격 데스크톱 세션 내에서 **서버 관리자**로 이동하고 **관리할 다른 서버 추가**를 클릭합니다.
 
 6. **Active Directory** 탭에서 **지금 찾기**를 클릭합니다. AD, AD DS 및 웹 VM의 목록이 표시됩니다.
 
-   ![](./images/add-servers-dialog.png)
+   ![서버 추가 대화 상자의 스크린샷](./images/add-servers-dialog.png)
 
 ## <a name="next-steps"></a>다음 단계
 
-* Azure에서 [AD DS 포리스트를 생성][adds-resource-forest]하기 위한 모범 사례를 알아봅니다.
-* Azure에서 [AD FS(Active Directory Federation Services) 인프라를 생성][adfs]하기 위한 모범 사례를 알아봅니다.
+- Azure에서 [AD DS 포리스트를 생성][adds-resource-forest]하기 위한 모범 사례를 알아봅니다.
+- Azure에서 [AD FS(Active Directory Federation Services) 인프라를 생성][adfs]하기 위한 모범 사례를 알아봅니다.
 
 <!-- links -->
 
@@ -178,7 +176,7 @@ AD DS 데이터베이스를 호스팅하는 디스크를 BitLocker 또는 Azure 
 [capacity-planning-for-adds]: https://social.technet.microsoft.com/wiki/contents/articles/14355.capacity-planning-for-active-directory-domain-services.aspx
 [considerations]: ./considerations.md
 [GitHub]: https://github.com/mspnp/identity-reference-architectures/tree/master/adds-extend-domain
-[microsoft_systems_center]: https://www.microsoft.com/server-cloud/products/system-center-2016/
+[microsoft_systems_center]: https://www.microsoft.com/download/details.aspx?id=50013
 [monitoring_ad]: https://msdn.microsoft.com/library/bb727046.aspx
 [security-considerations]: #security-considerations
 [set-a-static-ip-address]: /azure/virtual-network/virtual-networks-static-private-ip-arm-pportal

@@ -1,60 +1,62 @@
 ---
-title: Azure의 Python Scikit-Learn 및 딥 러닝 모델의 실시간 점수 매기기
+title: Python 모델의 실시간 점수 매기기
+titleSuffix: Azure Reference Architectures
 description: 이 참조 아키텍처에서는 Python 모델을 Azure에서 웹 서비스로 배포하여 실시간으로 예측하는 방법을 보여줍니다.
 author: njray
 ms.date: 11/09/2018
-ms.openlocfilehash: ff385e232c69e46b0afc6b15e73983bd856b9b2b
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.custom: azcat-ai
+ms.openlocfilehash: e2312d1d1d2444f9915f4e6aa067c1487e096d3e
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902582"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120359"
 ---
-# <a name="real-time-scoring-of-python-scikit-learn-and-deep-learning-models-on-azure"></a>Azure의 Python Scikit-Learn 및 딥 러닝 모델의 실시간 점수 매기기
+# <a name="real-time-scoring-of-python-scikit-learn-and-deep-learning-models-on-azure"></a>Azure의 Python Scikit-Learn 및 딥러닝 모델의 실시간 채점
 
 이 참조 아키텍처에서는 Python 모델을 웹 서비스로 배포하여 실시간으로 예측하는 방법을 보여줍니다. 두 시나리오에서는 정규 Python 모델을 배포하는 방법 및 딥 러닝 모델을 배포하는 특정 요구 사항을 다룹니다. 시나리오는 모두 표시된 아키텍처를 사용합니다.
 
 이 아키텍처의 두 참조 구현은 GitHub에서 지원됩니다([정규 Python 모델][github-python] 및 [딥 러닝 모델][github-dl]에 각각 하나씩).
 
-![](./_images/python-model-architecture.png)
+![Azure에서 Python 모델의 실시간 채점을 위한 아키텍처 다이어그램](./_images/python-model-architecture.png)
 
 ## <a name="scenarios"></a>시나리오
 
 참조 구현은이 아키텍처를 사용하는 두 가지 시나리오를 보여줍니다.
 
-**시나리오 1: FAQ 일치** 이 시나리오에서는 FAQ(질문과 대답) 일치 모델을 웹 서비스로 배포하여 사용자 질문에 대한 예측을 제공하는 방법을 보여줍니다. 이 시나리오의 경우 아키텍처 다이어그램의 "입력 데이터"는 FAQ 목록과 일치하는 사용자 질문을 포함한 텍스트 문자열을 가리킵니다. 이 시나리오는 Python용 [scikit-learn][scikit] 기계 학습 라이브러리에 대해 설계되었지만 Python 모델을 사용하여 실시간으로 예측하는 모든 시나리오에 일반화될 수 있습니다.
+**시나리오 1: FAQ 일치**. 이 시나리오에서는 FAQ(질문과 대답) 일치 모델을 웹 서비스로 배포하여 사용자 질문에 대한 예측을 제공하는 방법을 보여줍니다. 이 시나리오의 경우 아키텍처 다이어그램의 "입력 데이터"는 FAQ 목록과 일치하는 사용자 질문을 포함한 텍스트 문자열을 가리킵니다. 이 시나리오는 Python용 [scikit-learn][scikit] 기계 학습 라이브러리에 대해 설계되었지만 Python 모델을 사용하여 실시간으로 예측하는 모든 시나리오에 일반화될 수 있습니다.
 
 이 시나리오에서는 JavaScript, 해당 중복 질문 및 대답으로 태그가 지정된 원래 질문이 포함된 Stack Overflow 질문 데이터의 하위 집합을 사용합니다. 원래 질문 각각과 중복 질문의 일치 확률을 예측하기 위해 scikit-learn 파이프라인을 학습합니다. REST API 엔드포인트를 사용하여 실시간으로 이러한 예측을 수행합니다.
 
 이 아키텍처에 대한 애플리케이션 흐름은 다음과 같습니다.
 
-1.  클라이언트는 인코딩된 질문 데이터를 포함한 HTTP POST 요청을 보냅니다.
+1. 클라이언트는 인코딩된 질문 데이터를 포함한 HTTP POST 요청을 보냅니다.
 
-2.  Flask 앱은 요청에서 질문을 추출합니다.
+2. Flask 앱은 요청에서 질문을 추출합니다.
 
-3.  기능화 및 점수 매기기를 위해 질문을 scikit-learn 파이프라인 모델에 보냅니다.
+3. 기능화 및 점수 매기기를 위해 질문을 scikit-learn 파이프라인 모델에 보냅니다.
 
-4.  해당 점수를 포함한 일치 FAQ 질문은 JSON 개체로 파이핑되며 클라이언트에 반환됩니다.
+4. 해당 점수를 포함한 일치 FAQ 질문은 JSON 개체로 파이핑되며 클라이언트에 반환됩니다.
 
 결과를 사용하는 예제 앱의 스크린샷은 다음과 같습니다.
 
-![](./_images/python-faq-matches.png)
+![예제 앱 스크린샷](./_images/python-faq-matches.png)
 
-**시나리오 2: 이미지 분류** 이 시나리오에서는 CNN(나선형 신경망) 모델을 웹 서비스로 배포하여 이미지에 대한 예측을 제공하는 방법을 보여줍니다. 이 시나리오의 경우 아키텍처 다이어그램의 "입력 데이터"는 이미지 파일을 가리킵니다. CNN은 이미지 분류 및 개체 검색과 같은 작업의 컴퓨터 비전에서 매우 효과적입니다. 이 시나리오는 TensorFlow, Keras(TensorFlow 백 엔드 포함) 및 PyTorch 프레임워크를 위해 설계되었습니다. 그러나 딥 러닝 모델을 사용하여 실시간으로 예측하는 모든 시나리오에 일반화될 수 있습니다.
+**시나리오 2: 이미지 분류**. 이 시나리오에서는 CNN(나선형 신경망) 모델을 웹 서비스로 배포하여 이미지에 대한 예측을 제공하는 방법을 보여줍니다. 이 시나리오의 경우 아키텍처 다이어그램의 "입력 데이터"는 이미지 파일을 가리킵니다. CNN은 이미지 분류 및 개체 검색과 같은 작업의 컴퓨터 비전에서 매우 효과적입니다. 이 시나리오는 TensorFlow, Keras(TensorFlow 백 엔드 포함) 및 PyTorch 프레임워크를 위해 설계되었습니다. 그러나 딥 러닝 모델을 사용하여 실시간으로 예측하는 모든 시나리오에 일반화될 수 있습니다.
 
 이 시나리오에서는 ImageNet-1K(1,000개 클래스) 데이터 세트에서 학습된 ResNet-152 미리 학습된 모델을 사용하여 이미지가 속한 범주(아래 그림 참조)를 예측합니다. REST API 엔드포인트를 사용하여 실시간으로 이러한 예측을 수행합니다.
 
-![](./_images/python-example-predictions.png)
+![예측의 예](./_images/python-example-predictions.png)
 
 딥 러닝 모델의 애플리케이션 흐름은 다음과 같습니다.
 
-1.  클라이언트는 인코딩된 이미지 데이터를 포함한 HTTP POST 요청을 보냅니다.
+1. 클라이언트는 인코딩된 이미지 데이터를 포함한 HTTP POST 요청을 보냅니다.
 
-2.  Flask 앱은 요청에서 이미지를 추출합니다.
+2. Flask 앱은 요청에서 이미지를 추출합니다.
 
-3.  이미지는 전처리되고 점수 매기기를 위해 모델로 보내집니다.
+3. 이미지는 전처리되고 점수 매기기를 위해 모델로 보내집니다.
 
-4.  점수 매기기 결과는 JSON 개체로 파이핑되고 클라이언트에 반환됩니다.
+4. 점수 매기기 결과는 JSON 개체로 파이핑되고 클라이언트에 반환됩니다.
 
 ## <a name="architecture"></a>아키텍처
 
@@ -70,7 +72,7 @@ AKS(**[Azure Kubernetes Service][aks]**)는 Kubernetes 클러스터에서 애플
 
 ## <a name="performance-considerations"></a>성능 고려 사항
 
-실시간 점수 매기기 아키텍처의 경우 처리량 성능은 중요한 고려 사항입니다. 정규 Python 모델의 경우 일반적으로 워크로드를 처리할 CPU가 충분하다고 여겨집니다. 
+실시간 점수 매기기 아키텍처의 경우 처리량 성능은 중요한 고려 사항입니다. 정규 Python 모델의 경우 일반적으로 워크로드를 처리할 CPU가 충분하다고 여겨집니다.
 
 그러나 딥 러닝 워크로드의 경우 속도가 병목 상태가 되면 GPU는 CPU에 비해 일반적으로 뛰어난 [성능][gpus-vs-cpus]을 제공합니다. CPU를 사용하여 GPU 성능을 충족하려면 일반적으로 다수의 CPU를 포함한 클러스터가 필요합니다.
 
@@ -90,11 +92,11 @@ AKS 성능에 대한 가시성은 [컨테이너용 Azure Monitor][monitor-contai
 
 애플리케이션을 배포하는 동안 AKS 클러스터를 모니터링하여 예상대로 작동하는지, 모든 노드가 작동하는지 및 모든 pod가 실행되는지 확인합니다. [kubectl][kubectl] 명령줄 도구를 사용하여 pod 상태를 검색할 수 있지만 Kubernetes에는 클러스터 상태 및 관리를 기본적으로 모니터링하는 웹 대시보드도 포함됩니다.
 
-![](./_images/python-kubernetes-dashboard.png)
+![Kubernetes 대시보드의 스크린샷](./_images/python-kubernetes-dashboard.png)
 
 클러스터 및 노드의 전반적인 상태를 확인하려면 Kubernetes 대시보드의 **노드** 섹션으로 이동합니다. 노드가 비활성화되거나 실패한 경우 해당 페이지의 오류 로그를 표시할 수 있습니다. 마찬가지로, pod 수 및 배포의 상태에 대한 정보는 **Pod** 및 **배포** 섹션으로 이동합니다.
 
-### <a name="aks-logs"></a>AKS 로그 
+### <a name="aks-logs"></a>AKS 로그
 
 AKS는 클러스터의 pod 로그에 모든 stdout/stderr을 자동으로 기록합니다. kubectl을 사용하여 이러한 기록 및 노드 수준 이벤트 및 로그를 확인합니다. 자세한 내용은 배포 단계를 참조하세요.
 
@@ -120,10 +122,12 @@ AKS는 클러스터의 pod 로그에 모든 stdout/stderr을 자동으로 기록
 
 ## <a name="deployment"></a>배포
 
-이 참조 아키텍처를 배포하려면 GitHub 리포지토리에 설명된 단계를 따르세요. 
+이 참조 아키텍처를 배포하려면 GitHub 리포지토리에 설명된 단계를 따르세요.
 
-  - [정규 Python 모델][github-python]
-  - [딥 러닝 모델][github-dl]
+- [정규 Python 모델][github-python]
+- [딥 러닝 모델][github-dl]
+
+<!-- links -->
 
 [aad-auth]: /azure/aks/aad-integration
 [acr]: /azure/container-registry/
@@ -150,4 +154,3 @@ AKS는 클러스터의 pod 로그에 모든 stdout/stderr을 자동으로 기록
 [scikit]: https://pypi.org/project/scikit-learn/
 [security-center]: /azure/security-center/security-center-intro
 [vm]: /azure/virtual-machines/
-

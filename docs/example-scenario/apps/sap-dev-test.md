@@ -3,12 +3,13 @@ title: Azure의 SAP 워크로드에 대한 개발/테스트 환경
 description: SAP 워크로드에 대한 개발/테스트 환경을 빌드합니다.
 author: AndrewDibbins
 ms.date: 7/11/18
-ms.openlocfilehash: 1cfd15b0287a1979ae5ad60e41a0b1627a2e115c
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.custom: fasttrack
+ms.openlocfilehash: 84665bfeb6ada568c631e1db72b97269d79f2e60
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610807"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004673"
 ---
 # <a name="devtest-environments-for-sap-workloads-on-azure"></a>Azure의 SAP 워크로드에 대한 개발/테스트 환경
 
@@ -80,10 +81,10 @@ ms.locfileid: "51610807"
 > [!NOTE]
 > 이 가격 책정은 VM 및 저장소 비용만 나타내는 가이드입니다. 네트워킹, 백업 저장소 및 데이터 수신/송신 요금은 제외됩니다.
 
-* [소형](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1): 소형 시스템은 8개 vCPU, 32GB RAM 및 200GB 임시 저장소가 있는 D8s_v3 VM 유형으로 구성되며, 2개 512GB 및 1개 128GB 프리미엄 저장소 디스크도 추가로 있습니다.
-* [중형](https://azure.com/e/465bd07047d148baab032b2f461550cd): 중형 시스템은 16개 vCPU, 64GB RAM 및 400GB 임시 저장소가 있는 D16s_v3 VM 유형으로 구성되며, 3개 512GB 및 1개 128GB 프리미엄 저장소 디스크도 추가로 있습니다.
-* [대형](https://azure.com/e/ada2e849d68b41c3839cc976000c6931): 대형 시스템은 32개 vCPU, 256GB RAM 및 512GB 임시 저장소가 있는 E32s_v3 VM 유형으로 구성되며, 3개 512GB 및 1개 128GB 프리미엄 저장소 디스크도 추가로 있습니다.
-* [초대형](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef): 초대형 시스템은 64개 vCPU, 1024GB RAM 및 2000GB 임시 저장소가 있는 M64s VM 유형으로 구성되며, 4개 512GB 및 1개 128GB 프리미엄 저장소 디스크도 추가로 있습니다.
+* [소형](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1): 소형 시스템은 8개 vCPU, 32GB RAM 및 200GB 임시 스토리지가 있는 D8s_v3 VM 유형으로 구성되며, 2개 512GB 및 1개 128GB 프리미엄 스토리지 디스크도 추가로 있습니다.
+* [중형](https://azure.com/e/465bd07047d148baab032b2f461550cd): 중형 시스템은 16개 vCPU, 64GB RAM 및 400GB 임시 스토리지가 있는 D16s_v3 VM 유형으로 구성되며, 3개 512GB 및 1개 128GB 프리미엄 스토리지 디스크도 추가로 있습니다.
+* [대형](https://azure.com/e/ada2e849d68b41c3839cc976000c6931): 대형 시스템은 32개 vCPU, 256GB RAM 및 512GB 임시 스토리지가 있는 E32s_v3 VM 유형으로 구성되며, 3개 512GB 및 1개 128GB 프리미엄 스토리지 디스크도 추가로 있습니다.
+* [초대형](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef): 초대형 시스템은 64개 vCPU, 1024GB RAM 및 2000GB 임시 스토리지가 있는 M64s VM 유형으로 구성되며, 4개 512GB 및 1개 128GB 프리미엄 스토리지 디스크도 추가로 있습니다.
 
 ## <a name="deployment"></a>배포
 

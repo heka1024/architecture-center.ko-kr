@@ -3,12 +3,12 @@ title: '엔터프라이즈 클라우드 채택: 클라우드 리소스 거버넌
 description: Azure에서 리소스 액세스 거버넌스의 개념 설명
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: 14c26cbccdbea524a7c7220b3bb98ed2a118c30d
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.openlocfilehash: fb01b2e2823c16e32f8ded696de0b6faf1d2e610
+ms.sourcegitcommit: e7f8676bbffe500fc4d6deb603b7c0b7ba1884a6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389216"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53179283"
 ---
 # <a name="enterprise-cloud-adoption-what-is-cloud-resource-governance"></a>엔터프라이즈 클라우드 채택: 클라우드 리소스 거버넌스란?
 
@@ -20,7 +20,7 @@ ms.locfileid: "44389216"
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2ii94] 
 
-이러한 목표와 요구 사항은 각 조직에 고유하므로 거버넌스에 대한 모든 접근에 보편적으로 적용할 수 있는 단일 크기 전략은 가능하지 않습니다. Azure는 **RBAC(리소스 기반 액세스 제어)** 및 **리소스 정책**의 두 가지 기본 거버넌스 도구를 구현합니다. 이 둘을 사용하여 해당 거버넌스 모델을 디자인하는 것은 각 조직에 달려 있습니다.
+이러한 목표와 요구 사항은 각 조직에 고유하므로 거버넌스에 대한 모든 접근에 보편적으로 적용할 수 있는 단일 크기 전략은 가능하지 않습니다. Azure는 **RBAC(역할 기반 액세스 제어)** 및 **리소스 정책**의 두 가지 기본 거버넌스 도구를 구현합니다. 이 둘을 사용하여 해당 거버넌스 모델을 디자인하는 것은 각 조직에 달려 있습니다.
 
 RBAC는 역할을 정의하고 역할은 역할이 할당된 사용자의 능력을 정의합니다. 예를 들어 **소유자** 역할은 리소스에 대한 모든 기능(만들기, 읽기, 업데이트 및 삭제)을 사용할 수 있는 반면 **판독기** 역할은 읽기 기능만 사용할 수 있습니다. 역할은 여러 리소스 형식에 적용되는 넓은 범위 또는 몇 가지에 한정적으로 적용되는 좁은 범위로 정의될 수 있습니다. 
 

@@ -1,25 +1,27 @@
 ---
 title: 서버리스 웹 응용 프로그램
-description: 서버리스 웹 응용 프로그램 및 웹 API를 보여 주는 참조 아키텍처입니다.
+titleSuffix: Azure Reference Architectures
+description: 서버리스 웹 애플리케이션 및 웹 API에 권장되는 아키텍처입니다.
 author: MikeWasson
 ms.date: 10/16/2018
-ms.openlocfilehash: 9263c8bec794e4b2bb9f397289b23307eb02f0c7
-ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
+ms.custom: seodec18
+ms.openlocfilehash: ee735ac4f23cc2a819e2322bd9c4fb3b5adf5f3b
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52295687"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120314"
 ---
-# <a name="serverless-web-application"></a>서버리스 웹 응용 프로그램 
+# <a name="serverless-web-application-on-azure"></a>Azure의 서버리스 웹 애플리케이션
 
 이 참조 아키텍처에서는 [서버리스](https://azure.microsoft.com/solutions/serverless/) 웹 애플리케이션을 보여줍니다. 이 응용 프로그램은 Azure Blob Storage의 정적 콘텐츠를 제공하고 Azure Functions를 사용하여 API를 구현합니다. API는 Cosmos DB에서 데이터를 읽고 결과를 웹앱에 반환합니다. 이 아키텍처에 대한 참조 구현은 [GitHub][github]에서 사용할 수 있습니다.
 
-![](./_images/serverless-web-app.png)
- 
+![서버리스 웹 애플리케이션을 위한 참조 아키텍처](./_images/serverless-web-app.png)
+
 '서버리스'라는 용어에는 별도의 관련된 두 가지 의미가 있습니다.
 
-- **BaaS(Backend as a Service)**. 데이터베이스 및 저장소와 같은 백 엔드 클라우드 서비스는 클라이언트 응용 프로그램에서 이러한 서비스에 직접 연결할 수 있게 하는 API를 제공합니다. 
-- **FaaS(Functions as a Service)**. 이 모델에서 "함수"는 클라우드에 배포되고, 코드를 실행하는 서버를 완전히 추상화하는 호스팅 환경 내에서 실행되는 코드 조각입니다. 
+- **BaaS(Backend as a Service)**. 데이터베이스 및 저장소와 같은 백 엔드 클라우드 서비스는 클라이언트 응용 프로그램에서 이러한 서비스에 직접 연결할 수 있게 하는 API를 제공합니다.
+- **FaaS(Functions as a Service)**. 이 모델에서 "함수"는 클라우드에 배포되고, 코드를 실행하는 서버를 완전히 추상화하는 호스팅 환경 내에서 실행되는 코드 조각입니다.
 
 두 정의 모두에는 개발자와 DevOps 직원이 서버를 배포, 구성 또는 관리할 필요가 없다는 일반적인 개념이 있습니다. 이 참조 아키텍처는 Azure Functions를 사용하는 FaaS에 중점을 두고 있지만, Azure Blob Storage의 웹 콘텐츠를 제공하는 BaaS의 예입니다. FaaS에 대한 몇 가지 중요한 특징은 다음과 같습니다.
 
@@ -30,7 +32,8 @@ ms.locfileid: "52295687"
 Functions는 HTTP 요청 또는 큐에 도착하는 메시지와 같은 외부 트리거가 발생하면 실행됩니다. 그러면 서버리스 아키텍처에서 [이벤트 구동 아키텍처 스타일][event-driven]이 자연스럽게 됩니다. 아키텍처에서 구성 요소 간의 작업을 조정하려면 메시지 broker 또는 pub/sub 패턴을 사용하는 것이 좋습니다. Azure에서 메시지 기술을 선택하는 데 도움이 필요하면[메시지를 배달하는 Azure 서비스 중에서 선택][azure-messaging]을 참조하세요.
 
 ## <a name="architecture"></a>아키텍처
-이 아키텍처는 다음 구성 요소로 구성됩니다.
+
+이 아키텍처는 다음과 같은 구성 요소로 구성됩니다.
 
 **Blob Storage** HTML, CSS 및 JavaScript 파일과 같은 정적 웹 콘텐츠는 Azure Blob Storage에 저장되며, [정적 웹 사이트 호스팅][static-hosting]을 사용하여 클라이언트에 제공됩니다. 모든 동적 상호 작용은 백 엔드 API를 호출하는 JavaScript 코드를 통해 수행됩니다. 웹 페이지를 렌더링하는 서버 쪽 코드는 없습니다. 정적 웹 사이트 호스팅은 인덱스 문서 및 404 사용자 지정 오류 페이지를 지원합니다.
 
@@ -49,7 +52,7 @@ API Management는 다음과 같은 교차 편집 문제를 구현하는 데에�
 - 인증을 위한 OAuth 토큰 유효성 검사
 - CORS(원본 간 요청) 사용
 - 응답 캐싱
-- 요청 모니터링 및 로깅  
+- 요청 모니터링 및 로깅
 
 API Management에서 제공하는 기능 중 일부만 필요한 경우 다른 옵션으로 [Functions 프록시][functions-proxy]를 사용합니다. Azure Functions의 이 기능을 사용하면 백 엔드 함수에 대한 경로를 만들어 여러 함수 앱에 대해 단일 API 화면을 정의할 수 있습니다. Function 프록시는 HTTP 요청 및 응답에 대해 제한된 변환을 수행할 수도 있습니다. 그러나 API Management의 다양한 정책 기반 기능을 동일하게 제공하지는 않습니다.
 
@@ -65,7 +68,7 @@ API Management에서 제공하는 기능 중 일부만 필요한 경우 다른 �
 
 ### <a name="function-app-plans"></a>함수 앱 계획
 
-Azure Functions는 두 가지 호스팅 모델을 지원합니다. **사용 계획**을 사용하면 코드가 실행될 때 계산 성능이 자동으로 할당됩니다.  **App Service** 계획을 사용하면 코드에 일단의 VM이 할당됩니다. App Service 계획은 VM의 수와 크기를 정의합니다. 
+Azure Functions는 두 가지 호스팅 모델을 지원합니다. **사용 계획**을 사용하면 코드가 실행될 때 계산 성능이 자동으로 할당됩니다.  **App Service** 계획을 사용하면 코드에 일단의 VM이 할당됩니다. App Service 계획은 VM의 수와 크기를 정의합니다.
 
 위에서 설명한 정의에 따라 App Service 계획은 엄격히 *서버리스*가 아닙니다. 프로그래밍 모델은 동일하지만, 동일한 함수 코드가 사용 계획과 App Service 계획 모두에서 실행될 수 있습니다.
 
@@ -79,9 +82,9 @@ Azure Functions는 두 가지 호스팅 모델을 지원합니다. **사용 계�
 
 ### <a name="function-app-boundaries"></a>함수 앱 경계
 
-*함수 앱*은 실행할 하나 이상의 *함수*를 호스팅합니다. 함수 앱을 사용하여 여러 함수를 논리적 단위로 그룹화할 수 있습니다. 함수 앱 내에서 함수는 동일한 응용 프로그램 설정, 호스팅 계획 및 배포 수명 주기를 공유합니다. 각 함수 앱에는 자체의 호스트 이름이 있습니다.  
+*함수 앱*은 실행할 하나 이상의 *함수*를 호스팅합니다. 함수 앱을 사용하여 여러 함수를 논리적 단위로 그룹화할 수 있습니다. 함수 앱 내에서 함수는 동일한 응용 프로그램 설정, 호스팅 계획 및 배포 수명 주기를 공유합니다. 각 함수 앱에는 자체의 호스트 이름이 있습니다.
 
-함수 앱을 사용하여 동일한 수명 주기와 설정을 공유하는 함수를 그룹화합니다. 동일한 수명 주기를 공유하지 않는 함수는 다른 함수 앱에서 호스팅해야 합니다. 
+함수 앱을 사용하여 동일한 수명 주기와 설정을 공유하는 함수를 그룹화합니다. 동일한 수명 주기를 공유하지 않는 함수는 다른 함수 앱에서 호스팅해야 합니다.
 
 마이크로 서비스 접근 방식을 사용하는 것이 좋습니다. 여기서는 각 함수 앱이 하나의 마이크로 서비스를 나타내며, 몇 가지 관련된 함수로 구성될 수 있습니다. 마이크로 서비스 아키텍처의 경우 서비스에는 느슨한 결합과 높은 기능적 응집력이 있어야 합니다. *느슨한 결합*은 다른 서비스를 동시에 업데이트하지 않고도 하나의 서비스를 변경할 수 있다는 것입니다. *응집력*은 서비스에 잘 정의된 단일 용도가 있다는 것입니다. 이러한 개념에 대한 자세한 내용은 [마이크로 서비스 설계: 도메인 분석][microservices-domain-analysis]을 참조하세요.
 
@@ -94,13 +97,13 @@ Azure Functions는 두 가지 호스팅 모델을 지원합니다. **사용 계�
 ```csharp
 [FunctionName("GetStatusFunction")]
 public static Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req, 
+    [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
     [CosmosDB(
         databaseName: "%COSMOSDB_DATABASE_NAME%",
         collectionName: "%COSMOSDB_DATABASE_COL%",
         ConnectionStringSetting = "COSMOSDB_CONNECTION_STRING",
         Id = "{Query.deviceId}",
-        PartitionKey = "{Query.deviceId}")] dynamic deviceStatus, 
+        PartitionKey = "{Query.deviceId}")] dynamic deviceStatus,
     ILogger log)
 {
     ...
@@ -111,7 +114,7 @@ public static Task<IActionResult> Run(
 
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
-**Functions**. 사용 계획의 경우 HTTP 트리거는 트래픽에 따라 크기 조정됩니다. 동시 함수 인스턴스의 수는 제한되지만, 각 인스턴스는 한 번에 둘 이상의 요청을 처리할 수 있습니다. App Service 계획의 경우 HTTP 트리거는 VM 인스턴스의 수에 따라 크기 조정됩니다. 즉 VM 인스턴스의 수가 고정된 값이거나 자동 크기 조정 규칙 집합을 기반으로 하여 자동으로 크기 조정될 수 있습니다. 자세한 내용은 [Azure Functions 크기 조정 및 호스팅][functions-scale]을 참조하세요. 
+**Functions**. 사용 계획의 경우 HTTP 트리거는 트래픽에 따라 크기 조정됩니다. 동시 함수 인스턴스의 수는 제한되지만, 각 인스턴스는 한 번에 둘 이상의 요청을 처리할 수 있습니다. App Service 계획의 경우 HTTP 트리거는 VM 인스턴스의 수에 따라 크기 조정됩니다. 즉 VM 인스턴스의 수가 고정된 값이거나 자동 크기 조정 규칙 집합을 기반으로 하여 자동으로 크기 조정될 수 있습니다. 자세한 내용은 [Azure Functions 크기 조정 및 호스팅][functions-scale]을 참조하세요.
 
 **Cosmos DB** Cosmos DB의 처리 용량은 [RU(요청 단위)][ru]로 측정됩니다. 1RU 처리량은 1KB 문서를 가져오는 데 필요한 GET 처리량에 해당합니다. 10,000RU를 초과하는 Cosmos DB 컨테이너의 크기를 조정하려면 컨테이너를 만들 때 [파티션 키][partition-key]를 지정하고, 만드는 모든 문서에 파티션 키가 포함되어야 합니다. 파티션 키에 대한 자세한 내용은 [Azure Cosmos DB의 파티션 및 확장][cosmosdb-scale]을 참조하세요.
 
@@ -136,10 +139,10 @@ public static Task<IActionResult> Run(
 이 아키텍처에서 클라이언트 응용 프로그램은 브라우저에서 실행되는 SPA(단일 페이지 응용 프로그램)입니다. 이 유형의 클라이언트 응용 프로그램은 클라이언트 비밀 또는 권한 부여 코드를 숨길 수 없으므로 암시적 허용 흐름이 적절합니다. [어떤 OAuth 2.0 흐름을 사용해야 합니까?][oauth-flow]를 참조하세요. 전체 흐름은 다음과 같습니다.
 
 1. 사용자가 웹 응용 프로그램에서 "로그인" 링크를 클릭합니다.
-1. 브라우저가 Azure AD 로그인 페이지로 리디렉션됩니다. 
+1. 브라우저가 Azure AD 로그인 페이지로 리디렉션됩니다.
 1. 사용자가 로그인합니다.
 1. Azure AD에서 URL 조각의 액세스 토큰을 포함하여 클라이언트 응용 프로그램으로 다시 리디렉션합니다.
-1. 웹 응용 프로그램에서 API를 호출하면 인증 헤더에 액세스 토큰이 포함됩니다. 응용 프로그램 ID는 액세스 토큰의 대상 그룹('aud') 클레임으로 보내집니다. 
+1. 웹 응용 프로그램에서 API를 호출하면 인증 헤더에 액세스 토큰이 포함됩니다. 응용 프로그램 ID는 액세스 토큰의 대상 그룹('aud') 클레임으로 보내집니다.
 1. 백 엔드 API에서 액세스 토큰의 유효성을 검사합니다.
 
 인증을 구성하려면
@@ -152,30 +155,30 @@ public static Task<IActionResult> Run(
 
 자세한 내용은 [GitHub 추가 정보][readme]를 참조하세요.
 
-클라이언트 응용 프로그램 및 백 엔드 API의 경우 Azure AD에서 별도 앱 등록을 만드는 것이 좋습니다. 클라이언트 응용 프로그램에 API를 호출하는 권한을 부여합니다. 이 방법은 여러 API 및 클라이언트를 정의하고 각각에 대한 사용 권한을 제어할 유연성을 제공합니다. 
+클라이언트 응용 프로그램 및 백 엔드 API의 경우 Azure AD에서 별도 앱 등록을 만드는 것이 좋습니다. 클라이언트 응용 프로그램에 API를 호출하는 권한을 부여합니다. 이 방법은 여러 API 및 클라이언트를 정의하고 각각에 대한 사용 권한을 제어할 유연성을 제공합니다.
 
 API 내에서 [범위][scopes]를 사용하여 응용 프로그램이 사용자로부터 요청한 사용 권한을 세부적으로 제어할 수 있습니다. 예를 들어 API에는 `Read` 및 `Write` 범위가 포함될 수 있고, 특정 클라이언트 앱은 `Read` 권한만을 부여하도록 사용자에게 요청할 수 있습니다.
 
 ### <a name="authorization"></a>권한 부여
 
-많은 응용 프로그램에서 백 엔드 API는 사용자에게 지정된 작업을 수행할 권한이 있는지 여부를 확인해야 합니다. [클레임 기반 권한 부여][claims]를 사용하는 것이 좋습니다. 여기서 사용자에 대한 정보는 ID 공급자(이 경우 Azure AD)에 전달되고 권한 부여를 결정하는 데 사용됩니다. 
+많은 응용 프로그램에서 백 엔드 API는 사용자에게 지정된 작업을 수행할 권한이 있는지 여부를 확인해야 합니다. [클레임 기반 권한 부여][claims]를 사용하는 것이 좋습니다. 여기서 사용자에 대한 정보는 ID 공급자(이 경우 Azure AD)에 전달되고 권한 부여를 결정하는 데 사용됩니다.
 
-일부 클레임은 Azure AD에서 클라이언트에 반환하는 ID 토큰 내에 제공됩니다. 요청의 X-MS-CLIENT-PRINCIPAL 헤더를 검사하여 함수 앱 내에서 이러한 클레임을 가져올 수 있습니다. 다른 클레임의 경우 [Microsoft Graph][graph]를 사용하여 Azure AD를 쿼리합니다(로그인 중에 사용자 동의 필요). 
+일부 클레임은 Azure AD에서 클라이언트에 반환하는 ID 토큰 내에 제공됩니다. 요청의 X-MS-CLIENT-PRINCIPAL 헤더를 검사하여 함수 앱 내에서 이러한 클레임을 가져올 수 있습니다. 다른 클레임의 경우 [Microsoft Graph][graph]를 사용하여 Azure AD를 쿼리합니다(로그인 중에 사용자 동의 필요).
 
-예를 들어 Azure AD에서 응용 프로그램을 등록할 때 응용 프로그램 역할 집합을 응용 프로그램의 등록 매니페스트에 정의할 수 있습니다. 사용자가 응용 프로그램에 로그인하면 Azure AD에는 사용자가 부여한 각 역할에 대한 "역할" 클레임이 포함됩니다(그룹 멤버 자격을 통해 상속된 역할 포함). 
+예를 들어 Azure AD에서 응용 프로그램을 등록할 때 응용 프로그램 역할 집합을 응용 프로그램의 등록 매니페스트에 정의할 수 있습니다. 사용자가 응용 프로그램에 로그인하면 Azure AD에는 사용자가 부여한 각 역할에 대한 "역할" 클레임이 포함됩니다(그룹 멤버 자격을 통해 상속된 역할 포함).
 
-참조 구현에서 함수는 인증된 사용자가 `GetStatus` 응용 프로그램 역할의 멤버인지 여부를 확인합니다. 그렇지 않은 경우 함수에서 HTTP 권한 없음(401) 응답을 반환합니다. 
+참조 구현에서 함수는 인증된 사용자가 `GetStatus` 응용 프로그램 역할의 멤버인지 여부를 확인합니다. 그렇지 않은 경우 함수에서 HTTP 권한 없음(401) 응답을 반환합니다.
 
 ```csharp
 [FunctionName("GetStatusFunction")]
 public static Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
+    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
     [CosmosDB(
         databaseName: "%COSMOSDB_DATABASE_NAME%",
         collectionName: "%COSMOSDB_DATABASE_COL%",
         ConnectionStringSetting = "COSMOSDB_CONNECTION_STRING",
         Id = "{Query.deviceId}",
-        PartitionKey = "{Query.deviceId}")] dynamic deviceStatus, 
+        PartitionKey = "{Query.deviceId}")] dynamic deviceStatus,
     ILogger log)
 {
     log.LogInformation("Processing GetStatus request.");
@@ -219,16 +222,16 @@ public static Task<IActionResult> Run(
 
 이 예제에서 **allow-credentials** 특성은 **true**입니다. 그러면 요청과 함께 자격 증명(쿠키 포함)을 보낼 수 있는 권한을 브라우저에 부여합니다. 그렇지 않으면 브라우저에서 기본적으로 원본 간 요청을 사용하여 자격 증명을 보내지 않습니다.
 
-> [!NOTE] 
+> [!NOTE]
 > **allow-credentials**는 매우 신중하게 **true**로 설정해야 합니다. 이렇게 하면 사용자가 알지 못하는 사이에 웹 사이트에서 해당 사용자를 대신하여 사용자의 자격 증명을 API로 보낼 수 있기 때문입니다. 허용된 원본을 신뢰해야 합니다.
 
 ### <a name="enforce-https"></a>HTTPS 적용
 
 보안을 극대화하려면 요청 파이프라인 전체에 HTTPS가 필요합니다.
 
-- **CDN**. Azure CDN은 기본적으로 `*.azureedge.net` 하위 도메인에서 HTTPS를 지원합니다. 사용자 지정 도메인 이름에 대해 CDN에서 HTTPS를 사용하도록 설정하려면 [자습서: Azure CDN 사용자 지정 도메인에서 HTTPS 구성][cdn-https]을 참조하세요. 
+- **CDN**. Azure CDN은 기본적으로 `*.azureedge.net` 하위 도메인에서 HTTPS를 지원합니다. CDN의 사용자 지정 도메인 이름에 HTTPS를 사용하도록 설정하려면 [자습서: Azure CDN 사용자 지정 도메인에서 HTTPS 구성][cdn-https]을 참조하세요.
 
-- **정적 웹 사이트 호스팅**. 저장소 계정에서 "[보안 전송 필요][storage-https]" 옵션을 사용하도록 설정합니다. 이 옵션을 사용하도록 설정하면 저장소 계정에서 보안 HTTPS 연결의 요청만 허용합니다. 
+- **정적 웹 사이트 호스팅**. 저장소 계정에서 "[보안 전송 필요][storage-https]" 옵션을 사용하도록 설정합니다. 이 옵션을 사용하도록 설정하면 저장소 계정에서 보안 HTTPS 연결의 요청만 허용합니다.
 
 - **API Management**. HTTPS 프로토콜만 사용하도록 API를 구성합니다. Azure Portal 또는 Resource Manager 템플릿을 통해 이를 구성할 수 있습니다.
 
@@ -250,15 +253,15 @@ public static Task<IActionResult> Run(
     }
     ```
 
-- **Azure Functions**. "[HTTPS만][functions-https]" 설정을 사용하도록 설정합니다. 
+- **Azure Functions**. "[HTTPS만][functions-https]" 설정을 사용하도록 설정합니다.
 
 ### <a name="lock-down-the-function-app"></a>함수 앱 잠금
 
 모든 함수 호출은 API 게이트웨이를 통해 이동해야 합니다. 이 작업은 다음과 같이 수행할 수 있습니다.
 
-- 함수 키를 요구하도록 함수 앱을 구성합니다. 함수 앱을 호출하면 API Management 게이트웨이에 함수 키가 포함됩니다. 이렇게 하면 클라이언트에서 게이트웨이를 무시하여 직접 함수를 호출하지 못하도록 차단합니다. 
+- 함수 키를 요구하도록 함수 앱을 구성합니다. 함수 앱을 호출하면 API Management 게이트웨이에 함수 키가 포함됩니다. 이렇게 하면 클라이언트에서 게이트웨이를 무시하여 직접 함수를 호출하지 못하도록 차단합니다.
 
-- API Management 게이트웨이에는 [고정 IP 주소][apim-ip]가 있습니다. Azure Function을 제한하여 고정 IP 주소의 호출만 허용합니다. 자세한 내용은 [Azure App Service 고정 IP 제한][app-service-ip-restrictions]을 참조하세요. 이 기능은 표준 계층 서비스에서만 사용할 수 있습니다. 
+- API Management 게이트웨이에는 [고정 IP 주소][apim-ip]가 있습니다. Azure Function을 제한하여 고정 IP 주소의 호출만 허용합니다. 자세한 내용은 [Azure App Service 고정 IP 제한][app-service-ip-restrictions]을 참조하세요. 이 기능은 표준 계층 서비스에서만 사용할 수 있습니다.
 
 ### <a name="protect-application-secrets"></a>응용 프로그램 비밀 보호
 
@@ -276,17 +279,17 @@ public static Task<IActionResult> Run(
 
 API는 서비스와 클라이언트 간의 계약입니다. 이 아키텍처에서 API 계약은 API Management 계층에서 정의됩니다. API Management는 각각 별개이지만 상호 보완 관계인 두 가지 [버전 관리 개념][apim-versioning]을 지원합니다.
 
-- *버전*을 사용하면 API 소비자가 요구 사항에 따라 API 버전을 선택할 수 있습니다(예: v1 및 v2). 
+- *버전*을 사용하면 API 소비자가 요구 사항에 따라 API 버전을 선택할 수 있습니다(예: v1 및 v2).
 
 - *수정 버전*을 통해 API 관리자는 API에서 호환성이 손상되지 않는 변경 작업을 수행하고 변경 내용을 배포할 수 있으며, 변경 로그를 통해 API 소비자에게 변경 관련 정보를 제공할 수 있습니다.
 
-API에서 호환성이 손상되는 변경을 수행하는 경우 API Management에서 새 버전을 게시합니다. 새 버전은 원래 버전과 함께 별도의 함수 앱에 배포됩니다. 이렇게 하면 클라이언트 응용 프로그램을 중단하지 않고 기존 클라이언트를 새 API로 마이그레이션할 수 있습니다. 결국에는 이전 버전을 더 이상 사용하지 않을 수 있습니다. API Management는 URL 경로, HTTP 헤더 또는 쿼리 문자열과 같은 여러 [버전 관리 체계][apim-versioning-schemes]를 지원합니다. 일반적인 API 버전 관리에 대한 자세한 내용은 [RESTful 웹 API 버전 관리][api-versioning]를 참조하세요.
+API에서 호환성이 손상되는 변경을 수행하는 경우 API Management에서 새 버전을 게시합니다. 새 버전은 원래 버전과 함께 별도의 함수 앱에 배포됩니다. 이렇게 하면 클라이언트 응용 프로그램을 중단하지 않고 기존 클라이언트를 새 API로 마이그레이션할 수 있습니다. 결국에는 이전 버전을 더 이상 사용하지 않을 수 있습니다. API Management는 여러 [버전 관리 체계][apim-versioning-schemes]: URL 경로, HTTP 헤더 또는 쿼리 문자열을 지원합니다. 일반적인 API 버전 관리에 대한 자세한 내용은 [RESTful 웹 API 버전 관리][api-versioning]를 참조하세요.
 
 API 변경을 차단하지 않는 업데이트의 경우 동일한 함수 앱의 스테이징 슬롯에 새 버전을 배포합니다. 배포가 성공했는지 확인한 다음, 준비된 버전을 프로덕션 버전으로 바꿉니다. API Management에서 수정 버전을 게시합니다.
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
-이 참조 아키텍처를 배포하기 위해 [GitHub 추가 정보][readme]를 확인합니다. 
+이 참조 아키텍처를 배포하기 위해 [GitHub 추가 정보][readme]를 확인합니다.
 
 <!-- links -->
 

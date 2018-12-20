@@ -1,24 +1,26 @@
 ---
 title: Azure Stream Analytics를 사용하는 스트림 처리
-description: Azure에서 종단간 스트림 처리 파이프라인 만들기
+titleSuffix: Azure Reference Architectures
+description: Azure에서 엔드투엔드 스트림 처리 파이프라인을 만듭니다.
 author: MikeWasson
 ms.date: 11/06/2018
-ms.openlocfilehash: e16547ccdcb81007e154e341f09be555ac82d1a1
-ms.sourcegitcommit: 02ecd259a6e780d529c853bc1db320f4fcf919da
+ms.custom: seodec18
+ms.openlocfilehash: 44eaf51f2180be250defbeb0d141ab24f7f17d4b
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263765"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53119934"
 ---
-# <a name="stream-processing-with-azure-stream-analytics"></a>Azure Stream Analytics를 사용하는 스트림 처리
+# <a name="create-a-stream-processing-pipeline-with-azure-stream-analytics"></a>Azure Stream Analytics를 사용하는 스트림 처리 파이프라인 만들기
 
-이 참조 아키텍처는 종단 간 스트림 처리 파이프라인을 보여줍니다. 파이프라인은 두 원본에서 데이터를 수집하고, 두 스트림에 있는 레코드의 상관 관계를 만들고, 시간 범위에서 이동 평균을 계산합니다. 추가 분석을 위해 결과가 저장됩니다. 
+이 참조 아키텍처는 엔드투엔드 [스트림 처리](/azure/architecture/data-guide/big-data/real-time-processing) 파이프라인을 보여줍니다. 파이프라인은 두 원본에서 데이터를 수집하고, 두 스트림에 있는 레코드의 상관 관계를 만들고, 시간 범위에서 이동 평균을 계산합니다. 추가 분석을 위해 결과가 저장됩니다.
 
-이 아키텍처에 대한 참조 구현은 [GitHub][github]에서 사용할 수 있습니다. 
+이 아키텍처에 대한 참조 구현은 [GitHub][github]에서 사용할 수 있습니다.
 
-![](./images/stream-processing-asa/stream-processing-asa.png)
+![Azure Stream Analytics를 사용하는 스트림 처리 파이프라인을 만들기 위한 참조 아키텍처](./images/stream-processing-asa/stream-processing-asa.png)
 
-**시나리오**: 택시 회사는 각 택시 여정에 대한 데이터를 수집합니다. 이 시나리오의 경우 두 개의 별도 장치가 데이터를 전송하고 있다고 가정합니다. 택시에는 각 승객 &mdash; 기간, 거리, 승차 및 하차 위치에 대한 정보를 전송하는 미터가 있습니다. 별도 장치는 고객의 지불을 수락하고 요금에 대한 데이터를 보냅니다. 택시 회사는 추세를 파악하기 위해 실시간으로 마일당 평균 팁을 계산하려고 합니다.
+**시나리오**: 한 택시 회사에서 각 택시 운행 데이터를 수집합니다. 이 시나리오의 경우 두 개의 별도 장치가 데이터를 전송하고 있다고 가정합니다. 택시에는 각 승객 &mdash; 기간, 거리, 승차 및 하차 위치에 대한 정보를 전송하는 미터가 있습니다. 별도 장치는 고객의 지불을 수락하고 요금에 대한 데이터를 보냅니다. 택시 회사는 추세를 파악하기 위해 실시간으로 마일당 평균 팁을 계산하려고 합니다.
 
 ## <a name="architecture"></a>아키텍처
 
@@ -34,21 +36,25 @@ ms.locfileid: "51263765"
 
 **Microsoft Power BI** Power BI는 비즈니스 정보에 대한 데이터를 분석하는 비즈니스 분석 도구 제품군입니다. 이 아키텍처에서는 Cosmos DB에서 데이터를 로드합니다. 따라서 사용자가 수집된 기록 데이터의 전체 집합을 분석할 수 있습니다. 데이터의 실시간 보기에 대해 Stream Analytics에서 Power BI로 직접 결과를 스트리밍할 수도 있습니다. 자세한 내용은 [Power BI의 실시간 스트리밍](/power-bi/service-real-time-streaming)을 참조하세요.
 
-**Azure Monitor** [Azure Monitor](/azure/monitoring-and-diagnostics/)는 솔루션에 배포된 Azure 서비스에 대한 성능 메트릭을 수집합니다. 대시보드에서 이를 시각화하여 솔루션의 상태에 대한 인사이트를 얻을 수 있습니다. 
+**Azure Monitor** [Azure Monitor](/azure/monitoring-and-diagnostics/)는 솔루션에 배포된 Azure 서비스에 대한 성능 메트릭을 수집합니다. 대시보드에서 이를 시각화하여 솔루션의 상태에 대한 인사이트를 얻을 수 있습니다.
 
 ## <a name="data-ingestion"></a>데이터 수집
 
-데이터 원본을 시뮬레이션하기 위해 이 참조 아키텍처는 [뉴욕시 택시 데이터](https://uofi.app.box.com/v/NYCtaxidata/folder/2332218797) 데이터 세트<sup>[[1]](#note1)</sup>를 사용합니다. 이 데이터 세트에는 4년(2010 &ndash; 2013) 동안 뉴욕시의 택시 여정에 대한 데이터가 포함됩니다. 여기에는 승객 데이터 및 요금 데이터라는 두 가지 형식의 레코드가 포함됩니다. 승객 데이터에는 여정 기간, 여정 거리 및 승차 및 하차 위치가 포함됩니다. 요금 데이터에는 요금, 세금 및 팁 금액이 포함됩니다. 레코드 형식 모두의 공통 필드에는 등록 번호, 택시 라이선스 및 공급 업체 ID가 포함됩니다. 이러한 세 필드는 택시와 드라이버를 고유하게 식별합니다. 데이터가 CSV 형식으로 저장됩니다. 
+<!-- markdownlint-disable MD033 MD034 -->
 
-[1] <span id="note1">Donovan, Brian; Work, Dan (2016): 뉴욕시 택시 여정 데이터(2010-2013) University of Illinois at Urbana-Champaign https://doi.org/10.13012/J8PN93H8
+데이터 원본을 시뮬레이션하기 위해 이 참조 아키텍처는 [뉴욕시 택시 데이터](https://uofi.app.box.com/v/NYCtaxidata/folder/2332218797) 데이터 세트<sup>[[1]](#note1)</sup>를 사용합니다. 이 데이터 세트에는 4년(2010 &ndash; 2013) 동안 뉴욕시의 택시 여정에 대한 데이터가 포함됩니다. 두 가지 유형의 레코드를 포함합니다. 그것은 바로 승객 데이터와 요금 데이터입니다. 승객 데이터에는 여정 기간, 여정 거리 및 승차 및 하차 위치가 포함됩니다. 요금 데이터에는 요금, 세금 및 팁 금액이 포함됩니다. 레코드 형식 모두의 공통 필드에는 등록 번호, 택시 라이선스 및 공급 업체 ID가 포함됩니다. 이러한 세 필드는 택시와 드라이버를 고유하게 식별합니다. 데이터가 CSV 형식으로 저장됩니다.
 
-데이터 생성기는 레코드를 읽고 Azure Event Hubs로 전송하는 .NET Core 응용 프로그램입니다. 생성기는 승객 데이터를 JSON 형식으로 보내고, 요금 데이터를 CSV 형식으로 전송합니다. 
+[1] <span id="note1">Donovan, Brian; Work, Dan(2016): 뉴욕시 택시 운행 데이터(2010-2013). University of Illinois at Urbana-Champaign https://doi.org/10.13012/J8PN93H8
 
-Event Hubs는 [파티션](/azure/event-hubs/event-hubs-features#partitions)을 사용하여 데이터를 분할합니다. 파티션을 사용하면 소비자가 각 파티션을 병렬로 읽을 수 있습니다. Event Hubs에 데이터를 보낼 때 파티션 키를 명시적으로 지정할 수 있습니다. 그렇지 않으면 레코드는 라운드 로빈 방식으로 파티션에 할당됩니다. 
+<!-- markdownlint-enable MD033 MD034 -->
+
+데이터 생성기는 레코드를 읽고 Azure Event Hubs로 전송하는 .NET Core 응용 프로그램입니다. 생성기는 승객 데이터를 JSON 형식으로 보내고, 요금 데이터를 CSV 형식으로 전송합니다.
+
+Event Hubs는 [파티션](/azure/event-hubs/event-hubs-features#partitions)을 사용하여 데이터를 분할합니다. 파티션을 사용하면 소비자가 각 파티션을 병렬로 읽을 수 있습니다. Event Hubs에 데이터를 보낼 때 파티션 키를 명시적으로 지정할 수 있습니다. 그렇지 않으면 레코드는 라운드 로빈 방식으로 파티션에 할당됩니다.
 
 이 특정 시나리오에서 승객 데이터 및 요금 데이터는 지정된 택시에 대해 동일한 파티션 ID를 사용해야 합니다. 그러면 Stream Analytics에서 두 스트림의 상관 관계를 만드는 경우 병렬 처리 수준을 적용할 수 있습니다. 승객 데이터의 *n* 파티션에 있는 레코드는 요금 데이터의 *n* 파티션에 있는 레코드와 일치합니다.
 
-![](./images/stream-processing-asa/stream-processing-eh.png)
+![Azure Stream Analytics 및 Event Hubs를 사용하는 스트림 처리 다이어그램](./images/stream-processing-asa/stream-processing-eh.png)
 
 데이터 생성기에서 두 레코드 형식에 대한 공통 데이터 모델에는 `Medallion`, `HackLicense` 및 `VendorId`의 연결인 `PartitionKey` 속성이 있습니다.
 
@@ -139,7 +145,7 @@ Step3 AS (
 
 이 쿼리는 일치하는 레코드를 고유하게 식별하는 필드 집합의 레코드를 조인합니다(Medallion, HackLicense, VendorId 및 PickupTime). `JOIN` 문에는 파티션 ID도 포함됩니다. 언급했듯이 여기서는 일치하는 레코드에 항상 이 시나리오에서 동일한 파티션 ID가 있다는 사실을 활용합니다.
 
-Stream Analytics에서 조인은 *일시적*입니다. 즉, 레코드가 특정 기간 내에 조인됩니다. 그렇지 않으면 작업이 일치 항목을 무기한 대기해야 합니다. [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/join-azure-stream-analytics) 함수는 일치 항목에서 시간 내에 일치하는 두 개의 레코드를 분리할 수 있는 거리를 지정합니다. 
+Stream Analytics에서 조인은 *일시적*입니다. 즉, 레코드가 특정 기간 내에 조인됩니다. 그렇지 않으면 작업이 일치 항목을 무기한 대기해야 합니다. [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/join-azure-stream-analytics) 함수는 일치 항목에서 시간 내에 일치하는 두 개의 레코드를 분리할 수 있는 거리를 지정합니다.
 
 작업의 마지막 단계는 5분이라는 도약 창에서 그룹화되는 마일당 평균 팁을 계산합니다.
 
@@ -159,29 +165,29 @@ Stream Analytics에서는 몇 가지 [기간 함수](/azure/stream-analytics/str
 
 ### <a name="event-hubs"></a>Event Hubs
 
-Event Hubs의 처리량 용량은 [처리량 단위](/azure/event-hubs/event-hubs-features#throughput-units)로 제어됩니다. [자동 팽창](/azure/event-hubs/event-hubs-auto-inflate)을 사용하도록 설정하여 이벤트 허브를 자동 크기 조정할 수 있습니다. 그러면 트래픽에 따라 처리량 단위를 구성된 최댓값까지 자동으로 크기 조정합니다. 
+Event Hubs의 처리량 용량은 [처리량 단위](/azure/event-hubs/event-hubs-features#throughput-units)로 제어됩니다. [자동 팽창](/azure/event-hubs/event-hubs-auto-inflate)을 사용하도록 설정하여 이벤트 허브를 자동 크기 조정할 수 있습니다. 그러면 트래픽에 따라 처리량 단위를 구성된 최댓값까지 자동으로 크기 조정합니다.
 
 ### <a name="stream-analytics"></a>Stream Analytics
 
 Stream Analytics의 경우 작업에 할당된 컴퓨팅 리소스는 스트리밍 단위로 측정됩니다. 작업을 병렬 처리할 수 있는 경우 Stream Analytics 작업은 크기를 조정하는 것이 최선입니다. 이런 방식으로 Stream Analytics는 여러 계산 노드에서 작업을 배포할 수 있습니다.
 
-Event Hubs 입력의 경우 `PARTITION BY` 키워드를 사용하여 Stream Analytics 작업을 분할합니다. 데이터는 Event Hubs 파티션에 따라 하위 집합으로 구분됩니다. 
+Event Hubs 입력의 경우 `PARTITION BY` 키워드를 사용하여 Stream Analytics 작업을 분할합니다. 데이터는 Event Hubs 파티션에 따라 하위 집합으로 구분됩니다.
 
 기간 이동 함수 및 일시 조인에는 추가 SU가 필요합니다. 사용 가능한 경우 `PARTITION BY`를 사용하여 각 파티션에서 개별적으로 처리됩니다. 자세한 내용은 [스트리밍 단위 이해 및 조정](/azure/stream-analytics/stream-analytics-streaming-unit-consumption#windowed-aggregates)을 참조하세요.
 
 전체 Stream Analytics 작업을 병렬 처리할 수 없는 경우 하나 이상의 병렬 단계부터 여러 단계로 작업을 중단하려고 합니다. 따라서 첫 번째 단계는 병렬로 실행할 수 있습니다. 예를 들어 이 참조 아키텍처에서:
 
-- 1 및 2단계는 단순히 단일 파티션 내에서 레코드를 선택하는 `SELECT` 문입니다. 
+- 1 및 2단계는 단순히 단일 파티션 내에서 레코드를 선택하는 `SELECT` 문입니다.
 - 3단계에서는 두 입력 스트림에 분할된 조인을 수행합니다. 이 단계에서는 일치하는 레코드가 동일한 파티션 키를 공유한다는 사실을 활용하므로 각 입력 스트림에서 같은 파티션 ID를 갖도록 보장됩니다.
 - 4단계에서는 모든 파티션을 통해 집계합니다. 이 단계는 병렬 처리될 수 없습니다.
 
 Stream Analytics [작업 다이어그램](/azure/stream-analytics/stream-analytics-job-diagram-with-metrics)을 사용하여 작업에서 각 단계에 할당되는 파티션 수를 확인합니다. 다음 다이어그램은 이 참조 아키텍처에 대한 작업 다이어그램을 보여줍니다.
 
-![](./images/stream-processing-asa/job-diagram.png)
+![작업 다이어그램](./images/stream-processing-asa/job-diagram.png)
 
 ### <a name="cosmos-db"></a>Cosmos DB
 
-Cosmos DB에 대한 처리량 용량은 RU([요청 단위](/azure/cosmos-db/request-units))로 측정됩니다. 10,000RU를 넘는 Cosmos DB 컨테이너의 크기를 조정하려면 컨테이너를 만들 때 [파티션 키](/azure/cosmos-db/partition-data)를 지정하고, 모든 문서에서 파티션 키를 포함해야 합니다. 
+Cosmos DB에 대한 처리량 용량은 RU([요청 단위](/azure/cosmos-db/request-units))로 측정됩니다. 10,000RU를 넘는 Cosmos DB 컨테이너의 크기를 조정하려면 컨테이너를 만들 때 [파티션 키](/azure/cosmos-db/partition-data)를 지정하고, 모든 문서에서 파티션 키를 포함해야 합니다.
 
 이 참조 아키텍처에서는 새 문서가 분당 한 번씩 만들어지므로(도약 창 간격) 처리량 요구 사항이 매우 낮습니다. 따라서 이 시나리오에서는 파티션 키를 할당할 필요가 없습니다.
 
@@ -199,13 +205,13 @@ Cosmos DB에 대한 처리량 용량은 RU([요청 단위](/azure/cosmos-db/requ
 
 다음 이미지에서는 약 1시간 동안 Stream Analytics 작업을 실행한 후에 대시보드를 표시합니다.
 
-![](./images/stream-processing-asa/asa-dashboard.png)
+![택시 승차 대시보드의 스크린샷](./images/stream-processing-asa/asa-dashboard.png)
 
-왼쪽 아래의 패널에서는 처음 15분 동안 Stream Analytics 작업에 대한 SU 사용이 증가한 다음, 감소된다고 표시합니다. 작업이 안정된 상태에 도달하는 경우 일반적인 패턴입니다. 
+왼쪽 아래의 패널에서는 처음 15분 동안 Stream Analytics 작업에 대한 SU 사용이 증가한 다음, 감소된다고 표시합니다. 작업이 안정된 상태에 도달하는 경우 일반적인 패턴입니다.
 
-Event Hubs가 오른쪽 위 패널에 표시된 대로 요청을 제한합니다. 제한 오류를 수신할 때 Event Hubs 클라이언트 SDK가 자동으로 다시 시도하기 때문에 필요에 따른 제한된 요청은 문제가 되지 않습니다. 그러나 일관된 제한 오류가 표시되는 경우 이벤트 허브에 추가 처리량 단위가 필요합니다. 다음 그래프에서는 Event Hubs 자동 팽창 기능을 사용하는 테스트 실행을 보여줍니다. 여기서는 필요에 따라 처리량 단위를 자동으로 확장합니다. 
+Event Hubs가 오른쪽 위 패널에 표시된 대로 요청을 제한합니다. 제한 오류를 수신할 때 Event Hubs 클라이언트 SDK가 자동으로 다시 시도하기 때문에 필요에 따른 제한된 요청은 문제가 되지 않습니다. 그러나 일관된 제한 오류가 표시되는 경우 이벤트 허브에 추가 처리량 단위가 필요합니다. 다음 그래프에서는 Event Hubs 자동 팽창 기능을 사용하는 테스트 실행을 보여줍니다. 여기서는 필요에 따라 처리량 단위를 자동으로 확장합니다.
 
-![](./images/stream-processing-asa/stream-processing-eh-autoscale.png)
+![Event Hubs 자동 크기 조정의 스크린샷](./images/stream-processing-asa/stream-processing-eh-autoscale.png)
 
 자동 팽창은 6시 35분경에 설정되었습니다. Event Hubs가 최대 3개의 처리량 단위로 자동으로 강화되면 제한된 요청에서 삭제가 표시됩니다.
 
@@ -213,7 +219,6 @@ Event Hubs가 오른쪽 위 패널에 표시된 대로 요청을 제한합니다
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
-참조 구현을 배포하고 실행하려면 [GitHub readme][github]의 단계를 따릅니다. 
-
+참조 구현을 배포하고 실행하려면 [GitHub readme][github]의 단계를 따릅니다.
 
 [github]: https://github.com/mspnp/reference-architectures/tree/master/data/streaming_asa

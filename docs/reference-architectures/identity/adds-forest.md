@@ -1,33 +1,31 @@
 ---
 title: Azure에서 ADDS 리소스 포리스트 만들기
+titleSuffix: Azure Reference Architectures
 description: >-
   Azure에서 신뢰할 수 있는 Active Directory 도메인을 만드는 방법입니다.
 
   지침, vpn-게이트웨이, expressroute, 부하 분산 장치, 가상 네트워크, active-directory
 author: telmosampaio
 ms.date: 05/02/2018
-pnp.series.title: Identity management
-pnp.series.prev: adds-extend-domain
-pnp.series.next: adfs
-cardTitle: Create an AD DS forest in Azure
-ms.openlocfilehash: 0bbf8aff91aaec8718e44f4450711ff96cfc1878
-ms.sourcegitcommit: 1287d635289b1c49e94f839b537b4944df85111d
+ms.custom: seodec18
+ms.openlocfilehash: e8ad2efd24286f23698bb8e294b15d88232c1166
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52332326"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120376"
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>Azure에서 AAD DS(Active Directory Domain Services) 리소스 포리스트 만들기
 
-이 참조 아키텍처는 온-프레미스 AD 포레스트에 있는 도메인의 신뢰를 받는 Azure의 별도 Active Directory 도메인을 생성하는 방법을 설명합니다. [**이 솔루션을 배포합니다**.](#deploy-the-solution)
+이 참조 아키텍처는 온-프레미스 AD 포레스트에 있는 도메인의 신뢰를 받는 Azure의 별도 Active Directory 도메인을 생성하는 방법을 설명합니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
 
-[![0]][0] 
+![별도 Active Directory 도메인으로 하이브리드 네트워크 아키텍처 보안 유지](./images/adds-forest.png)
 
 *이 아키텍처의 [Visio 파일][visio-download]을 다운로드합니다.*
 
-AD DS(Active Directory Domain Services)는 ID 정보를 계층 구조에 저장합니다. 계층 구조의 최상위 노드를 포레스트라고 합니다. 포레스트는 도메인을, 도메인은 다른 유형의 개체를 담고 있습니다. 이 참조 아키텍처는 온-프레미스 도메인과의 단방향의 보내는 트러스트 관계를 구축하여 Azure에 AD DS 포레스트를 만듭니다. Azure에 있는 포레스트는 온-프레미스에 없는 도메인을 포함합니다. 트러스트 관계를 바탕으로 온-프레미스 도메인에서 수행한 로그인을 통해 별개의 Azure 도메인에 있는 리소스에 접속할 수 있습니다. 
+AD DS(Active Directory Domain Services)는 ID 정보를 계층 구조에 저장합니다. 계층 구조의 최상위 노드를 포레스트라고 합니다. 포레스트는 도메인을, 도메인은 다른 유형의 개체를 담고 있습니다. 이 참조 아키텍처는 온-프레미스 도메인과의 단방향의 보내는 트러스트 관계를 구축하여 Azure에 AD DS 포레스트를 만듭니다. Azure에 있는 포레스트는 온-프레미스에 없는 도메인을 포함합니다. 트러스트 관계를 바탕으로 온-프레미스 도메인에서 수행한 로그인을 통해 별개의 Azure 도메인에 있는 리소스에 접속할 수 있습니다.
 
-이 아키텍처의 일반적인 용도는 클라우드에 저장된 개체 및 ID에 대한 보안 분리를 유지하는 것과 개별 도메인을 온-프레미스에서 클라우드로 마이그레이션하는 것입니다. 
+이 아키텍처의 일반적인 용도는 클라우드에 저장된 개체 및 ID에 대한 보안 분리를 유지하는 것과 개별 도메인을 온-프레미스에서 클라우드로 마이그레이션하는 것입니다.
 
 추가 고려 사항은 [온-프레미스 Active Directory를 Azure와 통합하기 위한 솔루션 선택][considerations]을 참조하세요. 
 
@@ -35,17 +33,17 @@ AD DS(Active Directory Domain Services)는 ID 정보를 계층 구조에 저장�
 
 이 아키텍처의 구성 요소는 다음과 같습니다.
 
-* **온-프레미스 네트워크**. 온-프레미스 네트워크는 자체 Active Directory 포레스트와 도메인을 포함합니다.
-* **Active Directory 서버**. 클라우드에서 VM으로 실행되는 도메인 서비스를 구현하는 도메인 컨트롤러입니다. 이러한 서버는 온-프레미스에 위치한 도메인들과 분리된 하나 이상의 도메인을 포함하는 포레스트를 호스트합니다.
-* **단방향 트러스트 관계**. 이 다이어그램의 예제는 Azure 도메인으로부터 온-프레미스 도메인으로의 단방향 트러스트 관계를 보여 줍니다. 이 관계를 통해 온-프레미스 사용자는 Azure의 도메인에 있는 리소스에 접근할 수 있지만 Azure 사용자가 온-프레미스의 리소스에 접근할 수는 없습니다. 클라우드 사용자가 온-프레미스 리소스 액세스를 요구하는 경우 양방향 트러스트 관계를 생성할 수도 있습니다.
-* **Active Directory 서브넷**. AD DS 서버는 별도의 서브넷에 호스팅됩니다. NSG(네트워크 보안 그룹) 규칙은 AD DS 서버를 보호하고 예상치 못한 소스로부터의 트래픽에 대한 방화벽을 제공합니다.
-* **Azure 게이트웨이**. Azure 게이트웨이는 온-프레미스 네트워크와 Azure VNet 간 연결을 제공합니다. [VPN 연결][azure-vpn-gateway] 또는 [Azure ExpressRoute][azure-expressroute]가 제공될 수 있습니다. 자세한 내용은 [Azure에 안전한 하이브리드 보안 네트워크 아키텍처 구현][implementing-a-secure-hybrid-network-architecture]을 참조하세요.
+- **온-프레미스 네트워크**. 온-프레미스 네트워크는 자체 Active Directory 포레스트와 도메인을 포함합니다.
+- **Active Directory 서버**. 클라우드에서 VM으로 실행되는 도메인 서비스를 구현하는 도메인 컨트롤러입니다. 이러한 서버는 온-프레미스에 위치한 도메인들과 분리된 하나 이상의 도메인을 포함하는 포레스트를 호스트합니다.
+- **단방향 트러스트 관계**. 이 다이어그램의 예제는 Azure 도메인으로부터 온-프레미스 도메인으로의 단방향 트러스트 관계를 보여 줍니다. 이 관계를 통해 온-프레미스 사용자는 Azure의 도메인에 있는 리소스에 접근할 수 있지만 Azure 사용자가 온-프레미스의 리소스에 접근할 수는 없습니다. 클라우드 사용자가 온-프레미스 리소스 액세스를 요구하는 경우 양방향 트러스트 관계를 생성할 수도 있습니다.
+- **Active Directory 서브넷**. AD DS 서버는 별도의 서브넷에 호스팅됩니다. NSG(네트워크 보안 그룹) 규칙은 AD DS 서버를 보호하고 예상치 못한 소스로부터의 트래픽에 대한 방화벽을 제공합니다.
+- **Azure 게이트웨이**. Azure 게이트웨이는 온-프레미스 네트워크와 Azure VNet 간 연결을 제공합니다. [VPN 연결][azure-vpn-gateway] 또는 [Azure ExpressRoute][azure-expressroute]가 제공될 수 있습니다. 자세한 내용은 [Azure에 안전한 하이브리드 보안 네트워크 아키텍처 구현][implementing-a-secure-hybrid-network-architecture]을 참조하세요.
 
 ## <a name="recommendations"></a>권장 사항
 
 Azure에서 Active Directory를 구현하는 방법에 대한 특정 권장 구성은 다음 문서를 참조하세요.
 
-- [AD DS(Active Directory Domain Services)를 Azure로 확장][adds-extend-domain] 
+- [AD DS(Active Directory Domain Services)를 Azure로 확장][adds-extend-domain]
 - [Azure Virtual Machines에 Windows Server Active Directory를 배포하기 위한 지침][ad-azure-guidelines]
 
 ### <a name="trust"></a>신뢰
@@ -56,8 +54,8 @@ Azure에서 Active Directory를 구현하는 방법에 대한 특정 권장 구�
 
 트러스트는 단방향 또는 양방향으로 생성됩니다.
 
-* 단방향 트러스트는 하나의 도메인 또는 포레스트(*수신* 도메인 또는 포리스트)의 사용자가 다른(*송신*) 도메인 또는 포레스트에 있는 리소스에 액세스할 수 있도록 합니다.
-* 양방향 트러스트는 어느 한 쪽의 도메인 또는 포레스트에 있는 사용자가 다른 쪽 도메인 또는 포레스트에 있는 리소스에 액세스할 수 있도록 합니다.
+- 단방향 트러스트는 하나의 도메인 또는 포레스트(*수신* 도메인 또는 포리스트)의 사용자가 다른(*송신*) 도메인 또는 포레스트에 있는 리소스에 액세스할 수 있도록 합니다.
+- 양방향 트러스트는 어느 한 쪽의 도메인 또는 포레스트에 있는 사용자가 다른 쪽 도메인 또는 포레스트에 있는 리소스에 액세스할 수 있도록 합니다.
 
 다음 표에는 간단한 시나리오에 대한 트러스트 구성이 요약되어 있습니다.
 
@@ -79,8 +77,8 @@ Active Directory는 동일한 도메인의 일부인 도메인 컨트롤러를 �
 
 ## <a name="manageability-considerations"></a>관리 효율성 고려 사항
 
-관리 및 모니터링 고려사항에 대한 자세한 내용은 [Active Directory를 Azure로 확장][adds-extend-domain]을 참조하세요. 
- 
+관리 및 모니터링 고려사항에 대한 자세한 내용은 [Active Directory를 Azure로 확장][adds-extend-domain]을 참조하세요.
+
 자세한 내용은 [Active Directory 모니터링][monitoring_ad]을 참조하세요. 관리 서브넷의 모니터링 서버에 [Microsoft Systems Center][microsoft_systems_center]와 같은 도구를 설치하며 이러한 작업 수행이 수월해질 수 있습니다.
 
 ## <a name="security-considerations"></a>보안 고려 사항
@@ -113,9 +111,9 @@ Active Directory 관련 보안 고려사항을 확인하려면 [Active Directory
 
 1. `azure.json` 파일을 엽니다. `adminPassword` 및 `Password` 인스턴스를 검색하고 암호 값을 추가합니다.
 
-2. 동일한 파일에서 `sharedKey` 인스턴스를 검색하고 VPN 연결에 대한 공유 키를 입력합니다. 
+2. 동일한 파일에서 `sharedKey` 인스턴스를 검색하고 VPN 연결에 대한 공유 키를 입력합니다.
 
-    ```bash
+    ```json
     "sharedKey": "",
     ```
 
@@ -127,30 +125,28 @@ Active Directory 관련 보안 고려사항을 확인하려면 [Active Directory
 
    온-프레미스 VNet과 동일한 리소스 그룹에 배포합니다.
 
-
 ### <a name="test-the-ad-trust-relation"></a>AD 신뢰 관계 테스트
 
 1. Azure Portal을 사용하여 만든 리소스 그룹으로 이동합니다.
 
 2. Azure Portal을 사용하여 `ra-adt-mgmt-vm1`이라는 VM을 찾습니다.
 
-2. `Connect`를 클릭하여 VM에 대한 원격 데스크톱 세션을 엽니다. 사용자 이름은 `contoso\testuser`이고, 암호는 `onprem.json` 매개 변수 파일에서 지정한 것입니다.
+3. `Connect`를 클릭하여 VM에 대한 원격 데스크톱 세션을 엽니다. 사용자 이름은 `contoso\testuser`이고, 암호는 `onprem.json` 매개 변수 파일에서 지정한 것입니다.
 
-3. 원격 데스크톱 세션 내에서 `ra-adtrust-onpremise-ad-vm1`이라는 VM의 IP 주소인 192.168.0.4에 대한 다른 원격 데스크톱 세션을 엽니다. 사용자 이름은 `contoso\testuser`이고, 암호는 `azure.json` 매개 변수 파일에서 지정한 것입니다.
+4. 원격 데스크톱 세션 내에서 `ra-adtrust-onpremise-ad-vm1`이라는 VM의 IP 주소인 192.168.0.4에 대한 다른 원격 데스크톱 세션을 엽니다. 사용자 이름은 `contoso\testuser`이고, 암호는 `azure.json` 매개 변수 파일에서 지정한 것입니다.
 
-4. `ra-adtrust-onpremise-ad-vm1`에 대한 원격 데스크톱 세션 내에서 **서버 관리자**로 이동하고, **도구** > **Active Directory 도메인 및 신뢰**를 클릭합니다. 
+5. `ra-adtrust-onpremise-ad-vm1`에 대한 원격 데스크톱 세션 내에서 **서버 관리자**로 이동하고, **도구** > **Active Directory 도메인 및 신뢰**를 클릭합니다.
 
-5. 왼쪽 창에서 contoso.com을 마우스 오른쪽 단추로 클릭하고, **속성**을 선택합니다.
+6. 왼쪽 창에서 contoso.com을 마우스 오른쪽 단추로 클릭하고, **속성**을 선택합니다.
 
-6. **신뢰** 탭을 클릭합니다. 들어오는 신뢰로 나열된 treyresearch.net이 표시됩니다.
+7. **신뢰** 탭을 클릭합니다. 들어오는 신뢰로 나열된 treyresearch.net이 표시됩니다.
 
-![](./images/ad-forest-trust.png)
-
+![Active Directory 포리스트 트러스트 대화 상자의 스크린샷](./images/ad-forest-trust.png)
 
 ## <a name="next-steps"></a>다음 단계
 
-* [온-프레미스 AD DS 도메인을 Azure로 확장][adds-extend-domain]하기 위한 모범 사례를 살펴보세요.
-* Azure에서 [AD FS 인프라를 생성][adfs]하기 위한 모범 사례를 살펴보세요.
+- [온-프레미스 AD DS 도메인을 Azure로 확장][adds-extend-domain]하기 위한 모범 사례를 살펴보세요.
+- Azure에서 [AD FS 인프라를 생성][adfs]하기 위한 모범 사례를 살펴보세요.
 
 <!-- links -->
 [adds-extend-domain]: adds-extend-domain.md
@@ -179,4 +175,3 @@ Active Directory 관련 보안 고려사항을 확인하려면 [Active Directory
 [outgoing-trust]: https://raw.githubusercontent.com/mspnp/identity-reference-architectures/master/adds-forest/extensions/outgoing-trust.ps1
 [verify-a-trust]: https://technet.microsoft.com/library/cc753821.aspx
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/identity-architectures.vsdx
-[0]: ./images/adds-forest.png "별도 Active Directory 도메인으로 하이브리드 네트워크 아키텍처 보안 유지"

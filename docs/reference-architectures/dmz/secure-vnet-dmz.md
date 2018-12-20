@@ -1,57 +1,59 @@
 ---
 title: Azure와 인터넷 간의 DMZ 구현
+titleSuffix: Azure Reference Architectures
 description: Azure에서 인터넷 액세스로 보안 하이브리드 네트워크 아키텍처를 구현하는 방법입니다.
 author: telmosampaio
 ms.date: 10/22/2018
+ms.custom: seodec18
 pnp.series.title: Network DMZ
 pnp.series.next: nva-ha
 pnp.series.prev: secure-vnet-hybrid
 cardTitle: DMZ between Azure and the Internet
-ms.openlocfilehash: 8d394d8cacd17b3af2b3de13ecb2c3181ef568ba
-ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
+ms.openlocfilehash: ec87cf9aa69bbfea9e40f740fe27e3183bc45fc7
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52295629"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53119985"
 ---
-# <a name="dmz-between-azure-and-the-internet"></a>Azure와 인터넷 간의 DMZ
+# <a name="implement-a-dmz-between-azure-and-the-internet"></a>Azure와 인터넷 간의 DMZ 구현
 
-이 참조 아키텍처는 온-프레미스 네트워크를 Azure로 확장하고 인터넷 트래픽을 수락하는 보안 하이브리드 네트워크를 보여 줍니다. [**이 솔루션을 배포합니다**.](#deploy-the-solution)
+이 참조 아키텍처는 온-프레미스 네트워크를 Azure로 확장하고 인터넷 트래픽을 수락하는 보안 하이브리드 네트워크를 보여 줍니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
 
-[![0]][0] 
+![하이브리드 네트워크 아키텍처 보안](./images/dmz-public.png)
 
 *이 아키텍처의 [Visio 파일][visio-download]을 다운로드합니다.*
 
-이 참조 아키텍처는 [Azure와 온-프레미스 데이터 센터 간 DMZ 구현][implementing-a-secure-hybrid-network-architecture]에 설명된 아키텍처를 확장합니다. 이 참조 아키텍처는 온-프레미스 네트워크로부터 오는 트래픽을 처리하는 사설 DMZ 외에 인터넷 트래픽을 처리하는 공용 DMZ를 추가합니다. 
+이 참조 아키텍처는 [Azure와 온-프레미스 데이터 센터 간 DMZ 구현][implementing-a-secure-hybrid-network-architecture]에 설명된 아키텍처를 확장합니다. 이 참조 아키텍처는 온-프레미스 네트워크로부터 오는 트래픽을 처리하는 사설 DMZ 외에 인터넷 트래픽을 처리하는 공용 DMZ를 추가합니다.
 
-일반적으로 이 아키텍처는 다음과 같은 용도로 사용됩니다.
+이 아키텍처의 일반적인 용도는 다음과 같습니다.
 
-* 워크로드의 일부는 온-프레미스에서, 일부는 Azure에서 실행되는 하이브리드 응용 프로그램
-* 온-프레미스 및 인터넷으로부터 오는 트래픽을 라우팅하는 Azure 인프라
+- 워크로드의 일부는 온-프레미스에서, 일부는 Azure에서 실행되는 하이브리드 응용 프로그램
+- 온-프레미스 및 인터넷으로부터 오는 트래픽을 라우팅하는 Azure 인프라
 
 ## <a name="architecture"></a>아키텍처
 
 이 아키텍처는 다음 구성 요소로 구성됩니다.
 
-* **공용 IP 주소(PIP)**. 공용 엔드포인트의 IP 주소. 인터넷에 연결된 외부 사용자는 이 주소를 통해 시스템에 액세스할 수 있습니다.
-* **NVA(네트워크 가상 어플라이언스)**. 이 아키텍처는 인터넷에서 오는 트래픽을 위한 별도의 NVA 풀을 포함합니다.
-* **Azure Load Balancer**. 인터넷에서 오는 모든 요청은 부하 분산 장치를 통과하고 공용 DMZ 내 NVA로 분산됩니다.
-* **공용 DMZ 인바운드 서브넷**. 이 서브넷은 Azure Load Balancer로부터 오는 요청을 수용합니다. 들어오는 요청은 공용 DMZ 내 NVA 중 하나로 전달됩니다.
-* **공용 DMZ 아웃바운드 서브넷**. NVA에 의해 승인된 요청은 이 서브넷을 거쳐 웹 계층을 위한 내부 부하 분산 장치로 전달됩니다.
+- **공용 IP 주소(PIP)**. 공용 엔드포인트의 IP 주소. 인터넷에 연결된 외부 사용자는 이 주소를 통해 시스템에 액세스할 수 있습니다.
+- **NVA(네트워크 가상 어플라이언스)**. 이 아키텍처는 인터넷에서 오는 트래픽을 위한 별도의 NVA 풀을 포함합니다.
+- **Azure Load Balancer**. 인터넷에서 오는 모든 요청은 부하 분산 장치를 통과하고 공용 DMZ 내 NVA로 분산됩니다.
+- **공용 DMZ 인바운드 서브넷**. 이 서브넷은 Azure Load Balancer로부터 오는 요청을 수용합니다. 들어오는 요청은 공용 DMZ 내 NVA 중 하나로 전달됩니다.
+- **공용 DMZ 아웃바운드 서브넷**. NVA에 의해 승인된 요청은 이 서브넷을 거쳐 웹 계층을 위한 내부 부하 분산 장치로 전달됩니다.
 
 ## <a name="recommendations"></a>권장 사항
 
-대부분의 시나리오의 경우 다음 권장 사항을 적용합니다. 이러한 권장 사항을 재정의하라는 특정 요구 사항이 있는 경우가 아니면 따릅니다. 
+대부분의 시나리오의 경우 다음 권장 사항을 적용합니다. 이러한 권장 사항을 재정의하라는 특정 요구 사항이 있는 경우가 아니면 따릅니다.
 
 ### <a name="nva-recommendations"></a>NVA 권장 사항
 
 인터넷에서 발생하는 트래픽에 대해 하나의 NVA 집합을 사용하고, 온-프레미스에서 발생하는 트래픽에 대해 다른 NVA 집합을 사용합니다. 둘 다에 대해 하나의 NVA 집합만 사용하면 두 네트워크 트래픽 집합 사이에 보안 경계가 없어지므로 보안 위험이 초래됩니다. 별도 NVA를 사용하면 보안 규칙을 검사하는 복잡성이 줄어들고 들어오는 네트워크 요청에 해당하는 규칙이 명확해집니다. 하나의 NVA 집합은 인터넷 트래픽에만 적용되는 규칙을 수행하고 다른 하나의 NVA 집합은 온-프레미스 트래픽에만 적용되는 규칙을 수행합니다.
 
-NVA 수준에서 응용 프로그램 연결을 종료하고 백 엔드 계층 호환성을 유지하기 위해 레이어7 NVA를 포함시킵니다. 이를 통해 백 엔드 계층으로부터의 응답 트래픽이 NVA를 통해 돌아오는 대칭 연결이 보장됩니다.  
+NVA 수준에서 응용 프로그램 연결을 종료하고 백 엔드 계층 호환성을 유지하기 위해 레이어7 NVA를 포함시킵니다. 이를 통해 백 엔드 계층으로부터의 응답 트래픽이 NVA를 통해 돌아오는 대칭 연결이 보장됩니다.
 
 ### <a name="public-load-balancer-recommendations"></a>공용 부하 분산 장치 권장 사항
 
-높은 확장성과 가용성을 위해 공용 DMZ NVA를 하나의 [가용성 집합][availability-set] 내에 배포하고 [인터넷 연결 부하 분산 장치][load-balancer]를 사용하여 인터넷 요청을 가용성 집합 내 NVA에 분산시킵니다.  
+높은 확장성과 가용성을 위해 공용 DMZ NVA를 하나의 [가용성 집합][availability-set] 내에 배포하고 [인터넷 연결 부하 분산 장치][load-balancer]를 사용하여 인터넷 요청을 가용성 집합 내 NVA에 분산시킵니다.
 
 부하 분산 장치가 인터넷 트래픽에 필요한 포트로만 요청을 받도록 구성합니다. 예를 들어, 인바운드 HTTP 요청은 포트 80으로 제한하고 아웃바운드 HTTPS 요청은 포트 443으로 제한합니다.
 
@@ -73,16 +75,15 @@ NVA 수준에서 응용 프로그램 연결을 종료하고 백 엔드 계층 �
 
 이 참조 아키텍처는 여러 수준의 보안을 구현합니다.
 
-* 인터넷 연결 부하 분산 장치는 해당 응용 프로그램에 필요한 포트를 통해서만 수신 공용 DMZ 서브넷 내 NVA로 요청을 전달합니다.
-* 인바운드 및 아웃바운드 공용 DMZ 서브넷을 위한 NSG(네트워크 보안 그룹) 규칙을 통해 NSG 규칙을 충족하지 않는 요청을 차단함으로써 NVA를 위험으로부터 보호할 수 있습니다.
-* NVA를 위한 NAT 라우팅 구성에 따라 포트 80과 포트 443으로 들어오는 요청을 웹 계층의 부하 분산 장치로 전달하고 그 외 다른 모든 포트로 오는 요청은 무시합니다.
+- 인터넷 연결 부하 분산 장치는 해당 응용 프로그램에 필요한 포트를 통해서만 수신 공용 DMZ 서브넷 내 NVA로 요청을 전달합니다.
+- 인바운드 및 아웃바운드 공용 DMZ 서브넷을 위한 NSG(네트워크 보안 그룹) 규칙을 통해 NSG 규칙을 충족하지 않는 요청을 차단함으로써 NVA를 위험으로부터 보호할 수 있습니다.
+- NVA를 위한 NAT 라우팅 구성에 따라 포트 80과 포트 443으로 들어오는 요청을 웹 계층의 부하 분산 장치로 전달하고 그 외 다른 모든 포트로 오는 요청은 무시합니다.
 
 모든 포트로 오는 모든 요청에 대한 로그를 기록해야 합니다. 예상되는 매개변수 범위를 벗어나는 요청은 침입 시도를 의미할 수 있으므로 이에 관심을 기울여 정기적인 로그 감사를 실시합니다.
 
-
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
-이러한 권장 사항을 구현하는 참조 아키텍처 배포는 [GitHub][github-folder]를 통해 수행할 수 있습니다. 
+이러한 권장 사항을 구현하는 참조 아키텍처 배포는 [GitHub][github-folder]를 통해 수행할 수 있습니다.
 
 ### <a name="prerequisites"></a>필수 조건
 
@@ -108,7 +109,7 @@ NVA 수준에서 응용 프로그램 연결을 종료하고 백 엔드 계층 �
 
 이 단계에서는 두 개의 로컬 네트워크 게이트웨이를 연결합니다.
 
-1. Azure Portal에서 만든 리소스 그룹으로 이동합니다. 
+1. Azure Portal에서 만든 리소스 그룹으로 이동합니다.
 
 2. `ra-vpn-vgw-pip`라는 리소스를 찾고 **개요** 블레이드에 표시된 IP 주소를 복사합니다.
 
@@ -116,13 +117,13 @@ NVA 수준에서 응용 프로그램 연결을 종료하고 백 엔드 계층 �
 
 4. **구성** 블레이드를 클릭합니다. **IP 주소** 아래에서 2단계의 IP 주소에 붙여넣습니다.
 
-    ![](./images/local-net-gw.png)
+    ![IP 주소 필드의 스크린샷](./images/local-net-gw.png)
 
 5. **저장**을 클릭하고 작업이 완료되기를 기다립니다. 5분 정도 걸릴 수 있습니다.
 
 6. `onprem-vpn-gateway1-pip`라는 리소스를 찾습니다. **개요** 블레이드에 표시된 IP 주소를 복사합니다.
 
-7. `ra-vpn-lgw`라는 리소스를 찾습니다. 
+7. `ra-vpn-lgw`라는 리소스를 찾습니다.
 
 8. **구성** 블레이드를 클릭합니다. **IP 주소** 아래에서 6단계의 IP 주소에 붙여넣습니다.
 
@@ -132,9 +133,9 @@ NVA 수준에서 응용 프로그램 연결을 종료하고 백 엔드 계층 �
 
 ### <a name="verify-that-network-traffic-reaches-the-web-tier"></a>네트워크 트래픽이 웹 계층에 도달하는지 확인
 
-1. Azure Portal에서 만든 리소스 그룹으로 이동합니다. 
+1. Azure Portal에서 만든 리소스 그룹으로 이동합니다.
 
-2. 공용 DMZ 앞의 부하 분산 장치인 `pub-dmz-lb`라는 리소스를 찾습니다. 
+2. 공용 DMZ 앞의 부하 분산 장치인 `pub-dmz-lb`라는 리소스를 찾습니다.
 
 3. **개요** 블레이드에서 공용 IP 주소를 복사하고 웹 브라우저에서 이 주소를 엽니다. 기본 Apache2 서버 홈 페이지가 표시됩니다.
 
@@ -154,6 +155,3 @@ NVA 수준에서 응용 프로그램 연결을 종료하고 백 엔드 계층 �
 [network-security-group]: /azure/virtual-network/virtual-networks-nsg
 
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/dmz-reference-architectures.vsdx
-
-
-[0]: ./images/dmz-public.png "하이브리드 네트워크 아키텍처 보안"

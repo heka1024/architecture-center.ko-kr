@@ -3,12 +3,13 @@ title: 실시간 자동차 IoT 데이터의 수집 및 처리
 description: IoT를 사용하여 실시간 차량 데이터를 수집하고 처리합니다.
 author: msdpalam
 ms.date: 09/12/2018
-ms.openlocfilehash: 6562e3277e6b6eb38993132284ad43542ef4c0d3
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.custom: fasttrack
+ms.openlocfilehash: 8c123403f21ce96549fe075675ec2275b79493a3
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610739"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004879"
 ---
 # <a name="ingestion-and-processing-of-real-time-automotive-iot-data"></a>실시간 자동차 IoT 데이터의 수집 및 처리
 
@@ -45,7 +46,7 @@ IoT 장치에서 생성된 이벤트(데이터 또는 메시지)는 심층 분�
 * [HDInsight 기반의 Apache Kafka](/azure/hdinsight/kafka/apache-kafka-introduction)는 수집 레이어입니다. 데이터는 Kafka 생산자 API를 사용하여 Kafka 토픽에 기록됩니다.
 * [Azure Databricks](/services/databricks)는 변환 및 분석 레이어에 위치합니다. Databricks 노트북은 Kafka 토픽에서 데이터를 읽는 Kafka 소비자 API를 구현합니다.
 * [Azure Cosmos DB](/services/cosmos-db), [Azure SQL Database](/azure/sql-database/sql-database-technical-overview) 및 Azure SQL Data Warehouse는 서비스 저장소 레이어에 있고, Azure Databricks는 데이터 커넥터를 통해 데이터를 쓸 수 있습니다.
-* [Azure SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)는 대규모 데이터 집합을 저장하고 분석하는 분산 시스템입니다. MPP(대규모 병렬 처리)를 사용하기 때문에 고성능 분석을 실행하는 데 적합합니다.
+* [Azure SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)는 대규모 데이터 세트를 저장하고 분석하는 분산 시스템입니다. MPP(대규모 병렬 처리)를 사용하기 때문에 고성능 분석을 실행하는 데 적합합니다.
 * [Power BI](https://docs.microsoft.com/power-bi) 는 데이터를 분석하고 통찰력을 공유하는 비즈니스 분석 도구 제품군입니다. Power BI는 Analysis Services에 저장된 의미 체계 모델을 쿼리할 수도 있고, SQL Data Warehouse를 직접 쿼리할 수도 있습니다.
 * [Azure AD(Azure Active Directory)](/azure/active-directory)는 [Azure Databricks](https://azure.microsoft.com/services/databricks)에 연결할 때 사용자를 인증합니다. Azure SQL Data Warehouse 데이터 기반 모델을 기준으로 [Analysis Services](/azure/analysis-services)에서 큐브를 만드는 경우 AAD를 사용하여 Power BI를 통해 Analysis Services 서버에 연결할 수 있습니다. 또한 Data Factory는 Azure AD를 사용하여 서비스 주체 또는 MSI(관리 서비스 ID)를 통해 SQL Data Warehouse를 인증할 수 있습니다.
 * [Azure App Services](/azure/app-service/app-service-web-overview), 특히 [API 앱](/services/app-service/api)은 서비스 레이어에 저장된 데이터를 기반으로 타사에 데이터를 공개하는 데 사용할 수 있습니다.
@@ -64,7 +65,7 @@ IoT 장치에서 생성된 이벤트(데이터 또는 메시지)는 심층 분�
 이 아키텍처의 기술은 이벤트 처리에 필요한 규모, 서비스의 SLA, 구성 요소의 비용 관리 및 관리 편의성을 기준으로 선택되었습니다.
 * 99.9% SLA를 제공하는 관리 [HDInsight Kafka](/azure/hdinsight/kafka/apache-kafka-introduction)는 Azure Managed Disks와 통합됩니다.
 * [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)는 처음부터 클라우드의 성능 및 비용 효율성에 최적화되었습니다. Databricks 런타임은 Azure에서 실행할 때 성능과 비용을 10-100배 개선할 수 있는 다음과 같은 여러 핵심 기능을 Apache Spark 워크로드에 추가합니다.
-* Azure Databricks는 Azure 데이터베이스 및 저장소([Azure SQL Data Warehouse](/azure/sql-data-warehouse), [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db), [Azure Data Lake Store](https://azure.microsoft.com/services/storage/data-lake-storage) 및 [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs))와 긴밀하게 통합됩니다.
+* Azure Databricks는 Azure 데이터베이스 및 저장소와 긴밀히 통합됩니다. [Azure SQL Data Warehouse](/azure/sql-data-warehouse), [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db), [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage) 및 [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs)
     * Spark 클러스터가 자동으로 비용을 최소화할 수 있는 자동 크기 조정 및 자동 종료
     * 캐싱, 인덱싱 및 고급 쿼리 최적화를 포함한 성능 최적화. 클라우드 또는 온-프레미스 환경에서 기존 Apache Spark 배포의 성능을 10-100배 개선할 수 있습니다.
     * Azure Active Directory와 통합하면 Azure Databricks를 사용하여 완전한 Azure 기반 솔루션을 실행할 수 있습니다.

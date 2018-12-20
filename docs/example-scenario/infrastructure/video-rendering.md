@@ -3,12 +3,13 @@ title: Azure의 3D 비디오 렌더링
 description: Azure Batch 서비스를 사용하여 Azure에서 원시 HPC 워크로드를 실행합니다.
 author: adamboeglin
 ms.date: 07/13/2018
-ms.openlocfilehash: 1ffdaa5467fec73a01b8caa18b71c2bc4e49abbe
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.custom: fasttrack
+ms.openlocfilehash: 7dacefd5179c426912dd97af9af7b5a39505392d
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610688"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004821"
 ---
 # <a name="3d-video-rendering-on-azure"></a>Azure의 3D 비디오 렌더링
 
@@ -124,15 +125,15 @@ Azure Batch를 사용하는 데 드는 비용은 풀에 사용되는 VM 크기�
 
 서로 다른 수의 서버를 사용하여 8시간 내에 완료되는 작업에 청구될 수 있는 비용의 예는 다음과 같습니다.
 
-* 100개 고성능 CPU VM: [예상 비용][hpc-est-high]
+* 고성능 CPU VM 100개: [예상 비용][hpc-est-high]
 
   100 x H16m(16개 코어, 225GB RAM, 512GB Premium Storage), 2TB Blob Storage, 1TB 송신
 
-* 50개 고성능 CPU VM: [예상 비용][hpc-est-med]
+* 고성능 CPU VM 50개: [예상 비용][hpc-est-med]
 
   50 x H16m(16개 코어, 225GB RAM, 512GB Premium Storage), 2TB Blob Storage, 1TB 송신
 
-* 10개 고성능 CPU VM: [예상 비용][hpc-est-low]
+* 고성능 CPU VM 10개: [예상 비용][hpc-est-low]
 
   10 x H16m(16개 코어, 225GB RAM, 512GB Premium Storage), 2TB Blob Storage, 1TB 송신
 

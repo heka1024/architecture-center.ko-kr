@@ -3,12 +3,13 @@ title: Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션 실행
 description: Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션을 실행합니다.
 author: mikewarr
 ms.date: 09/20/2018
-ms.openlocfilehash: f32e055838d6c62584130f61a0d92b06cc46ec63
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.custom: fasttrack
+ms.openlocfilehash: 42921122d74d07bf890f55be61b04c7e9a4f4e87
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610637"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004663"
 ---
 # <a name="running-computational-fluid-dynamics-cfd-simulations-on-azure"></a>Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션 실행
 
@@ -90,10 +91,10 @@ CycleCloud 서버를 사용하여 HPC 구현을 실행하는 비용은 여러 �
 이 시나리오는 CFD 응용 프로그램을 Azure에서 실행하는 방법을 보여주며, 이렇게 하려면 특정 VM 크기에서만 사용할 수 있는 RDMA 기능이 머신에 필요합니다. 다음은 확장 집합을 1개월 동안 하루에 8시간 연속으로 할당하고 데이터 1TB를 송신할 때 발생할 수 있는 비용 예제입니다. Azure CycleCloud 서버 및 Avere vFXT for Azure 설치에 대한 가격 책정도 포함되어 있습니다.
 
 * 지역: 북유럽
-* Azure CycleCloud 서버: 1 x 표준 D3(4 x CPU, 14GB 메모리, 표준 HDD 32GB)
-* Azure CycleCloud 마스터 서버: 1 x 표준 D12 v(4 x CPU, 28GB 메모리, 표준 HDD 32GB)
-* Azure CycleCloud 노드 배열: 10 x 표준 H16r(16 x CPU, 112GB 메모리)
-* Azure 클러스터 기반의 Avere vFXT: 3 x D16s v3(200GB OS, 프리미엄 SSD 1TB 데이터 디스크)
+* Azure CycleCloud 서버: 표준 D3 1개(CPU 4개, 14GB 메모리, 표준 HDD 32GB)
+* Azure CycleCloud 마스터 서버: 표준 D12 v 1개(CPU 4개, 28GB 메모리, 표준 HDD 32GB)
+* Azure CycleCloud 노드 배열: 표준 H16r 10개(CPU 16개, 112GB 메모리)
+* Azure 클러스터의 Avere vFXT: D16s v3 3개(200GB OS, 프리미엄 SSD 1TB 데이터 디스크)
 * 데이터 송신: 1TB
 
 위에 나열된 하드웨어는 이 [예상 가격][pricing]을 검토하세요.

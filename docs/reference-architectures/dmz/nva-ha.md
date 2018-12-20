@@ -1,43 +1,42 @@
 ---
-title: 고가용성의 네트워크 가상 어플라이언스 배포
-description: 고가용성의 네트워크 가상 어플라이언스를 배포하는 방법입니다.
+title: 고가용성 네트워크 가상 어플라이언스 배포
+titleSuffix: Azure Reference Architectures
+description: 고가용성의 네트워크 가상 어플라이언스를 배포합니다.
 author: telmosampaio
-ms.date: 12/06/2016
-pnp.series.title: Network DMZ
-pnp.series.prev: secure-vnet-dmz
-cardTitle: Deploy highly available network virtual appliances
-ms.openlocfilehash: 556ec1e78960d64cce3bf803fc46c9146ce2584d
-ms.sourcegitcommit: f4069cf68456b5c74acb1b890dc4e45e11f12b59
+ms.date: 12/08/2018
+ms.custom: seodec18
+ms.openlocfilehash: d3f9017db1bbf9741b10db16eb5a3dbab78f1160
+ms.sourcegitcommit: 7d21aec9d9de0004ac777c1d1e364f53aac2350d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43675834"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53120755"
 ---
 # <a name="deploy-highly-available-network-virtual-appliances"></a>고가용성 네트워크 가상 어플라이언스 배포
 
-이 문서는 Azure에서 고가용성을 위한 일련의 NVA(네트워크 가상 어플라이언스)를 배포하는 방법을 보여 줍니다. NVA는 DMZ로 불리는 경계 네트워크로부터 다른 네트워크나 서브넷으로의 네트워크 트래픽 흐름을 제어하기 위해 주로 사용됩니다. Azure에서 DMZ를 구현하는 방법에 대한 자세한 내용은 [Microsoft Cloud Services 및 네트워크 보안][cloud-security]을 참조하세요. 이 문서에는 수신 전용, 송신 전용 및 송수신용 예제 아키텍처가 포함되어 있습니다. 
+이 문서는 Azure에서 고가용성을 위한 일련의 NVA(네트워크 가상 어플라이언스)를 배포하는 방법을 보여 줍니다. NVA는 DMZ로 불리는 경계 네트워크로부터 다른 네트워크나 서브넷으로의 네트워크 트래픽 흐름을 제어하기 위해 주로 사용됩니다. Azure에서 DMZ를 구현하는 방법에 대한 자세한 내용은 [Microsoft Cloud Services 및 네트워크 보안][cloud-security]을 참조하세요. 이 문서에는 수신 전용, 송신 전용 및 송수신용 예제 아키텍처가 포함되어 있습니다.
 
-<strong>사전 요구 사항:</strong> 이 문서는 [Azure Load Balancer][lb-overview] 및 UDR([사용자 정의 경로][udr-overview])에 대한 기본적인 이해를 전제로 합니다. 
-
+**필수 조건:** 이 문서는 [Azure Load Balancer][lb-overview] 및 UDR([사용자 정의 경로][udr-overview])에 대한 기본적인 이해를 전제로 합니다.
 
 ## <a name="architecture-diagrams"></a>아키텍처 다이어그램
 
-NVA는 다양한 아키텍처의 DMZ에 배포할 수 있습니다. 예를 들어, 다음 그림은 수신을 위한 [단일 NVA][nva-scenario]의 사용을 보여 줍니다. 
+NVA는 다양한 아키텍처의 DMZ에 배포할 수 있습니다. 예를 들어, 다음 그림은 수신을 위한 [단일 NVA][nva-scenario]의 사용을 보여 줍니다.
 
 ![[0]][0]
 
 이 아키텍처에서 NVA는 모든 들어오고 나가는 네트워크 트래픽을 검사하여 네트워크 보안 규칙을 만족하는 트래픽만을 통과시킴으로써 안전한 네트워크 경계를 제공합니다. 그러나 모든 네트워크 트래픽이 NVA를 거쳐야 하므로 NVA는 네트워크 내 단일 장애 지점이 됩니다. NVA에 장애가 발생할 경우 네트워크 트래픽을 위한 다른 경로가 존재하지 않고 모든 백 엔드 서브넷은 이용할 수 없게 됩니다.
 
-NVA의 가용성을 높이려면 가용성 집합에 여러 NVA를 배포합니다.    
+NVA의 가용성을 높이려면 가용성 집합에 여러 NVA를 배포합니다.
 
 다음 아키텍처는 고가용성 NVA에 필요한 리소스와 구성을 보여 줍니다.
 
 | 해결 방법 | 이점 | 고려 사항 |
 | --- | --- | --- |
-| [수신용 레이어 7 NVA][ingress-with-layer-7] |모든 NVA 노드가 활성 상태 |연결을 종료하고 SNAT을 사용할 수 있는 NVA가 필요</br> 인터넷과 Azure로부터 오는 트래픽을 위한 별도의 NVA 집합이 필요 </br> Azure 외부에서 오는 트래픽에 대해서만 사용 가능 |
+| [수신용 레이어 7 NVA][ingress-with-layer-7] |모든 NVA 노드가 활성 상태 |연결을 종료하고 SNAT을 사용할 수 있는 NVA가 필요<br/> 인터넷과 Azure로부터 오는 트래픽을 위한 별도의 NVA 집합이 필요 <br/> Azure 외부에서 오는 트래픽에 대해서만 사용 가능 |
 | [송신용 레이어 7 NVA][egress-with-layer-7] |모든 NVA 노드가 활성 상태 | 연결을 종료하고 소스 네트워크 주소 변환(SNAT)을 수행할 수 있는 NVA가 필요
 | [수신-송신 레이어 7 NVA][ingress-egress-with-layer-7] |모든 노드가 활성 상태<br/>Azure에서 발생한 트래픽을 처리할 수 있음 |연결을 종료하고 SNAT을 사용할 수 있는 NVA가 필요<br/>인터넷과 Azure로부터 오는 트래픽을 위한 별도의 NVA 집합이 필요 |
 | [PIP-UDR 전환][pip-udr-switch] |단일 NVA 집합으로 모든 트래픽 처리<br/>(포트 규칙 제한 없이) 모든 트래픽 처리 |활성-수동<br/>장애 조치(Failover) 프로세스가 필요 |
+| [SNAT가 없는 PIP-UDR](#pip-udr-nvas-without-snat) | 단일 NVA 집합으로 모든 트래픽 처리<br/>(포트 규칙 제한 없이) 모든 트래픽 처리<br/>인바운드 요청에 대한 SNAT를 구성할 필요 없음 |활성-수동<br/>장애 조치(Failover) 프로세스가 필요<br/>가상 네트워크 외부에서 실행되는 프로빙 및 장애 조치(failover) 논리 |
 
 ## <a name="ingress-with-layer-7-nvas"></a>수신용 레이어 7 NVA
 
@@ -63,7 +62,7 @@ NVA의 가용성을 높이려면 가용성 집합에 여러 NVA를 배포합니�
 
 ## <a name="ingress-egress-with-layer-7-nvas"></a>수신-송신 레이어 7 NVA
 
-앞의 두 아키텍처의 경우 수신 DMZ와 송신 DMZ가 각각 존재했습니다. 다음 아키텍처는 HTTP나 HTTPS와 같은 레이어7 트래픽의 송수신에 모두 사용되는 DMZ를 생성하는 방법을 보여 줍니다. 
+앞의 두 아키텍처의 경우 수신 DMZ와 송신 DMZ가 각각 존재했습니다. 다음 아키텍처는 HTTP나 HTTPS와 같은 레이어7 트래픽의 송수신에 모두 사용되는 DMZ를 생성하는 방법을 보여 줍니다.
 
 ![[4]][4]
 
@@ -74,27 +73,50 @@ NVA의 가용성을 높이려면 가용성 집합에 여러 NVA를 배포합니�
 
 ## <a name="pip-udr-switch-with-layer-4-nvas"></a>레이어 4 NVA를 사용한 PIP-UDR 전환
 
-다음 아키텍처는 하나의 활성 NVA와 수동 NVA가 있는 아키텍처를 보여 줍니다. 이 아키텍처는 레이어 4 트래픽의 수신 및 송신을 모두 처리합니다. 
+다음 아키텍처는 하나의 활성 NVA와 수동 NVA가 있는 아키텍처를 보여 줍니다. 이 아키텍처는 레이어 4 트래픽의 수신 및 송신을 모두 처리합니다.
 
 ![[3]][3]
 
-이 아키텍처는 이 문서에서 소개된 첫 번째 아키텍처와 유사합니다. 이 아키텍처는 들어오는 레이어 4 요청을 수용하고 필터링하는 단일 NVA를 포함합니다. 이 아키텍처의 경우 가용성을 높이기 위해 또 다른 수동 NVA를 추가합니다. 활성 NVA에 장애가 발생하면 수동 NVA가 활성 상태가 되고 UDR과 PIP는 활성 상태가 된 NVA의 네트워크 인터페이스를 가리키도록 변경됩니다. 이러한 UDR 및 PIP의 변경은 수동으로 또는 자동화된 프로세스를 통해 수행할 수 있습니다. 자동화된 프로세스는 주로 디먼 또는 Azure에서 실행되는 다른 모니터링 서비스입니다. 이 프로세스는 활성 NVA의 상태 프로브에 쿼리를 수행하고 NVA 장애 감지 시 UDR 및 PIP 변경을 수행합니다. 
+> [!TIP]
+> 이 아키텍처를 위한 전체 솔루션은 [GitHub][pnp-ha-nva]에서 사용할 수 있습니다.
+
+이 아키텍처는 이 문서에서 소개된 첫 번째 아키텍처와 유사합니다. 이 아키텍처는 들어오는 레이어 4 요청을 수용하고 필터링하는 단일 NVA를 포함합니다. 이 아키텍처의 경우 가용성을 높이기 위해 또 다른 수동 NVA를 추가합니다. 활성 NVA에 장애가 발생하면 수동 NVA가 활성 상태가 되고 UDR과 PIP는 활성 상태가 된 NVA의 네트워크 인터페이스를 가리키도록 변경됩니다. 이러한 UDR 및 PIP의 변경은 수동으로 또는 자동화된 프로세스를 통해 수행할 수 있습니다. 자동화된 프로세스는 주로 디먼 또는 Azure에서 실행되는 다른 모니터링 서비스입니다. 이 프로세스는 활성 NVA의 상태 프로브에 쿼리를 수행하고 NVA 장애 감지 시 UDR 및 PIP 변경을 수행합니다.
 
 앞의 그림은 고가용성 디먼을 제공하는 [Zookeeper][ zookeeper] 클러스터를 보여 줍니다. ZooKeeper 클러스터 내에서 노드 쿼럼으로 리더를 선출합니다. 리더에 장애가 발생할 경우, 나머지 노드들이 새 리더를 선출합니다. 이 아키텍처에서 리더 노드는 NVA의 상태 엔드포인트에 쿼리를 수행하는 디먼을 실행합니다. NVA가 상태 프로브 응답에 실패할 경우, 디먼은 수동 NVA를 활성 상태로 변경합니다. 그런 다음 디먼이 Azure REST API를 호출하여 실패한 NVA로부터 PIP를 제거하여 활성 상태로 변경된 NVA에 연결합니다. 다시 디먼은 UDR이 새로운 액티브 NVA의 내부 IP 주소를 가리키도록 UDR을 변경합니다.
 
-> [!NOTE]
-> ZooKeeper 노드를 해당 NVA를 포함하는 루트를 사용해서만 액세스할 수 있는 서브넷에 포함시키면 안 됩니다. 그렇지 않으면 NVA 장애 시 ZooKeeper 노드에 액세스할 수 없습니다. 무슨 이유로든 디먼에 장애가 발생한다면 문제 진단을 위해 ZooKeepr 노드에 액세스할 수 없게 됩니다. 
+ZooKeeper 노드를 해당 NVA를 포함하는 루트를 사용해서만 액세스할 수 있는 서브넷에 포함시키면 안 됩니다. 그렇지 않으면 NVA 장애 시 ZooKeeper 노드에 액세스할 수 없습니다. 무슨 이유로든 디먼에 장애가 발생한다면 문제 진단을 위해 ZooKeepr 노드에 액세스할 수 없게 됩니다.
 
-<!--### Solution Deployment-->
+샘플 코드를 포함한 전체 솔루션을 보려면 [GitHub 리포지토리][pnp-ha-nva]의 파일을 참조하세요.
 
-<!-- instructions for deploying this solution here --> 
+## <a name="pip-udr-nvas-without-snat"></a>SNAT가 없는 PIP-UDR NVA
+
+이 아키텍처는 Azure 가상 머신 두 개를 사용하여 자동화된 장애 조치(failover)를 지원하되 SNAT(Source Network Address Translation)가 필요 없는 활성-수동 구성에서 NVA 방화벽을 호스트합니다.
+
+![SNAT 아키텍처가 없는 PIP-UDR NVA](./images/nva-ha/pip-udr-without-snat.png)
+
+> [!TIP]
+> 이 아키텍처를 위한 전체 솔루션은 [GitHub][ha-nva-fo]에서 사용할 수 있습니다.
+
+이 솔루션은 NVA 방화벽에 인바운드 요청을 위한 SNAT를 구성할 수 없는 Azure 고객을 위해 설계되었습니다. SNAT는 원래의 원본 클라이언트 IP 주소를 숨깁니다. 원래의 IP를 로깅해야 하거나 NVA 뒤에 있는 다른 계층형 보안 구성 요소 내에서 사용한 경우 이 솔루션이 기본적인 접근법을 제공합니다.
+
+UDR 테이블 항목의 장애 조치(failover)는 활성 NVA 방화벽 가상 머신에서 인터페이스의 IP 주소로 설정되는 다음 홉 주소를 통해 자동화됩니다. 자동화된 장애 조치(failover) 논리는 [Azure Functions](/azure/azure-functions/)를 사용하여 만든 함수 앱에서 호스트됩니다. 장애 조치(failover) 코드는 Azure Functions 내에서 서버리스 함수로 실행됩니다. 배포는 편리하고, 경제적이며, 유지 관리 및 사용자 지정이 용이합니다. 또한 함수 앱은 Azure Functions 내에서 호스트되므로 가상 네트워크에 대한 종속성이 없습니다. 가상 네트워크에 대한 변경 사항이 NVA 방화벽에 영향을 줄 경우 함수 앱이 계속 개별적으로 실행됩니다. 테스트는 인바운드 클라이언트 요청과 동일한 경로를 사용하여 가상 네트워크 외부에서 수행되므로 더 정확합니다.
+
+함수 앱 코드는 두 가지 방법 중 하나로 NVA 방화벽의 가용성을 확인합니다.
+
+- NVA 방화벽을 호스트하는 Azure Virtual Machines의 상태 모니터링.
+
+- 방화벽을 통해 백 엔드 웹 서버에 열려 있는 포트가 있는지 테스트. 이 옵션의 경우 NVA가 함수 앱 코드가 테스트할 소켓을 PIP를 통해 공개해야 합니다.
+
+함수 앱을 구성할 때 사용하려는 프로브 유형을 선택합니다. 샘플 코드를 포함한 전체 솔루션을 보려면 [GitHub 리포지토리][ha-nva-fo]의 파일을 참조하세요.
 
 ## <a name="next-steps"></a>다음 단계
-* 레이어 7 NVA를 사용하여 [Azure와 온-프레미스 데이터 센터 간의 DMZ 구현][dmz-on-prem] 방법을 알아보세요.
-* 레이어 7 NVA를 사용하여 [Azure와 인터넷 간의 DMZ 구현][dmz-internet] 방법을 알아보세요.
-* [Azure의 네트워크 가상 어플라이언스 문제 해결](/azure/virtual-network/virtual-network-troubleshoot-nva)
+
+- 레이어 7 NVA를 사용하여 [Azure와 온-프레미스 데이터 센터 간의 DMZ 구현][dmz-on-prem] 방법을 알아보세요.
+- 레이어 7 NVA를 사용하여 [Azure와 인터넷 간의 DMZ 구현][dmz-internet] 방법을 알아보세요.
+- [Azure의 네트워크 가상 어플라이언스 문제 해결](/azure/virtual-network/virtual-network-troubleshoot-nva)
 
 <!-- links -->
+
 [cloud-security]: /azure/best-practices-network-security
 [dmz-on-prem]: ./secure-vnet-hybrid.md
 [dmz-internet]: ./secure-vnet-dmz.md
@@ -106,8 +128,11 @@ NVA의 가용성을 높이려면 가용성 집합에 여러 NVA를 배포합니�
 [pip-udr-switch]: #pip-udr-switch-with-layer-4-nvas
 [udr-overview]: /azure/virtual-network/virtual-networks-udr-overview/
 [zookeeper]: https://zookeeper.apache.org/
+[pnp-ha-nva]: https://github.com/mspnp/ha-nva
+[ha-nva-fo]: https://aka.ms/ha-nva-fo
 
 <!-- images -->
+
 [0]: ./images/nva-ha/single-nva.png "단일 NVA 아키텍처"
 [1]: ./images/nva-ha/l7-ingress.png "수신 레이어 7"
 [2]: ./images/nva-ha/l7-ingress-egress.png "송신 레이어 7"

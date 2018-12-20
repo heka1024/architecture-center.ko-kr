@@ -1,24 +1,26 @@
 ---
-title: SQL Data Warehouse를 사용하는 Enterprise BI
-description: Azure를 사용하여 온-프레미스에 저장된 관계형 데이터에서 비즈니스 정보 얻기
+title: Enterprise 비즈니스 인텔리전스
+titleSuffix: Azure Reference Architectures
+description: Azure를 사용하여 온-프레미스에 저장된 관계형 데이터에서 비즈니스 정보를 얻으세요.
 author: MikeWasson
 ms.date: 11/06/2018
-ms.openlocfilehash: 2822cf6d2a75d521f182c267f4bf2bac462d2b7f
-ms.sourcegitcommit: 877777094b554559dc9cb1f0d9214d6d38197439
+ms.custom: seodec18
+ms.openlocfilehash: 656bf6f1bd342856fd8a2d2aa0b62a9dd4d4f87f
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/11/2018
-ms.locfileid: "51527714"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120087"
 ---
 # <a name="enterprise-bi-in-azure-with-sql-data-warehouse"></a>SQL Data Warehouse를 사용하는 Azure의 Enterprise BI
 
-이 참조 아키텍처는 온-프레미스 SQL Server 데이터베이스에서 SQL Data Warehouse로 데이터를 이동하고 분석을 위해 데이터를 변경하는 [ELT](../../data-guide/relational-data/etl.md#extract-load-and-transform-elt)(추출 부하 변형) 파이프라인을 구현합니다. 
+이 참조 아키텍처는 온-프레미스 SQL Server 데이터베이스에서 SQL Data Warehouse로 데이터를 이동하고 분석을 위해 데이터를 변경하는 [ELT(추출 부하 변형)](../../data-guide/relational-data/etl.md#extract-load-and-transform-elt) 파이프라인을 구현합니다.
 
 이 아키텍처에 대한 참조 구현은 [GitHub][github-folder]에서 사용할 수 있습니다.
 
-![](./images/enterprise-bi-sqldw.png)
+![SQL Data Warehouse를 사용하는 Azure의 Enteprise BI를 위한 아키텍처 다이어그램](./images/enterprise-bi-sqldw.png)
 
-**시나리오**: 조직에는 SQL Server 데이터베이스 온-프레미스에 저장된 대규모 OLTP 데이터 집합이 있습니다. 조직은 Power BI를 사용하여 분석을 수행하기 위해 SQL Data Warehouse를 사용하려고 합니다. 
+**시나리오**: 조직에는 SQL Server 데이터베이스 온-프레미스에 저장된 대규모 OLTP 데이터 세트가 있습니다. 조직은 Power BI를 사용하여 분석을 수행하기 위해 SQL Data Warehouse를 사용하려고 합니다.
 
 이 참조 아키텍처는 일회성 또는 주문형 작업을 위해 설계되었습니다. 지속적으로(매시간 또는 매일) 데이터를 이동해야 하는 경우 Azure Data Factory를 사용하여 자동화된 워크플로를 정의하는 것이 좋습니다. Data Factory를 사용하는 참조 아키텍처는 [SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 엔터프라이즈 BI][adf-ra]를 참조하세요.
 
@@ -34,7 +36,7 @@ ms.locfileid: "51527714"
 
 **Blob Storage** Blob 저장소는 SQL Data Warehouse로 로딩하기 전에 데이터를 복사하는 준비 영역으로 사용됩니다.
 
-**Azure SQL Data Warehouse** [SQL Data Warehouse](/azure/sql-data-warehouse/)는 대규모 데이터 분석을 수행하도록 설계되고 배포된 시스템입니다. 고성능 분석을 실행하는 데 적합하도록 하는 MPP(대규모 병렬 처리)를 지원합니다. 
+**Azure SQL Data Warehouse** [SQL Data Warehouse](/azure/sql-data-warehouse/)는 대규모 데이터 분석을 수행하도록 설계되고 배포된 시스템입니다. 고성능 분석을 실행하는 데 적합하도록 하는 MPP(대규모 병렬 처리)를 지원합니다.
 
 ### <a name="analysis-and-reporting"></a>분석 및 보고
 
@@ -49,7 +51,7 @@ ms.locfileid: "51527714"
 **Azure Active Directory**(Azure AD)는 Power BI를 통해 Analysis Services 서버에 연결하는 사용자를 인증합니다.
 
 ## <a name="data-pipeline"></a>데이터 파이프라인
- 
+
 이 참조 아키텍처는 데이터 원본으로 [WorldWideImporters](/sql/sample/world-wide-importers/wide-world-importers-oltp-database) 샘플 데이터베이스를 사용합니다. 데이터 파이프라인에는 다음 단계가 있습니다.
 
 1. SQL Server에서 플랫 파일로 데이터를 내보냅니다(bcp 유틸리티).
@@ -58,10 +60,11 @@ ms.locfileid: "51527714"
 4. 데이터를 별모양 스키마로 변환합니다(T-SQL).
 5. 의미 체계 모델을 Analysis Services로 로드합니다(SQL Server Data Tools).
 
-![](./images/enterprise-bi-sqldw-pipeline.png)
- 
+![엔터프라이즈 BI 파이프라인의 다이어그램](./images/enterprise-bi-sqldw-pipeline.png)
+
 > [!NOTE]
-> 1&ndash;3단계의 경우 Redgate Data Platform Studio를 사용하는 것이 좋습니다. Data Platform Studio는 가장 적합한 호환성 수정 및 최적화를 적용하므로 SQL Data Warehouse를 시작하는 가장 빠른 방법입니다. 자세한 내용은 [Redgate Data Platform Studio를 사용하여 데이터 로드](/azure/sql-data-warehouse/sql-data-warehouse-load-with-redgate)를 참조하세요. 
+> 1&ndash;3단계의 경우 Redgate Data Platform Studio를 사용하는 것이 좋습니다. Data Platform Studio는 가장 적합한 호환성 수정 및 최적화를 적용하므로 SQL Data Warehouse를 시작하는 가장 빠른 방법입니다. 자세한 내용은 [Redgate Data Platform Studio를 사용하여 데이터 로드](/azure/sql-data-warehouse/sql-data-warehouse-load-with-redgate)를 참조하세요.
+>
 
 다음 섹션에서는 이러한 단계를 자세히 설명합니다.
 
@@ -71,7 +74,7 @@ ms.locfileid: "51527714"
 
 **권장 사항**
 
-가능하면 프로덕션 환경에서 리소스 경합을 최소화하기 위해 사용량이 적은 시간에 데이터 추출을 예약합니다. 
+가능하면 프로덕션 환경에서 리소스 경합을 최소화하기 위해 사용량이 적은 시간에 데이터 추출을 예약합니다.
 
 데이터베이스 서버에서 bcp를 실행하지 않습니다. 대신 다른 컴퓨터에서 실행합니다. 로컬 드라이브에 파일을 씁니다. 동시 쓰기를 처리하기에 충분한 I/O 리소스가 있는지 확인합니다. 최상의 성능을 위해서 전용 고속 저장소 드라이브에 파일을 내보냅니다.
 
@@ -83,11 +86,11 @@ Gzip 압축된 형식으로 내보낸 데이터를 저장하여 네트워크 전
 
 **권장 사항**
 
-원본 데이터의 위치 근처 지역에서 저장소 계정을 만듭니다. 동일한 지역에 저장소 계정 및 SQL Data Warehouse 인스턴스를 배포합니다. 
+원본 데이터의 위치 근처 지역에서 저장소 계정을 만듭니다. 동일한 지역에 저장소 계정 및 SQL Data Warehouse 인스턴스를 배포합니다.
 
-CPU 및 I/O 사용은 프로덕션 작업에 영향을 줄 수 있으므로 프로덕션 작업을 실행하는 동일한 컴퓨터에서 AzCopy를 실행하지 마십시오. 
+CPU 및 I/O 사용은 프로덕션 작업에 영향을 줄 수 있으므로 프로덕션 작업을 실행하는 동일한 컴퓨터에서 AzCopy를 실행하지 마십시오.
 
-업로드 속도를 확인하려면 먼저 업로드를 테스트합니다. AzCopy에서 /NC 옵션을 사용하여 동시 복사 작업의 수를 지정할 수 있습니다. 기본 값으로 시작한 다음, 이 설정으로 실험하여 성능을 조정합니다. 저대역폭 환경에서는 많은 수의 동시 작업으로 네트워크 연결에 과부하가 걸려 작업이 성공적으로 실행되지 못할 수 있습니다.  
+업로드 속도를 확인하려면 먼저 업로드를 테스트합니다. AzCopy에서 /NC 옵션을 사용하여 동시 복사 작업의 수를 지정할 수 있습니다. 기본 값으로 시작한 다음, 이 설정으로 실험하여 성능을 조정합니다. 저대역폭 환경에서는 많은 수의 동시 작업으로 네트워크 연결에 과부하가 걸려 작업이 성공적으로 실행되지 못할 수 있습니다.
 
 AzCopy는 공용 인터넷을 통해 저장소로 데이터를 이동합니다. 충분히 빠르지 않은 경우 [ExpressRoute](/azure/expressroute/) 회로 설정을 고려합니다. ExpressRoute는 Azure에 대한 전용 비공개 연결을 통해 데이터를 라우팅하는 서비스입니다. 네트워크 연결 속도가 너무 느린 경우 다른 옵션은 디스크의 데이터를 Azure 데이터 센터로 물리적으로 배달하는 것입니다. 자세한 내용은 [Azure 간 데이터 전송](/azure/architecture/data-guide/scenarios/data-transfer)을 참조하세요.
 
@@ -95,7 +98,7 @@ AzCopy는 공용 인터넷을 통해 저장소로 데이터를 이동합니다. 
 
 ### <a name="load-data-into-sql-data-warehouse"></a>SQL Data Warehouse로 데이터 로드
 
-[PolyBase](/sql/relational-databases/polybase/polybase-guide)를 사용하여 Blob 저장소에서 데이터 웨어하우스로 파일을 로드합니다. PolyBase는 SQL Data Warehouse의 MPP(대규모 병렬 처리) 아키텍처를 활용하도록 디자인되었으며 가장 빠르게 SQL Data Warehouse로 데이터를 로드할 수 있게 합니다. 
+[PolyBase](/sql/relational-databases/polybase/polybase-guide)를 사용하여 Blob 저장소에서 데이터 웨어하우스로 파일을 로드합니다. PolyBase는 SQL Data Warehouse의 MPP(대규모 병렬 처리) 아키텍처를 활용하도록 디자인되었으며 가장 빠르게 SQL Data Warehouse로 데이터를 로드할 수 있게 합니다.
 
 데이터 로드는 두 단계 프로세스로 이루어집니다.
 
@@ -114,7 +117,7 @@ PolyBase는 Gzip 압축된 파일을 읽을 수 있습니다. 그러나 파일 �
 
 다음과 같은 제한 사항을 고려해야 합니다.
 
-- PolyBase는 `varchar(8000)`, `nvarchar(4000)` 또는 `varbinary(8000)`의 최대 열 크기를 지원합니다. 이러한 한도를 초과하는 데이터가 있는 경우 한 가지 옵션은 내보낼 때 데이터를 청크로 분리한 다음, 가져온 후 청크를 다시 어셈블하는 것입니다. 
+- PolyBase는 `varchar(8000)`, `nvarchar(4000)` 또는 `varbinary(8000)`의 최대 열 크기를 지원합니다. 이러한 한도를 초과하는 데이터가 있는 경우 한 가지 옵션은 내보낼 때 데이터를 청크로 분리한 다음, 가져온 후 청크를 다시 어셈블하는 것입니다.
 
 - PolyBase는 \n 또는 새 줄의 고정된 행 종결자를 사용합니다. 새 줄 문자가 원본 데이터에 표시되는 경우 문제가 발생할 수 있습니다.
 
@@ -154,7 +157,7 @@ Power BI 모델로 데이터를 복사할 필요가 없기 때문에 라이브 �
 
 **권장 사항**
 
-데이터 웨어하우스에 대해 직접 BI 대시보드 쿼리를 실행하지 마십시오. BI 대시보드는 웨어하우스에 대한 직접 쿼리가 충족할 수 없는 매우 낮은 응답 시간이 필요합니다. 또한 대시보드를 새로 고치면 성능에 영향을 줄 수 있는 동시 쿼리 수에 불리하게 간주됩니다. 
+데이터 웨어하우스에 대해 직접 BI 대시보드 쿼리를 실행하지 마십시오. BI 대시보드는 웨어하우스에 대한 직접 쿼리가 충족할 수 없는 매우 낮은 응답 시간이 필요합니다. 또한 대시보드를 새로 고치면 성능에 영향을 줄 수 있는 동시 쿼리 수에 불리하게 간주됩니다.
 
 Azure Analysis Services는 BI 대시보드의 쿼리 요구 사항을 처리하도록 설계되었으므로 Power BI에서 Analysis Services를 쿼리하는 것이 좋습니다.
 
@@ -168,7 +171,7 @@ SQL Data Warehouse를 사용하여 주문형 계산 리소스를 확장할 수 �
 
 프로덕션 작업의 경우 Azure Analysis Services에 대한 표준 계층은 분할 및 DirectQuery를 지원하므로 이를 권장합니다. 계층 내에서 인스턴스 크기는 메모리 및 처리 용량을 결정합니다. 처리 능력은 QPU(쿼리 처리 단위)로 측정됩니다. QPU 사용량을 모니터링하여 적절한 크기를 선택합니다. 자세한 내용은 [서버 메트릭 모니터링](/azure/analysis-services/analysis-services-monitor)을 참조하세요.
 
-높은 부하 상태에서 쿼리 성능은 쿼리 동시성으로 인해 저하될 수 있습니다. 더 많은 쿼리를 동시에 수행할 수 있도록 쿼리를 처리하는 복제본의 풀을 만들어 Analysis Services를 확장할 수 있습니다. 데이터 모델 처리 작업은 항상 주 서버에서 발생합니다. 기본적으로 주 서버도 쿼리를 처리합니다. 필요에 따라 쿼리 풀이 모든 쿼리를 처리하도록 단독으로 처리를 실행하도록 주 서버를 지정할 수 있습니다. 높은 처리 요구 사항이 있는 경우 쿼리 풀에서 처리를 구분해야 합니다. 높은 쿼리 부하와 상대적으로 약한 처리가 있는 경우 쿼리 풀에 주 서버를 포함할 수 있습니다. 자세한 내용은 [Azure Analysis Services 확장](/azure/analysis-services/analysis-services-scale-out)을 참조하세요. 
+높은 부하 상태에서 쿼리 성능은 쿼리 동시성으로 인해 저하될 수 있습니다. 더 많은 쿼리를 동시에 수행할 수 있도록 쿼리를 처리하는 복제본의 풀을 만들어 Analysis Services를 확장할 수 있습니다. 데이터 모델 처리 작업은 항상 주 서버에서 발생합니다. 기본적으로 주 서버도 쿼리를 처리합니다. 필요에 따라 쿼리 풀이 모든 쿼리를 처리하도록 단독으로 처리를 실행하도록 주 서버를 지정할 수 있습니다. 높은 처리 요구 사항이 있는 경우 쿼리 풀에서 처리를 구분해야 합니다. 높은 쿼리 부하와 상대적으로 약한 처리가 있는 경우 쿼리 풀에 주 서버를 포함할 수 있습니다. 자세한 내용은 [Azure Analysis Services 확장](/azure/analysis-services/analysis-services-scale-out)을 참조하세요.
 
 불필요한 처리 시간을 줄이기 위해 테이블 형식 모델을 논리적 부분으로 분할하는 데 파티션을 사용하는 것이 좋습니다. 각 파티션은 개별적으로 처리될 수 있습니다. 자세한 내용은 [파티션](/sql/analysis-services/tabular-models/partitions-ssas-tabular)을 참조하세요.
 
@@ -191,11 +194,10 @@ Azure Analysis Services는 Azure AD(Azure Active Directory)를 사용하여 Anal
 
 참조 구현을 배포하고 실행하려면 [GitHub readme][github-folder]의 단계를 따릅니다. 다음을 배포합니다.
 
-  * 온-프레미스 데이터베이스 서버를 시뮬레이션하는 Windows VM Power BI Desktop과 함께 SQL Server 2017 및 관련된 도구를 포함합니다.
-  * SQL Server 데이터베이스에서 가져온 데이터를 저장할 Blob 저장소를 제공하는 Azure 저장소 계정
-  * Azure SQL Data Warehouse 인스턴스
-  * Azure Analysis Services 인스턴스
-
+- 온-프레미스 데이터베이스 서버를 시뮬레이션하는 Windows VM Power BI Desktop과 함께 SQL Server 2017 및 관련된 도구를 포함합니다.
+- SQL Server 데이터베이스에서 가져온 데이터를 저장할 Blob 저장소를 제공하는 Azure 저장소 계정
+- Azure SQL Data Warehouse 인스턴스
+- Azure Analysis Services 인스턴스
 
 ## <a name="next-steps"></a>다음 단계
 
@@ -206,4 +208,3 @@ Azure Analysis Services는 Azure AD(Azure Active Directory)를 사용하여 Anal
 [adf-ra]: ./enterprise-bi-adf.md
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/data/enterprise_bi_sqldw
 [wwi]: /sql/sample/world-wide-importers/wide-world-importers-oltp-database
-

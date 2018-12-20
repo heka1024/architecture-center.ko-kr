@@ -1,33 +1,36 @@
 ---
-title: Azure Virtual Machines에서 AnyDB용 SAP NetWeaver(Windows) 배포
+title: Azure VM에서 AnyDB용 SAP NetWeaver(Windows) 배포
+titleSuffix: Azure Reference Architectures
 description: Azure의 Linux 환경에서 고가용성을 통해 SAP S/4HANA를 실행하는 검증된 사례입니다.
 author: lbrader
 ms.date: 08/03/2018
-ms.openlocfilehash: 3a8c59b63d55dea520f807efbe72ff56e678ec8e
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.custom: seodec18
+ms.openlocfilehash: 4014d5736527a2f29692720d199b4a1aa8f76020
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916586"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120189"
 ---
 # <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>Azure Virtual Machines에서 AnyDB용 SAP NetWeaver(Windows) 배포
 
 이 참조 아키텍처는 Azure의 Windows 환경에서 고가용성을 통해 SAP NetWeaver를 실행하는 일단의 검증된 사례를 보여 줍니다. AnyDB는 데이터베이스이며, SAP HANA 이외에 지원되는 모든 DBMS에 대한 SAP 용어입니다. 이 아키텍처는 조직의 요구 사항에 맞게 변경할 수 있는 특정 VM(가상 머신) 크기로 배포됩니다.
 
-![](./images/sap-netweaver.png)
+![Azure VM의 AnyDB용 SAP NetWeaver(Windows)를 위한 참조 아키텍처](./images/sap-netweaver.png)
 
 *이 아키텍처의 [Visio 파일][visio-download]을 다운로드합니다.*
 
-> [!NOTE] 
+> [!NOTE]
 > 이 참조 아키텍처를 배포하려면 적절한 SAP 제품 라이선스 및 기타 Microsoft 이외의 기술이 필요합니다.
 
 ## <a name="architecture"></a>아키텍처
+
 이 아키텍처를 구성하는 인프라 및 주요 소프트웨어 구성 요소는 다음과 같습니다.
 
 **가상 네트워크**. Azure Virtual Network 서비스는 Azure 리소스를 서로 안전하게 연결합니다. 이 아키텍처에서 가상 네트워크는 [허브-스포크](../hybrid-networking/hub-spoke.md)의 허브에 배포된 VPN 게이트웨이를 통해 온-프레미스 환경에 연결합니다. 스포크는 SAP 응용 프로그램 및 데이터베이스 계층에 사용되는 가상 네트워크입니다.
 
 **서브넷**. 가상 네트워크는 응용 프로그램(SAP NetWeaver), 데이터베이스, 공유 서비스(jumpbox) 및 Active Directory와 같은 각 계층에 대한 별도의 서브넷으로 세분화됩니다.
-    
+
 **가상 머신**. 이 아키텍처는 응용 프로그램 계층과 데이터베이스 계층에 대해 다음과 같이 그룹화된 가상 머신을 사용합니다.
 
 - **SAP NetWeaver**. 응용 프로그램 계층에서 Windows 가상 머신을 사용하고 SAP Central Services와 SAP 응용 프로그램 서버를 실행합니다. Central Services를 실행하는 VM은 SIOS DataKeeper 클러스터 버전에서 지원하는 고가용성을 위한 Windows Server 장애 조치 클러스터로 구성됩니다.
@@ -35,7 +38,7 @@ ms.locfileid: "50916586"
 - **Jumpbox**. 요새 호스트라고도 합니다. 이는 관리자가 다른 가상 머신에 연결하는 데 사용하는 네트워크의 보안 가상 머신입니다.
 - **Windows Server Active Directory 도메인 컨트롤러**. 도메인 컨트롤러는 도메인의 모든 VM 및 사용자에 사용됩니다.
 
-**부하 분산 장치**. [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) 인스턴스를 사용하여 응용 프로그램 계층 서브넷의 가상 머신에 트래픽을 분산합니다. 데이터 계층에서는 DBMS에 따라 기본 제공 SAP 부하 분산 장치, Azure Load Balancer 또는 기타 메커니즘을 사용하여 고가용성을 달성할 수 있습니다. 자세한 내용은 [SAP NetWeaver에 대한 Azure Virtual Machines DBMS 배포](/azure/virtual-machines/workloads/sap/dbms-guide)를 참조하세요. 
+**부하 분산 장치**. [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) 인스턴스를 사용하여 응용 프로그램 계층 서브넷의 가상 머신에 트래픽을 분산합니다. 데이터 계층에서는 DBMS에 따라 기본 제공 SAP 부하 분산 장치, Azure Load Balancer 또는 기타 메커니즘을 사용하여 고가용성을 달성할 수 있습니다. 자세한 내용은 [SAP NetWeaver에 대한 Azure Virtual Machines DBMS 배포](/azure/virtual-machines/workloads/sap/dbms-guide)를 참조하세요.
 
 **가용성 집합**. SAP Web Dispatcher, SAP 응용 프로그램 서버 및 (A)SCS 역할용 가상 머신은 별도의 [가용성 집합](/azure/virtual-machines/windows/tutorial-availability-sets)으로 그룹화되고, 역할당 둘 이상의 가상 머신이 프로비전됩니다. 이렇게 하면 가상 머신에 더 높은 [SLA(서비스 수준 계약)](https://azure.microsoft.com/support/legal/sla/virtual-machines)를 적용할 수 있습니다.
 
@@ -45,9 +48,10 @@ ms.locfileid: "50916586"
 
 **게이트웨이**. 게이트웨이는 온-프레미스 네트워크를 Azure 가상 네트워크로 확장합니다. [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute)는 공용 인터넷을 통해 통신하지 않는 사설 연결을 만드는 데 권장되는 Azure 서비스이지만 [사이트 간 연결](/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)도 사용할 수 있습니다.
 
-**Azure Storage**. [Azure Storage](/azure/storage/storage-standard-storage)는 가상 머신의 VHD(가상 하드 디스크)용 영구 저장소를 제공하기 위해 필요합니다. 또한 [클라우드 감시](/windows-server/failover-clustering/deploy-cloud-witness)에서 장애 조치 클러스터 작업을 구현하는 데도 사용됩니다. 
+**Azure Storage**. [Azure Storage](/azure/storage/storage-standard-storage)는 가상 머신의 VHD(가상 하드 디스크)용 영구 저장소를 제공하기 위해 필요합니다. 또한 [클라우드 감시](/windows-server/failover-clustering/deploy-cloud-witness)에서 장애 조치 클러스터 작업을 구현하는 데도 사용됩니다.
 
 ## <a name="recommendations"></a>권장 사항
+
 개발자의 요구 사항이 여기에 설명된 아키텍처와 다를 수 있습니다. 여기서 추천하는 권장 사항을 단지 시작점으로 활용하세요.
 
 ### <a name="sap-web-dispatcher-pool"></a>SAP Web Dispatcher 풀
@@ -68,7 +72,7 @@ ABAP 응용 프로그램 서버에 대한 로그온 그룹을 관리하기 위�
 
 자세한 내용은 [Microsoft 플랫폼에서 SAP 응용 프로그램 실행](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/04/sap-on-azure-general-update-for-customers-partners-april-2017/)의 "3. Azure에서 SIOS의 ASCS를 실행하는 SAP 고객을 위한 중요 업데이트"를 참조하세요.
 
-클러스터링을 처리하는 또 다른 방법은 Windows Server 장애 조치 클러스터를 사용하여 파일 공유 클러스터를 구현하는 것입니다. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster/)는 UNC 경로를 통해 /sapmnt 전역 디렉터리에 액세스하도록 Central Services 배포 패턴을 수정했습니다. 이 변경에 따라 SIOS 또는 Central Services VM의 다른 공유 디스크 솔루션에 대한 [요구 사항이 제거](https://blogs.msdn.microsoft.com/saponsqlserver/2017/08/10/high-available-ascs-for-windows-on-file-share-shared-disk-no-longer-required/)되었습니다. 그래도 /sapmnt UNC 공유가 [고가용성](https://blogs.sap.com/2017/07/21/how-to-create-a-high-available-sapmnt-share/)인지 확인하는 것이 좋습니다. 이 작업은 Central Services 인스턴스에서 Windows Server 2016의 [SOFS(스케일 아웃 파일 서버)](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/14/file-server-with-sofs-and-s2d-as-an-alternative-to-cluster-shared-disk-for-clustering-of-an-sap-ascs-instance-in-azure-is-generally-available/) 및 [S2D(저장소 공간 다이렉트)](https://blogs.sap.com/2018/03/07/your-sap-on-azure-part-5-ascs-high-availability-with-storage-spaces-direct/) 기능이 있는 Windows Server 장애 조치 클러스터를 사용하여 수행할 수 있습니다. 
+클러스터링을 처리하는 또 다른 방법은 Windows Server 장애 조치 클러스터를 사용하여 파일 공유 클러스터를 구현하는 것입니다. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster/)는 UNC 경로를 통해 /sapmnt 전역 디렉터리에 액세스하도록 Central Services 배포 패턴을 수정했습니다. 이 변경에 따라 SIOS 또는 Central Services VM의 다른 공유 디스크 솔루션에 대한 [요구 사항이 제거](https://blogs.msdn.microsoft.com/saponsqlserver/2017/08/10/high-available-ascs-for-windows-on-file-share-shared-disk-no-longer-required/)되었습니다. 그래도 /sapmnt UNC 공유가 [고가용성](https://blogs.sap.com/2017/07/21/how-to-create-a-high-available-sapmnt-share/)인지 확인하는 것이 좋습니다. 이 작업은 Central Services 인스턴스에서 Windows Server 2016의 [SOFS(스케일 아웃 파일 서버)](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/14/file-server-with-sofs-and-s2d-as-an-alternative-to-cluster-shared-disk-for-clustering-of-an-sap-ascs-instance-in-azure-is-generally-available/) 및 [S2D(저장소 공간 다이렉트)](https://blogs.sap.com/2018/03/07/your-sap-on-azure-part-5-ascs-high-availability-with-storage-spaces-direct/) 기능이 있는 Windows Server 장애 조치 클러스터를 사용하여 수행할 수 있습니다.
 
 ### <a name="availability-sets"></a>가용성 집합
 
@@ -112,7 +116,7 @@ SAP on SQL의 경우 [Azure에 SAP 응용 프로그램을 배포하기 위한 �
 
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
-SAP 응용 프로그램 계층에서 Azure는 강화 및 확장을 위한 다양한 가상 머신 크기를 제공합니다. 전체 목록은 [SAP Note 1928533](https://launchpad.support.sap.com/#/notes/1928533) - Azure의 SAP 응용 프로그램: 지원되는 제품 및 Azure VM 유형을 참조하세요. (여기에 액세스하려면 SAP Service Marketplace 계정이 필요합니다.) SAP 응용 프로그램 서버 및 Central Services 클러스터는 인스턴스를 추가하여 강화/축소 및 확장할 수 있습니다. AnyDB 데이터베이스는 강화/축소할 수 있지만 확장할 수는 없습니다. AnyDB용 SAP 데이터베이스 컨테이너는 분할을 지원하지 않습니다.
+SAP 응용 프로그램 계층에서 Azure는 강화 및 확장을 위한 다양한 가상 머신 크기를 제공합니다. 전체 목록은 [SAP Note 1928533](https://launchpad.support.sap.com/#/notes/1928533) - Azure의 SAP 애플리케이션: 지원되는 제품 및 Azure VM 유형을 참조하세요. (여기에 액세스하려면 SAP Service Marketplace 계정이 필요합니다.) SAP 응용 프로그램 서버 및 Central Services 클러스터는 인스턴스를 추가하여 강화/축소 및 확장할 수 있습니다. AnyDB 데이터베이스는 강화/축소할 수 있지만 확장할 수는 없습니다. AnyDB용 SAP 데이터베이스 컨테이너는 분할을 지원하지 않습니다.
 
 ## <a name="availability-considerations"></a>가용성 고려 사항
 
@@ -145,7 +149,7 @@ DR(재해 복구)의 경우 장애 조치를 보조 지역으로 수행할 수 �
 
 - **응용 프로그램 서버 계층**. SAP 응용 프로그램 서버에는 비즈니스 데이터가 포함되어 있지 않습니다. Azure에서 간단한 DR 전략은 보조 지역에 SAP 응용 프로그램 서버를 만든 다음, 종료하는 것입니다. 주 응용 프로그램 서버의 구성이 업데이트되거나 커널이 업데이트되는 즉시 동일한 변경 내용을 보조 지역의 가상 머신에 복사해야 합니다. 예를 들어 커널 실행 파일을 DR 가상 머신에 복사합니다. 응용 프로그램 서버를 보조 지역에 자동으로 복제하려면 [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)가 권장되는 솔루션입니다.
 
-- **Central Services**. 이 SAP 응용 프로그램 스택의 구성 요소도 비즈니스 데이터를 유지하지 않습니다. 재해 복구 지역에 VM을 구축하여 Central Services 역할을 실행할 수 있습니다. 주 Central Services 노드에서 동기화할 수 있는 유일한 콘텐츠는 /sapmnt 공유 콘텐츠입니다. 또한 주 Central Services 서버에서 구성이 업데이트되거나 커널이 업데이트되면 Central Services를 실행하는 재해 복구 지역의 VM에서 반복해야 합니다. 두 서버를 동기화하려면 Azure Site Recovery를 사용하여 클러스터 노드를 복제하거나, 정기적으로 예약된 복사 작업을 사용하여 /sapmnt를 재해 복구 지역에 복사하면 됩니다. 이 간단한 복제 방법의 장애 조치 프로세스 빌드, 복사 및 테스트에 대한 자세한 내용은 [SAP NetWeaver: Hyper-V 및 Microsoft Azure 기반 재해 복구 솔루션 빌드](https://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)를 다운로드하여 "4.3. SAP SPOF 레이어(ASCS)"를 참조하세요.
+- **Central Services**. 이 SAP 응용 프로그램 스택의 구성 요소도 비즈니스 데이터를 유지하지 않습니다. 재해 복구 지역에 VM을 구축하여 Central Services 역할을 실행할 수 있습니다. 주 Central Services 노드에서 동기화할 수 있는 유일한 콘텐츠는 /sapmnt 공유 콘텐츠입니다. 또한 주 Central Services 서버에서 구성이 업데이트되거나 커널이 업데이트되면 Central Services를 실행하는 재해 복구 지역의 VM에서 반복해야 합니다. 두 서버를 동기화하려면 Azure Site Recovery를 사용하여 클러스터 노드를 복제하거나, 정기적으로 예약된 복사 작업을 사용하여 /sapmnt를 재해 복구 지역에 복사하면 됩니다. 이 간단한 복제 방법의 빌드, 복사 및 테스트 장애 조치(failover) 프로세스에 대한 자세한 내용을 보려면 [SAP NetWeaver: Hyper-V 및 Microsoft Azure 기반 재해 복구 솔루션 빌드](https://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)를 다운로드하고 "4.3. SAP SPOF 레이어(ASCS)"를 참조하세요.
 
 - **데이터베이스 계층**. DR은 데이터베이스 자체의 통합 복제 기술로 구현하는 것이 가장 좋습니다. 예를 들어 SQL Server의 경우 AlwaysOn 가용성 그룹을 사용하여 원격 지역에 복제본을 설정하고 수동 장애 조치를 통해 비동기적으로 트랜잭션을 복제하는 것이 좋습니다. 비동기 복제는 주 사이트에서 대화형 워크로드의 성능에 미치는 영향을 방지합니다. 수동 장애 조치는 사용자가 DR 영향을 평가하고 DR 사이트에서 운영하는 것이 정당한지 결정할 수 있는 기회를 제공합니다.
 
@@ -159,7 +163,7 @@ SAP 인프라의 리소스 및 서비스 성능에 대한 SAP 기반 모니터�
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
-SAP는 자체적인 UME(사용자 관리 엔진)를 사용하여 SAP 응용 프로그램의 역할 기반 액세스 및 권한 부여를 제어합니다. 자세한 내용은 [ABAP용 SAP NetWeaver 응용 프로그램 서버 보안 가이드](https://help.sap.com/doc/7b932ef4728810148a4b1a83b0e91070/1610 001/en-US/frameset.htm?4dde53b3e9142e51e10000000a42189c.html) 및 [SAP NetWeaver 응용 프로그램 서버 Java 보안 가이드](https://help.sap.com/doc/saphelp_snc_uiaddon_10/1.0/en-US/57/d8bfcf38f66f48b95ce1f52b3f5184/frameset.htm)를 참조하세요.
+SAP는 자체적인 UME(사용자 관리 엔진)를 사용하여 SAP 응용 프로그램의 역할 기반 액세스 및 권한 부여를 제어합니다. 자세한 내용은 [ABAP용 SAP NetWeaver 응용 프로그램 서버 보안 가이드](https://help.sap.com/viewer/864321b9b3dd487d94c70f6a007b0397/7.4.19) 및 [SAP NetWeaver 응용 프로그램 서버 Java 보안 가이드](https://help.sap.com/doc/saphelp_snc_uiaddon_10/1.0/en-US/57/d8bfcf38f66f48b95ce1f52b3f5184/frameset.htm)를 참조하세요.
 
 추가 네트워크 보안을 위해 네트워크 가상 어플라이언스를 사용하여 Web Dispatcher의 서브넷 앞에 방화벽을 만드는 [네트워크 DMZ](../dmz/secure-vnet-hybrid.md)를 구현하는 것이 좋습니다.
 

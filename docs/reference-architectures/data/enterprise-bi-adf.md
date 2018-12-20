@@ -1,31 +1,33 @@
 ---
-title: SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 Enterprise BI
-description: Azure Data Factory를 사용하여 Azure에서 ELT 워크플로 자동화
+title: 자동화된 Enterprise 비즈니스 인텔리전스(BI)
+titleSuffix: Azure Reference Architectures
+description: SQL Data Warehouse와 Azure Data Factory를 사용하여 Azure의 ELT(추출, 로드, 변환) 워크플로를 자동화하세요.
 author: MikeWasson
 ms.date: 11/06/2018
-ms.openlocfilehash: 3fedcd08572a9fe1fc610f5fbab12f8ff0d53073
-ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
+ms.custom: seodec18
+ms.openlocfilehash: d87583802496f8be85e44c896ae7d6a26306cffc
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52295630"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53120342"
 ---
 # <a name="automated-enterprise-bi-with-sql-data-warehouse-and-azure-data-factory"></a>SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 Enterprise BI
 
-이 참조 아키텍처는 [ELT](../../data-guide/relational-data/etl.md#extract-load-and-transform-elt)(추출-로드-변환) 파이프라인에서 증분 로드를 수행하는 방법을 보여줍니다. Azure Data Factory를 사용하여 ELT 파이프라인을 자동화합니다. 파이프라인은 증분 방식으로 최신 OLTP 데이터를 온-프레미스 SQL Server 데이터베이스에서 SQL Data Warehouse로 이동합니다. 트랜잭션 데이터는 분석을 위해 테이블 형식 모델로 변환됩니다.
+이 참조 아키텍처는 [ELT(추출, 로드, 변환)](../../data-guide/relational-data/etl.md#extract-load-and-transform-elt) 파이프라인에서 증분 로드를 수행하는 방법을 보여줍니다. Azure Data Factory를 사용하여 ELT 파이프라인을 자동화합니다. 파이프라인은 증분 방식으로 최신 OLTP 데이터를 온-프레미스 SQL Server 데이터베이스에서 SQL Data Warehouse로 이동합니다. 트랜잭션 데이터는 분석을 위해 테이블 형식 모델로 변환됩니다.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2Gnz2]
 
 이 아키텍처에 대한 참조 구현은 [GitHub][github]에서 사용할 수 있습니다.
 
-![](./images/enterprise-bi-sqldw-adf.png)
+![SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 Enterprise BI에 대한 아키텍처 다이어그램](./images/enterprise-bi-sqldw-adf.png)
 
 이 아키텍처는 [SQL Data Warehouse를 사용한 Enterprise BI](./enterprise-bi-sqldw.md)에 표시된 아키텍처 위에 빌드하지만 엔터프라이즈 데이터 웨어하우징 시나리오에 대해 중요한 일부 기능을 추가합니다.
 
--   Data Factory를 사용하여 파이프라인의 자동화.
--   증분 로드.
--   다중 데이터 원본 통합.
--   지리 공간 데이터 및 이미지 같은 이진 데이터 로드.
+- Data Factory를 사용하여 파이프라인의 자동화.
+- 증분 로드.
+- 다중 데이터 원본 통합.
+- 지리 공간 데이터 및 이미지 같은 이진 데이터 로드.
 
 ## <a name="architecture"></a>아키텍처
 
@@ -41,7 +43,7 @@ ms.locfileid: "52295630"
 
 **Blob Storage** Blob 저장소는 SQL Data Warehouse로 로딩하기 전에 원본 데이터에 대한 준비 영역으로 사용됩니다.
 
-**Azure SQL Data Warehouse** [SQL Data Warehouse](/azure/sql-data-warehouse/)는 대규모 데이터 분석을 수행하도록 설계되고 배포된 시스템입니다. 고성능 분석을 실행하는 데 적합하도록 하는 MPP(대규모 병렬 처리)를 지원합니다. 
+**Azure SQL Data Warehouse** [SQL Data Warehouse](/azure/sql-data-warehouse/)는 대규모 데이터 분석을 수행하도록 설계되고 배포된 시스템입니다. 고성능 분석을 실행하는 데 적합하도록 하는 MPP(대규모 병렬 처리)를 지원합니다.
 
 **Azure Data Factory**. [Data Factory][adf]는 데이터 이동 및 데이터 변환을 오케스트레이션하고 자동화하는 관리되는 서비스입니다. 이 아키텍처에서 다양한 단계의 ELT 프로세스를 조정합니다.
 
@@ -59,22 +61,23 @@ Data Factory는 서비스 주체 또는 MSI(관리되는 서비스 ID)를 사용
 
 ## <a name="data-pipeline"></a>데이터 파이프라인
 
-[Azure Data Factory][adf]에서 파이프라인은 이 경우에 &mdash; 작업을 조정하는 데 사용된 활동의 논리적 그룹화로서 데이터를 SQL Data Warehouse로 로드하고 변환합니다. 
+[Azure Data Factory][adf]에서 파이프라인은 이 경우에 &mdash; 작업을 조정하는 데 사용된 활동의 논리적 그룹화로서 데이터를 SQL Data Warehouse로 로드하고 변환합니다.
 
 이 참조 아키텍처에서는 자식 파이프라인의 시퀀스를 실행하는 마스터 파이프라인을 정의합니다. 각 자식 파이프라인은 하나 이상의 데이터 웨어하우스 테이블에 데이터를 로드합니다.
 
-![](./images/adf-pipeline.png)
+![Azure Data Factory에서 이 파이프라인의 스크린샷](./images/adf-pipeline.png)
 
 ## <a name="incremental-loading"></a>증분 로드
 
-자동화된 ETL 또는 ELT 프로세스를 실행하는 경우 이전 실행 이후에 변경된 데이터만 로드하는 것이 가장 효율적입니다. 이는 모든 데이터를 로드하는 전체 로드와 달리 *증분 로드*라고 합니다. 증분 로드를 수행하려면 데이터가 변경되었음을 식별하는 방법이 필요합니다. 가장 일반적인 방법은 날짜/시간 열이든 고유 정수 열이든 원본 테이블에서 일부 열의 최신 값을 추적하는 것을 의미하는 *상위 워터 마크* 값을 사용하는 것입니다. 
+자동화된 ETL 또는 ELT 프로세스를 실행하는 경우 이전 실행 이후에 변경된 데이터만 로드하는 것이 가장 효율적입니다. 이는 모든 데이터를 로드하는 전체 로드와 달리 *증분 로드*라고 합니다. 증분 로드를 수행하려면 데이터가 변경되었음을 식별하는 방법이 필요합니다. 가장 일반적인 방법은 날짜/시간 열이든 고유 정수 열이든 원본 테이블에서 일부 열의 최신 값을 추적하는 것을 의미하는 *상위 워터 마크* 값을 사용하는 것입니다.
 
-SQL Server 2016부터 [임시 테이블](/sql/relational-databases/tables/temporal-tables)을 사용할 수 있습니다. 이들은 데이터 변경 내용의 전체 기록을 유지하는 시스템 버전이 지정된 테이블이 있습니다. 데이터베이스 엔진은 별도 기록 테이블의 모든 변경 기록을 자동으로 레코드합니다. FOR SYSTEM_TIME 절을 쿼리에 추가하여 기록 데이터를 쿼리할 수 있습니다. 내부적으로 데이터베이스 엔진은 기록 테이블을 쿼리하지만 응용 프로그램에 대해서는 투명합니다. 
+SQL Server 2016부터 [임시 테이블](/sql/relational-databases/tables/temporal-tables)을 사용할 수 있습니다. 이들은 데이터 변경 내용의 전체 기록을 유지하는 시스템 버전이 지정된 테이블이 있습니다. 데이터베이스 엔진은 별도 기록 테이블의 모든 변경 기록을 자동으로 레코드합니다. FOR SYSTEM_TIME 절을 쿼리에 추가하여 기록 데이터를 쿼리할 수 있습니다. 내부적으로 데이터베이스 엔진은 기록 테이블을 쿼리하지만 응용 프로그램에 대해서는 투명합니다.
 
 > [!NOTE]
-> 이전 버전의 SQL Server의 경우 [변경 데이터 캡처](/sql/relational-databases/track-changes/about-change-data-capture-sql-server)(CDC)를 사용할 수 있습니다. 이 방법은 별도 변경 테이블을 쿼리해야 하고 변경 내용이 타임스탬프보다는 로그 시퀀스 번호로 추적되기 때문에 임시 테이블보다 더 불편합니다. 
+> 이전 버전의 SQL Server의 경우 [변경 데이터 캡처](/sql/relational-databases/track-changes/about-change-data-capture-sql-server)(CDC)를 사용할 수 있습니다. 이 방법은 별도 변경 테이블을 쿼리해야 하고 변경 내용이 타임스탬프보다는 로그 시퀀스 번호로 추적되기 때문에 임시 테이블보다 더 불편합니다.
+>
 
-임시 테이블은 시간이 지남에 따라 변경될 수 있는 차원 데이터에 유용합니다. 팩트 테이블은 대개 시스템 버전 기록을 유지하는 것이 사리에 맞지 않은 경우에 판매 같은 변경이 불가능한 트랜잭션을 나타냅니다. 대신 트랜잭션에는 대개 워터 마크 값으로 사용될 수 있는 트랜잭션 날짜를 나타내는 열이 있습니다. 예를 들어 Wide World Importers OLTP 데이터베이스에서 Sales.Invoices 및 Sales.InvoiceLines 테이블에는 `sysdatetime()`을 기본값으로 하는 `LastEditedWhen` 필드가 있습니다. 
+임시 테이블은 시간이 지남에 따라 변경될 수 있는 차원 데이터에 유용합니다. 팩트 테이블은 대개 시스템 버전 기록을 유지하는 것이 사리에 맞지 않은 경우에 판매 같은 변경이 불가능한 트랜잭션을 나타냅니다. 대신 트랜잭션에는 대개 워터 마크 값으로 사용될 수 있는 트랜잭션 날짜를 나타내는 열이 있습니다. 예를 들어 Wide World Importers OLTP 데이터베이스에서 Sales.Invoices 및 Sales.InvoiceLines 테이블에는 `sysdatetime()`을 기본값으로 하는 `LastEditedWhen` 필드가 있습니다.
 
 ELT 파이프라인의 일반적인 흐름은 다음과 같습니다.
 
@@ -86,7 +89,7 @@ ELT 파이프라인의 일반적인 흐름은 다음과 같습니다.
 
 또한 각 ELT 실행에 대해 *계보*를 레코드하는 것이 유용합니다. 지정된 레코드에 대해 계보는 데이터를 생성한 ELT 실행을 사용하여 해당 레코드와 연결합니다. 각 ETL 실행의 경우 새 계보 레코드가 모든 테이블에 대해 만들어져 시작 및 종료 로드 시간을 보여줍니다. 각 레코드에 대한 계보 키는 차원 및 팩트 테이블에 저장됩니다.
 
-![](./images/city-dimension-table.png)
+![구/군/시 차원 테이블의 스크린샷](./images/city-dimension-table.png)
 
 새 일괄 처리 데이터가 웨어하우스에 로드된 후 Analysis Services 테이블 형식 모델을 새로 고칩니다. [REST API를 사용한 비동기 새로 고침](/azure/analysis-services/analysis-services-async-refresh)을 참조합니다.
 
@@ -94,7 +97,7 @@ ELT 파이프라인의 일반적인 흐름은 다음과 같습니다.
 
 데이터 정리는 ELT 프로세스의 일부여야 합니다. 이 참조 아키텍처에서 잘못된 데이터 원본 하나는 아마도 사용할 수 있는 데이터가 없기 때문에 일부 도시에 인구가 없는 도시 인구 테이블입니다. 처리 동안 ELT 파이프라인은 도시 인구 테이블에서 해당 도시를 제거합니다. 외부 테이블보다는 준비 테이블에서 데이터 정리를 수행하세요.
 
-도시 인구 테이블에서 인구가 없는 도시를 제거하는 저장 프로시저는 다음과 같습니다. ([여기](https://github.com/mspnp/reference-architectures/blob/master/data/enterprise_bi_sqldw_advanced/azure/sqldw_scripts/citypopulation/%5BIntegration%5D.%5BMigrateExternalCityPopulationData%5D.sql)에서 소스 파일을 찾을 수 있습니다.) 
+도시 인구 테이블에서 인구가 없는 도시를 제거하는 저장 프로시저는 다음과 같습니다. ([여기](https://github.com/mspnp/reference-architectures/blob/master/data/enterprise_bi_sqldw_advanced/azure/sqldw_scripts/citypopulation/%5BIntegration%5D.%5BMigrateExternalCityPopulationData%5D.sql)에서 소스 파일을 찾을 수 있습니다.)
 
 ```sql
 DELETE FROM [Integration].[CityPopulation_Staging]
@@ -109,9 +112,9 @@ HAVING COUNT(RowNumber) = 4)
 
 데이터 웨어하우스는 종종 여러 소스의 데이터를 통합합니다. 이 참조 아키텍처는 인구 통계 데이터를 포함하는 외부 데이터 원본을 로드합니다. 이 데이터 세트는 [WorldWideImportersDW](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/wide-world-importers/sample-scripts/polybase) 샘플의 일부로 Azure Blob Storage에서 사용할 수 있습니다.
 
-Azure Data Factory는 [Blob Storage 커넥터](/azure/data-factory/connector-azure-blob-storage)를 사용하여 Blob Storage에서 직접 복사할 수 있습니다. 그러나 커넥터는 연결 문자열 또는 공유 액세스 서명이 필요하므로 공용 읽기 액세스를 사용하여 BLOB을 복사하는 데 사용할 수 없습니다. 해결 방법으로 PolyBase를 사용하여 Blob 저장소에서 외부 테이블을 만든 다음, 외부 테이블을 SQL Data Warehouse에 복사할 수 있습니다. 
+Azure Data Factory는 [Blob Storage 커넥터](/azure/data-factory/connector-azure-blob-storage)를 사용하여 Blob Storage에서 직접 복사할 수 있습니다. 그러나 커넥터는 연결 문자열 또는 공유 액세스 서명이 필요하므로 공용 읽기 액세스를 사용하여 BLOB을 복사하는 데 사용할 수 없습니다. 해결 방법으로 PolyBase를 사용하여 Blob 저장소에서 외부 테이블을 만든 다음, 외부 테이블을 SQL Data Warehouse에 복사할 수 있습니다.
 
-## <a name="handling-large-binary-data"></a>큰 이진 데이터 처리 
+## <a name="handling-large-binary-data"></a>큰 이진 데이터 처리
 
 원본 데이터베이스에서 도시 테이블에는 [geography](/sql/t-sql/spatial-geography/spatial-types-geography) 공간 데이터 형식을 보유하는 위치 열이 있습니다. SQL Data Warehouse는 기본적으로 **geography** 형식을 지원하지 않으므로 이 필드는 로딩 동안 **varbinary** 형식으로 변환됩니다. ([지원되지 않는 데이터 형식에 대한 해결 방법](/azure/sql-data-warehouse/sql-data-warehouse-tables-data-types#unsupported-data-types)을 참조합니다.)
 
@@ -129,17 +132,17 @@ Azure Data Factory는 [Blob Storage 커넥터](/azure/data-factory/connector-azu
 
 ## <a name="slowly-changing-dimensions"></a>느린 변경 차원
 
-차원 데이터는 상대적으로 정적이지만 변경될 수 있습니다. 예를 들어 제품이 다른 제품 범주에 다시 할당될 수 있습니다. 느린 변경 차원을 처리하는 방법은 여러 가지가 있습니다. [유형 2](https://wikipedia.org/wiki/Slowly_changing_dimension#Type_2:_add_new_row)라는 일반 기술은 차원이 변경될 때마다 새 레코드를 추가하는 것입니다. 
+차원 데이터는 상대적으로 정적이지만 변경될 수 있습니다. 예를 들어 제품이 다른 제품 범주에 다시 할당될 수 있습니다. 느린 변경 차원을 처리하는 방법은 여러 가지가 있습니다. [유형 2](https://wikipedia.org/wiki/Slowly_changing_dimension#Type_2:_add_new_row)라는 일반 기술은 차원이 변경될 때마다 새 레코드를 추가하는 것입니다.
 
 유형 2 방법을 구현하려면 차원 테이블은 지정된 레코드의 유효 날짜 범위를 지정하는 추가 열이 필요합니다. 또한 원본 데이터베이스의 기본 키가 중복되게 되므로 차원 테이블에 인공적인 기본 키가 있어야 합니다.
 
 다음 이미지에서는 Dimension.City 테이블을 보여줍니다. `WWI City ID` 열은 원본 데이터베이스의 기본 키입니다. `City Key` 열은 ETL 파이프라인 도중 생성된 인공 키입니다. 또한 테이블에는 각 행이 유효한 경우 범위를 정의하는 `Valid From` 및 `Valid To` 열이 있습니다. 현재 값에는 '9999-12-31'과 동일한 `Valid To`가 있습니다.
 
-![](./images/city-dimension-table.png)
+![구/군/시 차원 테이블의 스크린샷](./images/city-dimension-table.png)
 
 이 방식의 장점은 분석에 중요할 수 있는 기록 데이터를 보존한다는 것입니다. 그러나 동일한 엔터티에 대해 여러 행이 있다는 의미이기도 합니다. 예를 들어 `WWI City ID` = 28561과 일치하는 레코드는 다음과 같습니다.
 
-![](./images/city-dimension-table-2.png)
+![구/군/시 차원 테이블의 두 번째 스크린샷](./images/city-dimension-table-2.png)
 
 각 판매 팩트의 경우 송장 날짜에 해당하는 도시 차원 테이블의 단일 행과 해당 팩트를 연결하려 합니다. ETL 프로세스의 일부로 다음과 같은 추가 열을 만듭니다. 
 
@@ -180,9 +183,9 @@ SET [Integration].[Sale_Staging].[WWI Customer ID] =  CustomerHolder.[WWI Custom
 
 다음과 같은 제한 사항을 고려해야 합니다.
 
-- 이 참조 아키텍처가 만들어졌을 때 VNet 서비스 엔드포인트는 Azure Analysis Service를 제외한 Azure Storage 및 Azure SQL Data Warehouse에 대해 지원됩니다. [여기](https://azure.microsoft.com/updates/?product=virtual-network)에서 최신 상태를 확인합니다. 
+- 이 참조 아키텍처가 만들어졌을 때 VNet 서비스 엔드포인트는 Azure Analysis Service를 제외한 Azure Storage 및 Azure SQL Data Warehouse에 대해 지원됩니다. [여기](https://azure.microsoft.com/updates/?product=virtual-network)에서 최신 상태를 확인합니다.
 
-- Azure Storage에 대해 서비스 엔드포인트가 사용하도록 설정된 경우 PolyBase는 Storage의 데이터를 SQL Data Warehouse에 복사할 수 없습니다. 이 문제에 대한 완화 방법이 있습니다. 자세한 내용은 [Azure 저장소에서 VNet 서비스 엔드포인트 사용의 영향](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fvirtual-network%2ftoc.json#impact-of-using-vnet-service-endpoints-with-azure-storage)을 참조합니다. 
+- Azure Storage에 대해 서비스 엔드포인트가 사용하도록 설정된 경우 PolyBase는 Storage의 데이터를 SQL Data Warehouse에 복사할 수 없습니다. 이 문제에 대한 완화 방법이 있습니다. 자세한 내용은 [Azure 저장소에서 VNet 서비스 엔드포인트 사용의 영향](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fvirtual-network%2ftoc.json#impact-of-using-vnet-service-endpoints-with-azure-storage)을 참조합니다.
 
 - 온-프레미스에서 Azure Storage로 데이터를 이동하려면 온-프레미스 또는 ExpressRoute에서 공용 IP 주소를 허용 목록에 추가해야 합니다. 자세한 내용은 [Virtual Network에 대한 Azure 서비스 보호](/azure/virtual-network/virtual-network-service-endpoints-overview#securing-azure-services-to-virtual-networks)를 참조합니다.
 
@@ -192,14 +195,13 @@ SET [Integration].[Sale_Staging].[WWI Customer ID] =  CustomerHolder.[WWI Custom
 
 참조 구현을 배포하고 실행하려면 [GitHub readme][github]의 단계를 따릅니다. 다음을 배포합니다.
 
-  * 온-프레미스 데이터베이스 서버를 시뮬레이션하는 Windows VM Power BI Desktop과 함께 SQL Server 2017 및 관련된 도구를 포함합니다.
-  * SQL Server 데이터베이스에서 가져온 데이터를 저장할 Blob 저장소를 제공하는 Azure 저장소 계정
-  * Azure SQL Data Warehouse 인스턴스
-  * Azure Analysis Services 인스턴스
-  * ELT 작업에 대한 Azure Data Factory 및 Data Factory 파이프라인
+- 온-프레미스 데이터베이스 서버를 시뮬레이션하는 Windows VM Power BI Desktop과 함께 SQL Server 2017 및 관련된 도구를 포함합니다.
+- SQL Server 데이터베이스에서 가져온 데이터를 저장할 Blob 저장소를 제공하는 Azure 저장소 계정
+- Azure SQL Data Warehouse 인스턴스
+- Azure Analysis Services 인스턴스
+- ELT 작업에 대한 Azure Data Factory 및 Data Factory 파이프라인
 
-[adf]: //azure/data-factory
+[adf]: /azure/data-factory
 [github]: https://github.com/mspnp/reference-architectures/tree/master/data/enterprise_bi_sqldw_advanced
 [MergeLocation]: https://github.com/mspnp/reference-architectures/blob/master/data/enterprise_bi_sqldw_advanced/azure/sqldw_scripts/city/%5BIntegration%5D.%5BMergeLocation%5D.sql
-[wwi]: //sql/sample/world-wide-importers/wide-world-importers-oltp-database
-
+[wwi]: /sql/sample/world-wide-importers/wide-world-importers-oltp-database

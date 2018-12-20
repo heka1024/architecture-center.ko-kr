@@ -3,18 +3,19 @@ title: Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애�
 description: Azure Virtual Machines, 가용성 집합, 가용성 영역, Azure Site Recovery 및 Azure Traffic Manager를 사용하여 Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션 만들기
 author: sujayt
 ms.date: 11/16/2018
-ms.openlocfilehash: 28593c680746dc5ac8f7f25641faa57569dcc53f
-ms.sourcegitcommit: 16bc6a91b6b9565ca3bcc72d6eb27c2c4ae935e4
+ms.custom: product-team
+ms.openlocfilehash: 71534dc095d5fba137a0e610d4e725c2efc6b432
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52579484"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004592"
 ---
 # <a name="multitier-web-application-built-for-high-availability-and-disaster-recovery-on-azure"></a>Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션
 
 이 예제 시나리오는 고가용성 및 재해 복구를 위해 빌드된 복원력 있는 다중 계층 애플리케이션을 배포해야 하는 모든 산업에 적용됩니다. 이 시나리오에서는 애플리케이션이 세 계층으로 구성됩니다.
 
-- 웹 계층: 사용자 인터페이스를 포함하는 최상위 계층입니다. 이 계층은 사용자 상호 작용을 구문 분석하고 작업을 다음 계층으로 전달하여 처리합니다.
+- 웹 계층: 사용자 인터페이스를 포함하는 최상위 레이어입니다. 이 계층은 사용자 상호 작용을 구문 분석하고 작업을 다음 계층으로 전달하여 처리합니다.
 - 비즈니스 계층: 사용자 상호 작용을 처리하고 다음 단계에 대한 논리적 결정을 내립니다. 이 계층은 웹 계층과 데이터 계층을 연결합니다.
 - 데이터 계층: 애플리케이션 데이터를 저장합니다. 일반적으로 데이터베이스, 개체 스토리지 또는 파일 스토리지가 사용됩니다.
 

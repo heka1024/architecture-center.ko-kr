@@ -1,15 +1,16 @@
 ---
 title: 복원력 검사 목록
+titleSuffix: Azure Design Review Framework
 description: 설계하는 동안 복원력 문제에 대한 지침을 제공하는 검사 목록입니다.
 author: petertaylor9999
-ms.date: 01/10/2018
+ms.date: 11/26/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: ce538a0b234a5b120415980e983096f567f9cf86
-ms.sourcegitcommit: 1b5411f07d74f0a0680b33c266227d24014ba4d1
+ms.openlocfilehash: 1201e2045c6a5f7be9c8286cd192559a8d66d169
+ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52305947"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53307455"
 ---
 # <a name="resiliency-checklist"></a>복원력 검사 목록
 
@@ -23,25 +24,24 @@ ms.locfileid: "52305947"
 
 **응용 프로그램에 대한 FMA(실패 모드 분석)를 수행합니다.** FMA는 설계 단계의 조기에 응용 프로그램에 복원력을 구축하기 위한 프로세스입니다. 자세한 내용은 [실패 모드 분석][fma]을 참조하세요. FMA의 목표는 다음과 같습니다.  
 
-* 응용 프로그램에서 발생할 수 있는 고장의 유형을 식별합니다.
-* 각 고장 유형의 잠재적 효과 및 응용 프로그램에 주는 영향을 파악합니다.
-* 복구 전략을 식별합니다.
+- 응용 프로그램에서 발생할 수 있는 고장의 유형을 식별합니다.
+- 각 고장 유형의 잠재적 효과 및 응용 프로그램에 주는 영향을 파악합니다.
+- 복구 전략을 식별합니다.
   
-
-**서비스의 여러 인스턴스를 배포합니다.** 응용 프로그램이 서비스의 단일 인스턴스에 종속된 경우 단일 실패 지점이 생깁니다. 여러 인스턴스를 프로비전하면 복원력 및 확장성이 모두 개선됩니다. [Azure App Service](/azure/app-service/app-service-value-prop-what-is/)의 경우 여러 인스턴스를 제공하는 [App Service 계획](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)을 선택합니다. Azure Cloud Services의 경우 각각의 역할을 [여러 인스턴스](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)를 사용하도록 구성합니다. [Azure Virtual Machines(VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)의 경우, VM 아키텍처가 둘 이상의 VM을 포함하는지 그리고 각각의 VM이 [가용성 집합][availability-sets]에 포함되는지 확인합니다.   
+**서비스의 여러 인스턴스를 배포합니다.** 응용 프로그램이 서비스의 단일 인스턴스에 종속된 경우 단일 실패 지점이 생깁니다. 여러 인스턴스를 프로비전하면 복원력 및 확장성이 모두 개선됩니다. [Azure App Service](/azure/app-service/app-service-value-prop-what-is/)의 경우 여러 인스턴스를 제공하는 [App Service 계획](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)을 선택합니다. Azure Cloud Services의 경우 각각의 역할을 [여러 인스턴스](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)를 사용하도록 구성합니다. [Azure Virtual Machines(VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)의 경우, VM 아키텍처가 둘 이상의 VM을 포함하는지 그리고 각각의 VM이 [가용성 집합][availability-sets]에 포함되는지 확인합니다.
 
 **자동 크기 조정을 사용하여 부하의 증가에 대응합니다.** 응용 프로그램이 부하가 증가할 때 자동으로 규모 확장되도록 구성되지 않은 경우 사용자 요청으로 포화되면 응용 프로그램의 서비스가 실패할 가능성이 있습니다. 자세한 내용은 다음을 참조하세요.
 
-* 일반 사항: [확장성 검사 목록](./scalability.md)
-* Azure App Service: [인스턴스 개수를 수동 또는 자동으로 크기 조정][app-service-autoscale]
-* Cloud Services: [클라우드 서비스 크기를 자동으로 조정하는 방법][cloud-service-autoscale]
-* Virtual Machines: [자동 크기 조정 및 Virtual Machine Scale Sets][vmss-autoscale]
+- 일반: [확장성 검사 목록](./scalability.md)
+- Azure App Service: [수동 또는 자동으로 인스턴스 개수 조정][app-service-autoscale]
+- Cloud Services: [클라우드 서비스 크기를 자동으로 조정하는 방법][cloud-service-autoscale]
+- Virtual Machines: [자동 크기 조정 및 가상 머신 확장 집합][vmss-autoscale]
 
 **부하 분산을 사용하여 요청을 분산합니다.** 부하 분산은 비정상 인스턴스를 윤번에서 제거하여 응용 프로그램의 요청을 정상 서비스 인스턴스에 분산합니다. 서비스에 Azure App Service 또는 Azure Cloud Services를 사용하는 경우 이미 부하 분산이 적용됩니다. 그러나 응용 프로그램이 Azure VM을 사용하는 경우 부하 분산 장치를 프로비전해야 합니다. 자세한 내용은 [Azure Load Balancer](/azure/load-balancer/load-balancer-overview/) 개요를 참조하세요.
 
 **여러 인스턴스를 사용하도록 Azure Application Gateway를 구성 합니다.** 응용 프로그램의 요구 사항에 따라 [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction/)가 요청을 응용 프로그램의 서비스에 배포하기에 더 적합할 수 있습니다. 그러나 응용 프로그램 게이트웨이 서비스의 단일 인스턴스는 SLA에 의해 보증되지 않으므로 응용 프로그램 게이트웨이 인스턴스가 실패하는 경우 응용 프로그램이 실패할 수 있습니다. [SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/)의 조항에 따라 서비스의 가용성을 보증하려면 보통 이상의 응용 프로그램 게이트웨이 인스턴스를 두 개 이상 프로비전합니다.
 
-**각 응용 프로그램 계층에 대해 가용성 집합을 사용합니다.** 인스턴스를 [가용성 집합][availability-sets]에 배치하면 더 높은 [SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)를 제공합니다. 
+**각 응용 프로그램 계층에 대해 가용성 집합을 사용합니다.** 인스턴스를 [가용성 집합][availability-sets]에 배치하면 더 높은 [SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)를 제공합니다.
 
 **Azure Site Recovery를 사용하여 VM 복제.** [Site Recovery][site-recovery]를 사용하여 Azure VM을 복제할 때 모든 VM 디스크가 지속적으로 대상 지역에 비동기적으로 복제됩니다. 복구 지점은 몇 분 간격으로 생성됩니다. 이렇게 하면 시간 순으로 RPO(복구 지점 목표)가 제공됩니다.
 
@@ -51,22 +51,25 @@ ms.locfileid: "52305947"
 
 **부하 분산 장치 및 트래픽 관리자에 대한 상태 프로브를 구성하고 테스트합니다** 상태 논리가 시스템의 중요 부분을 확인하고 상태 프로브에 적절히 반응하도록 합니다.
 
-* [Azure Traffic Manager][traffic-manager] 및 [Azure Load Balancer][load-balancer]에 대한 상태 프로브는 특정 기능을 수행합니다. Traffic Manager의 경우 상태 프로브는 다른 지역으로 장애 조치할지 여부를 결정합니다. 부하 분산 장치의 경우 VM을 윤번에서 제거할지 여부를 결정합니다.      
-* Traffic Manager 프로브의 경우, 상태 엔드포인트가 같은 지역 내에 배포된 중요 종속성을 확인해야 하며, 해당 엔드포인트가 실패하면 다른 지역으로 장애 조치를 트리거해야 합니다.  
-* 부하 분산 장치의 경우 상태 엔드포인트는 VM의 상태를 보고해야 합니다. 다른 계층 또는 외부 서비스를 포함하지 마세요. 그렇지 않으면 VM 외부에서 발생하는 실패 때문에 부하 분산 장치가 VM을 윤번에서 제거하게 됩니다.
-* 응용 프로그램의 상태 모니터링 구현에 대한 지침은 [상태 엔드포인트 모니터링 패턴](https://msdn.microsoft.com/library/dn589789.aspx)을 참조하세요.
+- [Azure Traffic Manager][traffic-manager] 및 [Azure Load Balancer][load-balancer]에 대한 상태 프로브는 특정 기능을 수행합니다. Traffic Manager의 경우 상태 프로브는 다른 지역으로 장애 조치할지 여부를 결정합니다. 부하 분산 장치의 경우 VM을 윤번에서 제거할지 여부를 결정합니다.
+
+- Traffic Manager 프로브의 경우, 상태 엔드포인트가 같은 지역 내에 배포된 중요 종속성을 확인해야 하며, 해당 엔드포인트가 실패하면 다른 지역으로 장애 조치를 트리거해야 합니다.
+
+- 부하 분산 장치의 경우 상태 엔드포인트는 VM의 상태를 보고해야 합니다. 다른 계층 또는 외부 서비스를 포함하지 마세요. 그렇지 않으면 VM 외부에서 발생하는 실패 때문에 부하 분산 장치가 VM을 윤번에서 제거하게 됩니다.
+
+- 애플리케이션의 상태 모니터링 구현에 대한 지침은 [상태 엔드포인트 모니터링 패턴](../patterns/health-endpoint-monitoring.md)을 참조하세요.
 
 **타사 서비스를 모니터링합니다.** 응용 프로그램이 타사 서비스에 종속된 경우 이러한 타사 서비스가 실패할 수 있는 경우와 방법 및 해당 실패가 응용 프로그램에 주는 영향을 파악합니다. 타사 서비스는 모니터링 및 진단을 포함하지 않은 경우가 있으므로 이러한 서비스의 호출을 기록하고 고유 식별자를 사용하여 응용 프로그램의 상태 및 진단 로깅과 상호 연결하는 것이 중요합니다. 입증된 모니터링 및 진단 사례에 대한 자세한 내용은 [모니터링 및 진단 지침][monitoring-and-diagnostics-guidance]을 참조하세요.
 
 **사용하는 타사 서비스가 SLA를 제공하는지 확인합니다.** 응용 프로그램이 타사 서비스에 의존하지만 해당 타사가 SLA 형태로 가용성에 대한 보증을 제공하지 않는 경우 응용 프로그램의 가용성도 보증할 수 없습니다. SLA는 응용 프로그램의 가장 가용성이 낮은 구성 요소만큼만 품질이 보장될 뿐입니다.
 
-**적절한 경우 원격 작업에 대한 복원력 패턴을 구현합니다.** 응용 프로그램이 원격 서비스 간의 통신에 의존하는 경우 [재시도 패턴][retry-pattern] 및 [회로 차단기 패턴][circuit-breaker]과 같은 일시적 고장을 처리하기 위한 [디자인 패턴](../patterns/category/resiliency.md)을 따릅니다. 
+**적절한 경우 원격 작업에 대한 복원력 패턴을 구현합니다.** 애플리케이션이 원격 서비스 간의 통신에 의존하는 경우 [재시도 패턴](../patterns/retry.md) 및 [회로 차단기 패턴](../patterns/circuit-breaker.md)과 같은 일시적 고장을 처리하기 위한 [디자인 패턴](../patterns/category/resiliency.md)을 따릅니다.
 
 **가능하면 언제나 비동기 작업을 구현합니다.** 동기 작업은 프로세스가 완료될 때까지 호출자가 대기하는 동안 리소스를 독점하고 다른 작업을 차단할 수 있습니다. 가능하면 언제나 응용 프로그램의 각 부분을 비동기 작업이 가능하도록 설계합니다. C#에서 비동기 프로그래밍을 구현하는 자세한 방법은 [async 및 await를 사용한 비동기 프로그래밍][asynchronous-c-sharp]을 참조하세요.
 
 ## <a name="data-management"></a>데이터 관리
 
-**응용 프로그램의 데이터 원본에 대한 복제 방법을 이해합니다.** 응용 프로그램 데이터가 서로 다른 데이터 원본에 저장되고 가용성 요구 사항도 서로 다릅니다. [Azure Storage 복제](/azure/storage/storage-redundancy/) 및 [SQL Database 활성 지역 복제](/azure/sql-database/sql-database-geo-replication-overview/)를 포함하여 Azure에서 각 유형의 데이터 저장장치에 대한 복제 방법을 평가하여 응용 프로그램의 데이터 요구 사항이 충족되는지 확인합니다. [Site Recovery][site-recovery]를 사용하여 Azure VM을 복제할 때 모든 VM 디스크가 지속적으로 대상 지역에 비동기적으로 복제됩니다. 복구 지점은 몇 분 간격으로 생성됩니다. 
+**응용 프로그램의 데이터 원본에 대한 복제 방법을 이해합니다.** 응용 프로그램 데이터가 서로 다른 데이터 원본에 저장되고 가용성 요구 사항도 서로 다릅니다. [Azure Storage 복제](/azure/storage/storage-redundancy/) 및 [SQL Database 활성 지역 복제](/azure/sql-database/sql-database-geo-replication-overview/)를 포함하여 Azure에서 각 유형의 데이터 저장장치에 대한 복제 방법을 평가하여 응용 프로그램의 데이터 요구 사항이 충족되는지 확인합니다. [Site Recovery][site-recovery]를 사용하여 Azure VM을 복제할 때 모든 VM 디스크가 지속적으로 대상 지역에 비동기적으로 복제됩니다. 복구 지점은 몇 분 간격으로 생성됩니다.
 
 **프로덕션 및 백업 데이터 둘 다에 대해 액세스 권한을 가진 단일 사용자 계정이 없는지 확인합니다.** 단일 사용자 계정 하나가 프로덕션 및 백업 원본 둘 다에 대한 쓰기 권한을 가진 경우 데이터 백업이 손상됩니다. 악의적인 사용자는 모든 데이터를 고의로 삭제할 수 있는 반면, 정규 사용자는 해당 데이터를 실수로 삭제할 수 있습니다. 쓰기 액세스를 요구하는 사용자만이 쓰기 액세스 권한을 갖고 이 권한이 프로덕션 또는 백업에만 적용되고 둘 다에 함께 적용되지는 않도록 하려면 응용 프로그램을 각 사용자 계정의 사용 권한을 제한하도록 설계합니다.
 
@@ -77,9 +80,7 @@ ms.locfileid: "52305947"
 **지리적으로 중복된 저장소 계정 유형의 사용을 고려합니다.** Azure 저장소 계정에 저장된 데이터는 항상 로컬로 복제됩니다. 그러나 저장소 계정이 프로비전될 때 선택할 수 있는 여러 복제 전략이 있습니다. 전체 지역이 사용할 수 없게 되는 드문 경우 응용 프로그램 데이터를 보호하려면 [RA-GRS(Azure 읽기 액세스 지역 중복 저장소)](/azure/storage/storage-redundancy/#read-access-geo-redundant-storage)를 선택합니다.
 
 > [!NOTE]
-> VM의 경우 VM 디스크(VHD 파일)를 복원하기 위해 RA-GRS 복제에 의존하지 마세요. 그 대신 [Azure Backup][azure-backup]을 사용하세요.   
->
->
+> VM의 경우 VM 디스크(VHD 파일)를 복원하기 위해 RA-GRS 복제에 의존하지 마세요. 그 대신 [Azure Backup][azure-backup]을 사용하세요.
 
 ## <a name="security"></a>보안
 
@@ -97,15 +98,15 @@ ms.locfileid: "52305947"
 
 ## <a name="deployment"></a>배포
 
-**응용 프로그램에 대한 릴리스 프로세스를 문서화합니다.** 자세한 릴리스 프로세스 문서가 없으면 운영자가 잘못된 업데이트를 배포하거나 응용 프로그램에 대한 설정을 부적절하게 구성할 수 있습니다. 릴리스 프로세스를 명확히 정의 및 문서화하고 전체 작업 팀에 사용할 수 있도록 했는지 확인합니다. 
+**응용 프로그램에 대한 릴리스 프로세스를 문서화합니다.** 자세한 릴리스 프로세스 문서가 없으면 운영자가 잘못된 업데이트를 배포하거나 응용 프로그램에 대한 설정을 부적절하게 구성할 수 있습니다. 릴리스 프로세스를 명확히 정의 및 문서화하고 전체 작업 팀에 사용할 수 있도록 했는지 확인합니다.
 
-**응용 프로그램의 배포 프로세스를 자동화합니다.** 운영 담당자가 응용 프로그램을 수동으로 배포해야 하는 경우 인적 오류 때문에 배포가 실패할 수 있습니다. 
+**응용 프로그램의 배포 프로세스를 자동화합니다.** 운영 담당자가 응용 프로그램을 수동으로 배포해야 하는 경우 인적 오류 때문에 배포가 실패할 수 있습니다.
 
 **응용 프로그램 가용성을 최대화하도록 릴리스 프로세스를 설계합니다.** 릴리스 프로세스가 배포 중에 서비스를 오프라인으로 전환할 것을 요구하는 경우 다시 온라인이 될 때까지 응용 프로그램을 사용할 수 없습니다. [파란색/녹색](https://martinfowler.com/bliki/BlueGreenDeployment.html) 또는 [카나리아 릴리스](https://martinfowler.com/bliki/CanaryRelease.html) 배포 기술을 사용하여 응용 프로그램을 프로덕션에 배포합니다. 두 기술 모두 고장 시 릴리스 코드 사용자가 프로덕션 코드로 리디렉션될 수 있도록 프로덕션 코드와 함께 릴리스 코드 배포를 포함합니다.
 
 **로그인하고 응용 프로그램의 배포를 감사합니다.** 파란색/녹색 또는 카나리아 릴리스 같은 단계별 배포 기술을 사용하는 경우 프로덕션에서 실행 중인 응용 프로그램의 버전이 둘 이상이 됩니다. 문제가 발생한 경우 응용 프로그램의 버전 중 문제를 야기하는 버전을 결정해야 합니다. 최대한 많은 버전 관련 정보를 캡처하도록 강력한 로깅 전략을 구현합니다.
 
-**배포에 대한 롤백 계획을 수립합니다.** 응용 프로그램 배포가 실패하여 응용 프로그램이 사용할 수 없게 될 가능성이 있습니다. 마지막으로 성공한 버전으로 돌아가서 가동 중지 시간을 최소화하도록 롤백 프로세스를 설계합니다. 
+**배포에 대한 롤백 계획을 수립합니다.** 응용 프로그램 배포가 실패하여 응용 프로그램이 사용할 수 없게 될 가능성이 있습니다. 마지막으로 성공한 버전으로 돌아가서 가동 중지 시간을 최소화하도록 롤백 프로세스를 설계합니다.
 
 ## <a name="operations"></a>작업
 
@@ -121,7 +122,7 @@ ms.locfileid: "52305947"
 
 **[Azure 구독 제한](/azure/azure-subscription-service-limits/)을 기준으로 응용 프로그램이 그보다 많이 실행되지 않도록 합니다.** Azure 구독은 리소스 그룹 수, 코어 수 및 저장소 계정 수 등 특정 리소스 유형에 대한 제한을 둡니다.  응용 프로그램 요구 사항이 Azure 구독 제한을 초과하는 경우 또 다른 Azure 구독을 만들고 거기에 충분한 리소스를 프로비전합니다.
 
-**[서비스 단위 제한](/azure/azure-subscription-service-limits/)을 기준으로 응용 프로그램이 그보다 많이 실행되지 않도록 합니다.** 개별 Azure 서비스는 사용 제한을 둡니다. &mdash; 예들 들어 저장소, 처리량, 연결 수, 초당 요청 수 및 기타 메트릭에 대한 제한을 둡니다. 응용 프로그램은 이러한 제한을 초과하여 리소스 사용을 시도하면 실패합니다. 그러면 서비스가 제한되며 영향을 받는 사용자에 대해 가동 중지 시간이 발생할 가능성이 있습니다. 특정 서비스 및 응용 프로그램 요구 사항에 따라 많은 경우 확장(예: 다른 가격 계층 선택) 또는 규모 확장(새 인스턴스 추가)에 의해 이러한 제한을 피할 수 있습니다.  
+**[서비스 단위 제한](/azure/azure-subscription-service-limits/)을 기준으로 응용 프로그램이 그보다 많이 실행되지 않도록 합니다.** 개별 Azure 서비스는 사용 제한을 둡니다. &mdash; 예들 들어 저장소, 처리량, 연결 수, 초당 요청 수 및 기타 메트릭에 대한 제한을 둡니다. 응용 프로그램은 이러한 제한을 초과하여 리소스 사용을 시도하면 실패합니다. 그러면 서비스가 제한되며 영향을 받는 사용자에 대해 가동 중지 시간이 발생할 가능성이 있습니다. 특정 서비스 및 응용 프로그램 요구 사항에 따라 많은 경우 확장(예: 다른 가격 계층 선택) 또는 규모 확장(새 인스턴스 추가)에 의해 이러한 제한을 피할 수 있습니다.
 
 **응용 프로그램의 저장 요구 사항을 Azure 저장 확장성 및 성능 목표 범위 이내가 되도록 설계합니다.** Azure 저장소는 미리 정의된 확장성 및 성능 목표 내에서 작동하도록 설계되었으므로 응용 프로그램이 저장소를 해당 목표 범위 이내에서 이용하게 됩니다. 이러한 목표를 초과하면 응용 프로그램 저장소 제한이 발생합니다. 이 문제를 해결하려면 추가 저장소 계정을 프로비전합니다. 저장소 계정 제한보다 많이 실행한 경우 추가 Azure 구독을 프로비전한 다음 거기서 추가 저장소 계정을 프로비전합니다. 자세한 내용은 [Azure Storage 확장성 및 성능 목표](/azure/storage/storage-scalability-targets/)를 참조하세요.
 
@@ -129,7 +130,7 @@ ms.locfileid: "52305947"
 
 **응용 프로그램의 워크로드가 안정적인지 또는 시간이 지남에 따라 변동하는지 결정합니다.** 워크로드가 시간이 지남에 따라 변동하는 경우 Azure VM 확장 집합을 사용하여 VM 인스턴스 수를 자동으로 크기 조정합니다. 그렇지 않으면 VM 수를 수동으로 늘리거나 줄여야 합니다. 자세한 내용은 [가상 머신 확장 집합 개요](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview/)를 참조하세요.
 
-**Azure SQL Database에 적합한 서비스 계층을 선택합니다.** 응용 프로그램이 Azure SQL Database를 사용하는 경우 적절한 서비스 계층을 선택했는지 확인합니다. 응용 프로그램의 DTU(데이터베이스 트랜잭션 단위) 요구 사항을 처리할 수 없는 계층을 선택하면 데이터 사용이 제한을 받습니다. 올바른 서비스 계획 선택에 대한 자세한 내용은 [SQL Database 옵션 및 성능: 각 서비스 계층에서 사용할 수 있는 것 이해](/azure/sql-database/sql-database-service-tiers/)를 참조하세요.
+**Azure SQL Database에 적합한 서비스 계층을 선택합니다.** 응용 프로그램이 Azure SQL Database를 사용하는 경우 적절한 서비스 계층을 선택했는지 확인합니다. 응용 프로그램의 DTU(데이터베이스 트랜잭션 단위) 요구 사항을 처리할 수 없는 계층을 선택하면 데이터 사용이 제한을 받습니다. 올바른 서비스 계획 선택에 대한 자세한 내용은 [SQL Database 옵션 및 성능: 각 서비스 계층에서 사용할 수 있는 기능 이해](/azure/sql-database/sql-database-service-tiers/)를 참조하세요.
 
 **Azure 지원 담당자와 상호 작용하는 프로세스를 만듭니다.** 지원 담당자와 연락할 필요가 발생하기 전에 [Azure 지원 담당자](https://azure.microsoft.com/support/plans/)와 연락하기 위한 프로세스를 설정하지 않으면 지원 프로세스를 처음 탐색하는 동안 가동 중지 시간이 길어집니다. 처음부터 응용 프로그램 복원력의 일부로 지원 담당자와 연락 및 문제 에스컬레이션에 대한 프로세스를 포함합니다.
 
@@ -155,7 +156,7 @@ ms.locfileid: "52305947"
 
 **VM 같은 중요 리소스에 대해 리소스 잠금을 사용합니다.** 리소스 잠금은 운영자가 리소스를 실수로 삭제하는 것을 예방합니다. 자세한 내용은 [Azure Resource Manager를 사용하여 리소스 잠그기](/azure/azure-resource-manager/resource-group-lock-resources/) 참조
 
-**지역 쌍을 선택합니다.** 두 지역을 배포하는 경우 같은 지역 쌍에서 지역을 선택합니다. 광범위한 중단 발생 시 한 지역의 복구가 모든 쌍의 복구보다 높은 우선 순위를 갖습니다. 지역 정보 저장소 같은 일부 서비스는 쌍을 이루는 지역에 대해 자동 복제를 제공합니다. 자세한 내용은 [BCDR(비즈니스 연속성 및 재해 복구): Azure 쌍을 이루는 지역](/azure/best-practices-availability-paired-regions) 참조
+**지역 쌍을 선택합니다.** 두 지역을 배포하는 경우 같은 지역 쌍에서 지역을 선택합니다. 광범위한 중단 발생 시 한 지역의 복구가 모든 쌍의 복구보다 높은 우선 순위를 갖습니다. 지역 정보 저장소 같은 일부 서비스는 쌍을 이루는 지역에 대해 자동 복제를 제공합니다. 자세한 내용은 [BCDR(비즈니스 연속성 및 재해 복구): Azure 쌍을 이루는 지역](/azure/best-practices-availability-paired-regions)을 참조하세요.
 
 **기능 및 수명 주기별로 리소스 그룹을 구성합니다.**  일반적으로 리소스 그룹은 동일한 수명 주기를 공유하는 리소스를 포함해야 합니다. 이렇게 하면 배포 관리, 테스트 배포 삭제 및 액세스 권한 할당을 보다 쉽게 관리할 수 있어 프로덕션 배포가 실수로 삭제되거나 수정될 기회가 감소합니다. 프로덕션, 개발 및 테스트 환경에 대해 별도의 리소스 그룹을 만듭니다. 다중 지역 배포에서는 각 지역에 대한 리소스를 별도의 리소스 그룹에 배치합니다. 이렇게 하면 다른 지역에 영향을 주지 않고 한 지역을 재배포하기 쉽습니다.
 
@@ -163,7 +164,6 @@ ms.locfileid: "52305947"
 
 - [특정 Azure 서비스에 대한 복원력 검사 목록](./resiliency-per-service.md)
 - [실패 모드 분석](../resiliency/failure-mode-analysis.md)
-
 
 <!-- links -->
 [app-service-autoscale]: /azure/monitoring-and-diagnostics/insights-how-to-scale/
@@ -176,7 +176,6 @@ ms.locfileid: "52305947"
 [load-balancer]: /azure/load-balancer/load-balancer-overview/
 [monitoring-and-diagnostics-guidance]: ../best-practices/monitoring.md
 [resource-manager]: /azure/azure-resource-manager/resource-group-overview/
-[retry-pattern]: ../patterns/retry.md
 [retry-service-guidance]: ../best-practices/retry-service-specific.md
 [site-recovery]: /azure/site-recovery/
 [site-recovery-test]: /azure/site-recovery/site-recovery-test-failover-to-azure

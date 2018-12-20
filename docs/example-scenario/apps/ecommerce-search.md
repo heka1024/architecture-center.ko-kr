@@ -3,12 +3,13 @@ title: 전자상거래에 대한 지능형 제품 검색 엔진
 description: 전자상거래 응용 프로그램에서 세계적 수준의 검색 환경을 제공합니다.
 author: jelledruyts
 ms.date: 09/14/2018
-ms.openlocfilehash: a57477c26665b4560671550f6fdd81c2d9505e71
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.custom: fasttrack
+ms.openlocfilehash: 5eabdb94b9345e73b21526681e0dbd6ae859d7be
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610671"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004901"
 ---
 # <a name="intelligent-product-search-engine-for-e-commerce"></a>전자상거래에 대한 지능형 제품 검색 엔진
 

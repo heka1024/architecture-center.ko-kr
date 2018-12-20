@@ -3,12 +3,13 @@ title: Service Fabric을 사용하여 모놀리식 응용 프로그램 분해
 description: 대규모 모놀리식 응용 프로그램을 마이크로 서비스로 분해합니다.
 author: timomta
 ms.date: 09/20/2018
-ms.openlocfilehash: 9194ddd53a6d78f49fea2f7bb36fbc8721a502ea
-ms.sourcegitcommit: b2a4eb132857afa70201e28d662f18458865a48e
+ms.custom: fasttrack
+ms.openlocfilehash: 438d2eabff39356a7593f2da798a74eebe94553a
+ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48819662"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53004620"
 ---
 # <a name="using-service-fabric-to-decompose-monolithic-applications"></a>Service Fabric을 사용하여 모놀리식 응용 프로그램 분해
 
@@ -80,15 +81,15 @@ Azure에서 호스팅되는 Service Fabric 클러스터의 경우 비용의 가�
 
 비용이 적게 드는 다른 구성 요소는 각 노드의 가상 디스크에 대한 저장소 요금 및 Azure의 네트워크 IO 송신(예: Azure에서 사용자 브라우저로의 네트워크 트래픽) 요금입니다.
 
-비용을 알아볼 수 있도록 클러스터 크기, 네트워킹 및 저장소에 대한 몇 가지 기본값을 사용하는 예제가 제공되었으니, [요금 계산기](https://azure.com/e/52dea096e5844d5495a7b22a9b2ccdde)를 살펴보세요. 이 기본 계산기의 값을 각자의 상황에 맞는 값으로 자유롭게 업데이트하세요.
+비용을 알아볼 수 있도록 클러스터 크기, 네트워킹 및 스토리지에 대한 몇 가지 기본값을 사용하는 예제가 제공되었으므로, [요금 계산기](https://azure.com/e/52dea096e5844d5495a7b22a9b2ccdde)를 살펴보세요. 이 기본 계산기의 값을 각자의 상황에 맞는 값으로 자유롭게 업데이트하세요.
 
 ## <a name="next-steps"></a>다음 단계
 
-Service Fabric에 대한 [설명서](/azure/service-fabric/service-fabric-overview)를 살펴보고 다른 여러 [응용 프로그램 시나리오](/azure/service-fabric/service-fabric-application-scenarios)를 검토하여 플랫폼에 대해 숙지하세요. 설명서는 클러스터의 구성 요소, 클러스터를 실행할 수 있는 위치, 소프트웨어 아키텍처 및 유지 관리에 대해 알려줍니다.
+플랫폼에 익숙해지도록 잠시 시간을 내어 [설명서](/azure/service-fabric/service-fabric-overview)를 살펴보고 Service Fabric에 대한 다양한 [응용 시나리오](/azure/service-fabric/service-fabric-application-scenarios)를 검토합니다. 이 설명서에서는 클러스터의 구성 요소, 실행할 수 있는 항목, 소프트웨어 아키텍처 및 유지 관리에 대해 설명합니다.
 
-기존 .NET 응용 프로그램에 대한 Service Fabric 데모를 보려면 Service Fabric [빠른 시작](/azure/service-fabric/service-fabric-quickstart-dotnet)을 배포하세요.
+기존 .NET 응용 프로그램에 대한 Service Fabric 데모를 보려면 Service Fabric [빠른 시작](/azure/service-fabric/service-fabric-quickstart-dotnet)을 배포합니다.
 
-현재 응용 프로그램의 관점에서 다른 함수에 대해 생각해 보세요. 그 중 하나를 선택하고 전체에서 해당 함수에만 분리하는 방법을 고민해 보세요. 불연속적이고 이해하기 쉬운 함수로 한 번에 하나씩 사용하세요.
+현재 응용 프로그램의 관점에서 다양한 함수를 고려합니다. 그 중 하나를 선택하고 전체에서 이 함수만 분리할 수 있는 방법을 고려합니다. 개별적으로 이해할 수 있는 조각을 한 번에 하나씩 가져옵니다.
 
 ## <a name="related-resources"></a>관련 리소스
 
@@ -97,7 +98,7 @@ Service Fabric에 대한 [설명서](/azure/service-fabric/service-fabric-overvi
 - [Service Fabric 프로그래밍 모델](/azure/service-fabric/service-fabric-choose-framework)
 - [Service Fabric 가용성](/azure/service-fabric/service-fabric-availability-services)
 - [Service Fabric 크기 조정](/azure/service-fabric/service-fabric-concepts-scalability)
-- [Service Fabric에 컨테이너 호스팅](/azure/service-fabric/service-fabric-containers-overview)
-- [Service Fabric에 독립 실행형 실행 파일 호스팅](/azure/service-fabric/service-fabric-guest-executables-introduction)
+- [Service Fabric에서 컨테이너 호스팅](/azure/service-fabric/service-fabric-containers-overview)
+- [Service Fabric에서 독립 실행형 실행 파일 호스팅](/azure/service-fabric/service-fabric-guest-executables-introduction)
 - [Service Fabric 네이티브 Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction)
 - [Service Fabric 응용 프로그램 시나리오](/azure/service-fabric/service-fabric-application-scenarios)

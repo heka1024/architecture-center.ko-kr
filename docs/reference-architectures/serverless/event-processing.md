@@ -1,27 +1,29 @@
 ---
 title: Azure Functions를 사용한 서버리스 이벤트 처리
+titleSuffix: Azure Reference Architectures
 description: 서버리스 이벤트 수집 및 처리를 보여 주는 참조 아키텍처입니다.
 author: MikeWasson
 ms.date: 10/16/2018
-ms.openlocfilehash: 76c8b9c1244c987c96e38e50ecad7814cc49cd88
-ms.sourcegitcommit: 19a517a2fb70768b3edb9a7c3c37197baa61d9b5
+ms.custom: seodec18
+ms.openlocfilehash: 1a3c73ca35f7e849211837dee33a530d786c827f
+ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52295653"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53119900"
 ---
 # <a name="serverless-event-processing-using-azure-functions"></a>Azure Functions를 사용한 서버리스 이벤트 처리
 
 이 참조 아키텍처에서는 데이터 스트림을 수집하고, 데이터를 처리하고, 결과를 백 엔드 데이터베이스에 기록하는 [서버리스](https://azure.microsoft.com/solutions/serverless/) 이벤트 구동 아키텍처를 보여줍니다. 이 아키텍처에 대한 참조 구현은 [GitHub][github]에서 사용할 수 있습니다.
 
-![](./_images/serverless-event-processing.png)
+![Azure Functions를 사용하여 서버리스 이벤트를 처리하기 위한 참조 아키텍처](./_images/serverless-event-processing.png)
 
 ## <a name="architecture"></a>아키텍처
 
 **Event Hubs**에서 데이터 스트림을 수집합니다. [Event Hubs][eh]는 높은 처리량 데이터 스트리밍 시나리오를 위해 설계되었습니다.
 
 > [!NOTE]
-> IoT 시나리오의 경우 IoT Hub를 사용하는 것이 좋습니다. IoT Hub에는 Azure Event Hubs API와 호환되는 기본 제공 엔드포인트가 있으므로 이 아키텍처에서는 백 엔드 처리를 크게 변경하지 않고도 두 가지 서비스 중 하나를 사용할 수 있습니다. 자세한 내용은 [IoT 장치를 Azure에 연결: IoT Hub 및 Event Hubs][iot]를 참조하세요.
+> IoT 시나리오의 경우 IoT Hub를 사용하는 것이 좋습니다. IoT Hub에는 Azure Event Hubs API와 호환되는 기본 제공 엔드포인트가 있으므로 이 아키텍처에서는 백 엔드 처리를 크게 변경하지 않고도 두 가지 서비스 중 하나를 사용할 수 있습니다. 자세한 내용은 [IoT 디바이스를 Azure에 연결: IoT Hub 및 Event Hubs][iot]를 참조하세요.
 
 **함수 앱**. [Azure Functions][functions]는 서버리스 계산 옵션입니다. 트리거를 통해 코드("함수")가 호출되는 이벤트 구동 모델을 사용합니다. 이 아키텍처에서는 이벤트가 Event Hubs에 도착하면 이벤트를 처리하고 결과를 저장소에 쓰는 함수를 트리거합니다.
 
@@ -49,16 +51,16 @@ Cosmos DB의 처리 용량은 [RU(요청 단위)][ru]로 측정됩니다. 10,000
 
 적절한 파티션 키에 대한 몇 가지 특징은 다음과 같습니다.
 
-- 키 값 공간이 큽니다. 
+- 키 값 공간이 큽니다.
 - 바로 가기 키를 사용하지 않고도 값당 읽기/쓰기 수가 균등하게 분산됩니다.
-- 단일 키 값에 저장되는 최대 데이터 크기는 최대 실제 파티션 크기(10GB)를 초과하지 않습니다. 
-- 문서에 대한 파티션 키는 변경되지 않습니다. 기존 문서의 파티션 키는 업데이트할 수 없습니다. 
+- 단일 키 값에 저장되는 최대 데이터 크기는 최대 실제 파티션 크기(10GB)를 초과하지 않습니다.
+- 문서에 대한 파티션 키는 변경되지 않습니다. 기존 문서의 파티션 키는 업데이트할 수 없습니다.
 
 이 참조 아키텍처에 대한 시나리오에서 함수는 정확히 데이터를 보내는 장치당 하나의 문서를 저장합니다. 함수에서 지속적으로 upsert 작업을 사용하여 문서를 최신 장치 상태로 업데이트합니다. 쓰기가 키 전체에 균등하게 분산되므로 장치 ID가 이 시나리오에 적합한 파티션 키이며, 각 키 값에 대해 하나의 문서가 있으므로 각 파티션의 크기가 엄격하게 제한됩니다. 파티션 키에 대한 자세한 내용은 [Azure Cosmos DB의 파티션 및 확장][cosmosdb-scale]을 참조하세요.
 
 ## <a name="resiliency-considerations"></a>복원력 고려 사항
 
-Functions에서 Event Hubs 트리거를 사용하는 경우 처리 루프 내에서 예외를 catch합니다. 처리되지 않은 예외가 발생하면 Functions 런타임에서 메시지를 다시 시도하지 않습니다. 메시지를 처리할 수 없는 경우, 배달 못한 편지 큐에 메시지를 넣습니다. 대역 외 프로세스를 사용하여 메시지를 검토하고 수정 작업을 결정합니다. 
+Functions에서 Event Hubs 트리거를 사용하는 경우 처리 루프 내에서 예외를 catch합니다. 처리되지 않은 예외가 발생하면 Functions 런타임에서 메시지를 다시 시도하지 않습니다. 메시지를 처리할 수 없는 경우, 배달 못한 편지 큐에 메시지를 넣습니다. 대역 외 프로세스를 사용하여 메시지를 검토하고 수정 작업을 결정합니다.
 
 다음 코드에서는 수집 함수에서 예외를 catch하고, 처리되지 않은 메시지를 배달 못한 편지 큐에 넣는 방법을 보여 줍니다.
 
@@ -99,9 +101,9 @@ public static async Task RunAsync(
 
 이 함수는 [Queue 저장소 출력 바인딩][queue-binding]을 사용하여 항목을 큐에 넣습니다.
 
-위에 표시된 코드는 예외를 Application Insights에 기록합니다. 파티션 키와 시퀀스 번호를 사용하여 배달 못한 편지 메시지와 로그의 예외 사이의 상관 관계를 지정할 수 있습니다. 
+위에 표시된 코드는 예외를 Application Insights에 기록합니다. 파티션 키와 시퀀스 번호를 사용하여 배달 못한 편지 메시지와 로그의 예외 사이의 상관 관계를 지정할 수 있습니다.
 
-배달 못한 편지 큐의 메시지에는 오류 컨텍스트를 이해할 수 있도록 충분한 정보가 있어야 합니다. 다음 예제에서 `DeadLetterMessage` 클래스에는 예외 메시지, 원래 이벤트 데이터 및 역렬화된 이벤트 메시지(사용 가능한 경우)가 포함됩니다. 
+배달 못한 편지 큐의 메시지에는 오류 컨텍스트를 이해할 수 있도록 충분한 정보가 있어야 합니다. 다음 예제에서 `DeadLetterMessage` 클래스에는 예외 메시지, 원래 이벤트 데이터 및 역렬화된 이벤트 메시지(사용 가능한 경우)가 포함됩니다.
 
 ```csharp
 public class DeadLetterMessage
@@ -128,7 +130,7 @@ public class DeadLetterMessage
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
-이 참조 아키텍처를 배포하기 위해 [GitHub 추가 정보][readme]를 확인합니다. 
+이 참조 아키텍처를 배포하기 위해 [GitHub 추가 정보][readme]를 확인합니다.
 
 <!-- links -->
 
