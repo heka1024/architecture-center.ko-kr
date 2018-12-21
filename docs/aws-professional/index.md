@@ -328,7 +328,7 @@ Azure는 디렉터리 서비스를 다음과 같은 제품으로 나눠 놓았�
 
 -   [Azure Active Directory Domain Services](https://azure.microsoft.com/documentation/articles/active-directory-ds-overview/) - 호스팅된 도메인 컨트롤러 서비스로, Active Directory 호환 도메인 가입 및 사용자 관리 기능을 허용합니다.
 
-#### <a name="web-application-firewall"></a>웹 응용 프로그램 방화벽
+#### <a name="web-application-firewall"></a>웹 애플리케이션 방화벽
 
 [Application Gateway 웹 응용 프로그램 방화벽](https://azure.microsoft.com/documentation/articles/application-gateway-webapplicationfirewall-overview/) 외에도 [Barracuda Networks](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf/) 같은 타사 공급업체의 [웹 응용 프로그램 방화벽을 사용](https://azure.microsoft.com/documentation/articles/application-gateway-webapplicationfirewall-overview/)할 수 있습니다.
 
