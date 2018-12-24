@@ -11,7 +11,7 @@ items:
       items:
       - name: 개요
         href: guide/architecture-styles/index.md
-      - name: N 계층 응용 프로그램
+      - name: N 계층 애플리케이션
         href: guide/architecture-styles/n-tier.md
       - name: 웹-큐-작업자
         href: guide/architecture-styles/web-queue-worker.md
@@ -491,11 +491,11 @@ items:
       href: multitenant-identity/token-cache.md
     - name: 클라이언트 어설션
       href: multitenant-identity/client-assertion.md
-    - name: 응용 프로그램 비밀 보호
+    - name: 애플리케이션 비밀 보호
       href: multitenant-identity/key-vault.md
     - name: 고객의 AD FS로 페더레이션
       href: multitenant-identity/adfs.md
-    - name: 설문 조사 응용 프로그램 실행
+    - name: 설문 조사 애플리케이션 실행
       href: multitenant-identity/run-the-app.md
   - name: Cloud Services에서 Service Fabric으로 마이그레이션
     items:

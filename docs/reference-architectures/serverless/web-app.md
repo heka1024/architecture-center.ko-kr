@@ -263,7 +263,7 @@ public static Task<IActionResult> Run(
 
 - API Management 게이트웨이에는 [고정 IP 주소][apim-ip]가 있습니다. Azure Function을 제한하여 고정 IP 주소의 호출만 허용합니다. 자세한 내용은 [Azure App Service 고정 IP 제한][app-service-ip-restrictions]을 참조하세요. 이 기능은 표준 계층 서비스에서만 사용할 수 있습니다.
 
-### <a name="protect-application-secrets"></a>응용 프로그램 비밀 보호
+### <a name="protect-application-secrets"></a>애플리케이션 비밀 보호
 
 응용 프로그램 비밀(예: 데이터베이스 자격 증명)은 코드 또는 구성 파일에 저장하지 않습니다. 대신, Azure에서 암호화되어 저장되는 [앱 설정]을 사용합니다. 자세한 내용은 [Azure App Service 및 Azure Functions의 보안][app-service-security]을 참조하세요.
 

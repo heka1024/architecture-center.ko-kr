@@ -127,7 +127,7 @@ AWS에서는 한 영역이 두 개 이상의 가용성 영역으로 나뉩니다
 
 가용성 집합에 추가되는 VM 인스턴스에는 [업데이트 도메인](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-manage-availability/)이 할당됩니다. 업데이트 도메인은 동시에 계획된 유지 관리 이벤트를 수행하도록 설정된 VM 그룹입니다. VM을 여러 업데이트 도메인에 분산하면 계획된 업데이트 및 패치 이벤트가 지정된 시간에 이러한 VM의 하위 집합에만 영향을 줍니다.
 
-각 역할의 한 인스턴스가 정상적으로 작동하려면 응용 프로그램의 인스턴스 역할을 통해 가용성 집합을 구성해야 합니다. 예를 들어 3계층 웹 응용 프로그램에서는 프런트 엔드, 응용 프로그램 및 데이터 계층에 대한 별도의 가용성 집합을 만듭니다.
+각 역할의 한 인스턴스가 정상적으로 작동하려면 애플리케이션의 인스턴스 역할을 통해 가용성 집합을 구성해야 합니다. 예를 들어 3계층 웹 응용 프로그램에서는 프런트 엔드, 응용 프로그램 및 데이터 계층에 대한 별도의 가용성 집합을 만듭니다.
 
 ![각 응용 프로그램 역할에 대한 Azure 가용성 집합](./images/three-tier-example.png "각 응용 프로그램 역할에 대한 Azure 가용성 집합")
 
@@ -338,7 +338,7 @@ Azure는 디렉터리 서비스를 다음과 같은 제품으로 나눠 놓았�
 
 -   [Azure Identity Management 및 액세스 제어 보안 모범 사례](https://azure.microsoft.com/documentation/articles/azure-security-identity-management-best-practices/)
 
-### <a name="application-and-messaging-services"></a>응용 프로그램 및 메시지 서비스
+### <a name="application-and-messaging-services"></a>애플리케이션 및 메시지 서비스
 
 #### <a name="simple-email-service"></a>Simple Email Service
 
@@ -350,7 +350,7 @@ AWS SQS(AWS Simple Queueing Service)는 AWS 플랫폼 내부의 응용 프로그
 
 -   [큐 저장소](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-queues/) - Azure 플랫폼 내부의 응용 프로그램 구성 요소 간 통신을 허용하는 클라우드 메시지 서비스입니다.
 
--   [Service Bus](https://azure.microsoft.com/services/service-bus/) - 응용 프로그램, 서비스 및 장치를 연결하는 보다 강력한 메시지 시스템입니다. 관련 [Service Bus Relay](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it)를 사용하면 Service Bus가 원격으로 호스팅되는 응용 프로그램 및 서비스에도 연결할 수 있습니다.
+-   [Service Bus](https://azure.microsoft.com/services/service-bus/) - 응용 프로그램, 서비스 및 장치를 연결하는 보다 강력한 메시지 시스템입니다. 관련 [Service Bus Relay](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it)를 사용하면 Service Bus가 원격으로 호스팅되는 애플리케이션 및 서비스에도 연결할 수 있습니다.
 
 #### <a name="device-farm"></a>Device Farm
 

@@ -1,6 +1,6 @@
 ---
 title: 손상 방지 레이어 패턴
-description: 현대식 응용 프로그램과 레거시 시스템 사이에 외관 또는 어댑터 레이어를 구현합니다.
+description: 현대식 애플리케이션과 레거시 시스템 사이에 외관 또는 어댑터 레이어를 구현합니다.
 author: dragon119
 ms.date: 06/23/2017
 ms.openlocfilehash: ac898519c9aa0a0aa2301da9f48756db0eb2af7c

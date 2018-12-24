@@ -32,12 +32,12 @@ Azure AD(Azure Active Directory)를 통해 Office365 및 Dynamics CRM Online 고
 
 * 고객의 AD FS는 [계정 파트너]이며, 고객의 AD에서 사용자 인증 및 사용자 클레임으로 보안 토큰 생성을 담당합니다.
 * SaaS 공급자의 AD FS는 [리소스 파트너]이며, 계정 파트너를 트러스트하고 사용자 클레임을 받습니다.
-* 응용 프로그램은 SaaS 공급자의 AD FS에서 RP(신뢰 당사자)로 구성됩니다.
+* 애플리케이션은 SaaS 공급자의 AD FS에서 RP(신뢰 당사자)로 구성됩니다.
   
   ![페더레이션 트러스트](./images/federation-trust.png)
 
 > [!NOTE]
-> 이 문서에서는 응용 프로그램이 인증 프로토콜로 OpenID Connect를 사용한다고 가정합니다. 다른 옵션은 WS-Federation을 사용하는 것입니다.
+> 이 문서에서는 애플리케이션이 인증 프로토콜로 OpenID Connect를 사용한다고 가정합니다. 다른 옵션은 WS-Federation을 사용하는 것입니다.
 > 
 > OpenID Connect의 경우 SaaS 공급자는 Windows Server 2016에서 실행되는 AD FS 2016을 사용해야 합니다. AD FS 3.0은 OpenID Connect를 지원하지 않습니다.
 > 
@@ -48,7 +48,7 @@ Azure AD(Azure Active Directory)를 통해 Office365 및 Dynamics CRM Online 고
 ASP.NET 4에서 WS-Federation을 사용하는 예제는 [active-directory-dotnet-webapp-wsfederation 샘플][active-directory-dotnet-webapp-wsfederation]을 참조하세요.
 
 ## <a name="authentication-flow"></a>인증 흐름
-1. 사용자가 "로그인"을 클릭하면 응용 프로그램은 SaaS 공급자의 AD FS에서 OpenID Connect 엔드포인트로 리디렉션됩니다.
+1. 사용자가 "로그인"을 클릭하면 애플리케이션은 SaaS 공급자의 AD FS에서 OpenID Connect 엔드포인트로 리디렉션됩니다.
 2. 사용자가 자신의 조직 사용자 이름("`alice@corp.contoso.com`")을 입력합니다. AD FS는 고객의 AD FS로 리디렉션하기 위해 홈 영역 검색을 사용하며 여기서 사용자는 자신의 자격 증명을 입력합니다.
 3. 고객의 AD FS는 WF-Federation(또는 SAML)을 사용하여 사용자 클레임을 SaaS 공급자의 AD FS로 보냅니다.
 4. 클레임은 OpenID Connect를 사용하여 AD FS에서 앱으로 흐릅니다. 여기에 WS-Federation에서 프로토콜 전환이 필요합니다.
@@ -82,12 +82,12 @@ SaaS 공급자는 온-프레미스 또는 Azure VM에 AD FS를 배포할 수 있
 
 * 두 개 이상의 AD FS 서버와 두 개의 AD FS 프록시 서버를 배포하여 AD FS 서비스의 최적의 가용성을 달성합니다.
 * 도메인 컨트롤러와 AD FS 서버는 인터넷에 직접 노출하면 안 되며 여기에 직접 액세스할 수 있는 가상 네트워크에 있어야 합니다.
-* AD FS 서버를 인터넷에 게시하는 데는 웹 응용 프로그램 프록시(이전에 AD FS 프록시)를 사용해야 합니다.
+* AD FS 서버를 인터넷에 게시하는 데는 웹 애플리케이션 프록시(이전에 AD FS 프록시)를 사용해야 합니다.
 
 Azure에서 유사한 토폴로지를 설정하기 위해서는 가상 네트워크, NSG, azure VM 및 가용성 집합을 사용해야 합니다. 자세한 내용은 [Azure Virtual Machines에 Windows Server Active Directory를 배포하기 위한 지침][active-directory-on-azure]을 참조하세요.
 
 ## <a name="configure-openid-connect-authentication-with-ad-fs"></a>AD FS를 사용하여 OpenID Connect 인증 구성
-SaaS 공급자는 응용 프로그램 및 AD FS 간의 OpenID Connect를 사용하도록 설정해야 합니다. 이렇게 하려면 AD FS에서 응용 프로그램 그룹을 추가합니다.  이 [블로그 게시물]의 "OpenId Connect 로그인 AD FS를 위한 웹앱 설정" 아래에서 상세 지침을 확인할 수 있습니다. 
+SaaS 공급자는 응용 프로그램 및 AD FS 간의 OpenID Connect를 사용하도록 설정해야 합니다. 이렇게 하려면 AD FS에서 애플리케이션 그룹을 추가합니다.  이 [블로그 게시물]의 "OpenId Connect 로그인 AD FS를 위한 웹앱 설정" 아래에서 상세 지침을 확인할 수 있습니다. 
 
 그런 다음 OpenID Connect 미들웨어를 구성합니다. 메타데이터 엔드포인트는 `https://domain/adfs/.well-known/openid-configuration`이며, 여기서 도메인은 SaaS 공급자의 AD FS 도메인입니다.
 

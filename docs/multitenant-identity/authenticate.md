@@ -25,8 +25,8 @@ Surveys 응용 프로그램은 Azure AD(Azure Active Directory)에 사용자를 
 2. MVC 컨트롤러는 **ChallengeResult** 작업을 반환합니다.
 3. 미들웨어는 **ChallengeResult** 를 가로채고 사용자를 Azure AD 로그인 페이지로 리디렉션하는 302 응답을 생성합니다.
 4. 사용자는 Azure AD로 인증합니다.
-5. Azure AD는 ID 토큰을 응용 프로그램으로 보냅니다.
-6. 미들웨어는 ID 토큰의 유효성을 검사합니다. 이때 사용자가 응용 프로그램 내부에서 인증됩니다.
+5. Azure AD는 ID 토큰을 애플리케이션으로 보냅니다.
+6. 미들웨어는 ID 토큰의 유효성을 검사합니다. 이때 사용자가 애플리케이션 내부에서 인증됩니다.
 7. 미들웨어는 사용자를 응용 프로그램으로 다시 리디렉션합니다.
 
 ## <a name="register-the-app-with-azure-ad"></a>Azure AD에 앱 등록
@@ -60,7 +60,7 @@ app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions {
 
 일부 설정은 런타임 구성 옵션에서 가져옵니다. 다음은 미들웨어 옵션의 의미입니다.
 
-* **ClientId**. Azure AD에 응용 프로그램을 등록할 때 얻은 응용 프로그램의 클라이언트 ID입니다.
+* **ClientId**. Azure AD에 애플리케이션을 등록할 때 얻은 애플리케이션의 클라이언트 ID입니다.
 * **Authority**. 다중 테넌트 응용 프로그램의 경우 `https://login.microsoftonline.com/common/`으로 설정합니다. Azure AD 공용 엔드포인트에 대한 URL로, Azure AD 테넌트의 사용자가 이를 통해 로그인할 수 있습니다. 공용 엔드포인트에 대한 자세한 내용은 [이 블로그 게시물](https://www.cloudidentity.com/blog/2014/08/26/the-common-endpoint-walks-like-a-tenant-talks-like-a-tenant-but-is-not-a-tenant/)을 참조하세요.
 * **TokenValidationParameters**에서 **ValidateIssuer**를 false로 설정합니다. 이 경우 앱에서 ID 토큰의 발급자 값의 유효성을 검사해야 합니다. (토큰 자체의 유효성은 계속 미들웨어에서 검사합니다.) 발급자 유효성 검사에 대한 자세한 내용은 [발급자 확인](claims.md#issuer-validation)을 참조하세요.
 * **PostLogoutRedirectUri**. 로그아웃한 후 사용자를 리디렉션할 URL을 지정합니다. 이 URL은 익명 요청을 허용하는 페이지여야 하며, 일반적으로 홈페이지입니다.
@@ -124,7 +124,7 @@ ASP.NET의 OpenID Connect 미들웨어는 대부분의 프로토콜 정보를 �
 5. 사용자가 Azure AD에 로그인하고 Azure AD는 인증 응답을 다시 보냅니다.
 6. OIDC 미들웨어는 클레임 주체를 만들고 이를 쿠키 인증 미들웨어에 전달합니다.
 7. 쿠키 미들웨어는 클레임 주체를 직렬화하고 쿠키를 설정합니다.
-8. OIDC 미들웨어는 응용 프로그램의 콜백 URL로 리디렉션됩니다.
+8. OIDC 미들웨어는 애플리케이션의 콜백 URL로 리디렉션됩니다.
 9. 브라우저는 요청에 쿠키를 전송하는 리디렉션을 따릅니다.
 10. 쿠키 미들웨어는 클레임 주체로 쿠키를 역직렬화하고 클레임 주체와 동일하게 `HttpContext.User` 를 설정합니다. 요청은 MVC 컨트롤러로 라우팅됩니다.
 

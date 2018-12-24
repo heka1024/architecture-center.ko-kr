@@ -1,5 +1,5 @@
 ---
-title: 설문 조사 응용 프로그램 실행
+title: 설문 조사 애플리케이션 실행
 description: 설문 조사 샘플 응용 프로그램을 로컬로 실행하는 방법
 author: MikeWasson
 ms.date: 07/21/2017
@@ -10,17 +10,17 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 12/05/2018
 ms.locfileid: "52902671"
 ---
-# <a name="run-the-surveys-application"></a>설문 조사 응용 프로그램 실행
+# <a name="run-the-surveys-application"></a>설문 조사 애플리케이션 실행
 
-이 문서에서는 Visual Studio에서 [Tailspin 설문 조사](./tailspin.md) 응용 프로그램을 로컬로 실행하는 방법을 설명합니다. 이 단계에서는 Azure에 응용 프로그램을 배포하지 않습니다. 그러나 Azure AD(Azure Active Directory) 디렉터리 및 Redis Cache와 같은 Azure 리소스를 만들어야 합니다.
+이 문서에서는 Visual Studio에서 [Tailspin 설문 조사](./tailspin.md) 응용 프로그램을 로컬로 실행하는 방법을 설명합니다. 이 단계에서는 Azure에 애플리케이션을 배포하지 않습니다. 그러나 Azure AD(Azure Active Directory) 디렉터리 및 Redis Cache와 같은 Azure 리소스를 만들어야 합니다.
 
 다음은 단계에 대한 요약입니다.
 
 1. 가상의 Tailspin 회사에 대한 Azure AD 디렉터리(테넌트)를 만듭니다.
-2. Azure AD를 사용하여 설문 조사 응용 프로그램과 백 엔드 웹 API를 등록합니다.
+2. Azure AD를 사용하여 설문 조사 애플리케이션과 백 엔드 웹 API를 등록합니다.
 3. Azure Redis Cache 인스턴스를 만듭니다.
-4. 응용 프로그램 설정을 구성하고 로컬 데이터베이스를 만듭니다.
-5. 응용 프로그램을 실행하고 새 테넌트를 등록합니다.
+4. 애플리케이션 설정을 구성하고 로컬 데이터베이스를 만듭니다.
+5. 애플리케이션을 실행하고 새 테넌트를 등록합니다.
 6. 사용자에게 응용 프로그램 역할을 추가합니다.
 
 ## <a name="prerequisites"></a>필수 조건
@@ -29,7 +29,7 @@ ms.locfileid: "52902671"
 
 ## <a name="create-the-tailspin-tenant"></a>Tailspin 테넌트 만들기
 
-Tailspin은 설문 조사 응용 프로그램을 호스트하는 가상의 회사입니다. Tailspin은 Azure AD를 사용하여 다른 테넌트가 앱에 등록할 수 있게 합니다. 그런 다음 고객은 Azure AD 자격 증명을 사용하여 앱에 로그인할 수 있습니다.
+Tailspin은 설문 조사 애플리케이션을 호스트하는 가상의 회사입니다. Tailspin은 Azure AD를 사용하여 다른 테넌트가 앱에 등록할 수 있게 합니다. 그런 다음 고객은 Azure AD 자격 증명을 사용하여 앱에 로그인할 수 있습니다.
 
 이 단계에서는 Tailspin용 Azure AD 디렉터리를 만듭니다.
 
@@ -43,7 +43,7 @@ Tailspin은 설문 조사 응용 프로그램을 호스트하는 가상의 회�
 
 4. **만들기**를 클릭합니다. 새 디렉터리를 만드는 데 몇 분이 걸릴 수 있습니다.
 
-종단 간 시나리오를 완료하려면 응용 프로그램에 등록한 고객을 나타내는 두 번째 Azure AD 디렉터리가 필요합니다. 기본 Azure AD 디렉터리(Tailspin 아님)를 사용하거나 이 용도를 위해 새 디렉터리를 만들 수 있습니다. 이 예제에서는 Contoso를 가상의 고객으로 사용합니다.
+종단 간 시나리오를 완료하려면 애플리케이션에 등록한 고객을 나타내는 두 번째 Azure AD 디렉터리가 필요합니다. 기본 Azure AD 디렉터리(Tailspin 아님)를 사용하거나 이 용도를 위해 새 디렉터리를 만들 수 있습니다. 이 예제에서는 Contoso를 가상의 고객으로 사용합니다.
 
 ## <a name="register-the-surveys-web-api"></a>설문 조사 웹 API 등록 
 
@@ -143,7 +143,7 @@ Tailspin은 설문 조사 응용 프로그램을 호스트하는 가상의 회�
 23. **선택** > **완료**를 클릭합니다.
 
 
-## <a name="update-the-application-manifests"></a>응용 프로그램 매니페스트 업데이트
+## <a name="update-the-application-manifests"></a>애플리케이션 매니페스트 업데이트
 
 1. `Surveys.WebAPI` 앱의 **설정** 블레이드로 다시 이동합니다.
 
@@ -186,7 +186,7 @@ Tailspin은 설문 조사 응용 프로그램을 호스트하는 가상의 회�
 
 ## <a name="create-a-new-redis-cache-instance"></a>새 Redis Cache 인스턴스 만들기
 
-설문 조사 응용 프로그램은 Redis를 사용하여 OAuth 2 액세스 토큰을 캐시합니다. 캐시를 만들려면:
+설문 조사 애플리케이션은 Redis를 사용하여 OAuth 2 액세스 토큰을 캐시합니다. 캐시를 만들려면:
 
 1.  [Azure Portal](https://portal.azure.com)로 이동하여 **+ 리소스 만들기** > **데이터베이스** > **Redis Cache**를 클릭합니다.
 
@@ -200,7 +200,7 @@ Tailspin은 설문 조사 응용 프로그램을 호스트하는 가상의 회�
 
 Redis Cache 생성에 대한 자세한 내용은 [Azure Redis Cache 사용 방법](/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache)을 참조하세요.
 
-## <a name="set-application-secrets"></a>응용 프로그램 암호 설정
+## <a name="set-application-secrets"></a>애플리케이션 암호 설정
 
 1.  Visual Studio에서 Tailspin.Surveys 솔루션을 엽니다.
 
@@ -270,7 +270,7 @@ Redis Cache 생성에 대한 자세한 내용은 [Azure Redis Cache 사용 방�
 
 ## <a name="sign-up-a-new-tenant"></a>새 테넌트 등록
 
-응용 프로그램이 시작되면 로그인하지 않았으므로 시작 페이지가 표시됩니다.
+애플리케이션이 시작되면 로그인하지 않았으므로 시작 페이지가 표시됩니다.
 
 ![시작 페이지](./images/running-the-app/screenshot1.png)
 
@@ -280,13 +280,13 @@ Redis Cache 생성에 대한 자세한 내용은 [Azure Redis Cache 사용 방�
 2. 설문 조사 앱을 사용하여 조직을 나타내는 Azure AD 디렉터리에 로그인합니다. 관리자 권한으로 로그인해야 합니다.
 3. 동의 확인 프롬프트에 동의합니다.
 
-응용 프로그램이 테넌트를 등록하면 사용자가 로그아웃됩니다. 앱에서 로그아웃되는 이유는 응용 프로그램을 사용하기 전에 Azure AD에서 응용 프로그램 역할을 설정해야 하기 때문입니다.
+애플리케이션이 테넌트를 등록하면 사용자가 로그아웃됩니다. 앱에서 로그아웃되는 이유는 애플리케이션을 사용하기 전에 Azure AD에서 애플리케이션 역할을 설정해야 하기 때문입니다.
 
 ![등록 후](./images/running-the-app/screenshot2.png)
 
-## <a name="assign-application-roles"></a>응용 프로그램 역할 할당
+## <a name="assign-application-roles"></a>애플리케이션 역할 할당
 
-테넌트를 등록할 때 테넌트의 AD 관리자는 사용자에게 응용 프로그램 역할을 할당해야 합니다.
+테넌트를 등록할 때 테넌트의 AD 관리자는 사용자에게 애플리케이션 역할을 할당해야 합니다.
 
 
 1. [Azure Portal][portal]에서 설문 조사 앱에 등록하는 데 사용한 Azure AD 디렉터리로 전환합니다. 
@@ -295,7 +295,7 @@ Redis Cache 생성에 대한 자세한 내용은 [Azure Redis Cache 사용 방�
 
 3. **Enterprise 응용 프로그램** > **모든 응용 프로그램**을 클릭합니다. 포털에 `Survey` 및 `Survey.WebAPI`가 나열됩니다. 그렇지 않은 경우 등록 프로세스를 완료했는지 확인합니다.
 
-4.  설문 조사 응용 프로그램을 클릭합니다.
+4.  설문 조사 애플리케이션을 클릭합니다.
 
 5.  **사용자 및 그룹**을 클릭합니다.
 
@@ -313,7 +313,7 @@ Redis Cache 생성에 대한 자세한 내용은 [Azure Redis Cache 사용 방�
 
 7.  **할당**을 클릭합니다.
 
-동일한 단계를 반복하여 Survey.WebAPI 응용 프로그램에 대한 역할을 할당합니다.
+동일한 단계를 반복하여 Survey.WebAPI 애플리케이션에 대한 역할을 할당합니다.
 
 > 중요: 설문 조사와 Survey.WebAPI에서 사용자의 역할은 항상 동일해야 합니다. 그렇지 않으면 사용자의 권한이 일치하지 않아 Web API에서 403(사용할 수 없음) 오류가 발생할 수 있습니다.
 

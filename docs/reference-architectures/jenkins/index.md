@@ -48,7 +48,7 @@ ms.locfileid: "53120274"
 
 - **Azure AD(Azure Active Directory)**. [Azure AD][azure-ad]는 SSO를 설정할 수 있도록 사용자 인증을 지원합니다. Azure AD [서비스 주체][service-principal]는 RBAC([역할 기반 액세스 제어][rbac])를 사용하여 워크플로에서 각 역할 권한 부여에 대한 정책 및 사용 권한을 정의합니다. 각 서비스 주체는 Jenkins 작업과 연결됩니다.
 
-- **Azure Key Vault** 비밀이 요구될 때 Azure 자원을 프로비전하는 데 사용되는 비밀 및 암호화 키를 관리하기 위해 이 아키텍처는 [Key Vault][key-vault]를 사용합니다. 파이프라인에 있는 응용 프로그램과 관련된 비밀을 저장하는 추가 도움말은 Jenkins의 [Azure 자격 증명][configure-credential] 플러그 인을 참조하세요.
+- **Azure Key Vault** 비밀이 요구될 때 Azure 자원을 프로비전하는 데 사용되는 비밀 및 암호화 키를 관리하기 위해 이 아키텍처는 [Key Vault][key-vault]를 사용합니다. 파이프라인에 있는 애플리케이션과 관련된 비밀을 저장하는 추가 도움말은 Jenkins의 [Azure 자격 증명][configure-credential] 플러그 인을 참조하세요.
 
 - **Azure 모니터링 서비스**. 이 서비스는 Jenkins를 호스팅하는 Azure 가상 머신을 [모니터링][monitor]합니다. 이 배포는 가상 머신 상태 및 CPU 사용률을 모니터링하고 경고를 보냅니다.
 
@@ -62,7 +62,7 @@ Azure 구독을 위한 [Azure AD][azure-ad] 테넌트가 Jenkins 사용자를 �
 
 SSO 인증 및 권한 부여는 Jenkins 서버에 설치된 Azure AD 플러그 인에서 구현됩니다. SSO를 사용하면 Jenkins 서버에 로그온할 때 Azure AD에서 조직 자격 증명을 사용하여 인증할 수 있습니다. Azure AD 플러그 인을 구성할 때 Jenkins 서버에 대한 권한이 있는 사용자의 수준을 지정할 수 있습니다.
 
-Azure 리소스에 대한 액세스 권한과 함께 Jenkins 작업을 제공하기 위해 Azure AD 관리자는 서비스 주체를 작성합니다. 이러한 권한 부여 응용 프로그램(이 경우 Jenkins 작업)은 Azure 리소스에 대해 [인증되고 권한 부여된 액세스][ad-sp]를 포함합니다.
+Azure 리소스에 대한 액세스 권한과 함께 Jenkins 작업을 제공하기 위해 Azure AD 관리자는 서비스 주체를 작성합니다. 이러한 권한 부여 애플리케이션(이 경우 Jenkins 작업)은 Azure 리소스에 대해 [인증되고 권한 부여된 액세스][ad-sp]를 포함합니다.
 
 [RBAC][rbac]는 할당된 역할을 통해 사용자 또는 서비스 주체의 Azure 리소스에 대한 액세스를 추가로 정의 및 제어합니다. 기본 제공 및 사용자 지정 역할 둘 다 지원됩니다. 역할은 또한 파이프라인을 보호하고 사용자 또는 에이전트의 책임이 올바르게 할당되고 권한 부여되는지 확인하는 데 도움이 됩니다. 또한 Azure 자산에 대한 액세스를 제한하는 데 RBAC를 설정할 수 있습니다. 예를 들어 사용자는 특정 리소스 그룹의 자산으로만 작업하도록 제한할 수 있습니다.
 

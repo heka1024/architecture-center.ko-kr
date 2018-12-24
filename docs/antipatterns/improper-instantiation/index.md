@@ -16,7 +16,7 @@ ms.locfileid: "29477583"
 
 ## <a name="problem-description"></a>문제 설명
 
-많은 라이브러리가 외부 리소스의 추상화를 제공합니다. 내부적으로 이러한 클래스는 대개 클라이언트가 리소스에 액세스하는 데 사용할 수 있는 broker 역할을 하는 리소스에 대한 자체 연결을 관리합니다. 다음은 Azure 응용 프로그램과 관련된 broker 클래스의 몇 가지 예입니다.
+많은 라이브러리가 외부 리소스의 추상화를 제공합니다. 내부적으로 이러한 클래스는 대개 클라이언트가 리소스에 액세스하는 데 사용할 수 있는 broker 역할을 하는 리소스에 대한 자체 연결을 관리합니다. 다음은 Azure 애플리케이션과 관련된 broker 클래스의 몇 가지 예입니다.
 
 - `System.Net.Http.HttpClient` HTTP를 사용하여 웹 서비스와 통신합니다.
 - `Microsoft.ServiceBus.Messaging.QueueClient` Service Bus 큐에 메시지를 게시하고 수신합니다. 
@@ -129,7 +129,7 @@ public class SingleHttpClientInstanceController : ApiController
 
 다음 이미지는 [New Relic APM][new-relic]을 사용하여 생성된 결과이며, 응답 시간이 열악한 작업을 보여줍니다. 이 경우 `NewHttpClientInstancePerRequest` 컨트롤러의 `GetProductAsync` 메서드는 보다 자세히 조사하는 것이 좋습니다. 이러한 작업이 실행 중일 때 오류 비율도 증가합니다. 
 
-![각 요청에 대해 HttpClient 개체의 새 인스턴스를 만드는 응용 프로그램 예제를 보여주는 New Relic 모니터링 대시 보드][dashboard-new-HTTPClient-instance]
+![각 요청에 대해 HttpClient 개체의 새 인스턴스를 만드는 애플리케이션 예제를 보여주는 New Relic 모니터링 대시 보드][dashboard-new-HTTPClient-instance]
 
 ### <a name="examine-telemetry-data-and-find-correlations"></a>원격 분석 데이터 검사 및 상관 관계 찾기
 

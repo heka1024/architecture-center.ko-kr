@@ -49,13 +49,13 @@ API 게이트웨이는 클라이언트와 서비스 사이에 배치합니다. �
 
 ## <a name="choosing-a-gateway-technology"></a>게이트웨이 기술 선택
 
-다음은 응용 프로그램에 API 게이트웨이를 구현하는 몇 가지 옵션입니다.
+다음은 애플리케이션에 API 게이트웨이를 구현하는 몇 가지 옵션입니다.
 
 - **역방향 프록시 서버**. Nginx 및 HAProxy는 많이 사용되는 역방향 프록시 서버이며 부하 분산, SSL 및 계층 7 라우팅과 같은 기능을 지원합니다. 두 가지 모두 무료 오픈 소스 제품이며 추가 기능과 지원 옵션을 제공하는 유료 버전이 있습니다. Nginx 및 HAProxy 모두 다양한 기능 집합이 있는 고성능의 완성도 높은 제품입니다. 타사 모듈을 사용하거나 Lua에 사용자 지정 스크립트를 작성하여 확장할 수 있습니다. Nginx는 NginScript라는 JavaScript 기반 스크립팅 모듈을 지원합니다.
 
 - **서비스 메시 수신 컨트롤러**. linkerd 또는 Istio와 같은 서비스 메시를 사용하는 경우에는 해당 서비스 메시에 대해 수신 컨트롤러가 제공하는 기능을 고려합니다. 예를 들어 Istio 수신 컨트롤러는 계층 7 라우팅, HTTP 리디렉션, 다시 시도 및 기타 기능을 지원합니다. 
 
-- [Azure Application Gateway](/azure/application-gateway/). Application Gateway는 계층 7 라우팅과 SSL 종료를 수행할 수 있는 관리되는 부하 분산 서비스입니다. WAF(웹 응용 프로그램 방화벽)도 제공합니다.
+- [Azure Application Gateway](/azure/application-gateway/). Application Gateway는 계층 7 라우팅과 SSL 종료를 수행할 수 있는 관리되는 부하 분산 서비스입니다. WAF(웹 애플리케이션 방화벽)도 제공합니다.
 
 - [Azure API Management](/azure/api-management/). API Management는 외부 및 내부 소비자에게 API를 게시하기 위한 턴키 방식 솔루션입니다. Azure Active Directory나 기타 ID 공급자를 사용하여 속도 제한, IP 허용 목록 및 인증을 비롯한 공용 API를 관리하는 데 유용한 기능을 제공합니다. API Management는 부하 분산을 수행하지 않기 때문에 Application Gateway나 역방향 프록시와 같은 부하 분산 장치와 결합하여 사용해야 합니다. Application Gateway에서 API Management를 사용하는 방법에 대한 자세한 내용은 [내부 VNET에서 Application Gateway와 API Management 통합](/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)을 참조하세요.
 
@@ -79,7 +79,7 @@ Nginx 또는 HAProxy를 Nginx 또는 HAProxy 컨테이너 이미지를 지정하
 
 - 격리. 모든 인바운드 트래픽은 백 엔드 서비스와 격리될 수 있는 고정된 노드 집합으로 이동합니다.
 
-- 안정적인 구성. 게이트웨이를 잘못 구성하면 전체 응용 프로그램을 사용할 수 없게 될 수 있습니다. 
+- 안정적인 구성. 게이트웨이를 잘못 구성하면 전체 애플리케이션을 사용할 수 없게 될 수 있습니다. 
 
 - 성능. 성능상의 이유로 특정 VM 구성을 게이트웨이에 사용할 수 있습니다.
 

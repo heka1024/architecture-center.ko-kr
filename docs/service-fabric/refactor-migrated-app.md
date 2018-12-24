@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 응용 프로그램 리팩터링
-description: Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 응용 프로그램을 리팩터링하는 방법입니다.
+title: Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 애플리케이션 리팩터링
+description: Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 애플리케이션을 리팩터링하는 방법입니다.
 author: petertay
 ms.date: 02/02/2018
 ms.openlocfilehash: 14ecaf81a07c72296e8db300df371e9a0c990434
@@ -10,15 +10,15 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 11/02/2018
 ms.locfileid: "50916468"
 ---
-# <a name="refactor-an-azure-service-fabric-application-migrated-from-azure-cloud-services"></a>Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 응용 프로그램 리팩터링
+# <a name="refactor-an-azure-service-fabric-application-migrated-from-azure-cloud-services"></a>Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 애플리케이션 리팩터링
 
 [![GitHub](../_images/github.png) 샘플 코드][sample-code]
 
-이 문서에서는 기존 Azure Service Fabric 응용 프로그램을 더 세부적인 아키텍처로 리팩터링하는 방법에 대해 설명합니다. 이 문서에서는 리팩터링된 Service Fabric 응용 프로그램의 디자인, 패키징, 성능 및 배포 고려 사항에 중점을 둡니다.
+이 문서에서는 기존 Azure Service Fabric 애플리케이션을 더 세부적인 아키텍처로 리팩터링하는 방법에 대해 설명합니다. 이 문서에서는 리팩터링된 Service Fabric 애플리케이션의 디자인, 패키징, 성능 및 배포 고려 사항에 중점을 둡니다.
 
 ## <a name="scenario"></a>시나리오
 
-이전의 [Azure Service Fabric으로 Azure Cloud Services 응용 프로그램 마이그레이션][migrate-from-cloud-services] 문서에서 설명한 대로, 패턴 및 실습 팀은 2012년 Azure에서 Cloud Services 응용 프로그램을 설계하고 구현하는 프로세스를 문서화한 한 권의 책을 저술했습니다. 이 책에서는 **설문 조사**라는 Cloud Services 응용 프로그램을 만들려는 Tailspin이라는 가상의 회사에 대해 설명합니다. 설문 조사 애플리케이션을 사용하면 일반 사람들이 답변할 수 있는 설문 조사를 만들고 게시할 수 있습니다. 다음 다이어그램에서는 이 버전의 설문 조사 애플리케이션의 아키텍처를 보여 줍니다.
+이전의 [Azure Service Fabric으로 Azure Cloud Services 응용 프로그램 마이그레이션][migrate-from-cloud-services] 문서에서 설명한 대로, 패턴 및 실습 팀은 2012년 Azure에서 Cloud Services 응용 프로그램을 설계하고 구현하는 프로세스를 문서화한 한 권의 책을 저술했습니다. 이 책에서는 **설문 조사**라는 Cloud Services 애플리케이션을 만들려는 Tailspin이라는 가상의 회사에 대해 설명합니다. 설문 조사 애플리케이션을 사용하면 일반 사람들이 답변할 수 있는 설문 조사를 만들고 게시할 수 있습니다. 다음 다이어그램에서는 이 버전의 설문 조사 애플리케이션의 아키텍처를 보여 줍니다.
 
 ![](./images/tailspin01.png)
 
@@ -59,13 +59,13 @@ Tailspin에서 설문 조사 애플리케이션을 더 세부적인 아키텍처
 
 ## <a name="design-considerations"></a>디자인 고려 사항
  
-다음 다이어그램에서는 더 세부적인 아키텍처로 리팩터링된 설문 조사 응용 프로그램의 아키텍처를 보여 줍니다.
+다음 다이어그램에서는 더 세부적인 아키텍처로 리팩터링된 설문 조사 애플리케이션의 아키텍처를 보여 줍니다.
 
 ![](./images/surveys_03.png)
 
-**Tailspin.Web**은 Tailspin 고객이 설문 조사를 만들고 설문 조사 결과를 보기 위해 방문하는 ASP.NET MVC 응용 프로그램을 자체 호스팅하는 상태 비저장 서비스입니다. 이 서비스는 대부분의 코드를 이식된 Service Fabric 응용 프로그램의 *Tailspin.Web* 서비스와 공유합니다. 앞에서 언급했듯이, 이 서비스는 ASP.NET Core 및 웹 프런트 엔드로 Kestrel을 사용하여 WebListener를 구현하는 스위치를 사용합니다.
+**Tailspin.Web**은 Tailspin 고객이 설문 조사를 만들고 설문 조사 결과를 보기 위해 방문하는 ASP.NET MVC 응용 프로그램을 자체 호스팅하는 상태 비저장 서비스입니다. 이 서비스는 대부분의 코드를 이식된 Service Fabric 애플리케이션의 *Tailspin.Web* 서비스와 공유합니다. 앞에서 언급했듯이, 이 서비스는 ASP.NET Core 및 웹 프런트 엔드로 Kestrel을 사용하여 WebListener를 구현하는 스위치를 사용합니다.
 
-**Tailspin.Web.Survey.Public**은 ASP.NET MVC 사이트를 자체 호스팅하는 상태 비저장 서비스입니다. 사용자는 이 사이트를 방문하여 목록에서 설문 조사를 선택한 다음, 작성합니다. 이 서비스는 대부분의 코드를 이식된 Service Fabric 응용 프로그램의 *Tailspin.Web.Survey.Public* 서비스와 공유합니다. 또한 이 서비스는 ASP.NET Core를 사용하고, Kestrel을 웹 프런트 엔드로 사용하는 방식에서 WebListener를 구현하는 방식으로 전환합니다.
+**Tailspin.Web.Survey.Public**은 ASP.NET MVC 사이트를 자체 호스팅하는 상태 비저장 서비스입니다. 사용자는 이 사이트를 방문하여 목록에서 설문 조사를 선택한 다음, 작성합니다. 이 서비스는 대부분의 코드를 이식된 Service Fabric 애플리케이션의 *Tailspin.Web.Survey.Public* 서비스와 공유합니다. 또한 이 서비스는 ASP.NET Core를 사용하고, Kestrel을 웹 프런트 엔드로 사용하는 방식에서 WebListener를 구현하는 방식으로 전환합니다.
 
 **Tailspin.SurveyResponseService**는 Azure Blob Storage에 설문 조사 응답을 저장하는 상태 저장 서비스입니다. 또한 응답을 설문 조사 분석 데이터에 병합합니다. 이 서비스는 [ReliableConcurrentQueue][reliable-concurrent-queue]를 사용하여 설문 조사 응답을 일괄적으로 처리하므로 상태 저장 서비스로 구현됩니다. 이 기능은 원래 이식된 Service Fabric 응용 프로그램의 *Tailspin.AnswerAnalysisService* 서비스에서 구현되었습니다.
 
@@ -83,9 +83,9 @@ Azure Service Fabric에서 지원하는 프로그래밍 모델은 다음과 같�
 * 신뢰할 수 있는 서비스 프로그래밍 모델을 사용하면 모든 Service Fabric 플랫폼 기능과 통합되는 상태 저장 또는 상태 비저장 서비스를 만들 수 있습니다. 상태 저장 서비스는 복제 상태가 Service Fabric 클러스터에 저장되도록 합니다. 상태 비저장 서비스는 그렇지 않습니다.
 * 신뢰할 수 있는 행위자 프로그래밍 모델을 사용하면 가상 행위자 패턴을 구현하는 서비스를 만들 수 있습니다.
 
-설문 조사 응용 프로그램의 모든 서비스는 *Tailspin.SurveyResponseService* 서비스를 제외하고는 신뢰할 수 있는 상태 비저장 서비스입니다. 이 서비스는 설문 조사 응답을 받을 때 이를 처리하기 위해 [ReliableConcurrentQueue][reliable-concurrent-queue]를 구현합니다. ReliableConcurrentQueue의 응답은 Azure Blob Storage에 저장되고, *Tailspin.SurveyAnalysisService*로 전달되어 분석됩니다. Tailspin은 Azure Service Bus와 같은 큐에서 제공하는 엄격한 FIFO(선입 선출) 순서를 요구하지 않으므로 ReliableConcurrentQueue를 선택합니다. 또한 ReliableConcurrentQueue는 큐에 넣기 및 큐에서 제거 작업에 대해 높은 처리량과 짧은 대기 시간을 제공하도록 설계되었습니다.
+설문 조사 애플리케이션의 모든 서비스는 *Tailspin.SurveyResponseService* 서비스를 제외하고는 신뢰할 수 있는 상태 비저장 서비스입니다. 이 서비스는 설문 조사 응답을 받을 때 이를 처리하기 위해 [ReliableConcurrentQueue][reliable-concurrent-queue]를 구현합니다. ReliableConcurrentQueue의 응답은 Azure Blob Storage에 저장되고, *Tailspin.SurveyAnalysisService*로 전달되어 분석됩니다. Tailspin은 Azure Service Bus와 같은 큐에서 제공하는 엄격한 FIFO(선입 선출) 순서를 요구하지 않으므로 ReliableConcurrentQueue를 선택합니다. 또한 ReliableConcurrentQueue는 큐에 넣기 및 큐에서 제거 작업에 대해 높은 처리량과 짧은 대기 시간을 제공하도록 설계되었습니다.
 
-큐에서 제거된 항목을 ReliableConcurrentQueue에서 유지하는 작업은 원칙적으로 idempotent(멱등원)여야 합니다. 큐에서 항목을 처리하는 중에 예외가 throw되면 동일한 항목이 두 번 이상 처리될 수 있습니다. 설문 조사 응용 프로그램에서 설문 조사 분석 데이터는 분석 데이터에 대한 현재 스냅숏일 뿐이며 일관성이 필요하지 않으므로, 설문 조사 응답을 *Tailspin.SurveyAnalysisService*에 병합하는 작업은 idempotent가 아닙니다. 결국에는 Azure Blob Storage에 저장된 설문 조사 응답이 일관되므로 최종적인 설문 조사 분석은 항상 이 데이터에서 정확하게 다시 계산할 수 있습니다.
+큐에서 제거된 항목을 ReliableConcurrentQueue에서 유지하는 작업은 원칙적으로 idempotent(멱등원)여야 합니다. 큐에서 항목을 처리하는 중에 예외가 throw되면 동일한 항목이 두 번 이상 처리될 수 있습니다. 설문 조사 애플리케이션에서 설문 조사 분석 데이터는 분석 데이터에 대한 현재 스냅숏일 뿐이며 일관성이 필요하지 않으므로, 설문 조사 응답을 *Tailspin.SurveyAnalysisService*에 병합하는 작업은 idempotent가 아닙니다. 결국에는 Azure Blob Storage에 저장된 설문 조사 응답이 일관되므로 최종적인 설문 조사 분석은 항상 이 데이터에서 정확하게 다시 계산할 수 있습니다.
 
 ## <a name="communication-framework"></a>통신 프레임워크
 
@@ -94,7 +94,7 @@ Azure Service Fabric에서 지원하는 프로그래밍 모델은 다음과 같�
 * 보안: 각 서비스는 SSL을 요구하지 않지만, Tailspin은 각 서비스에 대해 이를 요구할 수 있습니다. 
 * 버전 관리: 특정 버전의 웹 API에 대해 클라이언트를 작성하고 테스트할 수 있습니다.
 
-설문 조사 응용 프로그램의 서비스는 Service Fabric에서 구현된 [역방향 프록시][reverse-proxy]를 사용합니다. 역방향 프록시는 Service Fabric 클러스터의 각 노드에서 실행되고, 엔드포인트 확인과 자동 다시 시도를 제공하고, 다른 유형의 연결 실패를 처리하는 서비스입니다. 역방향 프록시를 사용하려면 미리 정의된 역방향 프록시 포트를 사용하여 특정 서비스에 대한 각 RESTful API를 호출해야 합니다.  예를 들어 역방향 프록시 포트가 **19081**로 설정된 경우 *Tailspin.SurveyAnswerService*에 대한 호출은 다음과 같이 만들 수 있습니다.
+설문 조사 애플리케이션의 서비스는 Service Fabric에서 구현된 [역방향 프록시][reverse-proxy]를 사용합니다. 역방향 프록시는 Service Fabric 클러스터의 각 노드에서 실행되고, 엔드포인트 확인과 자동 다시 시도를 제공하고, 다른 유형의 연결 실패를 처리하는 서비스입니다. 역방향 프록시를 사용하려면 미리 정의된 역방향 프록시 포트를 사용하여 특정 서비스에 대한 각 RESTful API를 호출해야 합니다.  예를 들어 역방향 프록시 포트가 **19081**로 설정된 경우 *Tailspin.SurveyAnswerService*에 대한 호출은 다음과 같이 만들 수 있습니다.
 
 ```csharp
 static SurveyAnswerService()
@@ -112,7 +112,7 @@ static SurveyAnswerService()
 Tailspin은 Visual Studio 템플릿을 사용하여 *Tailspin.Web* 및 *Tailspin.Web.Surveys.Public*에 대한 ASP.NET Core 서비스를 만들었습니다. 기본적으로 이러한 템플릿에는 콘솔에 대한 로깅이 포함되어 있습니다. 개발 및 디버깅 중에 콘솔에 대한 로깅을 수행할 수 있지만, 애플리케이션을 프로덕션 환경에 배포할 때는 콘솔에 대한 모든 로깅을 제거해야 합니다.
 
 > [!NOTE]
-> 프로덕션 환경에서 실행되는 Service Fabric 응용 프로그램에 대한 모니터링 및 진단을 설정하는 방법에 대한 자세한 내용은 Azure Service Fabric에 대한 [모니터링 및 진단][monitoring-diagnostics]을 참조하세요.
+> 프로덕션 환경에서 실행되는 Service Fabric 애플리케이션에 대한 모니터링 및 진단을 설정하는 방법에 대한 자세한 내용은 Azure Service Fabric에 대한 [모니터링 및 진단][monitoring-diagnostics]을 참조하세요.
 
 예를 들어 웹 프런트 엔드 서비스 각각에 대한 *startup.cs*에 있는 다음 줄을 주석으로 처리해야 합니다.
 
@@ -130,11 +130,11 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 > [!NOTE]
 > 이러한 줄은 게시할 때 Visual Studio가 "릴리스"로 설정된 경우 조건부로 제외될 수 있습니다.
 
-마지막으로 Tailspin에서 Tailspin 응용 프로그램을 프로덕션 환경에 배포하면 Visual Studio가 **릴리스** 모드로 전환됩니다.
+마지막으로 Tailspin에서 Tailspin 애플리케이션을 프로덕션 환경에 배포하면 Visual Studio가 **릴리스** 모드로 전환됩니다.
 
 ## <a name="deployment-considerations"></a>배포 고려 사항
 
-리팩터링된 설문 조사 응용 프로그램은 5개의 상태 비저장 서비스와 1개의 상태 저장 서비스로 구성되므로, 클러스터 계획에서는 올바른 VM 크기 및 노드 수를 결정하도록 제한됩니다. 클러스터를 설명하는 *applicationmanifest.xml* 파일에서 Tailspin은 각 서비스에 대해 *StatelessService* 태그의 *InstanceCount* 특성을 -1로 설정합니다. -1 값은 Service Fabric에서 서비스의 인스턴스를 클러스터의 각 노드에 만들도록 합니다.
+리팩터링된 설문 조사 애플리케이션은 5개의 상태 비 저장 서비스와 1개의 상태 저장 서비스로 구성되므로, 클러스터 계획에서는 올바른 VM 크기 및 노드 수를 결정하도록 제한됩니다. 클러스터를 설명하는 *applicationmanifest.xml* 파일에서 Tailspin은 각 서비스에 대해 *StatelessService* 태그의 *InstanceCount* 특성을 -1로 설정합니다. -1 값은 Service Fabric에서 서비스의 인스턴스를 클러스터의 각 노드에 만들도록 합니다.
 
 > [!NOTE]
 > 상태 저장 서비스에는 데이터에 대해 올바른 수의 파티션과 복제본을 계획하는 추가 단계가 필요합니다.
@@ -147,7 +147,7 @@ Tailspin은 Azure Portal을 사용하여 클러스터를 배포합니다. Servic
 
 ## <a name="next-steps"></a>다음 단계
 
-설문 조사 응용 프로그램 코드는 [GitHub][sample-code]에서 사용할 수 있습니다.
+설문 조사 애플리케이션 코드는 [GitHub][sample-code]에서 사용할 수 있습니다.
 
 [Azure Service Fabric][service-fabric]을 처음 시작하는 경우, 먼저 개발 환경을 설정한 다음, 최신 [Azure SDK][azure-sdk] 및 [Azure Service Fabric SDK][service-fabric-sdk]를 다운로드합니다. SDK에는 OneBox 클러스터 관리자가 포함되어 있으므로 F5 전체 디버깅을 사용하여 설문 조사 애플리케이션을 로컬로 배포하고 테스트할 수 있습니다.
 

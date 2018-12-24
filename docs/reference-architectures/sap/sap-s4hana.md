@@ -137,7 +137,7 @@ SAP 응용 프로그램의 이러한 분산 설치에서는 고가용성을 달�
 - Web Dispatcher. 고가용성은 중복 Web Dispatcher 인스턴스를 통해 달성됩니다. SAP 설명서의 [SAP Web Dispatcher](https://help.sap.com/doc/saphelp_nw70ehp2/7.02.16/en-us/48/8fe37933114e6fe10000000a421937/frameset.htm)를 참조하세요.
 - Fiori 서버. 고가용성은 서버 풀 내의 트래픽의 부하를 분산하여 달성됩니다.
 - Central Services. Azure Linux 가상 머신에 있는 Central Services의 고가용성을 위해 선택한 Linux 배포판에 적절한 고가용성 확장이 사용되고 고가용성 NFS 클러스터에서 DRBD 저장소를 호스팅합니다.
-- 응용 프로그램 서버. 응용 프로그램 서버 풀 내에서 트래픽을 분산하여 고가용성을 얻습니다.
+- 응용 프로그램 서버. 애플리케이션 서버 풀 내에서 트래픽을 분산하여 고가용성을 얻습니다.
 
 ### <a name="database-tier"></a>데이터베이스 계층
 
@@ -176,15 +176,15 @@ SAP HANA에는 기본 Azure 인프라를 사용하는 백업 기능이 있습니
 
 Azure는 전체 인프라를 [모니터링 및 진단](/azure/architecture/best-practices/monitoring)하는 몇 가지 기능을 제공합니다. 또한 Azure 가상 머신(Linux 또는 Windows)의 향상된 모니터링은 Azure OMS(Operations Management Suite)를 통해 처리됩니다.
 
-SAP 인프라의 리소스 및 서비스 성능에 대한 SAP 기반 모니터링을 제공하기 위해 [Azure SAP 고급 모니터링 확장](/azure/virtual-machines/workloads/sap/deployment-guide#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)을 사용합니다. 이 확장은 SAP 응용 프로그램에 운영 체제 모니터링 및 DBA Cockpit 함수에 대한 Azure 모니터링 통계를 제공합니다. SAP 고급 모니터링은 Azure에서 SAP를 실행하기 위한 필수 구성 요소입니다. 자세한 내용은 [SAP Note 2191498](https://launchpad.support.sap.com/#/notes/2191498) - "Azure를 사용하는 Linux의 SAP: 고급 모니터링"을 참조하세요.
+SAP 인프라의 리소스 및 서비스 성능에 대한 SAP 기반 모니터링을 제공하기 위해 [Azure SAP 고급 모니터링 확장](/azure/virtual-machines/workloads/sap/deployment-guide#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)을 사용합니다. 이 확장은 SAP 애플리케이션에 운영 체제 모니터링 및 DBA Cockpit 함수에 대한 Azure 모니터링 통계를 제공합니다. SAP 고급 모니터링은 Azure에서 SAP를 실행하기 위한 필수 구성 요소입니다. 자세한 내용은 [SAP Note 2191498](https://launchpad.support.sap.com/#/notes/2191498) - "Azure를 사용하는 Linux의 SAP: 고급 모니터링"을 참조하세요.
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
-SAP는 자체적인 UME(사용자 관리 엔진)를 사용하여 SAP 응용 프로그램의 역할 기반 액세스 및 권한 부여를 제어합니다. 자세한 내용은 [SAP HANA 보안 - 개요](https://archive.sap.com/documents/docs/DOC-62943)를 참조하세요. (여기에 액세스하려면 SAP Service Marketplace 계정이 필요합니다.)
+SAP는 자체적인 UME(사용자 관리 엔진)를 사용하여 SAP 애플리케이션의 역할 기반 액세스 및 권한 부여를 제어합니다. 자세한 내용은 [SAP HANA 보안 - 개요](https://archive.sap.com/documents/docs/DOC-62943)를 참조하세요. (여기에 액세스하려면 SAP Service Marketplace 계정이 필요합니다.)
 
 추가 네트워크 보안을 위해 네트워크 가상 어플라이언스를 사용하여 Web Dispatcher 및 Fiori 프런트 엔드 서버 풀의 서브넷 앞에 방화벽을 만드는 [네트워크 DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)를 구현하는 것이 좋습니다.
 
-인프라 보안을 위해 전송 중 데이터와 미사용 데이터가 암호화됩니다. [SAP NetWeaver에 대한 Azure Virtual Machines 계획 및 구현 가이드](/azure/virtual-machines/workloads/sap/planning-guide)의 "보안 고려 사항" 섹션에서 네트워크 보안 처리를 다루고 있으며, 이는 S/4HANA에 적용됩니다. 이 가이드에서는 응용 프로그램 통신을 허용하기 위해 방화벽에서 열어야 하는 네트워크 포트도 지정합니다.
+인프라 보안을 위해 전송 중 데이터와 미사용 데이터가 암호화됩니다. [SAP NetWeaver에 대한 Azure Virtual Machines 계획 및 구현 가이드](/azure/virtual-machines/workloads/sap/planning-guide)의 "보안 고려 사항" 섹션에서 네트워크 보안 처리를 다루고 있으며, 이는 S/4HANA에 적용됩니다. 이 가이드에서는 애플리케이션 통신을 허용하기 위해 방화벽에서 열어야 하는 네트워크 포트도 지정합니다.
 
 Linux IaaS 가상 머신 디스크를 암호화하려면 [Azure Disk Encryption](/azure/security/azure-security-disk-encryption)을 사용합니다. Linux의 DM-Crypt 기능을 사용하여 운영 체제 및 데이터 디스크에 대한 볼륨 암호화를 제공합니다. 또한 이 솔루션은 Azure Key Vault와 함께 작동하여 키 자격 증명 모음 구독에서 디스크 암호화 키와 비밀을 제어하고 관리할 수 있습니다. 가상 머신 디스크의 데이터는 미사용 시 Azure 저장소에 암호화됩니다.
 

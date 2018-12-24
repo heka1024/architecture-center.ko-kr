@@ -159,15 +159,15 @@ Azure Site Recovery를 사용하여 원래 사이트가 완전히 복제된 사�
 
 Azure는 전체 인프라를 [모니터링 및 진단](/azure/architecture/best-practices/monitoring)하는 몇 가지 기능을 제공합니다. 또한 Azure OMS(Operations Management Suite)에서는 Azure 가상 머신의 향상된 모니터링을 처리합니다.
 
-SAP 인프라의 리소스 및 서비스 성능에 대한 SAP 기반 모니터링을 제공하기 위해 [Azure SAP 고급 모니터링 확장](/azure/virtual-machines/workloads/sap/deployment-guide#detailed-tasks-for-sap-software-deployment)을 사용합니다. 이 확장은 SAP 응용 프로그램에 운영 체제 모니터링 및 DBA Cockpit 함수에 대한 Azure 모니터링 통계를 제공합니다.
+SAP 인프라의 리소스 및 서비스 성능에 대한 SAP 기반 모니터링을 제공하기 위해 [Azure SAP 고급 모니터링 확장](/azure/virtual-machines/workloads/sap/deployment-guide#detailed-tasks-for-sap-software-deployment)을 사용합니다. 이 확장은 SAP 애플리케이션에 운영 체제 모니터링 및 DBA Cockpit 함수에 대한 Azure 모니터링 통계를 제공합니다.
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
-SAP는 자체적인 UME(사용자 관리 엔진)를 사용하여 SAP 응용 프로그램의 역할 기반 액세스 및 권한 부여를 제어합니다. 자세한 내용은 [ABAP용 SAP NetWeaver 응용 프로그램 서버 보안 가이드](https://help.sap.com/viewer/864321b9b3dd487d94c70f6a007b0397/7.4.19) 및 [SAP NetWeaver 응용 프로그램 서버 Java 보안 가이드](https://help.sap.com/doc/saphelp_snc_uiaddon_10/1.0/en-US/57/d8bfcf38f66f48b95ce1f52b3f5184/frameset.htm)를 참조하세요.
+SAP는 자체적인 UME(사용자 관리 엔진)를 사용하여 SAP 애플리케이션의 역할 기반 액세스 및 권한 부여를 제어합니다. 자세한 내용은 [ABAP용 SAP NetWeaver 응용 프로그램 서버 보안 가이드](https://help.sap.com/viewer/864321b9b3dd487d94c70f6a007b0397/7.4.19) 및 [SAP NetWeaver 응용 프로그램 서버 Java 보안 가이드](https://help.sap.com/doc/saphelp_snc_uiaddon_10/1.0/en-US/57/d8bfcf38f66f48b95ce1f52b3f5184/frameset.htm)를 참조하세요.
 
 추가 네트워크 보안을 위해 네트워크 가상 어플라이언스를 사용하여 Web Dispatcher의 서브넷 앞에 방화벽을 만드는 [네트워크 DMZ](../dmz/secure-vnet-hybrid.md)를 구현하는 것이 좋습니다.
 
-인프라 보안을 위해 전송 중 데이터와 미사용 데이터가 암호화됩니다. [SAP NetWeaver에 대한 Azure VMs(Virtual Machines) 계획 및 구현 가이드](/azure/virtual-machines/workloads/sap/planning-guide)의 "보안 고려 사항" 섹션에서 네트워크 보안 처리를 다루고 있습니다. 이 가이드에서는 응용 프로그램 통신을 허용하기 위해 방화벽에서 열어야 하는 네트워크 포트도 지정합니다.
+인프라 보안을 위해 전송 중 데이터와 미사용 데이터가 암호화됩니다. [SAP NetWeaver에 대한 Azure VMs(Virtual Machines) 계획 및 구현 가이드](/azure/virtual-machines/workloads/sap/planning-guide)의 "보안 고려 사항" 섹션에서 네트워크 보안 처리를 다루고 있습니다. 이 가이드에서는 애플리케이션 통신을 허용하기 위해 방화벽에서 열어야 하는 네트워크 포트도 지정합니다.
 
 Windows 가상 머신 디스크를 암호화하기 위해 [Azure Disk Encryption](/azure/security/azure-security-disk-encryption)을 사용할 수 있습니다. Windows의 BitLocker 기능을 사용하여 운영 체제 및 데이터 디스크에 대한 볼륨 암호화를 제공합니다. 또한 이 솔루션은 Azure Key Vault와 함께 작동하여 키 자격 증명 모음 구독에서 디스크 암호화 키와 비밀을 제어하고 관리할 수 있습니다. 가상 머신 디스크의 데이터는 미사용 시 Azure 저장소에 암호화됩니다.
 

@@ -22,7 +22,7 @@ ms.locfileid: "53120104"
 
 ## <a name="architecture"></a>아키텍처
 
-이 아키텍처는 [N 계층 응용 프로그램에 대한 Windows VM 실행][windows-n-tier]에 나와 있는 아키텍처를 사용합니다. Azure 가상 네트워크(VNet) 내부에 고가용성 SharePoint Server 2016 팜을 배포합니다. 이 아키텍처는 테스트 또는 프로덕션 환경, Office 365를 사용하는 SharePoint 하이브리드 인프라 또는 재해 복구 시나리오의 기준으로 사용하기에 적합합니다.
+이 아키텍처는 [N 계층 애플리케이션에 대한 Windows VM 실행][windows-n-tier]에 나와 있는 아키텍처를 사용합니다. Azure 가상 네트워크(VNet) 내부에 고가용성 SharePoint Server 2016 팜을 배포합니다. 이 아키텍처는 테스트 또는 프로덕션 환경, Office 365를 사용하는 SharePoint 하이브리드 인프라 또는 재해 복구 시나리오의 기준으로 사용하기에 적합합니다.
 
 이 아키텍처는 다음과 같은 구성 요소로 구성됩니다.
 
@@ -48,7 +48,7 @@ ms.locfileid: "53120104"
 
 - **주 노드 VM**. 이 VM은 장애 조치(failover) 클러스터의 쿼럼 설정을 허용합니다. 자세한 내용은 [장애 조치(Failover) 클러스터의 쿼럼 구성 이해][sql-quorum]를 참조하세요.
 
-- **SharePoint 서버**. SharePoint 서버는 웹 프런트 엔드, 캐싱, 응용 프로그램 및 검색 역할을 수행합니다.
+- **SharePoint 서버**. SharePoint 서버는 웹 프런트 엔드, 캐싱, 애플리케이션 및 검색 역할을 수행합니다.
 
 - **Jumpbox**. [요새 호스트][bastion-host]라고도 합니다. 관리자가 다른 VM에 연결할 때 사용하는 네트워크의 보안 VM입니다. jumpbox는 안전 목록에 있는 공용 IP 주소의 원격 트래픽만 허용하는 NSG를 사용합니다. NSG는 RDP(원격 데스크톱) 트래픽을 허용해야 합니다.
 
@@ -123,7 +123,7 @@ SharePoint 팜을 구성하기 전에 서비스마다 Windows Server Active Dire
 
 이 참조 아키텍처는 [SharePoint 하이브리드 환경] [sharepoint-hybrid]&mdash;으로 사용할 수 있는, 다시 말해서 SharePoint Server 2016을 Office 365 SharePoint Online으로 확장하는 SharePoint Server 2016 팜을 배포합니다. Office Online Server가 있는 분은 [Azure의 Office Web Apps 및 Office Online Server 지원 여부][office-web-apps]를 참조하세요.
 
-이 배포의 기본 서비스 응용 프로그램은 하이브리드 워크로드를 지원하도록 설계되었습니다. SharePoint 인프라를 변경하지 않고도 모든 SharePoint Server 2016 및 Office 365 하이브리드 워크로드를 이 팜에 배포할 수 있지만 한 가지 예외가 있습니다. 클라우드 하이브리드 검색 서비스 응용 프로그램은 기존 검색 토폴로지를 호스팅하는 서버에 배포하면 안 됩니다. 따라서 이 하이브리드 시나리오를 지원하려면 하나 이상의 검색-역할 기반 VM을 팜에 추가해야 합니다.
+이 배포의 기본 서비스 애플리케이션은 하이브리드 워크로드를 지원하도록 설계되었습니다. SharePoint 인프라를 변경하지 않고도 모든 SharePoint Server 2016 및 Office 365 하이브리드 워크로드를 이 팜에 배포할 수 있지만 한 가지 예외가 있습니다. 클라우드 하이브리드 검색 서비스 애플리케이션은 기존 검색 토폴로지를 호스팅하는 서버에 배포하면 안 됩니다. 따라서 이 하이브리드 시나리오를 지원하려면 하나 이상의 검색-역할 기반 VM을 팜에 추가해야 합니다.
 
 ### <a name="sql-server-always-on-availability-groups"></a>SQL Server Always On 가용성 그룹
 
@@ -153,7 +153,7 @@ SharePoint Server 2016은 자동 크기 조정에 가상 머신 확장 집합을
 
 서버, 서버 팜 및 사이트를 운영하고 유지 관리하려면 SharePoint 운영에 대한 다음 권장 사례를 따르세요. 자세한 내용은 [SharePoint Server 2016 운영][sharepoint-ops]을 참조하세요.
 
-SharePoint 환경에서 SQL Server를 관리할 때 고려할 작업은 데이터베이스 응용 프로그램의 일반적인 고려 사항과 다를 수 있습니다. 야간 증분 백업으로 매주 모든 SQL 데이터베이스 전체를 백업하는 것이 모범 사례입니다. 15분마다 백업 트랜잭션이 로깅됩니다. 또 다른 방법으로 기본 제공 SharePoint 작업을 비활성화하고 데이터베이스에 SQL Server 유지 관리 작업을 구현할 수 있습니다. 자세한 내용은 [저장소 및 SQL Server 용량 계획 및 구성][sql-server-capacity-planning]을 참조하세요.
+SharePoint 환경에서 SQL Server를 관리할 때 고려할 작업은 데이터베이스 애플리케이션의 일반적인 고려 사항과 다를 수 있습니다. 야간 증분 백업으로 매주 모든 SQL 데이터베이스 전체를 백업하는 것이 모범 사례입니다. 15분마다 백업 트랜잭션이 로깅됩니다. 또 다른 방법으로 기본 제공 SharePoint 작업을 비활성화하고 데이터베이스에 SQL Server 유지 관리 작업을 구현할 수 있습니다. 자세한 내용은 [저장소 및 SQL Server 용량 계획 및 구성][sql-server-capacity-planning]을 참조하세요.
 
 ## <a name="security-considerations"></a>보안 고려 사항
 

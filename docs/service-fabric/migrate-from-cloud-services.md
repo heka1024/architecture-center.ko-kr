@@ -292,7 +292,7 @@ Azure에 배포할 때 각 노드 형식이 별도 VM 확장 집합에 배포됩
 
 ## <a name="next-steps"></a>다음 단계
 
-설문 조사 응용 프로그램이 성공적으로 이식되었으므로 Tailspin은 독립적인 서비스 배포 및 버전 관리와 같은 Service Fabric 기능을 활용하려고 합니다. Tailspin에서 이러한 서비스를 더 세부적인 아키텍처로 분해하여 [Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 응용 프로그램을 리팩터링][refactor-surveys]에서 이러한 Service Fabric 기능을 활용하는 방법을 알아봅니다.
+설문 조사 애플리케이션이 성공적으로 이식되었으므로 Tailspin은 독립적인 서비스 배포 및 버전 관리와 같은 Service Fabric 기능을 활용하려고 합니다. Tailspin에서 이러한 서비스를 더 세부적인 아키텍처로 분해하여 [Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 애플리케이션을 리팩터링][refactor-surveys]에서 이러한 Service Fabric 기능을 활용하는 방법을 알아봅니다.
 
 <!-- links -->
 
