@@ -34,7 +34,7 @@ Azure Virtual Datacenter는 기존 보안 및 네트워킹 정책을 적용하�
     <td style="width: 64px; vertical-align: middle;"><a href="https://aka.ms/VDC/Lift"><img src="./images/vdc-lift-and-shift.png" alt="Lift and Shift Guide" /></a></td>
     <td>
         <h3><a href="https://aka.ms/VDC/Lift">Azure Virtual Datacenter: 리프트 앤 시프트 가이드</a></h3>
-        <p>이 백서는 엔터프라이즈 IT 직원 및 의사 결정권자가 클라우드 호스팅 옵션을 최적화하면서 동시에 추가적인 개발 비용을 최소화할 수 있도록 리프트 앤 시프트 방식을 사용하여 Azure로의 응용 프로그램 및 서버 마이그레이션을 식별하고 계획하는 데 사용할 수 있는 프로세스에 대해 논의합니다.</p>
+        <p>이 백서는 엔터프라이즈 IT 직원 및 의사 결정권자가 클라우드 호스팅 옵션을 최적화하면서 동시에 추가적인 개발 비용을 최소화할 수 있도록 리프트 앤 시프트 방식을 사용하여 Azure로의 애플리케이션 및 서버 마이그레이션을 식별하고 계획하는 데 사용할 수 있는 프로세스에 대해 논의합니다.</p>
     </td>
 </tr>
 <tr>
