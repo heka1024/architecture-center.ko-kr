@@ -95,7 +95,7 @@ Azure Machine Learning Studio는 데이터 실험을 만들고, Machine Learning
 
 ## <a name="tools-and-services-for-deploying-machine-learning-models"></a>Machine Learning 모델을 배포하기 위한 도구 및 서비스
 
-데이터 과학자가 기계 학습 모델을 만들고 나면 사용자는 배포한 후 응용 프로그램 또는 다른 데이터 흐름에 사용해야 합니다. Machine Learning 모델에 대한 잠재적인 배포 대상은 많이 있습니다.
+데이터 과학자가 기계 학습 모델을 만들고 나면 사용자는 배포한 후 애플리케이션 또는 다른 데이터 흐름에 사용해야 합니다. Machine Learning 모델에 대한 잠재적인 배포 대상은 많이 있습니다.
 
 ### <a name="spark-on-azure-hdinsight"></a>Azure HDInsight의 Spark
 

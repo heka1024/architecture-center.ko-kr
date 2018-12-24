@@ -1,6 +1,6 @@
 ---
 title: 모두 중복으로 구성
-description: 응용 프로그램에 중복성을 구축하여 단일 실패 지점을 피합니다.
+description: 애플리케이션에 중복성을 구축하여 단일 실패 지점을 피합니다.
 author: MikeWasson
 ms.date: 08/30/2018
 ms.openlocfilehash: 18f48ea37f90846e4d337819e6c897d56e472d49
@@ -12,9 +12,9 @@ ms.locfileid: "47428043"
 ---
 # <a name="make-all-things-redundant"></a>모두 중복으로 구성
 
-## <a name="build-redundancy-into-your-application-to-avoid-having-single-points-of-failure"></a>단일 실패 지점을 피하도록 응용 프로그램에 중복성을 구축합니다.
+## <a name="build-redundancy-into-your-application-to-avoid-having-single-points-of-failure"></a>단일 실패 지점을 피하도록 애플리케이션에 중복성을 구축합니다.
 
-복원력 있는 응용 프로그램은 장애가 발생해도 라우팅됩니다. 응용 프로그램에서 중요한 경로를 식별합니다. 경로의 각 지점에 중복성이 있나요? 하위 시스템에 오류가 발생하면 응용 프로그램이 장애 조치(Failover)되나요?
+복원력 있는 애플리케이션은 장애가 발생해도 라우팅됩니다. 애플리케이션에서 중요한 경로를 식별합니다. 경로의 각 지점에 중복성이 있나요? 하위 시스템에 오류가 발생하면 애플리케이션이 장애 조치(Failover)되나요?
 
 ## <a name="recommendations"></a>권장 사항 
 
@@ -30,13 +30,13 @@ ms.locfileid: "47428043"
 
 **가용성을 위한 분할** 데이터베이스 분할은 확장성을 높이기 위해 자주 사용되지만 가용성을 높이는 결과도 가져올 수 있습니다. 하나의 분할된 데이터베이스가 다운되면 다른 분할된 데이터베이스에 계속 연결할 수 있습니다. 하나의 분할된 데이터베이스가 실패하는 경우 총 트랜잭션의 일부만 중단됩니다. 
 
-**둘 이상의 지역에 배포** 최대 가용성을 위해 응용 프로그램을 둘 이상의 지역에 배포합니다. 이와 같이, 전체 지역에 문제가 발생하는 드문 경우, 응용 프로그램은 다른 지역으로 장애 조치(Failover)될 수 있습니다. 다음 다이어그램에서는 Azure Traffic Manager를 사용하여 장애 조치(Failover)를 처리하는 다중 지역 응용 프로그램을 보여 줍니다.
+**둘 이상의 지역에 배포** 최대 가용성을 위해 애플리케이션을 둘 이상의 지역에 배포합니다. 이와 같이, 전체 지역에 문제가 발생하는 드문 경우, 애플리케이션은 다른 지역으로 장애 조치(Failover)될 수 있습니다. 다음 다이어그램에서는 Azure Traffic Manager를 사용하여 장애 조치(Failover)를 처리하는 다중 지역 애플리케이션을 보여 줍니다.
 
 ![](images/failover.svg)
 
 **프런트 엔드 및 백 엔드 장애 조치(Failover) 동기화**. Azure Traffic Manager를 사용하여 프런트 엔드를 장애 조치(Failover)합니다. 한 지역에서 프런트 엔드에 연결할 수 없는 경우, Traffic Manager는 새 요청을 보조 지역으로 라우팅합니다. 데이터베이스 솔루션에 따라, 데이터베이스 장애 조치(Failover)를 조정해야 할 수 있습니다. 
 
-**자동 장애 조치(Failover)와 수동 장애 복구(Failback) 사용**. Traffic Manager를 자동 장애 조치(Failover)에만 사용하고 자동 장애 복구(Failback)에는 사용하지 않습니다. 자동 장애 복구(Failback)는 해당 지역이 완전히 정상 상태가 되기 전에 주 지역으로 전환될 수도 있는 위험을 수반합니다. 대신, 수동 장애 복구(Failback) 전에 모든 응용 프로그램 하위 시스템이 정상 상태인지 확인합니다. 또한 데이터베이스에 따라, 장애 복구(Failback) 전에 데이터 일관성을 확인해야 할 수 있습니다.
+**자동 장애 조치(Failover)와 수동 장애 복구(Failback) 사용**. Traffic Manager를 자동 장애 조치(Failover)에만 사용하고 자동 장애 복구(Failback)에는 사용하지 않습니다. 자동 장애 복구(Failback)는 해당 지역이 완전히 정상 상태가 되기 전에 주 지역으로 전환될 수도 있는 위험을 수반합니다. 대신, 수동 장애 복구(Failback) 전에 모든 애플리케이션 하위 시스템이 정상 상태인지 확인합니다. 또한 데이터베이스에 따라, 장애 복구(Failback) 전에 데이터 일관성을 확인해야 할 수 있습니다.
 
 **Traffic Manager에 대한 중복성 포함**. Traffic Manager는 오류가 발생할 수 있는 지점입니다. Traffic Manager SLA를 검토하고 Traffic Manager만 사용하는 것이 고가용성을 위한 비즈니스 요구 사항을 충족하는지 확인합니다. 그렇지 않은 경우 다른 트래픽 관리 솔루션을 장애 복구(Failback)로 추가합니다. Azure Traffic Manager 서비스가 실패하면 다른 트래픽 관리 서비스를 가리키도록 DNS의 CNAME 레코드를 변경합니다.
 

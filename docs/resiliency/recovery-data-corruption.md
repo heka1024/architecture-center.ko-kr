@@ -12,7 +12,7 @@ ms.locfileid: "50916286"
 ---
 # <a name="recover-from-data-corruption-or-accidental-deletion"></a>데이터 손상 또는 우발적 삭제로부터 복구 
 
-강력한 비즈니스 연속성 계획의 일부로 손상되거나 실수로 삭제된 데이터에 대한 계획을 수립합니다. 다음은 데이터가 응용 프로그램 오류 또는 운영자 오류로 인해 손상되거나 실수로 삭제된 후에 복구하는 방법에 대한 정보입니다.
+강력한 비즈니스 연속성 계획의 일부로 손상되거나 실수로 삭제된 데이터에 대한 계획을 수립합니다. 다음은 데이터가 애플리케이션 오류 또는 운영자 오류로 인해 손상되거나 실수로 삭제된 후에 복구하는 방법에 대한 정보입니다.
 
 ## <a name="virtual-machines"></a>Virtual Machines
 
@@ -20,7 +20,7 @@ Azure Virtual Machines(VM)를 응용프로그램 오류나 우발적 삭제로�
 
 ## <a name="storage"></a>Storage
 
-Azure Storage는 자동화된 복제본을 통해 데이터 복구 기능을 제공합니다. 그러나 Azure Storage는 우발적이든 악의적이든 응용프로그램 코드나 사용자가 데이터를 손상하는 것을 방지하지 못합니다. 응용 프로그램이나 사용자 오류가 발생하는 경우 데이터의 정확성을 유지 관리하려면 감사 로그가 포함된 데이터를 보조 저장소 위치에 복사하는 등 고급 기술이 필요합니다. 
+Azure Storage는 자동화된 복제본을 통해 데이터 복구 기능을 제공합니다. 그러나 Azure Storage는 우발적이든 악의적이든 응용프로그램 코드나 사용자가 데이터를 손상하는 것을 방지하지 못합니다. 애플리케이션이나 사용자 오류가 발생하는 경우 데이터의 정확성을 유지 관리하려면 감사 로그가 포함된 데이터를 보조 스토리지 위치에 복사하는 등 고급 기술이 필요합니다. 
 
 - **블록 Blobs**. 각 블록 Blob의 지정 시간 스냅숏을 만듭니다. 자세한 내용은 [Blob의 스냅숏 만들기](/rest/api/storageservices/creating-a-snapshot-of-a-blob)를 참조하세요. 각 스냅숏의 경우 마지막 스냅숏 상태 이후 Blob 내의 차이점을 저장하는 데 필요한 저장소에 대한 비용이 청구됩니다. 스냅숏은 기반하는 원본 Blob의 존재 여부에 종속되므로 다른 Blob 또는 다른 저장소 계정에 대한 복사 작업을 권장합니다. 이렇게 하면 실수로 삭제되지 않도록 백업 데이터를 적절하게 보호합니다. [AzCopy](/azure/storage/common/storage-use-azcopy) 또는 [Azure PowerShell](/azure/storage/common/storage-powershell-guide-full)을 사용하여 다른 저장소 계정에 파일을 복사할 수 있습니다.
 

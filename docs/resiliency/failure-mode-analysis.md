@@ -394,7 +394,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 
 **복구**. 웹앱에서 `Always On` 설정을 사용하도록 설정합니다. 자세한 내용은 [WebJobs로 백그라운드 작업 실행][web-jobs]을 참조하세요.
 
-## <a name="application-design"></a>응용 프로그램 설계
+## <a name="application-design"></a>애플리케이션 설계
 ### <a name="application-cant-handle-a-spike-in-incoming-requests"></a>응용 프로그램에서 들어오는 요청의 스파이크를 처리할 수 없습니다.
 **검색**. 응용 프로그램에 따라 다릅니다. 일반적인 증상은 다음과 같습니다.
 

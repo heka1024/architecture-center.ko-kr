@@ -140,7 +140,7 @@ ms.locfileid: "49347112"
                         </div>
                         <div class="cardText">
                             <h3>복원력을 위한 디자인</h3>
-                            <p>Azure용 복원력 있는 응용 프로그램을 설계하는 방법을 알아봅니다.</p>
+                            <p>Azure용 복원력 있는 애플리케이션을 설계하는 방법을 알아봅니다.</p>
                         </div>
                     </div>
                 </div>

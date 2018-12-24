@@ -689,7 +689,7 @@ public class BloggingContextConfiguration : DbConfiguration
 }
 ```
 
-그런 다음 응용 프로그램이 시작될 때 **DbConfiguration** 인스턴스의 **SetConfiguration** 메서드를 사용하여 모든 작업에 대해 기본 재시도 전략으로 지정할 수 있습니다. 기본적으로 EF는 구성 클래스를 자동으로 검색하고 사용합니다.
+그런 다음, 애플리케이션이 시작될 때 **DbConfiguration** 인스턴스의 **SetConfiguration** 메서드를 사용하여 모든 작업에 대해 기본 재시도 전략으로 지정할 수 있습니다. 기본적으로 EF는 구성 클래스를 자동으로 검색하고 사용합니다.
 
 ```csharp
 DbConfiguration.SetConfiguration(new BloggingContextConfiguration());

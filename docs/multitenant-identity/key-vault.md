@@ -1,6 +1,6 @@
 ---
-title: Key Vault를 사용하여 응용 프로그램 암호 보호
-description: Key Vault 서비스를 사용하여 응용 프로그램 암호를 저장하는 방법
+title: Key Vault를 사용하여 애플리케이션 암호 보호
+description: Key Vault 서비스를 사용하여 애플리케이션 암호를 저장하는 방법
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -12,7 +12,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 12/05/2018
 ms.locfileid: "52902530"
 ---
-# <a name="use-azure-key-vault-to-protect-application-secrets"></a>Azure Key Vault를 사용하여 응용 프로그램 암호 보호
+# <a name="use-azure-key-vault-to-protect-application-secrets"></a>Azure Key Vault를 사용하여 애플리케이션 암호 보호
 
 [![GitHub](../_images/github.png) 샘플 코드][sample application]
 
@@ -63,13 +63,13 @@ ms.locfileid: "52902530"
 
 ### <a name="set-up-an-admin-user"></a>관리 사용자 설정
 > [!NOTE]
-> 키 자격 증명 모음을 만들려면 Azure 구독을 관리할 수 있는 계정을 사용해야 합니다. 또한 키 자격 증명 모음을 읽을 수 있도록 허용하는 모든 응용 프로그램을 해당 계정과 동일한 테넌트에 등록해야 합니다.
+> 키 자격 증명 모음을 만들려면 Azure 구독을 관리할 수 있는 계정을 사용해야 합니다. 또한 키 자격 증명 모음을 읽을 수 있도록 허용하는 모든 애플리케이션을 해당 계정과 동일한 테넌트에 등록해야 합니다.
 > 
 > 
 
 이 단계에서 설문 조사 앱이 등록된 테넌트에서 사용자로 로그인한 상태에서 키 자격 증명 모음을 만들 수 있는지 확인합니다.
 
-Surveys 응용 프로그램이 등록된 Azure AD 테넌트 내에서 관리자 사용자를 만듭니다.
+Surveys 애플리케이션이 등록된 Azure AD 테넌트 내에서 관리자 사용자를 만듭니다.
 
 1. [Azure Portal][azure-portal]에 로그인합니다.
 2. 응용 프로그램이 등록된 Azure AD 테넌트를 선택합니다.
@@ -123,7 +123,7 @@ Surveys 응용 프로그램이 등록된 Azure AD 테넌트 내에서 관리자 
 
 6. **저장**을 클릭합니다.  
 
-7. 3-6단계를 반복하여 동일한 JSON 조각을 Web API(Surveys.WebAPI)의 응용 프로그램 매니페스트에 추가합니다.
+7. 3-6단계를 반복하여 동일한 JSON 조각을 Web API(Surveys.WebAPI)의 애플리케이션 매니페스트에 추가합니다.
 
 8. PowerShell 창에서 다음 명령을 실행하여 인증서의 지문을 가져옵니다.
    
@@ -151,8 +151,8 @@ Surveys 응용 프로그램이 등록된 Azure AD 테넌트 내에서 관리자 
     다음 매개 변수 값을 설정합니다.
    
        * 키 자격 증명 모음 이름 = 이전 단계에서 키 자격 증명 모음에 제공한 이름입니다.
-       * Surveys 앱 ID = Surveys 웹 응용 프로그램의 응용 프로그램 ID입니다.
-       * Surveys.WebApi 앱 ID = Surveys.WebAPI 응용 프로그램의 응용 프로그램 ID입니다.
+       * Surveys 앱 ID = Surveys 웹 애플리케이션의 애플리케이션 ID입니다.
+       * Surveys.WebApi 앱 ID = Surveys.WebAPI 애플리케이션의 애플리케이션 ID입니다.
          
     예제:
      

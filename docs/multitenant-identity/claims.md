@@ -1,5 +1,5 @@
 ---
-title: 다중 테넌트 응용 프로그램에서 클레임 기반 ID 작업
+title: 다중 테넌트 애플리케이션에서 클레임 기반 ID 작업
 description: 발급자 유효성 검사 및 권한 부여에 클레임을 사용하는 방법
 author: MikeWasson
 ms.date: 07/21/2017
