@@ -48,7 +48,7 @@ Cosmos DB 및 HDInsight와 같은 관리되는 Azure 서비스를 사용하면 �
 
 다양한 기술 옵션을 통해 실시간 메시지 수집, 데이터 저장, 스트림 처리, 분석 데이터 저장, 분석 및 보고를 수행할 수 있습니다. 이러한 옵션, 기능 및 주요 선택 조건에 대한 개요는 [Azure 데이터 아키텍처 가이드](/azure/architecture/data-guide)의 [빅 데이터 아키텍처: 실시간 처리](/azure/architecture/data-guide/technology-choices/real-time-ingestion)를 참조하세요.
 
-마이크로 서비스는 복원력이 있고, 확장성이 뛰어나며, 독립적으로 배포할 수 있고, 신속하게 진화할 수 있는 클라우드 응용 프로그램을 구축하는 데 널리 사용되는 아키텍처 스타일이 되었습니다. 마이크로 서비스에는 응용 프로그램을 설계하고 구축하는 데 있어 다른 방법이 필요합니다. Docker, Kubernetes, Azure Service Fabric 및 Nomad와 같은 도구를 사용하면 마이크로 서비스 기반 아키텍처를 개발할 수 있습니다. 마이크로 서비스 기반 아키텍처의 구축 및 실행에 대한 지침은 Azure 아키텍처 센터의 [Azure에서 마이크로 서비스 설계](/azure/architecture/microservices)를 참조하세요.
+마이크로 서비스는 복원력이 있고, 확장성이 뛰어나며, 독립적으로 배포할 수 있고, 신속하게 진화할 수 있는 클라우드 애플리케이션을 구축하는 데 널리 사용되는 아키텍처 스타일이 되었습니다. 마이크로 서비스에는 응용 프로그램을 설계하고 구축하는 데 있어 다른 방법이 필요합니다. Docker, Kubernetes, Azure Service Fabric 및 Nomad와 같은 도구를 사용하면 마이크로 서비스 기반 아키텍처를 개발할 수 있습니다. 마이크로 서비스 기반 아키텍처의 구축 및 실행에 대한 지침은 Azure 아키텍처 센터의 [Azure에서 마이크로 서비스 설계](/azure/architecture/microservices)를 참조하세요.
 
 ### <a name="availability"></a>가용성
 
