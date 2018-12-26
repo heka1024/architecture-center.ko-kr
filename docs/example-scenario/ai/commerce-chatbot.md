@@ -12,7 +12,7 @@ ms.locfileid: "51610773"
 ---
 # <a name="conversational-chatbot-for-hotel-reservations-on-azure"></a>Azure에서 호텔 예약을 위한 대화형 챗봇
 
-이 예제 시나리오는 대화형 챗봇을 응용 프로그램에 통합해야 하는 비즈니스에 적용할 수 있습니다. 이 시나리오에서는 고객이 웹 또는 모바일 응용 프로그램을 통해 가용성을 확인하고 숙박을 예약할 수 있는 호텔 체인에 C# 챗봇을 사용합니다.
+이 예제 시나리오는 대화형 챗봇을 응용 프로그램에 통합해야 하는 비즈니스에 적용할 수 있습니다. 이 시나리오에서는 고객이 웹 또는 모바일 애플리케이션을 통해 가용성을 확인하고 숙박을 예약할 수 있는 호텔 체인에 C# 챗봇을 사용합니다.
 
 고객이 호텔의 가용성을 확인하고, 객실을 예약하고, 식당 포장 메뉴를 검토하고, 음식 주문을 하거나 사진 인화를 검색하고 주문할 수 있는 방법을 제공하는 사용 사례를 예로 들 수 있습니다. 일반적으로 기업은 이러한 고객 요청에 대응하기 위해 고객 서비스 담당자를 고용하고 교육해야 하며, 고객은 담당자로부터 지원이 제공될 때까지 기다려야 합니다.
 
@@ -64,7 +64,7 @@ Bot Service 및 Language Understanding 또는 Speech API 서비스와 같은 Azu
 
 ### <a name="scalability"></a>확장성
 
-이 시나리오에서는 Azure App Service를 사용합니다. App Service를 사용하면 봇을 실행하는 인스턴스의 수를 자동으로 조정할 수 있습니다. 이 기능을 사용하면 웹 응용 프로그램과 챗봇에 대한 고객의 요구 사항을 충족할 수 있습니다. 자동 크기 조정에 대한 자세한 내용은 Azure 아키텍처 센터의 [자동 크기 조정 모범 사례][autoscaling]를 참조하세요.
+이 시나리오에서는 Azure App Service를 사용합니다. App Service를 사용하면 봇을 실행하는 인스턴스의 수를 자동으로 조정할 수 있습니다. 이 기능을 사용하면 웹 애플리케이션과 챗봇에 대한 고객의 요구 사항을 충족할 수 있습니다. 자동 크기 조정에 대한 자세한 내용은 Azure 아키텍처 센터의 [자동 크기 조정 모범 사례][autoscaling]를 참조하세요.
 
 다른 확장성 항목에 대해서는 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
 
@@ -80,9 +80,9 @@ Azure SQL Database에 저장된 미사용 정보는 TDE(투명한 데이터 암�
 
 이 시나리오에서는 Azure SQL Database를 사용하여 고객 예약을 저장합니다. SQL Database에는 영역 중복 데이터베이스, 장애 조치 그룹, 지역 복제 및 자동 백업이 포함됩니다. 이러한 기능을 통해 유지 관리 이벤트 또는 중단이 발생하는 경우에도 응용 프로그램을 계속 실행할 수 있습니다. 자세한 내용은 [Azure SQL Database 가용성 기능][sqlavailability-docs]을 참조하세요.
 
-이 시나리오에서는 응용 프로그램 상태를 모니터링하기 위해 Application Insights를 사용합니다. Application Insights를 사용하면 고객의 경험과 챗봇의 가용성에 영향을 주는 알림을 생성하고 성능 문제에 대응할 수 있습니다. 자세한 내용은 [Application Insights란?][appinsights-docs]을 참조하세요.
+이 시나리오에서는 애플리케이션 상태를 모니터링하기 위해 Application Insights를 사용합니다. Application Insights를 사용하면 고객의 경험과 챗봇의 가용성에 영향을 주는 알림을 생성하고 성능 문제에 대응할 수 있습니다. 자세한 내용은 [Application Insights란?][appinsights-docs]을 참조하세요.
 
-복원력 있는 솔루션 설계에 대한 일반적인 지침은 [복원력 있는 Azure 응용 프로그램 디자인][resiliency]을 참조하세요.
+복원력 있는 솔루션 설계에 대한 일반적인 지침은 [복원력 있는 Azure 애플리케이션 디자인][resiliency]을 참조하세요.
 
 ## <a name="deploy-the-scenario"></a>시나리오 배포
 
@@ -90,7 +90,7 @@ Azure SQL Database에 저장된 미사용 정보는 TDE(투명한 데이터 암�
 
 * [인프라 구성 요소](#deploy-infrastructure-components). Azure Resource Manager 템플릿을 사용하여 App Service, Web App, Application Insights, Storage 계정, SQL Server 및 데이터베이스의 핵심 인프라 구성 요소를 배포합니다.
 * [Web App 챗봇](#deploy-web-app-chatbot). Azure CLI를 사용하여 Bot Service 및 LUIS(Language Understanding and Intelligent Service) 앱을 통해 봇을 배포합니다.
-* [샘플 C# 챗봇 응용 프로그램](#deploy-chatbot-c-application-code). Visual Studio를 사용하여 호텔 예약 C# 응용 프로그램 코드 샘플을 검토하고 Azure에서 봇에 배포합니다.
+* [샘플 C# 챗봇 응용 프로그램](#deploy-chatbot-c-application-code). Visual Studio를 사용하여 호텔 예약 C# 애플리케이션 코드 샘플을 검토하고 Azure에서 봇에 배포합니다.
 
 **필수 조건.** 기존 Azure 계정이 있어야 합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [체험 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
 
@@ -129,13 +129,13 @@ az bot create \
     --insights eastus
 ```
 
-### <a name="deploy-chatbot-c-application-code"></a>챗봇 C# 응용 프로그램 코드 배포
+### <a name="deploy-chatbot-c-application-code"></a>챗봇 C# 애플리케이션 코드 배포
 
-샘플 C# 응용 프로그램은 GitHub에서 사용할 수 있습니다. 
+샘플 C# 애플리케이션은 GitHub에서 사용할 수 있습니다. 
 
 * [상거래 봇 C# 샘플](https://github.com/Microsoft/AzureBotServices-scenarios/tree/master/CSharp/Commerce/src)
 
-샘플 응용 프로그램에는 Azure Active Directory 인증 구성 요소 및 통합된 Cognitive Services의 LUIS(Language Understanding and Intelligent Services) 구성 요소가 포함되어 있습니다. 응용 프로그램을 사용하려면 Visual Studio에서 시나리오를 빌드하고 배포해야 합니다. AAD B2C 및 LUIS 앱 구성에 대한 추가 정보는 GitHub 리포지토리 설명서에 있습니다.
+샘플 애플리케이션에는 Azure Active Directory 인증 구성 요소 및 통합된 Cognitive Services의 LUIS(Language Understanding and Intelligent Services) 구성 요소가 포함되어 있습니다. 애플리케이션을 사용하려면 Visual Studio에서 시나리오를 빌드하고 배포해야 합니다. AAD B2C 및 LUIS 앱 구성에 대한 추가 정보는 GitHub 리포지토리 설명서에 있습니다.
 
 ## <a name="pricing"></a>가격
 

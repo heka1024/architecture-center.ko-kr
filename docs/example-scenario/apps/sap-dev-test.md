@@ -63,7 +63,7 @@ ms.locfileid: "53004673"
 
 ### <a name="resiliency"></a>복원력
 
-복원력 있는 솔루션 설계에 대한 일반적인 지침은 [복원력 있는 Azure 응용 프로그램 디자인][resiliency]을 참조하세요.
+복원력 있는 솔루션 설계에 대한 일반적인 지침은 [복원력 있는 Azure 애플리케이션 디자인][resiliency]을 참조하세요.
 
 ## <a name="pricing"></a>가격
 

@@ -25,7 +25,7 @@ Azure에서 **리소스**라는 용어는 Azure에서 관리하는 엔터티를 
 
 ## <a name="what-is-an-azure-resource-group"></a>Azure 리소스 그룹이란?
 
-Azure의 각 리소스는 [리소스 그룹](/azure/azure-resource-manager/resource-group-overview#resource-groups)에 속해야 합니다. 리소스 그룹은 단순히 단일 엔터티로 관리될 수 있도록 여러 리소스를 그룹화하는 논리적 구문입니다. 예를 들어 [n 계층 응용 프로그램](/azure/architecture/guide/architecture-styles/n-tier)에 대한 리소스와 같은 비슷한 수명 주기를 공유하는 리소스를 그룹으로 만들거나 삭제할 수 있습니다. 
+Azure의 각 리소스는 [리소스 그룹](/azure/azure-resource-manager/resource-group-overview#resource-groups)에 속해야 합니다. 리소스 그룹은 단순히 단일 엔터티로 관리될 수 있도록 여러 리소스를 그룹화하는 논리적 구문입니다. 예를 들어 [n 계층 애플리케이션](/azure/architecture/guide/architecture-styles/n-tier)에 대한 리소스와 같은 비슷한 수명 주기를 공유하는 리소스를 그룹으로 만들거나 삭제할 수 있습니다. 
 
 ![](../_images/governance-1-10.png)   
 *그림 2. 리소스 그룹에는 리소스가 포함됩니다.* 

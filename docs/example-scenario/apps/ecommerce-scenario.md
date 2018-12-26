@@ -15,24 +15,24 @@ ms.locfileid: "53004856"
 
 이 예제 시나리오에서는 Azure PaaS(Platform-as-a-Service) 도구를 사용하여 전자상거래 프런트 엔드를 구현하는 과정을 안내합니다. 대부분의 전자 상거래 웹 사이트는 시간 경과에 따른 계절성 및 트래픽 가변성에 직면하고 있습니다. 제품이나 서비스에 대한 수요가 예측 가능 여부에 관계없이 급격히 증가하는 경우 PaaS 도구를 사용하면 더 많은 고객과 더 많은 거래를 자동으로 처리할 수 있습니다. 또한 이 시나리오에서는 사용하는 용량에 대해서만 지불함으로써 경제성을 활용합니다.
 
-이 문서에서는 온라인 콘서트 발권 플랫폼인 *Relecloud Concerts*의 전자 상거래 응용 프로그램 샘플을 배포하는 데 함께 사용되는 다양한 Azure PaaS 구성 요소 및 고려 사항에 대해 알아볼 수 있습니다.
+이 문서에서는 온라인 콘서트 발권 플랫폼인 *Relecloud Concerts*의 전자 상거래 애플리케이션 샘플을 배포하는 데 함께 사용되는 다양한 Azure PaaS 구성 요소 및 고려 사항에 대해 알아볼 수 있습니다.
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
 관련된 다른 사용 사례는 다음과 같습니다.
 
-* 서로 다른 시간에 갑자기 집중되는 사용자를 처리할 수 있는 탄력적인 크기 조정이 필요한 응용 프로그램 구축
+* 서로 다른 시간에 갑자기 집중되는 사용자를 처리할 수 있는 탄력적인 크기 조정이 필요한 애플리케이션 구축
 * 전 세계의 여러 Azure 지역에서 고가용성으로 작동하도록 설계된 프로그램 구축
 
 ## <a name="architecture"></a>아키텍처
 
-![전자 상거래 응용 프로그램에 대한 샘플 시나리오 아키텍처][architecture]
+![전자 상거래 애플리케이션에 대한 샘플 시나리오 아키텍처][architecture]
 
 이 시나리오에서는 전자 상거래 사이트에서 티켓을 구매하는 방법에 대해 설명하며, 시나리오를 통한 데이터 흐름은 다음과 같습니다.
 
 1. Azure Traffic Manager에서 사용자의 요청을 Azure App Service에서 호스팅되는 전자 상거래 사이트로 라우팅합니다.
 2. Azure CDN에서 사용자에게 정적 이미지와 콘텐츠를 제공합니다.
-3. 사용자가 Azure Active Directory B2C 테넌트를 통해 응용 프로그램에 로그인합니다.
+3. 사용자가 Azure Active Directory B2C 테넌트를 통해 애플리케이션에 로그인합니다.
 4. 사용자가 Azure Search를 사용하여 콘서트를 검색합니다.
 5. 웹 사이트에서 Azure SQL Database로부터 콘서트 세부 정보를 가져옵니다. 
 6. 웹 사이트에서 Blob Storage에 있는 구매한 티켓 이미지를 참조합니다.
@@ -40,7 +40,7 @@ ms.locfileid: "53004856"
 8. 사용자가 큐에 있는 티켓 주문 및 콘서트 리뷰를 제출합니다.
 9. Azure Functions에서 주문 결제 및 콘서트 리뷰를 처리합니다.
 10. Cognitive Services에서 콘서트 리뷰에 대한 분석을 제공하여 감정(긍정 또는 부정)을 결정합니다.
-11. Application Insights에서 웹 응용 프로그램의 상태를 모니터링하기 위한 성능 메트릭을 제공합니다.
+11. Application Insights에서 웹 애플리케이션의 상태를 모니터링하기 위한 성능 메트릭을 제공합니다.
 
 ### <a name="components"></a>구성 요소
 
@@ -59,12 +59,12 @@ ms.locfileid: "53004856"
 
 ### <a name="alternatives"></a>대안
 
-대규모 전자 상거래에 집중하는 고객 지향 응용 프로그램을 구축하는 데 사용할 수 있는 많은 기술이 있습니다. 여기에는 응용 프로그램의 프론트 엔드와 데이터 계층이 모두 포함됩니다.
+대규모 전자 상거래에 집중하는 고객 지향 애플리케이션을 구축하는 데 사용할 수 있는 많은 기술이 있습니다. 여기에는 애플리케이션의 프론트 엔드와 데이터 계층이 모두 포함됩니다.
 
 웹 계층 및 기능에 대한 다른 옵션은 다음과 같습니다.
 
 * [Service Fabric][docs-service-fabric] - 높은 수준의 제어를 통해 클러스터 전체에 배포되고 실행되는 이점이 있는 분산 구성 요소를 구축하는 데 중점을 둔 플랫폼입니다. Service Fabric은 컨테이너를 호스팅하는 데도 사용할 수 있습니다.
-* [Azure Kubernetes Service][docs-kubernetes-service] - 마이크로 서비스 아키텍처의 한 구현으로 사용할 수 있는 컨테이너 기반 솔루션을 구축하고 배포하는 플랫폼입니다. 필요에 따라 응용 프로그램의 여러 구성 요소를 독립적으로 민첩하게 크기 조정할 수 있습니다.
+* [Azure Kubernetes Service][docs-kubernetes-service] - 마이크로 서비스 아키텍처의 한 구현으로 사용할 수 있는 컨테이너 기반 솔루션을 구축하고 배포하는 플랫폼입니다. 필요에 따라 애플리케이션의 여러 구성 요소를 독립적으로 민첩하게 크기 조정할 수 있습니다.
 * [Azure Container Instances][docs-container-instances] - 짧은 수명 주기의 컨테이너를 빠르게 배포하고 실행할 수 있습니다. 여기에 있는 컨테이너는 메시지 처리 또는 계산 수행과 같은 빠른 처리 작업을 실행하기 위해 배포된 다음, 완료되는 즉시 프로비전 해제됩니다.
 * [Service Bus][service-bus]는 저장소 큐를 대신하여 사용할 수 있습니다.
 
@@ -76,26 +76,26 @@ ms.locfileid: "53004856"
 
 ### <a name="availability"></a>가용성
 
-* 클라우드 응용 프로그램을 구축하는 경우 [일반적인 가용성 디자인 패턴][design-patterns-availability]을 활용하는 것이 좋습니다.
-* 적절한 [App Service 웹 응용 프로그램 참조 아키텍처][app-service-reference-architecture]의 가용성 고려 사항을 검토합니다.
+* 클라우드 애플리케이션을 구축하는 경우 [일반적인 가용성 디자인 패턴][design-patterns-availability]을 활용하는 것이 좋습니다.
+* 적절한 [App Service 웹 애플리케이션 참조 아키텍처][app-service-reference-architecture]의 가용성 고려 사항을 검토합니다.
 * 가용성에 대한 추가 고려 사항은 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
 
 ### <a name="scalability"></a>확장성
 
-* 클라우드 응용 프로그램을 구축하는 경우 [일반적인 확장성 디자인 패턴][design-patterns-scalability]에 대해 알고 있어야 합니다.
-* 적절한 [App Service 웹 응용 프로그램 참조 아키텍처][app-service-reference-architecture]의 확장성 고려 사항을 검토합니다.
+* 클라우드 애플리케이션을 구축하는 경우 [일반적인 확장성 디자인 패턴][design-patterns-scalability]에 대해 알고 있어야 합니다.
+* 적절한 [App Service 웹 애플리케이션 참조 아키텍처][app-service-reference-architecture]의 확장성 고려 사항을 검토합니다.
 * 다른 확장성 항목에 대해서는 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
 
 ### <a name="security"></a>보안
 
 * 적절한 경우 [일반적인 보안 디자인 패턴][design-patterns-security]을 활용하는 것이 좋습니다.
-* 적절한 [App Service 웹 응용 프로그램 참조 아키텍처][app-service-reference-architecture]의 보안 고려 사항을 검토합니다.
+* 적절한 [App Service 웹 애플리케이션 참조 아키텍처][app-service-reference-architecture]의 보안 고려 사항을 검토합니다.
 * 개발자가 [보안 개발 수명 주기][secure-development] 프로세스에 따라 보안 소프트웨어를 구축하고 개발 비용을 줄이면서 보안 준수 요구 사항을 처리할 수 있도록 하는 것이 좋습니다.
 * [Azure PCI DSS 규정 준수][pci-dss-blueprint]에 대한 청사진 아키텍처를 검토합니다.
 
 ### <a name="resiliency"></a>복원력
 
-* 응용 프로그램의 일부를 사용할 수 없는 경우 [회로 차단기 패턴][circuit-breaker]을 활용하여 정상적인 오류 처리를 제공하는 것이 좋습니다.
+* 애플리케이션의 일부를 사용할 수 없는 경우 [회로 차단기 패턴][circuit-breaker]을 활용하여 정상적인 오류 처리를 제공하는 것이 좋습니다.
 * [일반적인 복원력 디자인 패턴][design-patterns-resiliency]을 검토하고, 적절할 경우 이를 구현하는 것이 좋습니다.
 * Azure 아키텍처 센터에서 [App Service에 대한 다양한 권장 사례][resiliency-app-service]를 찾을 수 있습니다.
 * 데이터 계층에는 활성 [지역 복제][sql-geo-replication], 이미지 및 큐에는 [지역 중복][storage-geo-redudancy] 저장소를 사용하는 것이 좋습니다.
@@ -103,7 +103,7 @@ ms.locfileid: "53004856"
 
 ## <a name="deploy-the-scenario"></a>시나리오 배포
 
-이 시나리오를 배포하려면 이 [단계별 자습서][end-to-end-walkthrough]에 따라 각 구성 요소를 수동으로 배포하는 방법을 시연할 수 있습니다. 이 자습서에서는 간단한 티켓 구매 응용 프로그램을 실행하는 .NET 샘플 응용 프로그램도 제공합니다. 또한 Azure 리소스 대부분의 배포를 자동화하는 Resource Manager 템플릿도 있습니다.
+이 시나리오를 배포하려면 이 [단계별 자습서][end-to-end-walkthrough]에 따라 각 구성 요소를 수동으로 배포하는 방법을 시연할 수 있습니다. 이 자습서에서는 간단한 티켓 구매 애플리케이션을 실행하는 .NET 샘플 애플리케이션도 제공합니다. 또한 Azure 리소스 대부분의 배포를 자동화하는 Resource Manager 템플릿도 있습니다.
 
 ## <a name="pricing"></a>가격
 

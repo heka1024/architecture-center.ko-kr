@@ -113,7 +113,7 @@ AD FS 및 WAP VM에 대한 별도 Azure 가용성 집합을 만듭니다. 각 �
 - WAP VM에 대한 외부 액세스를 제공하는 Azure 부하 분산 장치 및 팜의 AD FS 서버 간에 부하를 분산하는 내부 부하 분산 장치를 사용합니다.
 - 포트 443(HTTPS)에 표시되는 트래픽을 AD FS/WAP 서버에 전달합니다.
 - 부하 분산 장치에 고정 IP 주소를 지정합니다.
-- `/adfs/probe`에 대해 HTTP를 사용하여 상태 프로브를 만듭니다. 자세한 내용은 [하드웨어 Load Balancer 상태 검사 및 웹 응용 프로그램 프록시 / AD FS 2012 R2](https://blogs.technet.microsoft.com/applicationproxyblog/2014/10/17/hardware-load-balancer-health-checks-and-web-application-proxy-ad-fs-2012-r2/)를 참조합니다.
+- `/adfs/probe`에 대해 HTTP를 사용하여 상태 프로브를 만듭니다. 자세한 내용은 [하드웨어 Load Balancer 상태 검사 및 웹 애플리케이션 프록시 / AD FS 2012 R2](https://blogs.technet.microsoft.com/applicationproxyblog/2014/10/17/hardware-load-balancer-health-checks-and-web-application-proxy-ad-fs-2012-r2/)를 참조합니다.
 
   > [!NOTE]
   > AD FS 서버는 SNI(서버 이름 표시) 프로토콜을 사용하므로 부하 분산 장치에서 HTTPS 엔드포인트를 사용하는 프로브에 대한 시도는 실패합니다.

@@ -117,7 +117,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 * 데이터 노드가 장애 도메인에 분산되어 있는 랙 인식 배포를 사용합니다.
 * 로컬 쿼럼 일관성을 사용하여 여러 지역에 배포합니다. 일시적이지 않은 장애가 발생하면 다른 지역으로 장애 조치합니다.
 
-**진단**. 응용 프로그램 로그
+**진단**. 애플리케이션 로그
 
 ## <a name="cloud-service"></a>클라우드 서비스
 ### <a name="web-or-worker-roles-are-unexpectedlybeing-shut-down"></a>웹 또는 작업자 역할이 예기치 않게 종료됩니다.
@@ -330,7 +330,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 
 **복구**. 취소 토큰을 사용하여 종료를 검색합니다. Service Fabric에서 취소를 요청하면 가능한 빨리 모든 작업을 끝내고  `RunAsync`을 종료합니다.
 
-**진단**. 응용 프로그램 로그
+**진단**. 애플리케이션 로그
 
 ## <a name="storage"></a>Storage
 ### <a name="writing-data-to-azure-storage-fails"></a>Azure Storage에 데이터를 쓰는 작업이 실패합니다.

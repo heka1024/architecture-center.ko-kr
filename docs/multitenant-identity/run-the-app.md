@@ -258,7 +258,7 @@ Redis Cache 생성에 대한 자세한 내용은 [Azure Redis Cache 사용 방�
     dotnet ef database update --startup-project ..\Tailspin.Surveys.Web
     ```
     
-## <a name="run-the-application"></a>응용 프로그램 실행
+## <a name="run-the-application"></a>애플리케이션 실행
 
 응용 프로그램을 실행하려면 Tailspin.Surveys.Web 및 Tailspin.Surveys.WebAPI 프로젝트를 시작합니다.
 

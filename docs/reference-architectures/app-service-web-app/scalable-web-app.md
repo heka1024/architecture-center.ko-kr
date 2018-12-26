@@ -33,7 +33,7 @@ ms.locfileid: "53179300"
 - **데이터 저장소**. 관계형 데이터의 경우 [Azure SQL Database][sql-db]를 사용합니다. 비관계형 데이터의 경우 [Cosmos DB][cosmosdb]를 사용하는 것이 좋습니다.
 - **Azure Search**. [Azure Search][azure-search]를 사용하여 검색 제안, 유사 항목 검색 및 언어별 검색과 같은 검색 기능을 추가합니다. Azure Search는 일반적으로 다른 데이터 저장소와 함께 사용되는데, 특히 기본 데이터 저장소에 엄격한 일관성이 필요한 경우 그렇습니다. 이러한 접근 방식에서는 신뢰할 수 있는 데이터를 다른 데이터 저장소에 저장하고 검색 인덱스를 Azure Search에 저장합니다. 또한 Azure Search는 여러 데이터 저장소의 단일 검색 인덱스를 통합하는 데 사용할 수 있습니다.
 - **Azure DNS**. [Azure DNS][azure-dns]는 Microsoft Azure 인프라를 사용하여 이름 확인을 제공하는 DNS 도메인에 대한 호스팅 서비스입니다. Azure에 도메인을 호스트하면 다른 Azure 서비스와 동일한 자격 증명, API, 도구 및 대금 청구를 사용하여 DNS 레코드를 관리할 수 있습니다.
-- **Application Gateway** [Application Gateway](/azure/application-gateway/)는 계층 7 부하 분산 장치입니다. 이 아키텍처에서 HTTP 요청을 웹 프런트 엔드로 라우팅합니다. 또한 application Gateway는 일반적인 악용 및 취약점으로부터 응용 프로그램을 보호하는 WAF([웹 응용 프로그램 방화벽](/azure/application-gateway/waf-overview))을 제공합니다.
+- **Application Gateway** [Application Gateway](/azure/application-gateway/)는 계층 7 부하 분산 장치입니다. 이 아키텍처에서 HTTP 요청을 웹 프런트 엔드로 라우팅합니다. 또한 application Gateway는 일반적인 악용 및 취약점으로부터 애플리케이션을 보호하는 WAF([웹 애플리케이션 방화벽](/azure/application-gateway/waf-overview))을 제공합니다.
 
 ## <a name="recommendations"></a>권장 사항
 

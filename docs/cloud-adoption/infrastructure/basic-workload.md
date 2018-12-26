@@ -25,18 +25,18 @@ ms.locfileid: "47167356"
 **기본 워크로드**는 일반적으로 단일 웹 응용 프로그램 또는 VM(가상 머신)을 사용하는 VNet(가상 네트워크)로 정의됩니다. 
 
 > [!NOTE]
-> 이 가이드는 응용 프로그램 개발을 다루지 않습니다. Azure에서 응용 프로그램을 개발하는 방법에 대한 자세한 내용은 [Azure 응용 프로그램 아키텍처 가이드](/azure/architecture/guide/)를 참조하세요.
+> 이 가이드는 애플리케이션 개발을 다루지 않습니다. Azure에서 애플리케이션을 개발하는 방법에 대한 자세한 내용은 [Azure 애플리케이션 아키텍처 가이드](/azure/architecture/guide/)를 참조하세요.
 
 워크로드가 웹 응용 프로그램인지 아니면 VM인지에 관계 없이 이러한 각 배포에는 **리소스 그룹**이 필요합니다. 리소스 그룹을 만드는 사용 권한 가진 사용자는 다음 단계를 수행하기 전에 이 작업을 수행해야 합니다.
 
-## <a name="basic-web-application-paas"></a>기본 웹 응용 프로그램(PaaS)
+## <a name="basic-web-application-paas"></a>기본 웹 애플리케이션(PaaS)
 
-기본 웹 응용 프로그램의 경우 [웹앱 설명서](/azure/app-service?toc=/azure/architecture/cloud-adoption-guide/toc.json)에서 5분 빠른 시작 중 하나를 선택하여 단계를 수행합니다. 
+기본 웹 애플리케이션의 경우 [웹앱 설명서](/azure/app-service?toc=/azure/architecture/cloud-adoption-guide/toc.json)에서 5분 빠른 시작 중 하나를 선택하여 단계를 수행합니다. 
 
 > [!NOTE]
-> 기본적으로 일부 빠른 시작은 리소스 그룹을 배포합니다. 이 경우에 리소스 그룹을 명시적으로 만들 필요는 없습니다. 그렇지 않으면 위에서 만든 리소스 그룹에 웹 응용 프로그램을 배포합니다.
+> 기본적으로 일부 빠른 시작은 리소스 그룹을 배포합니다. 이 경우에 리소스 그룹을 명시적으로 만들 필요는 없습니다. 그렇지 않으면 위에서 만든 리소스 그룹에 웹 애플리케이션을 배포합니다.
 
-간단한 워크로드를 배포하면 [기본 웹 응용 프로그램](/azure/architecture/reference-architectures/app-service-web-app/basic-web-app?toc=/azure/architecture/cloud-adoption-guide/toc.json)을 Azure에 배포하는 입증된 방법에 대해 자세히 알아볼 수 있습니다.
+간단한 워크로드를 배포하면 [기본 웹 애플리케이션](/azure/architecture/reference-architectures/app-service-web-app/basic-web-app?toc=/azure/architecture/cloud-adoption-guide/toc.json)을 Azure에 배포하는 입증된 방법에 대해 자세히 알아볼 수 있습니다.
 
 ## <a name="single-windows-or-linux-vm-iaas"></a>단일 Windows 또는 Linux VM(IaaS)
 

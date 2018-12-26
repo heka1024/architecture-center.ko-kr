@@ -59,8 +59,8 @@ ms.locfileid: "53004770"
 ### <a name="components"></a>구성 요소
 
 - [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview)는 VM과 같은 리소스에서 상호 간 통신, 인터넷 통신 및 온-프레미스 네트워크 통신을 안전하게 수행할 수 있게 합니다. 가상 네트워크는 격리 및 세분화를 제공하고, 트래픽을 필터링 및 라우팅하며, 위치 간 연결을 허용합니다. 이 시나리오에서는 한 가상 네트워크를 모든 리소스에 사용합니다.
-- [Azure 네트워크 보안 그룹](/azure/virtual-network/security-overview)에는 원본 또는 대상 IP 주소, 포트 및 프로토콜에 따라 인바운드 또는 아웃바운드 네트워크 트래픽을 허용하거나 거부하는 보안 규칙 목록이 포함되어 있습니다. 이 시나리오의 가상 네트워크는 응용 프로그램 구성 요소 간의 트래픽 흐름을 제한하는 네트워크 보안 그룹 규칙으로 보호됩니다.
-- [Azure 부하 분산 장치](/azure/application-gateway/overview)는 규칙 및 상태 프로브에 따라 인바운드 트래픽을 분산합니다. 부하 분산 장치는 짧은 대기 시간과 높은 처리량을 제공하고, 모든 TCP 및 UDP 응용 프로그램에 대해 최대 수백만 개의 흐름으로 확장합니다. 이 시나리오에서는 내부 부하 분산 장치를 사용하여 Citrix NetScaler의 트래픽을 분산합니다.
+- [Azure 네트워크 보안 그룹](/azure/virtual-network/security-overview)에는 원본 또는 대상 IP 주소, 포트 및 프로토콜에 따라 인바운드 또는 아웃바운드 네트워크 트래픽을 허용하거나 거부하는 보안 규칙 목록이 포함되어 있습니다. 이 시나리오의 가상 네트워크는 애플리케이션 구성 요소 간의 트래픽 흐름을 제한하는 네트워크 보안 그룹 규칙으로 보호됩니다.
+- [Azure 부하 분산 장치](/azure/application-gateway/overview)는 규칙 및 상태 프로브에 따라 인바운드 트래픽을 분산합니다. 부하 분산 장치는 짧은 대기 시간과 높은 처리량을 제공하고, 모든 TCP 및 UDP 애플리케이션에 대해 최대 수백만 개의 흐름으로 확장합니다. 이 시나리오에서는 내부 부하 분산 장치를 사용하여 Citrix NetScaler의 트래픽을 분산합니다.
 - 모든 공유 저장소에 [Azure 하이브리드 파일 동기화](https://github.com/MicrosoftDocs/azure-docs/edit/master/articles/storage/files/storage-sync-files-planning.md)가 사용됩니다. 저장소는 하이브리드 파일 동기화를 사용하여 두 파일 서버로 복제됩니다.
 - [Azure SQL Database](/azure/sql-database/sql-database-technical-overview)는 최신의 안정적인 Microsoft SQL Server 데이터베이스 엔진 버전을 기반으로 하는 관계형 DBaaS(Database-as-a-Service)입니다. Citrix 데이터베이스 호스팅에 사용됩니다.
 - [ExpressRoute](/azure/expressroute/expressroute-introduction)를 사용하면 연결 공급자가 지원하는 개인 연결을 통해 온-프레미스 네트워크를 Microsoft 클라우드로 확장할 수 있습니다. 

@@ -27,7 +27,7 @@ ms.locfileid: "53120132"
 
 - **VNet(가상 네트워크) 및 서브넷**. 모든 Azure VM은 VNet에 배포되어 서브넷으로 분할될 수 있습니다. 각 계층에 대해 별도의 서브넷을 만듭니다.
 
-- **Application Gateway** [Azure Application Gateway](/azure/application-gateway/)는 계층 7 부하 분산 장치입니다. 이 아키텍처에서 HTTP 요청을 웹 프런트 엔드로 라우팅합니다. 또한 application Gateway는 일반적인 악용 및 취약점으로부터 응용 프로그램을 보호하는 WAF([웹 응용 프로그램 방화벽](/azure/application-gateway/waf-overview))을 제공합니다.
+- **Application Gateway** [Azure Application Gateway](/azure/application-gateway/)는 계층 7 부하 분산 장치입니다. 이 아키텍처에서 HTTP 요청을 웹 프런트 엔드로 라우팅합니다. 또한 application Gateway는 일반적인 악용 및 취약점으로부터 애플리케이션을 보호하는 WAF([웹 애플리케이션 방화벽](/azure/application-gateway/waf-overview))을 제공합니다.
 
 - **NSG**. [NSG(네트워크 보안 그룹)][nsg]을 사용하여 VNet 내 네트워크 트래픽을 제한합니다. 예를 들어 여기에 표시된 3계층 아키텍처에서 데이터베이스 계층은 비즈니스 계층 및 관리 서브넷뿐 아니라 웹 프론트 엔드의 트래픽을 허용하지 않습니다.
 
@@ -39,7 +39,7 @@ ms.locfileid: "53120132"
 
 - **부하 분산 장치**. [Azure Load Balancer][load-balancer]를 사용하여 웹 계층에서 비즈니스 계층으로, 비즈니스 계층에서 SQL Server로 네트워크 트래픽을 분산합니다.
 
-- **공용 IP 주소**. 응용 프로그램이 인터넷 트래픽을 수신하려면 공용 IP 주소가 필요합니다.
+- **공용 IP 주소**. 애플리케이션이 인터넷 트래픽을 수신하려면 공용 IP 주소가 필요합니다.
 
 - **Jumpbox**. [요새 호스트]라고도 합니다. 관리자가 다른 VM에 연결할 때 사용하는 네트워크의 보안 VM입니다. jumpbox는 안전 목록에 있는 공용 IP 주소의 원격 트래픽만 허용하는 NSG를 사용합니다. NSG는 RDP(원격 데스크톱) 트래픽을 허용해야 합니다.
 
