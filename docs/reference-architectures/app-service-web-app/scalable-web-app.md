@@ -85,7 +85,7 @@ ms.locfileid: "53179300"
 
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
-Azure App Service의 주요 이점은 부하에 따라 응용 프로그램을 확장할 수 있다는 점입니다. 다음은 응용 프로그램 확장을 계획할 때 염두할 몇 가지 고려 사항입니다.
+Azure App Service의 주요 이점은 부하에 따라 응용 프로그램을 확장할 수 있다는 점입니다. 다음은 애플리케이션 확장을 계획할 때 염두할 몇 가지 고려 사항입니다.
 
 ### <a name="app-service-app"></a>App Service 앱
 

@@ -392,7 +392,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                     </div>
                     <div class="cardText">
                         <h3>SQL Server를 통한 N 계층 응용 프로그램</h3>
-                        <p>Windows에서 SQL Server를 사용하여 N 계층 응용 프로그램에 대해 구성된 가상 머신입니다.</p>
+                        <p>Windows에서 SQL Server를 사용하여 N 계층 애플리케이션에 대해 구성된 가상 머신입니다.</p>
                     </div>
                 </div>
             </div>
@@ -412,7 +412,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                     </div>
                     <div class="cardText">
                         <h3>다중 지역 N 계층 응용 프로그램</h3>
-                        <p>고가용성을 위해 SQL Server AlwaysOn 가용성 그룹을 사용하여 두 지역에 배포된 N 계층 응용 프로그램입니다.</p>
+                        <p>고가용성을 위해 SQL Server AlwaysOn 가용성 그룹을 사용하여 두 지역에 배포된 N 계층 애플리케이션입니다.</p>
                     </div>
                 </div>
             </div>
@@ -432,7 +432,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                     </div>
                     <div class="cardText">
                         <h3>Cassandra를 통한 N 계층 응용 프로그램</h3>
-                        <p>Linux에서 Apache Cassandra를 사용하여 N 계층 응용 프로그램에 대해 구성된 가상 머신입니다.</p>
+                        <p>Linux에서 Apache Cassandra를 사용하여 N 계층 애플리케이션에 대해 구성된 가상 머신입니다.</p>
                     </div>
                 </div>
             </div>
@@ -644,7 +644,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                     </div>
                     <div class="cardText">
                         <h3>기본 웹앱 응용 프로그램</h3>
-                        <p>Azure App Service 및 Azure SQL Database를 사용하는 웹 응용 프로그램입니다.</p>
+                        <p>Azure App Service 및 Azure SQL Database를 사용하는 웹 애플리케이션입니다.</p>
                     </div>
                 </div>
             </div>
@@ -662,8 +662,8 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>확장성이 뛰어난 웹 응용 프로그램</h3>
-                        <p>웹 응용 프로그램의 확장성을 향상시키기 위한 검증된 사례입니다.</p>
+                        <h3>확장성이 뛰어난 웹 애플리케이션</h3>
+                        <p>웹 애플리케이션의 확장성을 향상시키기 위한 검증된 사례입니다.</p>
                     </div>
                 </div>
             </div>
@@ -681,7 +681,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>고가용성 웹 응용 프로그램</h3>
+                        <h3>고가용성 웹 애플리케이션</h3>
                         <p>여러 지역에서 App Service 웹앱을 실행하여 고가용성을 달성합니다.</p>
                     </div>
                 </div>
