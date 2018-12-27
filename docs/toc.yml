@@ -3,7 +3,7 @@ items:
   href: index.md
 - name: 클라우드 기본 사항
   items:
-  - name: 응용 프로그램 아키텍처 가이드
+  - name: 애플리케이션 아키텍처 가이드
     items:
     - name: 소개
       href: guide/index.md
