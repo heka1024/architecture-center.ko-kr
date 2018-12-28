@@ -49,7 +49,7 @@ items:
     - name: 예제 시나리오
       tocHref: /azure/architecture/example-scenario/
       topicHref: /azure/architecture/example-scenario
-    - name: 응용 프로그램 아키텍처 가이드
+    - name: 애플리케이션 아키텍처 가이드
       tocHref: /azure/architecture/guide/
       topicHref: /azure/architecture/guide
     - name: 데이터 아키텍처 가이드
