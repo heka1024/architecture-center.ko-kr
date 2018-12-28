@@ -1,6 +1,6 @@
 ---
 title: Azure 응용 프로그램의 고가용성
-description: Microsoft Azure에서 고가용성을 위한 응용 프로그램 설계 및 빌드에 대한 기술 개요와 심층 정보입니다.
+description: Microsoft Azure에서 고가용성을 위한 애플리케이션 설계 및 빌드에 대한 기술 개요와 심층 정보입니다.
 author: adamglick
 ms.date: 05/31/2017
 ms.openlocfilehash: f116b9e64f1722b5141ae90239d5c8a8b4a89487

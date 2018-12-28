@@ -38,7 +38,7 @@ Azure는 물리적 및 논리적으로 지역이라는 단위로 구분됩니다
 * **웜 스페어(활성/수동)**: 보조 호스티드 서비스는 다른 지역에 만들어지고 역할은 최소 용량을 보장하도록 배포되지만 프로덕션 트래픽을 받지는 않습니다. 이 방법은 지역에 걸쳐 트래픽을 분산하기 위해 설계되지 않은 응용 프로그램에 유용합니다.
 * **핫 스페어(활성/활성)**: 응용 프로그램이 여러 지역에서 프로덕션 부하를 수신하도록 설계되었습니다. 각 지역의 클라우드 서비스가 재해 복구 목적에 필요한 것보다 많은 용량에 구성될 수 있습니다. 또한 클라우드 서비스는 재해와 장애 조치 시 필요한 만큼 규모를 확장할 수 있습니다. 이 방법은 응용 프로그램 설계에 많은 투자가 필요하지만 상당한 이점이 있습니다. 즉, 짧은 복구 시간을 보장하고 모든 복구 위치를 연속으로 테스트하며 용량을 효율적으로 사용할 수 있습니다.
 
-분산된 설계에 대한 자세한 내용은 이 문서에서 다루지 않습니다. 자세한 내용은 [Azure 응용 프로그램에 대한 재해 복구 및 고가용성](https://aka.ms/drtechguide)을 참조하세요.
+분산된 설계에 대한 자세한 내용은 이 문서에서 다루지 않습니다. 자세한 내용은 [Azure 애플리케이션에 대한 재해 복구 및 고가용성](https://aka.ms/drtechguide)을 참조하세요.
 
 ## <a name="virtual-machines"></a>Virtual Machines
 IaaS(infrastructure as a service) VM(가상 머신)의 복구는 여러 가지 면에서 PaaS(platform as a service) 계산 복구와 비슷합니다. 그러나 IaaS VM은 VM 및 VM 디스크 모두로 구성된다는 중요한 차이점이 있습니다.
@@ -84,7 +84,7 @@ Azure SQL Database는 지역 복원 및 활성 지역 복제와 같은 두 가�
 [지리적 복원](/azure/sql-database/sql-database-recovery-using-backups/#geo-restore) 은 기본, 표준 및 프리미엄 데이터베이스에서도 사용할 수 있습니다. 이 기능은 데이터베이스가 호스팅되는 지역에 사고가 발생하여 데이터베이스를 사용할 수 없게 되었을 때를 위한 기본 복구 옵션을 제공합니다. 특정 시점 복원과 유사하게, 지역 복원은 지역 중복 Azure 저장소의 데이터베이스 백업을 사용합니다. 지역에서 복제된 백업 복사본에서 복원하기 때문에 주 지역의 저장소 중단에 영향을 받지 않습니다. 자세한 내용은 [Azure SQL Database 복원 또는 보조 데이터베이스에 대한 장애 조치](/azure/sql-database/sql-database-disaster-recovery/)를 참조하세요.
 
 #### <a name="active-geo-replication"></a>활성 지역 복제
-[활성 지역 복제](/azure/sql-database/sql-database-geo-replication-overview/) 는 모든 데이터베이스 계층에서 사용할 수 있습니다. 이 기능은 지역 복원이 제공하는 것보다 더 까다로운 복구 요구 사항이 있는 응용 프로그램을 위해 설계되었습니다. 활성 지역 복제를 사용하여 서로 다른 지역의 서버에 최대 4개의 읽기 가능한 보조 복제본을 만들 수 있습니다. 보조 복제본으로 장애 조치를 시작할 수 있습니다. 또한 활성 지역 복제는 응용 프로그램 업그레이드 또는 재배치 시나리오뿐 아니라 읽기 전용 작업에 대한 부하 분산을 지원하는 데에도 사용할 수 있습니다. 자세한 내용은 [지역에서 복제 구성](/azure/sql-database/sql-database-geo-replication-portal/) 및 [보조 데이터베이스로 장애 조치(failover)](/azure/sql-database/sql-database-geo-replication-failover-portal/)를 참조하세요. 가동 중단 없는 응용 프로그램 및 응용 프로그램 업그레이드를 설계하고 구현하는 방법에 대한 자세한 내용은 [SQL Database에서 활성 지역 복제를 사용하여 클라우드 재해 복구를 위한 응용 프로그램 설계](/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery/) 및 [SQL Database에서 활성 지역 복제를 사용하여 클라우드 재해 복구를 위한 응용 프로그램 설계](/azure/sql-database/sql-database-manage-application-rolling-upgrade/)를 참조하세요.
+[활성 지역 복제](/azure/sql-database/sql-database-geo-replication-overview/) 는 모든 데이터베이스 계층에서 사용할 수 있습니다. 이 기능은 지역 복원이 제공하는 것보다 더 까다로운 복구 요구 사항이 있는 응용 프로그램을 위해 설계되었습니다. 활성 지역 복제를 사용하여 서로 다른 지역의 서버에 최대 4개의 읽기 가능한 보조 복제본을 만들 수 있습니다. 보조 복제본으로 장애 조치를 시작할 수 있습니다. 또한 활성 지역 복제는 응용 프로그램 업그레이드 또는 재배치 시나리오뿐 아니라 읽기 전용 작업에 대한 부하 분산을 지원하는 데에도 사용할 수 있습니다. 자세한 내용은 [지역에서 복제 구성](/azure/sql-database/sql-database-geo-replication-portal/) 및 [보조 데이터베이스로 장애 조치(failover)](/azure/sql-database/sql-database-geo-replication-failover-portal/)를 참조하세요. 가동 중단 없는 애플리케이션 및 애플리케이션 업그레이드를 설계하고 구현하는 방법에 대한 자세한 내용은 [SQL Database에서 활성 지역 복제를 사용하여 클라우드 재해 복구를 위한 애플리케이션 설계](/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery/) 및 [SQL Database에서 활성 지역 복제를 사용하여 클라우드 재해 복구를 위한 애플리케이션 설계](/azure/sql-database/sql-database-manage-application-rolling-upgrade/)를 참조하세요.
 
 ### <a name="sql-server-on-virtual-machines"></a>Virtual Machines의 SQL Server
 Azure Virtual Machines에서 실행 중에 SQL Server 2012(또는 이상)에 대한 복구 및 고가용성에 다양한 옵션을 사용할 수 있습니다. 자세한 내용은 [Azure Virtual Machines의 SQL Server에 대한 고가용성 및 재해 복구](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr/)를 참조하세요.
@@ -98,7 +98,7 @@ Azure Virtual Machines에서 실행 중에 SQL Server 2012(또는 이상)에 대
 > 
 
 ### <a name="service-bus"></a>Service Bus
-Azure Service Bus는 Azure 지역에 확장되지 않은 고유한 네임스페이스를 사용합니다. 따라서 첫 번째 요구 사항은 대체 지역에서 필요한 서비스 버스 네임스페이스를 설치하는 것입니다. 그러나 대기 중인 메시지의 지속성에 대한 고려 사항도 있습니다. Azure 지역에 메시지를 복제하기 위한 몇 가지 전략이 있습니다. 이러한 복제 전략 및 다른 재해 복구 전략에 대한 세부 정보는 [Service Bus 중단 및 재해로부터 응용 프로그램을 격리하는 모범 사례](/azure/service-bus-messaging/service-bus-outages-disasters/)를 참조하세요. 다른 가용성 고려 사항은 [Service Bus(가용성)](recovery-local-failures.md#other-azure-platform-services)을 참조하세요.
+Azure Service Bus는 Azure 지역에 확장되지 않은 고유한 네임스페이스를 사용합니다. 따라서 첫 번째 요구 사항은 대체 지역에서 필요한 서비스 버스 네임스페이스를 설치하는 것입니다. 그러나 대기 중인 메시지의 지속성에 대한 고려 사항도 있습니다. Azure 지역에 메시지를 복제하기 위한 몇 가지 전략이 있습니다. 이러한 복제 전략 및 다른 재해 복구 전략에 대한 세부 정보는 [Service Bus 중단 및 재해로부터 애플리케이션을 격리하는 모범 사례](/azure/service-bus-messaging/service-bus-outages-disasters/)를 참조하세요. 다른 가용성 고려 사항은 [Service Bus(가용성)](recovery-local-failures.md#other-azure-platform-services)을 참조하세요.
 
 ### <a name="app-service"></a>App Service
 Web Apps 또는 Mobile Apps와 같은 Azure App Service 응용 프로그램을 보조 Azure 지역에 마이그레이션하려면 게시에 사용할 수 있는 웹 사이트의 백업이 있어야 합니다. 가동 중단이 전체 Azure 데이터 센터를 포함하지 않은 경우 FTP를 사용하여 사이트 콘텐츠의 최근 백업을 다운로드할 수 있습니다. 그런 다음 이전에 예약 용량에 대해 이렇게 수행하지 않았으면 대체 지역에서 새 앱을 만듭니다. 새 지역에 사이트를 게시하고 필요한 구성을 변경합니다. 이러한 변경 내용은 데이터베이스 연결 문자열이나 기타 지역 관련 설정을 포함할 수 있습니다. 필요한 경우 사이트의 SSL 인증서를 추가하고 DNS CNAME 레코드를 변경하여 재배포된 Azure 웹앱 URL에 사용자 지정 도메인 이름을 가리키도록 합니다.
@@ -151,7 +151,7 @@ Azure Media Services에는 인코딩 및 스트리밍을 위한 다른 복구 �
 2. 주 지역 외부에서 사이트 백업을 유지 관리합니다.
 3. 가동 중단이 부분적인 경우 FTP로 현재 사이트 검색을 시도합니다.
 4. 대체 지역에서 기존 또는 새 사이트에 사이트를 배포할 계획입니다.
-5. 응용 프로그램 및 DNS CNAME 레코드 모두에 대한 구성을 변경할 계획입니다.
+5. 애플리케이션 및 DNS CNAME 레코드 모두에 대한 구성을 변경할 계획입니다.
 
 ## <a name="hdinsight-checklist"></a>HDInsight 검사 목록
 1. 이 문서의 HDInsight 섹션을 검토합니다.
