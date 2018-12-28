@@ -1,6 +1,6 @@
 ---
-title: Tailspin 설문 조사 응용 프로그램 정보
-description: Tailspin 설문 조사 응용 프로그램 개요
+title: Tailspin 설문 조사 애플리케이션 정보
+description: Tailspin 설문 조사 애플리케이션 개요
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -17,7 +17,7 @@ ms.locfileid: "52902071"
 
 [![GitHub](../_images/github.png) 샘플 코드][sample application]
 
-Tailspin은 설문 조사라는 SaaS 응용 프로그램을 개발하는 가상 회사입니다. 이 애플리케이션을 사용하면 조직에서 온라인 설문 조사를 만들어 게시할 수 있습니다.
+Tailspin은 설문 조사라는 SaaS 애플리케이션을 개발하는 가상 회사입니다. 이 애플리케이션을 사용하면 조직에서 온라인 설문 조사를 만들어 게시할 수 있습니다.
 
 * 조직은 애플리케이션을 등록할 수 있습니다.
 * 조직이 등록한 후 사용자는 조직 자격 증명으로 애플리케이션에 로그인할 수 있습니다.
@@ -55,9 +55,9 @@ Alice가 로그인할 때 "Surveys I can contribute to" 아래에 나열된 설�
 Alice는 Contoso 테넌트의 게스트가 아니라 자신의 테넌트로 로그인합니다. Alice는 해당 설문 조사에 대해서만 참가자 권한을 가지며 Contoso 테넌트의 다른 설문 조사는 볼 수 없습니다.
 
 ## <a name="architecture"></a>아키텍처
-설문 조사 응용 프로그램은 웹 프런트 엔드 및 Web API 백 엔드로 구성됩니다. 둘 다 [ASP.NET Core]를 사용하여 구현됩니다.
+설문 조사 애플리케이션은 웹 프런트 엔드 및 Web API 백 엔드로 구성됩니다. 둘 다 [ASP.NET Core]를 사용하여 구현됩니다.
 
-웹 응용 프로그램은 Azure AD(Azure Active Directory)를 사용하여 사용자를 인증합니다. 또한 웹 애플리케이션은 Azure AD를 호출하여 Web API에 대한 OAuth 2 액세스 토큰을 가져옵니다. 액세스 토큰은 Azure Redis Cache에 캐시됩니다. 캐시는 여러 인스턴스가 동일한 토큰 캐시를 공유할 수 있도록 해줍니다(예: 서버 팜에서).
+웹 애플리케이션은 Azure AD(Azure Active Directory)를 사용하여 사용자를 인증합니다. 또한 웹 애플리케이션은 Azure AD를 호출하여 Web API에 대한 OAuth 2 액세스 토큰을 가져옵니다. 액세스 토큰은 Azure Redis Cache에 캐시됩니다. 캐시는 여러 인스턴스가 동일한 토큰 캐시를 공유할 수 있도록 해줍니다(예: 서버 팜에서).
 
 ![아키텍처](./images/architecture.png)
 

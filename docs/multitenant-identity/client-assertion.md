@@ -64,7 +64,7 @@ resource=https://tailspin.onmicrosoft.com/surveys.webapi
 > 
 > 
 
-웹 응용 프로그램은 런타임에 인증서 저장소에서 인증서를 읽습니다. 웹앱과 동일한 컴퓨터에 인증서를 설치해야 합니다.
+웹 애플리케이션은 런타임에 인증서 저장소에서 인증서를 읽습니다. 웹앱과 동일한 컴퓨터에 인증서를 설치해야 합니다.
 
 설문 조사 응용 프로그램에는 Azure AD에서 토큰을 획득하기 위해 [AuthenticationContext.AcquireTokenSilentAsync](/dotnet/api/microsoft.identitymodel.clients.activedirectory.authenticationcontext.acquiretokensilentasync) 메서드에 전달할 수 있는 [ClientAssertionCertificate](/dotnet/api/microsoft.identitymodel.clients.activedirectory.clientassertioncertificate)를 만드는 도우미 클래스가 포함되어 있습니다.
 

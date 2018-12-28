@@ -13,7 +13,7 @@ ms.locfileid: "53120132"
 ---
 # <a name="windows-n-tier-application-on-azure-with-sql-server"></a>SQL Server를 사용한 Azure의 Windows N계층 애플리케이션
 
-이 참조 아키텍처에서는 데이터 계층에 대해 Windows에서 SQL Server를 사용하여 N 계층 응용 프로그램을 위해 구성되는 VM 및 가상 네트워크를 배포하는 방법을 보여 줍니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
+이 참조 아키텍처에서는 데이터 계층에 대해 Windows에서 SQL Server를 사용하여 N 계층 애플리케이션을 위해 구성되는 VM 및 가상 네트워크를 배포하는 방법을 보여 줍니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
 
 ![Microsoft Azure를 사용하는 N계층 아키텍처](./images/n-tier-sql-server.png)
 
@@ -143,7 +143,7 @@ jumpbox를 보호하려면 안전한 공용 IP 주소 집합의 RDP 연결만 �
 - 프로브는 [알려진 IP 주소][health-probe-ip]인 168.63.129.16에서 전송됩니다. 모든 방화벽 정책 또는 NSG 규칙에서 이 IP 주소 간에 이동하는 트래픽을 차단하지 않습니다.
 - [상태 프로브 로그][health-probe-log]를 사용하여 상태 프로브의 상태를 확인합니다. Azure Portal에서 각 부하 분산 장치에 대해 로깅을 활성화합니다. 로그는 Azure Blob Storage에 쓰기됩니다. 로그에서는 실패한 프로브 응답으로 인해 네트워크 트래픽을 가져오지 않는 VM 개수를 보여줍니다.
 
-[VM용 Azure SLA][vm-sla]에서 제공하는 가용성보다 더 높은 가용성이 필요한 경우, 장애 조치를 위해 Azure Traffic Manager를 사용하여 두 지역 간에 응용 프로그램을 복제하는 것이 좋습니다. 자세한 내용은 [고가용성을 위한 다중 지역 N 계층 응용 프로그램][multi-dc]을 참조하세요.
+[VM용 Azure SLA][vm-sla]에서 제공하는 가용성보다 더 높은 가용성이 필요한 경우, 장애 조치를 위해 Azure Traffic Manager를 사용하여 두 지역 간에 응용 프로그램을 복제하는 것이 좋습니다. 자세한 내용은 [고가용성을 위한 다중 지역 N 계층 애플리케이션][multi-dc]을 참조하세요.
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
@@ -151,7 +151,7 @@ jumpbox를 보호하려면 안전한 공용 IP 주소 집합의 RDP 연결만 �
 
 **DMZ** NVA(네트워크 가상 어플라이언스)를 추가하여 인터넷과 Azure 가상 네트워크 사이에 DMZ를 만드는 것도 좋은 방법입니다. NVA는 방화벽, 패킷 조사, 감사, 사용자 지정 라우팅과 같은 네트워크 관련 작업을 수행하는 가상 어플라이언스를 통칭하는 용어입니다. 자세한 내용은 [Azure와 인터넷 사이에 DMZ 구현][dmz]을 참조하세요.
 
-**암호화** 중요한 미사용 데이터를 암호화하고 [Azure Key Vault][azure-key-vault]를 사용하여 데이터베이스 암호화 키를 관리합니다. Key Vault는 암호화 키를 HSM(하드웨어 보안 모듈)에 저장합니다. 자세한 내용은 [Azure VM에서 SQL Server에 대한 Azure Key Vault 통합 구성][sql-keyvault]을 참조하세요. 또한 Key Vault에 데이터베이스 연결 문자열과 같은 응용 프로그램 비밀을 저장하는 것이 좋습니다.
+**암호화** 중요한 미사용 데이터를 암호화하고 [Azure Key Vault][azure-key-vault]를 사용하여 데이터베이스 암호화 키를 관리합니다. Key Vault는 암호화 키를 HSM(하드웨어 보안 모듈)에 저장합니다. 자세한 내용은 [Azure VM에서 SQL Server에 대한 Azure Key Vault 통합 구성][sql-keyvault]을 참조하세요. 또한 Key Vault에 데이터베이스 연결 문자열과 같은 애플리케이션 비밀을 저장하는 것이 좋습니다.
 
 **DDoS 보호** Azure 플랫폼은 기본적으로 기본 DDoS 보호를 제공합니다. 이 기본 보호는 전체 Azure 인프라를 보호할 대상으로 지정합니다. 기본 DDoS 보호가 자동으로 설정되지만 [DDoS Protection 표준][ddos]을 사용하는 것이 좋습니다. 표준 보호는 애플리케이션의 네트워크 트래픽 패턴을 기반으로 적응형 조정을 사용하여 위협을 검색합니다. 그러면 인프라 수준의 DDoS 정책에 의해 알려지지 않을 수 있는 DDoS 공격에 대한 완화를 적용할 수 있습니다. 표준 보호는 Azure Monitor를 통해 경고, 원격 분석 및 분석도 제공합니다. 자세한 내용은 [Azure DDoS Protection: 모범 사례 및 참조 아키텍처][ddos-best-practices]를 참조하세요.
 

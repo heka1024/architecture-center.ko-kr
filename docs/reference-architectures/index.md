@@ -629,7 +629,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
 </li>
 </ul>
 
-## <a name="web-applications"></a>웹 응용 프로그램
+## <a name="web-applications"></a>웹 애플리케이션
 
 <ul  class="panelContent cardsF">
 <li style="display: flex; flex-direction: column;">

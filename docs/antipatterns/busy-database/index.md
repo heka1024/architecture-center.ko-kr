@@ -233,7 +233,7 @@ using (var command = new SqlCommand(...))
 
 ## <a name="example-diagnosis"></a>예제 진단
 
-다음 섹션에서는 이러한 단계를 앞에서 설명한 응용 프로그램 예제에 적용합니다.
+다음 섹션에서는 이러한 단계를 앞에서 설명한 애플리케이션 예제에 적용합니다.
 
 ### <a name="monitor-the-volume-of-database-activity"></a>데이터베이스 활동 볼륨 모니터링
 

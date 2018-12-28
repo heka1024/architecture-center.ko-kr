@@ -162,11 +162,11 @@ Azure IoT 장치 SDK는 네트워크, 프로토콜 또는 응용 프로그램에
 
 ## <a name="azure-redis-cache"></a>Azure Redis 캐시(영문)
 
-Azure Redis Cache는 많이 사용되는 오픈 소스 Redis 캐시에 기반한 캐시 서비스로 데이터 액세스 속도가 빠르고 대기 시간이 짧습니다. 이 캐시는 Microsoft에서 관리되어 안전하며 Azure의 모든 응용 프로그램에서 액세스할 수 있습니다.
+Azure Redis Cache는 많이 사용되는 오픈 소스 Redis 캐시에 기반한 캐시 서비스로 데이터 액세스 속도가 빠르고 대기 시간이 짧습니다. 이 캐시는 Microsoft에서 관리되어 안전하며 Azure의 모든 애플리케이션에서 액세스할 수 있습니다.
 
 이 섹션의 지침은 StackExchange.Redis 클라이언트를 사용하여 캐시에 액세스하는 지침을 기반으로 합니다. 기타 적합한 클라이언트 목록은 [Redis 웹 사이트](https://redis.io/clients)에서 확인할 수 있으며 클라이언트마다 재시도 메커니즘이 다를 수 있습니다.
 
-StackExchange.Redis 클라이언트는 단일 연결을 통해 멀티플렉싱을 사용합니다. 권장되는 사용법은 응용 프로그램 시작 시 클라이언트의 인스턴스를 만들고 캐시에 대한 모든 작업에 이 인스턴스를 사용하는 것입니다. 따라서 캐시에 한 번만 연결되므로 이 섹션의 모든 지침은 캐시에 액세스하는 각 작업이 아니라 이 초기 연결에 대한 재시도 정책과 관련이 있습니다.
+StackExchange.Redis 클라이언트는 단일 연결을 통해 멀티플렉싱을 사용합니다. 권장되는 사용법은 애플리케이션 시작 시 클라이언트의 인스턴스를 만들고 캐시에 대한 모든 작업에 이 인스턴스를 사용하는 것입니다. 따라서 캐시에 한 번만 연결되므로 이 섹션의 모든 지침은 캐시에 액세스하는 각 작업이 아니라 이 초기 연결에 대한 재시도 정책과 관련이 있습니다.
 
 ### <a name="retry-mechanism"></a>재시도 메커니즘
 
@@ -575,7 +575,7 @@ SQL Database는 다양한 크기와 표준(공유) 및 프리미엄(비공유) �
 
 ### <a name="retry-mechanism"></a>재시도 메커니즘
 
-SQL Database는 ADO.NET을 사용하여 액세스하는 경우 재시도에 대한 기본 제공 지원을 제공하지 않습니다. 그러나 요청에서 반환된 코드를 사용하여 요청이 실패한 이유를 확인할 수 있습니다. SQL Database 제한에 대한 자세한 내용은 [Azure SQL Database 리소스 제한](/azure/sql-database/sql-database-resource-limits)을 참조하세요. 관련 오류 코드 목록은 [SQL Database 클라이언트 응용 프로그램에 대한 SQL 오류 코드](/azure/sql-database/sql-database-develop-error-messages)를 참조하세요.
+SQL Database는 ADO.NET을 사용하여 액세스하는 경우 재시도에 대한 기본 제공 지원을 제공하지 않습니다. 그러나 요청에서 반환된 코드를 사용하여 요청이 실패한 이유를 확인할 수 있습니다. SQL Database 제한에 대한 자세한 내용은 [Azure SQL Database 리소스 제한](/azure/sql-database/sql-database-resource-limits)을 참조하세요. 관련 오류 코드 목록은 [SQL Database 클라이언트 애플리케이션에 대한 SQL 오류 코드](/azure/sql-database/sql-database-develop-error-messages)를 참조하세요.
 
 SQL Database에 대한 재시도 구현에 Polly 라이브러리를 사용할 수 있습니다. [Polly를 통한 일시적인 오류 처리](#transient-fault-handling-with-polly)를 참조하세요.
 
@@ -958,7 +958,7 @@ var stats = await client.GetServiceStatsAsync(null, context);
 
 - 사용자 지정 재시도를 구현해야 하는 경우 저장소 클라이언트 클래스 주위에 래퍼를 만들지 마세요. 대신 **IExtendedRetryPolicy** 인터페이스를 통해 기존 정책을 확장하는 기능을 사용하세요.
 
-- RA-GRS(읽기 액세스 지역 중복 저장소)를 사용하는 경우 기본 액세스에 실패하면 **LocationMode**를 사용하여 재시도에서 저장소의 보조 읽기 전용 복사본에 액세스하도록 지정할 수 있습니다. 그러나 이 옵션을 사용할 때 기본 저장소에서 복제가 아직 완료되지 않은 경우 응용 프로그램이 오래된 데이터에서 성공적으로 작동하는지 확인해야 합니다.
+- RA-GRS(읽기 액세스 지역 중복 저장소)를 사용하는 경우 기본 액세스에 실패하면 **LocationMode**를 사용하여 재시도에서 저장소의 보조 읽기 전용 복사본에 액세스하도록 지정할 수 있습니다. 그러나 이 옵션을 사용할 때 기본 저장소에서 복제가 아직 완료되지 않은 경우 애플리케이션이 오래된 데이터에서 성공적으로 작동하는지 확인해야 합니다.
 
 재시도 작업에 대해 다음 설정을 사용하여 시작하는 것이 좋습니다. 이러한 설정은 범용이므로 작업을 모니터링하고 고유한 시나리오에 맞게 값을 미세 조정해야 합니다.
 

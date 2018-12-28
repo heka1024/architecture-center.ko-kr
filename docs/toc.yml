@@ -435,7 +435,7 @@ items:
       href: reference-architectures/n-tier/n-tier-cassandra.md
     - name: SharePoint Server 2016
       href: reference-architectures/sharepoint/index.md
-  - name: 웹 응용 프로그램
+  - name: 웹 애플리케이션
     items:
     - name: 기본 웹앱 애플리케이션
       href: reference-architectures/app-service-web-app/basic-web-app.md
@@ -481,7 +481,7 @@ items:
       href: multitenant-identity/claims.md
     - name: 테넌트 등록
       href: multitenant-identity/signup.md
-    - name: 응용 프로그램 역할
+    - name: 애플리케이션 역할
       href: multitenant-identity/app-roles.md
     - name: 권한 부여
       href: multitenant-identity/authorize.md
@@ -499,9 +499,9 @@ items:
       href: multitenant-identity/run-the-app.md
   - name: Cloud Services에서 Service Fabric으로 마이그레이션
     items:
-    - name: Service Fabric으로 Cloud Services 응용 프로그램 마이그레이션
+    - name: Service Fabric으로 Cloud Services 애플리케이션 마이그레이션
       href: service-fabric/migrate-from-cloud-services.md
-    - name: Service Fabric 응용 프로그램 리팩터링
+    - name: Service Fabric 애플리케이션 리팩터링
       href: service-fabric/refactor-migrated-app.md
 - name: 디자인 검토 프레임워크
   items:

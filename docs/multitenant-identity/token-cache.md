@@ -29,7 +29,7 @@ ADAL은 기본 토큰 캐시 구현을 제공합니다. 그러나 이 토큰 캐
 
 `TokenCache` 클래스는 발급자, 리소스, 클라이언트 ID 및 사용자별로 인덱싱된 토큰 사전을 저장합니다. 사용자 지정 토큰 캐시는 Redis 캐시와 같은 백업 저장소에 이 사전을 작성해야 합니다.
 
-Tailspin Surveys 응용 프로그램에서 `DistributedTokenCache` 클래스는 토큰 캐시를 구현합니다. 이 구현은 ASP.NET Core의 [IDistributedCache][distributed-cache] 추상화를 사용합니다. 즉, 모든 `IDistributedCache` 구현을 백업 저장소로 사용할 수 있습니다.
+Tailspin Surveys 애플리케이션에서 `DistributedTokenCache` 클래스는 토큰 캐시를 구현합니다. 이 구현은 ASP.NET Core의 [IDistributedCache][distributed-cache] 추상화를 사용합니다. 즉, 모든 `IDistributedCache` 구현을 백업 저장소로 사용할 수 있습니다.
 
 * 기본적으로 Surveys 응용 프로그램에서는 Redis 캐시를 사용합니다.
 * 단일 인스턴스 웹 서버의 경우 ASP.NET Core [메모리 내 캐시][in-memory-cache]를 사용할 수 있습니다. 이는 개발하는 동안 응용 프로그램을 로컬로 실행하는 데 유용한 옵션이기도 합니다.

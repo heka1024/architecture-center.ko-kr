@@ -137,7 +137,7 @@ public async Task RunAsync(CancellationToken cancellationToken)
 
 ## <a name="example-diagnosis"></a>예제 진단 
 
-다음 섹션에서는 이러한 단계를 앞에서 설명한 응용 프로그램 예제에 적용합니다.
+다음 섹션에서는 이러한 단계를 앞에서 설명한 애플리케이션 예제에 적용합니다.
 
 ### <a name="identify-points-of-slowdown"></a>느려지는 지점 파악
 

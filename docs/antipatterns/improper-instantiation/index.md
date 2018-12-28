@@ -23,7 +23,7 @@ ms.locfileid: "29477583"
 - `Microsoft.Azure.Documents.Client.DocumentClient` Cosmos DB 인스턴스에 연결합니다.
 - `StackExchange.Redis.ConnectionMultiplexer` Azure Redis Cache를 포함하여 Redis에 연결합니다.
 
-이러한 클래스는 한 번 인스턴스화되면 응용 프로그램의 수명 내내 다시 사용됩니다. 그러나 이러한 클래스를 필요한 경우에만 확보하고 신속하게 릴리스해야 한다는 것은 일반적인 오해입니다. (여기 나열된 항목은 .NET 라이브러리이지만 패턴은 .NET 고유 패턴이 아닙니다.) 다음 ASP.NET 예제는 원격 서비스와 통신하기 위해 `HttpClient` 인스턴스를 만듭니다. 전체 샘플은 [여기][sample-app]에서 찾을 수 있습니다.
+이러한 클래스는 한 번 인스턴스화되면 애플리케이션의 수명 내내 다시 사용됩니다. 그러나 이러한 클래스를 필요한 경우에만 확보하고 신속하게 릴리스해야 한다는 것은 일반적인 오해입니다. (여기 나열된 항목은 .NET 라이브러리이지만 패턴은 .NET 고유 패턴이 아닙니다.) 다음 ASP.NET 예제는 원격 서비스와 통신하기 위해 `HttpClient` 인스턴스를 만듭니다. 전체 샘플은 [여기][sample-app]에서 찾을 수 있습니다.
 
 ```csharp
 public class NewHttpClientInstancePerRequestController : ApiController
@@ -41,7 +41,7 @@ public class NewHttpClientInstancePerRequestController : ApiController
 }
 ```
 
-웹 응용 프로그램에서 이 기술은 확장성이 없습니다. 새 `HttpClient` 개체가 각 사용자 요청에 대해 만들어집니다. 과부하 시, 웹 서버에서 사용 가능한 소켓 수가 소진되어 `SocketException` 오류가 발생할 수 있습니다.
+웹 애플리케이션에서 이 기술은 확장성이 없습니다. 새 `HttpClient` 개체가 각 사용자 요청에 대해 만들어집니다. 과부하 시, 웹 서버에서 사용 가능한 소켓 수가 소진되어 `SocketException` 오류가 발생할 수 있습니다.
 
 이 문제는 `HttpClient` 클래스에만 국한되지 않습니다. 리소스를 래핑하거나 만드는 비용이 높은 다른 클래스도 유사한 문제를 유발할 수 있습니다. 다음 예제는 `ExpensiveToCreateService` 클래스에 대한 인스턴스를 만듭니다. 여기서 문제는 소켓 소진이 아니라 각 인스턴스를 만드는 데 걸리는 시간입니다. 이 클래스의 인스턴스를 계속 만들고 제거하면 시스템의 확장성에 부정적인 영향을 미칠 수 있습니다.
 
@@ -123,7 +123,7 @@ public class SingleHttpClientInstanceController : ApiController
 
 ## <a name="example-diagnosis"></a>예제 진단
 
-다음 섹션에서는 이러한 단계를 앞에서 설명한 응용 프로그램 예제에 적용합니다.
+다음 섹션에서는 이러한 단계를 앞에서 설명한 애플리케이션 예제에 적용합니다.
 
 ### <a name="identify-points-of-slow-down-or-failure"></a>느려지거나 실패한 지점 식별
 
@@ -135,13 +135,13 @@ public class SingleHttpClientInstanceController : ApiController
 
 다음 이미지는 이전 이미지와 동일한 기간에 스레드 프로파일링을 사용하여 캡처한 데이터입니다. 시스템은 소켓 연결을 여는 데 많은 시간을 소비하며 소켓 연결을 닫고 소켓 예외를 처리하는 데 더 많은 시간을 소비합니다.
 
-![각 요청에 대해 HttpClient 개체의 새 인스턴스를 만드는 응용 프로그램 예제를 보여주는 New Relic 스레드 프로파일러][thread-profiler-new-HTTPClient-instance]
+![각 요청에 대해 HttpClient 개체의 새 인스턴스를 만드는 애플리케이션 예제를 보여주는 New Relic 스레드 프로파일러][thread-profiler-new-HTTPClient-instance]
 
 ### <a name="performing-load-testing"></a>부하 테스트 수행
 
 부하 테스트를 사용하여 사용자가 수행할만한 일반적인 작업을 시뮬레이션합니다. 이렇게 하면 다양한 부하에서 리소스 소진으로 인해 시스템의 어느 부분이 저하되는지 식별하는 데 도움이 될 수 있습니다. 이러한 테스트는 프로덕션 시스템보다는 통제된 환경에서 수행합니다. 다음 그래프는 사용자 로드가 동시 사용자 100명으로 증가하면서 `NewHttpClientInstancePerRequest` 컨트롤러가 처리하는 요청 처리량을 보여줍니다.
 
-![각 요청에 대해 HttpClient 개체의 새 인스턴스를 만드는 응용 프로그램 예제의 처리량][throughput-new-HTTPClient-instance]
+![각 요청에 대해 HttpClient 개체의 새 인스턴스를 만드는 애플리케이션 예제의 처리량][throughput-new-HTTPClient-instance]
 
 우선 워크로드가 증가하면서 초당 처리되는 요청의 볼륨이 증가합니다. 하지만 사용자가 약 30명이 되면 성공한 요청의 볼륨이 한도에 도달하고 시스템은 예외를 생성하기 시작합니다. 그 이후로 예외 볼륨이 사용자 로드에 따라 점차 증가합니다. 
 
@@ -149,7 +149,7 @@ public class SingleHttpClientInstanceController : ApiController
 
 다음 그래프는 사용자 지정 `ExpensiveToCreateService` 개체를 생성하는 컨트롤러에 대한 유사한 테스트를 보여줍니다.
 
-![각 요청에 대해 ExpensiveToCreateService의 새 인스턴스를 만드는 응용 프로그램 예제의 처리량][throughput-new-ExpensiveToCreateService-instance]
+![각 요청에 대해 ExpensiveToCreateService의 새 인스턴스를 만드는 애플리케이션 예제의 처리량][throughput-new-ExpensiveToCreateService-instance]
 
 이번에는 컨트롤러가 예외를 생성하지 않고 처리량이 안정기에 접어든 반면 평균 응답 시간은 20배 증가합니다. (이 그래프는 응답 시간과 처리량에 대해 로그 눈금 간격을 사용합니다.) 원격 분석 데이터에 따르면 `ExpensiveToCreateService`의 새 인스턴스를 만드는 것이 문제의 주요 원인입니다.
 
@@ -157,15 +157,15 @@ public class SingleHttpClientInstanceController : ApiController
 
 `GetProductAsync` 메서드를 전환하여 단일 `HttpClient` 인스턴스를 공유한 후 2번째 부하 테스트에서 성능이 향상되었습니다. 오류는 보고되지 않았고 시스템은 초당 최대 500건의 요청에 달하는 증가한 부하를 처리할 수 있었습니다. 평균 응답 시간은 이전 테스트와 비교하여 절반이 되었습니다.
 
-![각 요청에 대해 HttpClient 개체의 동일한 인스턴스를 다시 사용하는 응용 프로그램 예제의 처리량][throughput-single-HTTPClient-instance]
+![각 요청에 대해 HttpClient 개체의 동일한 인스턴스를 다시 사용하는 애플리케이션 예제의 처리량][throughput-single-HTTPClient-instance]
 
 비교를 위해 다음 이미지는 스택 추적 원격 분석 데이터를 보여줍니다. 이번에는 시스템이 소켓을 열고 닫는 대신 실제 작업을 수행하는 데 대부분의 시간을 소비합니다.
 
-![모든 요청에 대해 HttpClient 개체의 단일 인스턴스를 만드는 응용 프로그램 예제를 보여주는 New Relic 스레드 프로파일러][thread-profiler-single-HTTPClient-instance]
+![모든 요청에 대해 HttpClient 개체의 단일 인스턴스를 만드는 애플리케이션 예제를 보여주는 New Relic 스레드 프로파일러][thread-profiler-single-HTTPClient-instance]
 
 다음 그래프는 `ExpensiveToCreateService` 개체의 공유 인스턴스를 사용하는 유사한 부하 테스트를 보여줍니다. 처리된 요청의 볼륨은 사용자 로드에 따라 증가하지만 평균 응답 시간은 낮게 유지됩니다. 
 
-![각 요청에 대해 HttpClient 개체의 동일한 인스턴스를 다시 사용하는 응용 프로그램 예제의 처리량][throughput-single-ExpensiveToCreateService-instance]
+![각 요청에 대해 HttpClient 개체의 동일한 인스턴스를 다시 사용하는 애플리케이션 예제의 처리량][throughput-single-ExpensiveToCreateService-instance]
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: 다중 테넌트 응용 프로그램의 인증
-description: 다중 테넌트 응용 프로그램이 Azure AD에서 사용자를 인증하는 방법
+title: 다중 테넌트 애플리케이션의 인증
+description: 다중 테넌트 애플리케이션이 Azure AD에서 사용자를 인증하는 방법
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -27,10 +27,10 @@ Surveys 응용 프로그램은 Azure AD(Azure Active Directory)에 사용자를 
 4. 사용자는 Azure AD로 인증합니다.
 5. Azure AD는 ID 토큰을 애플리케이션으로 보냅니다.
 6. 미들웨어는 ID 토큰의 유효성을 검사합니다. 이때 사용자가 애플리케이션 내부에서 인증됩니다.
-7. 미들웨어는 사용자를 응용 프로그램으로 다시 리디렉션합니다.
+7. 미들웨어는 사용자를 애플리케이션으로 다시 리디렉션합니다.
 
 ## <a name="register-the-app-with-azure-ad"></a>Azure AD에 앱 등록
-OpenID Connect를 사용하도록 설정하려면 SaaS 공급자는 응용 프로그램을 자신의 Azure AD 테넌트 내에 등록합니다.
+OpenID Connect를 사용하도록 설정하려면 SaaS 공급자는 애플리케이션을 자신의 Azure AD 테넌트 내에 등록합니다.
 
 응용 프로그램을 등록하려면 [Azure Active Directory와 응용 프로그램 통합](/azure/active-directory/active-directory-integrating-applications/)에서 [응용 프로그램 추가](/azure/active-directory/active-directory-integrating-applications/#adding-an-application) 섹션의 단계를 따릅니다.
 
@@ -61,7 +61,7 @@ app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions {
 일부 설정은 런타임 구성 옵션에서 가져옵니다. 다음은 미들웨어 옵션의 의미입니다.
 
 * **ClientId**. Azure AD에 애플리케이션을 등록할 때 얻은 애플리케이션의 클라이언트 ID입니다.
-* **Authority**. 다중 테넌트 응용 프로그램의 경우 `https://login.microsoftonline.com/common/`으로 설정합니다. Azure AD 공용 엔드포인트에 대한 URL로, Azure AD 테넌트의 사용자가 이를 통해 로그인할 수 있습니다. 공용 엔드포인트에 대한 자세한 내용은 [이 블로그 게시물](https://www.cloudidentity.com/blog/2014/08/26/the-common-endpoint-walks-like-a-tenant-talks-like-a-tenant-but-is-not-a-tenant/)을 참조하세요.
+* **Authority**. 다중 테넌트 애플리케이션의 경우 `https://login.microsoftonline.com/common/`으로 설정합니다. Azure AD 공용 엔드포인트에 대한 URL로, Azure AD 테넌트의 사용자가 이를 통해 로그인할 수 있습니다. 공용 엔드포인트에 대한 자세한 내용은 [이 블로그 게시물](https://www.cloudidentity.com/blog/2014/08/26/the-common-endpoint-walks-like-a-tenant-talks-like-a-tenant-but-is-not-a-tenant/)을 참조하세요.
 * **TokenValidationParameters**에서 **ValidateIssuer**를 false로 설정합니다. 이 경우 앱에서 ID 토큰의 발급자 값의 유효성을 검사해야 합니다. (토큰 자체의 유효성은 계속 미들웨어에서 검사합니다.) 발급자 유효성 검사에 대한 자세한 내용은 [발급자 확인](claims.md#issuer-validation)을 참조하세요.
 * **PostLogoutRedirectUri**. 로그아웃한 후 사용자를 리디렉션할 URL을 지정합니다. 이 URL은 익명 요청을 허용하는 페이지여야 하며, 일반적으로 홈페이지입니다.
 * **SignInScheme**. `CookieAuthenticationDefaults.AuthenticationScheme`로 설정합니다. 이 설정은 사용자가 인증된 후 사용자 클레임이 쿠키에 로컬로 저장됨을 의미합니다. 이 쿠키는 브라우저 세션 중에 사용자가 로그인을 유지하는 방법입니다.

@@ -1,6 +1,6 @@
 ---
 title: 고객의 AD FS로 페더레이션
-description: 다중 테넌트 응용 프로그램에서 고객의 AD FS로 페더레이션하는 방법
+description: 다중 테넌트 애플리케이션에서 고객의 AD FS로 페더레이션하는 방법
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -15,7 +15,7 @@ ms.locfileid: "52902700"
 ---
 # <a name="federate-with-a-customers-ad-fs"></a>고객의 AD FS로 페더레이션
 
-이 문서에서는 다중 테넌트 SaaS 응용 프로그램이 고객의 AD FS와 페더레이션하기 위해 AD FS(Active Directory Federation Services)를 통해 인증을 지원할 수 있는 방법을 설명합니다.
+이 문서에서는 다중 테넌트 SaaS 애플리케이션이 고객의 AD FS와 페더레이션하기 위해 AD FS(Active Directory Federation Services)를 통해 인증을 지원할 수 있는 방법을 설명합니다.
 
 ## <a name="overview"></a>개요
 Azure AD(Azure Active Directory)를 통해 Office365 및 Dynamics CRM Online 고객을 포함하여 Azure AD 테넌트에서 사용자를 쉽게 로그인할 수 있습니다. 그러나 회사 인트라넷에서 온-프레미스 Active Directory를 사용하는 고객은 어떨까요?
@@ -87,7 +87,7 @@ SaaS 공급자는 온-프레미스 또는 Azure VM에 AD FS를 배포할 수 있
 Azure에서 유사한 토폴로지를 설정하기 위해서는 가상 네트워크, NSG, azure VM 및 가용성 집합을 사용해야 합니다. 자세한 내용은 [Azure Virtual Machines에 Windows Server Active Directory를 배포하기 위한 지침][active-directory-on-azure]을 참조하세요.
 
 ## <a name="configure-openid-connect-authentication-with-ad-fs"></a>AD FS를 사용하여 OpenID Connect 인증 구성
-SaaS 공급자는 응용 프로그램 및 AD FS 간의 OpenID Connect를 사용하도록 설정해야 합니다. 이렇게 하려면 AD FS에서 애플리케이션 그룹을 추가합니다.  이 [블로그 게시물]의 "OpenId Connect 로그인 AD FS를 위한 웹앱 설정" 아래에서 상세 지침을 확인할 수 있습니다. 
+SaaS 공급자는 애플리케이션 및 AD FS 간의 OpenID Connect를 사용하도록 설정해야 합니다. 이렇게 하려면 AD FS에서 애플리케이션 그룹을 추가합니다.  이 [블로그 게시물]의 "OpenId Connect 로그인 AD FS를 위한 웹앱 설정" 아래에서 상세 지침을 확인할 수 있습니다. 
 
 그런 다음 OpenID Connect 미들웨어를 구성합니다. 메타데이터 엔드포인트는 `https://domain/adfs/.well-known/openid-configuration`이며, 여기서 도메인은 SaaS 공급자의 AD FS 도메인입니다.
 

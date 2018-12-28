@@ -1,6 +1,6 @@
 ---
 title: 다중 테넌트 응용 프로그램에서 등록 및 테넌트 온보딩
-description: 다중 테넌트 응용 프로그램에서 테넌트를 등록하는 방법
+description: 다중 테넌트 애플리케이션에서 테넌트를 등록하는 방법
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -17,7 +17,7 @@ ms.locfileid: "52902479"
 
 [![GitHub](../_images/github.png) 샘플 코드][sample application]
 
-이 문서는 고객이 응용 프로그램에 조직을 등록하도록 하는 다중 테넌트 응용 프로그램에서 *등록* 프로세스를 구현하는 방법을 설명합니다.
+이 문서는 고객이 애플리케이션에 조직을 등록하도록 하는 다중 테넌트 애플리케이션에서 *등록* 프로세스를 구현하는 방법을 설명합니다.
 등록 프로세스를 구현하는 여러 가지 이유가 있습니다.
 
 * AD 관리자가 고객의 전체 조직에 동의하여 애플리케이션을 사용하도록 합니다.
@@ -54,7 +54,7 @@ Azure AD를 인증하려면 애플리케이션은 사용자의 디렉터리에 �
 
 익명 사용자가 설문 조사 애플리케이션을 방문하면 하나는 로그인으로 하나는 "회사 등록"(등록)으로 두 개의 단추가 표시됩니다.
 
-![응용 프로그램 등록 페이지](./images/sign-up-page.png)
+![애플리케이션 등록 페이지](./images/sign-up-page.png)
 
 이러한 단추는 `AccountController` 클래스에서 작업을 호출합니다.
 
@@ -107,7 +107,7 @@ Azure AD에서 관리자 동의 흐름은 "prompt" 매개 변수를 인증 요�
 /authorize?prompt=admin_consent&...
 ```
 
-설문 조사 응용 프로그램은 `RedirectToAuthenticationEndpoint` 이벤트 중 프롬프트를 추가합니다. 이 이벤트는 미들웨어가 인증 엔드포인트에 리디렉션하기 직전에 호출됩니다.
+설문 조사 애플리케이션은 `RedirectToAuthenticationEndpoint` 이벤트 중 프롬프트를 추가합니다. 이 이벤트는 미들웨어가 인증 엔드포인트에 리디렉션하기 직전에 호출됩니다.
 
 ```csharp
 public override Task RedirectToAuthenticationEndpoint(RedirectContext context)
@@ -160,7 +160,7 @@ internal static bool IsSigningUp(this BaseControlContext context)
 
 새 테넌트를 등록하면 설문 조사 애플리케이션은 데이터베이스에 테넌트 레코드를 작성합니다. 이는 `AuthenticationValidated` 이벤트 내에서 발생합니다. (ID 토큰은 아직 확인되지 않았기 때문에 클레임 값을 신뢰할 수 없으므로 이 이벤트 전에 실행하지 마십시오. [인증]을 참조하세요.
 
-설문 조사 응용 프로그램에서 관련 코드는 다음과 같습니다.
+설문 조사 애플리케이션에서 관련 코드는 다음과 같습니다.
 
 ```csharp
 public override async Task TokenValidated(TokenValidatedContext context)
@@ -244,7 +244,7 @@ private async Task<Tenant> SignUpTenantAsync(BaseControlContext context, TenantM
 }
 ```
 
-다음은 설문 조사 응용 프로그램에서 전체 등록 흐름에 대한 요약입니다.
+다음은 설문 조사 애플리케이션에서 전체 등록 흐름에 대한 요약입니다.
 
 1. 사용자는 **등록** 단추를 클릭합니다.
 2. `AccountController.SignUp` 작업은 challege 결과를 반환합니다.  인증 상태는 "등록" 값을 포함합니다.

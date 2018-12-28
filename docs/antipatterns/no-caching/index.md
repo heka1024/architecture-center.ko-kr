@@ -143,7 +143,7 @@ public class CacheService
 
 ## <a name="example-diagnosis"></a>예제 진단
 
-다음 섹션에서는 이러한 단계를 앞에서 설명한 응용 프로그램 예제에 적용합니다.
+다음 섹션에서는 이러한 단계를 앞에서 설명한 애플리케이션 예제에 적용합니다.
 
 ### <a name="instrument-the-application-and-monitor-the-live-system"></a>애플리케이션 계측 및 라이브 시스템 모니터링
 
