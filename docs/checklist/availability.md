@@ -34,9 +34,9 @@ ms.locfileid: "53307234"
 
 ## <a name="deployment-and-maintenance"></a>배포 및 유지 관리
 
-**서비스의 여러 인스턴스를 배포합니다.** 응용 프로그램이 서비스의 단일 인스턴스에 종속된 경우 단일 실패 지점이 생깁니다. 여러 인스턴스를 프로비전하면 복원력 및 확장성이 모두 개선됩니다. [Azure App Service](/azure/app-service/app-service-value-prop-what-is/)의 경우 여러 인스턴스를 제공하는 [App Service 계획](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)을 선택합니다. Azure Cloud Services의 경우 각각의 역할을 [여러 인스턴스](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)를 사용하도록 구성합니다. [Azure Virtual Machines(VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)의 경우, VM 아키텍처가 둘 이상의 VM을 포함하는지 그리고 각각의 VM이 [가용성 집합][availability-sets]에 포함되는지 확인합니다.
+**서비스의 여러 인스턴스를 배포합니다.** 애플리케이션이 서비스의 단일 인스턴스에 종속된 경우 단일 실패 지점이 생깁니다. 여러 인스턴스를 프로비전하면 복원력 및 확장성이 모두 개선됩니다. [Azure App Service](/azure/app-service/app-service-value-prop-what-is/)의 경우 여러 인스턴스를 제공하는 [App Service 계획](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview/)을 선택합니다. Azure Cloud Services의 경우 각각의 역할을 [여러 인스턴스](/azure/cloud-services/cloud-services-choose-me/#scaling-and-management)를 사용하도록 구성합니다. [Azure Virtual Machines(VM)](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)의 경우, VM 아키텍처가 둘 이상의 VM을 포함하는지 그리고 각각의 VM이 [가용성 집합][availability-sets]에 포함되는지 확인합니다.
 
-**여러 지역에 걸쳐 응용 프로그램을 배포하는 것을 고려합니다.** 응용 프로그램이 단일 지역에 배포되면 전체 지역이 사용할 수 없게 되는 드문 경우에 응용 프로그램도 사용할 수 없습니다. 이러한 상황이 응용 프로그램의 SLA의 조항에 따라 허용되지 않을 수 있습니다. 그러한 경우 응용 프로그램 및 해당 서비스를 여러 지역에 걸쳐 배포하는 것을 고려합니다.
+**여러 지역에 걸쳐 응용 프로그램을 배포하는 것을 고려합니다.** 애플리케이션이 단일 지역에 배포되면 전체 지역이 사용할 수 없게 되는 드문 경우에 애플리케이션도 사용할 수 없습니다. 이러한 상황이 애플리케이션의 SLA의 조항에 따라 허용되지 않을 수 있습니다. 그러한 경우 애플리케이션 및 해당 서비스를 여러 지역에 걸쳐 배포하는 것을 고려합니다.
 
 **배포 및 유지 관리 작업을 자동화하고 테스트합니다.** 분산된 애플리케이션은 함께 작동해야 하는 여러 부분으로 구성됩니다. 배포는 스크립트처럼 테스트되고 입증된 메커니즘을 사용해 자동화되어야 합니다. 업데이트 및 구성의 유효성을 검사하고 배포 프로세스를 자동화할 수 있습니다. [Azure Resource Manager 템플릿](/azure/azure-resource-manager/resource-group-authoring-templates)을 사용하여 리소스를 프로비전합니다. 또한 자동화 기술을 사용해 응용 프로그램 업데이트를 수행합니다. 오류 작동 중단 시간이 추가로 인해 에러가 일어나지 않도록 완벽하게 이러한 모든 프로세스를 테스트하는 것이 중요합니다. 모든 배포 도구는 배포된 응용 프로그램을 보호하기 위해 적합한 보안 제한이 있어야 합니다. 배포 정책을 신중하게 정의 및 적용하고 사용자 개입의 필요성을 최소화합니다.
 

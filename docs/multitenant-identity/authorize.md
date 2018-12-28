@@ -1,6 +1,6 @@
 ---
-title: 다중 테넌트 응용 프로그램의 권한 부여
-description: 다중 테넌트 응용 프로그램에서 권한 부여를 수행하는 방법
+title: 다중 테넌트 애플리케이션의 권한 부여
+description: 다중 테넌트 애플리케이션에서 권한 부여를 수행하는 방법
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
@@ -31,16 +31,16 @@ ms.locfileid: "53307166"
 * 작성자. 새 설문 조사를 만들 수 있습니다.
 * 읽기 권한자. 해당 테넌트에 속하는 모든 설문 조사를 읽을 수 있습니다.
 
-역할은 응용 프로그램의 *사용자* 에게 적용됩니다. Surveys 애플리케이션에서 사용자는 관리자, 작성자 또는 읽기 권한자입니다.
+역할은 애플리케이션의 *사용자*에게 적용됩니다. Surveys 애플리케이션에서 사용자는 관리자, 작성자 또는 읽기 권한자입니다.
 
-역할을 정의하고 관리하는 방법에 대한 자세한 내용은 [응용 프로그램 역할]을 참조하세요.
+역할을 정의하고 관리하는 방법에 대한 자세한 내용은 [애플리케이션 역할]을 참조하세요.
 
 역할을 관리하는 방법에 상관없이 인증 코드는 유사합니다. ASP.NET Core에는 [권한 부여 정책][policies]이라는 추상화가 있습니다. 이 기능을 통해 코드에서 권한 부여 정책을 정의한 후 컨트롤러 작업에 적용할 수 있습니다. 이 정책은 컨트롤러에서 분리됩니다.
 
 ### <a name="create-policies"></a>정책 만들기
 정책을 정의하려면 먼저 `IAuthorizationRequirement`를 구현하는 클래스를 만듭니다. `AuthorizationHandler`에서 파생하는 것이 가장 간단합니다. `Handle` 메서드에서 관련 클레임을 검사합니다.
 
-다음은 Tailspin Surveys 응용 프로그램의 예입니다.
+다음은 Tailspin Surveys 애플리케이션의 예입니다.
 
 ```csharp
 public class SurveyCreatorRequirement : AuthorizationHandler<SurveyCreatorRequirement>, IAuthorizationRequirement
@@ -152,7 +152,7 @@ if (await _authorizationService.AuthorizeAsync(User, survey, Operations.Read) ==
 `Survey` 개체를 통해 전달하므로 이 호출은 `SurveyAuthorizationHandler`를 호출합니다.
 
 인증 코드에서 사용자의 역할 기반 및 리소스 기반 사용 권한을 모두 집계한 다음 원하는 작업에 대해 집계 집합을 확인하는 것이 좋습니다.
-다음은 Surveys 응용 프로그램의 예입니다. 이 응용 프로그램에서는 몇 가지 사용 권한 유형을 정의합니다.
+다음은 Surveys 응용 프로그램의 예입니다. 이 애플리케이션에서는 몇 가지 사용 권한 유형을 정의합니다.
 
 * 관리자
 * 참가자
@@ -250,7 +250,7 @@ static readonly Dictionary<OperationAuthorizationRequirement, Func<List<UserPerm
 <!-- Links -->
 [Tailspin]: tailspin.md
 
-[응용 프로그램 역할]: app-roles.md
+[애플리케이션 역할]: app-roles.md
 [policies]: /aspnet/core/security/authorization/policies
 [참조 구현]: tailspin.md
 [인증 미들웨어 구성]: authenticate.md#configure-the-auth-middleware
