@@ -21,7 +21,7 @@ Azure는 고가용성 및 재해 복구를 위해서 Azure에 대한 온-프레�
 * **데이터베이스 복제**: SQL Server 2014 이상 가용성 그룹을 통해 온-프레미스 데이터에 대한 고가용성 및 재해 복구를 구현할 수 있습니다.
 
 ## <a name="networking"></a>네트워킹
-Azure Virtual Network를 사용하면 Azure에 논리적으로 분리된 섹션을 만들 수 있으며 IPsec 연결을 사용하여 온-프레미스 데이터 센터 또는 단일 클라이언트 컴퓨터에 안전하게 연결할 수 있습니다. Virtual Network를 사용하면 Windows Server, 메인프레임 및 UNIX에서 실행되는 시스템을 비롯한 데이터 및 응용 프로그램 온-프레미스에 연결을 제공하는 동시에 Azure에서 확장성 있는 주문형 인프라를 쉽게 이용할 수 있습니다. 자세한 내용은 [Azure 네트워킹 설명서](/azure/virtual-network/virtual-networks-overview/) 를 참조하세요.
+Azure Virtual Network를 사용하면 Azure에 논리적으로 분리된 섹션을 만들 수 있으며 IPsec 연결을 사용하여 온-프레미스 데이터 센터 또는 단일 클라이언트 컴퓨터에 안전하게 연결할 수 있습니다. Virtual Network를 사용하면 Windows Server, 메인프레임 및 UNIX에서 실행되는 시스템을 비롯한 데이터 및 애플리케이션 온-프레미스에 연결을 제공하는 동시에 Azure에서 확장성 있는 주문형 인프라를 쉽게 이용할 수 있습니다. 자세한 내용은 [Azure 네트워킹 설명서](/azure/virtual-network/virtual-networks-overview/) 를 참조하세요.
 
 ## <a name="compute"></a>컴퓨팅
 Hyper-V를 사용하는 경우 온-프레미스는 VM을 변경하거나 VM 형식을 변환하지 않고 기존 가상 머신을 Windows Server 2012(또는 이상)를 실행하는 Azure 및 서비스 공급자에 “전환”할 수 있습니다. 자세한 내용은 [Azure 가상 머신용 디스크 및 VHD 정보](/azure/virtual-machines/virtual-machines-linux-about-disks-vhds/?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)를 참조하세요.
@@ -33,7 +33,7 @@ DRaaS(disaster recovery as a service)를 선호하는 경우 Azure는 [Azure Sit
 온-프레미스 데이터에 대한 백업 사이트로 Azure를 사용하는 경우 몇 가지 옵션이 있습니다.
 
 ### <a name="storsimple"></a>StorSimple
-StorSimple는 온-프레미스 응용 프로그램에 대한 클라우드 저장소를 안전하고 투명하게 통합합니다. 또한 고성능 계층화된 로컬 및 클라우드 저장소, 라이브 보관, 클라우드 기반 데이터 보호 및 재해 복구를 구현하는 단일 어플라이언스를 제공합니다. 자세한 내용은 [StorSimple 제품 페이지](https://azure.microsoft.com/services/storsimple/)를 참조하세요.
+StorSimple는 온-프레미스 애플리케이션에 대한 클라우드 저장소를 안전하고 투명하게 통합합니다. 또한 고성능 계층화된 로컬 및 클라우드 저장소, 라이브 보관, 클라우드 기반 데이터 보호 및 재해 복구를 구현하는 단일 어플라이언스를 제공합니다. 자세한 내용은 [StorSimple 제품 페이지](https://azure.microsoft.com/services/storsimple/)를 참조하세요.
 
 ### <a name="azure-backup"></a>Azure Backup
 Azure Backup을 통해 Windows Server 2012(또는 이상), Windows Server 2012 Essentials(또는 이상) 및 System Center 2012 Data Protection Manager(또는 이상)에서 익숙한 백업 도구를 사용하여 클라우드 백업을 활성화할 수 있습니다. 이러한 도구는 로컬 디스크 또는 Azure Storage 여부에 상관 없이 백업의 저장 위치와 독립적인 백업 관리에 대한 워크플로를 제공합니다. 클라우드로 데이터를 백업한 후에는 권한 있는 사용자가 서버로 백업을 쉽게 복구할 수 있습니다.
