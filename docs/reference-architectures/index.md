@@ -643,7 +643,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>기본 웹앱 응용 프로그램</h3>
+                        <h3>기본 웹앱 애플리케이션</h3>
                         <p>Azure App Service 및 Azure SQL Database를 사용하는 웹 애플리케이션입니다.</p>
                     </div>
                 </div>

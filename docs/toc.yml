@@ -437,7 +437,7 @@ items:
       href: reference-architectures/sharepoint/index.md
   - name: 웹 응용 프로그램
     items:
-    - name: 기본 웹앱 응용 프로그램
+    - name: 기본 웹앱 애플리케이션
       href: reference-architectures/app-service-web-app/basic-web-app.md
     - name: 향상된 확장성
       href: reference-architectures/app-service-web-app/scalable-web-app.md

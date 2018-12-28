@@ -1,6 +1,6 @@
 ---
 title: Azure 응용 프로그램에 대한 재해 복구
-description: Microsoft Azure에서 재해 복구를 위한 응용 프로그램 설계에 대한 기술 개요와 자세한 정보입니다.
+description: Microsoft Azure에서 재해 복구를 위한 애플리케이션 설계에 대한 기술 개요와 자세한 정보입니다.
 author: adamglick
 ms.date: 09/12/2018
 ms.openlocfilehash: ff5da8a3d2612d7c122ec8ed87979eddf778dbf0
@@ -166,7 +166,7 @@ Elasticsearch 또는 MongoDB와 같은 데이터 플랫폼을 호스팅하는 �
 
 ![트랜잭션 캡처를 위한 제한된 응용 프로그램 기능](./images/disaster-recovery-azure-applications/reduced-application-functionality-for-transaction-capture.png)
 
-복원력 있는 Azure 응용 프로그램의 데이터 관리 기술에 대한 자세한 내용은 [Failsafe: 복원력 있는 클라우드 아키텍처 지침](https://channel9.msdn.com/Series/FailSafe)을 참조하세요.
+복원력 있는 Azure 애플리케이션의 데이터 관리 기술에 대한 자세한 내용은 [Failsafe: 복원력 있는 클라우드 아키텍처 지침](https://channel9.msdn.com/Series/FailSafe)을 참조하세요.
 
 ## <a name="deployment-topologies-for-disaster-recovery"></a>재해 복구를 위한 배포 토폴로지
 업무상 중요한 응용 프로그램에서 지역 전체 서비스 중단을 처리하도록 준비해야 합니다. 여러 지역 배포 전략을 운영 계획에 통합합니다.
@@ -245,7 +245,7 @@ Azure Site Recovery를 사용하여 Azure VM 복제를 활성화하는 경우 �
 
 ![활성-활성](./images/disaster-recovery-azure-applications/active-active.png)
 
-위의 다이어그램에는 활성-활성 아키텍처에 대한 단점이 있습니다. 두 번째 지역에는 마스터 복사본이 있기 때문에 첫 번째 지역의 데이터베이스에 액세스해야 합니다. 지역 외부의 데이터에 액세스할 경우 성능이 크게 저하됩니다. 지역 간 데이터베이스 호출에서 특정 유형의 배치 전략을 고려하여 이러한 호출의 성능을 개선해야 합니다. 자세한 내용은 [배치를 사용하여 SQL Database 응용 프로그램 성능을 개선하는 방법](/azure/sql-database/sql-database-use-batching-to-improve-performance/)을 참조하세요.
+위의 다이어그램에는 활성-활성 아키텍처에 대한 단점이 있습니다. 두 번째 지역에는 마스터 복사본이 있기 때문에 첫 번째 지역의 데이터베이스에 액세스해야 합니다. 지역 외부의 데이터에 액세스할 경우 성능이 크게 저하됩니다. 지역 간 데이터베이스 호출에서 특정 유형의 배치 전략을 고려하여 이러한 호출의 성능을 개선해야 합니다. 자세한 내용은 [배치를 사용하여 SQL Database 애플리케이션 성능을 개선하는 방법](/azure/sql-database/sql-database-use-batching-to-improve-performance/)을 참조하세요.
 
 대체 아키텍처는 고유한 데이터베이스에 직접 액세스하는 각 지역을 포함할 수 있습니다. 이러한 모델에서 각 지역에 데이터베이스를 동기화하기 위해 일부 유형의 양방향 복제가 요구됩니다.
 

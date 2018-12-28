@@ -1,5 +1,5 @@
 ---
-title: 기본 웹앱 응용 프로그램
+title: 기본 웹앱 애플리케이션
 titleSuffix: Azure Reference Architectures
 description: Azure에서 실행되는 기본 웹 애플리케이션에 권장하는 아키텍처입니다.
 author: MikeWasson
