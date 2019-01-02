@@ -9,7 +9,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 08/31/2018
 ms.locfileid: "43325862"
 ---
-# <a name="azure-application-architecture-guide"></a>Azure 응용 프로그램 아키텍처 가이드
+# <a name="azure-application-architecture-guide"></a>Azure 애플리케이션 아키텍처 가이드
 
 이 가이드는 확장성과 복원력이 있고 가용성이 뛰어난 Azure에서 애플리케이션을 디자인하기 위한 체계적인 방식을 제시합니다. 고객의 참여를 통해 확보한 검증된 사례를 기반으로 합니다.
 

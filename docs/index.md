@@ -23,7 +23,7 @@ ms.locfileid: "49347112"
                     <div class="card">
                         <img src="_images/a3g-logo.svg" alt="" />
                         <div class="cardText">
-                            <h3>Azure 응용 프로그램 아키텍처 가이드</h3>
+                            <h3>Azure 애플리케이션 아키텍처 가이드</h3>
                             <p> 고객 참여를 통해 확보한 검증된 사례를 기반으로 하는 확장성, 복원력 및 고가용성 애플리케이션을 디자인하는 방법에 대한 안내서입니다.</p>
                         </div>
                     </div>
