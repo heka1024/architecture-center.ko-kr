@@ -23,7 +23,7 @@ ms.locfileid: "53120257"
 ## <a name="architecture"></a>아키텍처
 
 > [!NOTE]
-> 이 아키텍처는 응용 프로그램 개발에 초점을 두지 않으며 특정 응용 프로그램 프레임워크를 가정하지 않습니다. 다양한 Azure 서비스가 어떻게 연결되는지 이해하는 것이 목표입니다.
+> 이 아키텍처는 애플리케이션 개발에 초점을 두지 않으며 특정 애플리케이션 프레임워크를 가정하지 않습니다. 다양한 Azure 서비스가 어떻게 연결되는지 이해하는 것이 목표입니다.
 >
 
 이 아키텍처의 구성 요소는 다음과 같습니다.
@@ -70,7 +70,7 @@ SQL Database의 [V12 버전][sql-db-v12]을 사용합니다. SQL Database는 기
 
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
-Azure App Service의 주요 이점은 부하에 따라 응용 프로그램을 확장할 수 있다는 점입니다. 다음은 애플리케이션 확장을 계획할 때 염두할 몇 가지 고려 사항입니다.
+Azure App Service의 주요 이점은 부하에 따라 애플리케이션을 확장할 수 있다는 점입니다. 다음은 애플리케이션 확장을 계획할 때 염두할 몇 가지 고려 사항입니다.
 
 ### <a name="scaling-the-app-service-app"></a>App Service 앱 크기 조정
 
@@ -112,7 +112,7 @@ SQL Database에 대해 더 높은 서비스 계층이나 성능 수준이 필요
 
 자세한 내용은 [SQL Database의 클라우드 무중단 업무 방식 및 데이터베이스 재해 복구][sql-backup]를 참조하세요.
 
-App Service에서는 응용 프로그램 파일에 대한 [백업 및 복원][web-app-backup] 기능을 제공합니다. 그러나 백업된 파일에는 앱 설정이 일반 텍스트로 포함되며 연결 문자열과 같은 비밀이 포함될 수 있다는 점에 유의합니다. SQL Database를 백업하기 위해 App Service 백업 기능을 사용하지 마세요. 이 경우 데이터베이스를 SQL .bacpac 파일로 내보내 [DTU][sql-dtu]를 소모하기 때문입니다. 대신 위에서 설명한 SQL Database 지정 시간 복원을 사용합니다.
+App Service에서는 애플리케이션 파일에 대한 [백업 및 복원][web-app-backup] 기능을 제공합니다. 그러나 백업된 파일에는 앱 설정이 일반 텍스트로 포함되며 연결 문자열과 같은 비밀이 포함될 수 있다는 점에 유의합니다. SQL Database를 백업하기 위해 App Service 백업 기능을 사용하지 마세요. 이 경우 데이터베이스를 SQL .bacpac 파일로 내보내 [DTU][sql-dtu]를 소모하기 때문입니다. 대신 위에서 설명한 SQL Database 지정 시간 복원을 사용합니다.
 
 ## <a name="manageability-considerations"></a>관리 효율성 고려 사항
 
@@ -156,11 +156,11 @@ App Service App에는 라이브 프로덕션 사이트를 나타내는 `producti
 
 ### <a name="diagnostics-and-monitoring"></a>진단 및 모니터링
 
-응용 프로그램 로깅 및 웹 서버 로깅을 포함하여 [진단 로깅][diagnostic-logs]을 사용하도록 설정합니다. Blob Storage를 사용하도록 로깅을 구성합니다. 성능을 위해 진단 로그를 저장할 별도의 저장소 계정을 만듭니다. 로그와 애플리케이션 데이터에 동일한 저장소 계정을 사용하지 마세요. 로깅에 대한 자세한 내용은 [모니터링 및 진단 지침][monitoring-guidance]을 참조하세요.
+애플리케이션 로깅 및 웹 서버 로깅을 포함하여 [진단 로깅][diagnostic-logs]을 사용하도록 설정합니다. Blob Storage를 사용하도록 로깅을 구성합니다. 성능을 위해 진단 로그를 저장할 별도의 저장소 계정을 만듭니다. 로그와 애플리케이션 데이터에 동일한 저장소 계정을 사용하지 마세요. 로깅에 대한 자세한 내용은 [모니터링 및 진단 지침][monitoring-guidance]을 참조하세요.
 
 [New Relic][ new-relic] 또는 [Application Insights][app-insights] 같은 서비스를 사용하여 응용 프로그램 성능 및 부하를 받을 때의 동작을 모니터링합니다. Application Insights에 대한 [데이터 속도 제한][app-insights-data-rate]을 알아둡니다.
 
-[Azure DevOps][azure-devops] 또는 [Visual Studio Team Foundation Server][tfs]와 같은 도구를 사용하여 부하 테스트를 수행합니다. 클라우드 응용 프로그램의 성능 분석에 대한 개요는 [Performance Analysis Primer][perf-analysis]를 참조하세요.
+[Azure DevOps][azure-devops] 또는 [Visual Studio Team Foundation Server][tfs]와 같은 도구를 사용하여 부하 테스트를 수행합니다. 클라우드 애플리케이션의 성능 분석에 대한 개요는 [Performance Analysis Primer][perf-analysis]를 참조하세요.
 
 애플리케이션 문제 해결 팁:
 
@@ -189,7 +189,7 @@ App Service App에는 라이브 프로덕션 사이트를 나타내는 `producti
 
 App Service 앱에서는 추가 비용 없이 `azurewebsites.net`의 하위 도메인의 SSL 엔드포인트를 제공합니다. SSL 엔드포인트에는 `*.azurewebsites.net` 도메인에 대한 와일드카드 인증서가 포함되어 있습니다. 사용자 지정 도메인 이름을 사용하는 경우 사용자 지정 도메인과 일치하는 인증서를 제공해야 합니다. 가장 간단한 방법은 Azure Portal에서 직접 인증서를 구입하는 것입니다. 다른 인증 기관에서 인증서를 가져올 수도 있습니다. 자세한 내용은 [Azure App Service에 대한 SSL 인증서 구입 및 구성][ssl-cert]을 참조하세요.
 
-보안을 극대화하려면 앱에서 HTTP 요청을 리디렉션하여 HTTPS를 적용해야 합니다. 응용 프로그램 내부에서 이를 구현하거나 로[Azure App Service에서 앱에 HTTPS 사용][ssl-redirect]에 설명된 대로 URL 다시 쓰기 규칙을 사용할 수 있습니다.
+보안을 극대화하려면 앱에서 HTTP 요청을 리디렉션하여 HTTPS를 적용해야 합니다. 애플리케이션 내부에서 이를 구현하거나 로[Azure App Service에서 앱에 HTTPS 사용][ssl-redirect]에 설명된 대로 URL 다시 쓰기 규칙을 사용할 수 있습니다.
 
 ### <a name="authentication"></a>인증
 
@@ -209,7 +209,7 @@ App Service 인증의 몇 가지 제한 사항은 다음과 같습니다.
 - 사용자 지정 옵션이 제한되어 있습니다.
 - 위임된 권한 부여는 로그인 세션당 하나의 백 엔드 리소스로 제한됩니다.
 - 둘 이상의 IDP를 사용하는 경우 홈 영역 검색을 위한 기본 메커니즘이 없습니다.
-- 다중 테넌트 시나리오의 경우 응용 프로그램에서 토큰 발급자의 유효성을 검사하는 논리를 구현해야 합니다.
+- 다중 테넌트 시나리오의 경우 애플리케이션에서 토큰 발급자의 유효성을 검사하는 논리를 구현해야 합니다.
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 

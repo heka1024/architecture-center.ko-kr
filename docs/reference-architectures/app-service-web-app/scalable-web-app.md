@@ -1,5 +1,5 @@
 ---
-title: 확장 가능한 웹 응용 프로그램
+title: 확장 가능한 웹 애플리케이션
 titleSuffix: Azure Reference Architectures
 description: Microsoft Azure에서 실행되는 웹 애플리케이션의 확장성을 향상합니다.
 author: MikeWasson
@@ -14,7 +14,7 @@ ms.locfileid: "53179300"
 ---
 # <a name="improve-scalability-in-an-azure-web-application"></a>Azure 웹 애플리케이션에서 확장성 향상
 
-이 참조 아키텍처는 Azure App Service 웹 응용 프로그램의 확장성과 성능 향상을 위한 검증된 사례를 보여 줍니다.
+이 참조 아키텍처는 Azure App Service 웹 애플리케이션의 확장성과 성능 향상을 위한 검증된 사례를 보여 줍니다.
 
 ![확장성이 향상된 Azure의 웹 애플리케이션](./images/scalable-web-app.png)
 
@@ -22,10 +22,10 @@ ms.locfileid: "53179300"
 
 ## <a name="architecture"></a>아키텍처
 
-이 아키텍처는 [기본 웹 응용 프로그램][basic-web-app]에 표시된 아키텍처를 기반으로 합니다. 다음 구성 요소가 포함되어 있습니다.
+이 아키텍처는 [기본 웹 애플리케이션][basic-web-app]에 표시된 아키텍처를 기반으로 합니다. 다음 구성 요소가 포함되어 있습니다.
 
 - **리소스 그룹**. [리소스 그룹][resource-group]은 Azure 리소스에 대한 논리적 컨테이너입니다.
-- **[웹앱][app-service-web-app]**. 일반적인 최신 응용 프로그램에는 웹 사이트와 하나 이상의 RESTful 웹 API가 모두 포함되어 있을 수 있습니다. AJAX를 통한 브라우저 클라이언트, 기본 클라이언트 응용 프로그램 또는 서버 쪽 응용 프로그램에서 웹 API를 사용할 수 있습니다. 웹 API 디자인에 대한 고려 사항은 [API 디자인 지침][api-guidance]을 참조하세요.
+- **[웹앱][app-service-web-app]**. 일반적인 최신 애플리케이션에는 웹 사이트와 하나 이상의 RESTful 웹 API가 모두 포함되어 있을 수 있습니다. AJAX를 통한 브라우저 클라이언트, 기본 클라이언트 애플리케이션 또는 서버 쪽 애플리케이션에서 웹 API를 사용할 수 있습니다. 웹 API 디자인에 대한 고려 사항은 [API 디자인 지침][api-guidance]을 참조하세요.
 - **함수 앱**. [함수 앱][functions]을 사용하여 백그라운드 작업을 실행합니다. 함수는 큐에 배치되는 타이머 이벤트 또는 메시지와 같은 트리거에 의해 호출됩니다. 장기 실행 상태 저장 작업의 경우 [Durable Functions][durable-functions]를 사용합니다.
 - **큐**. 여기에 표시된 아키텍처에서는 애플리케이션이 [Azure Queue Storage][queue-storage] 큐에 메시지를 넣어 백그라운드 작업을 큐에 넣습니다. 메시지가 함수 앱을 트리거합니다. 또는 Service Bus 큐를 사용할 수 있습니다. 비교하려면 [Azure 큐 및 Service Bus 큐 - 비교 및 대조][queues-compared]를 참조하세요.
 - **캐시**. [Azure Redis Cache][azure-redis]의 반정적 데이터를 저장합니다.
@@ -41,7 +41,7 @@ ms.locfileid: "53179300"
 
 ### <a name="app-service-apps"></a>App Service 앱
 
-웹 응용 프로그램과 웹 API를 별도의 App Service 앱으로 만드는 것이 좋습니다. 이렇게 디자인하면 이들을 별도의 App Service 계획에서 실행할 수 있으므로 독립적으로 확장할 수 있습니다. 처음에 이러한 수준의 확장성이 필요하지 않은 경우 앱을 동일한 계획에 배포하고 필요한 경우 나중에 별도의 계획으로 이동할 수 있습니다.
+웹 애플리케이션과 웹 API를 별도의 App Service 앱으로 만드는 것이 좋습니다. 이렇게 디자인하면 이들을 별도의 App Service 계획에서 실행할 수 있으므로 독립적으로 확장할 수 있습니다. 처음에 이러한 수준의 확장성이 필요하지 않은 경우 앱을 동일한 계획에 배포하고 필요한 경우 나중에 별도의 계획으로 이동할 수 있습니다.
 
 > [!NOTE]
 > Basic, Standard 및 Premium 계획은 앱 단위가 아니라 계획의 VM 인스턴스에 대해 청구됩니다. [App Service 가격 책정][app-service-pricing]을 참조하세요.
@@ -53,13 +53,13 @@ ms.locfileid: "53179300"
 
 - 반정적 트랜잭션 데이터
 - 세션 상태
-- HTML 출력 이는 복잡한 HTML 출력을 렌더링하는 응용 프로그램에 유용할 수 있습니다.
+- HTML 출력 이는 복잡한 HTML 출력을 렌더링하는 애플리케이션에 유용할 수 있습니다.
 
 캐싱 전략 디자인에 대한 자세한 지침은 [캐싱 지침][caching-guidance]을 참조하세요.
 
 ### <a name="cdn"></a>CDN
 
-[Azure CDN][azure-cdn]을 사용하여 정적 콘텐츠를 캐시합니다. CDN의 주요 이점은 사용자의 대기 시간이 줄어드는 것인데 그 이유는 콘텐츠가 사용자와 지리적으로 가까운 에지 서버에 캐시되기 때문입니다. 또한 응용 프로그램에 의해 트래픽이 처리되지 않기 때문에 CDN은 응용 프로그램의 부하를 줄일 수 있습니다.
+[Azure CDN][azure-cdn]을 사용하여 정적 콘텐츠를 캐시합니다. CDN의 주요 이점은 사용자의 대기 시간이 줄어드는 것인데 그 이유는 콘텐츠가 사용자와 지리적으로 가까운 에지 서버에 캐시되기 때문입니다. 또한 애플리케이션에 의해 트래픽이 처리되지 않기 때문에 CDN은 애플리케이션의 부하를 줄일 수 있습니다.
 
 앱이 대부분 정적 페이지로 구성된 경우 [전체 앱을 캐시하는 데 CDN][cdn-app-service] 사용을 고려합니다. 그렇지 않은 경우에는 이미지, CSS, HTML 파일 등의 정적 콘텐츠를 [Azure Storage에 넣고 CDN을 사용하여 이러한 파일을 캐시합니다][cdn-storage-account].
 
@@ -71,7 +71,7 @@ ms.locfileid: "53179300"
 
 ### <a name="storage"></a>Storage
 
-최신 응용 프로그램은 종종 많은 양의 데이터를 처리합니다. 클라우드에 대한 크기를 조정하려면 올바른 저장소 유형을 선택해야 합니다. 다음은 몇 가지 기본 권장 사항입니다.
+최신 애플리케이션은 종종 많은 양의 데이터를 처리합니다. 클라우드에 대한 크기를 조정하려면 올바른 저장소 유형을 선택해야 합니다. 다음은 몇 가지 기본 권장 사항입니다.
 
 | 저장 형식 | 예 | 권장 저장소 |
 | --- | --- | --- |
@@ -85,7 +85,7 @@ ms.locfileid: "53179300"
 
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
-Azure App Service의 주요 이점은 부하에 따라 응용 프로그램을 확장할 수 있다는 점입니다. 다음은 애플리케이션 확장을 계획할 때 염두할 몇 가지 고려 사항입니다.
+Azure App Service의 주요 이점은 부하에 따라 애플리케이션을 확장할 수 있다는 점입니다. 다음은 애플리케이션 확장을 계획할 때 염두할 몇 가지 고려 사항입니다.
 
 ### <a name="app-service-app"></a>App Service 앱
 
@@ -116,7 +116,7 @@ Azure Search는 주요 데이터 저장소에서 복잡한 데이터 검색을 �
 > 브라우저 보안은 웹 페이지에서 다른 도메인으로 AJAX 요청을 수행하지 못하도록 방지합니다. 이렇게 제한하는 것을 동일 원본 정책이라고 하며, 악성 사이트에서 다른 사이트의 중요한 데이터를 읽을 수 없도록 합니다. CORS는 서버에서 동일 원본 정책을 완화하고 크로스-원본 요청을 일부는 허용하고 일부는 거부할 수 있는 W3C표준입니다.
 >
 
-App Services에서는 응용 프로그램 코드를 작성할 필요 없이 기본적으로 CORS를 지원합니다. [CORS를 사용하여 JavaScript에서 API 앱 사용][cors]을 참조하세요. API에 대해 허용되는 원본 목록에 웹 사이트를 추가합니다.
+App Services에서는 애플리케이션 코드를 작성할 필요 없이 기본적으로 CORS를 지원합니다. [CORS를 사용하여 JavaScript에서 API 앱 사용][cors]을 참조하세요. API에 대해 허용되는 원본 목록에 웹 사이트를 추가합니다.
 
 ### <a name="sql-database-encryption"></a>SQL Database 암호화
 

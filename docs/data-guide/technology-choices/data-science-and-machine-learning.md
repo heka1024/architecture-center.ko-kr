@@ -151,11 +151,11 @@ Microsoft SQL Server는 기본적으로 R 및 Python을 지원하므로, 이러�
 
 고려 사항:
 
-* SQL Server Database를 응용 프로그램에 대한 데이터 계층으로 간주합니다.
+* SQL Server Database를 애플리케이션에 대한 데이터 계층으로 간주합니다.
 
 ### <a name="azure-machine-learning-web-service"></a>Azure Machine Learning 웹 서비스
 
-Azure Machine Learning Studio를 사용하여 Machine Learning 모델을 만들 경우 해당 모델을 웹 서비스로서 배포할 수 있습니다. 그런 후 HTTP에서 통신 가능한 모든 클라이언트 응용 프로그램에서 REST 인터페이스를 통해 이 모델을 사용할 수 있습니다.
+Azure Machine Learning Studio를 사용하여 Machine Learning 모델을 만들 경우 해당 모델을 웹 서비스로서 배포할 수 있습니다. 그런 후 HTTP에서 통신 가능한 모든 클라이언트 애플리케이션에서 REST 인터페이스를 통해 이 모델을 사용할 수 있습니다.
 
 주요 이점:
 

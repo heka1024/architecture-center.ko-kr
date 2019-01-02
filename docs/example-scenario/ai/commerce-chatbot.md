@@ -1,6 +1,6 @@
 ---
 title: Azure에서 호텔 예약을 위한 대화형 챗봇
-description: Azure Bot Service를 사용하여 상거래 응용 프로그램에 대해 대화형 챗봇을 빌드합니다.
+description: Azure Bot Service를 사용하여 상거래 애플리케이션에 대해 대화형 챗봇을 빌드합니다.
 author: iainfoulds
 ms.date: 07/05/2018
 ms.openlocfilehash: a922a75d621672fcac95296b1d99112d68c91107
@@ -12,7 +12,7 @@ ms.locfileid: "51610773"
 ---
 # <a name="conversational-chatbot-for-hotel-reservations-on-azure"></a>Azure에서 호텔 예약을 위한 대화형 챗봇
 
-이 예제 시나리오는 대화형 챗봇을 응용 프로그램에 통합해야 하는 비즈니스에 적용할 수 있습니다. 이 시나리오에서는 고객이 웹 또는 모바일 애플리케이션을 통해 가용성을 확인하고 숙박을 예약할 수 있는 호텔 체인에 C# 챗봇을 사용합니다.
+이 예제 시나리오는 대화형 챗봇을 애플리케이션에 통합해야 하는 비즈니스에 적용할 수 있습니다. 이 시나리오에서는 고객이 웹 또는 모바일 애플리케이션을 통해 가용성을 확인하고 숙박을 예약할 수 있는 호텔 체인에 C# 챗봇을 사용합니다.
 
 고객이 호텔의 가용성을 확인하고, 객실을 예약하고, 식당 포장 메뉴를 검토하고, 음식 주문을 하거나 사진 인화를 검색하고 주문할 수 있는 방법을 제공하는 사용 사례를 예로 들 수 있습니다. 일반적으로 기업은 이러한 고객 요청에 대응하기 위해 고객 서비스 담당자를 고용하고 교육해야 하며, 고객은 담당자로부터 지원이 제공될 때까지 기다려야 합니다.
 
@@ -78,7 +78,7 @@ Azure SQL Database에 저장된 미사용 정보는 TDE(투명한 데이터 암�
 
 ### <a name="resiliency"></a>복원력
 
-이 시나리오에서는 Azure SQL Database를 사용하여 고객 예약을 저장합니다. SQL Database에는 영역 중복 데이터베이스, 장애 조치 그룹, 지역 복제 및 자동 백업이 포함됩니다. 이러한 기능을 통해 유지 관리 이벤트 또는 중단이 발생하는 경우에도 응용 프로그램을 계속 실행할 수 있습니다. 자세한 내용은 [Azure SQL Database 가용성 기능][sqlavailability-docs]을 참조하세요.
+이 시나리오에서는 Azure SQL Database를 사용하여 고객 예약을 저장합니다. SQL Database에는 영역 중복 데이터베이스, 장애 조치 그룹, 지역 복제 및 자동 백업이 포함됩니다. 이러한 기능을 통해 유지 관리 이벤트 또는 중단이 발생하는 경우에도 애플리케이션을 계속 실행할 수 있습니다. 자세한 내용은 [Azure SQL Database 가용성 기능][sqlavailability-docs]을 참조하세요.
 
 이 시나리오에서는 애플리케이션 상태를 모니터링하기 위해 Application Insights를 사용합니다. Application Insights를 사용하면 고객의 경험과 챗봇의 가용성에 영향을 주는 알림을 생성하고 성능 문제에 대응할 수 있습니다. 자세한 내용은 [Application Insights란?][appinsights-docs]을 참조하세요.
 

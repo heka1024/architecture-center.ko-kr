@@ -167,7 +167,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
 </li>
 </ul>
 
-## <a name="serverless-applications"></a>서버리스 응용 프로그램
+## <a name="serverless-applications"></a>서버리스 애플리케이션
 
 <ul class="panelContent cardsF">
 <!-- Serverless web application -->
@@ -182,8 +182,8 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>서버리스 웹 응용 프로그램</h3>
-                        <p>Azure Blob Storage의 정적 콘텐츠를 제공하고 Azure Functions를 사용하여 API를 구현하는 서버리스 웹 응용 프로그램입니다.</p>
+                        <h3>서버리스 웹 애플리케이션</h3>
+                        <p>Azure Blob Storage의 정적 콘텐츠를 제공하고 Azure Functions를 사용하여 API를 구현하는 서버리스 웹 애플리케이션입니다.</p>
                     </div>
                 </div>
             </div>
@@ -391,7 +391,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>SQL Server를 통한 N 계층 응용 프로그램</h3>
+                        <h3>SQL Server를 통한 N 계층 애플리케이션</h3>
                         <p>Windows에서 SQL Server를 사용하여 N 계층 애플리케이션에 대해 구성된 가상 머신입니다.</p>
                     </div>
                 </div>
@@ -411,7 +411,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>다중 지역 N 계층 응용 프로그램</h3>
+                        <h3>다중 지역 N 계층 애플리케이션</h3>
                         <p>고가용성을 위해 SQL Server AlwaysOn 가용성 그룹을 사용하여 두 지역에 배포된 N 계층 애플리케이션입니다.</p>
                     </div>
                 </div>
@@ -431,7 +431,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Cassandra를 통한 N 계층 응용 프로그램</h3>
+                        <h3>Cassandra를 통한 N 계층 애플리케이션</h3>
                         <p>Linux에서 Apache Cassandra를 사용하여 N 계층 애플리케이션에 대해 구성된 가상 머신입니다.</p>
                     </div>
                 </div>
@@ -700,8 +700,8 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure에서 웹 응용 프로그램 모니터링</h3>
-                        <p>Azure App Service에 호스트되는 웹 응용 프로그램을 모니터링합니다.</p>
+                        <h3>Azure에서 웹 애플리케이션 모니터링</h3>
+                        <p>Azure App Service에 호스트되는 웹 애플리케이션을 모니터링합니다.</p>
                     </div>
                 </div>
             </div>

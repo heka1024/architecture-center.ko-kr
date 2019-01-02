@@ -1,6 +1,6 @@
 ---
-title: Azure에서 웹 응용 프로그램 모니터링
-description: Azure App Service에 호스트되는 웹 응용 프로그램을 모니터링합니다.
+title: Azure에서 웹 애플리케이션 모니터링
+description: Azure App Service에 호스트되는 웹 애플리케이션을 모니터링합니다.
 author: adamboeglin
 ms.date: 12/12/2018
 ms.custom: azcat
@@ -11,7 +11,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 12/13/2018
 ms.locfileid: "53329488"
 ---
-# <a name="web-application-monitoring-on-azure"></a>Azure에서 웹 응용 프로그램 모니터링
+# <a name="web-application-monitoring-on-azure"></a>Azure에서 웹 애플리케이션 모니터링
 
 Azure PaaS(Platform as a Service) 제품은 고객의 계산 리소스를 관리하고, 배포를 모니터링하는 방법에 영향을 줍니다. Azure는 여러 모니터링 서비스를 포함하고 있으며, 각 서비스는 특정 역할을 수행합니다. 이러한 서비스가 한 데 모여 애플리케이션 및 애플리케이션에서 사용하는 Azure 리소스로부터 원격 분석 데이터를 수집하고, 분석하고, 조치를 취하는 포괄적인 솔루션을 제공합니다.
 
@@ -21,19 +21,19 @@ Azure PaaS(Platform as a Service) 제품은 고객의 계산 리소스를 관리
 
 관련된 다른 사용 사례는 다음과 같습니다.
 
-- 원격 분석 데이터를 모니터링하는 웹 응용 프로그램 계측.
-- Azure에 배포된 응용 프로그램에 대한 프런트 엔드 및 백 엔드 원격 분석 수집.
+- 원격 분석 데이터를 모니터링하는 웹 애플리케이션 계측.
+- Azure에 배포된 애플리케이션에 대한 프런트 엔드 및 백 엔드 원격 분석 수집.
 - Azure의 서비스와 연결된 메트릭 및 할당량 모니터링.
 
 ## <a name="architecture"></a>아키텍처
 
 !["아키텍처 다이어그램"](./images/architecture-diagram-app-monitoring.svg)
 
-이 시나리오에서는 관리 Azure 환경을 사용하여 응용 프로그램 및 데이터 계층을 호스트합니다. 시나리오를 통한 데이터 흐름은 다음과 같습니다.
+이 시나리오에서는 관리 Azure 환경을 사용하여 애플리케이션 및 데이터 계층을 호스트합니다. 시나리오를 통한 데이터 흐름은 다음과 같습니다.
 
-1. 사용자가 응용 프로그램과 상호 작용합니다.
+1. 사용자가 애플리케이션과 상호 작용합니다.
 2. 브라우저 및 앱 서비스가 원격 분석 데이터를 내보냅니다.
-3. Application Insights에서 응용 프로그램 상태, 성능 및 사용량 데이터를 수집하고 분석 합니다.
+3. Application Insights에서 애플리케이션 상태, 성능 및 사용량 데이터를 수집하고 분석 합니다.
 4. 개발자와 관리자가 상태, 성능 및 사용량 정보를 검토할 수 있습니다.
 5. Azure SQL Database가 원격 분석 데이터를 내보냅니다.
 6. Azure Monitor가 인프라 메트릭 및 할당량을 수집하여 분석합니다.
@@ -42,8 +42,8 @@ Azure PaaS(Platform as a Service) 제품은 고객의 계산 리소스를 관리
 
 ### <a name="components"></a>구성 요소
 
-- [Azure App Service](/azure/app-service/)는 관리 가상 머신에 앱을 빌드하고 호스트하는 PaaS 서비스입니다. 앱이 실행되는 기본 계산 인프라가 자동으로 관리됩니다. App Service는 리소스 사용 할당량 및 앱 메트릭 모니터링, 진단 정보 로깅, 메트릭 기반의 경고를 제공합니다. 뿐만 아니라 Application Insights를 사용하여 다른 지역에서 응용 프로그램을 테스트하는 [가용성 테스트][availability-tests]를 만들 수 있습니다.
-- [Application Insights][application-insights]는 개발자를 위한 확장 가능한 APM(응용 프로그램 성능 관리) 서비스이며 여러 플랫폼을 지원합니다. 응용 프로그램을 모니터링하고, 성능 저하 및 오류 같은 응용 프로그램 이상을 감지하고, Azure Portal로 원격 분석 데이터를 보냅니다. Application Insights를 로깅, 분산된 추적 및 사용자 지정 응용 프로그램 메트릭에도 사용할 수 있습니다.
+- [Azure App Service](/azure/app-service/)는 관리 가상 머신에 앱을 빌드하고 호스트하는 PaaS 서비스입니다. 앱이 실행되는 기본 계산 인프라가 자동으로 관리됩니다. App Service는 리소스 사용 할당량 및 앱 메트릭 모니터링, 진단 정보 로깅, 메트릭 기반의 경고를 제공합니다. 뿐만 아니라 Application Insights를 사용하여 다른 지역에서 애플리케이션을 테스트하는 [가용성 테스트][availability-tests]를 만들 수 있습니다.
+- [Application Insights][application-insights]는 개발자를 위한 확장 가능한 APM(응용 프로그램 성능 관리) 서비스이며 여러 플랫폼을 지원합니다. 애플리케이션을 모니터링하고, 성능 저하 및 오류 같은 애플리케이션 이상을 감지하고, Azure Portal로 원격 분석 데이터를 보냅니다. Application Insights를 로깅, 분산된 추적 및 사용자 지정 애플리케이션 메트릭에도 사용할 수 있습니다.
 - [Azure Monitor][azure-monitor]는 대부분의 Azure 서비스에 대한 기본 수준의 인프라 [메트릭 및 로그][metrics]를 제공합니다. Azure Portal에서 차트 작성, REST API를 통한 액세스, PowerShell 또는 CLI를 사용한 쿼리 등 여러 가지 방법으로 메트릭과 상호 작용할 수 있습니다. Azure Monitor는 [Log Analytics 및 기타 서비스]에 데이터를 직접 제공할 수도 있으며, 서비스에서 데이터를 쿼리하고 온-프레미스 또는 클라우드의 다른 소스에서 수집된 데이터와 결합할 수 있습니다.
 - [Log Analytics][log-analytics]는 Application Insights에서 수집한 사용량 및 성능 데이터와 앱을 지원하는 Azure 리소스의 구성 및 성능 데이터 간에 상관 관계를 지정할 수 있습니다. 이 시나리오에서는 [Azure Log Analytics 에이전트][Azure Log Analytics agent]를 사용하여 SQL Server 감사 로그를 Log Analytics로 푸시합니다. Azure Portal의 Log Analytics 블레이드에서 데이터를 쿼리하고 볼 수 있습니다.
 
@@ -57,7 +57,7 @@ Application Insights와 마찬가지로, Log Analytics는 [여러 원본의 데�
 
 Application Insights와 Log Analytics [Azure Log Analytics 쿼리 언어][Azure Log Analytics Query Language]를 사용합니다. [리소스 간 쿼리](https://azure.microsoft.com/blog/query-across-resources)를 사용하여 Application Insights 및 Log Analytics에서 수집한 원격 분석 데이터를 단일 쿼리로 분석할 수도 있습니다.
 
-Azure Monitor, Application Insights, Log Analytics는 모두 [경고](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)를 보냅니다. 예를 들어 Azure Monitor는 CPU 사용률 같은 플랫폼 수준 메트릭에 대한 경고를 보내고, Application Insights는 서버 응답 시간 같은 응용 프로그램 수준 메트릭에 대해 경고합니다. Azure Monitor는 Azure 활동 로그의 새 이벤트에 대해 경고하고, Log Analytics는 사용하도록 구성된 서비스의 메트릭 또는 이벤트 데이터에 대한 경고를 보냅니다. [Azure Monitor의 통합 경고](/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)는 다른 분류를 사용하는 Azure의 새로운 통합 경고 환경입니다.
+Azure Monitor, Application Insights, Log Analytics는 모두 [경고](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)를 보냅니다. 예를 들어 Azure Monitor는 CPU 사용률 같은 플랫폼 수준 메트릭에 대한 경고를 보내고, Application Insights는 서버 응답 시간 같은 애플리케이션 수준 메트릭에 대해 경고합니다. Azure Monitor는 Azure 활동 로그의 새 이벤트에 대해 경고하고, Log Analytics는 사용하도록 구성된 서비스의 메트릭 또는 이벤트 데이터에 대한 경고를 보냅니다. [Azure Monitor의 통합 경고](/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)는 다른 분류를 사용하는 Azure의 새로운 통합 경고 환경입니다.
 
 ### <a name="alternatives"></a>대안
 
@@ -75,7 +75,7 @@ Azure Monitor, Application Insights, Log Analytics는 모두 [경고](/azure/mon
 
 Application Insights는 초당 처리할 수 있는 요청 수의 [한도][app-insights-limits]가 있습니다. 요청 한도를 초과하면 메시지 제한이 발생할 수 있습니다. 제한을 방지하기 위해 데이터 속도를 줄이도록 [필터링][message-filtering] 또는 [샘플링][message-sampling]을 구현합니다.
 
-그러나 실행하는 앱의 고가용성에 대한 고려 사항은 개발자의 책임입니다. 예를 들어 확장에 대한 정보는 기본 웹 응용 프로그램 참조 아키텍처의 [확장성 고려 사항](#scalability-considerations) 섹션을 참조하세요. 앱을 배포한 후에는 Application Insights를 사용하여 [앱의 가용성을 모니터링][monitor its availability]하는 테스트를 설정할 수 있습니다.
+그러나 실행하는 앱의 고가용성에 대한 고려 사항은 개발자의 책임입니다. 예를 들어 확장에 대한 정보는 기본 웹 애플리케이션 참조 아키텍처의 [확장성 고려 사항](#scalability-considerations) 섹션을 참조하세요. 앱을 배포한 후에는 Application Insights를 사용하여 [앱의 가용성을 모니터링][monitor its availability]하는 테스트를 설정할 수 있습니다.
 
 ### <a name="security"></a>보안
 
@@ -85,8 +85,8 @@ Application Insights는 초당 처리할 수 있는 요청 수의 [한도][app-i
 
 - 개발자가 자체 데이터를 수집하거나 기존 원격 분석 데이터를 보완하는 것이 허용되는 경우 개인 정보 처리에 대한 계획을 세웁니다.
 - 데이터 보존을 고려합니다. 예를 들어 Application Insights는 원격 분석 데이터를 90일 동안 보존합니다. Microsoft Power BI, 연속 내보내기 또는 REST API를 사용하여 액세스하려는 데이터를 더 오래 보관합니다. 저장소 요율이 적용됩니다.
-- Azure 리소스에 대한 액세스를 제한하여 데이터 액세스 권한과 특정 응용 프로그램에서 원격 분석 데이터를 볼 수 있는 사람을 제어합니다. 모니터링 원격 분석 데이터에 대한 액세스를 잠그려면 [Application Insights에서 리소스, 역할 및 액세스 제어][Resources, roles, and access control in Application Insights]를 참조하세요.
-- 사용자가 버전을 추가하지 못하도록 응용 프로그램 코드에서 읽기/쓰기 액세스를 제어하거나 응용 프로그램에서 데이터 수집을 제한하는 태그 마커를 고려합니다. Application Insights를 사용하면 리소스로 전송된 개별 데이터 항목을 제어하지 않기 때문에, 어떤 데이터에 액세스할 수 있는 사용자가 개별 리소스의 모든 데이터에 액세스할 수 있습니다.
+- Azure 리소스에 대한 액세스를 제한하여 데이터 액세스 권한과 특정 애플리케이션에서 원격 분석 데이터를 볼 수 있는 사람을 제어합니다. 모니터링 원격 분석 데이터에 대한 액세스를 잠그려면 [Application Insights에서 리소스, 역할 및 액세스 제어][Resources, roles, and access control in Application Insights]를 참조하세요.
+- 사용자가 버전을 추가하지 못하도록 애플리케이션 코드에서 읽기/쓰기 액세스를 제어하거나 애플리케이션에서 데이터 수집을 제한하는 태그 마커를 고려합니다. Application Insights를 사용하면 리소스로 전송된 개별 데이터 항목을 제어하지 않기 때문에, 어떤 데이터에 액세스할 수 있는 사용자가 개별 리소스의 모든 데이터에 액세스할 수 있습니다.
 - 필요한 경우 Azure 리소스에 대한 정책 또는 비용 컨트롤을 강제 적용하는 [거버넌스](/azure/security/governance-in-azure) 메커니즘을 추가합니다. 예를 들어 정책 및 역할 기반 액세스 제어와 같은 보안 관련 모니터링을 위해 Log Analytics를 사용하거나 [Azure Policy](/azure/azure-policy/azure-policy-introduction)를 사용하여 정책 정의를 만들고, 할당하고, 관리합니다.
 - Azure 리소스의 잠재적인 보안 문제를 모니터링하고 중앙에서 보안 상태를 살펴보려면 [Azure Security Center](/azure/security-center/security-center-intro) 사용을 고려합니다.
 

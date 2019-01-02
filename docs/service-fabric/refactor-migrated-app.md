@@ -44,7 +44,7 @@ ms.locfileid: "50916468"
 **Tailspin.AnswerAnalysisService** 서비스는 원래의 *Tailspin.Workers.Survey* 작업자 역할에서 이식되었습니다.
 
 > [!NOTE] 
-> 코드는 웹 및 작업자 역할별로 최소한으로 변경되었지만, **Tailspin.Web** 및 **Tailspin.Web.Survey.Public**은 [Kestrel] 웹 서버를 자체 호스팅하도록 수정되었습니다. 이전의 설문 조사 응용 프로그램은 IIS(인터넷 정보 서비스)를 사용하여 호스팅된 ASP.NET 응용 프로그램이지만, Service Fabric에서 IIS를 서비스로 실행할 수 없습니다. 따라서 모든 웹 서버는 [Kestrel]과 같이 자체 호스팅될 수 있어야 합니다. Service Fabric의 컨테이너에서 IIS를 실행할 수 있는 경우도 있습니다. 자세한 내용은 [컨테이너 사용 시나리오][container-scenarios]를 참조하세요.  
+> 코드는 웹 및 작업자 역할별로 최소한으로 변경되었지만, **Tailspin.Web** 및 **Tailspin.Web.Survey.Public**은 [Kestrel] 웹 서버를 자체 호스팅하도록 수정되었습니다. 이전의 설문 조사 애플리케이션은 IIS(인터넷 정보 서비스)를 사용하여 호스팅된 ASP.NET 애플리케이션이지만, Service Fabric에서 IIS를 서비스로 실행할 수 없습니다. 따라서 모든 웹 서버는 [Kestrel]과 같이 자체 호스팅될 수 있어야 합니다. Service Fabric의 컨테이너에서 IIS를 실행할 수 있는 경우도 있습니다. 자세한 내용은 [컨테이너 사용 시나리오][container-scenarios]를 참조하세요.  
 
 이제 Tailspin은 설문 조사 애플리케이션을 더 세부적인 아키텍처로 리팩터링합니다. 리팩터링에 대한 Tailspin의 동기 부여는 설문 조사 애플리케이션을 더 쉽게 개발, 빌드 및 배포할 수 있도록 하는 것입니다. Tailspin은 기존 웹 및 작업자 역할을 더 세부적인 아키텍처로 분해하여 이러한 역할 간에 밀접하게 결합된 기존의 통신 및 데이터 종속성을 제거하려고 합니다.
 
@@ -67,13 +67,13 @@ Tailspin에서 설문 조사 애플리케이션을 더 세부적인 아키텍처
 
 **Tailspin.Web.Survey.Public**은 ASP.NET MVC 사이트를 자체 호스팅하는 상태 비저장 서비스입니다. 사용자는 이 사이트를 방문하여 목록에서 설문 조사를 선택한 다음, 작성합니다. 이 서비스는 대부분의 코드를 이식된 Service Fabric 애플리케이션의 *Tailspin.Web.Survey.Public* 서비스와 공유합니다. 또한 이 서비스는 ASP.NET Core를 사용하고, Kestrel을 웹 프런트 엔드로 사용하는 방식에서 WebListener를 구현하는 방식으로 전환합니다.
 
-**Tailspin.SurveyResponseService**는 Azure Blob Storage에 설문 조사 응답을 저장하는 상태 저장 서비스입니다. 또한 응답을 설문 조사 분석 데이터에 병합합니다. 이 서비스는 [ReliableConcurrentQueue][reliable-concurrent-queue]를 사용하여 설문 조사 응답을 일괄적으로 처리하므로 상태 저장 서비스로 구현됩니다. 이 기능은 원래 이식된 Service Fabric 응용 프로그램의 *Tailspin.AnswerAnalysisService* 서비스에서 구현되었습니다.
+**Tailspin.SurveyResponseService**는 Azure Blob Storage에 설문 조사 응답을 저장하는 상태 저장 서비스입니다. 또한 응답을 설문 조사 분석 데이터에 병합합니다. 이 서비스는 [ReliableConcurrentQueue][reliable-concurrent-queue]를 사용하여 설문 조사 응답을 일괄적으로 처리하므로 상태 저장 서비스로 구현됩니다. 이 기능은 원래 이식된 Service Fabric 애플리케이션의 *Tailspin.AnswerAnalysisService* 서비스에서 구현되었습니다.
 
-**Tailspin.SurveyManagementService**는 설문 조사 및 설문 조사 질문을 저장하고 검색하는 상태 비저장 서비스입니다. 이 서비스는 Azure Blob Storage를 사용합니다. 이 기능도 원래 이식된 Service Fabric 응용 프로그램의 *Tailspin.Web* 및 *Tailspin.Web.Survey.Public* 서비스의 데이터 액세스 구성 요소에서 구현되었습니다. Tailspin은 원래의 기능을 이 서비스로 리팩터링하여 크기를 독립적으로 조정할 수 있도록 했습니다.
+**Tailspin.SurveyManagementService**는 설문 조사 및 설문 조사 질문을 저장하고 검색하는 상태 비저장 서비스입니다. 이 서비스는 Azure Blob Storage를 사용합니다. 이 기능도 원래 이식된 Service Fabric 애플리케이션의 *Tailspin.Web* 및 *Tailspin.Web.Survey.Public* 서비스의 데이터 액세스 구성 요소에서 구현되었습니다. Tailspin은 원래의 기능을 이 서비스로 리팩터링하여 크기를 독립적으로 조정할 수 있도록 했습니다.
 
-**Tailspin.SurveyAnswerService**는 설문 조사 응답 및 설문 조사 분석을 검색하는 상태 비저장 서비스입니다. 이 서비스도 Azure Blob Storage를 사용합니다. 이 기능도 원래 이식된 Service Fabric 응용 프로그램의 *Tailspin.Web* 서비스의 데이터 액세스 구성 요소에서 구현되었습니다. Tailspin은 부하를 줄이고 더 적은 수의 인스턴스를 사용하여 리소스를 절약할 필요가 있어 원래의 기능을 이 서비스로 리팩터링했습니다.
+**Tailspin.SurveyAnswerService**는 설문 조사 응답 및 설문 조사 분석을 검색하는 상태 비저장 서비스입니다. 이 서비스도 Azure Blob Storage를 사용합니다. 이 기능도 원래 이식된 Service Fabric 애플리케이션의 *Tailspin.Web* 서비스의 데이터 액세스 구성 요소에서 구현되었습니다. Tailspin은 부하를 줄이고 더 적은 수의 인스턴스를 사용하여 리소스를 절약할 필요가 있어 원래의 기능을 이 서비스로 리팩터링했습니다.
 
-**Tailspin.SurveyAnalysisService**는 설문 조사 응답 요약 데이터를 빠르게 검색할 수 있도록 이 데이터를 Redis 캐시에 유지하는 상태 비저장 서비스입니다. 이 서비스는 설문 조사에 응답하고 새 설문 조사 응답 데이터를 요약 데이터에 병합할 때마다 *Tailspin.SurveyResponseService*에서 호출됩니다. 이 서비스는 이식된 Service Fabric 응용 프로그램의 *Tailspin.AnswerAnalysisService* 서비스에서 구현된 기능을 포함합니다.
+**Tailspin.SurveyAnalysisService**는 설문 조사 응답 요약 데이터를 빠르게 검색할 수 있도록 이 데이터를 Redis 캐시에 유지하는 상태 비저장 서비스입니다. 이 서비스는 설문 조사에 응답하고 새 설문 조사 응답 데이터를 요약 데이터에 병합할 때마다 *Tailspin.SurveyResponseService*에서 호출됩니다. 이 서비스는 이식된 Service Fabric 애플리케이션의 *Tailspin.AnswerAnalysisService* 서비스에서 구현된 기능을 포함합니다.
 
 ## <a name="stateless-versus-stateful-services"></a>상태 저장 및 상태 비저장 서비스
 
@@ -142,8 +142,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 Tailspin은 Azure Portal을 사용하여 클러스터를 배포합니다. Service Fabric 클러스터 리소스 종류는 VM 확장 집합 및 부하 분산 장치를 포함하여 필요한 인프라를 모두 배포합니다. 권장되는 VM 크기는 Service Fabric 클러스터에 대한 프로비전 프로세스 중에 Azure Portal에 표시됩니다. VM은 VM 확장 집합에 배포되므로 사용자 로드가 증가함에 따라 강화되고 확장될 수 있습니다.
 
 > [!NOTE]
-> 앞에서 설명한 대로, 마이그레이션된 버전의 설문 조사 응용 프로그램에서 두 웹 프런트 엔드는 ASP.NET Core 및 웹 서버로 Kestrel을 사용하여 자체 호스팅되었습니다. 마이그레이션된 버전의 설문 조사 애플리케이션은 역방향 프록시를 사용하지 않지만, IIS, Nginx 또는 Apache와 같은 역방향 프록시를 사용하는 것이 좋습니다. 자세한 내용은 [ASP.NET Core에서 Kestrel 웹 서버 구현에 대한 소개][kestrel-intro]를 참조하세요.
-> 리팩터링된 설문 조사 응용 프로그램에서 두 웹 프런트 엔드는 [WebListener][weblistener]가 있는 ASP.NET Core를 웹 서버로 사용하여 자체 호스팅되므로 역방향 프록시가 필요하지 않습니다.
+> 앞에서 설명한 대로, 마이그레이션된 버전의 설문 조사 애플리케이션에서 두 웹 프런트 엔드는 ASP.NET Core 및 웹 서버로 Kestrel을 사용하여 자체 호스팅되었습니다. 마이그레이션된 버전의 설문 조사 애플리케이션은 역방향 프록시를 사용하지 않지만, IIS, Nginx 또는 Apache와 같은 역방향 프록시를 사용하는 것이 좋습니다. 자세한 내용은 [ASP.NET Core에서 Kestrel 웹 서버 구현에 대한 소개][kestrel-intro]를 참조하세요.
+> 리팩터링된 설문 조사 애플리케이션에서 두 웹 프런트 엔드는 [WebListener][weblistener]가 있는 ASP.NET Core를 웹 서버로 사용하여 자체 호스팅되므로 역방향 프록시가 필요하지 않습니다.
 
 ## <a name="next-steps"></a>다음 단계
 

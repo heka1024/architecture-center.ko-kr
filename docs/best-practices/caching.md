@@ -176,7 +176,7 @@ HTTP 연결을 통해 데이터를 제공하는 웹 애플리케이션을 작성
 사용한 캐시 서비스와 관련 없이 무단 액세스에서 캐시에 보관된 데이터를 보호하는 방법을 고려하세요. 두 개의 주요 관심사가 있습니다.
 
 - 캐시 데이터의 개인 정보 보호
-- 캐시와 캐시를 사용하는 응용 프로그램 간에 흐르는 데이터의 개인 정보 보호
+- 캐시와 캐시를 사용하는 애플리케이션 간에 흐르는 데이터의 개인 정보 보호
 
 캐시의 데이터를 보호하기 위해 캐시 서비스에서 애플리케이션이 다음을 지정하도록 요구하는 인증 메커니즘을 구현할 수 있습니다.
 
@@ -476,7 +476,7 @@ var customer1 = cache.Wait(task1);
 var customer2 = cache.Wait(task2);
 ```
 
-Azure Redis Cache를 수행할 수 있는 클라이언트 응용 프로그램 작성 방법에 대한 자세한 내용은 [Azure Redis Cache 설명서](https://azure.microsoft.com/documentation/services/cache/)를 참조하세요. [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Basics.md)에서도 자세한 내용을 확인할 수 있습니다.
+Azure Redis Cache를 수행할 수 있는 클라이언트 애플리케이션 작성 방법에 대한 자세한 내용은 [Azure Redis Cache 설명서](https://azure.microsoft.com/documentation/services/cache/)를 참조하세요. [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Basics.md)에서도 자세한 내용을 확인할 수 있습니다.
 
 동일한 웹 사이트의 [파이프라인 및 멀티플렉서](https://stackexchange.github.io/StackExchange.Redis/PipelinesMultiplexers) 페이지에서 Redis와 StackExchange 라이브러리를 통한 파이프라인 및 비동기 작업에 대한 자세한 정보를 제공합니다. 
 

@@ -17,7 +17,7 @@ ms.locfileid: "52901646"
 ## <a name="challenges"></a>과제
 
 * 다양한 로그에 저장되어 있는 보안 이벤트를 중앙에서 모니터링하고 분석합니다.
-* 여러 응용 프로그램 및 서비스에서 암호화 및 권한 부여 관리를 구현합니다.
+* 여러 애플리케이션 및 서비스에서 암호화 및 권한 부여 관리를 구현합니다.
 * 중앙 집중식 ID 관리가 온-프레미스 또는 클라우드의 모든 솔루션 구성 요소에 작동되도록 합니다.
 
 ## <a name="data-protection"></a>데이터 보호
@@ -48,7 +48,7 @@ ms.locfileid: "52901646"
 
 ## <a name="auditing"></a>감사
 
-앞서 언급한 ID 및 액세스 모니터링 외에도, 클라우드에서 사용하는 서비스 및 응용 프로그램은 모니터링할 수 있는 보안 관련 이벤트를 생성하게 됩니다. 이러한 이벤트를 모니터링할 때의 가장 큰 해결 과제는 잠재적인 문제를 방지하거나 지난 문제를 해결하기 위해 방대한 로그를 처리하는 것입니다. 클라우드 기반 응용 프로그램은 많은 이동 부분을 포함하게 되며, 이러한 부분은 대개 일정 수준의 로깅 및 원격 분석을 생성합니다. 중앙 집중식 모니터링 및 분석을 사용하면 대량의 정보를 관리하고 이해하는 데 도움이 됩니다.
+앞서 언급한 ID 및 액세스 모니터링 외에도, 클라우드에서 사용하는 서비스 및 애플리케이션은 모니터링할 수 있는 보안 관련 이벤트를 생성하게 됩니다. 이러한 이벤트를 모니터링할 때의 가장 큰 해결 과제는 잠재적인 문제를 방지하거나 지난 문제를 해결하기 위해 방대한 로그를 처리하는 것입니다. 클라우드 기반 애플리케이션은 많은 이동 부분을 포함하게 되며, 이러한 부분은 대개 일정 수준의 로깅 및 원격 분석을 생성합니다. 중앙 집중식 모니터링 및 분석을 사용하면 대량의 정보를 관리하고 이해하는 데 도움이 됩니다.
 
 자세한 내용은 [Azure 로깅 및 감사](/azure/security/azure-log-audit)를 참조하세요.
 
@@ -62,7 +62,7 @@ ms.locfileid: "52901646"
 
 **Azure Storage**. [Azure Storage Service Encryption](/azure/storage/common/storage-service-encryption)를 사용하여 Azure Storage에서 미사용 데이터를 자동으로 암호화할 수 있습니다. 암호화, 암호 해독 및 키 관리는 사용자에게 완전히 투명하게 처리됩니다. Azure Key Vault와 클라이언트 쪽 암호화를 사용하여 전송 중인 데이터도 보호할 수 있습니다. 자세한 내용은 [Microsoft Azure Storage용 클라이언트 쪽 암호화 및 Azure Key Vault](/azure/storage/common/storage-client-side-encryption)를 참조하세요.
 
-**SQL Database** 및 **Azure SQL Data Warehouse**. TDE([투명한 데이터 암호화](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql))를 사용하여 응용 프로그램을 변경하지 않고도 데이터베이스, 연결된 백업 및 트랜잭션 로그 파일의 실시간 암호화 및 암호 해독을 수행할 수 있습니다. 또한 SQL Database는 [상시 암호화](/azure/sql-database/sql-database-always-encrypted-azure-key-vault)를 사용하여 클라이언트와 서버 간을 이동하는 동안, 그리고 데이터를 사용 중일 때 서버에서 중요한 미사용 데이터를 보호할 수 있습니다. Azure Key Vault를 사용하여 상시 암호화의 암호화 키를 저장할 수 있습니다. 
+**SQL Database** 및 **Azure SQL Data Warehouse**. TDE([투명한 데이터 암호화](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql))를 사용하여 애플리케이션을 변경하지 않고도 데이터베이스, 연결된 백업 및 트랜잭션 로그 파일의 실시간 암호화 및 암호 해독을 수행할 수 있습니다. 또한 SQL Database는 [상시 암호화](/azure/sql-database/sql-database-always-encrypted-azure-key-vault)를 사용하여 클라이언트와 서버 간을 이동하는 동안, 그리고 데이터를 사용 중일 때 서버에서 중요한 미사용 데이터를 보호할 수 있습니다. Azure Key Vault를 사용하여 상시 암호화의 암호화 키를 저장할 수 있습니다. 
 
 ### <a name="rights-management"></a>권한 관리
 

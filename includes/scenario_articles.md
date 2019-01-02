@@ -14,7 +14,7 @@
                     </div>
                     <div class="cardText">
                         <h3>Azure에서 호텔 예약을 위한 대화형 챗봇</h3>
-                        <p>Azure Bot Service를 사용하여 상거래 응용 프로그램에 대해 대화형 챗봇을 빌드합니다.</p>
+                        <p>Azure Bot Service를 사용하여 상거래 애플리케이션에 대해 대화형 챗봇을 빌드합니다.</p>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="cardText">
                         <h3>Azure에서 보험 청구에 대한 이미지 분류</h3>
-                        <p>Azure 응용 프로그램에 이미지 처리를 빌드합니다.</p>
+                        <p>Azure 애플리케이션에 이미지 처리를 빌드합니다.</p>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
 </ul>
 
 
-## <a name="application-scenarios"></a>응용 프로그램 시나리오
+## <a name="application-scenarios"></a>애플리케이션 시나리오
 
 <ul  class="panelContent cardsC">
 <li style="display: flex; flex-direction: column;">
@@ -57,8 +57,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure의 API 기반 아키텍처에 레거시 웹 응용 프로그램 마이그레이션</h3>
-                        <p>Azure API Management를 사용하여 레거시 웹 응용 프로그램을 현대화합니다.</p>
+                        <h3>Azure의 API 기반 아키텍처에 레거시 웹 애플리케이션 마이그레이션</h3>
+                        <p>Azure API Management를 사용하여 레거시 웹 애플리케이션을 현대화합니다.</p>
                     </div>
                 </div>
             </div>
@@ -153,7 +153,7 @@
                     </div>
                     <div class="cardText">
                         <h3>전자상거래에 대한 지능형 제품 검색 엔진</h3>
-                        <p>전자상거래 응용 프로그램에서 세계적 수준의 검색 환경을 제공합니다.</p>
+                        <p>전자상거래 애플리케이션에서 세계적 수준의 검색 환경을 제공합니다.</p>
                     </div>
                 </div>
             </div>
@@ -412,7 +412,7 @@
                     </div>
                     <div class="cardText">
                         <h3>Azure에서 Windows 가상 머신으로 안전한 웹앱 빌드</h3>
-                        <p>확장 집합, Application Gateway 및 부하 분산 장치를 사용하여 Azure의 Windows Server에서 안전한 다중 계층 웹 응용 프로그램을 빌드합니다.</p>
+                        <p>확장 집합, Application Gateway 및 부하 분산 장치를 사용하여 Azure의 Windows Server에서 안전한 다중 계층 웹 애플리케이션을 빌드합니다.</p>
                     </div>
                 </div>
             </div>
@@ -430,8 +430,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Service Fabric을 사용하여 모놀리식 응용 프로그램 분해</h3>
-                        <p>대규모 모놀리식 응용 프로그램을 마이크로 서비스로 분해합니다.</p>
+                        <h3>Service Fabric을 사용하여 모놀리식 애플리케이션 분해</h3>
+                        <p>대규모 모놀리식 애플리케이션을 마이크로 서비스로 분해합니다.</p>
                     </div>
                 </div>
             </div>

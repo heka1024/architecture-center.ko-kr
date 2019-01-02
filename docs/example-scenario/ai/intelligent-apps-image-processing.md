@@ -1,6 +1,6 @@
 ---
 title: Azure에서 보험 청구에 대한 이미지 분류
-description: Azure 응용 프로그램에 이미지 처리를 빌드합니다.
+description: Azure 애플리케이션에 이미지 처리를 빌드합니다.
 author: david-stanford
 ms.date: 07/05/2018
 ms.openlocfilehash: 9640f8b5454891ed00f669bada9f7c9c69b89734

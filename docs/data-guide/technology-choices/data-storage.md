@@ -73,7 +73,7 @@ Azure DB Cosmos 기능은 다음과 같습니다.
 
 데이터는 테이블의 행에 저장되고 행 내의 데이터는 열 제품군으로 그룹화됩니다. HBase는 사용 전에 열과 열에 저장되는 데이터 형식을 정의할 필요가 없다는 점에서 스키마 없는 데이터베이스입니다. 오픈 소스 코드는 수천 대의 노드에 있는 페타바이트 크기의 데이터를 처리할 수 있을 정도로 선형으로 확장됩니다. Hadoop 에코시스템의 분산 애플리케이션이 제공하는 데이터 중복, 일괄 처리 및 기타 기능을 사용할 수 있습니다.
 
-[HDInsight 구현](/azure/hdinsight/hbase/apache-hbase-overview)은 HBase의 규모 확장 아키텍처를 활용하여 테이블 자동 분할, 읽기 및 쓰기에 대한 강력한 일관성 및 자동 장애 조치(Failover)를 제공합니다. 읽기를 위한 메모리 내 캐싱과 쓰기를 위한 높은 처리량 스트리밍을 통해 성능이 향상됩니다. 대부분의 경우 다른 HDInsight 클러스터 및 응용 프로그램이 테이블에 직접 액세스할 수 있도록 [가상 네트워크 내에 HBase 클러스터를 만들 수 있습니다](/azure/hdinsight/hbase/apache-hbase-provision-vnet).
+[HDInsight 구현](/azure/hdinsight/hbase/apache-hbase-overview)은 HBase의 규모 확장 아키텍처를 활용하여 테이블 자동 분할, 읽기 및 쓰기에 대한 강력한 일관성 및 자동 장애 조치(Failover)를 제공합니다. 읽기를 위한 메모리 내 캐싱과 쓰기를 위한 높은 처리량 스트리밍을 통해 성능이 향상됩니다. 대부분의 경우 다른 HDInsight 클러스터 및 애플리케이션이 테이블에 직접 액세스할 수 있도록 [가상 네트워크 내에 HBase 클러스터를 만들 수 있습니다](/azure/hdinsight/hbase/apache-hbase-provision-vnet).
 
 ## <a name="key-selection-criteria"></a>주요 선택 조건
 
@@ -96,7 +96,7 @@ Azure DB Cosmos 기능은 다음과 같습니다.
 |  | Azure Data Lake Store | Azure Blob 저장소 컨테이너 |
 | --- | --- | --- |
 | 목적 | 빅 데이터 분석 워크로드에 대해 최적화된 저장소 |다양한 저장소 시나리오에 대한 범용 개체 저장소 |
-| 사용 사례 | 일괄 처리, 스트리밍 분석 및 로그 파일, IoT 데이터, 클릭 스트림, 대형 데이터 집합 등과 같은 기계 학습 데이터 | 응용 프로그램 백 엔드, 백업 데이터, 스트리밍용 미디어 저장소 및 범용 데이터 등과 같은 모든 종류의 텍스트 또는 이진 데이터 |
+| 사용 사례 | 일괄 처리, 스트리밍 분석 및 로그 파일, IoT 데이터, 클릭 스트림, 대형 데이터 집합 등과 같은 기계 학습 데이터 | 애플리케이션 백 엔드, 백업 데이터, 스트리밍용 미디어 저장소 및 범용 데이터 등과 같은 모든 종류의 텍스트 또는 이진 데이터 |
 | 구조 | 계층적 파일 시스템 | 단일 구조 네임스페이스를 가진 개체 저장소 |
 | 인증 | [Azure Active Directory ID](/azure/active-directory/active-directory-authentication-scenarios) | 공유 비밀 기반 [계정 액세스 키](/azure/storage/common/storage-create-storage-account#manage-your-storage-account), [공유 액세스 서명 키](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 및 [RBAC(역할 기반 액세스 제어)](/azure/security/security-storage-overview) |
 | 인증 프로토콜 | OAuth 2.0. 호출은 Azure Active Directory가 발급한 유효한 JWT(JSON Web Token)를 포함해야 합니다. | HMAC(해시 기반 메시지 인증 코드). 호출은 HTTP 요청 일부를 통해 Base64 인코딩된 SHA-256 해시를 포함해야 합니다. |

@@ -1,6 +1,6 @@
 ---
 title: 자체 복구를 위한 디자인
-description: 복원 응용 프로그램은 수동 개입 없이 오류를 복구할 수 있습니다.
+description: 복원 애플리케이션은 수동 개입 없이 오류를 복구할 수 있습니다.
 author: MikeWasson
 ms.date: 08/30/2018
 ms.openlocfilehash: f85e3881fe7753f0551d1d31dd64b4631b441686
@@ -12,7 +12,7 @@ ms.locfileid: "43325811"
 ---
 # <a name="design-for-self-healing"></a>자체 복구를 위한 디자인
 
-## <a name="design-your-application-to-be-self-healing-when-failures-occur"></a>오류가 발생하면 자체 복구되도록 응용 프로그램 디자인
+## <a name="design-your-application-to-be-self-healing-when-failures-occur"></a>오류가 발생하면 자체 복구되도록 애플리케이션 디자인
 
 분산 시스템에서는 오류가 발생합니다. 하드웨어 고장이 발생할 수 있습니다. 일시적인 네트워크 오류가 발생할 수 있습니다. 매우 드물게 서비스 또는 지역 전체가 중단될 수도 있지만 그렇다 하더라도 계획된 중단이어야 합니다.
 

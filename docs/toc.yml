@@ -229,7 +229,7 @@ items:
       href: patterns/throttling.md
     - name: 발레 키
       href: patterns/valet-key.md
-  - name: 클라우드 응용 프로그램에 대한 모범 사례
+  - name: 클라우드 애플리케이션에 대한 모범 사례
     items:
     - name: API 디자인
       href: best-practices/api-design.md
@@ -331,7 +331,7 @@ items:
       href: example-scenario/infrastructure/hpc-cfd.md
     - name: Linux 가상 데스크톱
       href: example-scenario/infrastructure/linux-vdi-citrix.md
-    - name: 모놀리식 응용 프로그램 분해
+    - name: 모놀리식 애플리케이션 분해
       href: example-scenario/infrastructure/service-fabric-microservices.md
     - name: 탁월한 확장성의 WordPress
       href: example-scenario/infrastructure/wordpress.md
@@ -415,7 +415,7 @@ items:
       href: reference-architectures/sap/hana-large-instances.md
   - name: 서버를 사용하지 않음
     items:
-    - name: 서버리스 웹 응용 프로그램
+    - name: 서버리스 웹 애플리케이션
       href: reference-architectures/serverless/web-app.md
     - name: 서버리스 이벤트 처리
       href: reference-architectures/serverless/event-processing.md
@@ -427,11 +427,11 @@ items:
       href: reference-architectures/n-tier/windows-vm.md
     - name: Jenkins 서버
       href: reference-architectures/jenkins/index.md
-    - name: SQL Server를 통한 N 계층 응용 프로그램
+    - name: SQL Server를 통한 N 계층 애플리케이션
       href: reference-architectures/n-tier/n-tier-sql-server.md
-    - name: 다중 지역 N 계층 응용 프로그램
+    - name: 다중 지역 N 계층 애플리케이션
       href: reference-architectures/n-tier/multi-region-sql-server.md
-    - name: Cassandra를 통한 N 계층 응용 프로그램
+    - name: Cassandra를 통한 N 계층 애플리케이션
       href: reference-architectures/n-tier/n-tier-cassandra.md
     - name: SharePoint Server 2016
       href: reference-architectures/sharepoint/index.md
@@ -443,7 +443,7 @@ items:
       href: reference-architectures/app-service-web-app/scalable-web-app.md
     - name: 다중 지역 배포
       href: reference-architectures/app-service-web-app/multi-region.md
-    - name: 웹 응용 프로그램 모니터링
+    - name: 웹 애플리케이션 모니터링
       href: reference-architectures/app-service-web-app/app-monitoring.md
 - name: 디자인 가이드
   items:

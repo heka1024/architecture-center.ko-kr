@@ -123,11 +123,11 @@ jumpbox를 보호하려면 안전한 공용 IP 주소 집합의 ssh 연결만 �
 다음은 부하 분산 장치 상태 프로브에 대한 몇 가지 권장 사항입니다.
 
 - 프로브는 HTTP와 TCP를 모두 테스트할 수 있습니다. VM이 HTTP 서버를 실행 중인 경우에는 HTTP 프로브를 만들고, HTTP 서버를 실행하지 않는 경우에는 TCP 프로브를 만듭니다.
-- HTTP 프로브를 만들 때는 HTTP 엔드포인트로 향하는 경로를 지정합니다. 프로브는 이 경로에서 HTTP 200 응답을 확인합니다. 경로는 루트 경로("/")일 수도 있고, 응용 프로그램의 상태를 확인하는 사용자 지정 로직을 구현하는 상태 모니터링 엔드포인트일 수도 있습니다. 엔드포인트는 익명의 HTTP 요청을 허용해야 합니다.
+- HTTP 프로브를 만들 때는 HTTP 엔드포인트로 향하는 경로를 지정합니다. 프로브는 이 경로에서 HTTP 200 응답을 확인합니다. 경로는 루트 경로("/")일 수도 있고, 애플리케이션의 상태를 확인하는 사용자 지정 로직을 구현하는 상태 모니터링 엔드포인트일 수도 있습니다. 엔드포인트는 익명의 HTTP 요청을 허용해야 합니다.
 - 프로브는 [알려진 IP 주소][health-probe-ip]인 168.63.129.16에서 전송됩니다. 모든 방화벽 정책 또는 NSG 규칙에서 이 IP 주소 간에 이동하는 트래픽을 차단하지 않도록 합니다.
 - [상태 프로브 로그][health-probe-log]를 사용하여 상태 프로브의 상태를 확인합니다. Azure Portal에서 각 부하 분산 장치에 대해 로깅을 활성화합니다. 로그는 Azure Blob Storage에 쓰기됩니다. 로그에서는 실패한 프로브 응답으로 인해 네트워크 트래픽을 가져오지 않는 VM 개수를 보여줍니다.
 
-Cassandra 클러스터의 경우 장애 조치(failover) 시나리오는 애플리케이션에서 사용된 일관성 수준 및 복제 수에 따라 달라집니다. Cassandra의 일관성 수준 및 사용에 대해서는 [Configuring data consistency][cassandra-consistency](데이터 일관성 구성) 및 [Cassandra: How many nodes are talked to with Quorum?][cassandra-consistency-usage](Cassandra: Quorum과 연결되는 노드 수)을 참조하세요. Cassandra의 데이터 가용성은 응용 프로그램 및 복제 방법에서 사용되는 일관성 수준에 의해 결정됩니다. Cassandra의 복제에 대해서는 [Data Replication in NoSQL Databases Explained][cassandra-replication](NoSQL 데이터베이스의 데이터 복제 설명)를 참조하세요.
+Cassandra 클러스터의 경우 장애 조치(failover) 시나리오는 애플리케이션에서 사용된 일관성 수준 및 복제 수에 따라 달라집니다. Cassandra의 일관성 수준 및 사용에 대해서는 [Configuring data consistency][cassandra-consistency](데이터 일관성 구성) 및 [Cassandra: How many nodes are talked to with Quorum?][cassandra-consistency-usage](Cassandra: Quorum과 연결되는 노드 수)을 참조하세요. Cassandra의 데이터 가용성은 애플리케이션 및 복제 방법에서 사용되는 일관성 수준에 의해 결정됩니다. Cassandra의 복제에 대해서는 [Data Replication in NoSQL Databases Explained][cassandra-replication](NoSQL 데이터베이스의 데이터 복제 설명)를 참조하세요.
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
@@ -151,7 +151,7 @@ Cassandra 클러스터의 경우 장애 조치(failover) 시나리오는 애플�
 
 ### <a name="deploy-the-solution-using-azbb"></a>azbb를 사용하여 솔루션 배포
 
-N 계층 응용 프로그램에 대한 Linux VM 참조 아키텍처를 배포하려면 다음 단계를 따릅니다.
+N 계층 애플리케이션에 대한 Linux VM 참조 아키텍처를 배포하려면 다음 단계를 따릅니다.
 
 1. 위의 필수 조건 중 1단계에서 복제한 리포지토리가 있는 `virtual-machines\n-tier-linux` 폴더로 이동합니다.
 

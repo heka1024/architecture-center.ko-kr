@@ -14,7 +14,7 @@ ms.locfileid: "53120002"
 ---
 # <a name="run-an-n-tier-application-in-multiple-azure-regions-for-high-availability"></a>여러 Azure 지역에서 N 계층 애플리케이션을 실행하여 고가용성 구현
 
-이 참조 아키텍처는 가용성 및 강력한 재해 복구 인프라를 구축하기 위해, 여러 Azure 지역에서 N 계층 응용 프로그램을 실행하기 위한 일련의 검증된 사례를 보여 줍니다.
+이 참조 아키텍처는 가용성 및 강력한 재해 복구 인프라를 구축하기 위해, 여러 Azure 지역에서 N 계층 애플리케이션을 실행하기 위한 일련의 검증된 사례를 보여 줍니다.
 
 ![Azure N 계층 애플리케이션을 위한 고가용성 네트워크 아키텍처"](./images/multi-region-sql-server.png)
 
@@ -60,16 +60,16 @@ Azure 지역은 동일한 지역 내에서 다른 지역과 쌍을 이룹니다.
 - 계획된 Azure 시스템 업데이트는 순차적으로 쌍을 이루는 지역으로 출시되어 가동 중지 시간을 최소화할 수 있습니다.
 - 쌍은 데이터 상주 요구 사항을 충족하기 위해 동일한 지역 내에 상주합니다.
 
-그러나 두 지역 모두 응용 프로그램에 필요한 모든 Azure 서비스를 지원하는지 확인합니다([지역별 서비스][services-by-region] 참조). 지역 쌍에 대한 자세한 내용은 [BCDR(무중단 업무 방식 및 재해 복구): Azure 쌍을 이루는 지역][regional-pairs]을 참조하세요.
+그러나 두 지역 모두 애플리케이션에 필요한 모든 Azure 서비스를 지원하는지 확인합니다([지역별 서비스][services-by-region] 참조). 지역 쌍에 대한 자세한 내용은 [BCDR(무중단 업무 방식 및 재해 복구): Azure 쌍을 이루는 지역][regional-pairs]을 참조하세요.
 
 ### <a name="traffic-manager-configuration"></a>Traffic Manager 구성
 
 Traffic Manager를 구성할 때 다음 사항을 고려합니다.
 
 - **라우팅**. Traffic Manager는 여러 [라우팅 알고리즘][tm-routing]을 지원합니다. 이 문서에 설명된 시나리오는 *우선 순위* 라우팅(이전에는 *장애 조치(failover)* 라우팅이라고 함)을 사용합니다. 이 설정을 사용하면 Traffic Manager가 주 지역에 연결할 수 없는 경우가 아닌 한 모든 요청을 주 지역으로 보냅니다. 이때 자동으로 보조 지역으로 장애 조치(failover)됩니다. [장애 조치(failover) 라우팅 방법 구성][tm-configure-failover]을 참조하세요.
-- **상태 프로브**. Traffic Manager는 HTTP(또는 HTTPS) [프로브][tm-monitoring]를 사용하여 각 지역의 가용성을 모니터링합니다. 프로브는 지정된 URL 경로에 대한 HTTP 200 응답을 확인합니다. 응용 프로그램의 전반적인 상태를 보고하고 이 엔드포인트를 상태 프로브에 사용하는 엔드포인트를 생성하는 것이 좋습니다. 그렇지 않으면 애플리케이션의 중요한 부분이 실제로 실패할 때 프로브에서 정상 엔드포인트를 보고할 수 있습니다. 자세한 내용은 [상태 엔드포인트 모니터링 패턴][health-endpoint-monitoring-pattern]을 참조하세요.
+- **상태 프로브**. Traffic Manager는 HTTP(또는 HTTPS) [프로브][tm-monitoring]를 사용하여 각 지역의 가용성을 모니터링합니다. 프로브는 지정된 URL 경로에 대한 HTTP 200 응답을 확인합니다. 애플리케이션의 전반적인 상태를 보고하고 이 엔드포인트를 상태 프로브에 사용하는 엔드포인트를 생성하는 것이 좋습니다. 그렇지 않으면 애플리케이션의 중요한 부분이 실제로 실패할 때 프로브에서 정상 엔드포인트를 보고할 수 있습니다. 자세한 내용은 [상태 엔드포인트 모니터링 패턴][health-endpoint-monitoring-pattern]을 참조하세요.
 
-Traffic Manager가 장애 조치(failover)할 때 클라이언트가 응용 프로그램에 연결할 수 없는 기간이 있습니다. 그 기간은 다음과 같은 요인에 의해 영향을 받습니다.
+Traffic Manager가 장애 조치(failover)할 때 클라이언트가 애플리케이션에 연결할 수 없는 기간이 있습니다. 그 기간은 다음과 같은 요인에 의해 영향을 받습니다.
 
 - 상태 프로브가 주 지역에 연결할 수 없는지 검색해야 합니다.
 - DNS 서버가 DNS TTL(time-to-live)에 따라 IP 주소에 대해 캐시된 DNS 레코드를 업데이트해야 합니다. 기본 TTL은 300초(5분)이지만 Traffic Manager 프로필을 만들 때 이 값을 구성할 수 있습니다.
@@ -97,7 +97,7 @@ az network traffic-manager endpoint update --resource-group <resource-group> --p
 장애 조치(failover)의 원인에 따라 한 지역 내에서 리소스를 다시 배포해야 할 수 있습니다. 장애 복구(failback) 전에 운영 준비 상태 테스트를 수행합니다. 이 테스트는 다음과 같은 사항을 확인해야 합니다.
 
 - VM이 올바르게 구성되어 있습니다. 필요한 모든 소프트웨어가 설치되어 있고, IIS가 실행 중인지 확인합니다.
-- 응용 프로그램 하위 시스템이 정상입니다.
+- 애플리케이션 하위 시스템이 정상입니다.
 - 기능을 테스트합니다. 예를 들어 웹 계층에서 데이터베이스 계층에 연결 가능한지 테스트합니다.
 
 ### <a name="configure-sql-server-always-on-availability-groups"></a>SQL Server Always On 가용성 그룹 구성
@@ -127,9 +127,9 @@ Windows Server 2016 이전 버전에서는 SQL Server Always On 가용성 그룹
 
 ## <a name="availability-considerations"></a>가용성 고려 사항
 
-복잡한 N 계층 앱에서는 보조 지역에서 전체 응용 프로그램을 복제하지 않아도 될 수 있습니다. 대신 무중단 업무 방식을 지원하는 데 필요한 중요한 하위 시스템을 복제하기면 하면 됩니다.
+복잡한 N 계층 앱에서는 보조 지역에서 전체 애플리케이션을 복제하지 않아도 될 수 있습니다. 대신 무중단 업무 방식을 지원하는 데 필요한 중요한 하위 시스템을 복제하기면 하면 됩니다.
 
-Traffic Manager는 시스템에서 오류가 발생할 수 있는 지점입니다. Traffic Manager 서비스가 실패하면 클라이언트가 가동 중지 시간 동안 응용 프로그램에 액세스할 수 없습니다. [Traffic Manager SLA][tm-sla]를 검토하고 Traffic Manager만 사용하는 것이 고가용성을 위한 비즈니스 요구 사항을 충족하는지 확인합니다. 그렇지 않은 경우 다른 트래픽 관리 솔루션을 장애 복구(failback)로 추가합니다. Azure Traffic Manager 서비스가 실패하면 다른 트래픽 관리 서비스를 가리키도록 DNS의 CNAME 레코드를 변경합니다. (이 단계는 수동으로 수행해야 하며 DNS 변경 사항이 전파될 때까지 응용 프로그램을 사용할 수 없습니다.)
+Traffic Manager는 시스템에서 오류가 발생할 수 있는 지점입니다. Traffic Manager 서비스가 실패하면 클라이언트가 가동 중지 시간 동안 애플리케이션에 액세스할 수 없습니다. [Traffic Manager SLA][tm-sla]를 검토하고 Traffic Manager만 사용하는 것이 고가용성을 위한 비즈니스 요구 사항을 충족하는지 확인합니다. 그렇지 않은 경우 다른 트래픽 관리 솔루션을 장애 복구(failback)로 추가합니다. Azure Traffic Manager 서비스가 실패하면 다른 트래픽 관리 서비스를 가리키도록 DNS의 CNAME 레코드를 변경합니다. (이 단계는 수동으로 수행해야 하며 DNS 변경 사항이 전파될 때까지 애플리케이션을 사용할 수 없습니다.)
 
 SQL Server 클러스터의 경우 다음과 같은 두 가지 장애 조치(failover) 시나리오를 고려해야 합니다.
 
@@ -146,7 +146,7 @@ SQL Server 클러스터의 경우 다음과 같은 두 가지 장애 조치(fail
 
 ## <a name="manageability-considerations"></a>관리 효율성 고려 사항
 
-배포를 업데이트할 때는 한 번에 하나의 지역만 업데이트하여 잘못된 구성이나 응용 프로그램의 오류로 인한 글로벌 오류 발생 가능성을 줄입니다.
+배포를 업데이트할 때는 한 번에 하나의 지역만 업데이트하여 잘못된 구성이나 애플리케이션의 오류로 인한 글로벌 오류 발생 가능성을 줄입니다.
 
 장애에 대한 시스템의 복원력을 테스트합니다. 다음은 테스트에 자주 사용되는 몇 가지 일반적인 오류 시나리오입니다.
 

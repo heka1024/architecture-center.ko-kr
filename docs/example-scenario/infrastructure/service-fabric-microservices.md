@@ -1,6 +1,6 @@
 ---
-title: Service Fabric을 사용하여 모놀리식 응용 프로그램 분해
-description: 대규모 모놀리식 응용 프로그램을 마이크로 서비스로 분해합니다.
+title: Service Fabric을 사용하여 모놀리식 애플리케이션 분해
+description: 대규모 모놀리식 애플리케이션을 마이크로 서비스로 분해합니다.
 author: timomta
 ms.date: 09/20/2018
 ms.custom: fasttrack
@@ -11,22 +11,22 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 12/06/2018
 ms.locfileid: "53004620"
 ---
-# <a name="using-service-fabric-to-decompose-monolithic-applications"></a>Service Fabric을 사용하여 모놀리식 응용 프로그램 분해
+# <a name="using-service-fabric-to-decompose-monolithic-applications"></a>Service Fabric을 사용하여 모놀리식 애플리케이션 분해
 
-이 예제 시나리오에서는 다루기 어려운 모놀리식 응용 프로그램을 분해하기 위한 플랫폼으로 [Service Fabric](/azure/service-fabric/service-fabric-overview)을 사용하는 방법을 살펴봅니다. 여기서는 IIS/ASP.NET 웹 사이트를 여러 개의 관리 가능한 마이크로 서비스로 구성된 응용 프로그램으로 분해하는 반복적인 방법을 고려합니다.
+이 예제 시나리오에서는 [Service Fabric](/azure/service-fabric/service-fabric-overview)을 다루기 어려운 모놀리식 애플리케이션을 분해하기 위한 플랫폼으로 사용하는 방법을 살펴봅니다. 여기서는 IIS/ASP.NET 웹 사이트를 여러 개의 관리 가능한 마이크로 서비스로 구성된 애플리케이션으로 분해하는 반복적인 방법을 고려합니다.
 
 모놀리식 아키텍처에서 마이크로 서비스 아키텍처로 전환하면 다음과 같은 이점이 있습니다.
 * 작고 이해하기 쉬운 하나의 코드 단위를 변경하고 해당 단위만 배포할 수 있습니다.
 * 각 코드 단위를 몇 분 안에 배포할 수 있습니다.
-* 해당 작은 단위에 오류가 있는 경우 전체 응용 프로그램이 아니라 해당 단위만 작동을 중지합니다.
+* 해당 작은 단위에 오류가 있는 경우 전체 애플리케이션이 아니라 해당 단위만 작동을 중지합니다.
 * 작은 코드 단위를 여러 개발 팀에 개별적으로 쉽게 배포할 수 있습니다.
 * 새 개발자가 각 단위의 개별 기능을 빠르고 쉽게 파악할 수 있습니다.
 
-이 예제에서는 서버 팜의 대규모 IIS 응용 프로그램이 사용되지만, 반복적인 분해 및 호스팅에 대한 개념은 모든 유형의 대규모 응용 프로그램에 사용할 수 있습니다. 이 솔루션은 Windows를 사용하지만, Linux에서도 Service Fabric을 실행할 수 있습니다. 온-프레미스, Azure 또는 원하는 클라우드 공급자의 VM 노드에서 실행할 수 있습니다.
+이 예제에서는 서버 팜의 대규모 IIS 애플리케이션이 사용되지만, 반복적인 분해 및 호스팅에 대한 개념은 모든 유형의 대규모 애플리케이션에 사용할 수 있습니다. 이 솔루션은 Windows를 사용하지만, Linux에서도 Service Fabric을 실행할 수 있습니다. 온-프레미스, Azure 또는 원하는 클라우드 공급자의 VM 노드에서 실행할 수 있습니다.
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
-이 시나리오는 다음과 같은 상황이 발생한 대규모 모놀리식 웹 응용 프로그램을 사용하는 있는 조직과 관련이 있습니다.
+이 시나리오는 다음과 같은 상황이 발생한 대규모 모놀리식 웹 애플리케이션을 사용하는 있는 조직과 관련이 있습니다.
 
 - 사소한 코드 변경 오류로 인해 전체 사이트가 손상됩니다.
 - 웹 사이트 전체를 릴리스 업데이트해야 하므로 릴리스에 며칠이 걸립니다.
@@ -38,10 +38,10 @@ Service Fabric을 호스팅 플랫폼으로 사용하면 아래와 같이 대규
 
 ![아키텍처 다이어그램](./media/architecture-service-fabric-complete.png)
 
-위의 그림에서 대규모 IIS 응용 프로그램의 모든 부분을 다음과 같이 분해했습니다.
+위의 그림에서 대규모 IIS 애플리케이션의 모든 부분을 다음과 같이 분해했습니다.
 
 - 들어오는 브라우저 요청을 수락하고, 구문 분석하여 처리할 서비스를 결정하고, 요청을 해당 서비스에 전달하는 라우팅 또는 게이트웨이 서비스.
-- ASP.NET 응용 프로그램으로 실행되는 단일 IIS 사이트 아래에 있는 공식적인 가상 디렉터리였던 4개의 ASP.NET Core 응용 프로그램. 응용 프로그램은 고유의 독립 마이크로 서비스로 분리되었습니다. 이에 따라 개별적으로 변경, 버전 관리 및 업그레이드할 수 있습니다. 이 예에서는 .Net Core 및 ASP.NET Core를 사용하여 각 응용 프로그램을 다시 작성했습니다. 이 서비스는 전체 Service Fabric 플랫폼 기능 및 이점(통신 서비스, 상태 보고서, 알림 등)에 기본적으로 액세스할 수 있도록 [Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction)로 작성되었습니다.
+- ASP.NET 애플리케이션으로 실행되는 단일 IIS 사이트 아래에 있는 공식적인 가상 디렉터리였던 4개의 ASP.NET Core 애플리케이션. 애플리케이션은 고유의 독립 마이크로 서비스로 분리되었습니다. 이에 따라 개별적으로 변경, 버전 관리 및 업그레이드할 수 있습니다. 이 예에서는 .Net Core 및 ASP.NET Core를 사용하여 각 애플리케이션을 다시 작성했습니다. 이 서비스는 전체 Service Fabric 플랫폼 기능 및 이점(통신 서비스, 상태 보고서, 알림 등)에 기본적으로 액세스할 수 있도록 [Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction)로 작성되었습니다.
 - *인덱싱 서비스*라고 하는 Windows 서비스. Windows 컨테이너에 배치되어 더 이상 기본 서버의 레지스트리를 직접 변경하지 않지만, 자체 포함형으로 실행하고 모든 종속성을 단일 단위로 사용하여 배포할 수 있습니다.
 - 보관 서비스. 일정에 따라 실행되고 사이트에 대한 몇 가지 작업을 수행하는 단순한 실행 파일입니다. 수정 없이 수행해야 하는 작업을 수행할 수 있으며 변경하는 데 투자할 가치가 없다고 판단했으므로 독립 실행형 실행 파일로 직접 호스팅됩니다.
 
@@ -51,7 +51,7 @@ Service Fabric을 호스팅 플랫폼으로 사용하면 아래와 같이 대규
 
 Service Fabric은 다양한 형태의 모든 마이크로 서비스를 실행하도록 지원할 수 있으므로 선택되었습니다. 예를 들어 독립 실행형 실행 파일, 새 소규모 웹 사이트, 새 소규모 API 및 컨테이너화된 서비스 등을 혼합하여 사용할 수도 있습니다. Service Fabric은 이러한 모든 서비스 유형을 단일 클러스터에 결합할 수 있습니다.
 
-이와 같이 최종적으로 분해된 응용 프로그램에 도달하기 위해 반복적인 접근 방식을 사용했습니다. 서버 팜에 있는 대규모 IIS/ASP.Net 웹 사이트로 시작했습니다. 서버 팜의 단일 노드는 아래에 나와 있습니다. 여기에는 여러 가상 디렉터리가 있는 원래 웹 사이트, 사이트에서 호출하는 추가 Windows 서비스 및 일부 사이트 보관 파일 유지 관리를 정기적으로 수행하는 실행 파일이 포함되어 있습니다.
+이와 같이 최종적으로 분해된 애플리케이션에 도달하기 위해 반복적인 접근 방식을 사용했습니다. 서버 팜에 있는 대규모 IIS/ASP.Net 웹 사이트로 시작했습니다. 서버 팜의 단일 노드는 아래에 나와 있습니다. 여기에는 여러 가상 디렉터리가 있는 원래 웹 사이트, 사이트에서 호출하는 추가 Windows 서비스 및 일부 사이트 보관 파일 유지 관리를 정기적으로 수행하는 실행 파일이 포함되어 있습니다.
 
 ![모놀리식 아키텍처 다이어그램](./media/architecture-service-fabric-monolith.png)
 
@@ -71,9 +71,9 @@ Service Fabric은 동일한 클러스터에서 상호 간의 호출을 빠르고
 
 Service Fabric은 네트워킹, 저장소 및 운영 체제가 있는 가상(또는 물리적) 노드 인프라를 기반으로 하는 클러스터입니다. 따라서 일련의 관리, 유지 관리 및 모니터링 작업이 있습니다.
 
-또한 클러스터에 대한 거버넌스 및 제어도 고려해야 합니다. 사람들이 임의로 데이터베이스를 프로덕션 데이터베이스 서버에 배포하지 못하도록 하려는 것처럼, 감독 없이도 사람들이 Service Fabric 클러스터에 응용 프로그램을 배포하지 못하도록 해야 합니다.
+또한 클러스터에 대한 거버넌스 및 제어도 고려해야 합니다. 사람들이 임의로 데이터베이스를 프로덕션 데이터베이스 서버에 배포하지 못하도록 하려는 것처럼, 감독 없이도 사람들이 Service Fabric 클러스터에 애플리케이션을 배포하지 못하도록 해야 합니다.
 
-Service Fabric은 다양한 [응용 프로그램 시나리오](/azure/service-fabric/service-fabric-application-scenarios)를 호스팅할 수 있으므로 시나리오에 적용되는 응용 프로그램을 확인하는 데 약간의 시간이 걸립니다.
+Service Fabric은 다양한 [애플리케이션 시나리오](/azure/service-fabric/service-fabric-application-scenarios)를 호스팅할 수 있으므로 시나리오에 적용되는 애플리케이션을 확인하는 데 약간의 시간이 걸립니다.
 
 ## <a name="pricing"></a>가격
 
@@ -85,11 +85,11 @@ Azure에서 호스팅되는 Service Fabric 클러스터의 경우 비용의 가�
 
 ## <a name="next-steps"></a>다음 단계
 
-플랫폼에 익숙해지도록 잠시 시간을 내어 [설명서](/azure/service-fabric/service-fabric-overview)를 살펴보고 Service Fabric에 대한 다양한 [응용 시나리오](/azure/service-fabric/service-fabric-application-scenarios)를 검토합니다. 이 설명서에서는 클러스터의 구성 요소, 실행할 수 있는 항목, 소프트웨어 아키텍처 및 유지 관리에 대해 설명합니다.
+플랫폼에 익숙해지도록 잠시 시간을 내어 [설명서](/azure/service-fabric/service-fabric-overview)를 살펴보고 Service Fabric에 대한 다양한 [애플리케이션 시나리오](/azure/service-fabric/service-fabric-application-scenarios)를 검토합니다. 이 설명서에서는 클러스터의 구성 요소, 실행할 수 있는 항목, 소프트웨어 아키텍처 및 유지 관리에 대해 설명합니다.
 
-기존 .NET 응용 프로그램에 대한 Service Fabric 데모를 보려면 Service Fabric [빠른 시작](/azure/service-fabric/service-fabric-quickstart-dotnet)을 배포합니다.
+기존 .NET 애플리케이션에 대한 Service Fabric 데모를 보려면 Service Fabric [빠른 시작](/azure/service-fabric/service-fabric-quickstart-dotnet)을 배포합니다.
 
-현재 응용 프로그램의 관점에서 다양한 함수를 고려합니다. 그 중 하나를 선택하고 전체에서 이 함수만 분리할 수 있는 방법을 고려합니다. 개별적으로 이해할 수 있는 조각을 한 번에 하나씩 가져옵니다.
+현재 애플리케이션의 관점에서 다양한 함수를 고려합니다. 그 중 하나를 선택하고 전체에서 이 함수만 분리할 수 있는 방법을 고려합니다. 개별적으로 이해할 수 있는 조각을 한 번에 하나씩 가져옵니다.
 
 ## <a name="related-resources"></a>관련 리소스
 

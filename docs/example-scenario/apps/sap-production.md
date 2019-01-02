@@ -13,7 +13,7 @@ ms.locfileid: "53004965"
 ---
 # <a name="running-sap-production-workloads-using-an-oracle-database-on-azure"></a>Azure에서 Oracle 데이터베이스를 사용하여 SAP 프로덕션 워크로드 실행
 
-SAP 시스템은 중요 업무용 비즈니스 응용 프로그램을 실행하는 데 사용됩니다. 가동 중단이 발생하면 키 프로세스가 중단되어 비용이 증가하거나 수익이 감소할 수 있습니다. 이러한 결과를 방지하려면 장애 발생 시에도 높은 가용성과 복원력을 제공하는 SAP 인프라가 필요합니다.
+SAP 시스템은 중요 업무용 비즈니스 애플리케이션을 실행하는 데 사용됩니다. 가동 중단이 발생하면 키 프로세스가 중단되어 비용이 증가하거나 수익이 감소할 수 있습니다. 이러한 결과를 방지하려면 장애 발생 시에도 높은 가용성과 복원력을 제공하는 SAP 인프라가 필요합니다.
 
 고가용성 SAP 환경을 구축하려면 시스템 아키텍처와 프로세스에서 단일 실패 지점을 제거해야 합니다. 단일 실패 지점은 사이트 장애, 시스템 구성 요소의 오류 또는 사람의 실수로 인해 발생할 수 있습니다.
 
@@ -31,11 +31,11 @@ SAP 시스템은 중요 업무용 비즈니스 응용 프로그램을 실행하�
 
 ![Azure의 프로덕션 SAP 환경 아키텍처 개요][architecture]
 
-이 예제에는 Oracle 데이터베이스, SAP 중앙 서비스 및 다른 가상 머신에서 실행되는 여러 SAP 응용 프로그램 서버에 대한 고가용성 구성이 포함되어 있습니다. Azure 네트워크는 보안을 위해 [허브-스포크 토폴로지](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)를 사용합니다. 솔루션을 통한 데이터 흐름은 다음과 같습니다.
+이 예제에는 Oracle 데이터베이스, SAP 중앙 서비스 및 다른 가상 머신에서 실행되는 여러 SAP 애플리케이션 서버에 대한 고가용성 구성이 포함되어 있습니다. Azure 네트워크는 보안을 위해 [허브-스포크 토폴로지](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)를 사용합니다. 솔루션을 통한 데이터 흐름은 다음과 같습니다.
 
 1. 사용자가 SAP 사용자 인터페이스, 웹 브라우저 또는 Microsoft Excel 같은 기타 클라이언트 도구를 통해 SAP 시스템에 액세스합니다. ExpressRoute 연결이 조직의 온-프레미스 네트워크에서 Azure에서 실행되는 리소스에 대한 액세스를 제공합니다.
 2. ExpressRoute가 ExpressRoute VNet(가상 네트워크) 게이트웨이에서 Azure를 종료합니다. 허브 VNet에서 만든 ExpressRoute 게이트웨이를 통해 게이트웨이 서브넷으로 네트워크 트래픽이 라우팅됩니다.
-3. 허브 VNet이 스포크 VNet에 피어링됩니다. 응용 프로그램 계층 서브넷이 SAP를 실행 중인 가상 머신을 가용성 집합에 호스트합니다.
+3. 허브 VNet이 스포크 VNet에 피어링됩니다. 애플리케이션 계층 서브넷이 SAP를 실행 중인 가상 머신을 가용성 집합에 호스트합니다.
 4. ID 관리 서버가 솔루션에 인증 서비스를 제공합니다.
 5. 시스템 관리자가 점프 상자를 사용하여 Azure에 배포된 리소스를 안전하게 관리합니다.
 
@@ -54,7 +54,7 @@ SAP는 Azure 환경에서 다양한 운영 체제, 데이터베이스 관리 시
 ## <a name="considerations"></a>고려 사항
 
 Azure에 고가용성 SAP 환경을 구축하기 위한 모범 사례가 정의되어 있습니다. 자세한 내용은 [SAP NetWeaver에 대한 고가용성 아키텍처 및 시나리오](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)를 참조하세요.
-자세한 내용은 [Azure VM의 SAP 응용 프로그램 고가용성](/azure/virtual-machines/workloads/sap/high-availability-guide)을 참조하세요.
+자세한 내용은 [Azure VM의 SAP 애플리케이션 고가용성](/azure/virtual-machines/workloads/sap/high-availability-guide)을 참조하세요.
 * Oracle 데이터베이스도 Azure에 대한 모범 사례를 제공합니다. 자세한 내용은 [Azure에서 Oracle 데이터베이스 설계 및 구현](/azure/virtual-machines/workloads/oracle/oracle-design)을 참조하세요. 
 * Oracle Data Guard는 중요 업무용 Oracle 데이터베이스의 단일 실패 지점을 제거하는 데 사용됩니다. 자세한 내용은 [Azure에서 Linux 가상 머신에 Oracle Data Guard 구현](/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)을 참조하세요.
 
@@ -76,13 +76,13 @@ Microsoft Azure는 Oracle 데이터베이스를 사용하여 SAP 제품을 배�
 > [!NOTE]
 > 이 가격 책정은 VM 및 저장소 비용만 나타내는 가이드입니다. 네트워킹, 백업 저장소 및 데이터 수신/송신 요금은 제외됩니다.
 
-* [소형](https://azure.com/e/45880ba0bfdf47d497851a7cf2650c7c): 소형 시스템은 vCPU 8개, 56GB RAM, 112GB 임시 스토리지가 있는 DS13_v2 VM 유형으로 구성되며, 512GB 프리미엄 스토리지 디스크 5개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 8개, 56GB RAM, 400GB 임시 저장소가 있는 SAP 응용 프로그램 서버용 단일 VM 유형 DS13_v2이며, 128GB 프리미엄 저장소 디스크 1개를 추가할 수 있습니다.
+* [소형](https://azure.com/e/45880ba0bfdf47d497851a7cf2650c7c): 소형 시스템은 vCPU 8개, 56GB RAM, 112GB 임시 스토리지가 있는 DS13_v2 VM 유형으로 구성되며, 512GB 프리미엄 스토리지 디스크 5개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 8개, 56GB RAM, 400GB 임시 저장소가 있는 SAP 애플리케이션 서버용 단일 VM 유형 DS13_v2이며, 128GB 프리미엄 저장소 디스크 1개를 추가할 수 있습니다.
 
-* [중형](https://azure.com/e/9a523f79591347ca9a48c3aaa1406f8a): 중형 시스템은 vCPU 16개, 112GB RAM, 800GB 임시 스토리지가 있는 DS14_v2 VM 유형으로 구성되며, 512GB 프리미엄 스토리지 디스크 7개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 8개, 56GB RAM, 400GB 임시 저장소가 있는 SAP 응용 프로그램 서버용 4VM DS13_v2 유형이며, 128GB 프리미엄 저장소 디스크 1개를 추가할 수 있습니다.
+* [중형](https://azure.com/e/9a523f79591347ca9a48c3aaa1406f8a): 중형 시스템은 vCPU 16개, 112GB RAM, 800GB 임시 스토리지가 있는 DS14_v2 VM 유형으로 구성되며, 512GB 프리미엄 스토리지 디스크 7개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 8개, 56GB RAM, 400GB 임시 저장소가 있는 SAP 애플리케이션 서버용 4VM DS13_v2 유형이며, 128GB 프리미엄 저장소 디스크 1개를 추가할 수 있습니다.
 
-* [대형](https://azure.com/e/f70fccf571e948c4b37d4fecc07cbf42): 대형 시스템은 vCPU 32개, 256GB RAM, 800GB 임시 스토리지가 있는 E32s_v3 VM 유형으로 구성되며, 512GB 프리미엄 스토리지 디스크 3개와 128GB 프리미엄 스토리지 디스크 1개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 16개, 112GB RAM, 224GB 임시 저장소가 있는 SAP 응용 프로그램 서버용 6VM DS14_v2 유형이며, 128GB 프리미엄 저장소 디스크 6개를 추가할 수 있습니다.
+* [대형](https://azure.com/e/f70fccf571e948c4b37d4fecc07cbf42): 대형 시스템은 vCPU 32개, 256GB RAM, 800GB 임시 스토리지가 있는 E32s_v3 VM 유형으로 구성되며, 512GB 프리미엄 스토리지 디스크 3개와 128GB 프리미엄 스토리지 디스크 1개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 16개, 112GB RAM, 224GB 임시 저장소가 있는 SAP 애플리케이션 서버용 6VM DS14_v2 유형이며, 128GB 프리미엄 저장소 디스크 6개를 추가할 수 있습니다.
 
-* [초대형](https://azure.com/e/58c636922cf94faf9650f583ff35e97b): 초대형 시스템은 vCPU 64개, 1024GB RAM, 2000GB 임시 스토리지가 있는 M64s VM 유형으로 구성되며, 1024GB 프리미엄 스토리지 디스크 7개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 16개, 112GB RAM, 224GB 임시 저장소가 있는 SAP 응용 프로그램 서버용 10VM DS14_v2 유형이며, 128GB 프리미엄 저장소 디스크 10개를 추가할 수 있습니다.
+* [초대형](https://azure.com/e/58c636922cf94faf9650f583ff35e97b): 초대형 시스템은 vCPU 64개, 1024GB RAM, 2000GB 임시 스토리지가 있는 M64s VM 유형으로 구성되며, 1024GB 프리미엄 스토리지 디스크 7개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 16개, 112GB RAM, 224GB 임시 저장소가 있는 SAP 애플리케이션 서버용 10VM DS14_v2 유형이며, 128GB 프리미엄 저장소 디스크 10개를 추가할 수 있습니다.
 
 ## <a name="deployment"></a>배포
 

@@ -1,5 +1,5 @@
 ---
-title: 다중 테넌트 응용 프로그램에서 액세스 토큰 캐시
+title: 다중 테넌트 애플리케이션에서 액세스 토큰 캐시
 description: 백 엔드 Web API 호출에 사용되는 액세스 토큰 캐시
 author: MikeWasson
 ms.date: 07/21/2017

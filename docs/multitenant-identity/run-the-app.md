@@ -1,6 +1,6 @@
 ---
 title: 설문 조사 애플리케이션 실행
-description: 설문 조사 샘플 응용 프로그램을 로컬로 실행하는 방법
+description: 설문 조사 샘플 애플리케이션을 로컬로 실행하는 방법
 author: MikeWasson
 ms.date: 07/21/2017
 ms.openlocfilehash: cc43f713886692167550336dbdcecdfbfc835bc3
@@ -12,7 +12,7 @@ ms.locfileid: "52902671"
 ---
 # <a name="run-the-surveys-application"></a>설문 조사 애플리케이션 실행
 
-이 문서에서는 Visual Studio에서 [Tailspin 설문 조사](./tailspin.md) 응용 프로그램을 로컬로 실행하는 방법을 설명합니다. 이 단계에서는 Azure에 애플리케이션을 배포하지 않습니다. 그러나 Azure AD(Azure Active Directory) 디렉터리 및 Redis Cache와 같은 Azure 리소스를 만들어야 합니다.
+이 문서에서는 Visual Studio에서 [Tailspin 설문 조사](./tailspin.md) 애플리케이션을 로컬로 실행하는 방법을 설명합니다. 이 단계에서는 Azure에 애플리케이션을 배포하지 않습니다. 그러나 Azure AD(Azure Active Directory) 디렉터리 및 Redis Cache와 같은 Azure 리소스를 만들어야 합니다.
 
 다음은 단계에 대한 요약입니다.
 
@@ -21,7 +21,7 @@ ms.locfileid: "52902671"
 3. Azure Redis Cache 인스턴스를 만듭니다.
 4. 애플리케이션 설정을 구성하고 로컬 데이터베이스를 만듭니다.
 5. 애플리케이션을 실행하고 새 테넌트를 등록합니다.
-6. 사용자에게 응용 프로그램 역할을 추가합니다.
+6. 사용자에게 애플리케이션 역할을 추가합니다.
 
 ## <a name="prerequisites"></a>필수 조건
 -   [Visual Studio 2017][VS2017]
@@ -93,7 +93,7 @@ Tailspin은 설문 조사 애플리케이션을 호스트하는 가상의 회사
  
 4. **앱 등록** 블레이드에서 새 **설문 조사** 응용 프로그램을 선택합니다.
  
-5. 응용 프로그램 ID를 복사합니다. 이 ID는 나중에 필요합니다.
+5. 애플리케이션 ID를 복사합니다. 이 ID는 나중에 필요합니다.
 
     ![](./images/running-the-app/application-id.png)
 
@@ -172,7 +172,7 @@ Tailspin은 설문 조사 애플리케이션을 호스트하는 가상의 회사
    }
    ```
 
-4. 이전에 설문 조사 응용 프로그램을 등록할 때 얻은 설문 조사 웹 응용 프로그램의 응용 프로그램 ID를 `knownClientApplications` 속성에 추가합니다. 예: 
+4. 이전에 설문 조사 애플리케이션을 등록할 때 얻은 설문 조사 웹 애플리케이션의 애플리케이션 ID를 `knownClientApplications` 속성에 추가합니다. 예: 
 
    ```json
    "knownClientApplications": ["be2cea23-aa0e-4e98-8b21-2963d494912e"],
@@ -260,7 +260,7 @@ Redis Cache 생성에 대한 자세한 내용은 [Azure Redis Cache 사용 방�
     
 ## <a name="run-the-application"></a>애플리케이션 실행
 
-응용 프로그램을 실행하려면 Tailspin.Surveys.Web 및 Tailspin.Surveys.WebAPI 프로젝트를 시작합니다.
+애플리케이션을 실행하려면 Tailspin.Surveys.Web 및 Tailspin.Surveys.WebAPI 프로젝트를 시작합니다.
 
 다음과 같이 두 프로젝트를 F5에서 자동으로 실행하도록 Visual Studio를 설정할 수 있습니다.
 

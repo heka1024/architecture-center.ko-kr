@@ -19,7 +19,7 @@ ms.locfileid: "53120206"
 
 이 참조 아키텍처는 [Azure Integration Services][integration-services]를 사용하여 엔터프라이즈 백 엔드 시스템에 대한 호출을 오케스트레이션합니다. 백 엔드 시스템에는 SaaS(Software as a Service) 시스템, Azure 서비스 및 기업의 기존 웹 서비스가 포함될 수 있습니다.
 
-Azure Integration Services는 응용 프로그램과 데이터를 통합하기 위한 서비스 컬렉션입니다. 이 아키텍처는 워크플로를 오케스트레이션하는 [Logic Apps][logic-apps] 및 API 카탈로그를 만드는 [API Management][apim]라는 두 가지 서비스를 사용합니다. 이 아키텍처는 백 엔드 서비스에 대한 비동기 호출로 인해 워크플로가 트리거되는 기본 통합 시나리오에 충분합니다. [큐 및 이벤트](./queues-events.md)를 사용하는 더 정교한 아키텍처는 이러한 기본 카키텍처를 기반으로 합니다.
+Azure Integration Services는 애플리케이션과 데이터를 통합하기 위한 서비스 컬렉션입니다. 이 아키텍처는 워크플로를 오케스트레이션하는 [Logic Apps][logic-apps] 및 API 카탈로그를 만드는 [API Management][apim]라는 두 가지 서비스를 사용합니다. 이 아키텍처는 백 엔드 서비스에 대한 비동기 호출로 인해 워크플로가 트리거되는 기본 통합 시나리오에 충분합니다. [큐 및 이벤트](./queues-events.md)를 사용하는 더 정교한 아키텍처는 이러한 기본 카키텍처를 기반으로 합니다.
 
 ![아키텍처 다이어그램 - 간단한 엔터프라이즈 통합](./_images/simple-enterprise-integration.png)
 

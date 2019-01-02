@@ -76,7 +76,7 @@ Dave는 청구서에 BitBucket 구현에 대한 비용 센터를 식별할 수 �
 
 | 태그 이름 | 태그 값 |
 | --- | --- |
-| ApplicationOwner |이 응용 프로그램을 관리하는 사용자의 이름입니다. |
+| ApplicationOwner |이 애플리케이션을 관리하는 사용자의 이름입니다. |
 | CostCenter |Azure 사용에 대해 지불하는 그룹의 비용 센터입니다. |
 | BusinessUnit |**ETS**(구독과 연결된 사업부) |
 
@@ -87,9 +87,9 @@ Contoso ETS 정보 보안 및 위험 관리 팀은 애플리케이션을 Azure�
 
 | 리소스 종류 | 이름 | 설명 |
 | --- | --- | --- |
-| Virtual Network |internal-vnet |BitBucket 애플리케이션에 사용되며 ExpressRoute를 통해 Contoso의 회사 네트워크에 연결됩니다.  서브넷(`bitbucket`)에서 응용 프로그램에 특정 IP 주소 공간을 제공합니다. |
-| Virtual Network |external-vnet |공용 엔드포인트가 필요한 미래의 응용 프로그램에 사용할 수 있습니다. |
-| 네트워크 보안 그룹 |bitbucket-nsg |응용 프로그램이 있는 서브넷(`bitbucket`)에 대한 443 포트에서만 연결을 허용하여 이 워크로드의 공격에 대한 취약성이 최소화되도록 합니다. |
+| Virtual Network |internal-vnet |BitBucket 애플리케이션에 사용되며 ExpressRoute를 통해 Contoso의 회사 네트워크에 연결됩니다.  서브넷(`bitbucket`)에서 애플리케이션에 특정 IP 주소 공간을 제공합니다. |
+| Virtual Network |external-vnet |공용 엔드포인트가 필요한 미래의 애플리케이션에 사용할 수 있습니다. |
+| 네트워크 보안 그룹 |bitbucket-nsg |애플리케이션이 있는 서브넷(`bitbucket`)에 대한 443 포트에서만 연결을 허용하여 이 워크로드의 공격에 대한 취약성이 최소화되도록 합니다. |
 
 ### <a name="resource-locks"></a>리소스 잠금
 Dave는 난해한 스크립트나 실수로 인한 삭제로부터 Contoso 회사 네트워크에서 내부 가상 네트워크로의 연결을 보호해야 한다는 것을 알게 됩니다.
@@ -146,7 +146,7 @@ Dave는 청구 및 소유권에 대한 정확한 비즈니스 그룹을 식별�
 
 | 태그 이름 | 태그 값 |
 | --- | --- |
-| ApplicationOwner |이 응용 프로그램을 관리하는 사용자의 이름입니다. |
+| ApplicationOwner |이 애플리케이션을 관리하는 사용자의 이름입니다. |
 | department |Azure 사용에 대해 지불하는 그룹의 비용 센터입니다. |
 | EnvironmentType |**Production**(구독 이름에 **Production**이 포함되어 있지만, 이 태그를 포함하면 포털 또는 청구서에서 리소스를 확인할 때 쉽게 식별할 수 있습니다.) |
 
@@ -164,7 +164,7 @@ Contoso ETS 정보 보안 및 위험 관리 팀은 애플리케이션을 Azure�
 | 리소스 종류 | 이름 | 설명 |
 | --- | --- | --- |
 | Virtual Network |external-vnet |로열티 카드 애플리케이션을 호스트하고 Contoso의 ExpressRoute에 직접 연결되지 않습니다. 코드는 소스 코드 시스템을 통해 PaaS 서비스에 직접 푸시됩니다. |
-| 네트워크 보안 그룹 |loyaltycard-nsg |TCP 443에서 인바운드 통신만 허용하여 이 워크로드의 공격 취약성이 최소화되도록 합니다.  또한 Contoso는 웹 응용 프로그램 방화벽을 사용하여 추가 보호를 조사하고 있습니다. |
+| 네트워크 보안 그룹 |loyaltycard-nsg |TCP 443에서 인바운드 통신만 허용하여 이 워크로드의 공격 취약성이 최소화되도록 합니다.  또한 Contoso는 웹 애플리케이션 방화벽을 사용하여 추가 보호를 조사하고 있습니다. |
 
 ### <a name="resource-locks"></a>리소스 잠금
 Dave와 Alice는 서로 상의한 후 환경에서 일부 주요 리소스에 리소스 잠금을 추가하여 잘못된 코드 푸시 중에 실수로 삭제되는 일이 없도록 합니다.

@@ -54,11 +54,11 @@ ASP.NET 4에서 WS-Federation을 사용하는 예제는 [active-directory-dotnet
 4. 클레임은 OpenID Connect를 사용하여 AD FS에서 앱으로 흐릅니다. 여기에 WS-Federation에서 프로토콜 전환이 필요합니다.
 
 ## <a name="limitations"></a>제한 사항
-기본적으로 신뢰 당사자 응용 프로그램은 다음 표와 같이 id_token에서 사용할 수 있는 고정 클레임 집합만 받습니다. AD FS 2016에서는 OpenID Connect 시나리오의 id_token을 사용자 지정할 수 있습니다. 자세한 내용은 [AD FS의 사용자 지정 ID 토큰](/windows-server/identity/ad-fs/development/customize-id-token-ad-fs-2016)을 참조하세요.
+기본적으로 신뢰 당사자 애플리케이션은 다음 표와 같이 id_token에서 사용할 수 있는 고정 클레임 집합만 받습니다. AD FS 2016에서는 OpenID Connect 시나리오의 id_token을 사용자 지정할 수 있습니다. 자세한 내용은 [AD FS의 사용자 지정 ID 토큰](/windows-server/identity/ad-fs/development/customize-id-token-ad-fs-2016)을 참조하세요.
 
 | 클레임 | 설명 |
 | --- | --- |
-| aud |대상. 클레임이 발급된 응용 프로그램입니다. |
+| aud |대상. 클레임이 발급된 애플리케이션입니다. |
 | authenticationinstant |[인증 인스턴트]. 인증이 발생한 시간입니다. |
 | c_hash |코드 해시 값. 토큰 콘텐츠의 해시입니다. |
 | exp |[만료 시간]. 이 시간 후에는 토큰이 더 이상 허용되지 않는 시간입니다. |

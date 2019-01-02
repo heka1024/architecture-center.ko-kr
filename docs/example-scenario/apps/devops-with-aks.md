@@ -12,9 +12,9 @@ ms.locfileid: "51610841"
 ---
 # <a name="cicd-pipeline-for-container-based-workloads"></a>컨테이너 기반 작업에 대한 CI/CD 파이프라인
 
-이 예제 시나리오는 컨테이너 및 DevOps 흐름을 사용하여 애플리케이션 개발을 현대화하려는 비즈니스에 적용할 수 있습니다. 이 시나리오에서는 Jenkins에서 Node.js 웹앱을 Azure Container Registry 및 Azure Kubernetes Service에 구축하고 배포합니다. 전역 분산 데이터베이스 계층에는 Azure Cosmos DB가 사용됩니다. Azure Monitor는 응용 프로그램 성능을 모니터링하고 문제를 해결하기 위해 Grafana 인스턴스 및 대시보드와 통합됩니다.
+이 예제 시나리오는 컨테이너 및 DevOps 흐름을 사용하여 애플리케이션 개발을 현대화하려는 비즈니스에 적용할 수 있습니다. 이 시나리오에서는 Jenkins에서 Node.js 웹앱을 Azure Container Registry 및 Azure Kubernetes Service에 구축하고 배포합니다. 전역 분산 데이터베이스 계층에는 Azure Cosmos DB가 사용됩니다. Azure Monitor는 애플리케이션 성능을 모니터링하고 문제를 해결하기 위해 Grafana 인스턴스 및 대시보드와 통합됩니다.
 
-예제 응용 프로그램 시나리오에는 자동화된 개발 환경 제공, 새 코드 커밋의 유효성 검사 및 준비 또는 프로덕션 환경으로 새 배포 푸시가 포함됩니다. 일반적으로 기업에서는 응용 프로그램과 업데이트를 수동으로 빌드 및 컴파일하고, 대규모의 모놀리식 코드베이스를 유지해야 했습니다. CI(지속적인 통합) 및 CD(지속적인 배포)를 사용하는 응용 프로그램 개발에 대한 현대적인 접근 방식을 사용하면, 서비스를 더 빠르게 빌드, 테스트 및 배포할 수 있습니다. 이러한 현대적인 접근 방식을 통해 고객에게 응용 프로그램과 업데이트를 더 빨리 릴리스하고, 변화하는 비즈니스 요구 사항에 더 민첩하게 대응할 수 있습니다.
+예제 애플리케이션 시나리오에는 자동화된 개발 환경 제공, 새 코드 커밋의 유효성 검사 및 준비 또는 프로덕션 환경으로 새 배포 푸시가 포함됩니다. 일반적으로 기업에서는 애플리케이션과 업데이트를 수동으로 빌드 및 컴파일하고, 대규모의 모놀리식 코드베이스를 유지해야 했습니다. CI(지속적인 통합) 및 CD(지속적인 배포)를 사용하는 애플리케이션 개발에 대한 현대적인 접근 방식을 사용하면, 서비스를 더 빠르게 빌드, 테스트 및 배포할 수 있습니다. 이러한 현대적인 접근 방식을 통해 고객에게 애플리케이션과 업데이트를 더 빨리 릴리스하고, 변화하는 비즈니스 요구 사항에 더 민첩하게 대응할 수 있습니다.
 
 Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서비스를 사용하면, 최신의 애플리케이션 개발 기술과 도구를 사용하여 고가용성 구현 프로세스를 간소화할 수 있습니다.
 
@@ -22,7 +22,7 @@ Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서�
 
 관련된 다른 사용 사례는 다음과 같습니다.
 
-* 응용 프로그램 개발 사례를 마이크로 서비스, 컨테이너 기반 접근 방식으로 현대화
+* 애플리케이션 개발 사례를 마이크로 서비스, 컨테이너 기반 접근 방식으로 현대화
 * 애플리케이션 개발 및 배포 수명 주기 가속화
 * 유효성 검사를 위해 테스트 또는 수용 환경에 대한 배포 자동화
 
@@ -30,7 +30,7 @@ Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서�
 
 ![Jenkins, Azure Container Registry 및 Azure Kubernetes Service를 사용하는 DevOps 시나리오와 관련된 Azure 구성 요소 아키텍처에 대한 개요][architecture]
 
-이 시나리오에서는 Node.js 웹 응용 프로그램 및 데이터베이스 백 엔드용 DevOps 파이프라인에 대해 설명합니다. 시나리오를 통한 데이터 흐름은 다음과 같습니다.
+이 시나리오에서는 Node.js 웹 애플리케이션 및 데이터베이스 백 엔드용 DevOps 파이프라인에 대해 설명합니다. 시나리오를 통한 데이터 흐름은 다음과 같습니다.
 
 1. 개발자는 Node.js 웹 애플리케이션 소스 코드를 변경합니다.
 2. 코드 변경은 GitHub와 같은 소스 제어 리포지토리에 커밋됩니다.
@@ -38,7 +38,7 @@ Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서�
 4. Jenkins 빌드 작업은 Azure Kubernetes Service의 동적 빌드 에이전트를 사용하여 컨테이너 빌드 프로세스를 수행합니다.
 5. 컨테이너 이미지는 소스 제어의 코드에서 만들어진 다음, Azure Container Registry로 푸시됩니다.
 6. Jenkins는 CD를 통해 업데이트된 이 컨테이너 이미지를 Kubernetes 클러스터에 배포합니다.
-7. Node.js 웹 응용 프로그램은 Cosmos DB를 백 엔드로 사용합니다. Cosmos DB와 Azure Kubernetes Service는 모두 Azure Monitor에 메트릭을 보고합니다.
+7. Node.js 웹 애플리케이션은 Cosmos DB를 백 엔드로 사용합니다. Cosmos DB와 Azure Kubernetes Service는 모두 Azure Monitor에 메트릭을 보고합니다.
 8. Grafana 인스턴스는 Azure Monitor의 데이터를 기반으로 하여 애플리케이션 성능의 시각적 대시보드를 제공합니다.
 
 ### <a name="components"></a>구성 요소
@@ -63,15 +63,15 @@ Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서�
 
 애플리케이션 성능을 모니터링하고 문제를 보고하기 위해 이 시나리오에서는 시각적 대시보드에서 Azure Monitor와 Grafana를 결합합니다. 이러한 도구를 사용하면 코드를 업데이트해야 하는 성능 문제를 모니터링하고 문제를 해결할 수 있습니다. 그런 다음, CI/CD 파이프라인을 통해 모두 배포할 수 있습니다.
 
-Azure Kubernetes Service 클러스터의 일부인 부하 분산 장치는 애플리케이션을 실행하는 하나 이상의 컨테이너(포드)에 애플리케이션 트래픽을 분산시킵니다. Kubernetes에서 컨테이너화된 응용 프로그램을 실행하는 이 접근 방식은 고객에게 고가용성 인프라를 제공합니다.
+Azure Kubernetes Service 클러스터의 일부인 부하 분산 장치는 애플리케이션을 실행하는 하나 이상의 컨테이너(포드)에 애플리케이션 트래픽을 분산시킵니다. Kubernetes에서 컨테이너화된 애플리케이션을 실행하는 이 접근 방식은 고객에게 고가용성 인프라를 제공합니다.
 
 다른 가용성 항목에 대해서는 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
 
 ### <a name="scalability"></a>확장성
 
-Azure Kubernetes Service를 사용하면 애플리케이션의 요구 사항에 맞게 클러스터 노드 수를 크기 조정할 수 있습니다. 응용 프로그램이 증가함에 따라 서비스를 실행하는 Kubernetes 노드의 수를 확장할 수 있습니다.
+Azure Kubernetes Service를 사용하면 애플리케이션의 요구 사항에 맞게 클러스터 노드 수를 크기 조정할 수 있습니다. 애플리케이션이 증가함에 따라 서비스를 실행하는 Kubernetes 노드의 수를 확장할 수 있습니다.
 
-응용 프로그램 데이터는 전역으로 크기 조정할 수 있는 전역 분산형 다중 모델 데이터베이스인 Azure Cosmos DB에 저장됩니다. Cosmos DB는 기존 데이터베이스 구성 요소와 마찬가지로 인프라의 크기를 조정하기 위한 요구 사항을 추상화하고, 고객의 요구를 충족하기 위해 Cosmos DB를 전역으로 복제하도록 선택할 수 있습니다.
+애플리케이션 데이터는 전역으로 크기 조정할 수 있는 전역 분산형 다중 모델 데이터베이스인 Azure Cosmos DB에 저장됩니다. Cosmos DB는 기존 데이터베이스 구성 요소와 마찬가지로 인프라의 크기를 조정하기 위한 요구 사항을 추상화하고, 고객의 요구를 충족하기 위해 Cosmos DB를 전역으로 복제하도록 선택할 수 있습니다.
 
 다른 확장성 항목에 대해서는 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
 
@@ -85,7 +85,7 @@ Azure Kubernetes Service를 사용하면 애플리케이션의 요구 사항에 
 
 ### <a name="resiliency"></a>복원력
 
-이 시나리오에서는 애플리케이션에 Azure Kubernetes Service를 사용합니다. Kubernetes에는 문제가 있는 경우 컨테이너(포드)를 모니터링하고 다시 시작하는 복원력 있는 구성 요소가 기본적으로 제공됩니다. 여러 Kubernetes 노드를 실행하는 것과 결합하여 응용 프로그램에서 사용할 수 없는 노드 또는 노드를 허용할 수 있습니다.
+이 시나리오에서는 애플리케이션에 Azure Kubernetes Service를 사용합니다. Kubernetes에는 문제가 있는 경우 컨테이너(포드)를 모니터링하고 다시 시작하는 복원력 있는 구성 요소가 기본적으로 제공됩니다. 여러 Kubernetes 노드를 실행하는 것과 결합하여 애플리케이션에서 사용할 수 없는 노드 또는 노드를 허용할 수 있습니다.
 
 복원력 있는 솔루션 설계에 대한 일반적인 지침은 [복원력 있는 Azure 애플리케이션 디자인][resiliency]을 참조하세요.
 
@@ -129,7 +129,7 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오를 배포하�
 
 ## <a name="related-resources"></a>관련 리소스
 
-이 시나리오에서는 Azure Container Registry와 Azure Kubernetes Service를 사용하여 컨테이너 기반 응용 프로그램을 저장하고 실행했습니다. Azure Container Instances는 오케스트레이션 구성 요소를 프로비전하지 않고 컨테이너 기반 애플리케이션을 실행하는 데에도 사용할 수 있습니다. 자세한 내용은 [Azure Container Instances 개요][docs-aci]를 참조하세요.
+이 시나리오에서는 Azure Container Registry와 Azure Kubernetes Service를 사용하여 컨테이너 기반 애플리케이션을 저장하고 실행했습니다. Azure Container Instances는 오케스트레이션 구성 요소를 프로비전하지 않고 컨테이너 기반 애플리케이션을 실행하는 데에도 사용할 수 있습니다. 자세한 내용은 [Azure Container Instances 개요][docs-aci]를 참조하세요.
 
 <!-- links -->
 [architecture]: ./media/architecture-devops-with-aks.png

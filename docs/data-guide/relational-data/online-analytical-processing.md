@@ -97,7 +97,7 @@ Azure에서 다음의 모든 데이터 저장소는 OLAP의 요구 사항을 충
 - [Azure Analysis Services](/azure/analysis-services/analysis-services-overview)
 - [SSAS(SQL Server Analysis Services)](/sql/analysis-services/analysis-services)
 
-SSAS(SQL Server Analysis Services)는 비즈니스 인텔리전스 응용 프로그램에 대한 OLAP 및 데이터 마이닝 기능을 제공합니다. 로컬 서버에서 SSAS를 설치할 수도 있고, Azure의 가상 머신 내에 호스트할 수도 있습니다. Azure Analysis Services는 SSAS와 같은 주요 기능을 제공하는 완전히 관리되는 서비스입니다. Azure Analysis Services는 조직의 클라우드 및 온-프레미스에 있는 [다양한 데이터 원본](/azure/analysis-services/analysis-services-datasource)에 대한 연결을 지원합니다.
+SSAS(SQL Server Analysis Services)는 비즈니스 인텔리전스 애플리케이션에 대한 OLAP 및 데이터 마이닝 기능을 제공합니다. 로컬 서버에서 SSAS를 설치할 수도 있고, Azure의 가상 머신 내에 호스트할 수도 있습니다. Azure Analysis Services는 SSAS와 같은 주요 기능을 제공하는 완전히 관리되는 서비스입니다. Azure Analysis Services는 조직의 클라우드 및 온-프레미스에 있는 [다양한 데이터 원본](/azure/analysis-services/analysis-services-datasource)에 대한 연결을 지원합니다.
 
 클러스터형 columnstore 인덱스는 Azure SQL Database 뿐만 아니라 SQL Server 2014 이상에서 사용할 수 있으며, OLAP 작업에 이상적입니다. 그러나 SQL Server 2016(Azure SQL Database 포함)부터 업데이트 가능 비클러스터형 columnstore 인덱스를 사용하여 HTAP(하이브리드 트랜잭션/분석 처리)를 활용할 수 있습니다. HTAP를 사용하면 동일한 플랫폼에서 OLTP 및 OLAP 처리를 수행할 수 있으므로, 데이터의 여러 복사본을 저장할 필요가 없으며, 고유한 OLTP 및 OLAP 시스템이 없어도 됩니다. 자세한 내용은 [실시간 운영 분석을 위한 columnstore 시작](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)을 참조하세요.
 

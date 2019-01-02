@@ -51,6 +51,6 @@ IaaS가 가장 높은 제어 능력, 유연성 및 이동성을 제공합니다.
 
 ## <a name="next-steps"></a>다음 단계
 
-응용 프로그램에 대한 계산 서비스를 선택하려면 [Azure 계산 서비스에 대한 의사 결정 트리](./compute-decision-tree.md)를 사용합니다.
+애플리케이션에 대한 계산 서비스를 선택하려면 [Azure 계산 서비스에 대한 의사 결정 트리](./compute-decision-tree.md)를 사용합니다.
 
 Azure의 계산 옵션에 대한 보다 자세한 비교 데이터를 보려면 [Azure 계산 서비스 선택 기준](./compute-comparison.md)을 참조하세요.

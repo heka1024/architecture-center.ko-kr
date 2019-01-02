@@ -15,12 +15,12 @@ ms.locfileid: "53004770"
 
 이 예제 시나리오는 Linux 데스크톱용 VDI(가상 데스크톱 인프라)가 필요한 모든 산업에 적용 됩니다. VDI는 데이터 센터의 서버에 상주하는 가상 머신 내부에서 사용자 데스크톱을 실행하는 프로세스를 의미합니다. 이 시나리오의 고객은 VDI 요구 사항을 해결하기 위해 Citrix 기반 솔루션을 사용하기로 선택했습니다.
 
-조직에서는 직원들이 여러 장치와 운영 체제를 사용하는 이기종 환경을 운영하는 경우가 자주 있습니다. 안전한 환경을 유지하면서도 일관적인 응용 프로그램 액세스를 제공하기가 어려울 수 있습니다. Linux 데스크톱용 VDI 솔루션을 사용하면 조직에서는 최종 사용자가 사용하는 장치 또는 OS에 관계없이 액세스를 제공할 수 있습니다.
+조직에서는 직원들이 여러 장치와 운영 체제를 사용하는 이기종 환경을 운영하는 경우가 자주 있습니다. 안전한 환경을 유지하면서도 일관적인 애플리케이션 액세스를 제공하기가 어려울 수 있습니다. Linux 데스크톱용 VDI 솔루션을 사용하면 조직에서는 최종 사용자가 사용하는 장치 또는 OS에 관계없이 액세스를 제공할 수 있습니다.
 
 이 샘플 솔루션은 다음과 같은 이점이 있습니다.
 * 공유 Linux 가상 데스크톱을 사용하여 동일한 인프라에 더 많은 사용자 액세스를 부여하여 투자 수익률을 높일 수 있습니다. 리소스를 중앙 집중식 VDI 환경에 통합하면 최종 사용자 장치의 성능이 높지 않아도 됩니다.
 * 최종 사용자 장치에 관계없이 일관적인 성능이 제공됩니다.
-* 사용자가 아무 장치에서(비 Linux 장치 포함) Linux 응용 프로그램에 액세스할 수 있습니다.
+* 사용자가 아무 장치에서(비 Linux 장치 포함) Linux 애플리케이션에 액세스할 수 있습니다.
 * 분산된 직원에 대한 중요한 데이터를 Azure 데이터 센터에 안전하게 보관할 수 있습니다.
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
@@ -69,7 +69,7 @@ ms.locfileid: "53004770"
 - [Citrix ADC(NetScaler)](https://www.citrix.com/products/citrix-adc)는 응용 프로그램별로 트래픽을 분석하여 웹 응용 프로그램의 레이어 4-레이어 7(L4–L7) 네트워크 트래픽을 지능적으로 분산, 최적화, 보호하는 응용 프로그램 전송 컨트롤러입니다. 
 - [Citrix Storefront](https://www.citrix.com/products/citrix-virtual-apps-and-desktops/citrix-storefront.html)는 보안을 개선하고 배포를 간소화하는 엔터프라이즈 앱 저장소로, 모든 플랫폼의 Citrix Receiver에서 거의 네이티브에 가까운 강력한 최신 사용자 경험을 제공합니다. StoreFront를 사용하면 다중 사이트 및 다중 버전 Citrix 가상 앱 및 데스크톱 환경을 간편하게 관리할 수 있습니다. 
 - [Citrix 라이선스 서버](https://www.citrix.com/buy/licensing/overview.html)는 Citrix 제품의 라이선스를 관리합니다.
-- [Citrix XenDesktops VDA](https://docs.citrix.com/en-us/citrix-virtual-apps-desktops-service)는 응용 프로그램 및 데스크톱 연결을 지원합니다. VDA는 사용자를 위한 응용 프로그램 또는 가상 데스크톱을 실행하는 머신에 설치됩니다. 머신을 전송 컨트롤러에 등록하고 사용자 장치에 대한 HDX(High Definition eXperience) 연결을 관리할 수 있습니다.
+- [Citrix XenDesktops VDA](https://docs.citrix.com/en-us/citrix-virtual-apps-desktops-service)는 응용 프로그램 및 데스크톱 연결을 지원합니다. VDA는 사용자를 위한 애플리케이션 또는 가상 데스크톱을 실행하는 머신에 설치됩니다. 머신을 전송 컨트롤러에 등록하고 사용자 장치에 대한 HDX(High Definition eXperience) 연결을 관리할 수 있습니다.
 - [Citrix 전송 컨트롤러](https://docs.citrix.com/en-us/xenapp-and-xendesktop/7-15-ltsr/manage-deployment/delivery-controllers)는 사용자 액세스를 관리하고 연결을 중개 및 최적화하는 역할을 담당하는 서버 쪽 구성 요소입니다. 이 컨트롤러는 데스크톱 및 서버 이미지를 만드는 Machine Creation Services도 제공합니다.
 
 ### <a name="alternatives"></a>대안
@@ -89,7 +89,7 @@ ms.locfileid: "53004770"
 - 비슷한 역할을 제공하는 모든 서버를 [가용성 집합](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)에 배포해야 합니다.
 - 이 샘플 솔루션에는 재해 복구 기능이 없습니다. [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)를 이 디자인에 추가하면 유용하게 사용할 수 있습니다.
 - 프로덕션 배포의 경우 [백업](/azure/backup/backup-introduction-to-azure-backup), [모니터링](/azure/monitoring-and-diagnostics/monitoring-overview), [업데이트 관리](/azure/automation/automation-update-management) 같은 관리 솔루션을 구현해야 합니다.
-- 이 샘플 솔루션은 사용량 혼합 시 동시 사용자 약 250명(VDA 서버당 약 50-60명)을 감당할 수 있습니다. 하지만 사용하는 응용 프로그램 종류에 따라 숫자가 크게 달라질 수 있습니다. 프로덕션 사용 시 엄격한 부하 테스트를 수행해야 합니다.
+- 이 샘플 솔루션은 사용량 혼합 시 동시 사용자 약 250명(VDA 서버당 약 50-60명)을 감당할 수 있습니다. 하지만 사용하는 애플리케이션 종류에 따라 숫자가 크게 달라질 수 있습니다. 프로덕션 사용 시 엄격한 부하 테스트를 수행해야 합니다.
 
 ## <a name="deploy-this-scenario"></a>시나리오 배포
 

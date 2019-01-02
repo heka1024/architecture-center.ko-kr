@@ -12,7 +12,7 @@ ms.locfileid: "52902553"
 ---
 # <a name="choosing-a-microsoft-cognitive-services-technology"></a>Microsoft Cognitive Services 기술 선택
 
-Microsoft Cognitive Services는 AI(인공 지능) 응용 프로그램 및 데이터 흐름에 사용할 수 있는 클라우드 기반 API입니다. 이 기능은 응용 프로그램에서 바로 사용할 수 있는 미리 학습된 모델을 제공하므로, 사용자 입장에서 데이터 및 모델 학습이 없어도 됩니다. Cognitive Services는 Microsoft의 AI 및 연구 팀에서 개발했으며 최신 심층 학습 알고리즘을 활용합니다. 이 서비스는 HTTP REST 인터페이스를 통해 사용됩니다. 또한 많은 일반적인 응용 프로그램 개발 프레임워크에 SDK를 사용할 수 있습니다.
+Microsoft Cognitive Services는 AI(인공 지능) 애플리케이션 및 데이터 흐름에 사용할 수 있는 클라우드 기반 API입니다. 이 기능은 애플리케이션에서 바로 사용할 수 있는 미리 학습된 모델을 제공하므로, 사용자 입장에서 데이터 및 모델 학습이 없어도 됩니다. Cognitive Services는 Microsoft의 AI 및 연구 팀에서 개발했으며 최신 심층 학습 알고리즘을 활용합니다. 이 서비스는 HTTP REST 인터페이스를 통해 사용됩니다. 또한 많은 일반적인 애플리케이션 개발 프레임워크에 SDK를 사용할 수 있습니다.
 
 Cognitive Services에는 다음이 포함됩니다.
 

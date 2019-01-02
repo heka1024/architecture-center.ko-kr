@@ -24,10 +24,10 @@ FMA를 수행하는 일반적인 프로세스는 다음과 같습니다.
 3. 전체적인 위험도에 따라 각 장애 모드를 평가합니다. 다음 항목을 고려합니다.  
 
    * 장애의 가능성은 무엇인가요? 비교적 일반적인가요? 매우 드물게 발생하나요? 우선 순위를 지정하기 위한 것이므로 정확한 숫자는 필요하지 않습니다.
-   * 가용성, 데이터 손실, 금전적 비용 및 비즈니스 중단과 관련하여 응용 프로그램에 미치는 영향은 무엇인가요?
-4. 각 장애 모드에 대해 응용 프로그램에서 응답하고 복구하는 방법을 결정합니다. 비용 및 응용 프로그램 복잡성의 장단점을 고려합니다.   
+   * 가용성, 데이터 손실, 금전적 비용 및 비즈니스 중단과 관련하여 애플리케이션에 미치는 영향은 무엇인가요?
+4. 각 장애 모드에 대해 애플리케이션에서 응답하고 복구하는 방법을 결정합니다. 비용 및 애플리케이션 복잡성의 장단점을 고려합니다.   
 
-FMA 프로세스에 대한 시작점으로, 이 문서에는 잠재적인 장애 모드의 카탈로그 및 해당 완화 방법이 포함되어 있습니다. 카탈로그는 기술 또는 Azure 서비스와 응용 프로그램 수준 디자인을 위한 일반 범주로 구성됩니다. 카탈로그는 완벽하지 않지만 Azure 핵심 서비스의 많은 부분을 다루고 있습니다.
+FMA 프로세스에 대한 시작점으로, 이 문서에는 잠재적인 장애 모드의 카탈로그 및 해당 완화 방법이 포함되어 있습니다. 카탈로그는 기술 또는 Azure 서비스와 애플리케이션 수준 디자인을 위한 일반 범주로 구성됩니다. 카탈로그는 완벽하지 않지만 Azure 핵심 서비스의 많은 부분을 다루고 있습니다.
 
 ## <a name="app-service"></a>App Service
 ### <a name="app-service-app-shuts-down"></a>App Service 앱이 종료됩니다.
@@ -35,27 +35,27 @@ FMA 프로세스에 대한 시작점으로, 이 문서에는 잠재적인 장애
 
 * 예상된 종료
 
-  * 운영자가 응용 프로그램(예: Azure Portal 사용)을 종료합니다.
+  * 운영자가 애플리케이션(예: Azure Portal 사용)을 종료합니다.
   * 앱이 유휴 상태이므로 언로드되었습니다. (`Always On` 설정이 사용 안 함인 경우에만)
 * 예기치 않은 종료
 
   * 앱이 충돌합니다.
   * App Service VM 인스턴스를 사용할 수 없게 됩니다.
 
-Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로세스 크래시)를 catch하며, 응용 프로그램 도메인 종료를 catch할 수 있는 유일한 방법입니다.
+Application_End 로깅은 애플리케이션 도메인 종료(소프트 프로세스 크래시)를 catch하며, 애플리케이션 도메인 종료를 catch할 수 있는 유일한 방법입니다.
 
 **복구**
 
-* 종료가 예상되면 응용 프로그램의 종료 이벤트를 사용하여 정상적으로 종료합니다. 예를 들어 ASP.NET에서는 `Application_End` 메서드를 사용합니다.
-* 유휴 상태에 있는 응용 프로그램이 언로드되었으면 다음 요청 시 자동으로 다시 시작됩니다. 그러나 "콜드 부팅" 비용이 발생합니다.
-* 유휴 상태에 있는 응용 프로그램이 언로드되지 않도록 방지하려면 웹앱에서 `Always On` 설정을 활성화합니다. [Azure App Service에서 웹앱 구성][app-service-configure]을 참조하세요.
+* 종료가 예상되면 애플리케이션의 종료 이벤트를 사용하여 정상적으로 종료합니다. 예를 들어 ASP.NET에서는 `Application_End` 메서드를 사용합니다.
+* 유휴 상태에 있는 애플리케이션이 언로드되었으면 다음 요청 시 자동으로 다시 시작됩니다. 그러나 "콜드 부팅" 비용이 발생합니다.
+* 유휴 상태에 있는 애플리케이션이 언로드되지 않도록 방지하려면 웹앱에서 `Always On` 설정을 활성화합니다. [Azure App Service에서 웹앱 구성][app-service-configure]을 참조하세요.
 * 운영자가 앱을 종료하지 못하도록 하려면 `ReadOnly` 수준의 리소스 잠금을 설정합니다. [Azure Resource Manager를 사용하여 리소스 잠그기][rm-locks]를 참조하세요.
 * 앱의 작동이 중단되거나 App Service VM을 사용할 수 없게 되면 App Service에서 앱을 자동으로 다시 시작합니다.
 
-**진단**. 응용 프로그램 및 웹 서버 로그. [Azure App Service에서 웹앱에 대한 진단 로깅 설정][app-service-logging]을 참조하세요.
+**진단**. 애플리케이션 및 웹 서버 로그. [Azure App Service에서 웹앱에 대한 진단 로깅 설정][app-service-logging]을 참조하세요.
 
 ### <a name="a-particular-user-repeatedly-makes-bad-requests-or-overloads-the-system"></a>특정 사용자가 반복적으로 잘못 요청하거나 시스템을 오버로드합니다.
-**검색**. 사용자를 인증하고 응용 프로그램 로그에 사용자 ID를 포함합니다.
+**검색**. 사용자를 인증하고 애플리케이션 로그에 사용자 ID를 포함합니다.
 
 **복구**
 
@@ -65,9 +65,9 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 **진단**. 모든 인증 요청을 기록합니다.
 
 ### <a name="a-bad-update-was-deployed"></a>잘못된 업데이트가 배포되었습니다.
-**검색**. Azure Portal을 통해 응용 프로그램 상태를 모니터링하거나([Azure 웹앱 성능 모니터링][app-insights-web-apps] 참조) [상태 엔드포인트 모니터링 패턴][health-endpoint-monitoring-pattern]을 구현합니다.
+**검색**. Azure Portal을 통해 애플리케이션 상태를 모니터링하거나([Azure 웹앱 성능 모니터링][app-insights-web-apps] 참조) [상태 엔드포인트 모니터링 패턴][health-endpoint-monitoring-pattern]을 구현합니다.
 
-**복구**. 여러 [배포 슬롯][app-service-slots]을 사용하고 마지막으로 성공한 배포로 롤백합니다. 자세한 내용은 [기본 웹 응용 프로그램][ra-web-apps-basic]을 참조하세요.
+**복구**. 여러 [배포 슬롯][app-service-slots]을 사용하고 마지막으로 성공한 배포로 롤백합니다. 자세한 내용은 [기본 웹 애플리케이션][ra-web-apps-basic]을 참조하세요.
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 ### <a name="openid-connect-oidc-authentication-fails"></a>OIDC(OpenID Connect) 인증이 실패합니다.
@@ -145,7 +145,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 
 * SDK에서 실패한 시도를 자동으로 다시 시도합니다. 다시 시도 횟수 및 최대 대기 시간을 설정하려면 `ConnectionPolicy.RetryOptions`를 구성합니다. 클라이언트에서 발생시키는 예외는 재시도 정책 시도 횟수를 초과하거나 일시적인 오류가 아닙니다.
 * Cosmos DB에서 클라이언트를 제한하는 경우 HTTP 429 오류를 반환합니다. `DocumentClientException`에서 상태 코드를 확인합니다. 429 오류가 지속적으로 발생하면 컬렉션의 처리량 값을 늘리는 것이 좋습니다.
-* 둘 이상의 지역에서 Cosmos DB 데이터베이스를 복제합니다. 주 지역이 실패하면 다른 지역이 쓰기 지역으로 승격됩니다. 또한 장애 조치를 수동으로 트리거할 수도 있습니다. SDK에서 자동 검색 및 라우팅을 수행하므로 장애 조치 후에 응용 프로그램 코드가 계속 작동합니다. 장애 조치 기간(일반적으로 몇 분) 동안 SDK에서 새 쓰기 지역을 찾으므로 쓰기 작업의 대기 시간이 길어집니다.
+* 둘 이상의 지역에서 Cosmos DB 데이터베이스를 복제합니다. 주 지역이 실패하면 다른 지역이 쓰기 지역으로 승격됩니다. 또한 장애 조치를 수동으로 트리거할 수도 있습니다. SDK에서 자동 검색 및 라우팅을 수행하므로 장애 조치 후에 애플리케이션 코드가 계속 작동합니다. 장애 조치 기간(일반적으로 몇 분) 동안 SDK에서 새 쓰기 지역을 찾으므로 쓰기 작업의 대기 시간이 길어집니다.
   자세한 내용은 [SQL API를 사용하여 Azure Cosmos DB 전역 배포를 설정하는 방법][cosmosdb-multi-region]을 참조하세요.
 * 대체(fallback) 방식으로, 백업 큐에 문서를 유지하고 나중에 큐를 처리합니다.
 
@@ -170,7 +170,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 **복구**
 
 * 다시 시도 메커니즘을 사용합니다. 각 클라이언트에는 자체의 다시 시도 정책이 있습니다.
-* 응용 프로그램에서 축소된 일관성 수준을 허용할 수 있으면 `quorum`의 `write_consistency` 설정으로 쓰기 작업을 수행하는 것이 좋습니다.
+* 애플리케이션에서 축소된 일관성 수준을 허용할 수 있으면 `quorum`의 `write_consistency` 설정으로 쓰기 작업을 수행하는 것이 좋습니다.
 
 자세한 내용은 [Azure에서 Elasticsearch 실행][elasticsearch-azure]을 참조하세요.
 
@@ -187,7 +187,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 
 **진단**. [저장소 메트릭][storage-metrics]을 사용합니다.
 
-### <a name="the-application-cannot-process-a-particular-message-from-the-queue"></a>응용 프로그램에서 큐의 특정 메시지를 처리할 수 없습니다.
+### <a name="the-application-cannot-process-a-particular-message-from-the-queue"></a>애플리케이션에서 큐의 특정 메시지를 처리할 수 없습니다.
 **검색**. 애플리케이션 특정입니다. 예를 들어 메시지에 유효하지 않은 데이터가 있거나 비즈니스 논리가 어떤 이유로 실패합니다.
 
 **복구**
@@ -199,7 +199,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 > [!NOTE]
 > WebJobs를 통해 저장소 큐를 사용하는 경우 WebJobs SDK에서 기본적으로 포이즌 메시지 처리를 제공합니다. [WebJobs SDK를 통해 Azure 큐 저장소를 사용하는 방법][sb-poison-message]을 참조하세요.
 
-**진단**. 응용 프로그램 로깅을 사용합니다.
+**진단**. 애플리케이션 로깅을 사용합니다.
 
 ## <a name="redis-cache"></a>Redis Cache
 ### <a name="reading-from-the-cache-fails"></a>캐시에서 읽는 작업이 실패합니다.
@@ -233,7 +233,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 * 쿼리의 경우 보조 복제본에서 읽습니다.
 * 삽입 및 업데이트의 경우 수동으로 보조 복제본에 장애 조치합니다. [Azure SQL Database에 대해 계획되거나 계획되지 않은 장애 조치 시작][sql-db-failover]을 참조하세요.
 
-복제본은 다른 연결 문자열을 사용하므로 응용 프로그램에서 연결 문자열을 업데이트해야 합니다.
+복제본은 다른 연결 문자열을 사용하므로 애플리케이션에서 연결 문자열을 업데이트해야 합니다.
 
 ### <a name="client-runs-out-of-connections-in-the-connection-pool"></a>클라이언트에 연결 풀의 연결이 부족합니다.
 **검색**. `System.InvalidOperationException` 오류를 catch합니다.
@@ -244,12 +244,12 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 * 완화 계획으로, 각 사용 사례에 대한 연결 풀을 격리하여 하나의 사용 사례에서 모든 연결을 점유할 수 없도록 합니다.
 * 최대 연결 풀 수를 늘립니다.
 
-**진단**. 응용 프로그램 로그.
+**진단**. 애플리케이션 로그.
 
 ### <a name="database-connection-limit-is-reached"></a>데이터베이스 연결 제한에 도달했습니다.
 **검색**. Azure SQL Database는 동시 작업자, 로그인 및 세션의 수를 제한합니다. 이 제한은 서비스 계층에 따라 다릅니다. 자세한 내용은 [Azure SQL Database 리소스 제한][sql-db-limits]을 참조하세요.
 
-이러한 오류를 감지하려면 `System.Data.SqlClient.SqlException`을 catch하고 SQL 오류 코드에서 `SqlException.Number` 값을 확인합니다. 관련 오류 코드 목록은 [SQL Database 클라이언트 응용 프로그램의 SQL 오류 코드: 데이터베이스 연결 오류 및 기타 문제][sql-db-errors]를 참조하세요.
+이러한 오류를 감지하려면 `System.Data.SqlClient.SqlException`을 catch하고 SQL 오류 코드에서 `SqlException.Number` 값을 확인합니다. 관련 오류 코드 목록은 [SQL Database 클라이언트 애플리케이션의 SQL 오류 코드: 데이터베이스 연결 오류 및 기타 문제][sql-db-errors]를 참조하세요.
 
 **복구**. 이러한 오류는 일시적인 것으로 간주되므로 다시 시도하면 문제가 해결될 수 있습니다. 이러한 오류가 지속적으로 발생하면 데이터베이스 크기를 조정하는 것이 좋습니다.
 
@@ -284,7 +284,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
    * 활성 복제: 클라이언트에서 모든 메시지를 두 큐로 보냅니다. 수신기는 두 큐 모두에서 수신 대기합니다. 고유 식별자를 사용하여 메시지에 태그를 지정하면 클라이언트에서 중복 메시지를 버릴 수 있습니다.
    * 수동 복제: 클라이언트에서 하나의 큐에 메시지를 보냅니다. 오류가 있으면 클라이언트에서 다른 큐로 대체합니다. 수신기는 두 큐 모두에서 수신 대기합니다. 이 방식은 전송되는 중복 메시지의 수를 줄입니다. 그러나 여전히 수신기에서 중복 메시지를 처리해야 합니다.
 
-     자세한 내용은 [GeoReplication 샘플][sb-georeplication-sample] 및 [Service Bus 가동 중단 및 재해로부터 응용 프로그램을 보호하기 위한 모범 사례](/azure/service-bus-messaging/service-bus-outages-disasters/)를 참조하세요.
+     자세한 내용은 [GeoReplication 샘플][sb-georeplication-sample] 및 [Service Bus 가동 중단 및 재해로부터 애플리케이션을 보호하기 위한 모범 사례](/azure/service-bus-messaging/service-bus-outages-disasters/)를 참조하세요.
 
 ### <a name="duplicate-message"></a>메시지가 중복되었습니다.
 **검색**. 메시지의 `MessageId` 및 `DeliveryCount` 속성을 검사합니다.
@@ -299,7 +299,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 
 **진단**. 중복 메시지를 기록합니다.
 
-### <a name="the-application-cannot-process-a-particular-message-from-the-queue"></a>응용 프로그램에서 큐의 특정 메시지를 처리할 수 없습니다.
+### <a name="the-application-cannot-process-a-particular-message-from-the-queue"></a>애플리케이션에서 큐의 특정 메시지를 처리할 수 없습니다.
 **검색**. 애플리케이션 특정입니다. 예를 들어 메시지에 유효하지 않은 데이터가 있거나 비즈니스 논리가 어떤 이유로 실패합니다.
 
 **복구**
@@ -311,7 +311,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 
 자세한 내용은 [Service Bus 배달 못 한 편지 큐의 개요][sb-dead-letter-queue]를 참조하세요.
 
-**진단**. 응용 프로그램에서 메시지를 배달 못 한 편지 큐로 이동할 때마다 응용 프로그램 로그에 이벤트를 기록합니다.
+**진단**. 애플리케이션에서 메시지를 배달 못 한 편지 큐로 이동할 때마다 애플리케이션 로그에 이벤트를 기록합니다.
 
 ## <a name="service-fabric"></a>Service Fabric
 ### <a name="a-request-to-a-service-fails"></a>서비스에 대한 요청이 실패합니다.
@@ -323,7 +323,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 * **상태 저장 서비스**. 트랜잭션의 신뢰할 수 있는 컬렉션에 대한 작업을 래핑합니다. 오류가 있으면 트랜잭션이 롤백됩니다. 큐에서 끌어온 요청은 다시 처리됩니다.
 * **상태 비저장 서비스**. 서비스에서 외부 저장소에 데이터를 유지하는 경우 모든 작업이 idempotent가 되어야 합니다.
 
-**진단**. 응용 프로그램 로그
+**진단**. 애플리케이션 로그
 
 ### <a name="service-fabric-node-is-shut-down"></a>Service Fabric 노드가 종료됩니다.
 **검색**. 취소 토큰이 서비스의 `RunAsync` 메서드로 전달됩니다. Service Fabric에서 노드를 종료하기 전에 작업을 취소합니다.
@@ -366,7 +366,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 
 * 부하 분산 장치 뒤에 있는 가용성 집합에 둘 이상의 백 엔드 VM을 배포합니다.
 * 일시적인 연결 오류이면 TCP에서 메시지 전송을 성공적으로 다시 시도하는 경우가 있습니다.
-* 응용 프로그램에서 다시 시도 정책을 구현합니다.
+* 애플리케이션에서 다시 시도 정책을 구현합니다.
 * 영구 오류 또는 일시적이지 않은 오류의 경우 [회로 차단기][circuit-breaker] 패턴을 구현합니다.
 * 호출하는 VM에서 네트워크 송신 제한을 초과하면 아웃바운드 큐가 채워집니다. 아웃바운드 큐가 일관되게 가득 차면 크기를 확장하는 것이 좋습니다.
 
@@ -375,7 +375,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 ### <a name="vm-instance-becomes-unavailable-or-unhealthy"></a>VM 인스턴스가 사용할 수 없거나 비정상적인 상태가 됩니다.
 **검색**. VM 인스턴스가 정상인지 여부를 나타내는 Load Balancer [상태 프로브][lb-probe]를 구성합니다. 프로브를 통해 중요한 기능이 올바르게 응답하는지 여부를 확인해야 합니다.
 
-**복구**. 각 응용 프로그램 계층에 대해 여러 VM 인스턴스를 동일한 가용성 집합에 배치하고, VM 앞에 Load Balancer를 배치합니다. 상태 프로브가 실패하면 Load Balancer에서 비정상 인스턴스에 대한 새 연결 전송을 중지합니다.
+**복구**. 각 애플리케이션 계층에 대해 여러 VM 인스턴스를 동일한 가용성 집합에 배치하고, VM 앞에 Load Balancer를 배치합니다. 상태 프로브가 실패하면 Load Balancer에서 비정상 인스턴스에 대한 새 연결 전송을 중지합니다.
 
 **진단**. Load Balancer [로그 분석][lb-monitor]을 사용합니다.
 
@@ -395,8 +395,8 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 **복구**. 웹앱에서 `Always On` 설정을 사용하도록 설정합니다. 자세한 내용은 [WebJobs로 백그라운드 작업 실행][web-jobs]을 참조하세요.
 
 ## <a name="application-design"></a>애플리케이션 설계
-### <a name="application-cant-handle-a-spike-in-incoming-requests"></a>응용 프로그램에서 들어오는 요청의 스파이크를 처리할 수 없습니다.
-**검색**. 응용 프로그램에 따라 다릅니다. 일반적인 증상은 다음과 같습니다.
+### <a name="application-cant-handle-a-spike-in-incoming-requests"></a>애플리케이션에서 들어오는 요청의 스파이크를 처리할 수 없습니다.
+**검색**. 애플리케이션에 따라 다릅니다. 일반적인 증상은 다음과 같습니다.
 
 * 웹 사이트에서 HTTP 5xx 오류 코드를 반환하기 시작합니다.
 * 데이터베이스 또는 저장소와 같은 종속 서비스에서 요청을 제한하기 시작합니다. 서비스에 따라 HTTP 429(너무 많은 요청)와 같은 HTTP 오류를 찾습니다.
@@ -405,11 +405,11 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 **복구**
 
 * 규모를 확장하여 증가된 부하를 처리합니다.
-* 연속 장애로 인해 전체 응용 프로그램이 중단되지 않도록 장애를 완화합니다. 완화 전략은 다음과 같습니다.
+* 연속 장애로 인해 전체 애플리케이션이 중단되지 않도록 장애를 완화합니다. 완화 전략은 다음과 같습니다.
 
   * [패턴 제한][throttling-pattern]을 구현하여 백 엔드 시스템의 과부하를 방지합니다.
   * [큐 기반 부하 평준화][queue-based-load-leveling]를 사용하여 요청을 버퍼링하고 적절한 속도로 처리합니다.
-  * 특정 클라이언트의 우선 순위를 지정합니다. 예를 들어 응용 프로그램에 체험 계층과 유료 계층이 있는 경우 체험 계층의 고객은 제한하고 유료 계층의 고객은 제한하지 않습니다. [우선 순위 큐 패턴][priority-queue-pattern]을 참조하세요.
+  * 특정 클라이언트의 우선 순위를 지정합니다. 예를 들어 애플리케이션에 체험 계층과 유료 계층이 있는 경우 체험 계층의 고객은 제한하고 유료 계층의 고객은 제한하지 않습니다. [우선 순위 큐 패턴][priority-queue-pattern]을 참조하세요.
 
 **진단**. [App Service 진단 로깅][app-service-logging]을 사용합니다. [Azure Log Analytics][azure-log-analytics], [Application Insights][app-insights] 또는 [New Relic][new-relic]과 같은 서비스를 사용하면 진단 로그를 이해하는 데 도움이 됩니다.
 
@@ -430,7 +430,7 @@ Application_End 로깅은 응용 프로그램 도메인 종료(소프트 프로�
 **복구**
 
 1. 일시적 장애 시 다시 시도합니다.
-2. *N*회의 시도 후에 호출이 실패하면 대체(fallback) 작업을 수행합니다. (응용 프로그램 특정입니다.)
+2. *N*회의 시도 후에 호출이 실패하면 대체(fallback) 작업을 수행합니다. (애플리케이션 특정입니다.)
 3. 연속 장애를 방지하도록 [회로 차단기 패턴][circuit-breaker]을 구현합니다.
 
 **진단**. 모든 원격 호출 실패를 기록합니다.

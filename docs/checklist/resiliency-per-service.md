@@ -32,7 +32,7 @@ ms.locfileid: "53307183"
 
 **스테이징 슬롯에 배포** 스테이징을 위한 배포 슬롯을 만들 수 있습니다. 애플리케이션 업데이트를 스테이징 슬롯에 배포하고 프로덕션으로 교환하기 전에 배포를 확인합니다. 이렇게 하면 프로덕션에서 잘못된 업데이트의 기회가 감소합니다. 또한 모든 인스턴스가 프로덕션으로 교환되기 전에 확실히 준비되기도 합니다. 많은 애플리케이션에는 중요한 준비 및 콜드 부팅 시간이 있습니다. 자세한 내용은 [Azure App Service에서 웹앱에 대한 스테이징 환경 설정](/azure/app-service-web/web-sites-staged-publishing/)을 참조하세요.
 
-**마지막으로 성공한(LKG) 배포를 저장하는 배포 슬롯을 만듭니다.** 업데이트를 프로덕션에 배포하는 경우 이전 프로덕션 배포를 LKG 슬롯으로 이동합니다. 이렇게 하면 잘못된 배포를 롤백하기가 더 쉬워집니다. 나중에 문제가 발견되면 LKG 버전으로 신속하게 되돌릴 수 있습니다. 자세한 내용은 [기본적인 웹 응용 프로그램](../reference-architectures/app-service-web-app/basic-web-app.md)을 참조하세요.
+**마지막으로 성공한(LKG) 배포를 저장하는 배포 슬롯을 만듭니다.** 업데이트를 프로덕션에 배포하는 경우 이전 프로덕션 배포를 LKG 슬롯으로 이동합니다. 이렇게 하면 잘못된 배포를 롤백하기가 더 쉬워집니다. 나중에 문제가 발견되면 LKG 버전으로 신속하게 되돌릴 수 있습니다. 자세한 내용은 [기본 웹 애플리케이션](../reference-architectures/app-service-web-app/basic-web-app.md)을 참조하세요.
 
 응용 프로그램 로깅 및 웹 서버 로깅을 포함하여 **진단 로깅 설정**합니다. 로깅은 모니터링 및 진단을 위해 중요합니다. [Azure App Service에서 웹앱에 대한 진단 로깅 설정](/azure/app-service-web/web-sites-enable-diagnostic-log/) 참조
 
@@ -88,7 +88,7 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 **예외 처리.** 메시지 API는 사용자 오류, 구성 오류 또는 기타 오류가 발생할 때 예외를 생성합니다. 클라이언트 코드(발신자 및 수신자)는 코드에서 이러한 예외를 처리해야 합니다. 이는 예외 처리를 사용하여 메시지의 일괄 처리 전체 손실을 방지할 수 있는 일괄 처리 프로세싱에서 특히 중요합니다. 자세한 내용은 [Service Bus 메시지 예외](/azure/service-bus-messaging/service-bus-messaging-exceptions)를 참조하세요.
 
-**재시도 정책**. Service Bus를 사용하면 응용 프로그램에 가장 적합한 재시도 정책을 선택할 수 있습니다. 기본 정책은 최대 9회까지 재시도를 허용하고 30초 동안 기다리는 것이지만, 추가로 조정할 수 있습니다. 자세한 내용은 [재시도 정책 - Service Bus](/azure/architecture/best-practices/retry-service-specific#service-bus)를 참조하세요.
+**재시도 정책**. Service Bus를 사용하면 애플리케이션에 가장 적합한 재시도 정책을 선택할 수 있습니다. 기본 정책은 최대 9회까지 재시도를 허용하고 30초 동안 기다리는 것이지만, 추가로 조정할 수 있습니다. 자세한 내용은 [재시도 정책 - Service Bus](/azure/architecture/best-practices/retry-service-specific#service-bus)를 참조하세요.
 
 **배달 못한 편지 큐 사용**. 여러 번의 재시도 후 처리할 수 없거나 수신자에게 전달할 수 없는 메시지는 배달 못한 편지 큐로 이동됩니다. 배달 못한 편지 큐에서 메시지를 읽고, 검사하고, 문제를 해결하는 프로세스를 구현하세요. 시나리오에 따라 메시지를 있는 그대로 다시 시도하거나, 변경 후 다시 시도하거나, 메시지를 삭제할 수 있습니다. 자세한 내용은 [Service Bus 배달 못한 편지 큐의 개요](/azure/service-bus-messaging/service-bus-dead-letter-queues)를 참조하세요.
 
@@ -96,11 +96,11 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 ## <a name="storage"></a>Storage
 
-**응용 프로그램 데이터의 경우 RA-GRS(읽기-쓰기 지역 중복 저장소)를 사용합니다.** RA-GRS 저장소는 데이터를 보조 지역에 복제하고 보조 지역에서 읽기 전용 액세스를 제공합니다. 주 지역에 저장소 중단이 있는 경우 응용 프로그램은 보조 지역에서 데이터를 읽을 수 있습니다. 자세한 내용은 [Azure Storage 복제](/azure/storage/storage-redundancy/)를 참조하세요.
+**응용 프로그램 데이터의 경우 RA-GRS(읽기-쓰기 지역 중복 저장소)를 사용합니다.** RA-GRS 저장소는 데이터를 보조 지역에 복제하고 보조 지역에서 읽기 전용 액세스를 제공합니다. 주 지역에 스토리지 중단이 있는 경우 애플리케이션은 보조 지역에서 데이터를 읽을 수 있습니다. 자세한 내용은 [Azure Storage 복제](/azure/storage/storage-redundancy/)를 참조하세요.
 
 **VM 디스크의 경우 Managed Disks를 사용합니다.** [Managed Disks][managed-disks]는 디스크들이 서로 충분히 격리되어 단일 실패 지점을 방지하므로 가용성 집합의 VM에 대해 더 나은 신뢰성을 제공합니다. 또한 Managed Disks는 저장소 계정에서 만든 VHD의 IOPS 제한이 적용되지 않습니다. 자세한 내용은 [Azure에서 Windows 가상 머신의 가용성 관리][vm-manage-availability]를 참조하세요.
 
-**Queue Storage의 경우 다른 지역에 백업 큐를 만듭니다.** Queue Storage의 경우 항목을 큐에 저장하거나 큐에서 제거할 수 없으므로 읽기 전용 복제본의 사용이 제한됩니다. 그 대신에 다른 지역의 저장소 계정에 백업 큐를 만듭니다. 저장소 중단이 있는 경우 애플리케이션은 주 지역이 다시 사용할 수 있게 될 때까지 백업 큐를 사용할 수 있습니다. 이런 방식으로 응용 프로그램이 새 요청을 계속 처리할 수 있습니다.
+**Queue Storage의 경우 다른 지역에 백업 큐를 만듭니다.** Queue Storage의 경우 항목을 큐에 저장하거나 큐에서 제거할 수 없으므로 읽기 전용 복제본의 사용이 제한됩니다. 그 대신에 다른 지역의 저장소 계정에 백업 큐를 만듭니다. 저장소 중단이 있는 경우 애플리케이션은 주 지역이 다시 사용할 수 있게 될 때까지 백업 큐를 사용할 수 있습니다. 이런 방식으로 애플리케이션이 새 요청을 계속 처리할 수 있습니다.
 
 ## <a name="sql-database"></a>SQL Database
 
@@ -122,7 +122,7 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 ## <a name="sql-server-running-in-a-vm"></a>VM에서 실행되는 SQL Server
 
-**데이터베이스를 복제합니다.** SQL Server Always On 가용성 그룹을 사용하여 데이터베이스를 복제합니다. SQL Server 인스턴스 하나가 실패하는 경우 고가용성을 제공 합니다. 자세한 내용은 [N 계층 응용 프로그램에 대해 Windows VM 실행](../reference-architectures/virtual-machines-windows/n-tier.md) 참조
+**데이터베이스를 복제합니다.** SQL Server Always On 가용성 그룹을 사용하여 데이터베이스를 복제합니다. SQL Server 인스턴스 하나가 실패하는 경우 고가용성을 제공 합니다. 자세한 내용은 [N 계층 애플리케이션에 대해 Windows VM 실행](../reference-architectures/virtual-machines-windows/n-tier.md) 참조
 
 **데이터베이스를 백업합니다**. 이미 [Azure Backup](https://azure.microsoft.com/documentation/services/backup/)을 사용하여 VM을 백업하는 경우 [DPM을 사용하는 SQL Server용 Azure Backup 워크로드](/azure/backup/backup-azure-backup-sql/)의 사용을 고려합니다. 이 방법에서는 조직에 대한 백업 관리자 역할 하나와 VM 및 SQL Server에 대한 통합 복구 절차가 있습니다. 그렇지 않으면 [Microsoft Azure에 대한 SQL Server 관리 백업](https://msdn.microsoft.com/library/dn449496.aspx)을 사용합니다.
 
@@ -142,7 +142,7 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 **Azure Site Recovery를 사용하여 VM 복제.** [Site Recovery][site-recovery]를 사용하여 Azure VM을 복제할 때 모든 VM 디스크가 지속적으로 대상 지역에 비동기적으로 복제됩니다. 복구 지점은 몇 분 간격으로 생성됩니다. 이렇게 하면 시간 순으로 RPO(복구 지점 목표)가 제공됩니다. 프로덕션 애플리케이션 또는 진행 중인 복제에 영향을 주지 않고 재해 복구 훈련을 원하는 만큼 수행할 수 있습니다. 자세한 내용은 [Azure로 재해 복구 훈련 실행][site-recovery-test]을 참조하세요.
 
-**성능 요구 사항을 기반으로 올바른 VM 크기를 선택합니다.** 기존 워크로드를 Azure로 이동할 때 온-프레미스 서버와 가장 근접하게 일치하는 VM 크기부터 사용하기 시작합니다. 그런 다음 CPU, 메모리 및 디스크 IOPS에 따라 실제 워크로드의 성능을 측정하고 필요에 따라 크기를 조정합니다. 이렇게 하면 해당 응용 프로그램이 클라우드 환경에서 예상한 대로 작동합니다. 또한 여러 NIC가 필요한 경우 각 크기에 대한 NIC 제한을 알아야 합니다.
+**성능 요구 사항을 기반으로 올바른 VM 크기를 선택합니다.** 기존 워크로드를 Azure로 이동할 때 온-프레미스 서버와 가장 근접하게 일치하는 VM 크기부터 사용하기 시작합니다. 그런 다음 CPU, 메모리 및 디스크 IOPS에 따라 실제 워크로드의 성능을 측정하고 필요에 따라 크기를 조정합니다. 이렇게 하면 해당 애플리케이션이 클라우드 환경에서 예상한 대로 작동합니다. 또한 여러 NIC가 필요한 경우 각 크기에 대한 NIC 제한을 알아야 합니다.
 
 **VHD에 Managed Disks를 사용합니다.** [Managed Disks][managed-disks]는 디스크들이 서로 충분히 격리되어 단일 실패 지점을 방지하므로 가용성 집합의 VM에 대해 더 나은 신뢰성을 제공합니다. 또한 Managed Disks는 저장소 계정에서 만든 VHD의 IOPS 제한이 적용되지 않습니다. 자세한 내용은 [Azure에서 Windows 가상 머신의 가용성 관리][vm-manage-availability]를 참조하세요.
 
@@ -158,7 +158,7 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 **공용 IP 주소를 허용하거나 차단하려면 NSG를 서브넷에 추가합니다.** 악의적인 사용자의 액세스를 차단하거나 애플리케이션에 액세스할 권한을 가진 사용자의 액세스만 허용합니다.
 
-**사용자 지정 상태 프로브를 만듭니다.** 부하 분산 장치 상태 프로브는 HTTP 또는 TCP를 테스트할 수 있습니다. VM에서 HTTP 서버를 실행하는 경우 HTTP 프로브는 TCP 프로브보다 더 나은 상태 표시기입니다. HTTP 프로브의 경우 모든 중요 의존성을 포함하여 응용 프로그램의 전반적인 상태를 보고하는 사용자 지정 엔드포인트를 사용합니다. 자세한 내용은 [Azure 부하 분산 장치 개요](/azure/load-balancer/load-balancer-overview/)를 참조하세요.
+**사용자 지정 상태 프로브를 만듭니다.** 부하 분산 장치 상태 프로브는 HTTP 또는 TCP를 테스트할 수 있습니다. VM에서 HTTP 서버를 실행하는 경우 HTTP 프로브는 TCP 프로브보다 더 나은 상태 표시기입니다. HTTP 프로브의 경우 모든 중요 의존성을 포함하여 애플리케이션의 전반적인 상태를 보고하는 사용자 지정 엔드포인트를 사용합니다. 자세한 내용은 [Azure 부하 분산 장치 개요](/azure/load-balancer/load-balancer-overview/)를 참조하세요.
 
 **상태 프로브를 차단하지 않습니다.** 부하 분산 장치 상태 프로브는 알려진 IP 주소 168.63.129.16에서 전송됩니다. 방화벽 정책 또는 NSG(네트워크 보안 그룹)에서 IP에 대한 트래픽을 차단하지 마세요. 상태 프로브를 차단하면 부하 분산 장치가 VM을 윤번에서 제거할 것입니다.
 

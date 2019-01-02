@@ -23,7 +23,7 @@ ms.locfileid: "50916383"
 
 ## <a name="context-and-problem"></a>컨텍스트 및 문제점
 
-애플리케이션은 데이터 저장소에 저장된 정보에 대한 반복적인 액세스를 개선하기 위해 캐시를 사용합니다. 그러나, 캐시된 데이터가 언제나 데이터 저장소에 저장된 데이터와 일관성을 완전히 유지하지는 것은 불가능합니다. 응용 프로그램은 캐시에 보관된 데이터를 최신 상태로 유지할 수 있도록 지원하는 전략을 구현하는 동시에, 캐시에 보관된 오래된 데이터로 인해 발생하는 상황을 감지하고 처리할 수 있어야 합니다.
+애플리케이션은 데이터 저장소에 저장된 정보에 대한 반복적인 액세스를 개선하기 위해 캐시를 사용합니다. 그러나, 캐시된 데이터가 언제나 데이터 저장소에 저장된 데이터와 일관성을 완전히 유지하지는 것은 불가능합니다. 애플리케이션은 캐시에 보관된 데이터를 최신 상태로 유지할 수 있도록 지원하는 전략을 구현하는 동시에, 캐시에 보관된 오래된 데이터로 인해 발생하는 상황을 감지하고 처리할 수 있어야 합니다.
 
 ## <a name="solution"></a>해결 방법
 
@@ -68,7 +68,7 @@ ms.locfileid: "50916383"
 
 ## <a name="example"></a>예
 
-Microsoft Azure에서는 Azure Redis Cache를 사용해 응용 프로그램의 여러 인스턴스가 공유할 수 있는 분산 캐시를 생성할 수 있습니다. 
+Microsoft Azure에서는 Azure Redis Cache를 사용해 애플리케이션의 여러 인스턴스가 공유할 수 있는 분산 캐시를 생성할 수 있습니다. 
 
 다음 코드 예제는 .NET 용으로 작성된 Redis 클라이언트 라이브러리인 [StackExchange.Redis] 클라이언트를 사용합니다. Azure Redis Cache 인스턴스에 연결하려면 정적 `ConnectionMultiplexer.Connect` 메서드를 호출하고 연결 문자열을 제공합니다. 이 메서드는 연결을 나타내는 `ConnectionMultiplexer`를 반환합니다. 애플리케이션의 `ConnectionMultiplexer` 인스턴스를 공유하는 방법은 다음 예제와 비슷하게 연결된 인스턴스를 반환하는 정적 속성을 갖는 것입니다. 이 방법은 스레드가 안전하도록 단일 연결된 인스턴스를 초기화하는 방법을 제공합니다.
 
@@ -128,7 +128,7 @@ public async Task<MyEntity> GetMyEntityAsync(int id)
 
 >  이 예제에서는 Redis Cache를 사용하여 저장소에 액세스하고 캐시에서 정보를 검색합니다. 자세한 내용은 [Microsoft Azure Redis Cache 사용](https://docs.microsoft.com/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache) 및 [Redis Cache를 사용하여 웹앱을 만드는 방법](https://docs.microsoft.com/azure/redis-cache/cache-web-app-howto)을 참조하세요.
 
-아래에 표시된 `UpdateEntityAsync` 메서드는 응용 프로그램에서 값이 변경될 때 캐시의 개체를 무효화하는 방법을 보여 줍니다. 다음 코드는 원래 데이터 저장소를 업데이트한 다음, 캐시에서 캐시된 항목을 제거합니다.
+아래에 표시된 `UpdateEntityAsync` 메서드는 애플리케이션에서 값이 변경될 때 캐시의 개체를 무효화하는 방법을 보여 줍니다. 다음 코드는 원래 데이터 저장소를 업데이트한 다음, 캐시에서 캐시된 항목을 제거합니다.
 
 ```csharp
 public async Task UpdateEntityAsync(MyEntity entity)

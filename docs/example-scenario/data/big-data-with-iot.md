@@ -12,7 +12,7 @@ ms.locfileid: "51610926"
 ---
 # <a name="iot-and-data-analytics-in-the-construction-industry"></a>건축 산업에서 IoT 및 데이터 분석
 
-이 예제 시나리오는 여러 IoT 디바이스의 데이터를 포괄적인 데이터 분석 아키텍처에 통합하여 의사 결정을 개선하고 자동화하는 솔루션을 빌드하는 조직과 관련이 있습니다. 잠재적인 응용 프로그램에는 여러 IoT 기반 데이터 입력에서 대량의 데이터를 수집하는 건설, 채굴, 제조 또는 기타 산업 솔루션이 포함됩니다.
+이 예제 시나리오는 여러 IoT 디바이스의 데이터를 포괄적인 데이터 분석 아키텍처에 통합하여 의사 결정을 개선하고 자동화하는 솔루션을 빌드하는 조직과 관련이 있습니다. 잠재적인 애플리케이션에는 여러 IoT 기반 데이터 입력에서 대량의 데이터를 수집하는 건설, 채굴, 제조 또는 기타 산업 솔루션이 포함됩니다.
 
 이 시나리오에서는 한 건설 장비 제조업체가 IoT 및 GPS 기술을 사용하여 원격 분석 데이터를 전송하는 차량, 계량기 및 드론을 빌드합니다. 이 회사는 운영 상태 및 장비 상태를 보다 정확하게 모니터링할 수 있도록 데이터 아키텍처를 현대화하려고 합니다. 온-프레미스 인프라를 사용하여 이 회사의 레거시 솔루션을 대체하려면 시간과 노력이 많이 필요하며, 예상되는 데이터 볼륨을 처리하기에 충분한 규모로 확장할 수 없습니다.
 
@@ -46,20 +46,20 @@ IoT Hub 및 HDInsight 같은 관리되는 Azure 서비스를 사용하여 고객
 3. IoT 센서는 다양한 건설 장비에 대한 또 다른 데이터 세트를 수집하여 IoT Hub로 전송합니다.
 4. 수집된 원시 데이터는 IoT Hub에서 Azure Blob 저장소로 직접 전송되어 그 즉시 검토 및 분석에 사용할 수 있습니다.
 5. IoT Hub를 통해 수집된 데이터는 Azure Stream Analytics 작업에서 거의 실시간으로 처리된 후 Azure SQL 데이터베이스에 저장됩니다.
-6. 분석가 및 최종 사용자는 스마트 건설 클라우드 웹 응용 프로그램을 사용하여 센서 데이터 및 이미지를 살펴보고 분석할 수 있습니다. 
-7. 일괄 처리 작업은 웹 응용 프로그램 사용자의 요청이 있을 시 시작됩니다. 일괄 처리 작업은 HDInsight 기반의 Apache Spark에서 실행되어 Cassandra 클러스터에 저장된 새 데이터를 분석합니다. 
+6. 분석가 및 최종 사용자는 스마트 건설 클라우드 웹 애플리케이션을 사용하여 센서 데이터 및 이미지를 살펴보고 분석할 수 있습니다. 
+7. 일괄 처리 작업은 웹 애플리케이션 사용자의 요청이 있을 시 시작됩니다. 일괄 처리 작업은 HDInsight 기반의 Apache Spark에서 실행되어 Cassandra 클러스터에 저장된 새 데이터를 분석합니다. 
 
 ### <a name="components"></a>구성 요소
 
 * [IoT Hub](/azure/iot-hub/about-iot-hub)는 장치별 ID를 사용하여 클라우드 플랫폼과 건설 장비 및 기타 현장 요소 간에 안전한 양방향 통신이 가능하도록 중앙 메시지 허브 역할을 합니다. IoT Hub는 각 디바이스에 대한 데이터를 신속하게 데이터 분석 파이프라인으로 수집할 수 있습니다. 
 * [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction)는 장치 및 다른 데이터 원본에서 스트림하는 대량의 데이터를 분석할 수 있는 이벤트 처리 엔진입니다. 또한 데이터 스트림에서 정보를 추출하여 패턴과 관계를 식별할 수 있습니다. 이 시나리오에서는 Stream Analytics가 IoT 디바이스에서 데이터를 수집 및 분석하고 Azure SQL Database에 결과를 저장합니다. 
 * [Azure SQL Database](/azure/sql-database/sql-database-technical-overview)는 IoT 장치 및 계량기 데이터를 분석한 결과를 포함하며, 분석가 및 사용자는 Azure 기반 웹 응용 프로그램을 통해 결과를 볼 수 있습니다. 
-* [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)는 IoT 허브 장치에서 수집된 이미지 데이터를 저장합니다. 이미지 데이터는 웹 응용 프로그램을 통해 볼 수 있습니다.
+* [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)는 IoT 허브 장치에서 수집된 이미지 데이터를 저장합니다. 이미지 데이터는 웹 애플리케이션을 통해 볼 수 있습니다.
 * [Traffic Manager](/azure/traffic-manager/traffic-manager-overview)는 다른 Azure 지역의 서비스 엔드포인트에 대한 사용자 트래픽 분산을 제어합니다.
 * [부하 분산 장치](/azure/load-balancer/load-balancer-overview)는 건설 장비 장치에서 제출된 데이터를 VM 기반 웹 서비스에 분산하여 고가용성을 제공합니다.
 * [Azure Virtual Machines](/azure/virtual-machines)는 건설 결과 데이터를 수신하여 Apache Cassandra 데이터베이스로 수집하는 웹 서비스를 호스트합니다.
 * [Apache Cassandra](https://cassandra.apache.org)는 나중에 Apache Spark로 처리할 수 있도록 건설 데이터를 저장하는 데 사용되는 분산 NoSQL 데이터베이스입니다.
-* [웹앱](/azure/app-service/app-service-web-overview)은 최종 사용자 웹 응용 프로그램을 호스트하며, 원본 데이터와 이미지를 쿼리하고 살펴보는 데 사용할 수 있습니다. 사용자는 응용 프로그램을 통해 Apache Spark에서 일괄 처리 작업을 시작할 수도 있습니다.
+* [웹앱](/azure/app-service/app-service-web-overview)은 최종 사용자 웹 응용 프로그램을 호스트하며, 원본 데이터와 이미지를 쿼리하고 살펴보는 데 사용할 수 있습니다. 사용자는 애플리케이션을 통해 Apache Spark에서 일괄 처리 작업을 시작할 수도 있습니다.
 * [HDInsight 기반의 Apache Spark](/azure/hdinsight/spark/apache-spark-overview)는 빅 데이터 분석 응용 프로그램의 성능을 향상하는 메모리 내 처리를 지원합니다. 이 시나리오에서 Spark는 Apache Cassandra에 저장된 데이터에 대해 복잡한 알고리즘을 실행하는 데 사용됩니다.
 
 

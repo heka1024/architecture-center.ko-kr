@@ -38,11 +38,11 @@ ExpressRoute 회로를 사용할 수 없는 경우 VPN 경로가 개인 피어�
 
 - **VPN 연결**. 이 연결에는 연결 형식(IPSec) 및 트래픽을 암호화하기 위해 온-프레미스 VPN 어플라이언스와 공유되는 키를 지정하는 속성이 있습니다.
 
-- **Azure VNet(Virtual Network)**. 각 VNet은 단일 Azure 지역에 상주하며 여러 애플리케이션 계층을 호스트할 수 있습니다. 응용 프로그램 계층은 각 VNet의 서브넷을 사용하여 분할할 수 있습니다.
+- **Azure VNet(Virtual Network)**. 각 VNet은 단일 Azure 지역에 상주하며 여러 애플리케이션 계층을 호스트할 수 있습니다. 애플리케이션 계층은 각 VNet의 서브넷을 사용하여 분할할 수 있습니다.
 
 - **게이트웨이 서브넷**. 가상 네트워크 게이트웨이는 동일한 서브넷에 있습니다.
 
-- **클라우드 응용 프로그램**. Azure에 호스팅된 응용 프로그램입니다. Azure Load Balancer를 통해 여러 서브넷이 연결된 여러 계층이 포함될 수 있습니다. 응용 프로그램 인프라에 대한 자세한 내용은 [Windows VM 워크로드 실행][windows-vm-ra] 및 [Linux VM 워크로드 실행][linux-vm-ra]을 참조하세요.
+- **클라우드 응용 프로그램**. Azure에 호스팅된 애플리케이션입니다. Azure Load Balancer를 통해 여러 서브넷이 연결된 여러 계층이 포함될 수 있습니다. 애플리케이션 인프라에 대한 자세한 내용은 [Windows VM 워크로드 실행][windows-vm-ra] 및 [Linux VM 워크로드 실행][linux-vm-ra]을 참조하세요.
 
 ## <a name="recommendations"></a>권장 사항
 

@@ -10,7 +10,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 08/31/2018
 ms.locfileid: "43326077"
 ---
-# <a name="ten-design-principles-for-azure-applications"></a>Azure 응용 프로그램을 위한 10가지 설계 원칙
+# <a name="ten-design-principles-for-azure-applications"></a>Azure 애플리케이션을 위한 10가지 설계 원칙
 
 애플리케이션의 확장성, 복원력 및 관리성을 높이려면 다음과 같은 디자인 원칙을 따르십시오. 
 

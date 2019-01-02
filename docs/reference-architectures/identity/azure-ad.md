@@ -31,7 +31,7 @@ Azure AD(Azure Active Directory)는 클라우드 기반의 다중 테넌트 디�
 - 온-프레미스 네트워크와 애플리케이션의 Azure VNet이 VPN 터널 또는 ExpressRoute 회로를 통해 연결되지 않은 아키텍처
 
 > [!NOTE]
-> Azure AD는 조직의 디렉터리에 존재하는 애플리케이션 및 사용자의 ID를 인증할 수 있습니다. SQL Server와 같은 일부 응용 프로그램 및 서비스에는 컴퓨터 인증이 필요할 수 있습니다. 이 경우 이 솔루션은 적절하지 않습니다.
+> Azure AD는 조직의 디렉터리에 존재하는 애플리케이션 및 사용자의 ID를 인증할 수 있습니다. SQL Server와 같은 일부 애플리케이션 및 서비스에는 컴퓨터 인증이 필요할 수 있습니다. 이 경우 이 솔루션은 적절하지 않습니다.
 >
 
 추가 고려 사항은 [온-프레미스 Active Directory를 Azure와 통합하기 위한 솔루션 선택][considerations]을 참조하세요.
