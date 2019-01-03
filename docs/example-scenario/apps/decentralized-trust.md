@@ -1,15 +1,16 @@
 ---
-title: Azure의 은행 간에 분산 트러스트
+title: 은행 간에 분산 트러스트
+titleSuffix: Azure Example Scenarios
 description: 중앙 집중식 데이터베이스로 재분류하지 않고 통신 및 정보 공유에 대해 신뢰할 수 있는 환경을 설정합니다.
 author: vitoc
 ms.date: 09/09/2018
 ms.custom: csa-team
-ms.openlocfilehash: 91c41f7bd6bd6f4eb8cd00859f7ce9065f8a86be
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: bd38986a86055305cec97db7a3f3f3e75ff600b0
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004731"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643706"
 ---
 # <a name="decentralized-trust-between-banks-on-azure"></a>Azure의 은행 간에 분산 트러스트
 
@@ -25,11 +26,11 @@ DLT(분산된 원장 기술)를 사용하면 은행 컨소시엄은 보다 효�
 
 관련된 다른 사용 사례는 다음과 같습니다.
 
-* 다국적 회사의 여러 사업부 간에 할당된 예산 이동
-* 국가 간 결제
-* 무역 금융 시나리오
-* 여러 회사가 관련된 로열티 시스템
-* 공급망 에코시스템
+- 다국적 회사의 여러 사업부 간에 할당된 예산 이동
+- 국가 간 결제
+- 무역 금융 시나리오
+- 여러 회사가 관련된 로열티 시스템
+- 공급망 에코시스템
 
 ## <a name="architecture"></a>아키텍처
 
@@ -45,11 +46,11 @@ DLT(분산된 원장 기술)를 사용하면 은행 컨소시엄은 보다 효�
 
 ### <a name="components"></a>구성 요소
 
-* 가상 머신 확장 집합 내의 가상 머신은 블록체인에 대한 유효성 검사기 프로세스를 호스트하는 주문형 계산 시설을 제공합니다.
-* Key Vault는 각 유효성 검사기의 개인 키에 대한 보안 저장소 시설로 사용됩니다.
-* Load Balancer는 RPC, 피어링 및 거버넌스 DApp 요청을 분산합니다.
-* 지속적인 네트워크 정보를 호스팅하고 임대를 조정하는 Storage
-* Operations Management Suite(몇 가지 Azure 서비스 번들)는 사용 가능한 노드, 분당 트랜잭션 수 및 컨소시엄 멤버에 대한 인사이트를 제공합니다.
+- 가상 머신 확장 집합 내의 가상 머신은 블록체인에 대한 유효성 검사기 프로세스를 호스트하는 주문형 계산 시설을 제공합니다.
+- Key Vault는 각 유효성 검사기의 개인 키에 대한 보안 저장소 시설로 사용됩니다.
+- Load Balancer는 RPC, 피어링 및 거버넌스 DApp 요청을 분산합니다.
+- 지속적인 네트워크 정보를 호스팅하고 임대를 조정하는 Storage
+- Operations Management Suite(몇 가지 Azure 서비스 번들)는 사용 가능한 노드, 분당 트랜잭션 수 및 컨소시엄 멤버에 대한 인사이트를 제공합니다.
 
 ### <a name="alternatives"></a>대안
 
@@ -57,15 +58,15 @@ DLT(분산된 원장 기술)를 사용하면 은행 컨소시엄은 보다 효�
 
 기타 확장 시나리오 또는 다른 시나리오의 경우 트랜잭션 개인 정보 보호 같은 우려가 발생할 수 있습니다. 예를 들어 보안 전송 시나리오에서 컨소시엄의 멤버가 다른 멤버에게도 트랜잭션을 보여주려 하지 않을 수 있습니다. 고유한 방식으로 이러한 문제를 해결하는 Ethereum PoA의 대안이 있습니다.
 
-* Corda
-* Quorum
-* Hyperledger
+- Corda
+- Quorum
+- Hyperledger
 
 ## <a name="considerations"></a>고려 사항
 
 ### <a name="availability"></a>가용성
 
-[Azure Monitor][monitor]는 가용성을 보장하기 위해 문제에 대한 블록체인 네트워크를 지속적으로 모니터링하는 데 사용됩니다. 이 시나리오에 사용되는 블록체인 솔루션 템플릿이 성공적으로 배포되는 즉시 Azure Monitor 기반의 사용자 지정 모니터링 대시보드에 대한 링크가 전송됩니다. 대시보드는 지난 30분의 하트비트와 기타 유용한 통계를 보고하는 노드를 보여줍니다. 
+[Azure Monitor][monitor]는 가용성을 보장하기 위해 문제에 대한 블록체인 네트워크를 지속적으로 모니터링하는 데 사용됩니다. 이 시나리오에 사용되는 블록체인 솔루션 템플릿이 성공적으로 배포되는 즉시 Azure Monitor 기반의 사용자 지정 모니터링 대시보드에 대한 링크가 전송됩니다. 대시보드는 지난 30분의 하트비트와 기타 유용한 통계를 보고하는 노드를 보여줍니다.
 
 다른 가용성 항목에 대해서는 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
 
@@ -93,9 +94,9 @@ DLT(분산된 원장 기술)를 사용하면 은행 컨소시엄은 보다 효�
 
 애플리케이션을 실행하는 확장 집합 VM 인스턴스의 수를 기준으로 세 가지 샘플 비용 프로필이 제공되었습니다(인스턴스가 다른 지역에 상주할 수 있음).
 
-* [소형][small-pricing]: 이 가격 책정 예제는 매월 모니터링이 꺼진 VM 2대와 관련이 있습니다.
-* [중형][medium-pricing]: 이 가격 책정 예제는 매월 모니터링이 켜진 VM 7대와 관련이 있습니다.
-* [대형][large-pricing]: 이 가격 책정 예제는 매월 모니터링이 켜진 VM 15대와 관련이 있습니다.
+- [소형][small-pricing]: 이 가격 책정 예제는 매월 모니터링이 꺼진 VM 2대와 관련이 있습니다.
+- [중형][medium-pricing]: 이 가격 책정 예제는 매월 모니터링이 켜진 VM 7대와 관련이 있습니다.
+- [대형][large-pricing]: 이 가격 책정 예제는 매월 모니터링이 켜진 VM 15대와 관련이 있습니다.
 
 위의 가격 책정은 한 컨소시엄 멤버가 블록체인 네트워크를 시작 또는 조인하기 위한 것입니다. 일반적으로 여러 회사 또는 조직이 관련되는 컨소시엄의 각 멤버는 고유의 Azure 구독을 받습니다.
 

@@ -1,21 +1,22 @@
 ---
 title: Azure DevOps를 사용하여 CI/CD 파이프라인 설계
+titleSuffix: Azure Example Scenarios
 description: Azure DevOps를 사용하여 Azure Web Apps에 .NET 앱을 빌드하고 릴리스합니다.
 author: christianreddington
 ms.date: 12/06/2018
 ms.custom:
 - fasttrack
 - seodec18
-ms.openlocfilehash: 23945493115522d099b6b26922f567653da0367e
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: ae2dddd7567c6b69f936b3b9c9339313389e3bf6
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307285"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643801"
 ---
 # <a name="design-a-cicd-pipeline-using-azure-devops"></a>Azure DevOps를 사용하여 CI/CD 파이프라인 설계
 
-이 시나리오는 CI(지속적인 통합) 및 CD(지속적인 배포) 파이프라인을 구축하기 위한 아키텍처와 디자인 지침을 제공합니다.  이 예제의 CI/CD 파이프라인은 Azure App Service에 2계층 .NET 웹 애플리케이션을 배포합니다.
+이 시나리오는 CI(지속적인 통합) 및 CD(지속적인 배포) 파이프라인을 구축하기 위한 아키텍처와 디자인 지침을 제공합니다. 이 예제의 CI/CD 파이프라인은 Azure App Service에 2계층 .NET 웹 애플리케이션을 배포합니다.
 
 최신 CI/CD 프로세스로 마이그레이션하면 애플리케이션 빌드, 배포, 테스트 및 모니터링에서 여러 가지 혜택을 얻을 수 있습니다. Azure DevOps를 App Service 같은 다른 서비스와 함께 사용하면 조직에서는 지원 인프라 관리 대신 앱 개발에 집중할 수 있습니다.
 
@@ -46,7 +47,7 @@ Azure DevOps 및 CI/CD 프로세스를 고려해야 하는 시나리오:
 
 - [Azure DevOps][vsts]는 계획 및 프로젝트 관리부터 코드 관리, 지속적인 빌드 및 릴리스까지 모든 개발 수명 주기를 관리할 수 있는 서비스입니다.
 
-- [Azure Web Apps][web-apps]는 웹 응용 프로그램, REST API 및 모바일 백 엔드를 호스팅하는 PaaS 서비스입니다. 이 문서에서는 .NET에 집중하고 있지만 몇 가지 추가 개발 플랫폼 옵션이 지원됩니다.
+- [Azure Web Apps][web-apps]는 웹 애플리케이션, REST API 및 모바일 백 엔드를 호스팅하는 PaaS 서비스입니다. 이 문서에서는 .NET에 집중하고 있지만 몇 가지 추가 개발 플랫폼 옵션이 지원됩니다.
 
 - [Application Insights][application-insights]는 웹 개발자를 위해 여러 플랫폼에서 확장 가능한 자체 APM(Application Performance Management) 서비스입니다.
 
@@ -84,7 +85,7 @@ Azure Web Apps에 호스팅하는 대안은 다음과 같습니다.
 
 ### <a name="prerequisites"></a>필수 조건
 
-- 기존 Azure 계정이 있어야 합니다. Azure 구독이 없는 경우 시작하기 전에 [체험 계정][azure-free-account]을 만듭니다.
+- 기존 Azure 계정이 있어야 합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [체험 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
 
 - Azure DevOps 조직에 가입해야 합니다. 자세한 내용은 [빠른 시작: 조직 만들기][vsts-account-create]를 참조하세요.
 
@@ -119,7 +120,6 @@ Azure DevOps는 사용자당 월별 요금이 청구됩니다. 추가 테스트 
 [ansible]: /azure/ansible/
 [application-insights]: /azure/application-insights/app-insights-overview
 [app-service-reference-architecture]: ../../reference-architectures/app-service-web-app/basic-web-app.md
-[azure-free-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F
 [arm-templates]: /azure/azure-resource-manager/resource-group-overview#template-deployment
 [architecture]: ./media/architecture-devops-dotnet-webapp.svg
 [chef]: /azure/chef/

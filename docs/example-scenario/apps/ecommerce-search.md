@@ -1,15 +1,16 @@
 ---
 title: 전자상거래에 대한 지능형 제품 검색 엔진
+titleSuffix: Azure Example Scenarios
 description: 전자상거래 애플리케이션에서 세계적 수준의 검색 환경을 제공합니다.
 author: jelledruyts
 ms.date: 09/14/2018
 ms.custom: fasttrack
-ms.openlocfilehash: 5eabdb94b9345e73b21526681e0dbd6ae859d7be
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: 9e24f7ab2104f877fcc3aec310dd21677160608c
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004901"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643469"
 ---
 # <a name="intelligent-product-search-engine-for-e-commerce"></a>전자상거래에 대한 지능형 제품 검색 엔진
 
@@ -23,9 +24,9 @@ SQL Server 또는 Azure SQL Database처럼 제품 데이터가 관계형 데이�
 
 관련된 다른 사용 사례는 다음과 같습니다.
 
-* 사용자의 물리적 위치와 가까운 부동산 목록 또는 매장을 찾습니다.
-* _최신_ 정보에 더 높은 우선 순위를 부여하여 뉴스 사이트에서 문서를 검색하거나 스포츠 결과를 찾습니다.
-* 대형 리포지토리를 검색하여 정책 입안자 및 공증인 같은 _문서 중심_ 조직을 찾습니다.
+- 사용자의 물리적 위치와 가까운 부동산 목록 또는 매장을 찾습니다.
+- _최신_ 정보에 더 높은 우선 순위를 부여하여 뉴스 사이트에서 문서를 검색하거나 스포츠 결과를 찾습니다.
+- 대형 리포지토리를 검색하여 정책 입안자 및 공증인 같은 _문서 중심_ 조직을 찾습니다.
 
 결국 어떤 형태로든 검색 기능이 있는 _모든_ 애플리케이션은 전용 검색 서비스의 이점을 얻을 수 있습니다.
 
@@ -34,6 +35,7 @@ SQL Server 또는 Azure SQL Database처럼 제품 데이터가 관계형 데이�
 ![전자상거래에 대한 지능형 제품 검색 엔진과 관련된 Azure 구성 요소의 아키텍처 개요][architecture]
 
 이 시나리오에서는 고객이 제품 카탈로그를 검색할 수 있는 전자상거래 솔루션을 다룹니다.
+
 1. 고객은 각종 장치로 **전자상거래 웹 애플리케이션**을 탐색합니다.
 2. 제품 카탈로그는 트랜잭션 처리를 위해 **Azure SQL Database**에 유지됩니다.
 3. Azure Search는 **검색 인덱서**를 사용하여 통합 변경 내용 추적을 통해 자동으로 검색 인덱스를 최신 상태로 유지합니다.
@@ -43,21 +45,21 @@ SQL Server 또는 Azure SQL Database처럼 제품 데이터가 관계형 데이�
 
 ### <a name="components"></a>구성 요소
 
-* [App Services - Web Apps][docs-webapps]는 인프라를 관리할 필요 없이 자동 크기 조정 및 고가용성을 허용하는 웹 애플리케이션을 호스팅합니다.
-* [SQL Database][docs-sql-database]는 관계형 데이터, JSON, 공간 및 XML과 같은 구조를 지원하는 Microsoft Azure의 범용 관계형 데이터베이스 관리 서비스입니다.
-* [Azure Search][docs-search]는 웹, 모바일 및 엔터프라이즈 응용 프로그램에서 이질적인 비공개 콘텐츠에 대한 풍부한 검색 환경을 제공하는 검색 기반 클라우드 솔루션입니다.
-* [Bot Service][docs-botservice]는 지능형 봇을 빌드, 테스트, 배포 및 관리할 수 있는 도구를 제공합니다.
-* [Cognitive Services][docs-cognitive]를 사용하면 지능형 알고리즘을 사용하여 자연스러운 의사 소통 방법을 통해 사용자의 요구 사항을 보고, 듣고, 말하고, 이해하고 해석할 수 있습니다.
+- [App Services - Web Apps][docs-webapps]는 인프라를 관리할 필요 없이 자동 크기 조정 및 고가용성을 허용하는 웹 애플리케이션을 호스팅합니다.
+- [SQL Database][docs-sql-database]는 관계형 데이터, JSON, 공간 및 XML과 같은 구조를 지원하는 Microsoft Azure의 범용 관계형 데이터베이스 관리 서비스입니다.
+- [Azure Search][docs-search]는 웹, 모바일 및 엔터프라이즈 애플리케이션에서 이질적인 비공개 콘텐츠에 대한 풍부한 검색 환경을 제공하는 검색 기반 클라우드 솔루션입니다.
+- [Bot Service][docs-botservice]는 지능형 봇을 빌드, 테스트, 배포 및 관리할 수 있는 도구를 제공합니다.
+- [Cognitive Services][docs-cognitive]를 사용하면 지능형 알고리즘을 사용하여 자연스러운 의사 소통 방법을 통해 사용자의 요구 사항을 보고, 듣고, 말하고, 이해하고 해석할 수 있습니다.
 
 ### <a name="alternatives"></a>대안
 
-* 예를 들어 SQL Server 전체 텍스트 검색을 통해 **데이터베이스 내 검색** 기능을 사용할 수 있지만, 트랜잭션 저장소에서도 쿼리를 처리하므로(처리 성능 요구 사항 증가) 데이터베이스 내에서 검색 기능이 좀 더 제한됩니다.
-* Azure Virtual Machines에 (Azure Search가 빌드되는) 오픈 소스 [Apache Lucene][apache-lucene]를 호스트할 수 있지만, 다시 IaaS(Infrastructure-as-a-Service)를 관리해야 하므로 Azure Search가 Lucene을 기반으로 제공하는 여러 기능의 이점을 누릴 수 없습니다.
-* Azure Marketplace에서 타사 공급업체의 검색 제품인 [Elastic Search][elastic-marketplace]를 대안으로 배포하는 방안도 고려해 볼 수 있지만, 이 예에서는 IaaS 워크로드를 실행합니다.
+- 예를 들어 SQL Server 전체 텍스트 검색을 통해 **데이터베이스 내 검색** 기능을 사용할 수 있지만, 트랜잭션 저장소에서도 쿼리를 처리하므로(처리 성능 요구 사항 증가) 데이터베이스 내에서 검색 기능이 좀 더 제한됩니다.
+- Azure Virtual Machines에 (Azure Search가 빌드되는) 오픈 소스 [Apache Lucene][apache-lucene]를 호스트할 수 있지만, 다시 IaaS(Infrastructure-as-a-Service)를 관리해야 하므로 Azure Search가 Lucene을 기반으로 제공하는 여러 기능의 이점을 누릴 수 없습니다.
+- Azure Marketplace에서 타사 공급업체의 검색 제품인 [Elastic Search][elastic-marketplace]를 대안으로 배포하는 방안도 고려해 볼 수 있지만, 이 예에서는 IaaS 워크로드를 실행합니다.
 
 데이터 계층에 대한 다른 옵션은 다음과 같습니다.
 
-* [Cosmos DB](/azure/cosmos-db/introduction) - 글로벌하게 분산된 Microsoft의 다중 모델 데이터베이스입니다. Costmos DB는 Mongo DB, Cassandra, Graph 데이터 또는 간단한 테이블 저장소와 같은 다른 데이터 모델을 실행하는 플랫폼을 제공합니다. Azure Search는 Cosmos DB에서 데이터를 직접 인덱싱하는 기능도 지원합니다.
+- [Cosmos DB](/azure/cosmos-db/introduction) - 글로벌하게 분산된 Microsoft의 다중 모델 데이터베이스입니다. Costmos DB는 Mongo DB, Cassandra, Graph 데이터 또는 간단한 테이블 저장소와 같은 다른 데이터 모델을 실행하는 플랫폼을 제공합니다. Azure Search는 Cosmos DB에서 데이터를 직접 인덱싱하는 기능도 지원합니다.
 
 ## <a name="considerations"></a>고려 사항
 
@@ -85,11 +87,11 @@ Azure Search는 여러 [보안 및 데이터 보호 표준][search-security]을 
 
 검색 서비스를 튜닝하는 일반적인 방법은 다음과 같습니다.
 
-* 검색 결과의 관련성에 영향을 주는 [점수 매기기 프로필][search-scoring]을 사용합니다. 예: 쿼리와 일치하는 필드, 데이터의 현재 상태, 사용자와의 물리적 거리 등.
-* 고급 NLP(고급 자연어 처리) 스택을 사용하여 쿼리를 보다 정확하게 해석하는 [Microsoft 언어 분석기][search-languages]를 사용합니다.
-* 특히 제품의 제조업체 및 모델 같은 비언어 기반 정보를 기반으로 검색하려는 경우 올바른 제품이 검색되도록 [사용자 지정 분석기][search-analyzers]를 사용합니다.
+- 검색 결과의 관련성에 영향을 주는 [점수 매기기 프로필][search-scoring]을 사용합니다. 예: 쿼리와 일치하는 필드, 데이터의 현재 상태, 사용자와의 물리적 거리 등.
+- 고급 NLP(고급 자연어 처리) 스택을 사용하여 쿼리를 보다 정확하게 해석하는 [Microsoft 언어 분석기][search-languages]를 사용합니다.
+- 특히 제품의 제조업체 및 모델 같은 비언어 기반 정보를 기반으로 검색하려는 경우 올바른 제품이 검색되도록 [사용자 지정 분석기][search-analyzers]를 사용합니다.
 
-## <a name="deploy-this-scenario"></a>시나리오 배포
+## <a name="deploy-the-scenario"></a>시나리오 배포
 
 이 시나리오의 보다 완전한 전자상거래 버전을 배포하려면 간단한 티켓 구매 애플리케이션을 실행하는 .NET 샘플 애플리케이션을 제공하는 이 [단계별 자습서][end-to-end-walkthrough]를 따르면 됩니다. 이 자습서는 Azure Search도 포함하고 있으며 앞에서 설명한 여러 기능을 사용합니다. 또한 Azure 리소스 대부분의 배포를 자동화하는 Resource Manager 템플릿도 있습니다.
 
@@ -99,9 +101,9 @@ Azure Search는 여러 [보안 및 데이터 보호 표준][search-security]을 
 
 가져오는 데 필요한 트래픽 양을 기준으로 다음 세 가지 샘플 비용 프로필을 제공했습니다.
 
-* [소형][small-pricing]: 이 프로필에서는 웹 사이트를 호스트할 단일 `Standard S1` 웹앱, Azure Bot 서비스의 체험 계층, 단일 `Basic` Azure Search 서비스 및 `Standard S2` SQL Database를 사용합니다.
-* [중형][medium-pricing]: 이 프로필에서는 웹앱을 `Standard S3` 계층의 인스턴스 2개로 확장하고, 검색 서비스를 `Standard S1` 계층으로 업그레이드하고, `Standard S6` SQL Database를 사용합니다.
-* [대형][large-pricing]: 가장 큰 프로필에서는 `Premium P2V2` 웹앱의 인스턴스 4개를 사용하고, Azure Bot 서비스를 `Standard S1` 계층으로 업그레이드하고(프리미엄 채널에서 1.000.000개 메시지), `Standard S3` Azure Search 서비스 단위 2개 및 `Premium P6` SQL Database를 사용합니다.
+- [소형][small-pricing]: 이 프로필에서는 웹 사이트를 호스트할 단일 `Standard S1` 웹앱, Azure Bot 서비스의 체험 계층, 단일 `Basic` Azure Search 서비스 및 `Standard S2` SQL Database를 사용합니다.
+- [중형][medium-pricing]: 이 프로필에서는 웹앱을 `Standard S3` 계층의 인스턴스 2개로 확장하고, 검색 서비스를 `Standard S1` 계층으로 업그레이드하고, `Standard S6` SQL Database를 사용합니다.
+- [대형][large-pricing]: 가장 큰 프로필에서는 `Premium P2V2` 웹앱의 인스턴스 4개를 사용하고, Azure Bot 서비스를 `Standard S1` 계층으로 업그레이드하고(프리미엄 채널에서 1.000.000개 메시지), `Standard S3` Azure Search 서비스 단위 2개 및 `Premium P6` SQL Database를 사용합니다.
 
 ## <a name="related-resources"></a>관련 리소스
 

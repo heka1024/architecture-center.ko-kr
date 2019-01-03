@@ -5,12 +5,12 @@ description: Azure Databricks를 사용하여 Azure에서 엔드투엔드 스트
 author: petertaylor9999
 ms.date: 11/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: ceea89b554e11619823b2065a7f03919527b21fa
-ms.sourcegitcommit: 8d951fd7e9534054b160be48a1881ae0857561ef
+ms.openlocfilehash: f7364334f889388ad432efadd46362a9fa82fe8b
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53329418"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644124"
 ---
 # <a name="create-a-stream-processing-pipeline-with-azure-databricks"></a>Azure Databricks를 사용하는 스트림 처리 파이프라인 만들기
 
@@ -36,9 +36,13 @@ ms.locfileid: "53329418"
 
 ## <a name="data-ingestion"></a>데이터 수집
 
+<!-- markdownlint-disable MD033 -->
+
 데이터 원본을 시뮬레이션하기 위해 이 참조 아키텍처는 [뉴욕시 택시 데이터](https://uofi.app.box.com/v/NYCtaxidata/folder/2332218797) 데이터 세트<sup>[[1]](#note1)</sup>를 사용합니다. 이 데이터 세트에는 4년(2010&ndash;2013) 간의 뉴욕시 택시 운행 데이터가 포함됩니다. 두 가지 유형의 레코드를 포함합니다. 그것은 바로 승객 데이터와 요금 데이터입니다. 승객 데이터에는 여정 기간, 여정 거리 및 승차 및 하차 위치가 포함됩니다. 요금 데이터에는 요금, 세금 및 팁 금액이 포함됩니다. 레코드 형식 모두의 공통 필드에는 등록 번호, 택시 라이선스 및 공급 업체 ID가 포함됩니다. 이러한 세 필드는 택시와 드라이버를 고유하게 식별합니다. 데이터가 CSV 형식으로 저장됩니다.
 
-> [1] <span id="note1">Donovan, Brian; Work, Dan(2016): 뉴욕시 택시 운행 데이터(2010-2013). University of Illinois at Urbana-Champaign https://doi.org/10.13012/J8PN93H8
+> [1] <span id="note1">Donovan, Brian; Work, Dan(2016): 뉴욕시 택시 운행 데이터(2010-2013). University of Illinois at Urbana-Champaign <https://doi.org/10.13012/J8PN93H8>
+
+<!-- markdownlint-enable MD033 -->
 
 데이터 생성기는 레코드를 읽고 Azure Event Hubs로 전송하는 .NET Core 애플리케이션입니다. 생성기는 승객 데이터를 JSON 형식으로 보내고, 요금 데이터를 CSV 형식으로 전송합니다.
 
@@ -313,4 +317,3 @@ SparkMetric_CL
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
 참조 구현을 배포하고 실행하려면 [GitHub readme](https://github.com/mspnp/azure-databricks-streaming-analytics)의 단계를 따릅니다.
-
