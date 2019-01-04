@@ -4,18 +4,20 @@ description: Azure의 일반 워크로드에 대한 참조 아키텍처, 청사�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: 05f93aedc49cc71a35d8c0303af0342ed0ba47f7
-ms.sourcegitcommit: 032f402482762f4e674aeebbc122ad18dfba11eb
+ms.openlocfilehash: 173698aee0a67578beaa806a59e1c7b0265cdd61
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53396422"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011806"
 ---
 # <a name="azure-reference-architectures"></a>Azure 참조 아키텍처
 
 Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍처가 함께 그룹화됩니다. 각 아키텍처는 확장성, 가용성, 관리성 및 보안에 대한 고려 사항과 함께 권장 방법을 포함하고 있습니다. 또한 대부분은 배포 가능한 솔루션을 포함하고 있습니다.
 
 이동: [AI](#ai-and-machine-learning) | [빅 데이터](#big-data-solutions) | [서버리스](#serverless-applications) | [가상 네트워크](#virtual-networks) | [VM 워크로드](#vm-workloads) | [SAP](#sap) | [웹앱](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
+
+<!-- markdownlint-disable MD033 -->
 
 ## <a name="ai-and-machine-learning"></a>AI 및 기계 학습
 
@@ -750,3 +752,4 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
 </li>
 </ul>
 
+<!-- markdownlint-disable MD033 -->

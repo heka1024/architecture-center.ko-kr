@@ -1,14 +1,17 @@
 ---
 title: 클라우드 디자인 패턴
+titleSuffix: Azure Architecture Center
 description: 클라우드에서 안정적이고 확장성 있는 안전한 애플리케이션을 빌드하기 위한 클라우드 디자인 패턴
 keywords: Azure
+author: dragon119
 ms.date: 12/10/2018
-ms.openlocfilehash: 6965f4ba19bb465c4afc0e0c355b32bde8944823
-ms.sourcegitcommit: fb22348f917a76e30a6c090fcd4a18decba0b398
+ms.custom: seodec18
+ms.openlocfilehash: 003bef866b0cd873122cfb8d4730b95ba49d3d7f
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/16/2018
-ms.locfileid: "53450856"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011296"
 ---
 # <a name="cloud-design-patterns"></a>클라우드 디자인 패턴
 
@@ -18,6 +21,7 @@ ms.locfileid: "53450856"
 
 ## <a name="challenges-in-cloud-development"></a>클라우드 개발의 과제
 
+<!-- markdownlint-disable MD033 -->
 <table>
 <tr>
     <td style="width: 64px; vertical-align: middle;"><a href="./category/availability.md"><img src="_images/category/availability.svg" alt="Availability" /></a></td>
@@ -76,6 +80,7 @@ ms.locfileid: "53450856"
     </td>
 </tr>
 </table>
+<!-- markdownlint-disable MD033 -->
 
 ## <a name="catalog-of-patterns"></a>패턴 카탈로그
 
@@ -114,4 +119,3 @@ ms.locfileid: "53450856"
 |                      [스트랭글러](./strangler.md)                      |                                            특정 기능을 새로운 애플리케이션 및 서비스로 점진적으로 교체하여 레거시 시스템을 단계적으로 마이그레이션합니다.                                            |
 |                     [제한](./throttling.md)                     |                                                 애플리케이션 인스턴스, 개별 테넌트 또는 서비스 전체의 리소스 사용량을 제어합니다.                                                 |
 |                      [발레 키](./valet-key.md)                      |                                                        클라이언트에 특정 리소스 또는 서비스에 대한 제한된 직접 액세스를 제공하는 토큰 또는 키를 사용합니다.                                                        |
-
