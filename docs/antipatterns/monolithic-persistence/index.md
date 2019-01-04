@@ -1,14 +1,16 @@
 ---
 title: 모놀리식 지속성 안티패턴
+titleSuffix: Performance antipatterns for cloud apps
 description: 애플리케이션의 모든 데이터를 단일 데이터 저장소에 저장하면 성능이 저하될 수 있습니다.
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 8cc67a41adf7ca4e3c5475eea86e38b75dd65d4d
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: c54a99dd0754cb2cb6cf4ad85b23a518c14a978b
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429114"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54010259"
 ---
 # <a name="monolithic-persistence-antipattern"></a>모놀리식 지속성 안티패턴
 
@@ -16,12 +18,12 @@ ms.locfileid: "47429114"
 
 ## <a name="problem-description"></a>문제 설명
 
-지금까지 애플리케이션은 흔히 애플리케이션이 저장해야 할 수 있는 데이터의 유형과 상관없이 단일 데이터 저장소를 사용해 왔습니다. 일반적으로 이런 관행은 애플리케이션 디자인을 단순화하거나 개발 팀의 기존 기술력에 맞추기 위한 것이었습니다. 
+지금까지 애플리케이션은 흔히 애플리케이션이 저장해야 할 수 있는 데이터의 유형과 상관없이 단일 데이터 저장소를 사용해 왔습니다. 일반적으로 이런 관행은 애플리케이션 디자인을 단순화하거나 개발 팀의 기존 기술력에 맞추기 위한 것이었습니다.
 
 최신 클라우드 기반 시스템은 흔히 추가적인 기능 및 비기능 요구 사항을 가지고 있으며 문서, 이미지, 캐시된 데이터, 큐에 저장된 메시지, 애플리케이션 로그 및 원격 분석 데이터 등 형식이 다른 많은 유형을 저장해야 합니다. 기존의 접근법에 따라 이러한 모든 정보를 동일한 데이터 저장소에 저장하면 두 가지 주된 이유 때문에 성능이 저하될 수 있습니다.
 
 - 관련되지 않은 대량의 데이터를 동일한 데이터 저장소에 저장하고 검색하면 경합이 발생하여 응답 시간이 느려지고 연결 장애가 발생할 수 있습니다.
-- 어느 데이터 저장소를 선택하든, 서로 다른 모든 유형의 데이터에 맞을 수 없으며 애플리케이션이 수행하는 작업에 대해 최적화되지 않을 수도 있습니다. 
+- 어느 데이터 저장소를 선택하든, 서로 다른 모든 유형의 데이터에 맞을 수 없으며 애플리케이션이 수행하는 작업에 대해 최적화되지 않을 수도 있습니다.
 
 다음 예제에서는 데이터베이스에 새 레코드를 추가하고 결과를 로그에 기록하기도 하는 ASP.NET Web API 컨트롤러를 보여 줍니다. 로그는 비즈니스 데이터와 같은 데이터베이스에 저장됩니다. 전체 샘플은 [여기][sample-app]에서 찾을 수 있습니다.
 
@@ -43,7 +45,7 @@ public class MonoController : ApiController
 
 ## <a name="how-to-fix-the-problem"></a>문제를 해결하는 방법
 
-용도에 따라 데이터를 분리합니다. 각 데이터 집합에 대해 해당 데이터 집합이 사용되는 방법과 가장 잘 일치하는 데이터 저장소를 선택합니다. 앞의 예제에서는 애플리케이션이 비즈니스 데이터를 저장하는 데이터베이스와 별도의 저장소에 기록해야 합니다. 
+용도에 따라 데이터를 분리합니다. 각 데이터 집합에 대해 해당 데이터 집합이 사용되는 방법과 가장 잘 일치하는 데이터 저장소를 선택합니다. 앞의 예제에서는 애플리케이션이 비즈니스 데이터를 저장하는 데이터베이스와 별도의 저장소에 기록해야 합니다.
 
 ```csharp
 public class PolyController : ApiController
@@ -76,10 +78,10 @@ public class PolyController : ApiController
 다음 단계를 수행하면 원인을 식별하는 데 도움이 될 수 있습니다.
 
 1. 시스템을 계측하여 주요 성능 통계를 기록합니다. 각 작업에 대한 타이밍 정보 및 애플리케이션이 데이터를 읽고 쓰는 지점을 수집합니다.
-1. 가능하면 프로덕션 환경에서 실행 중인 시스템을 몇 일 동안 모니터링하여 시스템 사용 방법의 실제 모습을 파악합니다. 이렇게 할 수 없는 경우 대표적인 작업 시리즈를 수행하는 가상 사용자의 사실적인 양을 사용하여 스크립트로 작성한 부하 테스트를 실행합니다.
-2. 원격 분석 데이터를 사용하여 성능이 저하되는 기간을 식별합니다.
-3. 이러한 기간 동안 액세스되는 데이터 저장소를 식별합니다.
-4. 충돌이 발생할 수 있는 데이터 저장소 리소스를 식별합니다.
+2. 가능하면 프로덕션 환경에서 실행 중인 시스템을 몇 일 동안 모니터링하여 시스템 사용 방법의 실제 모습을 파악합니다. 이렇게 할 수 없는 경우 대표적인 작업 시리즈를 수행하는 가상 사용자의 사실적인 양을 사용하여 스크립트로 작성한 부하 테스트를 실행합니다.
+3. 원격 분석 데이터를 사용하여 성능이 저하되는 기간을 식별합니다.
+4. 이러한 기간 동안 액세스되는 데이터 저장소를 식별합니다.
+5. 충돌이 발생할 수 있는 데이터 저장소 리소스를 식별합니다.
 
 ## <a name="example-diagnosis"></a>예제 진단
 
@@ -107,7 +109,7 @@ public class PolyController : ApiController
 
 ### <a name="examine-the-telemetry-for-the-data-stores"></a>데이터 저장소에 대한 원격 분석 데이터 검사
 
-데이터 원본을 계측하여 작업의 낮은 수준 세부 정보를 수집합니다. 샘플 애플리케이션에서 데이터 액세스 통계는 `PurchaseOrderHeader` 테이블 및 `MonoLog` 테이블에 대해 대량의 삽입 작업이 수행되었음을 보여 줍니다. 
+데이터 원본을 계측하여 작업의 낮은 수준 세부 정보를 수집합니다. 샘플 애플리케이션에서 데이터 액세스 통계는 `PurchaseOrderHeader` 테이블 및 `MonoLog` 테이블에 대해 대량의 삽입 작업이 수행되었음을 보여 줍니다.
 
 ![샘플 애플리케이션에 대한 데이터 액세스 통계][MonolithicDataAccessStats]
 
@@ -133,12 +135,11 @@ public class PolyController : ApiController
 
 ![Polyglot 시나리오에서 로그 데이터베이스의 리소스 사용률을 보여 주는 Azure 클래식 포털의 데이터베이스 모니터][LogDatabaseUtilization]
 
-
 ## <a name="related-resources"></a>관련 리소스
 
 - [적절한 데이터 저장소 선택][data-store-overview]
 - [데이터 저장소를 선택하는 기준][data-store-comparison]
-- [확장성이 뛰어난 솔루션에 대한 데이터 액세스: SQL, NoSQL alc Polyglot 지속성 사용][Data-Access-Guide]
+- [확장성이 뛰어난 솔루션에 대한 데이터 액세스: SQL, NoSQL 및 다중저장소 지속성 사용][Data-Access-Guide]
 - [데이터 분할][DataPartitioningGuidance]
 
 [sample-app]: https://github.com/mspnp/performance-optimization/tree/master/MonolithicPersistence

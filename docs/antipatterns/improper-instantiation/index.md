@@ -1,27 +1,29 @@
 ---
 title: 부적절한 인스턴스화 안티패턴
+titleSuffix: Performance antipatterns for cloud apps
 description: 한 번 만든 다음 공유하는 개체의 새 인스턴스를 계속 만들지 마십시오.
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 4d5ef9ad9e675b46df94b51e81d7a4bd4c1b25e9
-ms.sourcegitcommit: 3d9ee03e2dda23753661a80c7106d1789f5223bb
+ms.custom: seodec18
+ms.openlocfilehash: b92ae5f5e79a0ababf44d7aa2d771d4d72900cae
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/23/2018
-ms.locfileid: "29477583"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54009921"
 ---
 # <a name="improper-instantiation-antipattern"></a>부적절한 인스턴스화 안티패턴
 
-한 번 만든 다음 공유하는 개체의 새 인스턴스를 계속 만들면 성능이 떨어질 수 있습니다. 
+한 번 만든 다음 공유하는 개체의 새 인스턴스를 계속 만들면 성능이 떨어질 수 있습니다.
 
 ## <a name="problem-description"></a>문제 설명
 
 많은 라이브러리가 외부 리소스의 추상화를 제공합니다. 내부적으로 이러한 클래스는 대개 클라이언트가 리소스에 액세스하는 데 사용할 수 있는 broker 역할을 하는 리소스에 대한 자체 연결을 관리합니다. 다음은 Azure 애플리케이션과 관련된 broker 클래스의 몇 가지 예입니다.
 
-- `System.Net.Http.HttpClient` HTTP를 사용하여 웹 서비스와 통신합니다.
-- `Microsoft.ServiceBus.Messaging.QueueClient` Service Bus 큐에 메시지를 게시하고 수신합니다. 
-- `Microsoft.Azure.Documents.Client.DocumentClient` Cosmos DB 인스턴스에 연결합니다.
-- `StackExchange.Redis.ConnectionMultiplexer` Azure Redis Cache를 포함하여 Redis에 연결합니다.
+- `System.Net.Http.HttpClient`. HTTP를 사용하여 웹 서비스와 통신합니다.
+- `Microsoft.ServiceBus.Messaging.QueueClient`. Service Bus 큐에 메시지를 게시하고 수신합니다.
+- `Microsoft.Azure.Documents.Client.DocumentClient`. Cosmos DB 인스턴스에 연결합니다.
+- `StackExchange.Redis.ConnectionMultiplexer`. Azure Redis Cache를 포함하여 Redis에 연결합니다.
 
 이러한 클래스는 한 번 인스턴스화되면 애플리케이션의 수명 내내 다시 사용됩니다. 그러나 이러한 클래스를 필요한 경우에만 확보하고 신속하게 릴리스해야 한다는 것은 일반적인 오해입니다. (여기 나열된 항목은 .NET 라이브러리이지만 패턴은 .NET 고유 패턴이 아닙니다.) 다음 ASP.NET 예제는 원격 서비스와 통신하기 위해 `HttpClient` 인스턴스를 만듭니다. 전체 샘플은 [여기][sample-app]에서 찾을 수 있습니다.
 
@@ -100,15 +102,17 @@ public class SingleHttpClientInstanceController : ApiController
 
 - 여러 요청에서 공유하는 개체는 *반드시* 스레드로부터 안전해야 합니다. `HttpClient` 클래스는 이러한 방식으로 사용하도록 설계되었지만 다른 클래스는 동시 요청을 지원하지 않을 수 있으니 사용 가능한 설명서를 확인하십시오.
 
+- 이로 인해 경합 상태가 발생할 수 있으므로 공유 개체에 속성을 설정하는 경우 주의해야 합니다. 예를 들어 각 요청에서 경합 상태를 만들 수 있기 전에 `HttpClient` 클래스에 `DefaultRequestHeaders`를 설정합니다. 이러한 속성을 한 번 설정하고(예: 시작 중) 다른 설정을 구성해야 하는 경우 별도의 인스턴스를 만듭니다.
+
 - 일부 리소스는 희박하며 보유하지 말아야 합니다. 데이터베이스 연결이 그 예입니다. 필요하지 않은 열린 데이터베이스 연결을 보유하면 다른 동시 사용자가 데이터베이스에 액세스하는 것을 막을 수 있습니다.
 
-- .NET Framework에서는 외부 리소스에 대한 연결을 설정하는 많은 개체가 이러한 연결을 관리하는 다른 클래스의 정적 팩터리 메서드를 사용하여 만들어집니다. 이런 팩터리 개체는 삭제되고 다시 만들어지기 보다 저장되고 다시 사용됩니다. 예를 들어 Azure Service Bus에서 `QueueClient` 개체는 `MessagingFactory` 개체를 통해 만들어집니다. 내부적으로 `MessagingFactory`가 연결을 관리합니다. 자세한 내용은 [Service Bus 메시징을 사용한 성능 향상의 모범 사례][service-bus-messaging]를 참조하세요.
+- .NET Framework에서는 외부 리소스에 대한 연결을 설정하는 많은 개체가 이러한 연결을 관리하는 다른 클래스의 정적 팩터리 메서드를 사용하여 만들어집니다. 이러한 개체는 삭제하고 다시 만들지 않고 저장하고 다시 사용하기 위한 것입니다. 예를 들어 Azure Service Bus에서 `QueueClient` 개체는 `MessagingFactory` 개체를 통해 만들어집니다. 내부적으로 `MessagingFactory`가 연결을 관리합니다. 자세한 내용은 [Service Bus 메시징을 사용한 성능 향상의 모범 사례][service-bus-messaging]를 참조하세요.
 
 ## <a name="how-to-detect-the-problem"></a>문제를 감지하는 방법
 
-이 문제의 증상에는 처리량이 떨어지거나 오류 비율이 증가하는 경우와 함께 다음 중 하나 이상의 경우가 동반됩니다. 
+이 문제의 증상에는 처리량이 떨어지거나 오류 비율이 증가하는 경우와 함께 다음 중 하나 이상의 경우가 동반됩니다.
 
-- 소켓, 데이터베이스 연결, 파일 핸들 등과 같은 리소스가 소진된 것을 나타내는 예외가 증가합니다. 
+- 소켓, 데이터베이스 연결, 파일 핸들 등과 같은 리소스가 소진된 것을 나타내는 예외가 증가합니다.
 - 메모리 사용 및 가비지 수집이 증가합니다.
 - 네트워크, 디스크 또는 데이터베이스 활동이 증가합니다.
 
@@ -119,7 +123,7 @@ public class SingleHttpClientInstanceController : ApiController
 3. 프로덕션 시스템이 아닌 통제된 테스트 환경에서 의심되는 각 작업의 부하를 테스트합니다.
 4. 소스 코드를 검토하고 broker 개체가 관리되는 방식을 검사합니다.
 
-시스템에 부하가 걸렸을 때 느리게 실행되거나 예외를 생성하는 작업에 대한 스택 추적을 살펴봅니다. 이 정보는 해당 작업이 리소스를 활용하는 방법을 파악하는 데 도움이 될 수 있습니다. 예외는 오류가 공유 자원이 소진되어 발생했는지를 파악하는 데 도움이 됩니다. 
+시스템에 부하가 걸렸을 때 느리게 실행되거나 예외를 생성하는 작업에 대한 스택 추적을 살펴봅니다. 이 정보는 해당 작업이 리소스를 활용하는 방법을 파악하는 데 도움이 될 수 있습니다. 예외는 오류가 공유 자원이 소진되어 발생했는지를 파악하는 데 도움이 됩니다.
 
 ## <a name="example-diagnosis"></a>예제 진단
 
@@ -127,7 +131,7 @@ public class SingleHttpClientInstanceController : ApiController
 
 ### <a name="identify-points-of-slow-down-or-failure"></a>느려지거나 실패한 지점 식별
 
-다음 이미지는 [New Relic APM][new-relic]을 사용하여 생성된 결과이며, 응답 시간이 열악한 작업을 보여줍니다. 이 경우 `NewHttpClientInstancePerRequest` 컨트롤러의 `GetProductAsync` 메서드는 보다 자세히 조사하는 것이 좋습니다. 이러한 작업이 실행 중일 때 오류 비율도 증가합니다. 
+다음 이미지는 [New Relic APM][new-relic]을 사용하여 생성된 결과이며, 응답 시간이 열악한 작업을 보여줍니다. 이 경우 `NewHttpClientInstancePerRequest` 컨트롤러의 `GetProductAsync` 메서드는 보다 자세히 조사하는 것이 좋습니다. 이러한 작업이 실행 중일 때 오류 비율도 증가합니다.
 
 ![각 요청에 대해 HttpClient 개체의 새 인스턴스를 만드는 애플리케이션 예제를 보여주는 New Relic 모니터링 대시 보드][dashboard-new-HTTPClient-instance]
 
@@ -143,7 +147,7 @@ public class SingleHttpClientInstanceController : ApiController
 
 ![각 요청에 대해 HttpClient 개체의 새 인스턴스를 만드는 애플리케이션 예제의 처리량][throughput-new-HTTPClient-instance]
 
-우선 워크로드가 증가하면서 초당 처리되는 요청의 볼륨이 증가합니다. 하지만 사용자가 약 30명이 되면 성공한 요청의 볼륨이 한도에 도달하고 시스템은 예외를 생성하기 시작합니다. 그 이후로 예외 볼륨이 사용자 로드에 따라 점차 증가합니다. 
+우선 워크로드가 증가하면서 초당 처리되는 요청의 볼륨이 증가합니다. 하지만 사용자가 약 30명이 되면 성공한 요청의 볼륨이 한도에 도달하고 시스템은 예외를 생성하기 시작합니다. 그 이후로 예외 볼륨이 사용자 로드에 따라 점차 증가합니다.
 
 부하 테스트는 이러한 장애를 HTTP 500(내부 서버) 오류로 보고했습니다. 원격 분석 데이터를 검토하면 `HttpClient` 개체가 점점 더 많이 만들어지면서 시스템에 소켓 리소스가 소진되어 이러한 오류가 발생했다는 것을 알 수 있습니다.
 
@@ -163,11 +167,9 @@ public class SingleHttpClientInstanceController : ApiController
 
 ![모든 요청에 대해 HttpClient 개체의 단일 인스턴스를 만드는 애플리케이션 예제를 보여주는 New Relic 스레드 프로파일러][thread-profiler-single-HTTPClient-instance]
 
-다음 그래프는 `ExpensiveToCreateService` 개체의 공유 인스턴스를 사용하는 유사한 부하 테스트를 보여줍니다. 처리된 요청의 볼륨은 사용자 로드에 따라 증가하지만 평균 응답 시간은 낮게 유지됩니다. 
+다음 그래프는 `ExpensiveToCreateService` 개체의 공유 인스턴스를 사용하는 유사한 부하 테스트를 보여줍니다. 처리된 요청의 볼륨은 사용자 로드에 따라 증가하지만 평균 응답 시간은 낮게 유지됩니다.
 
 ![각 요청에 대해 HttpClient 개체의 동일한 인스턴스를 다시 사용하는 애플리케이션 예제의 처리량][throughput-single-ExpensiveToCreateService-instance]
-
-
 
 [sample-app]: https://github.com/mspnp/performance-optimization/tree/master/ImproperInstantiation
 [service-bus-messaging]: /azure/service-bus-messaging/service-bus-performance-improvements

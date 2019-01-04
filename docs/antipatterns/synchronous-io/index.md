@@ -1,14 +1,16 @@
 ---
 title: 동기 I/O 안티패턴
+titleSuffix: Performance antipatterns for cloud apps
 description: I/O가 완료하는 동안 호출 스레드를 차단하면 성능이 감소하고 수직 확장성에 영향을 미칠 수 있습니다.
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 961eacb82344ec7e71aaa96fb4cd8bc530721e96
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: 209295cfc911ae168bca2f1c64dc930a27a9a4ba
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429012"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54009341"
 ---
 # <a name="synchronous-io-antipattern"></a>동기 I/O 안티패턴
 
@@ -27,9 +29,9 @@ I/O의 일반적인 예제는 다음을 포함합니다.
 
 이런 안티패턴이 발생하는 일반적인 이유는 다음과 같습니다.
 
-- 그러한 패턴이 작업을 수행하는 가장 직관적인 방법처럼 보입니다. 
+- 그러한 패턴이 작업을 수행하는 가장 직관적인 방법처럼 보입니다.
 - 애플리케이션이 요청에서 응답을 요구합니다.
-- 애플리케이션이 동기 I/O 방법만 제공하는 라이브러리를 사용합니다. 
+- 애플리케이션이 동기 I/O 방법만 제공하는 라이브러리를 사용합니다.
 - 외부 라이브러리가 동기 I/O 작업을 내부적으로 사용합니다. 단일 동기 I/O 호출이 전체 호출 체인을 차단할 수 있습니다.
 
 다음 코드는 Azure Blob Storage에 파일을 업로드합니다. 코드 블록이 동기 I/O를 위해 대기하는 두 장소, `CreateIfNotExists` 메서드 및 `UploadFromStream` 메서드가 있습니다.
@@ -77,7 +79,7 @@ public class SyncController : ApiController
 
 ## <a name="how-to-fix-the-problem"></a>문제를 해결하는 방법
 
-동기 I/O 작업을 비동기 작업으로 바꿉니다. 그러면 현재 스레드가 해제되어 차단되지 않고 의미 있는 작업을 계속 수행할 수 있어 계산 리소스 사용률이 개선됩니다. I/O를 비동기로 수행하는 방법은 클라이언트 애플리케이션에서의 예기치 않은 요청 급증을 처리할 때 특히 효율적입니다. 
+동기 I/O 작업을 비동기 작업으로 바꿉니다. 그러면 현재 스레드가 해제되어 차단되지 않고 의미 있는 작업을 계속 수행할 수 있어 계산 리소스 사용률이 개선됩니다. I/O를 비동기로 수행하는 방법은 클라이언트 애플리케이션에서의 예기치 않은 요청 급증을 처리할 때 특히 효율적입니다.
 
 많은 라이브러리는 메서드의 동기 버전과 비동기 버전을 모두 제공합니다. 가능하면 언제나 비동기 버전을 사용합니다. 다음은 Azure Blob Storage에 파일을 업로드하는 앞의 예의 비동기 버전입니다.
 
@@ -123,7 +125,7 @@ public class AsyncController : ApiController
 }
 ```
 
-작업의 비동기 버전을 제공하지 않는 버전의 경우 선택한 동기 방법의 주위에 비동기 래퍼를 만들 수 있습니다. 이 접근법은 주의해서 따라야 합니다. 이 접근법은 비동기 래퍼를 호출하는 스레드 응답성을 개선할 수 있지만 실제로는 더 많은 리소스를 사용합니다. 추가 스레드가 만들어질 수 있으며 이 스레드가 수행한 작업의 동기화와 연결된 오버헤드가 있습니다. 다음 블로그 게시물에서 몇 가지 절충안을 설명합니다. [동기 메서드에 대해 비동기 래퍼를 노출해야 하나요?][async-wrappers]
+작업의 비동기 버전을 제공하지 않는 버전의 경우 선택한 동기 방법의 주위에 비동기 래퍼를 만들 수 있습니다. 이 접근법은 주의해서 따라야 합니다. 이 접근법은 비동기 래퍼를 호출하는 스레드 응답성을 개선할 수 있지만 실제로는 더 많은 리소스를 사용합니다. 추가 스레드가 만들어질 수 있으며 이 스레드가 수행한 작업의 동기화와 연결된 오버헤드가 있습니다. 일부 장단점은 [동기 메서드에 대해 비동기 래퍼를 공개해야 하나요?][async-wrappers] 블로그 게시물에서 설명하고 있습니다.
 
 다음은 동기 메서드 주위의 비동기 래퍼의 예제입니다.
 
@@ -169,7 +171,7 @@ await LibraryIOOperationAsync();
 Azure 웹 애플리케이션 및 웹 역할의 경우 IIS 웹 서버의 성능을 모니터링하는 것이 좋습니다. 특히 요청 큐 길이에 주의를 기울여 작업량이 많은 기간 동안 요청이 차단되어 사용할 수 있는 스레드를 위해 대기하는지 여부를 확인해야 합니다. Azure 진단을 사용하도록 설정하면 이 정보를 수집할 수 있습니다. 자세한 내용은 다음을 참조하세요.
 
 - [Azure App Service에서 앱 모니터링][web-sites-monitor]
-- [Azure 응용 프로그램에서 성능 카운터 만들기 및 사용][performance-counters]
+- [Azure 애플리케이션에서 성능 카운터 만들기 및 사용][performance-counters]
 
 애플리케이션을 계측하여 요청이 수용된 후 처리되는 방법을 알아봅니다. 요청 흐름을 추적하면 느리게 실행되는 호출을 수행하여 현재 스레드를 차단하는지 여부를 확인하는 데 도움이 될 수 있습니다. 또한 스레드 프로파일링을 수행하면 차단된 요청을 강조 표시할 수 있습니다.
 
@@ -193,16 +195,10 @@ Azure 웹 애플리케이션 및 웹 역할의 경우 IIS 웹 서버의 성능�
 
 처리량이 훨씬 더 큽니다. 초당 요청 수로 측정했을 때, 이전 테스트와 같은 기간 동안 시스템은 거의 10배 증가한 처리량을 성공적으로 처리합니다. 또한 평균 응답 시간이 비교적 일정하며 이전 테스트보다 약 25배 더 작게 유지됩니다.
 
-
 [sample-app]: https://github.com/mspnp/performance-optimization/tree/master/SynchronousIO
-
-
 [async-wrappers]: https://blogs.msdn.microsoft.com/pfxteam/2012/03/24/should-i-expose-asynchronous-wrappers-for-synchronous-methods/
 [performance-counters]: /azure/cloud-services/cloud-services-dotnet-diagnostics-performance-counters
 [web-sites-monitor]: /azure/app-service-web/web-sites-monitor
 
 [sync-performance]: _images/SyncPerformance.jpg
 [async-performance]: _images/AsyncPerformance.jpg
-
-
-

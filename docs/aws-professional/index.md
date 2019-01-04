@@ -5,12 +5,12 @@ keywords: AWS 전문가, Azure 비교, AWS 비교, azure와 aws의 차이점, az
 author: lbrader
 ms.date: 09/19/2018
 pnp.series.title: Azure for AWS Professionals
-ms.openlocfilehash: 0735d24b223a5e5cab6030774280c038c28f35e6
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.openlocfilehash: e6077349a285df56d234f3cc2a14dc0d0d33da55
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916688"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011670"
 ---
 # <a name="azure-for-aws-professionals"></a>AWS 전문가를 위한 Azure
 
@@ -63,7 +63,7 @@ AWS 계정과 마찬가지로, 구독의 기본 서비스 할당량 및 제한�
 
 Azure에서 말하는 "리소스"라는 용어는 AWS와 똑같은 의미로 사용됩니다. 즉, 모든 계산 인스턴스, 저장소 개체, 네트워킹 디바이스 또는 플랫폼 내에서 만들거나 구성할 수 있는 기타 엔터티를 의미합니다.
 
-Azure 리소스는 [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) 또는 기존 Azure [클래식 배포 모델](/azure/azure-resource-manager/resource-manager-deployment-model)을 사용하여 배포 및 관리됩니다.
+Azure 리소스는 두 가지 모델, 즉 [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) 또는 기존 Azure [클래식 배포 모델](/azure/azure-resource-manager/resource-manager-deployment-model) 중 하나를 사용하여 배포 및 관리됩니다.
 모든 새 리소스는 Resource Manager 모델을 사용하여 만듭니다.
 
 ### <a name="resource-groups"></a>리소스 그룹
@@ -129,7 +129,7 @@ AWS에서는 한 영역이 두 개 이상의 가용성 영역으로 나뉩니다
 
 각 역할의 한 인스턴스가 정상적으로 작동하려면 애플리케이션의 인스턴스 역할을 통해 가용성 집합을 구성해야 합니다. 예를 들어 3계층 웹 애플리케이션에서는 프런트 엔드, 애플리케이션 및 데이터 계층에 대한 별도의 가용성 집합을 만듭니다.
 
-![각 응용 프로그램 역할에 대한 Azure 가용성 집합](./images/three-tier-example.png "각 응용 프로그램 역할에 대한 Azure 가용성 집합")
+![각 애플리케이션 역할에 대한 Azure 가용성 집합](./images/three-tier-example.png "각 애플리케이션 역할에 대한 Azure 가용성 집합")
 
 ### <a name="availability-zones"></a>가용성 영역
 
@@ -148,9 +148,9 @@ Azure [지역 중복 저장소](https://azure.microsoft.com/documentation/articl
 
 -   [Azure에서 가상 머신의 영역 및 가용성](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-regions-and-availability/)
 
--   [Azure 응용 프로그램의 고가용성](../resiliency/high-availability-azure-applications.md)
+-   [Azure 애플리케이션의 고가용성](../resiliency/high-availability-azure-applications.md)
 
--   [Azure 응용 프로그램에 대한 재해 복구](../resiliency/disaster-recovery-azure-applications.md)
+-   [Azure 애플리케이션에 대한 재해 복구](../resiliency/disaster-recovery-azure-applications.md)
 
 -   [Azure에서 Linux 가상 머신에 대한 계획된 유지 관리](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-planned-maintenance/)
 
@@ -174,7 +174,7 @@ AWS 인스턴스 형식과 Azure 가상 머신 크기는 비슷한 방식으로 
 
 -   [Azure에서 가상 머신 크기(Linux)](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/)
 
-초 단위로 요금이 청구되는 AWS와는 달리, Azure 주문형 VM은 분 단위로 요금이 청구됩니다.
+초 단위로 요금이 청구되는 AWS와 마찬가지로 Azure 주문형 VM도 초 단위로 요금이 청구됩니다.
 
 #### <a name="ebs-and-azure-storage-for-vm-disks"></a>VM 디스크용 EBS 및 Azure Storage
 
@@ -221,7 +221,7 @@ Azure는 AWS와 약간 차이가 있는 여러 계산 서비스를 제공합니�
 
 -   [Azure App Service에서 Node.js 웹앱 시작](https://azure.microsoft.com/documentation/articles/app-service-web-nodejs-get-started/)
 
--   [Azure 참조 아키텍처: 기본 웹 응용 프로그램](https://azure.microsoft.com/documentation/articles/guidance-web-apps-basic/)
+-   [Azure 참조 아키텍처: 기본 웹 애플리케이션](https://azure.microsoft.com/documentation/articles/guidance-web-apps-basic/)
 
 -   [첫 번째 Azure Function 만들기](https://azure.microsoft.com/documentation/articles/functions-create-first-azure-function/)
 
@@ -239,12 +239,12 @@ AWS 플랫폼에서 클라우드 저장소는 주로 세 가지 서비스로 분
 
 Azure Storage에서는 구독에 바인딩된 [저장소 계정](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/)을 사용하여 다음과 같은 저장소 서비스를 만들고 관리할 수 있습니다.
 
--   [Blob Storage](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) - 문서, 미디어 파일 또는 응용 프로그램 설치 프로그램과 같은 모든 종류의 텍스트 또는 이진 데이터를 저장할 수 있습니다. 개인 액세스에 대해 Blob Storage를 설정하거나 인터넷에 공개적으로 콘텐츠를 공유할 수 있습니다. Blob Storage는 AWS S3 및 EBS와 동일한 용도로 사용됩니다.
--   [Table Storage](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-table-storage/) - 구조화된 데이터 집합을 저장합니다. Table Storage는 신속한 개발과 대량 데이터에 대한 빠른 액세스를 가능하게 하는 NoSQL 키-특성 데이터 저장소입니다. AWS의 SimpleDB 및 DynamoDB 서비스와 비슷합니다.
+-   [Blob Storage](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) - 문서, 미디어 파일 또는 애플리케이션 설치 프로그램과 같은 모든 종류의 텍스트 또는 이진 데이터를 저장할 수 있습니다. 개인 액세스에 대해 Blob Storage를 설정하거나 인터넷에 공개적으로 콘텐츠를 공유할 수 있습니다. Blob Storage는 AWS S3 및 EBS와 동일한 용도로 사용됩니다.
+-   [Table Storage](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-table-storage/) - 구조화된 데이터 세트를 저장합니다. Table Storage는 신속한 개발과 대량 데이터에 대한 빠른 액세스를 가능하게 하는 NoSQL 키-특성 데이터 저장소입니다. AWS의 SimpleDB 및 DynamoDB 서비스와 비슷합니다.
 
 -   [Queue Storage](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-queues/) - 워크플로 처리 및 클라우드 서비스 구성 요소 사이의 통신을 위한 메시지를 제공합니다.
 
--   [File Storage](https://azure.microsoft.com/documentation/articles/storage-java-how-to-use-file-storage/) - 표준 SMB(서버 메시지 블록) 프로토콜을 사용하는 기존 응용 프로그램을 위한 공유 저장소를 제공합니다. File Storage는 AWS 플랫폼의 EFS와 비슷한 방식으로 사용됩니다.
+-   [File Storage](https://azure.microsoft.com/documentation/articles/storage-java-how-to-use-file-storage/) - 표준 SMB(서버 메시지 블록) 프로토콜을 사용하는 기존 애플리케이션을 위한 공유 스토리지를 제공합니다. File Storage는 AWS 플랫폼의 EFS와 비슷한 방식으로 사용됩니다.
  
 #### <a name="glacier-and-azure-storage"></a>Glacier 및 Azure Storage 
 
@@ -258,7 +258,7 @@ Azure Storage에서는 구독에 바인딩된 [저장소 계정](https://azure.m
 
 -   [Azure Storage 보안 가이드](https://azure.microsoft.com/documentation/articles/storage-security-guide/)
 
--   [패턴 및 연습: CDN(Content Delivery Network) 지침](https://azure.microsoft.com/documentation/articles/best-practices-cdn/)
+-   [패턴 및 사례: CDN(Content Delivery Network) 지침](https://azure.microsoft.com/documentation/articles/best-practices-cdn/)
 
 ### <a name="networking"></a>네트워킹
 
@@ -268,7 +268,7 @@ Azure Storage에서는 구독에 바인딩된 [저장소 계정](https://azure.m
 
 -   [Load Balancer](https://azure.microsoft.com/documentation/articles/load-balancer-overview/) - AWS Classic Load Balancer와 동일한 기능을 제공하며, 네트워크 수준에서 여러 VM의 트래픽을 분산할 수 있습니다. 장애 조치(failover) 기능도 제공합니다.
 
--   [Application Gateway](https://azure.microsoft.com/documentation/articles/application-gateway-introduction/) - AWS Application Load Balancer와 비슷한 응용 프로그램 수준 규칙 기반 라우팅을 제공합니다.
+-   [Application Gateway](https://azure.microsoft.com/documentation/articles/application-gateway-introduction/) - AWS Application Load Balancer와 비슷한 애플리케이션 수준 규칙 기반 라우팅을 제공합니다.
 
 #### <a name="route-53-azure-dns-and-azure-traffic-manager"></a>Route 53, Azure DNS 및 Azure Traffic Manager
 
@@ -310,7 +310,7 @@ AWS RDS의 비용은 CPU, RAM, 저장소, 네트워크 대역폭 등 인스턴�
 
 -   [Azure Portal로 Azure SQL Database에 대한 지역에서 복제 구성](https://azure.microsoft.com/documentation/articles/sql-database-geo-replication-portal/)
 
--   [Cosmos DB 소개: NoSQL JSON 데이터베이스](/azure/cosmos-db/sql-api-introduction)
+-   [Azure Cosmos DB 소개: NoSQL JSON 데이터베이스](/azure/cosmos-db/sql-api-introduction)
 
 -   [Node.js에서 Azure Table Storage를 사용하는 방법](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-table-storage/)
 
@@ -322,15 +322,15 @@ Azure는 디렉터리 서비스를 다음과 같은 제품으로 나눠 놓았�
 
 -   [Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-whatis/) - 클라우드 기반 디렉터리 및 ID 관리 서비스입니다.
 
--   [Azure Active Directory B2B](https://azure.microsoft.com/documentation/articles/active-directory-b2b-collaboration-overview/) - 파트너가 관리하는 ID로 회사 응용 프로그램에 액세스할 수 있습니다.
+-   [Azure Active Directory B2B](https://azure.microsoft.com/documentation/articles/active-directory-b2b-collaboration-overview/) - 파트너가 관리하는 ID로 회사 애플리케이션에 액세스할 수 있습니다.
 
--   [Azure Active Directory B2C](https://azure.microsoft.com/documentation/articles/active-directory-b2c-overview/) - 소비자용 응용 프로그램의 Single Sign-On 및 사용자 관리를 지원하는 서비스입니다.
+-   [Azure Active Directory B2C](https://azure.microsoft.com/documentation/articles/active-directory-b2c-overview/) - 소비자용 애플리케이션의 Single Sign-On 및 사용자 관리를 지원하는 서비스입니다.
 
 -   [Azure Active Directory Domain Services](https://azure.microsoft.com/documentation/articles/active-directory-ds-overview/) - 호스팅된 도메인 컨트롤러 서비스로, Active Directory 호환 도메인 가입 및 사용자 관리 기능을 허용합니다.
 
 #### <a name="web-application-firewall"></a>웹 애플리케이션 방화벽
 
-[Application Gateway 웹 응용 프로그램 방화벽](https://azure.microsoft.com/documentation/articles/application-gateway-webapplicationfirewall-overview/) 외에도 [Barracuda Networks](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf/) 같은 타사 공급업체의 [웹 응용 프로그램 방화벽을 사용](https://azure.microsoft.com/documentation/articles/application-gateway-webapplicationfirewall-overview/)할 수 있습니다.
+[Application Gateway 웹 애플리케이션 방화벽](https://azure.microsoft.com/documentation/articles/application-gateway-webapplicationfirewall-overview/) 외에도 [Barracuda Networks](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf/) 같은 타사 공급업체의 [웹 애플리케이션 방화벽을 사용](https://azure.microsoft.com/documentation/articles/application-gateway-webapplicationfirewall-overview/)할 수 있습니다.
 
 #### <a name="see-also"></a>참고 항목
 
@@ -346,11 +346,11 @@ AWS는 알림, 트랜잭션 또는 마케팅 전자 메일을 보낼 수 있는 
 
 #### <a name="simple-queueing-service"></a>Simple Queueing Service
 
-AWS SQS(AWS Simple Queueing Service)는 AWS 플랫폼 내부의 응용 프로그램, 서비스 및 디바이스를 연결하는 메시지 시스템을 제공합니다. Azure에도 비슷한 기능을 제공하는 두 가지 서비스가 있습니다.
+AWS SQS(AWS Simple Queueing Service)는 AWS 플랫폼 내부의 애플리케이션, 서비스 및 장치를 연결하는 메시지 시스템을 제공합니다. Azure에도 비슷한 기능을 제공하는 두 가지 서비스가 있습니다.
 
--   [큐 저장소](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-queues/) - Azure 플랫폼 내부의 응용 프로그램 구성 요소 간 통신을 허용하는 클라우드 메시지 서비스입니다.
+-   [큐 스토리지](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-queues/) - Azure 플랫폼 내부의 애플리케이션 구성 요소 간 통신을 허용하는 클라우드 메시지 서비스입니다.
 
--   [Service Bus](https://azure.microsoft.com/services/service-bus/) - 응용 프로그램, 서비스 및 장치를 연결하는 보다 강력한 메시지 시스템입니다. 관련 [Service Bus Relay](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it)를 사용하면 Service Bus가 원격으로 호스팅되는 애플리케이션 및 서비스에도 연결할 수 있습니다.
+-   [Service Bus](https://azure.microsoft.com/services/service-bus/) - 애플리케이션, 서비스 및 장치를 연결하는 보다 강력한 메시지 시스템입니다. 관련 [Service Bus Relay](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it)를 사용하면 Service Bus가 원격으로 호스팅되는 애플리케이션 및 서비스에도 연결할 수 있습니다.
 
 #### <a name="device-farm"></a>Device Farm
 
