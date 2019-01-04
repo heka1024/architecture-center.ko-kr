@@ -1,18 +1,20 @@
 ---
 title: 불필요한 가져오기 안티패턴
+titleSuffix: Performance antipatterns for cloud apps
 description: 비즈니스 작업에 필요한 것보다 더 많은 데이터를 검색하면 불필요한 I/O 오버헤드가 발생하고 응답성이 감소할 수 있습니다.
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 7a72bfd3e4b2e206f3266a046fac2083224ecb4f
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.custom: seodec18
+ms.openlocfilehash: dac1b4c1422b447b8a0a9ebe317d5ac246c38da5
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30846606"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54010242"
 ---
 # <a name="extraneous-fetching-antipattern"></a>불필요한 가져오기 안티패턴
 
-비즈니스 작업에 필요한 것보다 더 많은 데이터를 검색하면 불필요한 I/O 오버헤드가 발생하고 응답성이 감소할 수 있습니다. 
+비즈니스 작업에 필요한 것보다 더 많은 데이터를 검색하면 불필요한 I/O 오버헤드가 발생하고 응답성이 감소할 수 있습니다.
 
 ## <a name="problem-description"></a>문제 설명
 
@@ -52,7 +54,7 @@ public async Task<IHttpActionResult> AggregateOnClientAsync()
 }
 ```
 
-다음 예제에서는 Entity Framework가 LINQ to Entities를 사용하는 방법 때문에 발생하는 미묘한 문제를 보여 줍니다. 
+다음 예제에서는 Entity Framework가 LINQ to Entities를 사용하는 방법 때문에 발생하는 미묘한 문제를 보여 줍니다.
 
 ```csharp
 var query = from p in context.Products.AsEnumerable()
@@ -62,13 +64,13 @@ var query = from p in context.Products.AsEnumerable()
 List<Product> products = query.ToList();
 ```
 
-애플리케이션은 `SellStartDate`주 이상 오래된 제품을 찾으려고 합니다. 대부분의 경우 LINQ to Entities는 `where` 절을 데이터베이스에서 실행되는 SQL 문으로 변환합니다. 그러나 이 경우 LINQ to Entities는 `AddDays` 메서드를 SQL에 매핑할 수 없습니다. 그 대신에 `Product` 테이블의 모든 행이 반환되며 그 결과가 메모리에서 필터링됩니다. 
+애플리케이션은 `SellStartDate`주 이상 오래된 제품을 찾으려고 합니다. 대부분의 경우 LINQ to Entities는 `where` 절을 데이터베이스에서 실행되는 SQL 문으로 변환합니다. 그러나 이 경우 LINQ to Entities는 `AddDays` 메서드를 SQL에 매핑할 수 없습니다. 그 대신에 `Product` 테이블의 모든 행이 반환되며 그 결과가 메모리에서 필터링됩니다.
 
-`AsEnumerable` 호출이 바로 문제가 있다는 힌트입니다. 이 메서드는 결과를 `IEnumerable` 인터페이스로 변환합니다. `IEnumerable`은 필터링을 지원하지만 이 필터링은 데이터베이스가 아닌 *클라이언트* 쪽에서 수행됩니다. 기본적으로 LINQ to Entities는 `IQueryable`을 사용하여 필터링 책임을 데이터 원본에 넘깁니다. 
+`AsEnumerable` 호출이 바로 문제가 있다는 힌트입니다. 이 메서드는 결과를 `IEnumerable` 인터페이스로 변환합니다. `IEnumerable`은 필터링을 지원하지만 이 필터링은 데이터베이스가 아닌 *클라이언트* 쪽에서 수행됩니다. 기본적으로 LINQ to Entities는 `IQueryable`을 사용하여 필터링 책임을 데이터 원본에 넘깁니다.
 
 ## <a name="how-to-fix-the-problem"></a>문제를 해결하는 방법
 
-금세 오래되거나 삭제될 수 있는 대량의 데이터를 가져오지 않고 수행 중인 작업에 필요한 데이터만 가져옵니다. 
+금세 오래되거나 삭제될 수 있는 대량의 데이터를 가져오지 않고 수행 중인 작업에 필요한 데이터만 가져옵니다.
 
 테이블의 모든 열을 가져와서 필터링하는 대신에 데이터베이스에서 필요한 열을 선택합니다.
 
@@ -103,7 +105,7 @@ public async Task<IHttpActionResult> AggregateOnDatabaseAsync()
 Entity Framework를 사용하는 경우 LINQ 쿼리가 `IEnumerable`이 아닌 `IQueryable` 인터페이스를 사용하여 확인되도록 합니다. 데이터 원본에 매핑할 수 있는 함수만 사용하여 쿼리를 조정해야 할 수 있습니다. 앞의 예제를 리팩터링하여 쿼리에서 `AddDays` 메서드를 제거하면 데이터베이스에서 필터링을 수행할 수 있습니다.
 
 ```csharp
-DateTime dateSince = DateTime.Now.AddDays(-7); // AddDays has been factored out. 
+DateTime dateSince = DateTime.Now.AddDays(-7); // AddDays has been factored out.
 var query = from p in context.Products
             where p.SellStartDate < dateSince // This criterion can be passed to the database by LINQ to Entities
             select ...;
@@ -117,22 +119,21 @@ List<Product> products = query.ToList();
 
 - 바인딩되지 않은 쿼리를 지원해야 하는 작업의 경우 페이지 매김을 구현하고 한 번에 제한된 수의 엔터티만 가져옵니다. 예를 들어 고객이 제품 카탈로그를 검색하는 경우 결과를 한 번에 한 페이지씩 표시할 수 있습니다.
 
-- 가능하면 데이터 저장소에 기본 제공되는 기능을 이용합니다. 예를 들어 SQL Database는 대개 집계 함수를 제공합니다. 
+- 가능하면 데이터 저장소에 기본 제공되는 기능을 이용합니다. 예를 들어 SQL Database는 대개 집계 함수를 제공합니다.
 
 - 집계 같은 특정 기능을 지원하지 않는 데이터 원본을 사용하는 경우 계산된 결과를 다른 곳에 저장하고 레코드가 추가되거나 업데이트될 때 값을 업데이트할 수 있으므로 애플리케이션이 필요할 때마다 값을 다시 계산할 필요가 없습니다.
 
-- 요청이 다수의 필드를 검색하는 것으로 보이면 소스 코드를 검토하여 이 필드가 모두 실제로 필요한지 여부를 결정합니다. 경우에 따라 이러한 요청은 잘못 설계된 `SELECT *` 쿼리의 결과입니다. 
+- 요청이 다수의 필드를 검색하는 것으로 보이면 소스 코드를 검토하여 이 필드가 모두 실제로 필요한지 여부를 결정합니다. 경우에 따라 이러한 요청은 잘못 설계된 `SELECT *` 쿼리의 결과입니다.
 
-- 마찬가지로 다수의 엔터티를 검색하는 요청은 애플리케이션이 데이터를 올바르게 필터링하지 않는다는 신호일 수 있습니다. 이러한 엔터티가 모두 실제로 필요한지 확인합니다. 가능하면 데이터베이스 쪽 필터링을 사용합니다. 예를 들어 SQL의 `WHERE` 절을 사용합니다. 
+- 마찬가지로 다수의 엔터티를 검색하는 요청은 애플리케이션이 데이터를 올바르게 필터링하지 않는다는 신호일 수 있습니다. 이러한 엔터티가 모두 실제로 필요한지 확인합니다. 가능하면 데이터베이스 쪽 필터링을 사용합니다. 예를 들어 SQL의 `WHERE` 절을 사용합니다.
 
 - 처리를 데이터베이스에서 오프로드로 수행하는 방법이 항상 최선의 옵션인 것은 아닙니다. 이 전략은 데이터베이스가 그렇게 하도록 설계되거나 최적화된 경우에만 사용합니다. 대부분의 데이터베이스 시스템은 특정 기능에 대해 고도로 최적화되지만 범용 애플리케이션 엔진으로 작동하도록 설계되어 있지 않습니다. 자세한 내용은 [사용량이 많은 데이터베이스 안티패턴][BusyDatabase]을 참조하세요.
-
 
 ## <a name="how-to-detect-the-problem"></a>문제를 감지하는 방법
 
 불필요한 가져오기의 증상에는 높은 대기 시간과 낮은 처리량이 있습니다. 데이터를 데이터 원본에서 검색하는 경우 경합이 증가할 확률도 있습니다. 응답 시간이 길어지거나 서비스 시간 초과로 인해 장애가 발생하면 최종 사용자가 보고할 가능성이 높습니다. 이러한 장애는 HTTP 500(내부 서버) 오류 또는 HTTP 503(서비스를 사용할 수 없음) 오류를 반환할 수 있습니다. 웹 서버의 이벤트 로그를 검사하십시오. 오류의 원인과 상황에 대한 자세한 정보가 포함되어 있을 수 있습니다.
 
-이 안티패턴 및 가져온 일부 원격 분석 데이터의 증상은 [모놀리식 지속성 안티패턴][MonolithicPersistence]과 매우 유사할 수 있습니다. 
+이 안티패턴 및 가져온 일부 원격 분석 데이터의 증상은 [모놀리식 지속성 안티패턴][MonolithicPersistence]과 매우 유사할 수 있습니다.
 
 다음 단계를 수행하면 원인을 식별하는 데 도움이 될 수 있습니다.
 
@@ -140,8 +141,8 @@ List<Product> products = query.ToList();
 2. 시스템에서 보여 주는 동작 패턴을 관찰합니다. 초당 트랜잭션 수 또는 사용자 볼륨 측면에서 특정 한계가 있습니까?
 3. 느린 워크로드의 인스턴스와 동작 패턴의 상관성을 확인합니다.
 4. 사용 중인 데이터 저장소를 식별합니다. 각 데이터 원본에 대해 낮은 수준의 원격 분석을 실행하여 작업의 동작을 관찰합니다.
-6. 이러한 데이터 원본을 참조하는 느리게 실행되는 쿼리를 식별합니다.
-7. 느리게 실행되는 쿼리에 대해 리소스별 분석을 수행하고 데이터가 사용 및 소비되는 방법을 확인합니다.
+5. 이러한 데이터 원본을 참조하는 느리게 실행되는 쿼리를 식별합니다.
+6. 느리게 실행되는 쿼리에 대해 리소스별 분석을 수행하고 데이터가 사용 및 소비되는 방법을 확인합니다.
 
 다음과 같은 증상을 찾습니다.
 
@@ -150,13 +151,13 @@ List<Product> products = query.ToList();
 - 네트워크를 통해 대용량의 데이터를 자주 수신하는 작업.
 - I/O가 완료될 때까지 대기하면서 상당한 시간을 소비하는 애플리케이션 및 서비스.
 
-## <a name="example-diagnosis"></a>예제 진단    
+## <a name="example-diagnosis"></a>예제 진단
 
 다음 섹션은 이러한 단계를 앞의 예제에 적용합니다.
 
 ### <a name="identify-slow-workloads"></a>느린 워크로드 식별
 
-이 그래프는 앞에 나온 `GetAllFieldsAsync` 메서드를 실행하는 최대 400명의 동시 사용자를 시뮬레이션한 부하 테스트의 성능 결과를 보여 줍니다. 처리량은 부하가 증가함에 따라 서서히 줄어듭니다. 평균 응답 시간은 워크로드가 증가함에 따라 증가합니다. 
+이 그래프는 앞에 나온 `GetAllFieldsAsync` 메서드를 실행하는 최대 400명의 동시 사용자를 시뮬레이션한 부하 테스트의 성능 결과를 보여 줍니다. 처리량은 부하가 증가함에 따라 서서히 줄어듭니다. 평균 응답 시간은 워크로드가 증가함에 따라 증가합니다.
 
 ![GetAllFieldsAsync 메서드에 대한 부하 테스트 결과][Load-Test-Results-Client-Side1]
 
@@ -174,7 +175,7 @@ List<Product> products = query.ToList();
 
 ### <a name="identify-data-sources-in-slow-workloads"></a>느린 워크로드의 데이터 원본 식별
 
-서비스가 데이터 검색 방법 때문에 성능이 저하되는 것으로 의심되는 경우 애플리케이션이 사용하는 리포지토리와 어떻게 상호작용하는지 조사합니다. 실시간 시스템을 모니터링하여 성능이 저하된 기간 동안 액세스되는 원본을 확인합니다. 
+서비스가 데이터 검색 방법 때문에 성능이 저하되는 것으로 의심되는 경우 애플리케이션이 사용하는 리포지토리와 어떻게 상호작용하는지 조사합니다. 실시간 시스템을 모니터링하여 성능이 저하된 기간 동안 액세스되는 원본을 확인합니다.
 
 각 데이터 원본에 대해 시스템을 계측하여 다음 정보를 수집합니다.
 
@@ -203,7 +204,6 @@ List<Product> products = query.ToList();
 
 ![Windows Azure SQL Database 관리 포털의 쿼리 세부 정보 창][QueryDetails]
 
-
 ## <a name="implement-the-solution-and-verify-the-result"></a>솔루션 구현 및 결과 확인
 
 `GetRequiredFieldsAsync` 메서드를 데이터베이스 쪽의 SELECT 문을 사용하도록 변경하면 부하 테스트에서 다음과 같은 결과를 표시했습니다.
@@ -218,19 +218,17 @@ List<Product> products = query.ToList();
 
 ![AggregateOnDatabaseAsync 메서드에 대한 부하 테스트 결과][Load-Test-Results-Database-Side2]
 
-이제 평균 응답 시간이 최소화되었습니다. 이는 주로 데이터베이스에서의 I/O가 대폭 감소했기 때문에 성능이 크게 개선된 결과입니다. 
+이제 평균 응답 시간이 최소화되었습니다. 이는 주로 데이터베이스에서의 I/O가 대폭 감소했기 때문에 성능이 크게 개선된 결과입니다.
 
 다음은 `AggregateOnDatabaseAsync` 메서드에 대한 해당 원격 분석 데이터입니다. 데이터베이스에서 검색한 데이터의 양은 트랜잭션당 280Kb 이상에서 53바이트로 대폭 감소했습니다. 결과적으로 분당 최대 지속 요청 수는 약 2,000에서 25,000 이상으로 증가했습니다.
 
 ![`AggregateOnDatabaseAsync` 메서드에 대한 원격 분석 데이터][TelemetryAggregateInDatabaseAsync]
-
 
 ## <a name="related-resources"></a>관련 리소스
 
 - [사용량이 많은 데이터베이스 안티패턴][BusyDatabase]
 - [번잡한 I/O 안티패턴][chatty-io]
 - [데이터 분할 모범 사례][data-partitioning]
-
 
 [BusyDatabase]: ../busy-database/index.md
 [data-partitioning]: ../../best-practices/data-partitioning.md

@@ -1,18 +1,20 @@
 ---
 title: 사용량이 많은 데이터베이스 안티패턴
+titleSuffix: Performance antipatterns for cloud apps
 description: 처리를 데이터베이스 서버로 오프로드하면 성능 및 확장성 문제가 발생할 수 있습니다.
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: a14a350aefc1801ae08cb4a8d0eb3d5b248c92bf
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: 11bce03aed2e988d0a814b3298818715ba42c1c5
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428910"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011466"
 ---
 # <a name="busy-database-antipattern"></a>사용량이 많은 데이터베이스 안티패턴
 
-처리를 데이터베이스 서버로 오프로드하면 데이터 저장 및 검색 요청에 응답하는 대신 코드를 실행하는 데 상당한 시간이 소요될 수 있습니다. 
+처리를 데이터베이스 서버로 오프로드하면 데이터 저장 및 검색 요청에 응답하는 대신 코드를 실행하는 데 상당한 시간이 소요될 수 있습니다.
 
 ## <a name="problem-description"></a>문제 설명
 
@@ -217,9 +219,9 @@ using (var command = new SqlCommand(...))
 
 ## <a name="how-to-detect-the-problem"></a>문제를 감지하는 방법
 
-사용량이 많은 데이터베이스의 증상에는 데이터베이스에 액세스하는 작업의 처리량과 응답 시간이 불균형적으로 감소하는 증상이 포함됩니다. 
+사용량이 많은 데이터베이스의 증상에는 데이터베이스에 액세스하는 작업의 처리량과 응답 시간이 불균형적으로 감소하는 증상이 포함됩니다.
 
-다음 단계를 수행하면 문제를 식별하는 데 도움이 될 수 있습니다. 
+다음 단계를 수행하면 문제를 식별하는 데 도움이 될 수 있습니다.
 
 1. 성능 모니터링을 사용하여 프로덕션 시스템이 데이터베이스 활동을 수행하는 데 얼마나 많은 시간을 소비하는지 확인합니다.
 
@@ -261,10 +263,9 @@ CPU 및 DTU 사용률을 보면 처리량 증가에도 불구하고 시스템이
 
 ![클라이언트 애플리케이션에서 처리를 수행하는 동안 데이터베이스의 성능을 보여주는 Azure SQL Database 모니터링][ProcessingInClientApplicationMonitor]
 
-## <a name="related-resources"></a>관련 리소스 
+## <a name="related-resources"></a>관련 리소스
 
 - [불필요한 가져오기 안티패턴][ExtraneousFetching]
-
 
 [dtu]: /azure/sql-database/sql-database-service-tiers-dtu
 [ExtraneousFetching]: ../extraneous-fetching/index.md

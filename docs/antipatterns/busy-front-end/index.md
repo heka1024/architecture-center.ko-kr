@@ -1,14 +1,16 @@
 ---
 title: 붐비는 프런트 엔드 안태패턴
+titleSuffix: Performance antipatterns for cloud apps
 description: 다수의 백그라운드 스레드에서 비동기 작업을 수행하면 다른 포그라운드 작업에 결핍이 발생할 수 있습니다.
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 89a2d6c41af1e19ca1b9b6a0a5dceac615afd60a
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: f52cedde5a17f098fb9218c48479fae981a2c7df
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428298"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011500"
 ---
 # <a name="busy-front-end-antipattern"></a>붐비는 프런트 엔드 안태패턴
 
@@ -62,11 +64,11 @@ public class UserProfileController : ApiController
 
 ## <a name="how-to-fix-the-problem"></a>문제를 해결하는 방법
 
-상당한 리소스를 소비하는 프로세스를 별도의 백엔드로 이동합니다. 
+상당한 리소스를 소비하는 프로세스를 별도의 백엔드로 이동합니다.
 
 이러한 방식을 통해 프런트 엔드는 리소스를 많이 사용하는 작업을 메시지 큐에 넣습니다. 백 엔드는 비동기 처리를 위한 작업을 선택합니다. 큐는 로드 레벨러(leveler)로 작동하여 백 엔드에 대한 요청을 버퍼링합니다. 큐 길이가 너무 길어지면 자동 크기 조정을 구성하여 백 엔드 규모를 확장할 수 있습니다.
 
-다음은 이전 코드의 수정된 버전입니다. 이 버전에서 `Post` 메서드는 메시지를 Service Bus 큐에 배치합니다. 
+다음은 이전 코드의 수정된 버전입니다. 이 버전에서 `Post` 메서드는 메시지를 Service Bus 큐에 배치합니다.
 
 ```csharp
 public class WorkInBackgroundController : ApiController
@@ -121,7 +123,7 @@ public async Task RunAsync(CancellationToken cancellationToken)
 - 이 방식은 애플리케이션에 몇 가지 복잡성을 더합니다. 오류 발생시 요청이 손실되지 않도록 큐 생성 및 큐 해제를 안전하게 처리해야 합니다.
 - 애플리케이션은 메시지 큐에 대한 추가 서비스에 종속됩니다.
 - 처리 환경은 예상 워크로드를 처리하고 필요한 처리량 목표를 충족할 만큼 충분히 확장성이 있어야 합니다.
-- 이 방식은 전반적인 응답성을 개선하는 하지만 백 엔드로 이동되는 작업은 완료하는 데 시간이 더 오래 걸릴 수 있습니다. 
+- 이 방식은 전반적인 응답성을 개선하는 하지만 백 엔드로 이동되는 작업은 완료하는 데 시간이 더 오래 걸릴 수 있습니다.
 
 ## <a name="how-to-detect-the-problem"></a>문제를 감지하는 방법
 
@@ -130,12 +132,12 @@ public async Task RunAsync(CancellationToken cancellationToken)
 다음 단계를 수행하면 문제를 식별하는 데 도움이 될 수 있습니다.
 
 1. 프로덕션 시스템의 프로세스 모니터링을 수행하여 응답 시간이 느려지는 시점을 파악합니다.
-2. 이 시점에 캡처된 원격 분석 데이터를 검사하여 수행되는 작업과 사용되는 리소스의 혼합을 결정합니다. 
+2. 이 시점에 캡처된 원격 분석 데이터를 검사하여 수행되는 작업과 사용되는 리소스의 혼합을 결정합니다.
 3. 당시 수행되었던 작업의 볼륨 및 조합과 열악한 응답 시간 사이의 상관 관계를 찾습니다.
-4. 의심되는 각 작업의 부하를 테스트하여 어떤 작업이 리소스를 소비하면서 다른 작업에 결핍을 유발하는지 파악합니다. 
+4. 의심되는 각 작업의 부하를 테스트하여 어떤 작업이 리소스를 소비하면서 다른 작업에 결핍을 유발하는지 파악합니다.
 5. 이러한 작업의 소스 코드를 검토하여 과도한 리소스 소비를 유발하는 원인을 알아냅니다.
 
-## <a name="example-diagnosis"></a>예제 진단 
+## <a name="example-diagnosis"></a>예제 진단
 
 다음 섹션에서는 이러한 단계를 앞에서 설명한 애플리케이션 예제에 적용합니다.
 
@@ -155,18 +157,17 @@ public async Task RunAsync(CancellationToken cancellationToken)
 
 이 시점에서는 `WorkInFrontEnd` 컨트롤러의 `Post` 메서드가 정밀 조사의 주요 후보입니다. 가설을 확인하려면 통제된 환경에서 추가 작업이 필요합니다.
 
-### <a name="perform-load-testing"></a>부하 테스트 수행 
+### <a name="perform-load-testing"></a>부하 테스트 수행
 
 다음 단계는 통제된 환경에서 테스트를 수행하는 것입니다. 예를 들어, 요청을 포함하는 일련의 부하 테스트를 실행한 다음 각 요청을 차례로 생략하면서 영향을 확인합니다.
 
-아래 그래프는 이전 테스트에 사용한 클라우드 서비스의 동일한 배치에 수행된 부하 테스트의 결과입니다. 이 테스트에는 `WorkInFrontEnd` 컨트롤러에서 `Post` 작업을 수행하는 사용자의 단계 부하와 함께 `UserProfile` 컨트롤러에서 `Get` 작업을 수행하는 500명의 일정 부하를 사용했습니다. 
+아래 그래프는 이전 테스트에 사용한 클라우드 서비스의 동일한 배치에 수행된 부하 테스트의 결과입니다. 이 테스트에는 `WorkInFrontEnd` 컨트롤러에서 `Post` 작업을 수행하는 사용자의 단계 부하와 함께 `UserProfile` 컨트롤러에서 `Get` 작업을 수행하는 500명의 일정 부하를 사용했습니다.
 
 ![WorkInFrontEnd 컨트롤러의 초기 부하 테스트 결과][Initial-Load-Test-Results-Front-End]
 
 처음에는 단계 로드가 0이므로 활성 사용자만 `UserProfile` 요청을 수행합니다. 시스템은 초당 약 500개 요청에 응답할 수 있습니다. 60초 후, 100명의 추가 사용자가 `WorkInFrontEnd` 컨트롤러에 POST 요청을 보내기 시작합니다. 거의 즉시, `UserProfile` 컨트롤러에 전송된 워크로드가 초당 약 150개 요청으로 떨어집니다. 이것은 부하 테스트 러너(test runner)의 작동 방식 때문입니다. 다음 요청을 보내기 전에 응답을 기다리기 때문에 응답을 받는 시간이 오래 걸릴수록 요청 속도가 느려집니다.
 
 `WorkInFrontEnd` 컨트롤러에 POST 요청을 보내는 사용자가 많아질수록 `UserProfile` 컨트롤러의 응답 속도는 계속 떨어집니다. 하지만 `WorkInFrontEnd` 컨트롤러가 처리하는 요청의 볼륨은 비교적 일정하게 유지됩니다. 두 요청의 전반적인 속도가 꾸준히 낮은 한도로 향하기 때문에 시스템의 포화 상태가 명백해집니다.
-
 
 ### <a name="review-the-source-code"></a>소스 코드 검토
 
@@ -175,11 +176,11 @@ public async Task RunAsync(CancellationToken cancellationToken)
 하지만 이 메서드로 수행되는 작업은 여전히 CPU, 메모리 및 기타 리소스를 소비합니다. 이 프로세스를 비동기적으로 실행하면 통제되지 않은 방식으로 사용자가 동시에 많은 수의 작업을 트리거할 수 있기 때문에 실제로 성능이 저하될 수 있습니다. 서버가 실행할 수 있는 스레드 수에는 한도가 있습니다. 이 한도를 넘으면 새 스레드를 시작하려고 할 때 애플리케이션에 예외가 발생할 수 있습니다.
 
 > [!NOTE]
-> 이것이 비동기 작업을 피해야 한다는 의미는 아닙니다. 권장되는 방법은 네트워크 호출에 비동기 await를 수행하는 것입니다. ([동기 I/O][sync-io] 안태패턴을 참조하세요.) 여기서 문제는 다른 스레드에서 CPU를 많이 사용하는 작업이 생성된다는 점입니다. 
+> 이것이 비동기 작업을 피해야 한다는 의미는 아닙니다. 권장되는 방법은 네트워크 호출에 비동기 await를 수행하는 것입니다. ([동기 I/O][sync-io] 안태패턴을 참조하세요.) 여기서 문제는 다른 스레드에서 CPU를 많이 사용하는 작업이 생성된다는 점입니다.
 
 ### <a name="implement-the-solution-and-verify-the-result"></a>솔루션 구현 및 결과 확인
 
-다음 이미지는 솔루션을 구현한 후 성능 모니터링입니다. 로드는 앞에 표시된 것과 비슷하지만 `UserProfile` 컨트롤러의 응답 시간이 훨씬 빨라졌습니다. 요청 볼륨은 같은 기간 동안 2,759에서 23,565로 증가했습니다. 
+다음 이미지는 솔루션을 구현한 후 성능 모니터링입니다. 로드는 앞에 표시된 것과 비슷하지만 `UserProfile` 컨트롤러의 응답 시간이 훨씬 빨라졌습니다. 요청 볼륨은 같은 기간 동안 2,759에서 23,565로 증가했습니다.
 
 ![WorkInBackground 컨트롤러가 사용될 때 모든 요청의 응답 시간 효과를 보여주는 AppDynamics Business Transactions 창][AppDynamics-Transactions-Background-Requests]
 
@@ -218,5 +219,3 @@ CPU 및 네트워크 사용률 역시 향상된 성능을 보여줍니다. CPU �
 [AppDynamics-Transactions-Background-Requests]: ./_images/AppDynamicsBackgroundPerformanceStats.jpg
 [AppDynamics-Metrics-Background-Requests]: ./_images/AppDynamicsBackgroundMetrics.jpg
 [Load-Test-Results-Background]: ./_images/LoadTestResultsBackground.jpg
-
-

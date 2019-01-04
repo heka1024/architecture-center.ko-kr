@@ -4,18 +4,18 @@ titleSuffix: Azure Reference Architectures
 description: 온-프레미스 Active Directory를 Azure와 통합하기 위한 참조 아키텍처를 비교합니다.
 ms.date: 07/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 905dedda6de1a107f55b2f7651441780a685aea7
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 99a64f0a5fbe5624aa8ad05bd3565ab2aef618b3
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53119866"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011789"
 ---
 # <a name="choose-a-solution-for-integrating-on-premises-active-directory-with-azure"></a>온-프레미스 Active Directory를 Azure와 통합하기 위한 솔루션 선택
 
 이 문서에서는 온-프레미스 AD(Active Directory) 환경을 Azure 네트워크와 통합하는 옵션을 비교합니다. 각 옵션에서 자세한 참조 아키텍처를 사용할 수 있습니다.
 
-많은 조직에서는 AD DS(Active Directory Domain Services)를 사용하여 보안 경계에 포함된 사용자, 컴퓨터, 애플리케이션 또는 기타 리소스와 연결된 ID를 인증합니다. 디렉터리 및 ID 서비스는 일반적으로 온-프레미스에서 호스트되지만 애플리케이션이 일부는 온-프레미스에서, 일부는 Azure에서 호스트되는 경우 Azure의 인증 요청을 온-프레미스로 되돌려 보내는 데 시간이 지연될 수 있습니다. Azure에 디렉터리와 ID 서비스를 구현하면 이러한 대기 시간을 줄일 수 있습니다.
+많은 조직에서는 AD DS(Active Directory Domain Services)를 사용하여 보안 경계에 포함된 사용자, 컴퓨터, 응용 프로그램 또는 기타 리소스와 연결된 ID를 인증합니다. 디렉터리 및 ID 서비스는 일반적으로 온-프레미스에서 호스트되지만 응용 프로그램이 일부는 온-프레미스에서, 일부는 Azure에서 호스트되는 경우 Azure의 인증 요청을 온-프레미스로 되돌려 보내는 데 시간이 지연될 수 있습니다. Azure에 디렉터리와 ID 서비스를 구현하면 이러한 대기 시간을 줄일 수 있습니다.
 
 Azure에서는 Azure에 디렉터리와 ID 서비스를 구현하기 위한 두 가지 솔루션을 제공합니다.
 
@@ -46,8 +46,8 @@ Azure AD 디렉터리는 온-프레미스 디렉터리의 확장이 아닙니다
 **과제**
 
 - ID 서비스가 사용자 및 그룹으로 제한됩니다. 서비스 및 컴퓨터 계정을 인증할 수 있는 기능이 없습니다.
-- Azure AD 디렉터리를 동기화 상태로 유지하려면 온-프레미스 도메인과의 연결을 구성해야 합니다. 
-- Azure AD를 통해 인증하려면 애플리케이션을 다시 작성해야 할 수 있습니다.
+- Azure AD 디렉터리를 동기화 상태로 유지하려면 온-프레미스 도메인과의 연결을 구성해야 합니다.
+- Azure AD를 통해 인증하려면 응용 프로그램을 다시 작성해야 할 수 있습니다.
 
 **참조 아키텍처**
 
@@ -55,9 +55,9 @@ Azure AD 디렉터리는 온-프레미스 디렉터리의 확장이 아닙니다
 
 ## <a name="ad-ds-in-azure-joined-to-an-on-premises-forest"></a>온-프레미스 포리스트에 조인된 Azure의 AD DS
 
-AD DS(AD Domain Services) 서버를 Azure에 배포합니다. Azure에서 도메인을 만들어 온-프레미스 AD 포리스트에 조인합니다. 
+AD DS(AD Domain Services) 서버를 Azure에 배포합니다. Azure에서 도메인을 만들어 온-프레미스 AD 포리스트에 조인합니다.
 
-현재 Azure AD에서 구현되지 않은 AD DS 기능을 사용해야 하는 경우 이 옵션을 고려합니다. 
+현재 Azure AD에서 구현되지 않은 AD DS 기능을 사용해야 하는 경우 이 옵션을 고려합니다.
 
 **이점**
 
@@ -97,13 +97,13 @@ AD DS(AD Domain Services) 서버를 Azure에 배포하지만 온-프레미스 �
 
 ## <a name="extend-ad-fs-to-azure"></a>AD FS를 Azure로 확장
 
-AD FS(Active Directory Federation Services) 배포를 Azure에 복제하여 Azure에서 실행되는 구성 요소에 대해 페더레이션 인증 및 권한 부여를 수행할 수 있습니다. 
+AD FS(Active Directory Federation Services) 배포를 Azure에 복제하여 Azure에서 실행되는 구성 요소에 대해 페더레이션 인증 및 권한 부여를 수행할 수 있습니다.
 
 이 아키텍처의 일반적인 용도는 다음과 같습니다.
 
 - 파트너 조직에서 사용자 인증 및 권한 부여
 - 사용자가 조직 방화벽 외부에서 실행되는 웹 브라우저에서 인증할 수 있도록 허용
-- 사용자가 모바일 디바이스와 같은 승인된 외부 디바이스에서 연결할 수 있도록 허용 
+- 사용자가 모바일 디바이스와 같은 승인된 외부 디바이스에서 연결할 수 있도록 허용
 
 **이점**
 

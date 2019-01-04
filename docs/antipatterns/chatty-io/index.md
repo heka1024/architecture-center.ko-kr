@@ -1,14 +1,16 @@
 ---
 title: 번잡한 I/O 안티패턴
+titleSuffix: Performance antipatterns for cloud apps
 description: 다수의 I/O 요청으로 인해 성능과 응답성이 저하될 수 있습니다.
 author: dragon119
 ms.date: 06/05/2017
-ms.openlocfilehash: 17193198918cc742b2e3f30e77dfc5c3f2726ebf
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: c018e365d0a6244f77d119ad59f601e9c7ea965c
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428570"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011228"
 ---
 # <a name="chatty-io-antipattern"></a>번잡한 I/O 안티패턴
 
@@ -26,7 +28,7 @@ ms.locfileid: "47428570"
 2. `Product` 테이블을 쿼리하여 해당 하위 범주의 모든 제품을 찾습니다.
 3. 각 제품에 대해 `ProductPriceListHistory` 테이블에서 가격 책정 데이터를 쿼리합니다.
 
-애플리케이션은 [Entity Framework][ef]를 사용하여 데이터베이스를 쿼리합니다. 전체 샘플은 [여기][code-sample]에서 찾을 수 있습니다. 
+애플리케이션은 [Entity Framework][ef]를 사용하여 데이터베이스를 쿼리합니다. 전체 샘플은 [여기][code-sample]에서 찾을 수 있습니다.
 
 ```csharp
 public async Task<IHttpActionResult> GetProductsInSubCategoryAsync(int subcategoryId)
@@ -57,11 +59,11 @@ public async Task<IHttpActionResult> GetProductsInSubCategoryAsync(int subcatego
 }
 ```
 
-이 예제는 명시적으로 문제를 보여주지만 자식 레코드를 암시적으로 한 번에 하나씩 가져오는 경우 O/RM이 문제를 가릴 수 있습니다. 이것을 "N + 1 문제"라고 합니다. 
+이 예제는 명시적으로 문제를 보여주지만 자식 레코드를 암시적으로 한 번에 하나씩 가져오는 경우 O/RM이 문제를 가릴 수 있습니다. 이것을 "N + 1 문제"라고 합니다.
 
 ### <a name="implementing-a-single-logical-operation-as-a-series-of-http-requests"></a>단일 논리 연산을 일련의 HTTP 요청으로 구현
 
-개발자가 개체 지향 패러다임을 따르고 원격 개체를 메모리의 로컬 개체로 처리하려는 경우에 자주 발생합니다. 이로 인해 네트워크 왕복이 너무 많아질 수 있습니다. 예를 들어 다음 웹 API는 개별 HTTP GET 메서드를 통해 `User` 개체의 개별 속성을 노출합니다. 
+개발자가 개체 지향 패러다임을 따르고 원격 개체를 메모리의 로컬 개체로 처리하려는 경우에 자주 발생합니다. 이로 인해 네트워크 왕복이 너무 많아질 수 있습니다. 예를 들어 다음 웹 API는 개별 HTTP GET 메서드를 통해 `User` 개체의 개별 속성을 노출합니다.
 
 ```csharp
 public class UserController : ApiController
@@ -89,7 +91,7 @@ public class UserController : ApiController
 }
 ```
 
-이런 방식은 기술적으로 문제가 없지만 대부분의 클라이언트가 각 `User`에 대해 여러 속성을 가져와야 하기 때문에 클라이언트 코드가 다음과 같이 됩니다. 
+이런 방식은 기술적으로 문제가 없지만 대부분의 클라이언트가 각 `User`에 대해 여러 속성을 가져와야 하기 때문에 클라이언트 코드가 다음과 같이 됩니다.
 
 ```csharp
 HttpResponseMessage response = await client.GetAsync("users/1/username");
@@ -107,7 +109,7 @@ var dob = await response.Content.ReadAsStringAsync();
 
 ### <a name="reading-and-writing-to-a-file-on-disk"></a>디스크의 파일 읽기 및 쓰기
 
-파일 I/O는 데이터를 읽거나 쓰기 전에 파일을 열고 적절한 지점으로 이동하는 단계가 포함됩니다. 작업이 완료되면 운영 체제 리소스를 절약하기 위해 파일을 닫을 수 있습니다. 파일에 적은 소량의 정보를 지속적으로 읽고 쓰는 애플리케이션은 상당한 I/O 오버헤드를 발생시킵니다. 작은 쓰기 요청은 파일 조각화로 이어져서 후속 I/O 작업이 더 느려질 수 있습니다. 
+파일 I/O는 데이터를 읽거나 쓰기 전에 파일을 열고 적절한 지점으로 이동하는 단계가 포함됩니다. 작업이 완료되면 운영 체제 리소스를 절약하기 위해 파일을 닫을 수 있습니다. 파일에 적은 소량의 정보를 지속적으로 읽고 쓰는 애플리케이션은 상당한 I/O 오버헤드를 발생시킵니다. 작은 쓰기 요청은 파일 조각화로 이어져서 후속 I/O 작업이 더 느려질 수 있습니다.
 
 다음 예제는 `FileStream`을 사용하여 `Customer` 개체를 파일에 씁니다. `FileStream`을 만들면 파일이 열리고 삭제하면 파일이 닫힙니다. (`using` 문은 `FileStream` 개체를 자동으로 삭제합니다.) 새 고객이 추가될 때 애플리케이션에서 이 메서드를 반복적으로 호출하면 I/O 오버헤드가 빠르게 누적될 수 있습니다.
 
@@ -211,7 +213,7 @@ await SaveCustomerListToFileAsync(customers);
 
 - 처음 두 예제는 I/O 호출을 *줄이*지만, 각각 더 *많은* 정보를 검색합니다. 이 두 요소 사이의 상충 관계를 고려해야 합니다. 정답은 실제 사용 패턴에 따라 달라집니다. 예를 들어 웹 API 예제에서 클라이언트에 사용자 이름만 자주 필요한 경우가 있을 수 있습니다. 이 경우 해당 데이터를 별도의 API 호출로 노출하는 것이 좋습니다. 자세한 내용은 [불필요한 가져오기][extraneous-fetching] 안티패턴을 참조하세요.
 
-- 데이터를 읽을 때 I/O 요청을 너무 크게 만들지 마십시오. 애플리케이션이 사용할만한 정보만 검색해야 합니다. 
+- 데이터를 읽을 때 I/O 요청을 너무 크게 만들지 마십시오. 애플리케이션이 사용할만한 정보만 검색해야 합니다.
 
 - 대부분의 요청을 처리하는 *자주 액세스하는 데이터*와 거의 사용되지 않는 *드물게 액세스하는 데이터*라는 두 가지 청크로 개체의 정보를 분할하는 것이 도움이 되기도 합니다. 가장 자주 액세스하는 데이터가 개체의 전체 데이터에서 비교적 작은 부분을 차지하는 경우가 많기 때문에 해당 부분만 반환하면 상당한 I/O 오버헤드를 절약할 수 있습니다.
 
@@ -231,7 +233,7 @@ await SaveCustomerListToFileAsync(customers);
 2. 이전 단계에서 확인된 각 작업의 부하 테스트를 수행합니다.
 3. 부하 테스트 중 각 작업에 의해 생성된 데이터 액세스 요청에 대한 원격 분석 데이터를 수집합니다.
 4. 데이터 저장소에 전송된 각 요청에 대한 자세한 통계를 수집합니다.
-5. 테스트 환경에서 애플리케이션을 프로파일링하여 잠재적으로 I/O 병목 현상이 발생할만한 위치를 밝힙니다. 
+5. 테스트 환경에서 애플리케이션을 프로파일링하여 잠재적으로 I/O 병목 현상이 발생할만한 위치를 밝힙니다.
 
 다음과 같은 증상을 찾습니다.
 
@@ -246,16 +248,16 @@ await SaveCustomerListToFileAsync(customers);
 
 ### <a name="load-test-the-application"></a>애플리케이션 부하 테스트
 
-이 그래프는 부하 테스트의 결과입니다. 중간 응답 시간은 요청당 10초 단위로 측정됩니다. 그래프는 매우 높은 대기 시간을 보여줍니다. 사용자가 1000명 로드되면 쿼리 결과를 보기 위해 거의 1분을 기다려야 할 수 있습니다. 
+이 그래프는 부하 테스트의 결과입니다. 중간 응답 시간은 요청당 10초 단위로 측정됩니다. 그래프는 매우 높은 대기 시간을 보여줍니다. 사용자가 1000명 로드되면 쿼리 결과를 보기 위해 거의 1분을 기다려야 할 수 있습니다.
 
 ![번잡한 I/O 애플리케이션 예제에 대한 핵심 지표 부하 테스트 결과][key-indicators-chatty-io]
 
 > [!NOTE]
-> 이 애플리케이션은 Azure SQL Database를 사용하여 Azure App Service 웹앱으로 배포되었습니다. 부하 테스트에는 최대 1000명의 동시 사용자가 시뮬레이션된 단계 워크로드를 사용했습니다. 데이터베이스는 연결에 대한 경합이 결과에 영향을 줄 가능성을 줄이기 위해 최대 1000개의 동시 연결을 지원하는 연결 풀로 구성되었습니다. 
+> 이 애플리케이션은 Azure SQL Database를 사용하여 Azure App Service 웹앱으로 배포되었습니다. 부하 테스트에는 최대 1000명의 동시 사용자가 시뮬레이션된 단계 워크로드를 사용했습니다. 데이터베이스는 연결에 대한 경합이 결과에 영향을 줄 가능성을 줄이기 위해 최대 1000개의 동시 연결을 지원하는 연결 풀로 구성되었습니다.
 
 ### <a name="monitor-the-application"></a>애플리케이션 모니터링
 
-APM(애플리케이션 성능 모니터링) 패키지를 사용하여 번잡한 I/O를 식별할 수 있는 주요 메트릭을 캡처하고 분석할 수 있습니다. 어떤 메트릭이 중요한가는 I/O 워크로드에 따라 달라집니다. 이 예제의 경우 흥미로운 I/O 요청은 데이터베이스 쿼리입니다. 
+APM(애플리케이션 성능 모니터링) 패키지를 사용하여 번잡한 I/O를 식별할 수 있는 주요 메트릭을 캡처하고 분석할 수 있습니다. 어떤 메트릭이 중요한가는 I/O 워크로드에 따라 달라집니다. 이 예제의 경우 흥미로운 I/O 요청은 데이터베이스 쿼리입니다.
 
 다음 이미지는 [New Relic APM][new-relic]을 사용하여 생성된 결과입니다. 최대 워크로드 기간 동안 평균 데이터베이스 응답 시간은 요청당 약 5.6초에 최고점에 도달했습니다. 테스트 기간 동안 시스템은 분당 평균 410건의 요청을 지원할 수 있었습니다.
 
@@ -279,7 +281,7 @@ APM(애플리케이션 성능 모니터링) 패키지를 사용하여 번잡한 
 
 ![테스트 중인 애플리케이션 예제에 대한 쿼리 세부 정보][queries3]
 
-Entity Framework와 같은 O/RM을 사용하는 경우, SQL 쿼리를 추적하면 O/RM이 프로그래밍 방식 호출을 SQL 문으로 변환하는 방식에 대한 통찰력을 얻을 수 있고 데이터 액세스가 최적화될 수 있는 영역을 알아낼 수 있습니다. 
+Entity Framework와 같은 O/RM을 사용하는 경우, SQL 쿼리를 추적하면 O/RM이 프로그래밍 방식 호출을 SQL 문으로 변환하는 방식에 대한 통찰력을 얻을 수 있고 데이터 액세스가 최적화될 수 있는 영역을 알아낼 수 있습니다.
 
 ### <a name="implement-the-solution-and-verify-the-result"></a>솔루션 구현 및 결과 확인
 
@@ -293,7 +295,7 @@ Entity Framework와 같은 O/RM을 사용하는 경우, SQL 쿼리를 추적하�
 
 ![대규모 API의 트랜잭션 개요][databasetraffic2]
 
-SQL 문을 추적하면 모든 데이터를 단일 SELECT 문으로 가져온다는 것을 알 수 있습니다. 이 쿼리는 상당히 복잡하지만 작업당 한 번만 수행됩니다. 복잡한 조인은 비용이 높을 수 있지만 관계형 데이터베이스 시스템은 이러한 유형의 쿼리에 최적화되어 있습니다.  
+SQL 문을 추적하면 모든 데이터를 단일 SELECT 문으로 가져온다는 것을 알 수 있습니다. 이 쿼리는 상당히 복잡하지만 작업당 한 번만 수행됩니다. 복잡한 조인은 비용이 높을 수 있지만 관계형 데이터베이스 시스템은 이러한 유형의 쿼리에 최적화되어 있습니다.
 
 ![대규모 API에 대한 쿼리 세부 정보][queries4]
 
@@ -322,4 +324,3 @@ SQL 문을 추적하면 모든 데이터를 단일 SELECT 문으로 가져온다
 [queries2]: _images/DatabaseQueries2.jpg
 [queries3]: _images/DatabaseQueries3.jpg
 [queries4]: _images/DatabaseQueries4.jpg
-
