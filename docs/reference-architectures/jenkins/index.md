@@ -5,12 +5,12 @@ description: SSO(Single Sign-On)로 보호된 Azure에서 확장성 있는 엔�
 author: njray
 ms.date: 04/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9dc4eb27f6c2bc8896770a2d0cd01b738c18c593
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 26bf9cadc8db0cd4fcc61023619ca61bb7b87855
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120274"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644158"
 ---
 # <a name="run-a-jenkins-server-on-azure"></a>Azure에서 Jenkins 서버 실행
 
@@ -188,19 +188,19 @@ Jenkins 커뮤니티의 더 많은 모범 사례는 [Jenkins 모범 사례][jenk
 
 Jenkins 서버의 Jenkins 업데이트 센터에서 [Azure AD 플러그 인][configure-azure-ad]을 사용하고 지침에 따라 SSO를 설정합니다.
 
-### <a name="step-3-provision-jenkins-server-with-azure-vm-agent-plugin"></a>3단계: Azure VM 에이전트 플러그 인이 있는 Jenkins 서버 프로비전
+### <a name="step-3-provision-jenkins-server-with-azure-vm-agent-plugin"></a>3단계: Azure VM 에이전트 플러그 인을 사용하여 Jenkins 서버 프로비전
 
 이 단계는 Jenkins 관리자에 의해 실행되며 이미 설치된 Azure VM 에이전트 플러그 인을 설정합니다.
 
 [다음 단계에 따라 플러그 인을 구성합니다][configure-agent]. 플러그 인에 대한 서비스 주체 설정에 대한 자습서는 [Azure VM 에이전트를 사용하여 수요에 맞게 Jenkins 배포 규모 조정][scale-agent]을 참조하세요.
 
-### <a name="step-4-provision-jenkins-server-with-azure-storage"></a>4단계: Azure Storage가 있는 Jenkins 서버 프로비전
+### <a name="step-4-provision-jenkins-server-with-azure-storage"></a>4단계: Azure Storage를 사용하여 Jenkins 서버 프로비전
 
 이 단계는 Jenkins 관리자에 의해 실행되며 이미 설치된 Windows Azure Storage 플러그 인을 설정합니다.
 
 [다음 단계에 따라 플러그 인을 구성합니다][configure-storage].
 
-### <a name="step-5-provision-jenkins-server-with-azure-credential-plugin"></a>5단계: Azure 자격 증명 플러그 인이 있는 Jenkins 서버 프로비전
+### <a name="step-5-provision-jenkins-server-with-azure-credential-plugin"></a>5단계: Azure 자격 증명 플러그 인을 사용하여 Jenkins 서버 프로비전
 
 이 단계는 Jenkins 관리자에 의해 실행되며 이미 설치된 Azure 자격 증명 플러그 인을 설정합니다.
 
@@ -210,11 +210,17 @@ Jenkins 서버의 Jenkins 업데이트 센터에서 [Azure AD 플러그 인][con
 
 Jenkins 서버에 대한 모니터링을 설정하려면 [Azure 서비스의 Azure Monitor에서 메트릭 경고 만들기][create-metric]를 참조하세요.
 
-### <a name="step-7-provision-jenkins-server-with-managed-disks-for-disaster-recovery"></a>7단계: 재해 복구를 위해 Managed Disks로 Jenkins 서버 프로비전
+### <a name="step-7-provision-jenkins-server-with-managed-disks-for-disaster-recovery"></a>7단계: 재해 복구용 Managed Disks를 사용하여 Jenkins 서버 프로비전
 
 Microsoft Jenkins 제품 그룹은 Jenkins 상태를 저장하는 데 사용되는 관리 디스크를 작성하는 재해 복구 스크립트를 작성했습니다. 서버가 다운되면 최신 상태로 복원할 수 있습니다.
 
 [GitHub][disaster]에서 재해 복구 스크립트를 다운로드하여 실행하십시오.
+
+동일한 기술 중 일부를 사용하여 특정 솔루션을 보여주는 다음 [Azure 예제 시나리오](/azure/architecture/example-scenario)를 검토해 보세요.
+
+- [컨테이너 기반 워크로드에 대한 CI/CD 파이프라인](/azure/architecture/example-scenario/apps/devops-with-aks)
+
+<!-- links -->
 
 [acs]: https://aka.ms/azjenkinsacs
 [ad-sp]: /azure/active-directory/develop/active-directory-integrating-applications

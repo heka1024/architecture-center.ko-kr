@@ -4,12 +4,12 @@ description: Azure의 일반 워크로드에 대한 참조 아키텍처, 청사�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: 6a86256c504737b5f747a690d27fdf178ac8b4fe
-ms.sourcegitcommit: 8d951fd7e9534054b160be48a1881ae0857561ef
+ms.openlocfilehash: 05f93aedc49cc71a35d8c0303af0342ed0ba47f7
+ms.sourcegitcommit: 032f402482762f4e674aeebbc122ad18dfba11eb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53329384"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53396422"
 ---
 # <a name="azure-reference-architectures"></a>Azure 참조 아키텍처
 
@@ -21,6 +21,26 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
 
 <!-- markdownlint-disable MD033 -->
 <ul  class="panelContent cardsF">
+<!-- Batch scoring of Python models -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/batch-scoring-python.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/python-powered-h.svg" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Python 모델의 일괄 처리 채점</h3>
+                        <p>Azure Batch AI를 사용하여 일정에 따라 여러 Python 모델을 일괄 처리로 채점합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
 <!-- Batch scoring for deep learning models -->
 <li style="display: flex; flex-direction: column;">
     <a href="./ai/batch-scoring-deep-learning.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
@@ -41,7 +61,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
         </div>
     </a>
 </li>
-<!-- Batch scoring for deep learning models -->
+<!-- Real-time scoring of Python models -->
 <li style="display: flex; flex-direction: column;">
     <a href="./ai/realtime-scoring-python.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
@@ -61,7 +81,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
         </div>
     </a>
 </li>
-<!-- Batch scoring for R models -->
+<!-- Real-time scoring of R models -->
 <li style="display: flex; flex-direction: column;">
     <a href="./ai/realtime-scoring-r.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
@@ -75,6 +95,26 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                     <div class="cardText">
                         <h3>R 기계 학습 모델의 실시간 점수 매기기</h3>
                         <p>AKS(Azure Kubernetes Service)에서 실행되는 Microsoft Machine Learning Server를 사용하여 R에서 실시간 예측 서비스를 구현합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Real-time Recommendation API -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/real-time-recommendation.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/machine-learning.svg" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>실시간 추천 API</h3>
+                        <p>Azure Databricks를 사용하여 추천 모델을 학습하고 Azure Machine Learning을 사용하여 API로 배포합니다.</p>
                     </div>
                 </div>
             </div>
@@ -167,7 +207,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
 </li>
 </ul>
 
-## <a name="serverless-applications"></a>서버리스 애플리케이션
+## <a name="serverless-applications"></a>서버리스 응용 프로그램
 
 <ul class="panelContent cardsF">
 <!-- Serverless web application -->
@@ -182,8 +222,8 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>서버리스 웹 애플리케이션</h3>
-                        <p>Azure Blob Storage의 정적 콘텐츠를 제공하고 Azure Functions를 사용하여 API를 구현하는 서버리스 웹 애플리케이션입니다.</p>
+                        <h3>서버리스 웹 응용 프로그램</h3>
+                        <p>Azure Blob Storage의 정적 콘텐츠를 제공하고 Azure Functions를 사용하여 API를 구현하는 서버리스 웹 응용 프로그램입니다.</p>
                     </div>
                 </div>
             </div>
@@ -391,8 +431,8 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>SQL Server를 통한 N 계층 애플리케이션</h3>
-                        <p>Windows에서 SQL Server를 사용하여 N 계층 애플리케이션에 대해 구성된 가상 머신입니다.</p>
+                        <h3>SQL Server를 통한 N 계층 응용 프로그램</h3>
+                        <p>Windows에서 SQL Server를 사용하여 N 계층 응용 프로그램에 대해 구성된 가상 머신입니다.</p>
                     </div>
                 </div>
             </div>
@@ -411,8 +451,8 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>다중 지역 N 계층 애플리케이션</h3>
-                        <p>고가용성을 위해 SQL Server AlwaysOn 가용성 그룹을 사용하여 두 지역에 배포된 N 계층 애플리케이션입니다.</p>
+                        <h3>다중 지역 N 계층 응용 프로그램</h3>
+                        <p>고가용성을 위해 SQL Server AlwaysOn 가용성 그룹을 사용하여 두 지역에 배포된 N 계층 응용 프로그램입니다.</p>
                     </div>
                 </div>
             </div>
@@ -431,8 +471,8 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Cassandra를 통한 N 계층 애플리케이션</h3>
-                        <p>Linux에서 Apache Cassandra를 사용하여 N 계층 애플리케이션에 대해 구성된 가상 머신입니다.</p>
+                        <h3>Cassandra를 통한 N 계층 응용 프로그램</h3>
+                        <p>Linux에서 Apache Cassandra를 사용하여 N 계층 응용 프로그램에 대해 구성된 가상 머신입니다.</p>
                     </div>
                 </div>
             </div>
@@ -629,7 +669,7 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
 </li>
 </ul>
 
-## <a name="web-applications"></a>웹 애플리케이션
+## <a name="web-applications"></a>웹 응용 프로그램
 
 <ul  class="panelContent cardsF">
 <li style="display: flex; flex-direction: column;">
@@ -643,8 +683,8 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>기본 웹앱 애플리케이션</h3>
-                        <p>Azure App Service 및 Azure SQL Database를 사용하는 웹 애플리케이션입니다.</p>
+                        <h3>기본 웹앱 응용 프로그램</h3>
+                        <p>Azure App Service 및 Azure SQL Database를 사용하는 웹 응용 프로그램입니다.</p>
                     </div>
                 </div>
             </div>
