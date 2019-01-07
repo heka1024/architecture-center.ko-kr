@@ -48,7 +48,7 @@ ms.locfileid: "52902785"
 
 ## <a name="data-warehousing-in-azure"></a>Azure의 데이터 웨어하우징
 
-Azure에서는 고객의 트랜잭션이든, 다양한 부서에서 사용되는 다양한 비즈니스 애플리케이션이든, 하나 이상의 데이터 원본이 있을 수 있습니다. 이 데이터는 일반적으로 하나 이상의 [OLTP](online-transaction-processing.md) 데이터베이스에 저장됩니다. 데이터는 네트워크 공유, Azure Storage Blob 또는 Data Lake 같은 기타 저장소 미디어에 유지될 수 있습니다. 데이터가 데이터 웨어하우스 자체 또는 Azure SQL Database 같은 관계형 데이터베이스에 저장할 수도 있습니다. 분석 데이터 저장소 계층의 목적은 데이터 웨어하우스 또는 데이터 마트에 대해 분석 및 보고 도구에서 실행한 쿼리를 충족하는 것입니다. Azure에서 이 분석 저장소 기능은 Azure SQL Data Warehouse를 사용하거나 Hive 또는 대화형 쿼리를 통해 Azure HDInsight를 사용하여 충족될 수 있습니다. 또한 데이터 저장소의 데이터를 데이터 웨어하우스에 주기적으로 이동하거나 복사하기 위해 일정 수준의 오케스트레이션이 필요합니다. 이 작업은 Azure Data Factory 또는 Azure HDInsight의 Oozie를 사용하여 수행할 수 있습니다.
+Azure에서는 고객의 트랜잭션이든, 다양한 부서에서 사용되는 다양한 비즈니스 애플리케이션이든, 하나 이상의 데이터 원본이 있을 수 있습니다. 이 데이터는 일반적으로 하나 이상의 [OLTP](online-transaction-processing.md) 데이터베이스에 저장됩니다. 데이터는 네트워크 공유, Azure Storage Blob 또는 Data Lake 같은 기타 스토리지 미디어에 유지될 수 있습니다. 데이터가 데이터 웨어하우스 자체 또는 Azure SQL Database 같은 관계형 데이터베이스에 저장할 수도 있습니다. 분석 데이터 저장소 계층의 목적은 데이터 웨어하우스 또는 데이터 마트에 대해 분석 및 보고 도구에서 실행한 쿼리를 충족하는 것입니다. Azure에서 이 분석 저장소 기능은 Azure SQL Data Warehouse를 사용하거나 Hive 또는 대화형 쿼리를 통해 Azure HDInsight를 사용하여 충족될 수 있습니다. 또한 데이터 저장소의 데이터를 데이터 웨어하우스에 주기적으로 이동하거나 복사하기 위해 일정 수준의 오케스트레이션이 필요합니다. 이 작업은 Azure Data Factory 또는 Azure HDInsight의 Oozie를 사용하여 수행할 수 있습니다.
 
 Azure에서는 사용자의 요구에 따라 다음과 같은 몇 가지 데이터 웨어하우스 구현 옵션을 사용할 수 있습니다. 다음 목록은 SMP([Symmetric Multiprocessing](https://en.wikipedia.org/wiki/Symmetric_multiprocessing)) 및 MPP([Massively Parallel Processing](https://en.wikipedia.org/wiki/Massively_parallel))의 두 범주로 구분됩니다. 
 

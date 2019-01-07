@@ -28,7 +28,7 @@ ms.locfileid: "52902037"
 
 ## <a name="architecture"></a>아키텍처
 
-대부분의 시나리오에서 원본 텍스트 문서는 Azure Storage 또는 Azure Data Lake Store와 같은 개체 저장소에 로드됩니다. 예외는 SQL Server 또는 Azure SQL Database 내에서 전체 텍스트 검색을 사용하는 것입니다. 이 경우 문서 데이터는 데이터베이스에서 관리되는 테이블에 로드됩니다. 일단 저장되면 문서는 일괄로 처리되어 인덱스를 생성합니다.
+대부분의 시나리오에서 원본 텍스트 문서는 Azure Storage 또는 Azure Data Lake Store와 같은 개체 스토리지에 로드됩니다. 예외는 SQL Server 또는 Azure SQL Database 내에서 전체 텍스트 검색을 사용하는 것입니다. 이 경우 문서 데이터는 데이터베이스에서 관리되는 테이블에 로드됩니다. 일단 저장되면 문서는 일괄로 처리되어 인덱스를 생성합니다.
 
 ## <a name="technology-choices"></a>기술 선택
 

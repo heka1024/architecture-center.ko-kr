@@ -30,7 +30,7 @@ Azure 패브릭 컨트롤러는 Azure 계산 인스턴스의 상태를 프로비
 장애 도메인은 장애를 완화하기 위한 물리적 분리인 반면, 업그레이드 도메인은 특정 시간에 서비스의 어느 인스턴스가 업그레이드될지를 결정하는 인스턴스 분리의 논리 단위입니다. 기본적으로 호스팅된 서비스 배포에는 다섯 개의 업그레이드 도메인이 정의됩니다. 그러나 서비스 정의 파일에서 해당 값을 변경할 수 있습니다. 예를 들어 웹 역할이 8개 있다면 3개의 업그레이드 도메인에 2개의 인스턴스가 존재하고, 1개의 업그레이드 도메인에 2개의 인스턴스가 존재합니다. Azure는 업그레이드 도메인의 개수를 바탕으로 업데이트 시퀀스를 정의합니다. 자세한 내용은 [클라우드 서비스 업데이트](/azure/cloud-services/cloud-services-update-azure-service/)를 참조하세요.
 
 ### <a name="features-in-other-services"></a>다른 서비스의 기능
-계산 리소스의 고가용성을 지원하는 이러한 플랫폼 기능 외에도 Azure의 다른 서비스에도 고가용성 기능이 포함되어 있습니다. 예를 들어 Azure Storage는 Azure 저장소 계정에 모든 데이터에 대한 셋 이상의 복제본을 유지합니다. 또한, 보조 지역에 데이터 복사본을 저장하는 지역 복제를 지원합니다. Azure Content Delivery Network를 사용하면 중복성, 확장성 및 낮은 대기 시간을 위해 세계 각지에 Blob을 캐시할 수 있습니다. Azure SQL Database는 여러 복제본도 유지 관리합니다.
+계산 리소스의 고가용성을 지원하는 이러한 플랫폼 기능 외에도 Azure의 다른 서비스에도 고가용성 기능이 포함되어 있습니다. 예를 들어 Azure Storage는 Azure 스토리지 계정에 모든 데이터에 대한 셋 이상의 복제본을 유지합니다. 또한, 보조 지역에 데이터 복사본을 저장하는 지역 복제를 지원합니다. Azure Content Delivery Network를 사용하면 중복성, 확장성 및 낮은 대기 시간을 위해 세계 각지에 Blob을 캐시할 수 있습니다. Azure SQL Database는 여러 복제본도 유지 관리합니다.
 
 Azure 플랫폼의 가용성 기능에 대해 자세히 알아보려면 [복원력 기술 지침](index.md)을 참조하세요. [Microsoft Azure에서 대규모 서비스를 설계하는 모범 사례](https://azure.microsoft.com/blog/best-practices-for-designing-large-scale-services-on-windows-azure/)도 참조하세요.
 

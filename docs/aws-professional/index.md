@@ -237,7 +237,7 @@ AWS 플랫폼에서 클라우드 저장소는 주로 세 가지 서비스로 분
 
 -   **EFS(Elastic File System)** - EC2 인스턴스 수천 개의 공유 저장소로 사용되는 파일 저장소입니다.
 
-Azure Storage에서는 구독에 바인딩된 [저장소 계정](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/)을 사용하여 다음과 같은 저장소 서비스를 만들고 관리할 수 있습니다.
+Azure Storage에서는 구독에 바인딩된 [스토리지 계정](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/)을 사용하여 다음과 같은 스토리지 서비스를 만들고 관리할 수 있습니다.
 
 -   [Blob Storage](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/) - 문서, 미디어 파일 또는 애플리케이션 설치 프로그램과 같은 모든 종류의 텍스트 또는 이진 데이터를 저장할 수 있습니다. 개인 액세스에 대해 Blob Storage를 설정하거나 인터넷에 공개적으로 콘텐츠를 공유할 수 있습니다. Blob Storage는 AWS S3 및 EBS와 동일한 용도로 사용됩니다.
 -   [Table Storage](https://azure.microsoft.com/documentation/articles/storage-nodejs-how-to-use-table-storage/) - 구조화된 데이터 세트를 저장합니다. Table Storage는 신속한 개발과 대량 데이터에 대한 빠른 액세스를 가능하게 하는 NoSQL 키-특성 데이터 저장소입니다. AWS의 SimpleDB 및 DynamoDB 서비스와 비슷합니다.
@@ -250,7 +250,7 @@ Azure Storage에서는 구독에 바인딩된 [저장소 계정](https://azure.m
 
 [Azure Archive Blob Storage](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier)는 AWS Glacier 저장소 서비스에 해당합니다. 180일 이상 저장되면서 거의 액세스하지 않으며 몇 시간 동안의 검색 대기 시간도 용인할 수 있는 데이터를 대상으로 합니다. 
 
-자주 액세스하지 않지만 액세스할 때 즉시 사용 가능해야 하는 데이터의 경우 [Azure Cool Blob Storage 계층](/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier)에서 표준 Blob 저장소보다 저렴한 저장소를 제공합니다. 이 저장소 계층은 AWS S3 - 자주 액세스하지 않는 저장소 서비스에 해당합니다.
+자주 액세스하지 않지만 액세스할 때 즉시 사용 가능해야 하는 데이터의 경우 [Azure Cool Blob Storage 계층](/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier)에서 표준 Blob 스토리지보다 저렴한 스토리지를 제공합니다. 이 저장소 계층은 AWS S3 - 자주 액세스하지 않는 저장소 서비스에 해당합니다.
 
 #### <a name="see-also"></a>참고 항목
 

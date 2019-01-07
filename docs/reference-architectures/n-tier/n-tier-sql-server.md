@@ -184,7 +184,7 @@ jumpbox를 보호하려면 안전한 공용 IP 주소 집합의 RDP 연결만 �
 
 4. `n-tier-windows.json` 파일을 엽니다.
 
-5. "witnessStorageBlobEndPoint"의 모든 인스턴스를 검색하고 2단계에서 자리 표시자 텍스트를 저장소 계정의 이름으로 바꿉니다.
+5. "witnessStorageBlobEndPoint"의 모든 인스턴스를 검색하고 2단계에서 자리 표시자 텍스트를 스토리지 계정의 이름으로 바꿉니다.
 
     ```json
     "witnessStorageBlobEndPoint": "https://[replace-with-storageaccountname].blob.core.windows.net",

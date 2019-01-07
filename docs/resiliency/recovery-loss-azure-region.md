@@ -56,7 +56,7 @@ Azure에서 Blob, 테이블, 큐 및 VM 디스크는 기본적으로 모든 지�
 
 GRS에서 제공하는 자동 장애 조치 외에도 Azure는 보조 저장소 위치에서 데이터의 복사본에 대한 읽기 액세스를 제공하는 서비스를 도입했습니다. 이를 RA-GRS(Read-Access Geo Redundant Storage)라고 합니다.
 
-GRS 및 RA-GRS 저장소에 대한 자세한 내용은 [Azure Storage 복제](/azure/storage/storage-redundancy/)를 참조하세요.
+GRS 및 RA-GRS 스토리지에 대한 자세한 내용은 [Azure Storage 복제](/azure/storage/storage-redundancy/)를 참조하세요.
 
 ### <a name="geo-replication-region-mappings"></a>지역에서 복제 지역 매핑:
 저장소가 있는 지역 선호도를 필요로 하는 데이터의 다른 인스턴스를 배포하는 위치를 알기 위해 데이터를 지역으로 복제하는 위치를 알아야 합니다. 자세한 내용은 [Azure 쌍을 이루는 지역](/azure/best-practices-availability-paired-regions)을 참조하세요.

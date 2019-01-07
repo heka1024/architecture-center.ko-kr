@@ -166,7 +166,7 @@ Azure Resource Manager는 임의적인 텍스트 문자열로 태그 지정 엔�
 
 특히 더 큰 토폴로지에서 신중하게 가상 머신을 명명하는 것은 각 컴퓨터의 역할 및 용도 식별을 간소화하고 예측 가능성이 더욱 뛰어난 스크립팅을 활성화합니다.
 
-### <a name="storage-accounts-and-storage-entities"></a>Storage 계정 및 저장소 엔터티
+### <a name="storage-accounts-and-storage-entities"></a>Storage 계정 및 스토리지 엔터티
 
 스토리지 계정에는 VM에 대한 디스크 지원과 Blob, 큐, 테이블에 데이터 저장 등, 두 가지 기본 사용 사례가 있습니다. VM 디스크에 사용되는 저장소 계정은 부모 VM 이름과 연결하는 명명 규칙을 따라야 합니다(고급 VM SKU에 대해 여러 저장소 계정이 필요할 수 있음, 숫자 접미사도 사용).
 

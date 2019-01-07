@@ -110,7 +110,7 @@ DIAG 또는 RFC(원격 함수 호출)를 통해 SAP 서버에 연결하는 SAP G
 
 모든 프로덕션 SAP 시스템의 경우 [Azure Managed Disks](/azure/storage/storage-managed-disks-overview) 프리미엄을 사용하는 것이 좋습니다. Managed Disks를 사용하여 디스크의 VHD 파일을 관리하므로 안정성이 향상됩니다. 또한 Managed Disks는 가용성 집합 내의 가상 머신용 디스크를 격리하여 단일 실패 지점을 방지합니다.
 
-Central Services 가상 머신을 포함한 SAP 애플리케이션 서버의 경우 애플리케이션 실행이 메모리에서 수행되고 디스크가 로깅에만 사용되기 때문에 Azure Standard Storage를 사용하여 비용을 절감할 수 있습니다. 그러나 이 시점에서 Standard Storage는 관리되지 않는 저장소에 대해서만 인증되었습니다. 애플리케이션 서버는 어떤 데이터도 호스팅하지 않으므로 더 작은 P4 및 P6 Premium Storage 디스크를 사용하여 비용을 최소화할 수 있습니다.
+Central Services 가상 머신을 포함한 SAP 애플리케이션 서버의 경우 애플리케이션 실행이 메모리에서 수행되고 디스크가 로깅에만 사용되기 때문에 Azure Standard Storage를 사용하여 비용을 절감할 수 있습니다. 그러나 이 시점에서 Standard Storage는 관리되지 않는 스토리지에 대해서만 인증되었습니다. 애플리케이션 서버는 어떤 데이터도 호스팅하지 않으므로 더 작은 P4 및 P6 Premium Storage 디스크를 사용하여 비용을 최소화할 수 있습니다.
 
 백업 데이터 저장소의 경우 Azure [쿨 액세스 계층 저장소 및/또는 보관 액세스 계층 저장소](/azure/storage/storage-blob-storage-tiers)를 사용하는 것이 좋습니다. 이러한 저장소 계층은 자주 액세스되지 않는 수명이 긴 데이터를 저장하는 비용 효율적인 방법입니다.
 

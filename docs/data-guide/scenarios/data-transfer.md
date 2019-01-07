@@ -43,11 +43,11 @@ Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 �
 
 - **Distcp**. Data Lake Store에 액세스할 수 있는 HDInsight 클러스터를 갖고 있다면 [Distcp](/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp) 같은 Hadoop 에코시스템 도구를 사용하여 HDInsight 클러스터 저장소(WASB)와 주고 받는 데이터를 Data Lake Store 계정에 복사할 수 있습니다.
 
-- **Sqoop**. [Sqoop](/azure/hdinsight/hadoop/hdinsight-use-sqoop)는 Apache 프로젝트이며, Hadoop 에코시스템의 일부입니다. 모든 HDInsight 클러스터에 미리 설치됩니다. HDInsight 클러스터와 관계형 데이터베이스(예: SQL, Oracle, MySQL 등) 간의 데이터 전송을 허용합니다. Sqoop는 가져오기 및 내보내기를 포함하는 관련 도구의 컬렉션입니다. Sqoop는 Azure Storage Blob 또는 Data Lake Store 연결 저장소를 사용하는 HDInsight 클러스터에 작동합니다.
+- **Sqoop**. [Sqoop](/azure/hdinsight/hadoop/hdinsight-use-sqoop)는 Apache 프로젝트이며, Hadoop 에코시스템의 일부입니다. 모든 HDInsight 클러스터에 미리 설치됩니다. HDInsight 클러스터와 관계형 데이터베이스(예: SQL, Oracle, MySQL 등) 간의 데이터 전송을 허용합니다. Sqoop는 가져오기 및 내보내기를 포함하는 관련 도구의 컬렉션입니다. Sqoop는 Azure Storage Blob 또는 Data Lake Store 연결 스토리지를 사용하는 HDInsight 클러스터에 작동합니다.
 
 - **PolyBase**. [PolyBase](/sql/relational-databases/polybase/get-started-with-polybase)는 T-SQL 언어를 통해 데이터베이스 외부의 데이터에 액세스하는 기술입니다. SQL Server 2016에서는 이 기술을 통해 Hadoop에서 외부 데이터에 대해 쿼리를 실행하거나 Azure Blob 저장소에서 데이터를 가져오거나 내보낼 수 있습니다. Azure SQL Data Warehouse에서는 Azure Blob 저장소 및 Azure Data Lake Store에서 데이터를 가져오거나 내보낼 수 있습니다. 현재, PolyBase는 SQL Data Warehouse로 데이터를 가져오는 가장 빠른 방법입니다.
 
-- **Hadoop 명령줄**. HDInsight 클러스터 헤드 노드에 데이터가 있는 경우 `hadoop -copyFromLocal` 명령을 사용하여 해당 데이터를 Azure Storage Blob 또는 Azure Data Lake Store 같은 클러스터 연결 저장소로 복사할 수 있습니다. Hadoop 명령을 사용하려면 먼저 헤드 노드에 연결해야 합니다. 연결되면 저장소에 파일을 업로드할 수 있습니다.
+- **Hadoop 명령줄**. HDInsight 클러스터 헤드 노드에 데이터가 있는 경우 `hadoop -copyFromLocal` 명령을 사용하여 해당 데이터를 Azure Storage Blob 또는 Azure Data Lake Store 같은 클러스터 연결 스토리지로 복사할 수 있습니다. Hadoop 명령을 사용하려면 먼저 헤드 노드에 연결해야 합니다. 연결되면 저장소에 파일을 업로드할 수 있습니다.
 
 ## <a name="graphical-interface"></a>그래픽 인터페이스
 

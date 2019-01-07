@@ -100,7 +100,7 @@ DIAG 프로토콜 또는 RFC(원격 함수 호출)를 통해 SAP 서버에 연�
 
 모든 데이터베이스 서버 가상 머신에 대해 일관된 읽기/쓰기 대기 시간을 유지하기 위해 Azure Premium Storage를 사용하는 것이 좋습니다. 모든 운영 체제 디스크 및 데이터 디스크에 Premium Storage를 사용하는 단일 인스턴스 가상 머신의 경우 [Virtual Machines에 대한 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)를 참조하세요. 또한 프로덕션 SAP 시스템의 경우 모든 경우에 [Azure Managed Disks](/azure/storage/storage-managed-disks-overview) 프리미엄을 사용하는 것이 좋습니다. 안정성을 위해 Managed Disks를 사용하여 디스크의 VHD 파일을 관리합니다. Managed Disks는 가용성 집합 내의 가상 머신용 디스크를 격리하여 단일 실패 지점을 방지합니다.
 
-Central Services 가상 머신을 포함한 SAP 애플리케이션 서버의 경우 애플리케이션 실행이 메모리에서 수행되고 디스크가 로깅에만 사용되기 때문에 Azure Standard Storage를 사용하여 비용을 절감할 수 있습니다. 그러나 이 시점에서 Standard Storage는 관리되지 않는 저장소에 대해서만 인증되었습니다. 애플리케이션 서버는 어떤 데이터도 호스팅하지 않으므로 더 작은 P4 및 P6 Premium Storage 디스크를 사용하여 비용을 최소화할 수 있습니다.
+Central Services 가상 머신을 포함한 SAP 애플리케이션 서버의 경우 애플리케이션 실행이 메모리에서 수행되고 디스크가 로깅에만 사용되기 때문에 Azure Standard Storage를 사용하여 비용을 절감할 수 있습니다. 그러나 이 시점에서 Standard Storage는 관리되지 않는 스토리지에 대해서만 인증되었습니다. 애플리케이션 서버는 어떤 데이터도 호스팅하지 않으므로 더 작은 P4 및 P6 Premium Storage 디스크를 사용하여 비용을 최소화할 수 있습니다.
 
 또한 Azure Storage는 [클라우드 감시](/windows-server/failover-clustering/deploy-cloud-witness)에서 클러스터가 있는 주 지역에서 떨어져 있는 원격 Azure 지역의 디바이스에서 쿼럼을 유지하는 데도 사용됩니다.
 
