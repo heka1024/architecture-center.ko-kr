@@ -1,18 +1,19 @@
 ---
-title: Azure의 확장성 있는 주문 처리
+title: 확장성 있는 주문 처리
+titleSuffix: Azure Example Scenarios
 description: Azure Cosmos DB를 사용하여 확장성이 높은 주문 처리 파이프라인을 빌드합니다.
 author: alexbuckgit
 ms.date: 07/10/2018
-ms.openlocfilehash: 1c3bb2cc33be74f5ff8ee0513de4c3f7df70aa37
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.openlocfilehash: fe4e9d64e96d0be66534198bc60e2a73dad43e84
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610858"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644192"
 ---
 # <a name="scalable-order-processing-on-azure"></a>Azure의 확장성 있는 주문 처리
 
-이 예제 시나리오는 온라인 주문 처리를 위해 확장성이 뛰어나고 복원력 있는 아키텍처가 필요한 조직과 관련이 있습니다. 잠재적인 애플리케이션으로 전자 상거래 및 소매 POS(Point of Sale), 주문 이행 및 재고 예약 및 추적이 있습니다. 
+이 예제 시나리오는 온라인 주문 처리를 위해 확장성이 뛰어나고 복원력 있는 아키텍처가 필요한 조직과 관련이 있습니다. 잠재적인 애플리케이션으로 전자 상거래 및 소매 POS(Point of Sale), 주문 이행 및 재고 예약 및 추적이 있습니다.
 
 이 시나리오에서는 마이크로 서비스를 통해 구현되는 함수 프로그래밍 모델을 사용하여 이벤트 소싱 방식을 수행합니다. 각 마이크로 서비스는 스트림 프로세서로 처리되고, 모든 비즈니스 논리는 마이크로 서비스를 통해 구현됩니다. 이 방법을 통해 고가용성 및 복원력, 지역 복제 및 빠른 성능을 구현할 수 있습니다.
 
@@ -22,10 +23,10 @@ Cosmos DB 및 HDInsight와 같은 관리되는 Azure 서비스를 사용하면 �
 
 관련된 다른 사용 사례는 다음과 같습니다.
 
-* 전자 상거래 또는 소매 POS 백 엔드 시스템
-* 재고 관리 시스템
-* 주문 이행 시스템
-* 주문 처리 파이프라인과 관련된 다른 통합 시나리오
+- 전자 상거래 또는 소매 POS 백 엔드 시스템
+- 재고 관리 시스템
+- 주문 이행 시스템
+- 주문 처리 파이프라인과 관련된 다른 통합 시나리오
 
 ## <a name="architecture"></a>아키텍처
 
@@ -41,8 +42,8 @@ Cosmos DB 및 HDInsight와 같은 관리되는 Azure 서비스를 사용하면 �
 
 ### <a name="components"></a>구성 요소
 
-* [Cosmos DB](/azure/cosmos-db/introduction)는 글로벌하게 분산된 Microsoft의 다중 모델 데이터베이스로, 솔루션을 통해 여러 지리적 지역에 걸쳐 있는 처리량과 저장소의 크기를 탄력적이고 독립적으로 조정할 수 있습니다. 포괄적인 SLA(서비스 수준 계약)를 통해 처리량, 대기 시간, 가용성 및 일관성을 보장합니다. 이 시나리오에서는 이벤트 스트림 저장소 및 스냅숏 저장소에 Cosmos DB를 사용하고, [Cosmos DB의 변경 피드][docs-cosmos-db-change-feed] 기능을 활용하여 데이터 일관성 및 오류 복구를 제공합니다.
-* [HDInsight의 Apache Kafka](/azure/hdinsight/kafka/apache-kafka-introduction)는 실시간 스트리밍 데이터 파이프라인 및 응용 프로그램을 구축하기 위한 오픈 소스 분산 스트리밍 플랫폼인 Apache Kafka의 관리 서비스 구현입니다. 또한 Kafka는 명명된 데이터 스트림을 게시하고 구독하기 위해 메시지 큐와 비슷한 메시지 브로커 기능을 제공합니다. 이 시나리오에서는 Kafka를 사용하여 주문 처리 파이프라인에서 들어오는 이벤트와 다운스트림 이벤트를 처리합니다. 
+- [Cosmos DB](/azure/cosmos-db/introduction)는 글로벌하게 분산된 Microsoft의 다중 모델 데이터베이스로, 솔루션을 통해 여러 지리적 지역에 걸쳐 있는 처리량과 저장소의 크기를 탄력적이고 독립적으로 조정할 수 있습니다. 포괄적인 SLA(서비스 수준 계약)를 통해 처리량, 대기 시간, 가용성 및 일관성을 보장합니다. 이 시나리오에서는 이벤트 스트림 저장소 및 스냅숏 저장소에 Cosmos DB를 사용하고, [Cosmos DB의 변경 피드][docs-cosmos-db-change-feed] 기능을 활용하여 데이터 일관성 및 오류 복구를 제공합니다.
+- [HDInsight의 Apache Kafka](/azure/hdinsight/kafka/apache-kafka-introduction)는 실시간 스트리밍 데이터 파이프라인 및 애플리케이션을 구축하기 위한 오픈 소스 분산 스트리밍 플랫폼인 Apache Kafka의 관리 서비스 구현입니다. 또한 Kafka는 명명된 데이터 스트림을 게시하고 구독하기 위해 메시지 큐와 비슷한 메시지 브로커 기능을 제공합니다. 이 시나리오에서는 Kafka를 사용하여 주문 처리 파이프라인에서 들어오는 이벤트와 다운스트림 이벤트를 처리합니다.
 
 ## <a name="considerations"></a>고려 사항
 
@@ -54,7 +55,7 @@ Cosmos DB 및 HDInsight와 같은 관리되는 Azure 서비스를 사용하면 �
 
 이 시나리오의 이벤트 소싱 방식을 통해 시스템 구성 요소를 느슨하게 결합하고 서로 독립적으로 배포할 수 있습니다. Cosmos DB는 [고가용성][docs-cosmos-db-regional-failover]을 제공하고 조직에서 일관성, 가용성 및 성능과 관련된 절충 작업을 [해당 보장][docs-cosmos-db-guarantees]으로 모두 관리하는 데 도움을 줍니다. HDInsight의 Apache Kafka도 [고가용성][docs-kafka-high-availability]을 위해 설계되었습니다.
 
-Azure Monitor는 다양한 Azure 서비스를 모니터링하기 위한 통합된 사용자 인터페이스를 제공합니다. 자세한 내용은 [Microsoft Azure에서 모니터링](/azure/monitoring-and-diagnostics/monitoring-overview)을 참조하세요. Event Hubs 및 Stream Analytics는 모두 Azure Monitor와 통합됩니다. 
+Azure Monitor는 다양한 Azure 서비스를 모니터링하기 위한 통합된 사용자 인터페이스를 제공합니다. 자세한 내용은 [Microsoft Azure에서 모니터링](/azure/monitoring-and-diagnostics/monitoring-overview)을 참조하세요. Event Hubs 및 Stream Analytics는 모두 Azure Monitor와 통합됩니다.
 
 다른 가용성 고려 사항은 [가용성 검사 목록][availability]을 참조하세요.
 
@@ -83,21 +84,23 @@ Azure Cosmos DB의 통화는 RU(요청 단위)입니다. 요청 단위를 사용
 
 필요한 활동량을 기준으로 제공한 세 가지 샘플 비용 프로필은 다음과 같습니다.
 
-* [소형][small-pricing]: 이 가격 책정 예제는 Cosmos DB의 1TB 데이터 저장소 및 소형(D3 v2) Kafka 클러스터로 예약된 5개 RU와 관련이 있습니다.
-* [중형][medium-pricing]: 이 가격 책정 예제는 Cosmos DB의 10TB 데이터 저장소 및 소형(D4 v2) Kafka 클러스터로 예약된 50개 RU와 관련이 있습니다.
-* [대형][large-pricing]: 이 가격 책정 예제는 Cosmos DB의 30TB 데이터 저장소 및 소형(D5 v2) Kafka 클러스터로 예약된 500개 RU와 관련이 있습니다.
+- [소형][small-pricing]: 이 가격 책정 예제는 Cosmos DB의 1TB 데이터 저장소 및 소형(D3 v2) Kafka 클러스터로 예약된 5개 RU와 관련이 있습니다.
+- [중형][medium-pricing]: 이 가격 책정 예제는 Cosmos DB의 10TB 데이터 저장소 및 소형(D4 v2) Kafka 클러스터로 예약된 50개 RU와 관련이 있습니다.
+- [대형][large-pricing]: 이 가격 책정 예제는 Cosmos DB의 30TB 데이터 저장소 및 소형(D5 v2) Kafka 클러스터로 예약된 500개 RU와 관련이 있습니다.
 
 ## <a name="related-resources"></a>관련 리소스
 
 이 예제 시나리오는 종단 간 주문 처리 파이프라인에 대해 [Jet.com](https://jet.com)에서 구축된 이 아키텍처의 더 광범위한 버전을 기반으로 합니다. 자세한 내용은 [jet.com 기술 고객 프로필][source-document] 및 [Build 2018에 있는 jet.com의 프레젠테이션][source-presentation]을 참조하세요.
 
 기타 관련 리소스는 다음과 같습니다.
-* _[데이터 집약적인 응용 프로그램 설계](https://dataintensive.net)_ - Martin Kleppmann 작성, O'Reilly Media, 2017
-* _[기능적으로 만든 도메인 모델링: 도메인 기반 디자인 및 F#으로 소프트웨어 복잡성 해결](https://pragprog.com/book/swdddf/domain-modeling-made-functional)_ - Scott Wlaschin 작성, Pragmatic Programmers LLC, 2018
-* 다른 [Cosmos DB 사용 사례][docs-cosmos-db-use-cases]
-* [Azure 데이터 아키텍처 가이드](/azure/architecture/data-guide)의 [실시간 처리 아키텍처](/azure/architecture/data-guide/big-data/real-time-processing).
+
+- *[데이터 집약적인 애플리케이션 설계](https://dataintensive.net)* - Martin Kleppmann 작성, O'Reilly Media, 2017
+- *[기능적으로 만든 도메인 모델링: 도메인 기반 디자인 및 F#으로 소프트웨어 복잡성 해결](https://pragprog.com/book/swdddf/domain-modeling-made-functional)* - Scott Wlaschin 작성, Pragmatic Programmers LLC, 2018.
+- 다른 [Cosmos DB 사용 사례][docs-cosmos-db-use-cases]
+- [Azure 데이터 아키텍처 가이드](/azure/architecture/data-guide)의 [실시간 처리 아키텍처](/azure/architecture/data-guide/big-data/real-time-processing).
 
 <!-- links -->
+
 [architecture]: ./media/architecture-ecommerce-order-processing.png
 [product-category]: https://azure.microsoft.com/product-categories/databases/
 [source-document]: https://customers.microsoft.com/story/jet-com-powers-innovative-e-commerce-engine-on-azure-in-less-than-12-months
