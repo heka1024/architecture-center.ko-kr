@@ -4,12 +4,12 @@ titleSuffix: Azure Reference Architectures
 description: VPN을 사용하여 연결된 온-프레미스 네트워크 및 Azure Virtual Network를 포괄하는 보안 사이트 간 네트워크 아키텍처를 구현합니다.
 author: RohitSharma-pnp
 ms.date: 10/22/2018
-ms.openlocfilehash: 5d3c8eeeb04398c29a25e90956888d9f79572e4f
-ms.sourcegitcommit: 8d951fd7e9534054b160be48a1881ae0857561ef
+ms.openlocfilehash: 92a5a12675ca12075bec3c7f59f73a19287fe5d7
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53329401"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644209"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN 게이트웨이를 사용하여 온-프레미스 네트워크를 Azure에 연결
 
@@ -25,7 +25,7 @@ ms.locfileid: "53329401"
 
 - **온-프레미스 네트워크**. 조직 내에서 실행되는 개인 로컬 영역 네트워크입니다.
 
-- **VPN 어플라이언스**. 온-프레미스 네트워크에 외부 연결을 제공하는 장치 또는 서비스입니다. VPN 어플라이언스는 하드웨어 디바이스일 수도 있고 Windows Server 2012의 RRAS(라우팅 및 원격 액세스 서비스)와 같은 소프트웨어 솔루션일 수도 있습니다. 지원되는 VPN 어플라이언스 목록 및 VPN 어플라이언스가 Azure VPN Gateway에 연결되도록 구성하는 방법은 [사이트 간 VPN Gateway 연결을 위한 VPN 디바이스 정보][vpn-appliance] 문서에서 선택한 디바이스에 대한 지침을 참조하세요.
+- **VPN 어플라이언스**. 온-프레미스 네트워크에 외부 연결을 제공하는 디바이스 또는 서비스입니다. VPN 어플라이언스는 하드웨어 디바이스일 수도 있고 Windows Server 2012의 RRAS(라우팅 및 원격 액세스 서비스)와 같은 소프트웨어 솔루션일 수도 있습니다. 지원되는 VPN 어플라이언스 목록 및 VPN 어플라이언스가 Azure VPN Gateway에 연결되도록 구성하는 방법은 [사이트 간 VPN Gateway 연결을 위한 VPN 디바이스 정보][vpn-appliance] 문서에서 선택한 디바이스에 대한 지침을 참조하세요.
 
 - **가상 네트워크(VNet)**. Azure VPN 게이트웨이의 클라우드 애플리케이션과 구성 요소는 동일한 [VNet][azure-virtual-network]에 존재합니다.
 
@@ -36,7 +36,7 @@ ms.locfileid: "53329401"
   - **연결**. 이 연결에는 연결 유형(IPSec) 및 트래픽을 암호화하기 위해 온-프레미스 VPN 어플라이언스와 공유되는 키를 지정하는 속성이 있습니다.
   - **게이트웨이 서브넷**. 가상 네트워크 게이트웨이는 자체 서브넷에 존재합니다. 자체 서브넷은 아래의 권장 사항 섹션에서 설명하는 다양한 요구 사항에 따라 달라집니다.
 
-- **클라우드 응용 프로그램**. Azure에 호스팅된 애플리케이션입니다. Azure Load Balancer를 통해 여러 서브넷이 연결된 여러 계층이 포함될 수 있습니다. 애플리케이션 인프라에 대한 자세한 내용은 [Windows VM 워크로드 실행][windows-vm-ra] 및 [Linux VM 워크로드 실행][linux-vm-ra]을 참조하세요.
+- **클라우드 애플리케이션**. Azure에 호스팅된 애플리케이션입니다. Azure Load Balancer를 통해 여러 서브넷이 연결된 여러 계층이 포함될 수 있습니다. 애플리케이션 인프라에 대한 자세한 내용은 [Windows VM 워크로드 실행][windows-vm-ra] 및 [Linux VM 워크로드 실행][linux-vm-ra]을 참조하세요.
 
 - **내부 부하 분산 장치**. VPN 게이트웨이에서 전송되는 네트워크 트래픽은 내부 부하 분산 장치를 통해 클라우드 애플리케이션으로 라우팅됩니다. 부하 분산 장치는 애플리케이션의 프론트 엔드 서브넷에 위치합니다.
 
@@ -69,7 +69,7 @@ ms.locfileid: "53329401"
 
 - RRAS를 사용하여 온-프레미스 네트워크에 연결하거나 다중 사이트 또는 교차 지역 연결을 지원하는 경우, [route-based gateway][route-based-routing]를 만들거나 VNet 간 연결을 구현합니다(복수의 VNet을 이동하는 경로 포함). 경로 기반 게이트웨이는 네트워크 간에 트래픽을 전달할 때 동적 라우팅을 사용합니다. 동적 라우팅은 대체 경로를 시도하므로 정적 라우팅보다 네트워크 경로 장애에 대한 내결함성이 높습니다. 경로 기반 게이트웨이에서는 네트워크 주소가 변경되어도 경로를 수동으로 업데이트할 필요가 없기 때문에 관리 오버헤드를 줄일 수 있습니다.
 
-지원되는 VPN 어플라이언스 목록은 [사이트 간 VPN 게이트웨이 연결을 위한 VPN 장치 정보][vpn-appliances]를 참조하세요.
+지원되는 VPN 어플라이언스 목록은 [사이트 간 VPN 게이트웨이 연결을 위한 VPN 디바이스 정보][vpn-appliances]를 참조하세요.
 
 > [!NOTE]
 > 게이트웨이를 만든 뒤에는 게이트웨이 유형을 변경하려면 게이트웨이를 삭제하고 다시 만들어야 합니다.
@@ -87,11 +87,11 @@ ms.locfileid: "53329401"
 
 ### <a name="on-premises-network-connection"></a>온-프레미스 네트워크 연결
 
-로컬 네트워크 게이트웨이를 만듭니다. 온-프레미스 VPN 어플라이언스의 공용 IP 주소와 온-프레미스 네트워크의 주소 공간을 지정합니다. 온-프레미스 VPN 어플라이언스는 Azure VPN 게이트웨이에서 로컬 네트워크 게이트웨이에 의해 액세스할 수 있는 공용 IP 주소를 가져야 합니다. VPN 장치는 NAT(Network Address Translator) 뒤에 배치될 수 없습니다.
+로컬 네트워크 게이트웨이를 만듭니다. 온-프레미스 VPN 어플라이언스의 공용 IP 주소와 온-프레미스 네트워크의 주소 공간을 지정합니다. 온-프레미스 VPN 어플라이언스는 Azure VPN 게이트웨이에서 로컬 네트워크 게이트웨이에 의해 액세스할 수 있는 공용 IP 주소를 가져야 합니다. VPN 디바이스는 NAT(Network Address Translator) 뒤에 배치될 수 없습니다.
 
 가상 네트워크 게이트웨이와 로컬 네트워크 게이트웨이의 사이트 간 연결을 만듭니다. 사이트 간(IPSec) 연결 유형을 선택하고 공유 키를 지정합니다. Azure VPN 게이트웨이를 사용하는 사이트 간 암호는 IPSec 프로토콜을 기반으로 하며, 인증을 위해 사전 공유된 키를 사용합니다. 사전 공유된 키는 Azure VPN 게이트웨이를 만들 때 사용자가 지정합니다. 온-프레미스에서 실행되는 VPN 어플라이언스도 동일한 키로 구성해야 합니다. 현재 다른 인증 메커니즘은 지원되지 않습니다.
 
-목적지가 Azure VNet에 속한 주소인 요청이 VPN 장치로 전달되도록 온-프레미스 라우팅 인프라가 구성되어 있어야 합니다.
+목적지가 Azure VNet에 속한 주소인 요청이 VPN 디바이스로 전달되도록 온-프레미스 라우팅 인프라가 구성되어 있어야 합니다.
 
 온-프레미스 네트워크에서 클라우드 애플리케이션에 필요한 포트를 모두 엽니다.
 

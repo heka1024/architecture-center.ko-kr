@@ -1,15 +1,16 @@
 ---
-title: Azure에서 Windows 가상 머신으로 안전한 웹앱 빌드
+title: Windows VM으로 안전한 웹앱 빌드
+titleSuffix: Azure Example Scenarios
 description: 확장 집합, Application Gateway 및 부하 분산 장치를 사용하여 Azure의 Windows Server에서 안전한 다중 계층 웹 애플리케이션을 빌드합니다.
 author: iainfoulds
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e4d2117fbc46eda46f7ef276a71739e3a79270e
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: 2c5f77f265c10388f42138e7d3f6da9e3ead1cd8
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307064"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643536"
 ---
 # <a name="building-secure-web-applications-with-windows-virtual-machines-on-azure"></a>Azure에서 Windows 가상 머신으로 안전한 웹 애플리케이션 빌드
 
@@ -21,9 +22,9 @@ ms.locfileid: "53307064"
 
 다음은 이 시나리오를 적용할 수 있는 몇 가지 예입니다.
 
-* 보안 클라우드 환경에서 애플리케이션 배포 현대화
-* 레거시 온-프레미스 애플리케이션 및 서비스의 관리 오버헤드 줄이기
-* 새 애플리케이션 플랫폼을 통해 환자에 대한 의료 서비스 및 환경 개선
+- 보안 클라우드 환경에서 애플리케이션 배포 현대화
+- 레거시 온-프레미스 애플리케이션 및 서비스의 관리 오버헤드 줄이기
+- 새 애플리케이션 플랫폼을 통해 환자에 대한 의료 서비스 및 환경 개선
 
 ## <a name="architecture"></a>아키텍처
 
@@ -39,26 +40,26 @@ ms.locfileid: "53307064"
 
 ### <a name="components"></a>구성 요소
 
-* [Azure Application Gateway][appgateway-docs]는 응용 프로그램을 인식하고 특정 라우팅 규칙에 따라 트래픽을 분산할 수 있는 7계층 웹 트래픽 부하 분산 장치입니다. 또한 App Gateway는 향상된 웹 서버 성능을 위해 SSL 오프로드를 처리할 수도 있습니다.
-* [Azure Virtual Network][vnet-docs]는 VM과 같은 리소스에서 상호 간 통신, 인터넷 통신 및 온-프레미스 네트워크 통신을 안전하게 수행할 수 있게 합니다. 가상 네트워크는 격리 및 세분화를 제공하고, 트래픽을 필터링 및 라우팅하며, 위치 간 연결을 허용합니다. 이 시나리오에서는 적절한 NSG와 결합된 두 가상 네트워크를 사용하여 [DMZ][dmz](완충 영역) 및 애플리케이션 구성 요소 격리를 제공합니다. 가상 네트워크 피어링은 두 네트워크를 서로 연결합니다.
-* [Azure 가상 머신 확장 집합][scaleset-docs]을 사용하면 부하 분산된 동일한 VM 그룹을 만들고 관리할 수 있습니다. VM 인스턴스의 수는 요구 또는 정의된 일정에 따라 자동으로 늘리거나 줄일 수 있습니다. 이 시나리오에서는 각각 프런트 엔드 ASP.NET 애플리케이션 인스턴스 및 백 엔드 SQL Server 클러스터 VM 인스턴스에 대한 별도의 두 가상 머신 확장 집합이 사용됩니다. PowerShell DSC(Desired State Configuration) 또는 Azure 사용자 지정 스크립트 확장을 사용하여 VM 인스턴스에 필요한 소프트웨어 및 구성 설정을 프로비전할 수 있습니다.
-* [Azure 네트워크 보안 그룹][nsg-docs]에는 원본 또는 대상 IP 주소, 포트 및 프로토콜에 따라 인바운드 또는 아웃바운드 네트워크 트래픽을 허용하거나 거부하는 보안 규칙 목록이 포함되어 있습니다. 이 시나리오의 가상 네트워크는 애플리케이션 구성 요소 간의 트래픽 흐름을 제한하는 네트워크 보안 그룹 규칙으로 보호됩니다.
-* [Azure 부하 분산 장치][loadbalancer-docs]는 규칙 및 상태 프로브에 따라 인바운드 트래픽을 분산시킵니다. 부하 분산 장치는 짧은 대기 시간과 높은 처리량을 제공하고, 모든 TCP 및 UDP 애플리케이션에 대해 최대 수백만 개의 흐름으로 확장합니다. 이 시나리오에서는 내부 부하 분산 장치를 사용하여 프런트 엔드 애플리케이션 계층에서 백 엔드 SQL Server 클러스터로 트래픽을 분산시킵니다.
-* [Azure Blob Storage][cloudwitness-docs]는 SQL Server 클러스터에 대한 클라우드 감시 위치 역할을 합니다. 이 감시는 쿼럼을 결정하기 위해 추가 투표가 필요한 클러스터 작업 및 의사 결정에 사용됩니다. 클라우드 감시를 사용하면 추가 VM에서 기존 파일 공유 감시 역할을 수행할 필요가 없습니다.
+- [Azure Application Gateway][appgateway-docs]는 애플리케이션을 인식하고 특정 라우팅 규칙에 따라 트래픽을 분산할 수 있는 7계층 웹 트래픽 부하 분산 장치입니다. 또한 App Gateway는 향상된 웹 서버 성능을 위해 SSL 오프로드를 처리할 수도 있습니다.
+- [Azure Virtual Network][vnet-docs]는 VM과 같은 리소스에서 상호 간 통신, 인터넷 통신 및 온-프레미스 네트워크 통신을 안전하게 수행할 수 있게 합니다. 가상 네트워크는 격리 및 세분화를 제공하고, 트래픽을 필터링 및 라우팅하며, 위치 간 연결을 허용합니다. 이 시나리오에서는 적절한 NSG와 결합된 두 가상 네트워크를 사용하여 [DMZ][dmz](완충 영역) 및 애플리케이션 구성 요소 격리를 제공합니다. 가상 네트워크 피어링은 두 네트워크를 서로 연결합니다.
+- [Azure 가상 머신 확장 집합][scaleset-docs]을 사용하면 부하 분산된 동일한 VM 그룹을 만들고 관리할 수 있습니다. VM 인스턴스의 수는 요구 또는 정의된 일정에 따라 자동으로 늘리거나 줄일 수 있습니다. 이 시나리오에서는 각각 프런트 엔드 ASP.NET 애플리케이션 인스턴스 및 백 엔드 SQL Server 클러스터 VM 인스턴스에 대한 별도의 두 가상 머신 확장 집합이 사용됩니다. PowerShell DSC(Desired State Configuration) 또는 Azure 사용자 지정 스크립트 확장을 사용하여 VM 인스턴스에 필요한 소프트웨어 및 구성 설정을 프로비전할 수 있습니다.
+- [Azure 네트워크 보안 그룹][nsg-docs]에는 원본 또는 대상 IP 주소, 포트 및 프로토콜에 따라 인바운드 또는 아웃바운드 네트워크 트래픽을 허용하거나 거부하는 보안 규칙 목록이 포함되어 있습니다. 이 시나리오의 가상 네트워크는 애플리케이션 구성 요소 간의 트래픽 흐름을 제한하는 네트워크 보안 그룹 규칙으로 보호됩니다.
+- [Azure 부하 분산 장치][loadbalancer-docs]는 규칙 및 상태 프로브에 따라 인바운드 트래픽을 분산시킵니다. 부하 분산 장치는 짧은 대기 시간과 높은 처리량을 제공하고, 모든 TCP 및 UDP 애플리케이션에 대해 최대 수백만 개의 흐름으로 확장합니다. 이 시나리오에서는 내부 부하 분산 장치를 사용하여 프런트 엔드 애플리케이션 계층에서 백 엔드 SQL Server 클러스터로 트래픽을 분산시킵니다.
+- [Azure Blob Storage][cloudwitness-docs]는 SQL Server 클러스터에 대한 클라우드 감시 위치 역할을 합니다. 이 감시는 쿼럼을 결정하기 위해 추가 투표가 필요한 클러스터 작업 및 의사 결정에 사용됩니다. 클라우드 감시를 사용하면 추가 VM에서 기존 파일 공유 감시 역할을 수행할 필요가 없습니다.
 
 ### <a name="alternatives"></a>대안
 
-* 인프라가 운영 체제에 종속되지 않으므로 Linux와 Windows를 서로 바꿔서 사용할 수 있습니다.
+- 인프라가 운영 체제에 종속되지 않으므로 Linux와 Windows를 서로 바꿔서 사용할 수 있습니다.
 
-* [Linux용 SQL Server][sql-linux]는 백 엔드 데이터 저장소를 대체할 수 있습니다.
+- [Linux용 SQL Server][sql-linux]는 백 엔드 데이터 저장소를 대체할 수 있습니다.
 
-* [Cosmos DB](/azure/cosmos-db/introduction)는 데이터 저장소의 또 다른 대안입니다.
+- [Cosmos DB](/azure/cosmos-db/introduction)는 데이터 저장소의 또 다른 대안입니다.
 
 ## <a name="considerations"></a>고려 사항
 
 ### <a name="availability"></a>가용성
 
-이 시나리오의 VM 인스턴스는 가용성 영역 전체에 배포됩니다. 각 영역은 독립된 전원, 냉각 및 네트워킹을 갖춘 하나 이상의 데이터 센터로 구성됩니다. 사용 가능한 모든 지역에서 최소 세 개의 영역을 사용할 수 있습니다. 영역을 통한 이러한 VM 인스턴스 배포는 애플리케이션 계층에 고가용성을 제공합니다. 자세한 내용은 [Azure에서 가용성 영역이란?][azureaz-docs]을 참조하세요.
+이 시나리오의 VM 인스턴스는 [가용성 영역](/azure/availability-zones/az-overview) 전체에 배포됩니다. 각 영역은 독립된 전원, 냉각 및 네트워킹을 갖춘 하나 이상의 데이터 센터로 구성됩니다. 설정된 각 지역에는 최소한 세 개의 가용성 영역이 있습니다. 영역을 통한 이러한 VM 인스턴스 배포는 애플리케이션 계층에 고가용성을 제공합니다.
 
 데이터베이스 계층에서는 Always On 가용성 그룹을 사용하도록 구성할 수 있습니다. 이 SQL Server 구성을 사용하면 클러스터 내에서 하나의 주 데이터베이스가 최대 8개의 보조 데이터베이스로 구성됩니다. 주 데이터베이스에 문제가 발생하면 클러스터에서 보조 데이터베이스 중 하나에 장애 조치하여 애플리케이션을 계속 사용할 수 있습니다. 자세한 내용은 [SQL Server에 대한 Always On 가용성 그룹 개요][sqlalwayson-docs]를 참조하세요.
 
@@ -84,20 +85,27 @@ PCI DSS(지불 카드 산업 데이터 보안 표준) 3.2 규정 준수 인프�
 
 ## <a name="deploy-the-scenario"></a>시나리오 배포
 
-**필수 조건.**
+### <a name="prerequisites"></a>필수 조건
 
-* 기존 Azure 계정이 있어야 합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [체험 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
-* SQL Server 클러스터를 백 엔드 확장 집합에 배포하려면 Azure AD(Active Directory) 도메인 서비스의 도메인이 필요합니다.
+- 기존 Azure 계정이 있어야 합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [체험 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
+
+- SQL Server 클러스터를 백 엔드 확장 집합에 배포하려면 Azure AD(Active Directory) 도메인 서비스의 도메인이 필요합니다.
+
+### <a name="deploy-the-components"></a>구성 요소 배포
 
 Azure Resource Manager 템플릿을 사용하여 이 시나리오에 대한 핵심 인프라를 배포하려면 다음 단계를 수행합니다.
 
+<!-- markdownlint-disable MD033 -->
+
 1. **Azure에 배포** 단추를 선택합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Finfrastructure%2Fregulated-multitier-app%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure Portal에서 템플릿 배포가 열릴 때까지 기다린 후에 다음 단계를 수행합니다.
-   * 리소스 그룹 **새로 만들기**를 선택한 다음, 텍스트 상자에서 이름(예: *myWindowsscenario*)을 입력합니다.
-   * **위치** 드롭다운 상자에서 지역을 선택합니다.
-   * 가상 머신 확장 집합 인스턴스에 대한 사용자 이름과 보안 암호를 제공합니다.
-   * 사용 약관을 검토한 다음, **위에 명시된 사용 약관에 동의함**을 선택합니다.
-   * **구매** 단추를 선택합니다.
+   - 리소스 그룹 **새로 만들기**를 선택한 다음, 텍스트 상자에서 이름(예: *myWindowsscenario*)을 입력합니다.
+   - **위치** 드롭다운 상자에서 지역을 선택합니다.
+   - 가상 머신 확장 집합 인스턴스에 대한 사용자 이름과 보안 암호를 제공합니다.
+   - 사용 약관을 검토한 다음, **위에 명시된 사용 약관에 동의함**을 선택합니다.
+   - **구매** 단추를 선택합니다.
+
+<!-- markdownlint-enable MD033 -->
 
 배포가 완료되는 데 15-20분이 걸릴 수 있습니다.
 
@@ -107,9 +115,9 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오에 대한 핵�
 
 애플리케이션을 실행하는 확장 집합 VM 인스턴스의 수를 기준으로 제공한 세 가지 샘플 비용 프로필은 다음과 같습니다.
 
-* [소형][small-pricing]: 이 가격 책정 예제는 2개 프론트 엔드 및 2개 백 엔드 VM 인스턴스와 관련이 있습니다.
-* [중형][medium-pricing]: 이 가격 책정 예제는 20개 프론트 엔드 및 5개 백 엔드 VM 인스턴스와 관련이 있습니다.
-* [대형][large-pricing]: 이 가격 책정 예제는 100개 프론트 엔드 및 10개 백 엔드 VM 인스턴스와 관련이 있습니다.
+- [소형][small-pricing]: 이 가격 책정 예제는 2개 프론트 엔드 및 2개 백 엔드 VM 인스턴스와 관련이 있습니다.
+- [중형][medium-pricing]: 이 가격 책정 예제는 20개 프론트 엔드 및 5개 백 엔드 VM 인스턴스와 관련이 있습니다.
+- [대형][large-pricing]: 이 가격 책정 예제는 100개 프론트 엔드 및 10개 백 엔드 VM 인스턴스와 관련이 있습니다.
 
 ## <a name="related-resources"></a>관련 리소스
 
@@ -122,14 +130,13 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오에 대한 핵�
 [architecture]: ./media/architecture-regulated-multitier-app.png
 [autoscaling]: /azure/architecture/best-practices/auto-scaling
 [availability]: ../../checklist/availability.md
-[azureaz-docs]: /azure/availability-zones/az-overview
 [cloudwitness-docs]: /windows-server/failover-clustering/deploy-cloud-witness
 [loadbalancer-docs]: /azure/load-balancer/load-balancer-overview
 [nsg-docs]: /azure/virtual-network/security-overview
 [ntiersql-ra]: /azure/architecture/reference-architectures/n-tier/n-tier-sql-server
-[resiliency]: /azure/architecture/resiliency/ 
+[resiliency]: /azure/architecture/resiliency/
 [security]: /azure/security/
-[scalability]: /azure/architecture/checklist/scalability 
+[scalability]: /azure/architecture/checklist/scalability
 [scaleset-docs]: /azure/virtual-machine-scale-sets/overview
 [sqlalwayson-docs]: /sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server
 [vmssautoscale-docs]: /azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview

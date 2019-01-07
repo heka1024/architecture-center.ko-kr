@@ -8,12 +8,12 @@ description: >-
 author: telmosampaio
 ms.date: 05/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: e8ad2efd24286f23698bb8e294b15d88232c1166
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 3e3c3c8ff12bab85a96d4eb879f81195d22e79f8
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120376"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643784"
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>Azure에서 AAD DS(Active Directory Domain Services) 리소스 포리스트 만들기
 
@@ -93,7 +93,21 @@ Active Directory 관련 보안 고려사항을 확인하려면 [Active Directory
 
 ### <a name="prerequisites"></a>필수 조건
 
-[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
+1. [GitHub 리포지토리](https://github.com/mspnp/identity-reference-architectures)의 zip 파일을 복제, 포크 또는 다운로드합니다.
+
+2. [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)을 설치합니다.
+
+3. [Azure 빌딩 블록](https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks) npm 패키지를 설치합니다.
+
+   ```bash
+   npm install -g @mspnp/azure-building-blocks
+   ```
+
+4. 명령 프롬프트, bash 프롬프트 또는 PowerShell 프롬프트에서 다음과 같은 Azure 계정에 로그인합니다.
+
+   ```bash
+   az login
+   ```
 
 ### <a name="deploy-the-simulated-on-premises-datacenter"></a>시뮬레이션된 온-프레미스 데이터 센터 배포
 

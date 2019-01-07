@@ -5,12 +5,12 @@ description: Azure에서 엔드투엔드 스트림 처리 파이프라인을 만
 author: MikeWasson
 ms.date: 11/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 44eaf51f2180be250defbeb0d141ab24f7f17d4b
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 130f297d3cfdeb1900ada79f1e9c65ec542dc2b7
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53119934"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643750"
 ---
 # <a name="create-a-stream-processing-pipeline-with-azure-stream-analytics"></a>Azure Stream Analytics를 사용하는 스트림 처리 파이프라인 만들기
 
@@ -20,7 +20,7 @@ ms.locfileid: "53119934"
 
 ![Azure Stream Analytics를 사용하는 스트림 처리 파이프라인을 만들기 위한 참조 아키텍처](./images/stream-processing-asa/stream-processing-asa.png)
 
-**시나리오**: 한 택시 회사에서 각 택시 운행 데이터를 수집합니다. 이 시나리오의 경우 두 개의 별도 장치가 데이터를 전송하고 있다고 가정합니다. 택시에는 각 승객 &mdash; 기간, 거리, 승차 및 하차 위치에 대한 정보를 전송하는 미터가 있습니다. 별도 장치는 고객의 지불을 수락하고 요금에 대한 데이터를 보냅니다. 택시 회사는 추세를 파악하기 위해 실시간으로 마일당 평균 팁을 계산하려고 합니다.
+**시나리오**: 한 택시 회사에서 각 택시 운행 데이터를 수집합니다. 이 시나리오의 경우 두 개의 별도 디바이스가 데이터를 전송하고 있다고 가정합니다. 택시에는 각 승객 &mdash; 기간, 거리, 승차 및 하차 위치에 대한 정보를 전송하는 미터가 있습니다. 별도 디바이스는 고객의 지불을 수락하고 요금에 대한 데이터를 보냅니다. 택시 회사는 추세를 파악하기 위해 실시간으로 마일당 평균 팁을 계산하려고 합니다.
 
 ## <a name="architecture"></a>아키텍처
 
@@ -221,4 +221,14 @@ Event Hubs가 오른쪽 위 패널에 표시된 대로 요청을 제한합니다
 
 참조 구현을 배포하고 실행하려면 [GitHub readme][github]의 단계를 따릅니다.
 
-[github]: https://github.com/mspnp/reference-architectures/tree/master/data/streaming_asa
+## <a name="related-resources"></a>관련 리소스
+
+동일한 기술 중 일부를 사용하여 특정 솔루션을 보여주는 다음 [Azure 예제 시나리오](/azure/architecture/example-scenario)를 검토해 보세요.
+
+- [건축 산업에서 IoT 및 데이터 분석](/azure/architecture/example-scenario/data/big-data-with-iot)
+- [실시간 사기 감지](/azure/architecture/example-scenario/data/fraud-detection)
+
+<!-- links -->
+
+[github]: https://github.com/mspnp/azure-stream-analytics-data-pipeline
+

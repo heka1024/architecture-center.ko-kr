@@ -5,12 +5,12 @@ description: Azure의 Linux 환경에서 고가용성을 통해 SAP S/4HANA를 �
 author: lbrader
 ms.date: 05/11/2018
 ms.custom: seodec18
-ms.openlocfilehash: 356b80c79aeb13ac951654350eafa904ff5e5ec1
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 9eb73ddaf5b1cb815f037f46c7e187f61d126876
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120240"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644175"
 ---
 # <a name="sap-s4hana-for-linux-virtual-machines-on-azure"></a>Azure의 Linux Virtual Machines용 SAP S/4HANA
 
@@ -33,7 +33,7 @@ ms.locfileid: "53120240"
 
 **가상 머신**. 이 아키텍처는 애플리케이션 계층과 데이터베이스 계층에 대해 다음과 같이 그룹화되어 Linux를 실행하는 가상 머신을 사용합니다.
 
-- **응용 프로그램 계층**. Fiori 프런트 엔드 서버 풀, SAP Web Dispatcher 풀, 애플리케이션 서버 풀 및 SAP Central Services 클러스터가 포함됩니다. Azure Linux 가상 머신에 있는 Central Services의 고가용성을 위해 고가용성 NFS(네트워크 파일 시스템) 서비스가 필요합니다.
+- **애플리케이션 계층**. Fiori 프런트 엔드 서버 풀, SAP Web Dispatcher 풀, 애플리케이션 서버 풀 및 SAP Central Services 클러스터가 포함됩니다. Azure Linux 가상 머신에 있는 Central Services의 고가용성을 위해 고가용성 NFS(네트워크 파일 시스템) 서비스가 필요합니다.
 - **NFS 클러스터**. 이 아키텍처는 Linux 클러스터에서 실행되는 [NFS](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) 서버를 사용하여 SAP 시스템 간에 공유되는 데이터를 저장합니다. 이 중앙 집중식 클러스터는 여러 SAP 시스템에서 공유할 수 있습니다. NFS 서비스의 고가용성을 위해 선택한 Linux 배포판에 적절한 고가용성 확장이 사용됩니다.
 - **SAP HANA**. 데이터베이스 계층은 클러스터에서 둘 이상의 Linux 가상 머신을 사용하여 고가용성을 달성합니다. HSR(HANA 시스템 복제)을 사용하여 주 및 보조 HANA 시스템 간에 콘텐츠를 복제합니다. Linux 클러스터링을 사용하여 시스템 장애를 감지하고 자동 장애 조치를 용이하게 합니다. 저장소 기반 또는 클라우드 기반 펜싱 메커니즘을 사용하여 장애가 발생한 시스템이 클러스터 브레인 분할 상황을 방지하기 위해 격리되거나 종료되도록 할 수 있습니다.
 - **Jumpbox**. 요새 호스트라고도 합니다. 이는 관리자가 다른 가상 머신에 연결하는 데 사용하는 네트워크의 보안 가상 머신입니다. Windows 또는 Linux를 실행할 수 있습니다. HANA Cockpit 또는 HANA Studio 관리 도구를 사용할 때 웹을 편리하게 탐색하기 위해 Windows jumpbox를 사용합니다.
@@ -100,7 +100,7 @@ NSG가 서브넷과 연결되면 서브넷 내의 모든 서버에 적용됩니�
 
 ### <a name="load-balancers"></a>부하 분산 장치
 
-[SAP Web Dispatcher](https://help.sap.com/doc/saphelp_nw73ehp1/7.31.19/en-US/48/8fe37933114e6fe10000000a421937/frameset.htm)는 SAP 응용 프로그램 서버 풀에 대한 HTTP(S) 트래픽(Fiori 스타일 응용 프로그램 포함)의 부하 분산을 처리합니다.
+[SAP Web Dispatcher](https://help.sap.com/doc/saphelp_nw73ehp1/7.31.19/en-US/48/8fe37933114e6fe10000000a421937/frameset.htm)는 SAP 애플리케이션 서버 풀에 대한 HTTP(S) 트래픽(Fiori 스타일 애플리케이션 포함)의 부하 분산을 처리합니다.
 
 DIAG 또는 RFC(원격 함수 호출)를 통해 SAP 서버에 연결하는 SAP GUI 클라이언트의 트래픽에 대해 Central Services 메시지 서버는 SAP 애플리케이션 서버 [로그온 그룹](https://wiki.scn.sap.com/wiki/display/SI/ABAP+Logon+Group+based+Load+Balancing)을 통해 부하를 분산하므로 추가 부하 분산 장치가 필요하지 않습니다.
 
@@ -152,7 +152,7 @@ SAP 애플리케이션의 이러한 분산 설치에서는 고가용성을 달�
 
 각 계층은 서로 다른 전략을 사용하여 재해 복구(DR) 보호를 제공합니다.
 
-- **응용 프로그램 서버 계층**. SAP 애플리케이션 서버에는 비즈니스 데이터가 포함되어 있지 않습니다. Azure에서 간단한 DR 전략은 보조 지역에 SAP 애플리케이션 서버를 만든 다음, 종료하는 것입니다. 주 애플리케이션 서버의 구성이 업데이트되거나 커널이 업데이트되는 즉시 동일한 변경 내용이 보조 지역의 가상 머신에 적용되어야 합니다. 예를 들어 SAP 커널 실행 파일을 DR 가상 머신에 복사합니다. 애플리케이션 서버를 보조 지역에 자동으로 복제하려면 [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)가 권장되는 솔루션입니다. 이 백서를 작성한 시점에서는 ASR에서 Azure VM의 가속 네트워크 구성 설정 복제를 아직 지원하지 않습니다.
+- **애플리케이션 서버 계층**. SAP 애플리케이션 서버에는 비즈니스 데이터가 포함되어 있지 않습니다. Azure에서 간단한 DR 전략은 보조 지역에 SAP 애플리케이션 서버를 만든 다음, 종료하는 것입니다. 주 애플리케이션 서버의 구성이 업데이트되거나 커널이 업데이트되는 즉시 동일한 변경 내용이 보조 지역의 가상 머신에 적용되어야 합니다. 예를 들어 SAP 커널 실행 파일을 DR 가상 머신에 복사합니다. 애플리케이션 서버를 보조 지역에 자동으로 복제하려면 [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)가 권장되는 솔루션입니다. 이 백서를 작성한 시점에서는 ASR에서 Azure VM의 가속 네트워크 구성 설정 복제를 아직 지원하지 않습니다.
 
 - **Central Services**. 이 SAP 애플리케이션 스택의 구성 요소도 비즈니스 데이터를 유지하지 않습니다. 보조 지역에 VM을 구축하여 Central Services 역할을 실행할 수 있습니다. 주 Central Services 노드에서 동기화할 수 있는 유일한 콘텐츠는 /sapmnt 공유 콘텐츠입니다. 또한 주 Central Services 서버에서 구성이 업데이트되거나 커널이 업데이트되면 Central Services를 실행하는 보조 지역의 VM에서 반복해야 합니다. 두 서버를 동기화하려면 Azure Site Recovery를 사용하여 클러스터 노드를 복제하거나, 정기적으로 예약된 복사 작업을 사용하여 /sapmnt를 DR 쪽에 복사하면 됩니다. 빌드, 복사 및 테스트 장애 조치(failover) 프로세스에 대한 자세한 내용을 보려면 [SAP NetWeaver: Hyper-V 및 Microsoft Azure 기반 재해 복구 솔루션 빌드](https://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)를 다운로드하고 4.3, "SAP SPOF 레이어(ASCS)" 섹션을 참조하세요. 이 백서는 Windows에서 실행되는 NetWeaver에 적용되지만, Linux에 대해 동일한 구성을 만들 수 있습니다. Central Services의 경우 [Azure Site Recovery](/en-us/azure/site-recovery/site-recovery-overview)를 사용하여 클러스터 노드와 저장소를 복제합니다. Linux의 경우 고가용성 확장을 사용하여 3개 노드 지역 클러스터를 만듭니다.
 
@@ -197,9 +197,18 @@ SAP HANA 미사용 데이터 암호화의 경우 SAP HANA 네이티브 암호화
 
 커뮤니티는 질문에 대답하고 성공적인 배포를 설정하는 데 도움을 줄 수 있습니다. 다음을 고려해 보세요.
 
-- [Microsoft 플랫폼에서 SAP 응용 프로그램 실행 블로그](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/04/sap-on-azure-general-update-for-customers-partners-april-2017/)
+- [Microsoft 플랫폼에서 SAP 애플리케이션 실행 블로그](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/04/sap-on-azure-general-update-for-customers-partners-april-2017/)
 - [Azure 커뮤니티 지원](https://azure.microsoft.com/support/community/)
 - [SAP 커뮤니티](https://www.sap.com/community.html)
 - [스택 오버플로](https://stackoverflow.com/tags/sap/)
+
+## <a name="related-resources"></a>관련 리소스
+
+동일한 기술 중 일부를 사용하여 특정 솔루션을 보여주는 다음 [Azure 예제 시나리오](/azure/architecture/example-scenario)를 검토해 보세요.
+
+- [Azure에서 Oracle 데이터베이스를 사용하여 SAP 프로덕션 워크로드 실행](/azure/architecture/example-scenario/apps/sap-production)
+- [Azure의 SAP 워크로드에 대한 개발/테스트 환경](/azure/architecture/example-scenario/apps/sap-dev-test)
+
+<!-- links -->
 
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/sap-reference-architectures.vsdx

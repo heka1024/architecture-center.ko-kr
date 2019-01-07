@@ -5,12 +5,12 @@ description: Azure의 Linux 환경에서 고가용성을 통해 SAP S/4HANA를 �
 author: lbrader
 ms.date: 08/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4014d5736527a2f29692720d199b4a1aa8f76020
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: ace5348ccb32299b2f4167b3d384ba72972ca9ad
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120189"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644021"
 ---
 # <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>Azure Virtual Machines에서 AnyDB용 SAP NetWeaver(Windows) 배포
 
@@ -38,7 +38,7 @@ ms.locfileid: "53120189"
 - **Jumpbox**. 요새 호스트라고도 합니다. 이는 관리자가 다른 가상 머신에 연결하는 데 사용하는 네트워크의 보안 가상 머신입니다.
 - **Windows Server Active Directory 도메인 컨트롤러**. 도메인 컨트롤러는 도메인의 모든 VM 및 사용자에 사용됩니다.
 
-**부하 분산 장치**. [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) 인스턴스를 사용하여 응용 프로그램 계층 서브넷의 가상 머신에 트래픽을 분산합니다. 데이터 계층에서는 DBMS에 따라 기본 제공 SAP 부하 분산 장치, Azure Load Balancer 또는 기타 메커니즘을 사용하여 고가용성을 달성할 수 있습니다. 자세한 내용은 [SAP NetWeaver에 대한 Azure Virtual Machines DBMS 배포](/azure/virtual-machines/workloads/sap/dbms-guide)를 참조하세요.
+**부하 분산 장치**. [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) 인스턴스를 사용하여 애플리케이션 계층 서브넷의 가상 머신에 트래픽을 분산합니다. 데이터 계층에서는 DBMS에 따라 기본 제공 SAP 부하 분산 장치, Azure Load Balancer 또는 기타 메커니즘을 사용하여 고가용성을 달성할 수 있습니다. 자세한 내용은 [SAP NetWeaver에 대한 Azure Virtual Machines DBMS 배포](/azure/virtual-machines/workloads/sap/dbms-guide)를 참조하세요.
 
 **가용성 집합**. SAP Web Dispatcher, SAP 애플리케이션 서버 및 (A)SCS 역할용 가상 머신은 별도의 [가용성 집합](/azure/virtual-machines/windows/tutorial-availability-sets)으로 그룹화되고, 역할당 둘 이상의 가상 머신이 프로비전됩니다. 이렇게 하면 가상 머신에 더 높은 [SLA(서비스 수준 계약)](https://azure.microsoft.com/support/legal/sla/virtual-machines)를 적용할 수 있습니다.
 
@@ -70,7 +70,7 @@ ABAP 애플리케이션 서버에 대한 로그온 그룹을 관리하기 위해
 
 공유 디스크 클러스터에 대한 VM을 구성하려면 [Windows Server 장애 조치 클러스터](https://blogs.sap.com/2018/01/25/how-to-create-sap-resources-in-windows-failover-cluster/)를 사용합니다. [클라우드 감시](/windows-server/failover-clustering/deploy-cloud-witness)는 쿼럼 감시로 사용하는 것이 좋습니다. 장애 조치 클러스터 환경을 지원하기 위해 [SIOS DataKeeper 클러스터 버전](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8)에서 클러스터 노드가 소유한 독립 디스크를 복제하여 클러스터 공유 볼륨 기능을 수행합니다. Azure는 기본적으로 공유 디스크를 지원하지 않으므로 SIOS에서 제공하는 솔루션이 필요합니다.
 
-자세한 내용은 [Microsoft 플랫폼에서 SAP 응용 프로그램 실행](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/04/sap-on-azure-general-update-for-customers-partners-april-2017/)의 "3. Azure에서 SIOS의 ASCS를 실행하는 SAP 고객을 위한 중요 업데이트"를 참조하세요.
+자세한 내용은 [Microsoft 플랫폼에서 SAP 애플리케이션 실행](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/04/sap-on-azure-general-update-for-customers-partners-april-2017/)의 "3. Azure에서 SIOS의 ASCS를 실행하는 SAP 고객을 위한 중요 업데이트"를 참조하세요.
 
 클러스터링을 처리하는 또 다른 방법은 Windows Server 장애 조치 클러스터를 사용하여 파일 공유 클러스터를 구현하는 것입니다. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster/)는 UNC 경로를 통해 /sapmnt 전역 디렉터리에 액세스하도록 Central Services 배포 패턴을 수정했습니다. 이 변경에 따라 SIOS 또는 Central Services VM의 다른 공유 디스크 솔루션에 대한 [요구 사항이 제거](https://blogs.msdn.microsoft.com/saponsqlserver/2017/08/10/high-available-ascs-for-windows-on-file-share-shared-disk-no-longer-required/)되었습니다. 그래도 /sapmnt UNC 공유가 [고가용성](https://blogs.sap.com/2017/07/21/how-to-create-a-high-available-sapmnt-share/)인지 확인하는 것이 좋습니다. 이 작업은 Central Services 인스턴스에서 Windows Server 2016의 [SOFS(스케일 아웃 파일 서버)](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/14/file-server-with-sofs-and-s2d-as-an-alternative-to-cluster-shared-disk-for-clustering-of-an-sap-ascs-instance-in-azure-is-generally-available/) 및 [S2D(저장소 공간 다이렉트)](https://blogs.sap.com/2018/03/07/your-sap-on-azure-part-5-ascs-high-availability-with-storage-spaces-direct/) 기능이 있는 Windows Server 장애 조치 클러스터를 사용하여 수행할 수 있습니다.
 
@@ -92,7 +92,7 @@ NSG가 서브넷과 연결되면 서브넷 내의 모든 서버에 적용됩니�
 
 ### <a name="load-balancers"></a>부하 분산 장치
 
-[SAP Web Dispatcher](https://help.sap.com/doc/saphelp_nw73ehp1/7.31.19/en-US/48/8fe37933114e6fe10000000a421937/frameset.htm)는 SAP 응용 프로그램 서버 풀에 대한 HTTP(S) 트래픽의 부하 분산을 처리합니다.
+[SAP Web Dispatcher](https://help.sap.com/doc/saphelp_nw73ehp1/7.31.19/en-US/48/8fe37933114e6fe10000000a421937/frameset.htm)는 SAP 애플리케이션 서버 풀에 대한 HTTP(S) 트래픽의 부하 분산을 처리합니다.
 
 DIAG 프로토콜 또는 RFC(원격 함수 호출)를 통해 SAP 서버에 연결하는 SAP GUI 클라이언트의 트래픽에 대해 Central Services 메시지 서버는 SAP 애플리케이션 서버 [로그온 그룹](https://wiki.scn.sap.com/wiki/display/SI/ABAP+Logon+Group+based+Load+Balancing)을 통해 부하를 분산하므로 추가 부하 분산 장치가 필요하지 않습니다.
 
@@ -102,7 +102,7 @@ DIAG 프로토콜 또는 RFC(원격 함수 호출)를 통해 SAP 서버에 연�
 
 Central Services 가상 머신을 포함한 SAP 애플리케이션 서버의 경우 애플리케이션 실행이 메모리에서 수행되고 디스크가 로깅에만 사용되기 때문에 Azure Standard Storage를 사용하여 비용을 절감할 수 있습니다. 그러나 이 시점에서 Standard Storage는 관리되지 않는 저장소에 대해서만 인증되었습니다. 애플리케이션 서버는 어떤 데이터도 호스팅하지 않으므로 더 작은 P4 및 P6 Premium Storage 디스크를 사용하여 비용을 최소화할 수 있습니다.
 
-또한 Azure Storage는 [클라우드 감시](/windows-server/failover-clustering/deploy-cloud-witness)에서 클러스터가 있는 주 지역에서 떨어져 있는 원격 Azure 지역의 장치에서 쿼럼을 유지하는 데도 사용됩니다.
+또한 Azure Storage는 [클라우드 감시](/windows-server/failover-clustering/deploy-cloud-witness)에서 클러스터가 있는 주 지역에서 떨어져 있는 원격 Azure 지역의 디바이스에서 쿼럼을 유지하는 데도 사용됩니다.
 
 백업 데이터 저장소의 경우 Azure [쿨 액세스 계층](/azure/storage/storage-blob-storage-tiers) 및 [보관 액세스 계층 저장소](/azure/storage/storage-blob-storage-tiers)를 사용하는 것이 좋습니다. 이러한 저장소 계층은 자주 액세스되지 않는 수명이 긴 데이터를 저장하는 비용 효율적인 방법입니다.
 
@@ -147,7 +147,7 @@ SAP 애플리케이션 서버의 고가용성은 애플리케이션 서버 풀 �
 
 DR(재해 복구)의 경우 장애 조치를 보조 지역으로 수행할 수 있어야 합니다. 각 계층은 서로 다른 전략을 사용하여 재해 복구(DR) 보호를 제공합니다.
 
-- **응용 프로그램 서버 계층**. SAP 애플리케이션 서버에는 비즈니스 데이터가 포함되어 있지 않습니다. Azure에서 간단한 DR 전략은 보조 지역에 SAP 애플리케이션 서버를 만든 다음, 종료하는 것입니다. 주 애플리케이션 서버의 구성이 업데이트되거나 커널이 업데이트되는 즉시 동일한 변경 내용을 보조 지역의 가상 머신에 복사해야 합니다. 예를 들어 커널 실행 파일을 DR 가상 머신에 복사합니다. 애플리케이션 서버를 보조 지역에 자동으로 복제하려면 [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)가 권장되는 솔루션입니다.
+- **애플리케이션 서버 계층**. SAP 애플리케이션 서버에는 비즈니스 데이터가 포함되어 있지 않습니다. Azure에서 간단한 DR 전략은 보조 지역에 SAP 애플리케이션 서버를 만든 다음, 종료하는 것입니다. 주 애플리케이션 서버의 구성이 업데이트되거나 커널이 업데이트되는 즉시 동일한 변경 내용을 보조 지역의 가상 머신에 복사해야 합니다. 예를 들어 커널 실행 파일을 DR 가상 머신에 복사합니다. 애플리케이션 서버를 보조 지역에 자동으로 복제하려면 [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)가 권장되는 솔루션입니다.
 
 - **Central Services**. 이 SAP 애플리케이션 스택의 구성 요소도 비즈니스 데이터를 유지하지 않습니다. 재해 복구 지역에 VM을 구축하여 Central Services 역할을 실행할 수 있습니다. 주 Central Services 노드에서 동기화할 수 있는 유일한 콘텐츠는 /sapmnt 공유 콘텐츠입니다. 또한 주 Central Services 서버에서 구성이 업데이트되거나 커널이 업데이트되면 Central Services를 실행하는 재해 복구 지역의 VM에서 반복해야 합니다. 두 서버를 동기화하려면 Azure Site Recovery를 사용하여 클러스터 노드를 복제하거나, 정기적으로 예약된 복사 작업을 사용하여 /sapmnt를 재해 복구 지역에 복사하면 됩니다. 이 간단한 복제 방법의 빌드, 복사 및 테스트 장애 조치(failover) 프로세스에 대한 자세한 내용을 보려면 [SAP NetWeaver: Hyper-V 및 Microsoft Azure 기반 재해 복구 솔루션 빌드](https://download.microsoft.com/download/9/5/6/956FEDC3-702D-4EFB-A7D3-2DB7505566B6/SAP%20NetWeaver%20-%20Building%20an%20Azure%20based%20Disaster%20Recovery%20Solution%20V1_5%20.docx)를 다운로드하고 "4.3. SAP SPOF 레이어(ASCS)"를 참조하세요.
 
@@ -175,9 +175,18 @@ Windows 가상 머신 디스크를 암호화하기 위해 [Azure Disk Encryption
 
 커뮤니티는 질문에 대답하고 성공적인 배포를 설정하는 데 도움을 줄 수 있습니다. 다음을 고려해 보세요.
 
-- [Microsoft 플랫폼에서 SAP 응용 프로그램 실행 블로그](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/04/sap-on-azure-general-update-for-customers-partners-april-2017/)
+- [Microsoft 플랫폼에서 SAP 애플리케이션 실행 블로그](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/04/sap-on-azure-general-update-for-customers-partners-april-2017/)
 - [Azure 커뮤니티 지원](https://azure.microsoft.com/support/community/)
 - [SAP 커뮤니티](https://www.sap.com/community.html)
 - [스택 오버플로](https://stackoverflow.com/tags/sap/)
+
+## <a name="related-resources"></a>관련 리소스
+
+동일한 기술 중 일부를 사용하여 특정 솔루션을 보여주는 다음 [Azure 예제 시나리오](/azure/architecture/example-scenario)를 검토해 보세요.
+
+- [Azure에서 Oracle 데이터베이스를 사용하여 SAP 프로덕션 워크로드 실행](/azure/architecture/example-scenario/apps/sap-production)
+- [Azure의 SAP 워크로드에 대한 개발/테스트 환경](/azure/architecture/example-scenario/apps/sap-dev-test)
+
+<!-- links -->
 
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/sap-reference-architectures.vsdx

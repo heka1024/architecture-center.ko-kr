@@ -5,12 +5,12 @@ description: Azure를 사용하여 온-프레미스에 저장된 관계형 데�
 author: MikeWasson
 ms.date: 11/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 656bf6f1bd342856fd8a2d2aa0b62a9dd4d4f87f
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 3808cc5d09e2e0a5aaee1a6cfcb050b98a0ef2ee
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120087"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644226"
 ---
 # <a name="enterprise-bi-in-azure-with-sql-data-warehouse"></a>SQL Data Warehouse를 사용하는 Azure의 Enterprise BI
 
@@ -113,7 +113,7 @@ AzCopy는 공용 인터넷을 통해 저장소로 데이터를 이동합니다. 
 
 PolyBase는 웨어하우스에서 자동으로 병렬 처리를 활용합니다. 로드 성능은 DWU를 늘리면 확장합니다. 최상의 성능을 위해 단일 로드 작업을 사용합니다. 입력 데이터를 청크로 분리하고 여러 동시 로드를 실행하는 성능 이점이 없습니다.
 
-PolyBase는 Gzip 압축된 파일을 읽을 수 있습니다. 그러나 파일 압축 풀기는 단일 스레드 작업이므로 압축된 파일당 단일 판독기만 사용됩니다. 따라서 대량의 단일 압축된 파일을 로드하지 않도록 합니다. 대신 병렬 처리를 활용하기 위해 여러 개의 압축된 파일로 데이터를 분할합니다. 
+PolyBase는 Gzip 압축된 파일을 읽을 수 있습니다. 그러나 파일 압축 풀기는 단일 스레드 작업이므로 압축된 파일당 단일 판독기만 사용됩니다. 따라서 대량의 단일 압축된 파일을 로드하지 않도록 합니다. 대신 병렬 처리를 활용하기 위해 여러 개의 압축된 파일로 데이터를 분할합니다.
 
 다음과 같은 제한 사항을 고려해야 합니다.
 
@@ -183,10 +183,10 @@ SQL Data Warehouse를 사용하여 주문형 계산 리소스를 확장할 수 �
 
 ### <a name="authorization"></a>권한 부여
 
-Azure Analysis Services는 Azure AD(Azure Active Directory)를 사용하여 Analysis Services 서버에 연결하는 사용자를 인증합니다. 역할을 만든 다음, 해당 역할에 Azure AD 사용자 또는 그룹을 할당하여 특정 사용자가 볼 수 있는 데이터를 제한할 수 있습니다. 각 역할의 경우 다음을 수행할 수 있습니다. 
+Azure Analysis Services는 Azure AD(Azure Active Directory)를 사용하여 Analysis Services 서버에 연결하는 사용자를 인증합니다. 역할을 만든 다음, 해당 역할에 Azure AD 사용자 또는 그룹을 할당하여 특정 사용자가 볼 수 있는 데이터를 제한할 수 있습니다. 각 역할의 경우 다음을 수행할 수 있습니다.
 
-- 테이블 또는 개별 열을 보호합니다. 
-- 필터 식에 따라 개별 행을 보호합니다. 
+- 테이블 또는 개별 열을 보호합니다.
+- 필터 식에 따라 개별 행을 보호합니다.
 
 자세한 내용은 [데이터베이스 역할 및 사용자 관리](/azure/analysis-services/analysis-services-database-users)를 참조하세요.
 
@@ -202,6 +202,13 @@ Azure Analysis Services는 Azure AD(Azure Active Directory)를 사용하여 Anal
 ## <a name="next-steps"></a>다음 단계
 
 - Azure Data Factory를 사용하여 ELT 파이프라인을 자동화합니다. [SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 Enterprise BI][adf-ra]를 참조하세요.
+
+## <a name="related-resources"></a>관련 리소스
+
+동일한 기술 중 일부를 사용하여 특정 솔루션을 보여주는 다음 [Azure 예제 시나리오](/azure/architecture/example-scenario)를 검토해 보세요.
+
+- [영업 및 마케팅에 대한 데이터 웨어하우징 및 분석](/azure/architecture/example-scenario/data/data-warehouse)
+- [기존 온-프레미스 SSIS와 Azure Data Factory를 사용한 하이브리드 ETL](/azure/architecture/example-scenario/data/hybrid-etl-with-adf)
 
 <!-- links -->
 

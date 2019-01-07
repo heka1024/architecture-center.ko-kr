@@ -1,15 +1,16 @@
 ---
-title: Azure의 SAP 워크로드에 대한 개발/테스트 환경
+title: SAP 워크로드에 대한 개발/테스트 환경
+titleSuffix: Azure Example Scenarios
 description: SAP 워크로드에 대한 개발/테스트 환경을 빌드합니다.
 author: AndrewDibbins
 ms.date: 7/11/18
 ms.custom: fasttrack
-ms.openlocfilehash: 84665bfeb6ada568c631e1db72b97269d79f2e60
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: 3f6c828e8757a3f82ad6972a8f21cd2fed629162
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004673"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643971"
 ---
 # <a name="devtest-environments-for-sap-workloads-on-azure"></a>Azure의 SAP 워크로드에 대한 개발/테스트 환경
 
@@ -17,16 +18,16 @@ ms.locfileid: "53004673"
 
 프로덕션 사용 사례의 경우 아래에서 사용할 수 있는 SAP 참조 아키텍처를 검토합니다.
 
-* [AnyDB용 SAP NetWeaver][sap-netweaver]
-* [SAP S/4HANA][sap-hana]
-* [Azure의 SAP(대규모 인스턴스)][sap-large]
+- [AnyDB용 SAP NetWeaver][sap-netweaver]
+- [SAP S/4HANA][sap-hana]
+- [Azure의 SAP(대규모 인스턴스)][sap-large]
 
 ## <a name="relevant-use-cases"></a>관련 사용 사례
 
 관련된 다른 사용 사례는 다음과 같습니다.
 
-* 중요하지 않은 비생산적 SAP 워크로드(샌드박스, 개발, 테스트, 품질 보증)
-* 중요하지 않은 SAP 비즈니스 워크로드
+- 중요하지 않은 비생산적 SAP 워크로드(샌드박스, 개발, 테스트, 품질 보증)
+- 중요하지 않은 SAP 비즈니스 워크로드
 
 ## <a name="architecture"></a>아키텍처
 
@@ -41,11 +42,11 @@ ms.locfileid: "53004673"
 
 ### <a name="components"></a>구성 요소
 
-* [가상 네트워크](/azure/virtual-network/virtual-networks-overview)는 Azure 내에서 네트워크 통신의 기초입니다.
-* [가상 머신](/azure/virtual-machines/windows/overview) Azure Virtual Machines는 Windows 또는 Linux 서버를 사용하여 안전하고 가상화된 주문형 대규모 인프라를 제공합니다.
-* [ExpressRoute](/azure/expressroute/expressroute-introduction)를 사용하면 연결 공급자가 지원하는 개인 연결을 통해 온-프레미스 네트워크를 Microsoft 클라우드로 확장할 수 있습니다.
-* [네트워크 보안 그룹](/azure/virtual-network/security-overview)을 사용하면 네트워크 트래픽을 가상 네트워크의 리소스로 제한할 수 있습니다. 네트워크 보안 그룹에는 원본 또는 대상 IP 주소, 포트 및 프로토콜에 따라 인바운드 또는 아웃바운드 네트워크 트래픽을 허용하거나 거부하는 보안 규칙 목록이 포함되어 있습니다. 
-* [리소스 그룹](/azure/azure-resource-manager/resource-group-overview#resource-groups)은 Azure 리소스에 대한 논리 컨테이너 역할을 합니다.
+- [가상 네트워크](/azure/virtual-network/virtual-networks-overview)는 Azure 내에서 네트워크 통신의 기초입니다.
+- [가상 머신](/azure/virtual-machines/windows/overview) Azure Virtual Machines는 Windows 또는 Linux 서버를 사용하여 안전하고 가상화된 주문형 대규모 인프라를 제공합니다.
+- [ExpressRoute](/azure/expressroute/expressroute-introduction)를 사용하면 연결 공급자가 지원하는 개인 연결을 통해 온-프레미스 네트워크를 Microsoft 클라우드로 확장할 수 있습니다.
+- [네트워크 보안 그룹](/azure/virtual-network/security-overview)을 사용하면 네트워크 트래픽을 가상 네트워크의 리소스로 제한할 수 있습니다. 네트워크 보안 그룹에는 원본 또는 대상 IP 주소, 포트 및 프로토콜에 따라 인바운드 또는 아웃바운드 네트워크 트래픽을 허용하거나 거부하는 보안 규칙 목록이 포함되어 있습니다.
+- [리소스 그룹](/azure/azure-resource-manager/resource-group-overview#resource-groups)은 Azure 리소스에 대한 논리 컨테이너 역할을 합니다.
 
 ## <a name="considerations"></a>고려 사항
 
@@ -81,18 +82,22 @@ ms.locfileid: "53004673"
 > [!NOTE]
 > 이 가격 책정은 VM 및 저장소 비용만 나타내는 가이드입니다. 네트워킹, 백업 저장소 및 데이터 수신/송신 요금은 제외됩니다.
 
-* [소형](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1): 소형 시스템은 8개 vCPU, 32GB RAM 및 200GB 임시 스토리지가 있는 D8s_v3 VM 유형으로 구성되며, 2개 512GB 및 1개 128GB 프리미엄 스토리지 디스크도 추가로 있습니다.
-* [중형](https://azure.com/e/465bd07047d148baab032b2f461550cd): 중형 시스템은 16개 vCPU, 64GB RAM 및 400GB 임시 스토리지가 있는 D16s_v3 VM 유형으로 구성되며, 3개 512GB 및 1개 128GB 프리미엄 스토리지 디스크도 추가로 있습니다.
-* [대형](https://azure.com/e/ada2e849d68b41c3839cc976000c6931): 대형 시스템은 32개 vCPU, 256GB RAM 및 512GB 임시 스토리지가 있는 E32s_v3 VM 유형으로 구성되며, 3개 512GB 및 1개 128GB 프리미엄 스토리지 디스크도 추가로 있습니다.
-* [초대형](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef): 초대형 시스템은 64개 vCPU, 1024GB RAM 및 2000GB 임시 스토리지가 있는 M64s VM 유형으로 구성되며, 4개 512GB 및 1개 128GB 프리미엄 스토리지 디스크도 추가로 있습니다.
+- [소형](https://azure.com/e/9d26b9612da9466bb7a800eab56e71d1): 소형 시스템은 8개 vCPU, 32GB RAM 및 200GB 임시 스토리지가 있는 D8s_v3 VM 유형으로 구성되며, 2개 512GB 및 1개 128GB 프리미엄 스토리지 디스크도 추가로 있습니다.
+- [중형](https://azure.com/e/465bd07047d148baab032b2f461550cd): 중형 시스템은 16개 vCPU, 64GB RAM 및 400GB 임시 스토리지가 있는 D16s_v3 VM 유형으로 구성되며, 3개 512GB 및 1개 128GB 프리미엄 스토리지 디스크도 추가로 있습니다.
+- [대형](https://azure.com/e/ada2e849d68b41c3839cc976000c6931): 대형 시스템은 32개 vCPU, 256GB RAM 및 512GB 임시 스토리지가 있는 E32s_v3 VM 유형으로 구성되며, 3개 512GB 및 1개 128GB 프리미엄 스토리지 디스크도 추가로 있습니다.
+- [초대형](https://azure.com/e/975fb58a965c4fbbb54c5c9179c61cef): 초대형 시스템은 64개 vCPU, 1024GB RAM 및 2000GB 임시 스토리지가 있는 M64s VM 유형으로 구성되며, 4개 512GB 및 1개 128GB 프리미엄 스토리지 디스크도 추가로 있습니다.
 
 ## <a name="deployment"></a>배포
 
 이 시나리오를 위한 기본 인프라를 배포하려면 여기를 클릭합니다.
 
+<!-- markdownlint-disable MD033 -->
+
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fapps%2Fsap-2tier%2Fazuredeploy.json" target="_blank">
     <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
+
+<!-- markdownlint-enable MD033 -->
 
 > [!NOTE]
 > SAP 및 Oracle은 이 배포 중에 설치되지 않습니다. 이러한 구성 요소를 별도로 배포해야 합니다.

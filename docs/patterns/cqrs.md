@@ -9,12 +9,12 @@ pnp.pattern.categories:
 - data-management
 - design-implementation
 - performance-scalability
-ms.openlocfilehash: 9a2eecdff7494fb627ea5c4655e6edc789bd5bdf
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: de9530f7dd55c0ce5460cd3b58ab9f216c9b5c8c
+ms.sourcegitcommit: fb22348f917a76e30a6c090fcd4a18decba0b398
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429692"
+ms.lasthandoff: 12/16/2018
+ms.locfileid: "53450873"
 ---
 # <a name="command-and-query-responsibility-segregation-cqrs-pattern"></a>CQRS(명령 및 쿼리 책임 분리) 패턴
 
@@ -39,8 +39,6 @@ ms.locfileid: "47429692"
 - 여러 작업자가 동일한 데이터 집합을 동시에 사용하는 공동 작업 도메인의 데이터 저장소에 레코드가 잠겨 있는 경우 데이터 경합을 초래할 위험이 있습니다. 또는 낙관적 잠금을 사용하는 경우 동시 업데이트로 인해 업데이트 충돌이 발생할 수 있습니다. 이러한 위험은 시스템의 복잡성과 처리량이 늘어날수록 증가합니다. 또한 기존의 접근 방식은 데이터 저장소와 데이터 액세스 계층에 가해지는 부하뿐 아니라 정보를 검색하는 데 필요한 쿼리의 복잡성으로 인해 성능에 좋지 않은 영향을 미칠 수 있습니다.
 
 - 엔터티 각각이 읽기와 쓰기 작업의 대상으로 잘못된 컨텍스트에 데이터를 노출시킬 수 있기 때문에 보안 및 권한 관리가 더 복잡해질 수 있습니다.
-
-> CRUD 접근 방식의 제한에 대한 자세한 내용은 [CRUD, Only When You Can Afford It](https://blogs.msdn.microsoft.com/maarten_mullender/2004/07/23/crud-only-when-you-can-afford-it-revisited/)(CRUD, 사용 가능한 경우에만)을 참조하세요.
 
 ## <a name="solution"></a>해결 방법
 
@@ -248,6 +246,6 @@ public interface IProductsDomain
 
 - [구체화된 뷰 패턴](materialized-view.md). CQRS를 구현한 읽기 모델은 쓰기 모델 데이터의 구체화된 뷰를 포함할 수 있습니다. 또는 구체화된 뷰를 생성하는 데 읽기 모델을 사용할 수 있습니다.
 
-- 패턴 및 사례 가이드 [CQRS 과정](https://aka.ms/cqrs). 특히 [Introducing the Command Query Responsibility Segregation Pattern](https://msdn.microsoft.com/library/jj591573.aspx)(명령 쿼리 책임 분리 패턴 소개)은 패턴 및 유용한 경우를 탐색하며, [Epilogue: Lessons Learned](https://msdn.microsoft.com/library/jj591568.aspx)(에필로그: 교훈)는 이 패턴을 사용할 때 발생하는 문제 중 일부를 이해하는 데 도움이 됩니다.
+- 패턴 및 사례 가이드 [CQRS 과정](https://aka.ms/cqrs). 특히 [명령과 쿼리의 역할 분리 패턴 소개](https://msdn.microsoft.com/library/jj591573.aspx)에서는 이러한 패턴, 이러한 패턴이 유용한 경우를 살펴봅니다. [에필로그: 배운 내용](https://msdn.microsoft.com/library/jj591568.aspx)은 이 패턴을 사용할 때 발생하는 몇 가지 문제를 이해하는 데 도움이 됩니다.
 
 - [Martin Fowler의 CQRS](https://martinfowler.com/bliki/CQRS.html) 게시물. 패턴의 기본 내용을 설명하고 다른 유용한 리소스에 연결되는 링크를 제공합니다.

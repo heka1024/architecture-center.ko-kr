@@ -1,14 +1,15 @@
 ---
-title: Azure에서 보험 청구에 대한 이미지 분류
+title: 보험 청구에 대한 이미지 분류
+titleSuffix: Azure Example Scenarios
 description: Azure 애플리케이션에 이미지 처리를 빌드합니다.
 author: david-stanford
 ms.date: 07/05/2018
-ms.openlocfilehash: 9640f8b5454891ed00f669bada9f7c9c69b89734
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.openlocfilehash: 12dd197c6df4a8d7a90a09436d86ce4a9e5ccc72
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610535"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643448"
 ---
 # <a name="image-classification-for-insurance-claims-on-azure"></a>Azure에서 보험 청구에 대한 이미지 분류
 
@@ -22,8 +23,8 @@ Computer Vision API 및 Azure Functions와 같은 Azure 서비스를 사용하�
 
 관련된 다른 사용 사례는 다음과 같습니다.
 
-* 패션 웹 사이트에서 이미지 분류
-* 게임 스크린샷의 원격 분석 데이터 분류
+- 패션 웹 사이트에서 이미지 분류
+- 게임 스크린샷의 원격 분석 데이터 분류
 
 ## <a name="architecture"></a>아키텍처
 
@@ -39,16 +40,16 @@ Computer Vision API 및 Azure Functions와 같은 Azure 서비스를 사용하�
 
 ### <a name="components"></a>구성 요소
 
-* [Computer Vision API](/azure/cognitive-services/computer-vision/home)는 Cognitive Services 제품군의 일부이며 각 이미지에 대한 정보를 검색하는 데 사용됩니다.
-* [Azure Functions](/azure/azure-functions/functions-overview)는 업로드된 이미지에 대한 이벤트 처리뿐만 아니라 웹 응용 프로그램에 대한 백 엔드 API도 제공합니다.
-* [Event Grid](/azure/event-grid/overview)는 Blob 저장소에 새 이미지가 업로드되면 이벤트를 트리거합니다. 그런 다음, 이미지는 Azure Functions에서 처리됩니다.
-* [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)는 웹 응용 프로그램에 업로드되는 모든 이미지 파일과 웹 응용 프로그램에서 사용하는 모든 정적 파일을 저장합니다.
-* [Cosmos DB](/azure/cosmos-db/introduction)는 Computer Vision API에서 처리한 결과를 포함하여 업로드된 각 이미지에 대한 메타데이터를 저장합니다.
+- [Computer Vision API](/azure/cognitive-services/computer-vision/home)는 Cognitive Services 제품군의 일부이며 각 이미지에 대한 정보를 검색하는 데 사용됩니다.
+- [Azure Functions](/azure/azure-functions/functions-overview)는 업로드된 이미지에 대한 이벤트 처리뿐만 아니라 웹 애플리케이션에 대한 백 엔드 API도 제공합니다.
+- [Event Grid](/azure/event-grid/overview)는 Blob 저장소에 새 이미지가 업로드되면 이벤트를 트리거합니다. 그런 다음, 이미지는 Azure Functions에서 처리됩니다.
+- [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)는 웹 애플리케이션에 업로드되는 모든 이미지 파일과 웹 애플리케이션에서 사용하는 모든 정적 파일을 저장합니다.
+- [Cosmos DB](/azure/cosmos-db/introduction)는 Computer Vision API에서 처리한 결과를 포함하여 업로드된 각 이미지에 대한 메타데이터를 저장합니다.
 
 ## <a name="alternatives"></a>대안
 
-* [Custom Vision Service](/azure/cognitive-services/custom-vision-service/home). Computer Vision API는 일단의 [분류 기반 범주][cv-categories]를 반환합니다. Computer Vision API에서 반환하지 않는 정보를 처리해야 하는 경우 사용자 지정 이미지 분류기를 만들 수 있는 Custom Vision Service를 사용하는 것이 좋습니다.
-* [Azure Search](/azure/search/search-what-is-azure-search). 특정 조건을 충족하는 이미지를 찾기 위해 메타데이터를 쿼리하는 사용 사례가 있는 경우 Azure Search를 사용하는 것이 좋습니다. 현재 미리 보기에서 [인지 검색](/azure/search/cognitive-search-concept-intro)은 이 워크플로를 원활하게 통합합니다.
+- [Custom Vision Service](/azure/cognitive-services/custom-vision-service/home). Computer Vision API는 일단의 [분류 기반 범주][cv-categories]를 반환합니다. Computer Vision API에서 반환하지 않는 정보를 처리해야 하는 경우 사용자 지정 이미지 분류기를 만들 수 있는 Custom Vision Service를 사용하는 것이 좋습니다.
+- [Azure Search](/azure/search/search-what-is-azure-search). 특정 조건을 충족하는 이미지를 찾기 위해 메타데이터를 쿼리하는 사용 사례가 있는 경우 Azure Search를 사용하는 것이 좋습니다. 현재 미리 보기에서 [인지 검색](/azure/search/cognitive-search-concept-intro)은 이 워크플로를 원활하게 통합합니다.
 
 ## <a name="considerations"></a>고려 사항
 
@@ -80,9 +81,9 @@ NoSQL 데이터베이스는 가용성, 확장성 및 파티션에 대한 일관�
 
 트래픽 양을 기준으로 다음 세 가지 샘플 비용 프로필을 제공했습니다(모든 이미지가 100kb 크기라고 가정).
 
-* [소형][small-pricing]: 이 가격 책정 예제는 매월&lt; 5000개 이미지 처리와 관련이 있습니다.
-* [중형][medium-pricing]: 이 가격 책정 예제는 매월 500,000개 이미지 처리와 관련이 있습니다.
-* [대형][large-pricing]: 이 가격 책정 예제는 매월 5천만 개 이미지 처리와 관련이 있습니다.
+- [소형][small-pricing]: 이 가격 책정 예제는 매월&lt; 5000개 이미지 처리와 관련이 있습니다.
+- [중형][medium-pricing]: 이 가격 책정 예제는 매월 500,000개 이미지 처리와 관련이 있습니다.
+- [대형][large-pricing]: 이 가격 책정 예제는 매월 5천만 개 이미지 처리와 관련이 있습니다.
 
 ## <a name="related-resources"></a>관련 리소스
 

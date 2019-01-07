@@ -5,12 +5,12 @@ description: 여러 지역의 Azure Virtual Machines에 애플리케이션을 �
 author: MikeWasson
 ms.date: 07/19/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5036d8c74dbf92d9547ab866b15b1576df48e3eb
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 84da8aaef7e552beff1f06befbaa2e50a3ac3d8b
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120002"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643713"
 ---
 # <a name="run-an-n-tier-application-in-multiple-azure-regions-for-high-availability"></a>여러 Azure 지역에서 N 계층 애플리케이션을 실행하여 고가용성 구현
 
@@ -28,7 +28,7 @@ ms.locfileid: "53120002"
 
 - **Azure Traffic Manager**. [Traffic Manager][traffic-manager]는 들어오는 요청을 이 지역 중 하나에 라우팅합니다. 정상 작동 중에는 요청을 주 지역으로 라우팅합니다. 이 지역을 사용할 수 없게 되면 Traffic Manager가 보조 지역으로 장애 조치(failover)합니다. 자세한 내용은 [Traffic Manager 구성](#traffic-manager-configuration) 섹션을 참조하세요.
 
-- **리소스 그룹**. 주 지역, 보조 지역 및 Traffic Manager에 대해 별도의 [리소스 그룹][resource groups]을 만듭니다. 따라서 각 지역을 단일 리소스 모음으로 유연하게 관리할 수 있습니다. 예를 들어 다른 지역으로 이동하지 않고 한 지역을 다시 배포할 수 있습니다. [리소스 그룹을 연결][resource-group-links]하므로 응용 프로그램의 모든 리소스를 나열하는 쿼리를 실행할 수 있습니다.
+- **리소스 그룹**. 주 지역, 보조 지역 및 Traffic Manager에 대해 별도의 [리소스 그룹][resource groups]을 만듭니다. 따라서 각 지역을 단일 리소스 모음으로 유연하게 관리할 수 있습니다. 예를 들어 다른 지역으로 이동하지 않고 한 지역을 다시 배포할 수 있습니다. [리소스 그룹을 연결][resource-group-links]하므로 애플리케이션의 모든 리소스를 나열하는 쿼리를 실행할 수 있습니다.
 
 - **VNet**. 각 지역에 대해 별도의 VNet을 만듭니다. 주소 공간이 겹치지 않도록 합니다.
 
@@ -159,6 +159,13 @@ SQL Server 클러스터의 경우 다음과 같은 두 가지 장애 조치(fail
 - 도메인 컨트롤러에서 DNS 서비스를 중단합니다.
 
 복구 시간을 측정하고 비즈니스 요구 사항이 충족되었는지 확인합니다. 오류 모드를 조합하여 테스트합니다.
+
+## <a name="related-resources"></a>관련 리소스
+
+동일한 기술 중 일부를 사용하여 특정 솔루션을 보여주는 다음 [Azure 예제 시나리오](/azure/architecture/example-scenario)를 검토해 보세요.
+
+- [Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션](/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)
+- [Azure에서 Windows 가상 머신으로 안전한 웹 애플리케이션 빌드](/azure/architecture/example-scenario/infrastructure/regulated-multitier-app)
 
 <!-- links -->
 

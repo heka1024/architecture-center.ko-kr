@@ -4,12 +4,12 @@ titleSuffix: Enterprise Cloud Adoption
 description: 디지털 자산을 합리화하는 경우에 사용할 수 있는 옵션을 설명합니다.
 author: BrianBlanchard
 ms.date: 12/10/2018
-ms.openlocfilehash: 4e2765198b64c36470adc9fbe35872e4714780e8
-ms.sourcegitcommit: e7f8676bbffe500fc4d6deb603b7c0b7ba1884a6
+ms.openlocfilehash: 66eee782b63210bcba3022e3be5b8fdee11716ec
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53179728"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643682"
 ---
 # <a name="enterprise-cloud-adoption-the-5-rs-of-rationalization"></a>엔터프라이즈 클라우드 채택: 합리화의 5가지 R
 

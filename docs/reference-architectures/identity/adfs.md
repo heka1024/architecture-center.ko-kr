@@ -1,16 +1,16 @@
 ---
 title: Azure로 온-프레미스 AD FS 확장
 titleSuffix: Azure Reference Architectures
-description: Azure에서 Active Directory 페더레이션 서비스 권한 부여로 보안 하이브리드 네트워크 아키텍처를 구현하는 방법.
+description: Azure에서 Active Directory 페더레이션 서비스 권한 부여로 보안 하이브리드 네트워크 아키텍처를 구현합니다.
 author: telmosampaio
-ms.date: 11/28/2016
+ms.date: 12/18.2018
 ms.custom: seodec18
-ms.openlocfilehash: 95866961cd92f44e0925c5e47eafdc5df71652db
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: bd07ce1502c29c1543dca42f74b2f19f3a6d3878
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120223"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644107"
 ---
 # <a name="extend-active-directory-federation-services-ad-fs-to-azure"></a>Azure로 AD FS(Active Directory Federation Services) 확장
 
@@ -53,7 +53,7 @@ AD FS는 온-프레미스에서 호스팅될 수 있지만 애플리케이션이
 
   - 파트너 사용자를 대신하여 파트너 페더레이션 서버에서 만들어진 클레임을 포함하는 보안 토큰 받기 AD FS는 요청에 권한을 부여하기 위해 Azure에서 실행되는 웹 애플리케이션에 클레임을 전달하기 전에 토큰이 유효한지 확인합니다.
 
-    Azure에서 실행되는 웹 애플리케이션은 *신뢰 당사자*입니다. 파트너 페더레이션 서버는 웹 애플리케이션에서 인식할 수 있는 클레임을 발급해야 합니다. 파트너 페더레이션 서버는 파트너 조직에서 인증된 계정을 대신하여 액세스 요청을 제출하기 때문에 *계정 파트너*라고 합니다. AD FS 서버는 리소스(웹 애플리케이션)에 대한 액세스를 제공하기 때문에 *리소스 파트너*라고 합니다.
+    Azure에서 실행되는 애플리케이션은 *신뢰 당사자*입니다. 파트너 페더레이션 서버는 웹 애플리케이션에서 인식할 수 있는 클레임을 발급해야 합니다. 파트너 페더레이션 서버는 파트너 조직에서 인증된 계정을 대신하여 액세스 요청을 제출하기 때문에 *계정 파트너*라고 합니다. AD FS 서버는 리소스(웹 애플리케이션)에 대한 액세스를 제공하기 때문에 *리소스 파트너*라고 합니다.
 
   - AD DS 및 [Active Directory Device Registration Service][ADDRS]를 사용하여 웹 브라우저를 실행하는 외부 사용자 또는 웹 애플리케이션에 대한 액세스가 필요한 장치에서 들어오는 요청 인증 및 권한 부여
 
@@ -63,7 +63,7 @@ AD FS는 온-프레미스에서 호스팅될 수 있지만 애플리케이션이
 
 - **AD FS 프록시 서브넷** AD FS 프록시 서버는 보호를 제공하는 NSG 규칙과 함께 자체의 서브넷 내에서 포함될 수 있습니다. 이 서브넷의 서버는 Azure 가상 네트워크와 인터넷 간 방화벽을 제공하는 네트워크 가상 어플라이언스의 집합을 통해 인터넷에 노출됩니다.
 
-- **AD FS WAP(웹 응용 프로그램 프록시) 서버** 이러한 VM은 파트너 조직 및 외부 장치에서 들어오는 요청에 대한 AD FS 서버로 작동합니다. WAP 서버는 AD FS 서버를 인터넷의 직접 액세스에서 보호하는 필터로 작동합니다. AD FS 서버와 마찬가지로 부하 분산으로 팜에서 WAP 서버를 배포하는 것은 독립 실행형 서버 컬렉션을 배포하는 것보다 더 큰 가용성 및 확장성을 제공합니다.
+- **AD FS WAP(웹 애플리케이션 프록시) 서버** 이러한 VM은 파트너 조직 및 외부 디바이스에서 들어오는 요청에 대한 AD FS 서버로 작동합니다. WAP 서버는 AD FS 서버를 인터넷의 직접 액세스에서 보호하는 필터로 작동합니다. AD FS 서버와 마찬가지로 부하 분산으로 팜에서 WAP 서버를 배포하는 것은 독립 실행형 서버 컬렉션을 배포하는 것보다 더 큰 가용성 및 확장성을 제공합니다.
 
   > [!NOTE]
   > WAP 서버 설치에 대한 자세한 내용은 [웹 애플리케이션 프록시 서버 설치 및 구성][install_and_configure_the_web_application_proxy_server]을 참조하세요.
@@ -75,61 +75,17 @@ AD FS는 온-프레미스에서 호스팅될 수 있지만 애플리케이션이
   > 또한 Azure 게이트웨이를 사용하여 신뢰할 수 있는 파트너에게 AD FS에 대한 직접 액세스를 제공하도록 VPN 터널을 구성할 수 있습니다. 이러한 파트너에서 받은 요청은 WAP 서버를 통해 전달하지 마십시오.
   >
 
-AD FS와 관련되지 않은 아키텍처의 부분에 대한 자세한 내용은 다음을 참조하세요.
-
-- [Azure에서 보안 하이브리드 네트워크 아키텍처 구현][implementing-a-secure-hybrid-network-architecture]
-- [Azure에서 인터넷 액세스로 보안 하이브리드 네트워크 아키텍처 구현][implementing-a-secure-hybrid-network-architecture-with-internet-access]
-- [Azure에서 Active Directory ID로 보안 하이브리드 네트워크 아키텍처 구현][extending-ad-to-azure]
-
 ## <a name="recommendations"></a>권장 사항
 
 대부분의 시나리오의 경우 다음 권장 사항을 적용합니다. 이러한 권장 사항을 재정의하라는 특정 요구 사항이 있는 경우가 아니면 따릅니다.
-
-### <a name="vm-recommendations"></a>VM 권장 사항
-
-예상되는 트래픽 볼륨을 처리할 충분한 리소스가 있는 VM을 만듭니다. 시작 지점으로 온-프레미스에서 AD FS를 호스팅하는 기존 컴퓨터의 크기를 사용합니다. 리소스 사용률을 모니터링합니다. VM의 크기를 조정하고 너무 큰 경우 축소할 수 있습니다.
-
-[Azure에서 Windows VM 실행][vm-recommendations]에 나열된 권장 사항을 따릅니다.
 
 ### <a name="networking-recommendations"></a>네트워킹 권장 사항
 
 정적 개인 IP 주소로 AD FS 및 WAP 서버를 호스팅하는 각 VM에 대한 네트워크 인터페이스를 구성합니다.
 
-AD FS VM에 공용 IP 주소를 제공하지 마십시오. 자세한 내용은 보안 고려 사항 섹션을 참조하세요.
+AD FS VM에 공용 IP 주소를 제공하지 마십시오. 자세한 내용은 [보안 고려 사항](#security-considerations) 섹션을 참조하세요.
 
 Active Directory DS VM을 참조하기 위해 각 AD FS 및 WAP VM의 네트워크 인터페이스에 대한 기본 및 보조 DNS(도메인 이름 서비스) 서버의 IP 주소를 설정합니다. Active Directory DS VM은 DNS를 실행해야 합니다. 이 단계는 각 VM을 도메인에 조인하기 위해 필요합니다.
-
-### <a name="ad-fs-availability"></a>AD FS 가용성
-
-서비스의 가용성 향상을 위해 두 개 이상의 서버와 함께 AD FS 팜을 만듭니다. 팜의 각 AD FS VM에 대해 다른 저장소 계정을 사용합니다. 이 방법을 사용하면 단일 저장소 계정의 실패가 전체 팜을 액세스할 수 없도록 하지 않습니다.
-
-> [!IMPORTANT]
-> [관리 디스크](/azure/storage/storage-managed-disks-overview)를 사용하는 것이 좋습니다. 관리 디스크는 저장소 계정이 필요하지 않습니다. 디스크의 크기와 유형을 지정하기만 하면 고가용성 방식으로 배포됩니다. [참조 아키텍처](/azure/architecture/reference-architectures/)는 현재 관리 디스크를 배포하지 않지만 [템플릿 빌딩 블록](https://github.com/mspnp/template-building-blocks/wiki)은 버전 2에서 관리 디스크를 배포하도록 업데이트됩니다.
-
-AD FS 및 WAP VM에 대한 별도 Azure 가용성 집합을 만듭니다. 각 집합에 두 개 이상의 VM이 있는지 확인합니다. 각 가용성 집합은 두 개 이상의 업데이트 도메인 및 두 개의 장애 도메인이 있어야 합니다.
-
-다음과 같이 AD FS VM 및 WAP VM에 대한 부하 분산 장치를 구성합니다.
-
-- WAP VM에 대한 외부 액세스를 제공하는 Azure 부하 분산 장치 및 팜의 AD FS 서버 간에 부하를 분산하는 내부 부하 분산 장치를 사용합니다.
-- 포트 443(HTTPS)에 표시되는 트래픽을 AD FS/WAP 서버에 전달합니다.
-- 부하 분산 장치에 고정 IP 주소를 지정합니다.
-- `/adfs/probe`에 대해 HTTP를 사용하여 상태 프로브를 만듭니다. 자세한 내용은 [하드웨어 Load Balancer 상태 검사 및 웹 애플리케이션 프록시 / AD FS 2012 R2](https://blogs.technet.microsoft.com/applicationproxyblog/2014/10/17/hardware-load-balancer-health-checks-and-web-application-proxy-ad-fs-2012-r2/)를 참조합니다.
-
-  > [!NOTE]
-  > AD FS 서버는 SNI(서버 이름 표시) 프로토콜을 사용하므로 부하 분산 장치에서 HTTPS 엔드포인트를 사용하는 프로브에 대한 시도는 실패합니다.
-  >
-
-- AD FS 부하 분산 장치에 대한 도메인에 DNS *A* 레코드를 추가합니다. 부하 분산 장치의 IP 주소를 지정하고 도메인의 이름을 지정합니다(예: adfs.contoso.com). 이는 AD FS 서버 팜에 액세스하는 데 사용하는 이름 클라이언트 및 WAP 서버입니다.
-
-### <a name="ad-fs-security"></a>AD FS 보안
-
-인터넷에 대한 AD FS 서버의 직접 노출을 방지합니다. AD FS 서버는 보안 토큰을 부여하는 완전한 권한이 있는 도메인에 가입된 컴퓨터입니다. 서버가 손상되면 악의적인 사용자가 모든 웹 애플리케이션 및 AD FS로 보호되는 모든 페더레이션 서버에 전체 액세스 토큰을 발급할 수 있습니다. 시스템이 신뢰할 수 있는 파트너 사이트에서 연결하지 않은 외부 사용자의 요청을 처리해야 하는 경우 WAP 서버를 사용하여 이러한 요청을 처리합니다. 자세한 내용은 [페더레이션 서버 프록시를 배치할 위치][where-to-place-an-fs-proxy]를 참조하세요.
-
-AD FS 서버와 WAP 서버를 자체 방화벽이 있는 별도 서브넷에 배치합니다. NSG 규칙을 사용하여 방화벽 규칙을 정의할 수 있습니다. 보다 포괄적인 보호가 필요한 경우 [Azure에서 인터넷 액세스로 보안 하이브리드 네트워크 아키텍처 구현][implementing-a-secure-hybrid-network-architecture-with-internet-access] 문서에서 설명된 대로 한 쌍의 서브넷 및 NVA(네트워크 가상 어플라이언스)를 사용하여 서버 주변에 추가 보안 경계를 구현할 수 있습니다. 모든 방화벽은 포트 443(HTTPS)의 트래픽을 허용해야 합니다.
-
-AD FS 및 WAP 서버에 대한 직접 로그인 액세스를 제한합니다. DevOps 직원만 연결할 수 있어야 합니다.
-
-WAP 서버를 도메인에 조인하지 마십시오.
 
 ### <a name="ad-fs-installation"></a>AD FS 설치
 
@@ -137,7 +93,7 @@ WAP 서버를 도메인에 조인하지 마십시오.
 
 1. 서버 인증을 수행하기 위해 공개적으로 신뢰할 수 있는 인증서를 가져옵니다. *주체 이름*은 페더레이션 서비스에 액세스하는 데 사용하는 이름 클라이언트를 포함해야 합니다. 부하 분산에 대해 등록된 DNS 이름일 수 있습니다(예: *adfs.contoso.com*). (보안상의 이유로 **.contoso.com*과 같은 와일드카드 이름 사용을 피합니다.) 모든 AD FS 서버 VM에 동일한 인증서를 사용합니다. 신뢰할 수 있는 인증 기관에서 인증서를 구입할 수 있지만 조직에서 Active Directory Certificate Services를 사용하는 경우 직접 만들 수 있습니다.
 
-    *주체 대체 이름*은 외부 장치에서 액세스할 수 있도록 DRS(장치 등록 서비스)에서 사용됩니다. *enterpriseregistration.contoso.com* 형식이어야 합니다.
+    *주체 대체 이름*은 외부 디바이스에서 액세스할 수 있도록 DRS(디바이스 등록 서비스)에서 사용됩니다. *enterpriseregistration.contoso.com* 형식이어야 합니다.
 
     자세한 내용은 [AD FS에 대한 SSL(Secure Sockets Layer) 인증서 가져오기 및 구성][adfs_certificates]을 참조하세요.
 
@@ -192,6 +148,23 @@ AD FS 구성 데이터를 저장하는 데 Windows 내부 데이터베이스를 
 
 ## <a name="availability-considerations"></a>가용성 고려 사항
 
+서비스의 가용성 향상을 위해 두 개 이상의 서버와 함께 AD FS 팜을 만듭니다. 팜의 각 AD FS VM에 대해 다른 저장소 계정을 사용합니다. 이 방법을 사용하면 단일 저장소 계정의 실패가 전체 팜을 액세스할 수 없도록 하지 않습니다.
+
+AD FS 및 WAP VM에 대한 별도 Azure 가용성 집합을 만듭니다. 각 집합에 두 개 이상의 VM이 있는지 확인합니다. 각 가용성 집합은 두 개 이상의 업데이트 도메인 및 두 개의 장애 도메인이 있어야 합니다.
+
+다음과 같이 AD FS VM 및 WAP VM에 대한 부하 분산 장치를 구성합니다.
+
+- WAP VM에 대한 외부 액세스를 제공하는 Azure 부하 분산 장치 및 팜의 AD FS 서버 간에 부하를 분산하는 내부 부하 분산 장치를 사용합니다.
+- 포트 443(HTTPS)에 표시되는 트래픽을 AD FS/WAP 서버에 전달합니다.
+- 부하 분산 장치에 고정 IP 주소를 지정합니다.
+- `/adfs/probe`에 대해 HTTP를 사용하여 상태 프로브를 만듭니다. 자세한 내용은 [하드웨어 Load Balancer 상태 검사 및 웹 애플리케이션 프록시 / AD FS 2012 R2](https://blogs.technet.microsoft.com/applicationproxyblog/2014/10/17/hardware-load-balancer-health-checks-and-web-application-proxy-ad-fs-2012-r2/)를 참조합니다.
+
+  > [!NOTE]
+  > AD FS 서버는 SNI(서버 이름 표시) 프로토콜을 사용하므로 부하 분산 장치에서 HTTPS 엔드포인트를 사용하는 프로브에 대한 시도는 실패합니다.
+  >
+
+- AD FS 부하 분산 장치에 대한 도메인에 DNS *A* 레코드를 추가합니다. 부하 분산 장치의 IP 주소를 지정하고 도메인의 이름을 지정합니다(예: adfs.contoso.com). 이는 AD FS 서버 팜에 액세스하는 데 사용하는 이름 클라이언트 및 WAP 서버입니다.
+
 SQL Server 또는 Windows 내부 데이터베이스를 사용하여 AD FS 구성 정보를 보관할 수 있습니다. Windows 내부 데이터베이스는 기본 중복성을 제공합니다. 변경 내용은 AD FS 클러스터의 AD FS 데이터베이스 중 하나에 직접 기록되는 반면 다른 서버는 끌어오기 복제를 사용하여 해당 데이터베이스를 최신 상태로 유지합니다. SQL Server를 사용하면 장애 조치(failover) 클러스터링 또는 미러링을 사용하여 전체 데이터베이스 중복성 및 고가용성을 제공할 수 있습니다.
 
 ## <a name="manageability-considerations"></a>관리 효율성 고려 사항
@@ -205,80 +178,189 @@ DevOps 직원은 다음 작업을 수행할 준비가 되어 있어야 합니다
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
-AD FS는 HTTPS 프로토콜을 사용하므로 웹 계층 VM을 포함하는 서브넷에 대한 NSG 규칙이 HTTPS 요청을 허용하는지 확인합니다. 이러한 요청은 온-프레미스 네트워크, 웹 계층, 비즈니스 계층, 데이터 계층, 개인 DMZ, 공용 DMZ를 포함하는 서브넷 및 AD FS 서버를 포함하는 서브넷에서 발생할 수 있습니다.
+AD FS는 HTTPS를 사용하므로 웹 계층 VM을 포함하는 서브넷에 대한 NSG 규칙이 HTTPS 요청을 허용하는지 확인합니다. 이러한 요청은 온-프레미스 네트워크, 웹 계층, 비즈니스 계층, 데이터 계층, 개인 DMZ, 공용 DMZ를 포함하는 서브넷 및 AD FS 서버를 포함하는 서브넷에서 발생할 수 있습니다.
+
+인터넷에 대한 AD FS 서버의 직접 노출을 방지합니다. AD FS 서버는 보안 토큰을 부여하는 완전한 권한이 있는 도메인에 가입된 컴퓨터입니다. 서버가 손상되면 악의적인 사용자가 모든 웹 애플리케이션 및 AD FS로 보호되는 모든 페더레이션 서버에 전체 액세스 토큰을 발급할 수 있습니다. 시스템이 신뢰할 수 있는 파트너 사이트에서 연결하지 않은 외부 사용자의 요청을 처리해야 하는 경우 WAP 서버를 사용하여 이러한 요청을 처리합니다. 자세한 내용은 [페더레이션 서버 프록시를 배치할 위치][where-to-place-an-fs-proxy]를 참조하세요.
+
+AD FS 서버와 WAP 서버를 자체 방화벽이 있는 별도 서브넷에 배치합니다. NSG 규칙을 사용하여 방화벽 규칙을 정의할 수 있습니다. 모든 방화벽은 포트 443(HTTPS)의 트래픽을 허용해야 합니다.
+
+AD FS 및 WAP 서버에 대한 직접 로그인 액세스를 제한합니다. DevOps 직원만 연결할 수 있어야 합니다. WAP 서버를 도메인에 조인하지 마십시오.
 
 감사를 목적으로 가상 네트워크의 에지를 탐색하는 트래픽의 자세한 정보를 기록하는 네트워크 가상 어플라이언스의 집합을 사용하는 것이 좋습니다.
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
-[GitHub][github]에서 이 참조 아키텍처를 배포할 수 있는 솔루션을 사용할 수 있습니다. 솔루션을 배포하는 PowerShell 스크립트를 실행하려면 최신 버전의 [Azure CLI][azure-cli]가 필요합니다. 이 참조 아키텍처를 배포하려면 다음 단계를 수행합니다.
+이 아키텍처에 대한 배포는 [GitHub][github]에서 사용할 수 있습니다. 전체 배포는 최대 2시간이 걸릴 수 있으며 VPN 게이트웨이 만들기 및 Active Directory 및 AD FS를 구성하는 스크립트 실행을 포함합니다.
 
-1. [GitHub][github]의 해당 솔루션 폴더를 로컬 컴퓨터로 다운로드하거나 복제합니다.
+### <a name="prerequisites"></a>필수 조건
 
-2. Azure CLI를 열고 로컬 솔루션 폴더로 이동합니다.
+1. [GitHub 리포지토리](https://github.com/mspnp/identity-reference-architectures)의 zip 파일을 복제, 포크 또는 다운로드합니다.
 
-3. 다음 명령 실행:
+1. [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)을 설치합니다.
 
-    ```powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> <mode>
+1. [Azure 빌딩 블록](https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks) npm 패키지를 설치합니다.
+
+   ```bash
+   npm install -g @mspnp/azure-building-blocks
+   ```
+
+1. 명령 프롬프트, bash 프롬프트 또는 PowerShell 프롬프트에서 다음과 같은 Azure 계정에 로그인합니다.
+
+   ```bash
+   az login
+   ```
+
+### <a name="deploy-the-simulated-on-premises-datacenter"></a>시뮬레이션된 온-프레미스 데이터 센터 배포
+
+1. GitHub 리포지토리의 `adfs` 폴더로 이동합니다.
+
+1. `onprem.json` 파일을 엽니다. `adminPassword`, `Password` 및 `SafeModeAdminPassword` 인스턴스를 검색하고 암호를 업데이트합니다.
+
+1. 다음 명령을 실행하고 배포가 끝나기를 기다립니다.
+
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p onprem.json --deploy
     ```
 
-    `<subscription id>` 를 Azure 구독 ID로 바꿉니다.
+### <a name="deploy-the-azure-infrastructure"></a>Azure 인프라 배포
 
-    `<location>`에서 Azure 지역(예: `eastus` 또는 `westus`)을 지정합니다.
+1. `azure.json` 파일을 엽니다.  `adminPassword` 및 `Password` 인스턴스를 검색하고 암호 값을 추가합니다.
 
-    `<mode>` 매개 변수는 배포의 세분성을 제어합니다. 매개 변수는 다음 값 중 하나일 수 있습니다.
+1. 다음 명령을 실행하고 배포가 끝나기를 기다립니다.
 
-   - `Onpremise`: 시뮬레이트된 온-프레미스 환경을 배포합니다. 기존 온-프레미스 네트워크가 없거나 기존 온-프레미스 네트워크의 구성을 변경하지 않고 이 참조 아키텍처를 테스트하려는 경우 이 배포를 사용하여 테스트 및 실험할 수 있습니다.
-   - `Infrastructure`: VNet 인프라 및 점프 상자를 배포합니다.
-   - `CreateVpn`: Azure 가상 네트워크 게이트웨이를 배포하고 시뮬레이트된 온-프레미스 네트워크에 연결합니다.
-   - `AzureADDS`: Active Directory DS 서버 역할을 하는 VM을 배포하고, 이러한 VM에 Active Directory를 배포하고, Azure에서 도메인을 만듭니다.
-   - `AdfsVm`: AD FS VM을 배포하고 Azure에서 도메인에 조인합니다.
-   - `PublicDMZ`: Azure에서 공용 DMZ를 배포합니다.
-   - `ProxyVm`: AD FS 프록시 VM을 배포하고 Azure에서 도메인에 조인합니다.
-   - `Prepare`: 모든 이전 배포를 배포합니다. **완전히 새로운 배포를 작성하고 기존 온-프레미스 인프라가 없는 경우 권장되는 옵션입니다.**
-   - `Workload`: 필요에 따라 웹, 비즈니스 및 데이터 계층 VM 및 지원하는 네트워크를 배포합니다. `Prepare` 배포 모드에 포함되지 않습니다.
-   - `PrivateDMZ`: 필요에 따라 위에 배포된 `Workload` VM의 앞에 Azure의 개인 DMZ를 배포합니다. `Prepare` 배포 모드에 포함되지 않습니다.
-
-4. 배포가 완료될 때가지 기다립니다. `Prepare` 옵션을 사용한 경우 배포를 완료하는 데 여러 시간이 소요되며 `Preparation is completed. Please install certificate to all AD FS and proxy VMs.` 메시지와 함께 종료합니다.
-
-5. 점프 상자를 다시 시작하여(*ra-adfs-security-rg* 그룹에서 *ra-adfs-mgmt-vm1*) 해당 DNS 설정을 적용하도록 허용합니다.
-
-6. [AD FS용 SSL 인증서를 가져오고][adfs_certificates] AD FS VM에 이 인증서를 설치합니다. 점프 상자를 통해 연결할 수 있습니다. IP 주소는 **10.0.5.4** 및 **10.0.5.5**입니다. 기본 사용자 이름은 **AweSome@PW** 암호가 있는 **contoso\testuser**입니다.
-
-   > [!NOTE]
-   > 이 때 Deploy-ReferenceArchitecture.ps1 스크립트에 있는 설명은 `makecert` 명령을 사용하여 자체 서명된 테스트 인증서 및 권한을 만들기 위한 자세한 지침을 제공합니다. 그러나 이러한 단계를 **테스트**로만 수행하고 프로덕션 환경에서 makecert에 의해 생성된 인증서를 사용하지 마십시오.
-
-7. 다음 PowerShell 명령을 실행하여 AD FS 서버 팜을 배포합니다.
-
-    ```powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> Adfs
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p azure.json --deploy
     ```
 
-8. 점프 상자에서 `https://adfs.contoso.com/adfs/ls/idpinitiatedsignon.htm`으로 이동하여 AD FS 설치를 테스트합니다(이 테스트를 무시할 수 있다고 경고하는 인증서를 받을 수 있음). Contoso Corporation 로그인 페이지가 표시되는지 확인합니다. 암호 **AweS0me@PW**를 사용하여 **contoso\testuser**로 로그인합니다.
+### <a name="set-up-the-ad-fs-farm"></a>AD FS 팜 설정
 
-9. AD FS 프록시 VM에 SSL 인증서를 설치합니다. IP 주소는 *10.0.6.4* 및 *10.0.6.5*입니다.
+1. `adfs-farm-first.json` 파일을 엽니다.  `AdminPassword`를 검색하고 기본 암호를 바꿉니다.
 
-10. 다음 PowerShell 명령을 실행하여 첫 번째 AD FS 프록시 서버를 배포합니다.
+1. 다음 명령 실행:
 
-    ```powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> Proxy1
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p adfs-farm-first.json --deploy
     ```
 
-11. 스크립트에 표시된 지침을 따라 첫 번째 프록시 서버의 설치를 테스트합니다.
+1. `adfs-farm-rest.json` 파일을 엽니다.  `AdminPassword`를 검색하고 기본 암호를 바꿉니다.
 
-12. 다음 PowerShell 명령을 실행하여 두 번째 AD FS 프록시 서버를 배포합니다.
+1. 다음 명령을 실행하고 배포가 끝나기를 기다립니다.
 
-    ```powershell
-    .\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> Proxy2
+    ```bash
+    azbb -s <subscription_id> -g <resource group> -l <location> -p adfs-farm-rest.json --deploy
     ```
 
-13. 스크립트에 표시된 지침을 따라 완전한 프록시 구성을 테스트합니다.
+### <a name="configure-ad-fs-part-1"></a>AD FS 구성(1부)
 
-## <a name="next-steps"></a>다음 단계
+1. `ra-adfs-jb-vm1`이라는 VM(jumpbox VM)에 원격 데스크톱 세션을 엽니다. 사용자 이름은 `testuser`입니다.
 
-- [Azure Active Directory][aad]에 대해 알아봅니다.
-- [Azure Active Directory B2C][aadb2c]에 대해 알아봅니다.
+1. jumpbox에서 `ra-adfs-proxy-vm1`이라는 VM에 대한 원격 데스크톱 세션을 엽니다. 사설 IP 주소는 10.0.6.4입니다.
+
+1. 이 원격 데스크톱 세션에서 [PowerShell ISE](/powershell/scripting/components/ise/windows-powershell-integrated-scripting-environment--ise-)를 실행합니다.
+
+1. PowerShell에서 다음 디렉터리로 이동합니다.
+
+    ```powershell
+    C:\Packages\Plugins\Microsoft.Powershell.DSC\2.77.0.0\DSCWork\adfs-v2.0
+    ```
+
+1. 다음 코드를 복사하여 스크립트 창에 붙여넣고 실행합니다.
+
+    ```powershell
+    . .\adfs-webproxy.ps1
+    $cd = @{
+        AllNodes = @(
+            @{
+                NodeName = 'localhost'
+                PSDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+        )
+    }
+
+    $c1 = Get-Credential -UserName testuser -Message "Enter password"
+    InstallWebProxyApp -DomainName contoso.com -FederationName adfs.contoso.com -WebApplicationProxyName "Contoso App" -AdminCreds $c1 -ConfigurationData $cd
+    Start-DscConfiguration .\InstallWebProxyApp
+    ```
+
+    `Get-Credential` 프롬프트에 배포 매개 변수 파일에 지정한 암호를 입력합니다.
+
+1. [DSC](/powershell/dsc/overview/overview) 구성의 진행률을 모니터링하려면 다음 명령을 실행합니다.
+
+    ```powershell
+    Get-DscConfigurationStatus
+    ```
+
+    일관성을 구현하는 데 몇 분 정도 걸릴 수 있습니다. 이때 명령에서 오류가 표시될 수 있습니다. 구성에 성공하면 다음과 비슷한 출력이 표시됩니다.
+
+    ```powershell
+    PS C:\Packages\Plugins\Microsoft.Powershell.DSC\2.77.0.0\DSCWork\adfs-v2.0> Get-DscConfigurationStatus
+
+    Status     StartDate                 Type            Mode  RebootRequested      NumberOfResources
+    ------     ---------                 ----            ----  ---------------      -----------------
+    Success    12/17/2018 8:21:09 PM     Consistency     PUSH  True                 4
+    ```
+
+### <a name="configure-ad-fs-part-2"></a>AD FS 구성(2부)
+
+1. jumpbox에서 `ra-adfs-proxy-vm2`이라는 VM에 대한 원격 데스크톱 세션을 엽니다. 사설 IP 주소는 10.0.6.5입니다.
+
+1. 이 원격 데스크톱 세션에서 [PowerShell ISE](/powershell/scripting/components/ise/windows-powershell-integrated-scripting-environment--ise-)를 실행합니다.
+
+1. 다음 디렉터리로 이동합니다.
+
+    ```powershell
+    C:\Packages\Plugins\Microsoft.Powershell.DSC\2.77.0.0\DSCWork\adfs-v2.0
+    ```
+
+1. 스크립트 창에 다음을 전달하고 스크립트를 실행합니다.
+
+    ```powershell
+    . .\adfs-webproxy-rest.ps1
+    $cd = @{
+        AllNodes = @(
+            @{
+                NodeName = 'localhost'
+                PSDscAllowPlainTextPassword = $true
+                PSDscAllowDomainUser = $true
+            }
+        )
+    }
+
+    $c1 = Get-Credential -UserName testuser -Message "Enter password"
+    InstallWebProxy -DomainName contoso.com -FederationName adfs.contoso.com -WebApplicationProxyName "Contoso App" -AdminCreds $c1 -ConfigurationData $cd
+    Start-DscConfiguration .\InstallWebProxy
+    ```
+
+    `Get-Credential` 프롬프트에 배포 매개 변수 파일에 지정한 암호를 입력합니다.
+
+1. DSC 구성의 진행률을 모니터링하려면 다음 명령을 실행합니다.
+
+    ```powershell
+    Get-DscConfigurationStatus
+    ```
+
+    일관성을 구현하는 데 몇 분 정도 걸릴 수 있습니다. 이때 명령에서 오류가 표시될 수 있습니다. 구성에 성공하면 다음과 비슷한 출력이 표시됩니다.
+
+    ```powershell
+    PS C:\Packages\Plugins\Microsoft.Powershell.DSC\2.77.0.0\DSCWork\adfs-v2.0> Get-DscConfigurationStatus
+
+    Status     StartDate                 Type            Mode  RebootRequested      NumberOfResources
+    ------     ---------                 ----            ----  ---------------      -----------------
+    Success    12/17/2018 8:21:09 PM     Consistency     PUSH  True                 4
+    ```
+
+    이 DSC가 실패하는 경우도 있습니다. 상태 확인 결과에 `Status=Failure` 및 `Type=Consistency`가 표시될 경우 4단계를 다시 실행해 보세요.
+
+### <a name="sign-into-ad-fs"></a>AD FS에 로그인
+
+1. jumpbox에서 `ra-adfs-adfs-vm1`이라는 VM에 대한 원격 데스크톱 세션을 엽니다. 사설 IP 주소는 10.0.5.4입니다.
+
+1. 로그온 페이지를 사용하려면 [Idp 시작 로그온 페이지 사용](/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-initiatedsignon#enable-the-idp-intiated-sign-on-page)의 단계를 따르세요.
+
+1. jumpbox에서 `https://adfs.contoso.com/adfs/ls/idpinitiatedsignon.htm`으로 이동합니다. 이 테스트에 대해 무시할 수 있는 인증서 경고가 표시될 수 있습니다.
+
+1. Contoso Corporation 로그인 페이지가 표시되는지 확인합니다. **contoso\testuser**로 로그인합니다.
 
 <!-- links -->
 [extending-ad-to-azure]: adds-extend-domain.md

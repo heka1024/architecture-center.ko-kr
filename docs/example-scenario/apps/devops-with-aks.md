@@ -1,14 +1,15 @@
 ---
 title: 컨테이너 기반 작업에 대한 CI/CD 파이프라인
+titleSuffix: Azure Example Scenarios
 description: Jenkins, Azure Container Registry, Azure Kubernetes Service, Cosmos DB 및 Grafana를 사용하여 Node.js 웹앱에 대한 DevOps 파이프라인을 빌드합니다.
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: db8de674ee2789c5b41cebebee5745ecc8544122
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.openlocfilehash: 9d2681294b5c332e15259706518e4b02a488002f
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610841"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643767"
 ---
 # <a name="cicd-pipeline-for-container-based-workloads"></a>컨테이너 기반 작업에 대한 CI/CD 파이프라인
 
@@ -22,9 +23,9 @@ Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서�
 
 관련된 다른 사용 사례는 다음과 같습니다.
 
-* 애플리케이션 개발 사례를 마이크로 서비스, 컨테이너 기반 접근 방식으로 현대화
-* 애플리케이션 개발 및 배포 수명 주기 가속화
-* 유효성 검사를 위해 테스트 또는 수용 환경에 대한 배포 자동화
+- 애플리케이션 개발 사례를 마이크로 서비스, 컨테이너 기반 접근 방식으로 현대화
+- 애플리케이션 개발 및 배포 수명 주기 가속화
+- 유효성 검사를 위해 테스트 또는 수용 환경에 대한 배포 자동화
 
 ## <a name="architecture"></a>아키텍처
 
@@ -43,19 +44,19 @@ Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서�
 
 ### <a name="components"></a>구성 요소
 
-* [Jenkins][jenkins]는 Azure 서비스와 통합하여 CI 및 CD를 수행할 수 있게 하는 오픈 소스 자동화 서버입니다. 이 시나리오에서 Jenkins는 소스 제어에 대한 커밋에 따라 새 컨테이너 이미지를 만들도록 오케스트레이션하고, Azure Container Registry에 해당 이미지를 푸시한 다음, Azure Kubernetes Service에서 애플리케이션 인스턴스를 업데이트합니다.
-* [Azure Linux Virtual Machines][docs-virtual-machines]는 Jenkins 및 Grafana 인스턴스를 실행하는 데 사용되는 IaaS 플랫폼입니다.
-* [Azure Container Registry][docs-acr]는 Azure Kubernetes Service 클러스터에서 사용되는 컨테이너 이미지를 저장하고 관리합니다. 이미지는 안전하게 저장되며, Azure 플랫폼을 통해 다른 지역으로 복제하여 배포 시간을 단축할 수 있습니다.
-* [Azure Kubernetes Service][docs-aks]는 컨테이너 오케스트레이션에 대한 전문 지식이 없어도 컨테이너화된 응용 프로그램을 배포하고 관리할 수 있는 관리되는 Kubernetes 플랫폼입니다. 호스팅되는 Kubernetes 서비스인 Azure는 상태 모니터링 및 유지 관리 같은 중요 작업을 처리합니다.
-* [Azure Cosmos DB][docs-cosmos-db]는 요구 사항에 맞게 다양한 데이터베이스 및 일관성 모델 중에서 선택할 수 있는 전역으로 분산된 다중 모델 데이터베이스입니다. Cosmos DB를 사용하면 데이터를 전역으로 복제할 수 있으며, 배포 및 구성할 클러스터 관리 또는 복제 구성 요소가 없습니다.
-* [Azure Monitor][docs-azure-monitor]는 성능을 추적하고, 보안을 유지하며, 추세를 파악하는 데 도움이 됩니다. Monitor에서 얻은 메트릭은 Grafana와 같은 다른 리소스 및 도구에서 사용할 수 있습니다.
-* [Grafana][grafana]는 메트릭을 쿼리하고, 시각화하고, 경고하고, 이해할 수 있는 오픈 소스 솔루션입니다. Azure Monitor용 데이터 원본 플러그 인을 사용하면 Grafana가 Azure Kubernetes Service에서 실행되고 Cosmos DB를 사용하는 애플리케이션의 성능을 모니터링하는 시각적 대시보드를 만들 수 있습니다.
+- [Jenkins][jenkins]는 Azure 서비스와 통합하여 CI 및 CD를 수행할 수 있게 하는 오픈 소스 자동화 서버입니다. 이 시나리오에서 Jenkins는 소스 제어에 대한 커밋에 따라 새 컨테이너 이미지를 만들도록 오케스트레이션하고, Azure Container Registry에 해당 이미지를 푸시한 다음, Azure Kubernetes Service에서 애플리케이션 인스턴스를 업데이트합니다.
+- [Azure Linux Virtual Machines][docs-virtual-machines]는 Jenkins 및 Grafana 인스턴스를 실행하는 데 사용되는 IaaS 플랫폼입니다.
+- [Azure Container Registry][docs-acr]는 Azure Kubernetes Service 클러스터에서 사용되는 컨테이너 이미지를 저장하고 관리합니다. 이미지는 안전하게 저장되며, Azure 플랫폼을 통해 다른 지역으로 복제하여 배포 시간을 단축할 수 있습니다.
+- [Azure Kubernetes Service][docs-aks]는 컨테이너 오케스트레이션에 대한 전문 지식이 없어도 컨테이너화된 애플리케이션을 배포하고 관리할 수 있는 관리되는 Kubernetes 플랫폼입니다. 호스팅되는 Kubernetes 서비스인 Azure는 상태 모니터링 및 유지 관리 같은 중요 작업을 처리합니다.
+- [Azure Cosmos DB][docs-cosmos-db]는 요구 사항에 맞게 다양한 데이터베이스 및 일관성 모델 중에서 선택할 수 있는 전역으로 분산된 다중 모델 데이터베이스입니다. Cosmos DB를 사용하면 데이터를 전역으로 복제할 수 있으며, 배포 및 구성할 클러스터 관리 또는 복제 구성 요소가 없습니다.
+- [Azure Monitor][docs-azure-monitor]는 성능을 추적하고, 보안을 유지하며, 추세를 파악하는 데 도움이 됩니다. Monitor에서 얻은 메트릭은 Grafana와 같은 다른 리소스 및 도구에서 사용할 수 있습니다.
+- [Grafana][grafana]는 메트릭을 쿼리하고, 시각화하고, 경고하고, 이해할 수 있는 오픈 소스 솔루션입니다. Azure Monitor용 데이터 원본 플러그 인을 사용하면 Grafana가 Azure Kubernetes Service에서 실행되고 Cosmos DB를 사용하는 애플리케이션의 성능을 모니터링하는 시각적 대시보드를 만들 수 있습니다.
 
 ### <a name="alternatives"></a>대안
 
-* [Azure Pipelines][azure-pipelines]를 사용하면 모든 앱에 대한 지속적인 통합(CI), 테스트 및 배포(CD) 파이프라인을 구현할 수 있습니다.
-* [Kubernetes][kubernetes]는 클러스터에 대해 더 자세히 제어하려는 경우에 관리 서비스 대신 Azure VM에서 직접 실행할 수 있습니다.
-* [Service Fabric][service-fabric]은 AKS를 대체할 수 있는 대체 컨테이너 오케스트레이터입니다.
+- [Azure Pipelines][azure-pipelines]를 사용하면 모든 앱에 대한 지속적인 통합(CI), 테스트 및 배포(CD) 파이프라인을 구현할 수 있습니다.
+- [Kubernetes][kubernetes]는 클러스터에 대해 더 자세히 제어하려는 경우에 관리 서비스 대신 Azure VM에서 직접 실행할 수 있습니다.
+- [Service Fabric][service-fabric]은 AKS를 대체할 수 있는 대체 컨테이너 오케스트레이터입니다.
 
 ## <a name="considerations"></a>고려 사항
 
@@ -71,7 +72,7 @@ Azure Kubernetes Service 클러스터의 일부인 부하 분산 장치는 애�
 
 Azure Kubernetes Service를 사용하면 애플리케이션의 요구 사항에 맞게 클러스터 노드 수를 크기 조정할 수 있습니다. 애플리케이션이 증가함에 따라 서비스를 실행하는 Kubernetes 노드의 수를 확장할 수 있습니다.
 
-애플리케이션 데이터는 전역으로 크기 조정할 수 있는 전역 분산형 다중 모델 데이터베이스인 Azure Cosmos DB에 저장됩니다. Cosmos DB는 기존 데이터베이스 구성 요소와 마찬가지로 인프라의 크기를 조정하기 위한 요구 사항을 추상화하고, 고객의 요구를 충족하기 위해 Cosmos DB를 전역으로 복제하도록 선택할 수 있습니다.
+애플리케이션 데이터는 전역으로 크기 조정할 수 있는 전역 분산형 다중 모델 데이터베이스인 Azure Cosmos DB에 저장됩니다. Cosmos DB는 기존 데이터베이스 구성 요소와 마찬가지로 인프라의 크기를 조정하기 위한 요구 사항을 추상화하고, 고객의 요구를 충족하기 위해 Cosmos DB를 전역적으로 복제하도록 선택할 수 있습니다.
 
 다른 확장성 항목에 대해서는 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
 
@@ -91,11 +92,13 @@ Azure Kubernetes Service를 사용하면 애플리케이션의 요구 사항에 
 
 ## <a name="deploy-the-scenario"></a>시나리오 배포
 
-**필수 조건.**
+### <a name="prerequisites"></a>필수 조건
 
-* 기존 Azure 계정이 있어야 합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [체험 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
-* SSH 공개 키 쌍이 필요합니다. 공개 키 쌍을 만드는 방법에 대한 단계는 [Linux VM용 SSH 키 쌍 만들기 및 사용][sshkeydocs]을 참조하세요.
-* 서비스 및 리소스의 인증에는 Azure AD(Active Directory) 서비스 사용자가 필요합니다. 필요한 경우 [az ad sp create-for-rbac][createsp]를 사용하여 서비스 사용자를 만듭니다.
+- 기존 Azure 계정이 있어야 합니다. Azure 구독이 아직 없는 경우 시작하기 전에 [체험 계정](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)을 만듭니다.
+
+- SSH 공개 키 쌍이 필요합니다. 공개 키 쌍을 만드는 방법에 대한 단계는 [Linux VM용 SSH 키 쌍 만들기 및 사용][sshkeydocs]을 참조하세요.
+
+- 서비스 및 리소스의 인증에는 Azure AD(Active Directory) 서비스 사용자가 필요합니다. 필요한 경우 [az ad sp create-for-rbac][createsp]를 사용하여 서비스 사용자를 만듭니다.
 
     ```azurecli-interactive
     az ad sp create-for-rbac --name myDevOpsScenario
@@ -103,17 +106,23 @@ Azure Kubernetes Service를 사용하면 애플리케이션의 요구 사항에 
 
     이 명령의 출력에서 나온 *appId* 및 *password*를 적어 둡니다. 시나리오를 배포할 때 이러한 값을 템플릿에 제공합니다.
 
+### <a name="walk-through"></a>연습
+
 Azure Resource Manager 템플릿을 사용하여 이 시나리오를 배포하려면 다음 단계를 수행합니다.
+
+<!-- markdownlint-disable MD033 -->
 
 1. **Azure에 배포** 단추를 클릭합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Fapps%2Fdevops-with-aks%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure Portal에서 템플릿 배포가 열릴 때까지 기다린 후에 다음 단계를 수행합니다.
-   * 리소스 그룹 **새로 만들기**를 선택한 다음, 텍스트 상자에서 이름(예: *myAKSDevOpsScenario*)을 입력합니다.
-   * **위치** 드롭다운 상자에서 지역을 선택합니다.
-   * `az ad sp create-for-rbac` 명령에서 서비스 사용자 앱 ID 및 암호를 입력합니다.
-   * Jenkins 인스턴스 및 Grafana 콘솔에 대한 사용자 이름과 보안 암호를 제공합니다.
-   * Linux VM에 대한 로그인을 보호하기 위한 SSH 키를 제공합니다.
-   * 사용 약관을 검토한 다음, **위에 명시된 사용 약관에 동의함**을 선택합니다.
-   * **구매** 단추를 선택합니다.
+   - 리소스 그룹 **새로 만들기**를 선택한 다음, 텍스트 상자에서 이름(예: *myAKSDevOpsScenario*)을 입력합니다.
+   - **위치** 드롭다운 상자에서 지역을 선택합니다.
+   - `az ad sp create-for-rbac` 명령에서 서비스 사용자 앱 ID 및 암호를 입력합니다.
+   - Jenkins 인스턴스 및 Grafana 콘솔에 대한 사용자 이름과 보안 암호를 제공합니다.
+   - Linux VM에 대한 로그인을 보호하기 위한 SSH 키를 제공합니다.
+   - 사용 약관을 검토한 다음, **위에 명시된 사용 약관에 동의함**을 선택합니다.
+   - **구매** 단추를 선택합니다.
+
+<!-- markdownlint-enable MD033 -->
 
 배포가 완료되는 데 15-20분이 걸릴 수 있습니다.
 
@@ -123,9 +132,9 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오를 배포하�
 
 저장할 컨테이너 이미지 및 Kubernetes 노드의 수를 기준으로 다음 세 가지 샘플 비용 프로필을 제공하여 애플리케이션을 실행했습니다.
 
-* [소형][small-pricing]: 이 가격 책정 예제는 매월 1,000개의 컨테이너 빌드와 관련이 있습니다.
-* [중형][medium-pricing]: 이 가격 책정 예제는 매월 100,000개의 컨테이너 빌드와 관련이 있습니다.
-* [대형][large-pricing]: 이 가격 책정 예제는 매월 1,000,000개의 컨테이너 빌드와 관련이 있습니다.
+- [소형][small-pricing]: 이 가격 책정 예제는 매월 1,000개의 컨테이너 빌드와 관련이 있습니다.
+- [중형][medium-pricing]: 이 가격 책정 예제는 매월 100,000개의 컨테이너 빌드와 관련이 있습니다.
+- [대형][large-pricing]: 이 가격 책정 예제는 매월 1,000,000개의 컨테이너 빌드와 관련이 있습니다.
 
 ## <a name="related-resources"></a>관련 리소스
 

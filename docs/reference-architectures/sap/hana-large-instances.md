@@ -5,12 +5,12 @@ description: Azure 대규모 인스턴스의 고가용성 환경에서 SAP HANA�
 author: lbrader
 ms.date: 05/16/2018
 ms.custom: seodec18
-ms.openlocfilehash: c21a5ac83d8d8ee9a9b9d7edad07288c85544994
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: ef3c57f292024af0abbeb4ead62ab4b3aeb57a90
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120161"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644090"
 ---
 # <a name="run-sap-hana-on-azure-large-instances"></a>Azure의 SAP HANA(대규모 인스턴스) 실행
 
@@ -113,7 +113,7 @@ SAP, 시스템 통합업체 또는 Microsoft와 협력하여 [고가용성 및 �
 
 고가용성을 위해 HA 쌍에 둘 이상의 인스턴스를 배포하고, 동기 모드에서 HSR을 사용하여 데이터 손실 및 가동 중지 시간을 최소화합니다. HSR은 로컬 2개 노드 고가용성 설정 외에도 별도의 Azure 지역에 있는 세 번째 노드를 클러스터된 HSR 쌍의 보조 복제본에 복제 대상으로 등록하는 다중 계층 복제를 지원합니다. 이렇게 하면 복제 데이지 체인이 만들어집니다. DR 노드로의 장애 조치는 수동 프로세스입니다.
 
-자동 장애 조치를 사용하도록 HANA 대규모 인스턴스 HSR을 설정하는 경우 기존 서버에 대해 [STONITH 장치][stonith]를 설정하도록 Microsoft 서비스 관리 팀에 요청할 수 있습니다.
+자동 장애 조치를 사용하도록 HANA 대규모 인스턴스 HSR을 설정하는 경우 기존 서버에 대해 [STONITH 디바이스][stonith]를 설정하도록 Microsoft 서비스 관리 팀에 요청할 수 있습니다.
 
 ## <a name="disaster-recovery-considerations"></a>재해 복구 고려 사항
 
@@ -164,10 +164,19 @@ SAP HANA Studio, SAP HANA Cockpit, SAP Solution Manager 및 기타 네이티브 
 
 커뮤니티는 질문에 대답하고 성공적인 배포를 설정하는 데 도움을 줄 수 있습니다. 다음을 고려해 보세요.
 
-- [Microsoft 플랫폼에서 SAP 응용 프로그램 실행 블로그][running-sap-blog]
+- [Microsoft 플랫폼에서 SAP 애플리케이션 실행 블로그][running-sap-blog]
 - [Azure 커뮤니티 지원][azure-forum]
 - [SAP 커뮤니티][sap-community]
 - [Stack Overflow SAP][stack-overflow]
+
+## <a name="related-resources"></a>관련 리소스
+
+동일한 기술 중 일부를 사용하여 특정 솔루션을 보여주는 다음 [Azure 예제 시나리오](/azure/architecture/example-scenario)를 검토해 보세요.
+
+- [Azure에서 Oracle 데이터베이스를 사용하여 SAP 프로덕션 워크로드 실행](/azure/architecture/example-scenario/apps/sap-production)
+- [Azure의 SAP 워크로드에 대한 개발/테스트 환경](/azure/architecture/example-scenario/apps/sap-dev-test)
+
+<!-- links -->
 
 [azure-forum]: https://azure.microsoft.com/support/forums/
 [azure-large-instances]: /azure/virtual-machines/workloads/sap/hana-overview-architecture

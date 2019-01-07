@@ -5,12 +5,12 @@ description: 온-프레미스 Active Directory 도메인을 Azure로 확장
 author: telmosampaio
 ms.date: 05/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 69ce95fcf74579f6446cf99dad9ed53ced31fde7
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 166cd994f65fd812e38e50da1d74b9a99870ed5d
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120410"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644141"
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>AD DS(Active Directory Domain Services)를 Azure로 확장
 
@@ -61,7 +61,7 @@ Active Directory 서브넷 NSG에는 온-프레미스에서 수신되는 트래�
 
 ### <a name="active-directory-site"></a>Active Directory 사이트
 
-AD DS에서 사이트는 물리적 위치, 네트워크 또는 장치 모음을 나타냅니다. AD DS 사이트는 서로 가까운 곳에 위치하며 고속 네트워크로 연결된 AD DS 개체를 그룹화하여 AD DS 데이터베이스 복제를 관리하는 데 사용됩니다. AD DS에는 여러 사이트 간에 AD DS 데이터베이스를 복제할 최상의 전략을 선택하는 로직이 포함되어 있습니다.
+AD DS에서 사이트는 물리적 위치, 네트워크 또는 디바이스 모음을 나타냅니다. AD DS 사이트는 서로 가까운 곳에 위치하며 고속 네트워크로 연결된 AD DS 개체를 그룹화하여 AD DS 데이터베이스 복제를 관리하는 데 사용됩니다. AD DS에는 여러 사이트 간에 AD DS 데이터베이스를 복제할 최상의 전략을 선택하는 로직이 포함되어 있습니다.
 
 Azure상의 애플리케이션에 대해 정의된 서브넷을 포함하여 AD DS 사이트를 만드는 것이 좋습니다. 그런 다음 여러 온-프레미스 AD DS 사이트 사이에 사이트 링크를 구성하면 AD DS가 가장 효율적인 데이터베이스 복제를 수행합니다. 이와 같은 데이터베이스 복제에는 초기 구성 외에 추가로 요구되는 사항이 거의 없습니다.
 
@@ -103,7 +103,21 @@ AD DS 데이터베이스를 호스팅하는 디스크를 BitLocker 또는 Azure 
 
 ### <a name="prerequisites"></a>필수 조건
 
-[!INCLUDE [ref-arch-prerequisites.md](../../../includes/ref-arch-prerequisites.md)]
+1. [GitHub 리포지토리](https://github.com/mspnp/identity-reference-architectures)의 zip 파일을 복제, 포크 또는 다운로드합니다.
+
+2. [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)을 설치합니다.
+
+3. [Azure 빌딩 블록](https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks) npm 패키지를 설치합니다.
+
+   ```bash
+   npm install -g @mspnp/azure-building-blocks
+   ```
+
+4. 명령 프롬프트, bash 프롬프트 또는 PowerShell 프롬프트에서 다음과 같은 Azure 계정에 로그인합니다.
+
+   ```bash
+   az login
+   ```
 
 ### <a name="deploy-the-simulated-on-premises-datacenter"></a>시뮬레이션된 온-프레미스 데이터 센터 배포
 

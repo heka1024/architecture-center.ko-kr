@@ -1,26 +1,28 @@
 ---
-title: Service Fabric을 사용하여 모놀리식 애플리케이션 분해
+title: Service Fabric을 사용하여 애플리케이션 분해
+titleSuffix: Azure Example Scenarios
 description: 대규모 모놀리식 애플리케이션을 마이크로 서비스로 분해합니다.
 author: timomta
 ms.date: 09/20/2018
 ms.custom: fasttrack
-ms.openlocfilehash: 438d2eabff39356a7593f2da798a74eebe94553a
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: 90159b0cbfd3e7af542a79d050d153b4a3435a0d
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004620"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643818"
 ---
 # <a name="using-service-fabric-to-decompose-monolithic-applications"></a>Service Fabric을 사용하여 모놀리식 애플리케이션 분해
 
 이 예제 시나리오에서는 [Service Fabric](/azure/service-fabric/service-fabric-overview)을 다루기 어려운 모놀리식 애플리케이션을 분해하기 위한 플랫폼으로 사용하는 방법을 살펴봅니다. 여기서는 IIS/ASP.NET 웹 사이트를 여러 개의 관리 가능한 마이크로 서비스로 구성된 애플리케이션으로 분해하는 반복적인 방법을 고려합니다.
 
 모놀리식 아키텍처에서 마이크로 서비스 아키텍처로 전환하면 다음과 같은 이점이 있습니다.
-* 작고 이해하기 쉬운 하나의 코드 단위를 변경하고 해당 단위만 배포할 수 있습니다.
-* 각 코드 단위를 몇 분 안에 배포할 수 있습니다.
-* 해당 작은 단위에 오류가 있는 경우 전체 애플리케이션이 아니라 해당 단위만 작동을 중지합니다.
-* 작은 코드 단위를 여러 개발 팀에 개별적으로 쉽게 배포할 수 있습니다.
-* 새 개발자가 각 단위의 개별 기능을 빠르고 쉽게 파악할 수 있습니다.
+
+- 작고 이해하기 쉬운 하나의 코드 단위를 변경하고 해당 단위만 배포할 수 있습니다.
+- 각 코드 단위를 몇 분 안에 배포할 수 있습니다.
+- 해당 작은 단위에 오류가 있는 경우 전체 애플리케이션이 아니라 해당 단위만 작동을 중지합니다.
+- 작은 코드 단위를 여러 개발 팀에 개별적으로 쉽게 배포할 수 있습니다.
+- 새 개발자가 각 단위의 개별 기능을 빠르고 쉽게 파악할 수 있습니다.
 
 이 예제에서는 서버 팜의 대규모 IIS 애플리케이션이 사용되지만, 반복적인 분해 및 호스팅에 대한 개념은 모든 유형의 대규모 애플리케이션에 사용할 수 있습니다. 이 솔루션은 Windows를 사용하지만, Linux에서도 Service Fabric을 실행할 수 있습니다. 온-프레미스, Azure 또는 원하는 클라우드 공급자의 VM 노드에서 실행할 수 있습니다.
 
@@ -101,4 +103,4 @@ Azure에서 호스팅되는 Service Fabric 클러스터의 경우 비용의 가�
 - [Service Fabric에서 컨테이너 호스팅](/azure/service-fabric/service-fabric-containers-overview)
 - [Service Fabric에서 독립 실행형 실행 파일 호스팅](/azure/service-fabric/service-fabric-guest-executables-introduction)
 - [Service Fabric 네이티브 Reliable Services](/azure/service-fabric/service-fabric-reliable-services-introduction)
-- [Service Fabric 응용 프로그램 시나리오](/azure/service-fabric/service-fabric-application-scenarios)
+- [Service Fabric 애플리케이션 시나리오](/azure/service-fabric/service-fabric-application-scenarios)

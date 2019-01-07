@@ -1,15 +1,16 @@
 ---
-title: Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션
+title: HA/DR용으로 빌드된 다중 계층 웹 애플리케이션
+titleSuffix: Azure Example Scenarios
 description: Azure Virtual Machines, 가용성 집합, 가용성 영역, Azure Site Recovery 및 Azure Traffic Manager를 사용하여 Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션 만들기
 author: sujayt
 ms.date: 11/16/2018
 ms.custom: product-team
-ms.openlocfilehash: 71534dc095d5fba137a0e610d4e725c2efc6b432
-ms.sourcegitcommit: a0e8d11543751d681953717f6e78173e597ae207
+ms.openlocfilehash: baa468697b4a72975e3b192efc9bdf1861a0c0da
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53004592"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644051"
 ---
 # <a name="multitier-web-application-built-for-high-availability-and-disaster-recovery-on-azure"></a>Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션
 
@@ -25,9 +26,9 @@ ms.locfileid: "53004592"
 
 관련된 다른 사용 사례는 다음과 같습니다.
 
-* SAP 및 SharePoint처럼 복원력이 뛰어난 애플리케이션 배포
-* LOB(기간 업무) 애플리케이션을 위한 비즈니스 연속성 및 재해 복구 계획 디자인
-* 재해 복구를 구성하고 규정 준수를 위해 관련 연습 수행
+- SAP 및 SharePoint처럼 복원력이 뛰어난 애플리케이션 배포
+- LOB(기간 업무) 애플리케이션을 위한 비즈니스 연속성 및 재해 복구 계획 디자인
+- 재해 복구를 구성하고 규정 준수를 위해 관련 연습 수행
 
 ## <a name="architecture"></a>아키텍처
 
@@ -49,17 +50,17 @@ ms.locfileid: "53004592"
 
 ### <a name="components"></a>구성 요소
 
-* [가용성 집합][docs-availability-sets]을 사용하면 Azure에 배포한 VM이 클러스터의 격리된 여러 하드웨어 노드에 분산되도록 할 수 있습니다. Azure 내에서 하드웨어 또는 소프트웨어 오류가 발생하더라도 VM의 하위 집합에만 영향이 있고 전체 솔루션은 계속 작동하므로 계속 사용할 수 있습니다.
-* [가용성 영역][docs-availability-zones]은 데이터 센터 오류로부터 애플리케이션과 데이터를 보호합니다. 가용성 영역은 Azure 지역 내에서 독립된 물리적 위치입니다. 각 영역은 독립된 전원, 냉각 및 네트워킹을 갖춘 하나 이상의 데이터 센터로 구성됩니다. 
-* [ASR(Azure Site Recovery)][docs-azure-site-recovery]를 사용하여 VM을 다른 Azure 지역으로 복제하면 비즈니스 연속성 및 재해 복구 요구 사항을 충족할 수 있습니다. 규정 준수 요구 사항을 충족하도록 정기적인 재해 복구 훈련을 수행할 수 있습니다. VM은 원본 지역에서 중단이 발생한 경우 애플리케이션을 복구할 수 있도록 선택한 지역에 지정된 설정을 사용하여 복제됩니다.
-* [Azure Traffic Manager][docs-traffic-manager]는 트래픽을 글로벌 Azure 지역의 서비스에 적절하게 분산하는 한편, 고가용성과 빠른 응답성을 제공하는 DNS 기반 트래픽 부하 분산 장치입니다.
-* [Azure 부하 분산 장치][docs-load-balancer]는 정의된 규칙 및 상태 프로브에 따라 인바운드 트래픽을 분산합니다. 부하 분산 장치는 짧은 대기 시간과 높은 처리량을 제공하고, 모든 TCP 및 UDP 애플리케이션을 처리할 수 있도록 최대 수백만 개의 흐름으로 확장됩니다. 공용 부하 분산 장치는 들어오는 클라이언트 트래픽을 웹 계층으로 분산하는 시나리오에 사용됩니다. 내부 부하 분산 장치는 비즈니스 계층의 트래픽을 백 엔드 SQL Server 클러스터로 분산하는 시나리오에 사용됩니다.
+- [가용성 집합][docs-availability-sets]을 사용하면 Azure에 배포한 VM이 클러스터의 격리된 여러 하드웨어 노드에 분산되도록 할 수 있습니다. Azure 내에서 하드웨어 또는 소프트웨어 오류가 발생하더라도 VM의 하위 집합에만 영향이 있고 전체 솔루션은 계속 작동하므로 계속 사용할 수 있습니다.
+- [가용성 영역][docs-availability-zones]은 데이터 센터 오류로부터 애플리케이션과 데이터를 보호합니다. 가용성 영역은 Azure 지역 내에서 독립된 물리적 위치입니다. 각 영역은 독립된 전원, 냉각 및 네트워킹을 갖춘 하나 이상의 데이터 센터로 구성됩니다.
+- [ASR(Azure Site Recovery)][docs-azure-site-recovery]를 사용하여 VM을 다른 Azure 지역으로 복제하면 비즈니스 연속성 및 재해 복구 요구 사항을 충족할 수 있습니다. 규정 준수 요구 사항을 충족하도록 정기적인 재해 복구 훈련을 수행할 수 있습니다. VM은 원본 지역에서 중단이 발생한 경우 애플리케이션을 복구할 수 있도록 선택한 지역에 지정된 설정을 사용하여 복제됩니다.
+- [Azure Traffic Manager][docs-traffic-manager]는 트래픽을 글로벌 Azure 지역의 서비스에 적절하게 분산하는 한편, 고가용성과 빠른 응답성을 제공하는 DNS 기반 트래픽 부하 분산 장치입니다.
+- [Azure 부하 분산 장치][docs-load-balancer]는 정의된 규칙 및 상태 프로브에 따라 인바운드 트래픽을 분산합니다. 부하 분산 장치는 짧은 대기 시간과 높은 처리량을 제공하고, 모든 TCP 및 UDP 애플리케이션을 처리할 수 있도록 최대 수백만 개의 흐름으로 확장됩니다. 공용 부하 분산 장치는 들어오는 클라이언트 트래픽을 웹 계층으로 분산하는 시나리오에 사용됩니다. 내부 부하 분산 장치는 비즈니스 계층의 트래픽을 백 엔드 SQL Server 클러스터로 분산하는 시나리오에 사용됩니다.
 
 ### <a name="alternatives"></a>대안
 
-* 인프라의 어떤 것도 운영 체제에 종속되지 않으므로 Windows를 다른 운영 체제로 대체할 수 있습니다.
-* [Linux용 SQL Server][docs-sql-server-linux]는 백 엔드 데이터 저장소를 대체할 수 있습니다.
-* 데이터베이스를 사용 가능한 아무 표준 데이터베이스 애플리케이션으로 대체할 수 있습니다.
+- 인프라의 어떤 것도 운영 체제에 종속되지 않으므로 Windows를 다른 운영 체제로 대체할 수 있습니다.
+- [Linux용 SQL Server][docs-sql-server-linux]는 백 엔드 데이터 저장소를 대체할 수 있습니다.
+- 데이터베이스를 사용 가능한 아무 표준 데이터베이스 애플리케이션으로 대체할 수 있습니다.
 
 ## <a name="other-considerations"></a>기타 고려 사항
 

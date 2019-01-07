@@ -1,14 +1,15 @@
 ---
-title: 확장성이 높고 안전한 Azure의 WordPress 웹 사이트
+title: 확장성이 높고 안전한 WordPress 웹 사이트
+titleSuffix: Azure Example Scenarios
 description: 미디어 이벤트에 대해 확장성이 높고 안전한 WordPress 웹 사이트를 빌드합니다.
 author: david-stanford
 ms.date: 09/18/2018
-ms.openlocfilehash: 6ff39d09fa301c8c68ce2a644cc489c0e87a22fa
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.openlocfilehash: c0dad12e1da1f17b75d0661195123da4a8267152
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610610"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53644048"
 ---
 # <a name="highly-scalable-and-secure-wordpress-website"></a>확장성이 높고 안전한 WordPress 웹 사이트
 
@@ -18,10 +19,10 @@ ms.locfileid: "51610610"
 
 관련된 다른 사용 사례는 다음과 같습니다.
 
-* 트래픽 급증을 일으키는 미디어 이벤트.
-* 콘텐츠 관리 시스템으로 WordPress를 사용하는 블로그.
-* WordPress를 사용하는 비즈니스 또는 전자상거래 웹 사이트.
-* 다른 콘텐츠 관리 시스템을 사용하여 빌드된 웹 사이트입.
+- 트래픽 급증을 일으키는 미디어 이벤트.
+- 콘텐츠 관리 시스템으로 WordPress를 사용하는 블로그.
+- WordPress를 사용하는 비즈니스 또는 전자상거래 웹 사이트.
+- 다른 콘텐츠 관리 시스템을 사용하여 빌드된 웹 사이트입.
 
 ## <a name="architecture"></a>아키텍처
 
@@ -47,19 +48,19 @@ ms.locfileid: "51610610"
 
 ### <a name="components"></a>구성 요소
 
-* [Azure CDN(콘텐츠 전송 네트워크)](/azure/cdn/cdn-overview)은 사용자에게 웹 콘텐츠를 효율적으로 제공하는 서버의 분산 네트워크입니다. CDN은 최종 사용자와 가까운 POP(point-of-presence) 위치의 에지 서버에 캐시된 콘텐츠를 저장하여 대기 시간을 최소화합니다.
-* [가상 네트워크](/azure/virtual-network/virtual-networks-overview)는 VM 같은 리소스가 상호 간 통신, 인터넷 통신 및 온-프레미스 네트워크 통신을 안전하게 수행할 수 있게 해줍니다. 가상 네트워크는 격리 및 세분화를 제공하고, 트래픽을 필터링 및 라우팅하며, 위치 간 연결을 허용합니다. 두 네트워크는 Vnet 피어링을 통해 연결됩니다.
-* [네트워크 보안 그룹](/azure/virtual-network/security-overview)에는 원본 또는 대상 IP 주소, 포트 및 프로토콜에 따라 인바운드 또는 아웃바운드 네트워크 트래픽을 허용하거나 거부하는 보안 규칙 목록이 포함되어 있습니다. 이 시나리오의 가상 네트워크는 애플리케이션 구성 요소 간의 트래픽 흐름을 제한하는 네트워크 보안 그룹 규칙으로 보호됩니다.
-* [부하 분산 장치](/azure/load-balancer/load-balancer-overview)는 규칙 및 상태 프로브에 따라 인바운드 트래픽을 분산합니다. 부하 분산 장치는 짧은 대기 시간과 높은 처리량을 제공하고, 모든 TCP 및 UDP 애플리케이션에 대해 최대 수백만 개의 흐름으로 확장합니다. 부하 분산 장치는 이 시나리오에 사용되어 콘텐츠 전송 네트워크의 트래픽을 프런트 엔드 웹 서버로 분산합니다.
-* [가상 머신 확장 집합][docs-vmss]을 사용하면 부하 분산된 동일한 VM 그룹을 만들고 관리할 수 있습니다. VM 인스턴스의 수는 요구 또는 정의된 일정에 따라 자동으로 늘리거나 줄일 수 있습니다. 이 시나리오에는 별도의 가상 머신 확장 집합 두 개가 사용되는데, 하나는 콘텐츠를 서비스하는 프런트 엔드 웹 서버용이고, 다른 하나는 새 콘텐츠를 작성하는 데 사용되는 프런트 엔드 웹 서버용입니다.
-* 모든 VM이 데이터에 액세스할 수 있도록, [Azure Files](/azure/storage/files/storage-files-introduction)는 이 시나리오의 모든 WordPress 콘텐츠를 호스트하는 완전 관리 파일 공유를 클라우드에 제공합니다.
-* [Azure Key Vault](/azure/key-vault/key-vault-overview)는 암호, 인증서 및 키를 저장하고 액세스를 철저하게 제어하는 데 사용됩니다.
-* [Azure AD(Azure Active Directory)](/azure/active-directory/fundamentals/active-directory-whatis)는 다중 테넌트 클라우드 기반 디렉터리 및 ID 관리 서비스입니다. 이 시나리오에서 Azure AD는 웹 사이트 및 VPN 터널에 대한 인증 서비스를 제공합니다.
+- [Azure CDN(콘텐츠 전송 네트워크)](/azure/cdn/cdn-overview)은 사용자에게 웹 콘텐츠를 효율적으로 제공하는 서버의 분산 네트워크입니다. CDN은 최종 사용자와 가까운 POP(point-of-presence) 위치의 에지 서버에 캐시된 콘텐츠를 저장하여 대기 시간을 최소화합니다.
+- [가상 네트워크](/azure/virtual-network/virtual-networks-overview)는 VM 같은 리소스가 상호 간 통신, 인터넷 통신 및 온-프레미스 네트워크 통신을 안전하게 수행할 수 있게 해줍니다. 가상 네트워크는 격리 및 세분화를 제공하고, 트래픽을 필터링 및 라우팅하며, 위치 간 연결을 허용합니다. 두 네트워크는 Vnet 피어링을 통해 연결됩니다.
+- [네트워크 보안 그룹](/azure/virtual-network/security-overview)에는 원본 또는 대상 IP 주소, 포트 및 프로토콜에 따라 인바운드 또는 아웃바운드 네트워크 트래픽을 허용하거나 거부하는 보안 규칙 목록이 포함되어 있습니다. 이 시나리오의 가상 네트워크는 애플리케이션 구성 요소 간의 트래픽 흐름을 제한하는 네트워크 보안 그룹 규칙으로 보호됩니다.
+- [부하 분산 장치](/azure/load-balancer/load-balancer-overview)는 규칙 및 상태 프로브에 따라 인바운드 트래픽을 분산합니다. 부하 분산 장치는 짧은 대기 시간과 높은 처리량을 제공하고, 모든 TCP 및 UDP 애플리케이션에 대해 최대 수백만 개의 흐름으로 확장합니다. 부하 분산 장치는 이 시나리오에 사용되어 콘텐츠 전송 네트워크의 트래픽을 프런트 엔드 웹 서버로 분산합니다.
+- [가상 머신 확장 집합][docs-vmss]을 사용하면 부하 분산된 동일한 VM 그룹을 만들고 관리할 수 있습니다. VM 인스턴스의 수는 요구 또는 정의된 일정에 따라 자동으로 늘리거나 줄일 수 있습니다. 이 시나리오에는 별도의 가상 머신 확장 집합 두 개가 사용되는데, 하나는 콘텐츠를 서비스하는 프런트 엔드 웹 서버용이고, 다른 하나는 새 콘텐츠를 작성하는 데 사용되는 프런트 엔드 웹 서버용입니다.
+- 모든 VM이 데이터에 액세스할 수 있도록, [Azure Files](/azure/storage/files/storage-files-introduction)는 이 시나리오의 모든 WordPress 콘텐츠를 호스트하는 완전 관리 파일 공유를 클라우드에 제공합니다.
+- [Azure Key Vault](/azure/key-vault/key-vault-overview)는 암호, 인증서 및 키를 저장하고 액세스를 철저하게 제어하는 데 사용됩니다.
+- [Azure AD(Azure Active Directory)](/azure/active-directory/fundamentals/active-directory-whatis)는 다중 테넌트 클라우드 기반 디렉터리 및 ID 관리 서비스입니다. 이 시나리오에서 Azure AD는 웹 사이트 및 VPN 터널에 대한 인증 서비스를 제공합니다.
 
 ### <a name="alternatives"></a>대안
 
-* [Linux용 SQL Server](/azure/virtual-machines/linux/sql/sql-server-linux-virtual-machines-overview)는 MariaDB 데이터 저장소를 대체할 수 있습니다.
-* 완전 관리 솔루션을 선호하는 경우 [MySQL용 Azure 데이터베이스](/azure/mysql/overview)로 MariaDB 데이터 저장소를 대체할 수 있습니다.
+- [Linux용 SQL Server](/azure/virtual-machines/linux/sql/sql-server-linux-virtual-machines-overview)는 MariaDB 데이터 저장소를 대체할 수 있습니다.
+- 완전 관리 솔루션을 선호하는 경우 [MySQL용 Azure 데이터베이스](/azure/mysql/overview)로 MariaDB 데이터 저장소를 대체할 수 있습니다.
 
 ## <a name="considerations"></a>고려 사항
 
@@ -95,9 +96,9 @@ ms.locfileid: "51610610"
 
 위에 제공된 아키텍처 다이어그램에 따라 미리 구성된 [비용 프로필][pricing]을 제공해 드렸습니다. 사용 사례에 맞는 가격 책정 계산기를 구성하려면 몇 가지 사항을 고려해야 합니다.
 
-* 매달 예상하는 트래픽이 GB 단위로 얼마나 되나요? 트래픽 양은 가상 머신 확장 집합의 데이터를 표시하는 데 필요한 VM 수에 영향을 주기 때문에 비용에 가장 큰 영향을 미치게 됩니다. 또한 CDN을 통해 표시되는 데이터의 양과도 직접적인 상관 관계가 있습니다.
-* 웹 사이트에 새 데이터를 얼마나 작성합니까? 웹 사이트에 기록되는 새 데이터의 양은 지역 간에 미러링되는 데이터의 양과 상관 관계가 있습니다.
-* 동적 콘텐츠의 양이 얼마나 되나요? 정적 콘텐츠의 양이 얼마나 되나요? 동적 콘텐츠와 정적 콘텐츠의 양 차이는 데이터베이스 계층에서 검색해야 하는 데이터 양과 CDN에서 캐시해야 하는 데이터 양에 영향을 줍니다.
+- 매달 예상하는 트래픽이 GB 단위로 얼마나 되나요? 트래픽 양은 가상 머신 확장 집합의 데이터를 표시하는 데 필요한 VM 수에 영향을 주기 때문에 비용에 가장 큰 영향을 미치게 됩니다. 또한 CDN을 통해 표시되는 데이터의 양과도 직접적인 상관 관계가 있습니다.
+- 웹 사이트에 새 데이터를 얼마나 작성합니까? 웹 사이트에 기록되는 새 데이터의 양은 지역 간에 미러링되는 데이터의 양과 상관 관계가 있습니다.
+- 동적 콘텐츠의 양이 얼마나 되나요? 정적 콘텐츠의 양이 얼마나 되나요? 동적 콘텐츠와 정적 콘텐츠의 양 차이는 데이터베이스 계층에서 검색해야 하는 데이터 양과 CDN에서 캐시해야 하는 데이터 양에 영향을 줍니다.
 
 <!-- links -->
 [architecture]: ./media/architecture-secure-scalable-wordpress.png

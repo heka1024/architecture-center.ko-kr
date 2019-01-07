@@ -1,14 +1,15 @@
 ---
-title: Azure에서 실시간 부정 행위 감지
+title: 실시간 사기 감지
+titleSuffix: Azure Example Scenarios
 description: Azure Event Hubs 및 Stream Analytics를 사용하여 부정 행위를 실시간으로 검색합니다.
 author: alexbuckgit
 ms.date: 07/05/2018
-ms.openlocfilehash: bd9eb4d572651c4e57a0043226860623cd8d17e1
-ms.sourcegitcommit: 0a31fad9b68d54e2858314ca5fe6cba6c6b95ae4
+ms.openlocfilehash: 9e4d8c5d24acc414ab38722d2df59102395250fb
+ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51610620"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53643408"
 ---
 # <a name="real-time-fraud-detection-on-azure"></a>Azure에서 실시간 부정 행위 감지
 
@@ -24,9 +25,9 @@ Event Hubs 및 Stream Analytics와 같이 완전하게 관리되는 Azure 서비
 
 관련된 다른 사용 사례는 다음과 같습니다.
 
-* 통신 시나리오에서 휴대폰의 부정 전화 행위 감지
-* 은행 기관에서 신용 카드의 부정 거래 행위 식별
-* 소매 또는 전자 상거래 시나리오에서 부정 구매 행위 식별
+- 통신 시나리오에서 휴대폰의 부정 전화 행위 감지
+- 은행 기관에서 신용 카드의 부정 거래 행위 식별
+- 소매 또는 전자 상거래 시나리오에서 부정 구매 행위 식별
 
 ## <a name="architecture"></a>아키텍처
 
@@ -34,28 +35,28 @@ Event Hubs 및 Stream Analytics와 같이 완전하게 관리되는 Azure 서비
 
 이 시나리오에서는 실시간 분석 파이프라인의 백 엔드 구성 요소에 대해 설명합니다. 시나리오를 통한 데이터 흐름은 다음과 같습니다.
 
-1. 휴대폰 호출 메타데이터는 원본 시스템에서 Azure Event Hubs 인스턴스로 보내집니다. 
+1. 휴대폰 호출 메타데이터는 원본 시스템에서 Azure Event Hubs 인스턴스로 보내집니다.
 2. 이벤트 허브 원본을 통해 데이터를 받는 Stream Analytics 작업이 시작됩니다.
 3. Stream Analytics 작업은 미리 정의된 쿼리를 실행하여 입력 스트림을 변환하고 부정 행위 트랜잭션 알고리즘에 따라 분석합니다. 이 쿼리는 연속 창을 사용하여 스트림을 개별 시간 단위로 구분합니다.
 4. Stream Analytics 작업은 감지된 부정 행위 호출을 나타내는 변환된 스트림을 Azure Blob 저장소의 출력 싱크에 기록합니다.
 
 ### <a name="components"></a>구성 요소
 
-* [Azure Event Hubs][docs-event-hubs]는 초당 수백만 개의 이벤트를 받고 처리할 수 있는 실시간 스트리밍 플랫폼 및 이벤트 수집 서비스입니다. Event Hubs는 분산된 소프트웨어와 디바이스에서 생성된 이벤트, 데이터 또는 원격 분석을 처리하고 저장할 수 있습니다. 이 시나리오에서 Event Hubs에서 모든 전화 통화 메타데이터를 수신하여 부정 행위에 대해 분석합니다.
-* [Azure Stream Analytics][docs-stream-analytics]는 장치 및 다른 데이터 원본에서 스트림하는 대량의 데이터를 분석할 수 있는 이벤트 처리 엔진입니다. 또한 데이터 스트림에서 정보를 추출하여 패턴과 관계를 식별할 수 있습니다. 이러한 패턴은 다른 다운스트림 작업을 트리거할 수 있습니다. 이 시나리오에서는 Stream Analytics에서 Event Hubs로부터의 입력 스트림을 변환하여 부정 행위 호출을 식별합니다.
-* [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)는 Stream Analytics 작업의 결과를 저장하기 위해 이 시나리오에서 사용됩니다.
+- [Azure Event Hubs][docs-event-hubs]는 초당 수백만 개의 이벤트를 받고 처리할 수 있는 실시간 스트리밍 플랫폼 및 이벤트 수집 서비스입니다. Event Hubs는 분산된 소프트웨어와 디바이스에서 생성된 이벤트, 데이터 또는 원격 분석을 처리하고 저장할 수 있습니다. 이 시나리오에서 Event Hubs에서 모든 전화 통화 메타데이터를 수신하여 부정 행위에 대해 분석합니다.
+- [Azure Stream Analytics][docs-stream-analytics]는 디바이스 및 다른 데이터 원본에서 스트림하는 대량의 데이터를 분석할 수 있는 이벤트 처리 엔진입니다. 또한 데이터 스트림에서 정보를 추출하여 패턴과 관계를 식별할 수 있습니다. 이러한 패턴은 다른 다운스트림 작업을 트리거할 수 있습니다. 이 시나리오에서는 Stream Analytics에서 Event Hubs로부터의 입력 스트림을 변환하여 부정 행위 호출을 식별합니다.
+- [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)는 Stream Analytics 작업의 결과를 저장하기 위해 이 시나리오에서 사용됩니다.
 
 ## <a name="considerations"></a>고려 사항
 
 ### <a name="alternatives"></a>대안
 
-실시간 메시지 수집, 데이터 저장, 스트림 처리, 분석 데이터 저장, 분석 및 보고에 많은 기술을 선택하여 사용할 수 있습니다. 이러한 옵션, 기능 및 주요 선택 기준에 대한 개요는 Azure 데이터 아키텍처 가이드의 [빅 데이터 아키텍처: 실시간 처리](/azure/architecture/data-guide/technology-choices/real-time-ingestion)를 참조하세요.
+실시간 메시지 수집, 데이터 저장, 스트림 처리, 분석 데이터 저장, 분석 및 보고에 많은 기술을 선택하여 사용할 수 있습니다. 이러한 옵션, 기능 및 주요 선택 조건에 대한 개요는 Azure 데이터 아키텍처 가이드의 [빅 데이터 아키텍처: 실시간 처리](/azure/architecture/data-guide/technology-choices/real-time-ingestion)를 참조하세요.
 
 또한 부정 행위 감지에 대해 더 복잡한 알고리즘은 Azure의 다양한 기계 학습 서비스에서 생성할 수 있습니다. 이러한 옵션에 대한 개요는 [Azure 데이터 아키텍처 가이드](../../data-guide/index.md)의 [기계 학습에 대한 기술 선택](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)을 참조하세요.
 
 ### <a name="availability"></a>가용성
 
-Azure Monitor는 다양한 Azure 서비스를 모니터링하기 위한 통합된 사용자 인터페이스를 제공합니다. 자세한 내용은 [Microsoft Azure에서 모니터링](/azure/monitoring-and-diagnostics/monitoring-overview)을 참조하세요. Event Hubs 및 Stream Analytics는 모두 Azure Monitor와 통합됩니다. 
+Azure Monitor는 다양한 Azure 서비스를 모니터링하기 위한 통합된 사용자 인터페이스를 제공합니다. 자세한 내용은 [Microsoft Azure에서 모니터링](/azure/monitoring-and-diagnostics/monitoring-overview)을 참조하세요. Event Hubs 및 Stream Analytics는 모두 Azure Monitor와 통합됩니다.
 
 다른 가용성 고려 사항에 대해서는 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
 
@@ -85,9 +86,9 @@ Azure Event Hubs는 SAS(공유 액세스 서명) 토큰과 이벤트 게시자�
 
 가져오는 데 필요한 트래픽 양을 기준으로 다음 세 가지 샘플 비용 프로필을 제공했습니다.
 
-* [소량][small-pricing]: 매월 1개 표준 스트리밍 단위를 통해 백만 개의 이벤트를 처리합니다.
-* [중간][medium-pricing]: 매월 5개 표준 스트리밍 단위를 통해 1억 개의 이벤트를 처리합니다.
-* [대량][large-pricing]: 매월 20개 표준 스트리밍 단위를 통해 9억 9천 9백만 개의 이벤트를 처리합니다.
+- [소량][small-pricing]: 매월 1개 표준 스트리밍 단위를 통해 백만 개의 이벤트를 처리합니다.
+- [중간][medium-pricing]: 매월 5개 표준 스트리밍 단위를 통해 1억 개의 이벤트를 처리합니다.
+- [대량][large-pricing]: 매월 20개 표준 스트리밍 단위를 통해 9억 9천 9백만 개의 이벤트를 처리합니다.
 
 ## <a name="related-resources"></a>관련 리소스
 
@@ -110,4 +111,3 @@ Azure Event Hubs는 SAS(공유 액세스 서명) 토큰과 이벤트 게시자�
 [scalability]: /azure/architecture/checklist/scalability
 [resiliency]: ../../resiliency/index.md
 [security]: /azure/security/
-
