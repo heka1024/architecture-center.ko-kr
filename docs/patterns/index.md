@@ -1,17 +1,17 @@
 ---
 title: 클라우드 디자인 패턴
 titleSuffix: Azure Architecture Center
-description: 클라우드에서 안정적이고 확장성 있는 안전한 애플리케이션을 빌드하기 위한 클라우드 디자인 패턴
+description: 클라우드에서 안정적이고 확장성 있는 안전한 애플리케이션을 빌드하기 위한 디자인 패턴입니다.
 keywords: Azure
 author: dragon119
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 003bef866b0cd873122cfb8d4730b95ba49d3d7f
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 51f5f146ecf453e7134e7cc3811b2dd5ded325ac
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011296"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112484"
 ---
 # <a name="cloud-design-patterns"></a>클라우드 디자인 패턴
 

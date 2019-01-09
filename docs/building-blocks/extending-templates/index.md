@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Manager 템플릿 기능 확장
-description: Azure Resource Manager 템플릿 기능을 확장하는 방법에 대한 팁 및 트릭 설명
+description: Azure Resource Manager 템플릿 기능을 확장하는 방법에 대한 팁 및 트릭을 설명합니다.
 author: petertay
 ms.date: 06/09/2017
-ms.openlocfilehash: 33ae6850ffa5b28108f30475804be5347859f0c3
-ms.sourcegitcommit: ea7108f71dab09175ff69322874d1bcba800a37a
+ms.openlocfilehash: 725013df3d0551060a9f504da7a97cdc370f956a
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29963196"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111379"
 ---
 # <a name="extend-azure-resource-manager-template-functionality"></a>Azure Resource Manager 템플릿 기능 확장
 
