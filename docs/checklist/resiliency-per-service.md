@@ -5,12 +5,12 @@ description: 다양한 Azure 서비스에 대한 복원력 지침을 제공하�
 author: petertaylor9999
 ms.date: 11/26/2018
 ms.custom: resiliency, checklist
-ms.openlocfilehash: 55f17d3b24af4be4f313c66923f4153296041545
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: e1fb780cf9f54a5078cc5d3c6b597b351f93e05e
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307183"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112671"
 ---
 # <a name="resiliency-checklist-for-specific-azure-services"></a>특정 Azure 서비스에 대한 복원력 검사 목록
 
@@ -34,13 +34,13 @@ ms.locfileid: "53307183"
 
 **마지막으로 성공한(LKG) 배포를 저장하는 배포 슬롯을 만듭니다.** 업데이트를 프로덕션에 배포하는 경우 이전 프로덕션 배포를 LKG 슬롯으로 이동합니다. 이렇게 하면 잘못된 배포를 롤백하기가 더 쉬워집니다. 나중에 문제가 발견되면 LKG 버전으로 신속하게 되돌릴 수 있습니다. 자세한 내용은 [기본 웹 애플리케이션](../reference-architectures/app-service-web-app/basic-web-app.md)을 참조하세요.
 
-응용 프로그램 로깅 및 웹 서버 로깅을 포함하여 **진단 로깅 설정**합니다. 로깅은 모니터링 및 진단을 위해 중요합니다. [Azure App Service에서 웹앱에 대한 진단 로깅 설정](/azure/app-service-web/web-sites-enable-diagnostic-log/) 참조
+애플리케이션 로깅 및 웹 서버 로깅을 포함하여 **진단 로깅 설정**합니다. 로깅은 모니터링 및 진단을 위해 중요합니다. [Azure App Service에서 웹앱에 대한 진단 로깅 설정](/azure/app-service-web/web-sites-enable-diagnostic-log/) 참조
 
 **Blob 저장소에 기록합니다.** 이렇게 하면 보다 쉽게 데이터를 수집 및 분석할 수 있습니다.
 
 **로그에 대한 별도의 저장소 계정을 만듭니다.** 로그와 애플리케이션 데이터에 동일한 저장소 계정을 사용하지 마세요. 이렇게 하면 로깅이 애플리케이션의 성능을 감소시키는 것을 방지하는 데 도움이 됩니다.
 
-**성능을 모니터링합니다.** [New Relic](https://newrelic.com/) 또는 [Application Insights](/azure/application-insights/app-insights-overview/) 같은 성능 모니터링 서비스를 사용하여 응용 프로그램 성능 및 부하를 받을 때의 동작을 모니터링합니다.  성능 모니터링은 애플리케이션에 대한 실시간 통찰력을 제공합니다. 문제를 진단하고 실패의 근본 원인 분석을 수행할 수 있습니다.
+**성능을 모니터링합니다.** [New Relic](https://newrelic.com/) 또는 [Application Insights](/azure/application-insights/app-insights-overview/) 같은 성능 모니터링 서비스를 사용하여 애플리케이션 성능 및 부하를 받을 때의 동작을 모니터링합니다.  성능 모니터링은 애플리케이션에 대한 실시간 통찰력을 제공합니다. 문제를 진단하고 실패의 근본 원인 분석을 수행할 수 있습니다.
 
 ## <a name="application-gateway"></a>Application Gateway
 
@@ -96,7 +96,7 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 ## <a name="storage"></a>Storage
 
-**응용 프로그램 데이터의 경우 RA-GRS(읽기-쓰기 지역 중복 저장소)를 사용합니다.** RA-GRS 저장소는 데이터를 보조 지역에 복제하고 보조 지역에서 읽기 전용 액세스를 제공합니다. 주 지역에 스토리지 중단이 있는 경우 애플리케이션은 보조 지역에서 데이터를 읽을 수 있습니다. 자세한 내용은 [Azure Storage 복제](/azure/storage/storage-redundancy/)를 참조하세요.
+**애플리케이션 데이터의 경우 RA-GRS(읽기-쓰기 지역 중복 스토리지)를 사용합니다.** RA-GRS 저장소는 데이터를 보조 지역에 복제하고 보조 지역에서 읽기 전용 액세스를 제공합니다. 주 지역에 스토리지 중단이 있는 경우 애플리케이션은 보조 지역에서 데이터를 읽을 수 있습니다. 자세한 내용은 [Azure Storage 복제](/azure/storage/storage-redundancy/)를 참조하세요.
 
 **VM 디스크의 경우 Managed Disks를 사용합니다.** [Managed Disks][managed-disks]는 디스크들이 서로 충분히 격리되어 단일 실패 지점을 방지하므로 가용성 집합의 VM에 대해 더 나은 신뢰성을 제공합니다. 또한 Managed Disks는 저장소 계정에서 만든 VHD의 IOPS 제한이 적용되지 않습니다. 자세한 내용은 [Azure에서 Windows 가상 머신의 가용성 관리][vm-manage-availability]를 참조하세요.
 
@@ -124,7 +124,7 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 **데이터베이스를 복제합니다.** SQL Server Always On 가용성 그룹을 사용하여 데이터베이스를 복제합니다. SQL Server 인스턴스 하나가 실패하는 경우 고가용성을 제공 합니다. 자세한 내용은 [N 계층 애플리케이션에 대해 Windows VM 실행](../reference-architectures/virtual-machines-windows/n-tier.md) 참조
 
-**데이터베이스를 백업합니다**. 이미 [Azure Backup](https://azure.microsoft.com/documentation/services/backup/)을 사용하여 VM을 백업하는 경우 [DPM을 사용하는 SQL Server용 Azure Backup 워크로드](/azure/backup/backup-azure-backup-sql/)의 사용을 고려합니다. 이 방법에서는 조직에 대한 백업 관리자 역할 하나와 VM 및 SQL Server에 대한 통합 복구 절차가 있습니다. 그렇지 않으면 [Microsoft Azure에 대한 SQL Server 관리 백업](https://msdn.microsoft.com/library/dn449496.aspx)을 사용합니다.
+**데이터베이스를 백업합니다**. 이미 [Azure Backup](/azure/backup/)을 사용하여 VM을 백업하는 경우 [DPM을 사용하는 SQL Server용 Azure Backup 워크로드](/azure/backup/backup-azure-backup-sql/)의 사용을 고려합니다. 이 방법에서는 조직에 대한 백업 관리자 역할 하나와 VM 및 SQL Server에 대한 통합 복구 절차가 있습니다. 그렇지 않으면 [Microsoft Azure에 대한 SQL Server 관리 백업](https://msdn.microsoft.com/library/dn449496.aspx)을 사용합니다.
 
 ## <a name="traffic-manager"></a>Traffic Manager
 
@@ -138,7 +138,7 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 **VM을 프로비전할 때 가용성 집합을 지정합니다.** 현재 VM이 프로비전된 후 VM을 가용성 집합에 추가하는 방법은 없습니다. 기존 가용성 집합에 새 VM을 추가하는 경우 VM에 대한 NIC를 만들고 부하 분산 장치의 백 엔드 주소 풀에 NIC를 추가해야 합니다. 그렇지 않으면 부하 분산 장치가 네트워크 트래픽을 해당 VM에 경로 설정하지 않습니다.
 
-**각 응용 프로그램 계층을 별도의 가용성 집합에 배치합니다.** N 계층 애플리케이션에서 서로 다른 계층의 VM을 동일한 가용성 집합에 배치하지 마세요. 가용성 집합의 VM은 장애 도메인(FD) 및 업데이트 도메인(UD)에 걸쳐 배치됩니다. 그러나 FD와 UD의 중복성 이점을 활용하려면 가용성 집합의 모든 VM이 동일한 클라이언트 요청을 처리할 수 있어야 합니다.
+**각 애플리케이션 계층을 별도의 가용성 집합에 배치합니다.** N 계층 애플리케이션에서 서로 다른 계층의 VM을 동일한 가용성 집합에 배치하지 마세요. 가용성 집합의 VM은 장애 도메인(FD) 및 업데이트 도메인(UD)에 걸쳐 배치됩니다. 그러나 FD와 UD의 중복성 이점을 활용하려면 가용성 집합의 모든 VM이 동일한 클라이언트 요청을 처리할 수 있어야 합니다.
 
 **Azure Site Recovery를 사용하여 VM 복제.** [Site Recovery][site-recovery]를 사용하여 Azure VM을 복제할 때 모든 VM 디스크가 지속적으로 대상 지역에 비동기적으로 복제됩니다. 복구 지점은 몇 분 간격으로 생성됩니다. 이렇게 하면 시간 순으로 RPO(복구 지점 목표)가 제공됩니다. 프로덕션 애플리케이션 또는 진행 중인 복제에 영향을 주지 않고 재해 복구 훈련을 원하는 만큼 수행할 수 있습니다. 자세한 내용은 [Azure로 재해 복구 훈련 실행][site-recovery-test]을 참조하세요.
 
@@ -146,7 +146,7 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 **VHD에 Managed Disks를 사용합니다.** [Managed Disks][managed-disks]는 디스크들이 서로 충분히 격리되어 단일 실패 지점을 방지하므로 가용성 집합의 VM에 대해 더 나은 신뢰성을 제공합니다. 또한 Managed Disks는 저장소 계정에서 만든 VHD의 IOPS 제한이 적용되지 않습니다. 자세한 내용은 [Azure에서 Windows 가상 머신의 가용성 관리][vm-manage-availability]를 참조하세요.
 
-**응용 프로그램을 OS 디스크가 아닌 데이터 디스크에 설치합니다.** 이렇게 하지 않으면 디스크 크기 제한에 도달할 수 있습니다.
+**애플리케이션을 OS 디스크가 아닌 데이터 디스크에 설치합니다.** 이렇게 하지 않으면 디스크 크기 제한에 도달할 수 있습니다.
 
 **Azure Backup을 사용하여 VM을 백업합니다.** 백업은 실수로 인한 데이터 손실을 방지합니다. 자세한 내용은 [복구 서비스 자격 증명 모음으로 Azure VM 보호](/azure/backup/backup-azure-vms-first-look-arm/)를 참조하세요.
 

@@ -1,20 +1,17 @@
 ---
-title: 상태 엔드포인트 모니터링
+title: 상태 엔드포인트 모니터링 패턴
+titleSuffix: Cloud Design Patterns
 description: 외부 도구가 노출된 엔드포인트를 통해 주기적으로 액세스할 수 있는 기능 검사를 애플리케이션 내부에 구현합니다.
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- availability
-- management-monitoring
-- resiliency
-ms.openlocfilehash: 22a4e47c4dd8dd3dd11a4238e859acbea49f9d1b
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: 85a1355ff47e6fce80d9b2ed114024651eb994db
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428978"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114252"
 ---
 # <a name="health-endpoint-monitoring-pattern"></a>상태 엔드포인트 모니터링 패턴
 
@@ -42,6 +39,7 @@ ms.locfileid: "47428978"
 ![패턴의 개요](./_images/health-endpoint-monitoring-pattern.png)
 
 다음은 애플리케이션에서 상태 모니터링 코드로 수행할 수 있는 다른 검사입니다.
+
 - 클라우드 저장소 또는 데이터베이스의 가용성과 응답 시간 검사
 - 애플리케이션 내에 있거나 다른 위치에 있지만 애플리케이션이 사용할 수 있는 다른 리소스 또는 서비스의 검사
 
@@ -67,7 +65,7 @@ ms.locfileid: "47428978"
 
 응답의 유효성을 검사하는 방법. 예를 들어 하나의 200 (OK) 상태 코드만으로 애플리케이션이 올바르게 작동하고 있다는 것을 충분히 확인할 수 있을까요? 이 방법은 애플리케이션 가용성에 대한 가장 기본적인 척도를 제공하고 이 패턴의 최소 구현에 해당하지만 작업, 추세 및 애플리케이션에서 발생할 수 있는 문제에 대한 정보를 거의 제공하지 않습니다.
 
-   >  애플리케이션이 대상 리소스를 발견하고 처리한 경우에만 200 (OK)을 올바르게 반환하는지 확인합니다. 마스터 페이지를 사용해 대상 웹 페이지를 호스트하는 경우와 같은 일부 시나리오에서는 서버가 대상 콘텐츠 페이지를 찾지 못했더라도 404 (Not Found) 코드 대신 200 (OK) 상태 코드를 다시 전송하기 때문입니다.
+   > 애플리케이션이 대상 리소스를 발견하고 처리한 경우에만 200 (OK)을 올바르게 반환하는지 확인합니다. 마스터 페이지를 사용해 대상 웹 페이지를 호스트하는 경우와 같은 일부 시나리오에서는 서버가 대상 콘텐츠 페이지를 찾지 못했더라도 404 (Not Found) 코드 대신 200 (OK) 상태 코드를 다시 전송하기 때문입니다.
 
 애플리케이션에 노출시키는 엔드포인트의 개수. 한 가지 접근 방식은 각각의 애플리케이션이 사용하는 핵심 서비스를 위해 하나 이상의 엔드포인트를 노출시키고 우선 순위가 낮은 서비스를 위해 다른 엔드포인트를 노출시켜 모니터링 결과에 다양한 수준의 중요성을 할당하는 것입니다. 또한 추가 모니터링 세분성을 위해 핵심 서비스마다 엔드포인트를 추가로 노출시키는 것도 고려해야 합니다. 예를 들면 상태 확인 검사는 다른 수준의 작동 시간과 응답 시간을 요구하여 애플리케이션이 사용하는 데이터베이스, 저장소 및 외부 지오코딩 서비스를 검사할 수 있습니다. 지오코딩 서비스 또는 일부 다른 백그라운드 작업을 몇 분간 사용할 수 없는 경우라도 애플리케이션은 여전히 정상일 수 있습니다.
 
@@ -98,6 +96,7 @@ ms.locfileid: "47428978"
 ## <a name="when-to-use-this-pattern"></a>이 패턴을 사용해야 하는 경우
 
 이 패턴은 다음의 경우에 유용합니다.
+
 - 가용성을 확인하기 위한 웹 사이트와 웹 애플리케이션의 모니터링
 - 올바른 작동을 검사하기 위한 웹 사이트와 웹 애플리케이션의 모니터링
 - 다른 애플리케이션을 방해할 수 있는 장애를 검색하고 격리하기 위한 중간 계층 또는 공유 서비스의 모니터링
@@ -134,6 +133,7 @@ public ActionResult CoreServices()
   return new HttpStatusCodeResult((int)HttpStatusCode.OK);
 }
 ```
+
 `ObscurePath` 메서드는 경로를 응용 프로그램 구성에서 읽어와 테스트를 위한 엔드포인트로 사용하는 방법을 보여 줍니다. C#으로 제시된 이 예제도 ID를 매개 변수로 수락하고 유효한 요청을 검사하는 데 사용하는 방법을 보여 줍니다.
 
 ```csharp
@@ -178,6 +178,7 @@ public ActionResult TestResponseFromConfig()
   return new HttpStatusCodeResult(returnStatusCode);
 }
 ```
+
 ## <a name="monitoring-endpoints-in-azure-hosted-applications"></a>Azure 호스트드 애플리케이션에서 엔드포인트 모니터링
 
 Azure 애플리케이션에서 엔드포인트를 모니터링하기 위한 몇 가지 옵션은 다음과 같습니다.
@@ -192,7 +193,7 @@ Azure 애플리케이션에서 엔드포인트를 모니터링하기 위한 몇 
 
 모니터링할 수 있는 조건은 애플리케이션을 위해 선택하는 호스팅 메커니즘(예: 웹 사이트, 클라우드 서비스, 가상 컴퓨터, 모바일 서비스)에 따라 달라지지만, 모든 호스팅 방식은 서비스를 위한 설정에 지정되는 웹 엔드포인트가 사용하는 경고 규칙을 만드는 능력을 갖추고 있습니다. 이런 엔드포인트는 애플리케이션이 올바르게 작동하고 있다는 것을 경고 시스템이 감지할 수 있도록 시기적절한 방식으로 응답해야 합니다.
 
->  [경고 알림 만들기][portal-alerts]에 대한 자세한 내용을 확인하세요.
+> [경고 알림 만들기][portal-alerts]에 대한 자세한 내용을 확인하세요.
 
 애플리케이션을 Azure Cloud Service 웹과 작업자 역할 또는 가상 컴퓨터에서 호스팅하는 경우, Traffic Manager라 부르는 Azure의 기본 제공 서비스 중 하나를 활용할 수 있습니다. Traffic Manager는 다양한 규칙과 설정을 기반으로 하는 Cloud Service 호스팅 애플리케이션의 특정 인스턴스에 요청을 분산시킬 수 있는 라우팅과 부하 분산 서비스입니다.
 
@@ -200,13 +201,14 @@ Azure 애플리케이션에서 엔드포인트를 모니터링하기 위한 몇 
 
 그러나 Traffic Manager는 모니터링 URL에서 응답을 수신하는 데 단 10초만 기다립니다. 따라서 Traffic Manager에서 사용자 애플리케이션까지 및 사용자 애플리케이션에서 Traffic Manager까지 왕복하기 위한 네트워크 대기 시간을 허용하도록 상태 확인 코드가 이 시점에 실행되는지를 확인해야 합니다.
 
->  [Traffic Manager를 사용하여 응용 프로그램 모니터링](https://azure.microsoft.com/documentation/services/traffic-manager/)에 대한 자세한 내용을 확인하세요. Traffic Manager는 [다중 데이터 센터 배포 지침](https://msdn.microsoft.com/library/dn589779.aspx)에서도 논의됩니다.
+> [Traffic Manager를 사용하여 애플리케이션 모니터링](/azure/traffic-manager/)에 대한 자세한 내용을 확인하세요. Traffic Manager는 [다중 데이터 센터 배포 지침](https://msdn.microsoft.com/library/dn589779.aspx)에서도 논의됩니다.
 
 ## <a name="related-guidance"></a>관련 지침
 
 이 패턴을 구현할 때 유용할 수 있는 지침은 다음과 같습니다.
+
 - [계측 및 원격 분석 지침](https://msdn.microsoft.com/library/dn589775.aspx) 보통 서비스와 구성 요소의 상태 검사는 검색으로 이루어지지만, 애플리케이션 성능을 모니터링하고 런타임에서 발생하는 이벤트를 검색하기 위해 정보를 수집하는 것도 유용합니다. 이런 데이터는 상태 모니터링을 위한 추가 정보로 모니터링 도구에 다시 전송할 수 있습니다. 계측 및 원격 분석 지침은 애플리케이션 내 계측을 통해 수집되는 원격 진단 정보 수집을 탐색합니다.
 - [경고 알림 수신][portal-alerts].
 - 이 패턴에는 다운로드 가능한 [샘플 애플리케이션](https://github.com/mspnp/cloud-design-patterns/tree/master/health-endpoint-monitoring)이 있습니다.
 
-[portal-alerts]: https://azure.microsoft.com/documentation/articles/insights-receive-alert-notifications/
+[portal-alerts]: /azure/azure-monitor/platform/alerts-metric

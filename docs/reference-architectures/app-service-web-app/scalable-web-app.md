@@ -5,12 +5,12 @@ description: Microsoft Azure에서 실행되는 웹 애플리케이션의 확장
 author: MikeWasson
 ms.date: 10/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: ab38864e7135777f205b39d0a86897559fc061b9
-ms.sourcegitcommit: e7f8676bbffe500fc4d6deb603b7c0b7ba1884a6
+ms.openlocfilehash: aa4579b45c5ecf090a896e252f2d2e460f282c0e
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53179300"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54110972"
 ---
 # <a name="improve-scalability-in-an-azure-web-application"></a>Azure 웹 애플리케이션에서 확장성 향상
 
@@ -81,11 +81,11 @@ ms.locfileid: "53179300"
 | 기본 쿼리를 요구하는 유연한 스키마를 사용하는 비관계형 데이터 |제품 카탈로그 |Azure Cosmos DB, MongoDB 또는 Apache CouchDB와 같은 문서 데이터베이스 |
 | 보다 풍부한 쿼리 지원, 엄격한 스키마 및/또는 강력한 일관성이 필요한 관계형 데이터 |제품 인벤토리 |Azure SQL Database |
 
- [적절한 데이터 저장소 선택][datastore]을 참조하세요.
+[적절한 데이터 저장소 선택][datastore]을 참조하세요.
 
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
-Azure App Service의 주요 이점은 부하에 따라 애플리케이션을 확장할 수 있다는 점입니다. 다음은 애플리케이션 확장을 계획할 때 염두할 몇 가지 고려 사항입니다.
+Azure App Service의 주요 이점은 부하에 따라 애플리케이션을 확장할 수 있다는 점입니다. 다음은 애플리케이션 확장을 계획할 때 염두에 둘 몇 가지 고려 사항입니다.
 
 ### <a name="app-service-app"></a>App Service 앱
 
@@ -132,7 +132,7 @@ App Services에서는 애플리케이션 코드를 작성할 필요 없이 기�
 [azure-cdn]: https://azure.microsoft.com/services/cdn/
 [azure-dns]: /azure/dns/dns-overview
 [azure-redis]: https://azure.microsoft.com/services/cache/
-[azure-search]: https://azure.microsoft.com/documentation/services/search/
+[azure-search]: /azure/search
 [azure-search-scaling]: /azure/search/search-capacity-planning
 [basic-web-app]: basic-web-app.md
 [basic-web-app-scalability]: basic-web-app.md#scalability-considerations
@@ -149,7 +149,7 @@ App Services에서는 애플리케이션 코드를 작성할 필요 없이 기�
 [queue-storage]: /azure/storage/storage-dotnet-how-to-use-queues
 [queues-compared]: /azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted
 [resource-group]: /azure/azure-resource-manager/resource-group-overview#resource-groups
-[sql-db]: https://azure.microsoft.com/documentation/services/sql-database/
+[sql-db]: /azure/sql-database/
 [sql-elastic]: /azure/sql-database/sql-database-elastic-scale-introduction
 [sql-encryption]: https://msdn.microsoft.com/library/dn948096.aspx
 [tm]: https://azure.microsoft.com/services/traffic-manager/

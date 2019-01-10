@@ -5,12 +5,12 @@ description: Azure를 사용하여 온-프레미스에 저장된 관계형 데�
 author: MikeWasson
 ms.date: 11/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3808cc5d09e2e0a5aaee1a6cfcb050b98a0ef2ee
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 2f15b8d4376638e6e8e522e5150a3b3c247cba8f
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53644226"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54010293"
 ---
 # <a name="enterprise-bi-in-azure-with-sql-data-warehouse"></a>SQL Data Warehouse를 사용하는 Azure의 Enterprise BI
 
@@ -72,7 +72,7 @@ ms.locfileid: "53644226"
 
 [bcp](/sql/tools/bcp-utility)(대량 복사 프로그램) 유틸리티는 SQL 테이블에서 플랫 텍스트 파일을 만드는 신속한 방법입니다. 이 단계에서는 내보내려는 열을 선택하지만 데이터를 변환하지 않습니다. 모든 데이터 변환은 SQL Data Warehouse에서 수행되어야 합니다.
 
-**권장 사항**
+**권장 사항:**
 
 가능하면 프로덕션 환경에서 리소스 경합을 최소화하기 위해 사용량이 적은 시간에 데이터 추출을 예약합니다.
 
@@ -84,7 +84,7 @@ Gzip 압축된 형식으로 내보낸 데이터를 저장하여 네트워크 전
 
 [AzCopy](/azure/storage/common/storage-use-azcopy) 유틸리티는 Azure Blob 저장소로 데이터의 고성능 복사를 위해 설계되었습니다.
 
-**권장 사항**
+**권장 사항:**
 
 원본 데이터의 위치 근처 지역에서 저장소 계정을 만듭니다. 동일한 지역에 저장소 계정 및 SQL Data Warehouse 인스턴스를 배포합니다.
 
@@ -105,7 +105,7 @@ AzCopy는 공용 인터넷을 통해 저장소로 데이터를 이동합니다. 
 1. 데이터에 대한 외부 테이블 집합을 만듭니다. 외부 테이블은 웨어하우스의 외부에 저장된 데이터를 가리키는 테이블 정의이며 &mdash; 이 경우 Blob 저장소의 플랫 파일입니다. 이 단계는 데이터를 웨어하우스로 이동하지 않습니다.
 2. 준비 테이블을 만들고, 준비 테이블로 데이터를 로드합니다. 이 단계는 데이터를 웨어하우스로 복사합니다.
 
-**권장 사항**
+**권장 사항:**
 
 많은 양의 데이터(1TB 이상)가 있고 병렬 처리를 활용하는 분석 워크 로드를 실행하는 경우 SQL Data Warehouse를 고려합니다. SQL Data Warehouse는 OLTP 워크로드 또는 소량의 데이터 집합(< 250GB)에 잘 맞지 않습니다. 250GB보다 작은 데이터 집합의 경우 Azure SQL Database 또는 SQL Server를 고려합니다. 자세한 내용은 [데이터 웨어하우징](../../data-guide/relational-data/data-warehousing.md)을 참조하세요.
 
@@ -155,7 +155,7 @@ Power BI는 Azure Analysis Services에 연결하기 위한 두 가지 옵션을 
 
 Power BI 모델로 데이터를 복사할 필요가 없기 때문에 라이브 연결을 권장합니다. 또한 DirectQuery를 사용하면 결과는 항상 최신 원본 데이터와 일치하게 됩니다. 자세한 내용은 [Power BI로 연결](/azure/analysis-services/analysis-services-connect-pbi)을 참조하세요.
 
-**권장 사항**
+**권장 사항:**
 
 데이터 웨어하우스에 대해 직접 BI 대시보드 쿼리를 실행하지 마십시오. BI 대시보드는 웨어하우스에 대한 직접 쿼리가 충족할 수 없는 매우 낮은 응답 시간이 필요합니다. 또한 대시보드를 새로 고치면 성능에 영향을 줄 수 있는 동시 쿼리 수에 불리하게 간주됩니다.
 

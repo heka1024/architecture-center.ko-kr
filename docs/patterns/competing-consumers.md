@@ -1,18 +1,17 @@
 ---
-title: 경쟁 소비자
+title: 경쟁 소비자 패턴
+titleSuffix: Cloud Design Patterns
 description: 여러 동시 소비자가 동일한 메시징 채널에 수신된 메시지를 처리할 수 있게 해 줍니다.
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- messaging
-ms.openlocfilehash: aea172dcdb33c0d8513fb69715f1549b4a20f5e6
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: 77459ff42422969acdc83e66535197547d555de1
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428380"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112110"
 ---
 # <a name="competing-consumers-pattern"></a>경쟁 소비자 패턴
 
@@ -34,7 +33,7 @@ ms.locfileid: "47428380"
 
 이 솔루션에는 다음과 같은 이점이 있습니다.
 
-- 애플리케이션 인스턴스가 전송하는 요청량의 폭넓은 변화를 처리할 수 있는 부하 평준화 시스템을 제공합니다. 큐는 애플리케이션 인스턴스와 소비자 서비스 인스턴스 사이의 버퍼로 작용합니다. 따라서 [큐 기반 부하 평준화 패턴](queue-based-load-leveling.md)에 설명된 대로 애플리케이션과 서비스 인스턴스의 가용성과 응답성에 미치는 영향을 최소화하는 데 도움을 줄 수 있습니다. 일부 장기 실행 처리가 필요한 메시지의 처리는 다른 메시지를 소비자 서비스의 다른 인스턴스가 동시에 처리하는 것을 방지하지 않습니다.
+- 애플리케이션 인스턴스가 전송하는 요청량의 폭넓은 변화를 처리할 수 있는 부하 평준화 시스템을 제공합니다. 큐는 애플리케이션 인스턴스와 소비자 서비스 인스턴스 사이의 버퍼로 작용합니다. 따라서 [큐 기반 부하 평준화 패턴](./queue-based-load-leveling.md)에 설명된 대로 애플리케이션과 서비스 인스턴스의 가용성과 응답성에 미치는 영향을 최소화하는 데 도움을 줄 수 있습니다. 일부 장기 실행 처리가 필요한 메시지의 처리는 다른 메시지를 소비자 서비스의 다른 인스턴스가 동시에 처리하는 것을 방지하지 않습니다.
 
 - 안정성을 향상시킵니다. 생산자가 이 패턴을 사용하는 대신에 소비자와 직접 통신하지만 소비자를 모니터링하지 않는 경우 메시지가 손실되거나 소비자가 실패하면 처리에 실패할 가능성이 매우 높습니다. 이 패턴에서 메시지는 특정 서비스 인스턴스에 전송되지 않습니다. 실패한 서비스 인스턴스는 생산자를 차단하지 않으며, 메시지는 작동 중인 서비스 인스턴스가 처리할 수 있습니다.
 
@@ -85,8 +84,9 @@ ms.locfileid: "47428380"
 
 Azure는 이 패턴을 구현하기 위한 메커니즘으로 작용할 수 있는 저장소 큐와 Service Bus 큐를 제공합니다. 애플리케이션 논리는 메시지를 큐에 게시할 수 있고, 하나 이상의 역할에서 작업으로 구현된 소비자는 메시지를 이 큐에서 검색하여 처리할 수 있습니다. 복원력을 위해 Service Bus 큐는 소비자가 메시지를 큐에서 검색할 때 `PeekLock` 모드를 사용하게 해줍니다. 이 모드는 실제로 메시지를 제거하지 않고 단순히 다른 소비자에게 보이지 않도록 숨깁니다. 원래 소비자는 메시지의 처리가 완료되면 메시지를 삭제할 수 있습니다. 소비자가 실패하면 미리 보기 잠금이 시간을 초과하게 되고 메시지는 다시 표시되어 다른 소비자가 메시지를 검색할 수 있습니다.
 
-> Azure Service Bus 큐 사용에 대한 자세한 내용은 [Service Bus 큐, 토픽 및 구독](https://msdn.microsoft.com/library/windowsazure/hh367516.aspx)을 참조하세요.
-Azure Storage 큐 사용에 대한 자세한 내용은 [.NET을 사용하여 Azure Queue Storage 시작](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-queues/)을 참조하세요.
+Azure Service Bus 큐 사용에 대한 자세한 내용은 [Service Bus 큐, 토픽 및 구독](https://msdn.microsoft.com/library/windowsazure/hh367516.aspx)을 참조하세요.
+
+Azure Storage 큐 사용에 대한 자세한 내용은 [.NET을 사용하여 Azure Queue Storage 시작](/azure/storage/queues/storage-dotnet-how-to-use-queues)을 참조하세요.
 
 [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/competing-consumers)에서 사용할 수 있는 CompetingConsumers 솔루션에 있는 `QueueManager` 클래스의 다음 코드는 웹 또는 작업자 역할에서 `Start` 이벤트 처리기에 있는 `QueueClient` 인스턴스를 사용해 큐를 만들 수 있는 방법을 보여 줍니다.
 
@@ -174,7 +174,7 @@ private void OptionsOnExceptionReceived(object sender,
 }
 ```
 
-Azure에서 사용할 수 있는 것과 같은 자동 크기 조정 기능은 큐 길이가 변동될 때 역할 인스턴스를 시작하고 중지하는 데 사용할 수 있습니다. 자세한 내용은 [자동 크기 조정 지침](https://msdn.microsoft.com/library/dn589774.aspx)을 참조하세요. 또한 역할 인스턴스와 작업자 프로세스 사이에 일대일 대응 관계를 유지할 필요가 없습니다(하나의 역할 인스턴스는 여러 작업자 프로세스를 구현할 수 있음). 자세한 내용은 [계산 리소스 통합 패턴](compute-resource-consolidation.md)을 참조하세요.
+Azure에서 사용할 수 있는 것과 같은 자동 크기 조정 기능은 큐 길이가 변동될 때 역할 인스턴스를 시작하고 중지하는 데 사용할 수 있습니다. 자세한 내용은 [자동 크기 조정 지침](https://msdn.microsoft.com/library/dn589774.aspx)을 참조하세요. 또한 역할 인스턴스와 작업자 프로세스 사이에 일대일 대응 관계를 유지할 필요가 없습니다(하나의 역할 인스턴스는 여러 작업자 프로세스를 구현할 수 있음). 자세한 내용은 [계산 리소스 통합 패턴](./compute-resource-consolidation.md)을 참조하세요.
 
 ## <a name="related-patterns-and-guidance"></a>관련 패턴 및 지침
 
@@ -184,8 +184,8 @@ Azure에서 사용할 수 있는 것과 같은 자동 크기 조정 기능은 �
 
 - [자동 크기 조정 지침](https://msdn.microsoft.com/library/dn589774.aspx). 애플리케이션이 메시지를 게시하는 큐의 길이가 변하기 때문에 소비자 서비스 인스턴스를 시작하고 중지할 수 있습니다. 자동 크기 조정은 최대 처리 시간 동안 처리량을 유지하는 데 도움을 줄 수 있습니다.
 
-- [계산 리소스 통합 패턴](compute-resource-consolidation.md). 비용과 관리 오버헤드를 줄이기 위해 소비자 서비스의 여러 인스턴스를 단일 프로세스에 통합할 수 있습니다. 계산 리소스 통합 패턴에서 이 방법에 따른 장점과 단점을 설명합니다.
+- [계산 리소스 통합 패턴](./compute-resource-consolidation.md) 비용과 관리 오버헤드를 줄이기 위해 소비자 서비스의 여러 인스턴스를 단일 프로세스에 통합할 수 있습니다. 계산 리소스 통합 패턴에서 이 방법에 따른 장점과 단점을 설명합니다.
 
-- [큐 기반 부하 평준화 패턴](queue-based-load-leveling.md). 메시지 큐를 도입하면 시스템에 복원력을 추가해 서비스 인스턴스가 애플리케이션 인스턴스에서 전송하는 광범위한 요청을 처리할 수 있습니다. 메시지 큐는 버퍼로 작용해 부하를 평준화합니다. 큐 기반 부하 평준화 패턴에서 이 시나리오를 자세히 설명합니다.
+- [큐 기반 부하 평준화 패턴](./queue-based-load-leveling.md). 메시지 큐를 도입하면 시스템에 복원력을 추가해 서비스 인스턴스가 애플리케이션 인스턴스에서 전송하는 광범위한 요청을 처리할 수 있습니다. 메시지 큐는 버퍼로 작용해 부하를 평준화합니다. 큐 기반 부하 평준화 패턴에서 이 시나리오를 자세히 설명합니다.
 
 - 이 패턴은 관련된 [샘플 애플리케이션](https://github.com/mspnp/cloud-design-patterns/tree/master/competing-consumers)을 제공합니다.

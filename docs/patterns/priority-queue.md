@@ -1,19 +1,17 @@
 ---
-title: 우선 순위 큐
+title: 우선 순위 큐 패턴
+titleSuffix: Cloud Design Patterns
 description: 우선 순위가 높은 요청을 우선 순위가 낮은 요청보다 먼저 받아서 처리하도록 서비스로 전송된 요청의 우선 순위를 지정합니다.
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- messaging
-- performance-scalability
-ms.openlocfilehash: 400bfbc03cf5640ff32a551636b01d60e6c0ec50
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: ddd9cc9ec85c6ed23fabaaa58424736ba1aa9421
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428502"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011126"
 ---
 # <a name="priority-queue-pattern"></a>우선 순위 큐 패턴
 
@@ -31,12 +29,11 @@ ms.locfileid: "47428502"
 
 ![그림 1 - 메시지 우선 순위 지정을 지원하는 큐 메커니즘 사용](./_images/priority-queue-pattern.png)
 
-> 대부분의 메시지 큐 구현은 [경쟁 소비자 패턴](https://msdn.microsoft.com/library/dn568101.aspx)에 따라 여러 소비자를 지원하며, 수요에 따라 소비자 프로세스의 수를 늘리거나 줄일 수 있습니다.
+> 대부분의 메시지 큐 구현은 [경쟁 소비자 패턴](./competing-consumers.md)에 따라 여러 소비자를 지원하며, 수요에 따라 소비자 프로세스의 수를 늘리거나 줄일 수 있습니다.
 
 우선 순위 기반 메시지 큐를 지원하지 않는 시스템에서 적용할 수 있는 다른 솔루션은 각 우선 순위마다 별도의 큐를 유지하는 것입니다. 애플리케이션은 해당 큐에 메시지를 게시해야 합니다. 각 큐에는 별도의 소비자 풀이 있을 수 있습니다. 우선 순위가 높은 큐는 우선 순위가 낮은 큐보다 더 빠른 하드웨어에서 실행되는 더 큰 소비자 풀을 가질 수 있습니다. 다음 그림에서는 각 우선 순위마다 별도의 메시지 큐를 사용하는 방법을 보여 줍니다.
 
 ![그림 2 - 각 우선 순위마다 별도의 메시지 큐 사용](./_images/priority-queue-separate.png)
-
 
 이 전략의 변형은 우선 순위가 높은 큐의 메시지를 먼저 확인한 다음, 우선 순위가 낮은 큐에서 메시지를 가져오기 시작하는 단일 소비자 풀을 갖는 것입니다. 단일 소비자 프로세스 풀을 사용하는 솔루션(우선 순위가 다른 메시지를 지원하는 단일 큐 또는 각각 단일 우선 순위의 메시지를 처리하는 큐를 여러 개 사용하는 솔루션) 및 각각 별도의 풀이 있는 큐를 여러 개 사용하는 솔루션 간에는 몇 가지 의미상의 차이가 있습니다.
 
@@ -88,7 +85,6 @@ Azure 솔루션은 애플리케이션에서 큐와 동일한 방식으로 메시
 
 ![그림 3 - Azure Service Bus 항목 및 구독으로 우선 순위 큐 구현](./_images/priority-queue-service-bus.png)
 
-
 위의 그림에서 애플리케이션은 여러 메시지를 만들고 각 메시지에 있는 `Priority`라는 사용자 지정 속성에 `High` 또는 `Low` 값을 할당합니다. 애플리케이션은 이러한 메시지를 토픽에 게시합니다. 토픽에는 `Priority` 속성을 검사하여 메시지를 필터링하는 데 관련된 두 개의 구독이 있습니다. 한 구독은 `Priority` 속성이 `High`로 설정된 메시지를 수락하고, 다른 한 구독은 `Priority` 속성이 `Low`로 설정된 메시지를 수락합니다. 소비자 풀은 각 구독에서 메시지를 읽습니다. 우선 순위가 높은 구독에는 더 큰 풀이 있으며, 이러한 소비자는 우선 순위가 낮은 풀의 소비자보다 리소스를 더 많이 사용할 수 있는 더 강력한 컴퓨터에서 실행될 수 있습니다.
 
 이 예에서 높음 및 낮음 우선 순위의 메시지 지정에는 특별한 의미가 없습니다. 다만 각 메시지의 속성으로 지정된 레이블일 뿐이며, 메시지를 특정 구독으로 보내는 데 사용됩니다. 추가 우선 순위가 필요한 경우 추가 구독 및 소비자 프로세스 풀을 비교적 쉽게 만들어 이러한 우선 순위를 처리할 수 있습니다.
@@ -121,6 +117,7 @@ public class PriorityWorkerRole : RoleEntryPoint
   }
 }
 ```
+
 `PriorityQueue.High` 및 `PriorityQueue.Low` 작업자 역할은 모두`ProcessMessage` 메서드의 기본 기능을 재정의합니다. 아래 코드에서는 `PriorityQueue.High` 작업자 역할에 대한 `ProcessMessage` 메서드를 보여 줍니다.
 
 ```csharp
@@ -166,15 +163,14 @@ this.queueManager.SendBatchAsync(highMessages).Wait();
 
 이 패턴을 구현할 때 다음 패턴 및 지침도 관련이 있을 수 있습니다.
 
-- 이 패턴을 [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/priority-queue)에서 사용할 수 있음을 보여주는 샘플.
+- 이 패턴의 사용을 보여주는 예제는 [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/priority-queue)에서 확인할 수 있습니다.
 
 - [비동기 메시징 입문](https://msdn.microsoft.com/library/dn589781.aspx). 요청을 처리하는 소비자 서비스에서 해당 요청을 게시한 애플리케이션의 인스턴스에 응답을 보내야 할 수도 있습니다. 요청/응답 메시지를 구현하는 데 사용할 수 있는 전략에 대한 정보를 제공하세요.
 
-- [경쟁 소비자 패턴](competing-consumers.md). 큐의 처리량을 늘리려면 동일한 큐에서 수신 대기하는 여러 소비자를 갖추고 작업을 병렬로 처리할 수 있습니다. 이러한 소비자는 메시지를 얻기 위해 경쟁하지만, 한 소비자만 각 메시지를 처리할 수 있어야 합니다. 이 방식을 구현할 경우의 장단점에 대한 자세한 정보를 제공하세요.
+- [경쟁 소비자 패턴](./competing-consumers.md). 큐의 처리량을 늘리려면 동일한 큐에서 수신 대기하는 여러 소비자를 갖추고 작업을 병렬로 처리할 수 있습니다. 이러한 소비자는 메시지를 얻기 위해 경쟁하지만, 한 소비자만 각 메시지를 처리할 수 있어야 합니다. 이 방식을 구현할 경우의 장단점에 대한 자세한 정보를 제공하세요.
 
-- [제한 패턴](throttling.md). 큐를 사용하여 제한을 구현할 수 있습니다. 우선 순위 메시지를 사용하여 덜 중요한 애플리케이션의 요청보다 높은 우선 순위를 중요한 애플리케이션 또는 고부가 가치 고객이 실행하는 애플리케이션의 요청에 지정할 수 있습니다.
+- [제한 패턴](./throttling.md). 큐를 사용하여 제한을 구현할 수 있습니다. 우선 순위 메시지를 사용하여 덜 중요한 애플리케이션의 요청보다 높은 우선 순위를 중요한 애플리케이션 또는 고부가 가치 고객이 실행하는 애플리케이션의 요청에 지정할 수 있습니다.
 
 - [자동 크기 조정 지침](https://msdn.microsoft.com/library/dn589774.aspx). 큐의 길이에 따라 큐를 처리하는 소비자 프로세스 풀의 크기를 조정할 수 있습니다. 이 전략은 특히 우선 순위가 높은 메시지를 처리하는 풀의 성능을 향상시키는 데 도움이 됩니다.
 
 - [Service Bus가 있는 엔터프라이즈 통합 패턴](https://abhishekrlal.com/2013/01/11/enterprise-integration-patterns-with-service-bus-part-2/)(Abhishek Lal의 블로그)
-

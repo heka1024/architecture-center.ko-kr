@@ -1,19 +1,17 @@
 ---
-title: 리더 선택
+title: 리더 선택 패턴
+titleSuffix: Cloud Design Patterns
 description: 인스턴스 중 하나를 다른 인스턴스를 관리하는 리더로 선택하여 분산된 애플리케이션의 공동 작업 인스턴스 컬렉션이 수행하는 작업을 조정합니다.
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- design-implementation
-- resiliency
-ms.openlocfilehash: 6cc4b19e889cc9fc692e388498cc16ea56b1c981
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: cfc29e3490735c16b41c494e6cecbb8972cdc705
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429199"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54010142"
 ---
 # <a name="leader-election-pattern"></a>리더 선택 패턴
 
@@ -41,6 +39,7 @@ ms.locfileid: "47429199"
 시스템이 리더를 선택하는 강력한 메커니즘을 제공해야 합니다. 이 메서드는 네트워크 가동 중단 또는 프로세스 실패와 같은 이벤트를 처리해야 합니다. 많은 솔루션에서 하위 태스크 인스턴스는 일부 유형의 하트비트 메서드 또는 폴링을 통해 리더를 모니터합니다. 지정된 리더가 예기치 않게 종료되거나 네트워크 오류로 인해 하위 태스크 인스턴스에서 리더를 사용할 수 없는 경우 하위 태스크 인스턴스가 새 리더를 선택해야 합니다.
 
 다음을 포함하여 분산 환경의 태스크 집합 중에서 리더를 선택하는 몇 가지 전략이 있습니다.
+
 - 순위가 가장 낮은 인스턴스 또는 프로세스 ID를 가진 태스크 인스턴스 선택.
 - 공유 분산 뮤텍스를 확보하기 위해 경합. 뮤텍스를 확보하는 첫 번째 태스크 인스턴스가 리더가 됩니다. 그러나 리더가 종료되거나 시스템의 나머지 부분에서 연결이 끊길 경우 뮤텍스가 해제되어 다른 태스크 인스턴스가 리더가 될 수 있도록 해야 합니다.
 - [Bully 알고리즘](https://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/BullyExample.html) 또는 [Ring 알고리즘](https://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/RingElectExample.html)과 같은 공용 리더 선택 알고리즘 중 하나 구현. 이러한 알고리즘은 각 선택 후보에 고유 ID가 있으며 다른 후보와 안정적으로 통신할 수 있다고 가정합니다.
@@ -48,6 +47,7 @@ ms.locfileid: "47429199"
 ## <a name="issues-and-considerations"></a>문제 및 고려 사항
 
 이 패턴을 구현할 방법을 결정할 때 다음 사항을 고려하세요.
+
 - 리더 선택 프로세스는 일시적 오류와 지속적 오류에 대한 복원력이 있어야 합니다.
 - 리더가 실패했거나 달리 사용할 수 없게 되면(예: 통신 오류) 감지할 수 있어야 합니다. 필요한 감지 속도는 시스템에 따라 다릅니다. 일부 시스템은 짧은 시간 동안 리더 없이 작동할 수 있으며, 일시적 결함은 이 시간 동안 해결될 수 있습니다. 리더 오류를 즉시 감지하고 새 선택을 트리거해야 하는 경우도 있습니다.
 - 수평적 자동 크기 조정을 구현하는 시스템에서는 시스템이 다시 축소되고 일부 계산 리소스를 종료할 경우 리더가 종료될 수 있습니다.
@@ -59,9 +59,10 @@ ms.locfileid: "47429199"
 
 클라우드에 호스트된 솔루션과 같은 분산 애플리케이션의 태스크에 신중한 조정이 필요하고 자연 리더가 없는 경우 이 패턴을 사용합니다.
 
->  리더가 시스템의 병목 상태가 되지 않도록 합니다. 리더의 목적은 하위 태스크의 작업을 조정하는 것이며 이 작업 자체에 반드시 참여해야 하는 것은 아닙니다. 단, 태스크가 리더로 선택되지 않은 경우에는 참여할 수 있어야 합니다.
+> 리더가 시스템의 병목 상태가 되지 않도록 합니다. 리더의 목적은 하위 태스크의 작업을 조정하는 것이며 이 작업 자체에 반드시 참여해야 하는 것은 아닙니다. 단, 태스크가 리더로 선택되지 않은 경우에는 참여할 수 있어야 합니다.
 
 이 패턴은 다음과 같은 경우 유용하지 않을 수 있습니다.
+
 - 항상 리더 역할을 할 수 있는 자연 리더 또는 전용 프로세스가 있는 경우. 예를 들어 태스크 인스턴스를 조정하는 단일 프로세스를 구현할 수 있습니다. 이 프로세스가 실패하거나 비정상 상태가 되면 시스템이 종료하고 다시 시작할 수 있습니다.
 - 더 경량 방법을 사용하여 태스크 간 조정을 수행할 수 있는 경우. 예를 들어 단순히 여러 태스크 인스턴스에 공유 리소스에 대한 조정된 액세스가 필요한 경우 더 나은 솔루션은 낙관적 또는 비관적 잠금을 사용하여 액세스를 제어하는 것입니다.
 - 타사 솔루션이 더 적합한 경우. 예를 들어 Microsoft Azure HDInsight 서비스(Apache Hadoop 기반)는 Apache Zookeeper에서 제공하는 서비스를 사용하여 맵을 조정하고 데이터를 수집 및 요약하는 태스크를 줄입니다.
@@ -70,8 +71,8 @@ ms.locfileid: "47429199"
 
 LeaderElection 솔루션의 DistributedMutex 프로젝트([GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/leader-election)에서 이 패턴을 보여 주는 샘플을 확인할 수 있음)는 Azure Storage Blob의 임대를 사용하여 공유 분산 뮤텍스를 구현하는 메커니즘을 제공하는 방법을 보여 줍니다. 이 뮤텍스를 사용하여 Azure 클라우드 서비스의 역할 인스턴스 그룹 중에서 리더를 선택할 수 있습니다. 임대를 획득한 첫 번째 역할 인스턴스가 리더로 선택되고, 임대를 해제하거나 임대를 갱신할 수 없을 때까지 리더로 유지됩니다. 다른 역할 인스턴스는 리더를 더 이상 사용할 수 없는 경우를 위해 Blob 임대를 계속 모니터할 수 있습니다.
 
->  Blob 임대는 Blob에 대한 배타적 쓰기 잠금입니다. 단일 Blob은 언제든지 한 임대의 주체만 될 수 있습니다. 역할 인스턴스가 지정된 Blob에 대한 임대를 요청할 수 있으며, 동일한 Blob에 대한 임대를 보유한 다른 역할 인스턴스가 없는 경우 임대가 부여됩니다. 다른 역할 인스턴스가 임대를 보유한 경우 요청에서 예외가 발생합니다.
-> 
+> Blob 임대는 Blob에 대한 배타적 쓰기 잠금입니다. 단일 Blob은 언제든지 한 임대의 주체만 될 수 있습니다. 역할 인스턴스가 지정된 Blob에 대한 임대를 요청할 수 있으며, 동일한 Blob에 대한 임대를 보유한 다른 역할 인스턴스가 없는 경우 임대가 부여됩니다. 다른 역할 인스턴스가 임대를 보유한 경우 요청에서 예외가 발생합니다.
+>
 > 결함 있는 역할 인스턴스가 임대를 무기한 유지하는 것을 방지하려면 임대 수명을 지정합니다. 이 수명이 만료되면 임대를 사용할 수 있게 됩니다. 그러나 역할 인스턴스가 임대를 보유하는 동안 임대가 갱신되도록 요청할 수 있으며, 추가 기간 동안 임대가 부여됩니다. 역할 인스턴스가 임대를 유지하려는 경우 이 프로세스를 계속 반복할 수 있습니다.
 > Blob 임대 방법에 대한 자세한 내용은 [Blob 임대(REST API)](https://msdn.microsoft.com/library/azure/ee691972.aspx)를 참조하세요.
 
@@ -167,7 +168,6 @@ public class BlobDistributedMutex
 
 ![그림 1은 BlobDistributedMutex 클래스의 함수를 보여 줍니다.](./_images/leader-election-diagram.png)
 
-
 다음 코드 예제는 작업자 역할에 `BlobDistributedMutex` 클래스를 사용하는 방법을 보여 줍니다. 이 코드는 개발 저장소의 임대 컨테이너에 있는 `MyLeaderCoordinatorTask` Blob에 대한 임대를 획득하고, 역할 인스턴스가 리더로 선택된 경우 `MyLeaderCoordinatorTask` 메서드에 정의된 코드가 실행되도록 지정합니다.
 
 ```csharp
@@ -186,6 +186,7 @@ private static async Task MyLeaderCoordinatorTask(CancellationToken token)
 ```
 
 샘플 솔루션에 대한 다음 사항에 유의하세요.
+
 - Blob은 잠재적인 단일 실패 지점입니다. Blob 서비스를 사용할 수 없거나 액세스할 수 없는 경우 리더가 임대를 갱신할 수 없으며 다른 역할 인스턴스도 임대를 획득할 수 없습니다. 이 경우 리더 역할을 할 수 있는 역할 인스턴스가 없습니다. 그러나 Blob 서비스는 복원력이 있도록 디자인되었으므로 Blob 서비스가 완전히 실패할 가능성은 거의 없습니다.
 - 리더가 수행 중인 태스크가 중단되면 리더가 임대를 계속 갱신하여 다른 역할 인스턴스가 태스크를 조정하기 위해 임대를 획득하고 리더 역할을 맡지 못하도록 할 수 있습니다. 프로덕션에서는 리더의 상태를 자주 확인해야 합니다.
 - 선택 프로세스는 비결정적입니다. 어떤 역할 인스턴스가 Blob 임대를 획득하고 리더가 될지 가정할 수 없습니다.
@@ -194,6 +195,7 @@ private static async Task MyLeaderCoordinatorTask(CancellationToken token)
 ## <a name="related-patterns-and-guidance"></a>관련 패턴 및 지침
 
 이 패턴을 구현할 때 다음 지침도 관련이 있을 수 있습니다.
+
 - 이 패턴에는 다운로드 가능한 [샘플 애플리케이션](https://github.com/mspnp/cloud-design-patterns/tree/master/leader-election)이 있습니다.
 - [자동 크기 조정 지침](https://msdn.microsoft.com/library/dn589774.aspx). 애플리케이션의 부하가 변경됨에 따라 태스크 호스트 인스턴스를 시작 및 중지할 수 있습니다. 자동 크기 조정을 사용하면 최고 처리 시간 동안 처리량과 성능을 유지할 수 있습니다.
 - [Compute 분할 지침](https://msdn.microsoft.com/library/dn589773.aspx) 이 지침은 서비스의 확장성, 성능, 가용성 및 보안을 유지하면서 실행 비용을 최소화하는 데 도움이 되는 방식으로 클라우드 서비스의 호스트에 태스크를 할당하는 방법을 설명합니다.

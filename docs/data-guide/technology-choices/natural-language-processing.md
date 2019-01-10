@@ -3,18 +3,22 @@ title: 자연어 처리 기술 선택
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: b1cb019164285d16b6e9d34eae220801785adab9
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 699e01bc9905d02fc8ec1113039087189f6e8caf
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902311"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114116"
 ---
 # <a name="choosing-a-natural-language-processing-technology-in-azure"></a>Azure에서 자연어 처리 기술 선택
 
 자유 형식 텍스트 처리는 일반적으로 검색을 지원하기 위해 텍스트 단락을 포함하는 문서에 대해 수행되지만, 감성 분석, 토픽 감지, 언어 감지, 핵심 구 추출 및 문서 분류와 같은 기타 NLP(자연어 처리) 작업을 수행하는 데도 사용됩니다. 이 문서에서는 NLP 작업을 지원하는 기술 선택 사항을 집중적으로 설명합니다.
 
+<!-- markdownlint-disable MD026 -->
+
 ## <a name="what-are-your-options-when-choosing-an-nlp-service"></a>NLP 서비스를 선택할 때 사용할 수 있는 옵션은 무엇인가요?
+
+<!-- markdownlint-enable MD026 -->
 
 Azure에서 다음 서비스는 NLP(자연어 처리) 기능을 제공합니다.
 
@@ -36,21 +40,21 @@ Azure에서 다음 서비스는 NLP(자연어 처리) 기능을 제공합니다.
 
 ## <a name="capability-matrix"></a>기능 매트릭스
 
-다음 표에서는 주요 기능 차이점을 요약해서 보여 줍니다.  
+다음 표에서는 주요 기능 차이점을 요약해서 보여 줍니다.
 
 ### <a name="general-capabilities"></a>일반 기능
 
 | | Azure HDInsight | Microsoft Cognitive Services |
 | --- | --- | --- |
-| 미리 학습된 모델을 서비스로 제공합니다. | 아니요 | yes |
-| REST API | yes | yes |
+| 미리 학습된 모델을 서비스로 제공합니다. | 아니요 | 예 |
+| REST API | 예 | 예 |
 | 프로그래밍 기능 | Python, Scala, Java | C#, Java, Node.js, Python, PHP, Ruby |
-| 빅 데이터 집합 및 대형 문서의 처리를 지원합니다. | yes | 아니요 |
+| 빅 데이터 집합 및 대형 문서의 처리를 지원합니다. | 예 | 아니요 |
 
 ### <a name="low-level-natural-language-processing-capabilities"></a>기본적인 자연어 처리 기능
 
 | | Azure HDInsight | Microsoft Cognitive Services |  
-| --- | --- | --- | 
+| --- | --- | --- |
 | 토크나이저 | 예(Spark NLP) | 예(Linguistic Analysis API) |
 | 형태소 분석기 | 예(Spark NLP) | 아니요 |
 | 기본형 분석기 | 예(Spark NLP) | 아니요 |
@@ -63,8 +67,8 @@ Azure에서 다음 서비스는 NLP(자연어 처리) 기능을 제공합니다.
 ### <a name="high-level-natural-language-processing-capabilities"></a>고급 자연어 처리 기능
 
 | | Azure HDInsight | Microsoft Cognitive Services |
-| --- | --- | --- | 
-| 엔터티/의도 식별 및 추출 | 아니요 | 예(LUIS(언어 인식 인텔리전트 서비스) API) |    
+| --- | --- | --- |
+| 엔터티/의도 식별 및 추출 | 아니요 | 예(LUIS(언어 인식 인텔리전트 서비스) API) |
 | 토픽 검색 | 예(Spark NLP) | 예(Text Analytics API) |
 | 맞춤법 검사 | 예(Spark NLP) | 예(Bing Spell Check API) |
 | 정서 분석 | 예(Spark NLP) | 예(Text Analytics API) |

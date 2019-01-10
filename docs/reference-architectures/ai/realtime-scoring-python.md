@@ -2,15 +2,15 @@
 title: Python 모델의 실시간 점수 매기기
 titleSuffix: Azure Reference Architectures
 description: 이 참조 아키텍처에서는 Python 모델을 Azure에서 웹 서비스로 배포하여 실시간으로 예측하는 방법을 보여줍니다.
-author: njray
+author: msalvaris
 ms.date: 11/09/2018
 ms.custom: azcat-ai
-ms.openlocfilehash: e2312d1d1d2444f9915f4e6aa067c1487e096d3e
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: b40072b43630adf13e8ead0b6aa6bec59ca1bfac
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120359"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54110895"
 ---
 # <a name="real-time-scoring-of-python-scikit-learn-and-deep-learning-models-on-azure"></a>Azure의 Python Scikit-Learn 및 딥러닝 모델의 실시간 채점
 
@@ -90,7 +90,7 @@ GPU 지원 VM을 사용하는 딥 러닝 시나리오의 경우 pod에 대한 �
 
 AKS 성능에 대한 가시성은 [컨테이너용 Azure Monitor][monitor-containers] 기능을 사용합니다. Metrics API를 통해 Kubernetes에서 사용할 수 있는 컨트롤러, 노드 및 컨테이너의 메모리 및 프로세서 메트릭을 수집합니다.
 
-애플리케이션을 배포하는 동안 AKS 클러스터를 모니터링하여 예상대로 작동하는지, 모든 노드가 작동하는지 및 모든 pod가 실행되는지 확인합니다. [kubectl][kubectl] 명령줄 도구를 사용하여 pod 상태를 검색할 수 있지만 Kubernetes에는 클러스터 상태 및 관리를 기본적으로 모니터링하는 웹 대시보드도 포함됩니다.
+애플리케이션을 배포하는 동안 AKS 클러스터를 모니터링하여 예상대로 작동하는지, 모든 노드가 작동하는지 및 모든 pods가 실행되는지 확인합니다. [kubectl][kubectl] 명령줄 도구를 사용하여 pod 상태를 검색할 수 있지만 Kubernetes에는 클러스터 상태 및 관리를 기본적으로 모니터링하는 웹 대시보드도 포함됩니다.
 
 ![Kubernetes 대시보드의 스크린샷](./_images/python-kubernetes-dashboard.png)
 

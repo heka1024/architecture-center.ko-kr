@@ -5,12 +5,12 @@ description: 서버리스 웹 애플리케이션 및 웹 API에 권장되는 아
 author: MikeWasson
 ms.date: 10/16/2018
 ms.custom: seodec18
-ms.openlocfilehash: ee735ac4f23cc2a819e2322bd9c4fb3b5adf5f3b
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 71c6bcdb35ba19435566086386ba7260581fec19
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120314"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011398"
 ---
 # <a name="serverless-web-application-on-azure"></a>Azure의 서버리스 웹 애플리케이션
 
@@ -62,7 +62,7 @@ API Management에서 제공하는 기능 중 일부만 필요한 경우 다른 �
 
 **Azure Monitor** [Monitor][monitor]는 솔루션에 배포된 Azure 서비스에 대한 성능 메트릭을 수집합니다. 이러한 메트릭을 대시보드에서 시각화하여 솔루션의 상태를 볼 수 있습니다. 또한 애플리케이션 로그도 수집합니다.
 
-**Azure Pipelines**. [Pipelines][pipelines]는 응용 프로그램을 빌드, 테스트 및 배포하는 CI(지속적인 통합) 및 CD(지속적인 업데이트) 서비스입니다.
+**Azure Pipelines**. [Pipelines][pipelines]는 애플리케이션을 빌드, 테스트 및 배포하는 CI(지속적인 통합) 및 CD(지속적인 업데이트) 서비스입니다.
 
 ## <a name="recommendations"></a>권장 사항
 

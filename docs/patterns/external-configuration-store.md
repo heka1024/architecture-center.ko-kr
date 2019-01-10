@@ -1,29 +1,27 @@
 ---
-title: 외부 구성 저장소
+title: 외부 구성 저장소 패턴
+titleSuffix: Cloud Design Patterns
 description: 구성 정보를 애플리케이션 배포 패키지에서 중앙 위치로 이동합니다.
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- design-implementation
-- management-monitoring
-ms.openlocfilehash: 733ca979903d1526d3a1a6b281a8903893e19fda
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.custom: seodec18
+ms.openlocfilehash: 7e37e5bc052a9d8e8747a3a4ac3d79a311185ea4
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582787"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011313"
 ---
 # <a name="external-configuration-store-pattern"></a>외부 구성 저장소 패턴
 
 [!INCLUDE [header](../_includes/header.md)]
 
-구성 정보를 애플리케이션 배포 패키지에서 중앙 위치로 이동합니다. 이렇게 하면 구성 데이터를 더 쉽게 관리하고 제어하며 구성 데이터를 애플리케이션과 애플리케이션 인스턴스에서 공유할 기회를 제공할 수 있습니다.
+구성 정보를 애플리케이션 배포 패키지에서 중앙 위치로 이동합니다. 이렇게 하면 구성 데이터를 더 쉽게 관리하고 제어하며 구성 데이터를 응용 프로그램과 응용 프로그램 인스턴스에서 공유할 기회를 제공할 수 있습니다.
 
 ## <a name="context-and-problem"></a>컨텍스트 및 문제점
 
-대부분의 애플리케이션 런타임 환경은 애플리케이션과 함께 배포된 파일에 보관되는 구성 정보를 포함합니다. 그런데 배포 후 이런 파일을 편집해 애플리케이션 동작을 변경할 수 없는 경우가 있습니다. 그런 경우 구성을 변경하려면 애플리케이션을 재배포해야 하는데, 애플리케이션의 재배포는 용납할 수 없는 가동 중지 시간 및 다른 관리 오버헤드를 초래하는 경우가 많습니다.
+대부분의 응용 프로그램 런타임 환경은 응용 프로그램과 함께 배포된 파일에 보관되는 구성 정보를 포함합니다. 그런데 배포 후 이런 파일을 편집해 애플리케이션 동작을 변경할 수 없는 경우가 있습니다. 그런 경우 구성을 변경하려면 애플리케이션을 재배포해야 하는데, 애플리케이션의 재배포는 용납할 수 없는 가동 중지 시간 및 다른 관리 오버헤드를 초래하는 경우가 많습니다.
 
 로컬 구성 파일 역시 구성을 단일 애플리케이션으로 제한하지만, 때로 여러 애플리케이션에서 구성 설정을 공유하는 데 로컬 구성 파일이 유용할 수 있습니다. 그와 같은 사례로는 데이터베이스 연결 문자열, UI 테마 정보, 큐의 URL 및 애플리케이션의 관련 집합이 사용하는 저장소를 꼽을 수 있습니다.
 
@@ -41,12 +39,11 @@ ms.locfileid: "26582787"
 
 ![선택적 로컬 캐시가 있는 외부 구성 저장소 패턴의 개요](./_images/external-configuration-store-overview.png)
 
-
 ## <a name="issues-and-considerations"></a>문제 및 고려 사항
 
 이 패턴을 구현할 방법을 결정할 때 다음 사항을 고려하세요.
 
-수락할 수 있는 성능, 고가용성, 견고성을 제공하고 애플리케이션 유지와 관리 프로세스의 일부로 백업할 수 있는 백업 저장소를 선택합니다. 클라우드 호스티드 애플리케이션에서 클라우드 저장소 메커니즘의 사용은 이런 요구 사항을 충족하는 일반적인 선택입니다.
+수락할 수 있는 성능, 고가용성, 견고성을 제공하고 응용 프로그램 유지와 관리 프로세스의 일부로 백업할 수 있는 백업 저장소를 선택합니다. 클라우드 호스티드 애플리케이션에서 클라우드 저장소 메커니즘의 사용은 이런 요구 사항을 충족하는 일반적인 선택입니다.
 
 백업 저장소의 스키마를 보관할 수 있는 정보 유형에 유연성을 제공할 수 있는 방식으로 설계합니다. 형식화된 데이터, 설정 모음, 설정의 여러 버전 및 사용 중인 애플리케이션에 필요한 다른 모든 기능과 같은 구성 요구 사항을 모두 제공하는지 확인합니다. 요구 사항이 변경될 때 추가 설정을 지원하도록 스키마는 확장하기 쉬워야 합니다.
 
@@ -66,19 +63,19 @@ ms.locfileid: "26582787"
 
 ## <a name="when-to-use-this-pattern"></a>이 패턴을 사용해야 하는 경우
 
-이 패턴은 다음에 유용합니다.
+이 패턴은 다음의 경우에 유용합니다.
 
-- 구성 설정이 여러 애플리케이션과 애플리케이션 인스턴스에 공유되는 경우 또는 여러 애플리케이션과 애플리케이션 인스턴스에 표준 구성을 사용해야 하는 경우
+- 구성 설정이 여러 응용 프로그램과 응용 프로그램 인스턴스에 공유되는 경우 또는 여러 응용 프로그램과 응용 프로그램 인스턴스에 표준 구성을 사용해야 하는 경우
 
 - 이미지 저장 또는 복잡한 데이터 유형과 같은 필요한 구성 설정을 모두 지원하지는 않는 표준 구성 시스템
 
 - 애플리케이션의 일부 설정에 대한 보조 저장소로, 애플리케이션이 중앙 집중식으로 저장하는 설정의 일부 또는 전부를 재정의할 수 있는 경우
 
-- 여러 애플리케이션의 관리를 단순화하는 방식으로 구성 저장소에 대한 액세스의 일부 또는 모든 유형을 로그하여 구성 설정의 사용을 선택적으로 모니터링하는 경우
+- 여러 응용 프로그램의 관리를 단순화하는 방식으로 구성 저장소에 대한 액세스의 일부 또는 모든 유형을 로그하여 구성 설정의 사용을 선택적으로 모니터링하는 경우
 
 ## <a name="example"></a>예
 
-Microsoft Azure 호스티드 애플리케이션에서 구성 정보를 외부적으로 저장하기 위한 대표적인 선택은 Azure Storage를 사용하는 것입니다. Azure Storage는 복원력이 있고, 고성능을 제공하며, 자동 장애 조치(Failover)로 3번 복제되어 고가용성을 제공합니다. Azure Table Storage는 값에 유연한 스키마를 사용할 수 있는 키/값 저장소를 제공합니다. Azure Blob Storage는 데이터의 유형을 개별적으로 명명된 blob에 보관할 수 있는 계층적 컨테이너 기반 저장소를 제공합니다.
+Microsoft Azure 호스티드 응용 프로그램에서 구성 정보를 외부적으로 저장하기 위한 대표적인 선택은 Azure Storage를 사용하는 것입니다. Azure Storage는 복원력이 있고, 고성능을 제공하며, 자동 장애 조치(Failover)로 3번 복제되어 고가용성을 제공합니다. Azure Table Storage는 값에 유연한 스키마를 사용할 수 있는 키/값 저장소를 제공합니다. Azure Blob Storage는 데이터의 유형을 개별적으로 명명된 blob에 보관할 수 있는 계층적 컨테이너 기반 저장소를 제공합니다.
 
 다음 예제는 구성 저장소를 구성 정보를 저장하고 표시하는 Blob 저장소로 구현하는 방법을 보여 줍니다. `BlobSettingsStore` 클래스는 구성 정보를 보관하는 Blob 저장소를 추상화하고, 다음 코드에 제시되는 `ISettingsStore` 인터페이스를 구현합니다.
 
@@ -101,7 +98,7 @@ public interface ISettingsStore
 
 모든 설정은 빠른 액세스를 위해 `ExternalConfigurationManager` 클래스 내의 `Dictionary` 개체에 캐시되기도 합니다. 구성 설정을 검색하는 데 사용되는 `GetSetting` 메서드는 캐시에서 데이터를 읽습니다. 설정이 캐시에 없으면 그 대신 `BlobSettingsStore` 개체에서 가져옵니다.
 
-`GetSettings` 메서드는 `CheckForConfigurationChanges` 메서드를 호출해 blob 저장소의 구성 정보가 변경되었는지 여부를 검색합니다. 이런 검색은 버전 번호를 검사하고 검사한 버전 번호와 `ExternalConfigurationManager` 개체에 보관된 현재 버전 번호의 비교를 통해 이루어집니다. 하나 이상의 변경 내용이 발생하면 `Changed` 이벤트가 발생하고 `Dictionary` 개체에 캐시된 구성 설정이 새로 고쳐집니다. 이런 과정은 [캐시 배제 패턴](cache-aside.md)의 적용에 해당합니다.
+`GetSettings` 메서드는 `CheckForConfigurationChanges` 메서드를 호출해 blob 저장소의 구성 정보가 변경되었는지 여부를 검색합니다. 이런 검색은 버전 번호를 검사하고 검사한 버전 번호와 `ExternalConfigurationManager` 개체에 보관된 현재 버전 번호의 비교를 통해 이루어집니다. 하나 이상의 변경 내용이 발생하면 `Changed` 이벤트가 발생하고 `Dictionary` 개체에 캐시된 구성 설정이 새로 고쳐집니다. 이런 과정은 [캐시 배제 패턴](./cache-aside.md)의 적용에 해당합니다.
 
 다음 코드 샘플은 `Changed` 이벤트, `GetSettings` 메서드 및 `CheckForConfigurationChanges` 메서드의 구현 방법을 보여줍니다.
 
@@ -130,7 +127,7 @@ public class ExternalConfigurationManager : IDisposable
   public string GetAppSetting(string key)
   {
     ...
-    // Try to get the value from the settings cache. 
+    // Try to get the value from the settings cache.
     // If there's a cache miss, get the setting from the settings store and refresh the settings cache.
 
     string value;
@@ -331,7 +328,7 @@ public override void Run()
 }
 ```
 
-역시 `WorkerRole` 클래스에서 가져온 다음 코드도 애플리케이션이 구성 이벤트를 구독하는 방법을 보여 줍니다.
+역시 `WorkerRole` 클래스에서 가져온 다음 코드도 응용 프로그램이 구성 이벤트를 구독하는 방법을 보여 줍니다.
 
 ```csharp
 public override bool OnStart()
@@ -348,4 +345,4 @@ public override bool OnStart()
 
 ## <a name="related-patterns-and-guidance"></a>관련 패턴 및 지침
 
-- 이 패턴을 [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/external-configuration-store)에서 사용할 수 있음을 보여주는 샘플.
+- 이 패턴의 사용을 보여주는 예제는 [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/external-configuration-store)에서 확인할 수 있습니다.

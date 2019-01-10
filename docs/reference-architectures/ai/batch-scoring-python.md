@@ -2,14 +2,14 @@
 title: Azure에서 Python 모델 일괄 채점
 description: Azure Batch AI를 사용하여 정기적으로 모델을 동시에 일괄 채점하기 위한 확장 가능한 솔루션을 동시에 빌드하세요.
 author: njray
-ms.date: 12/13/18
+ms.date: 12/13/2018
 ms.custom: azcat-ai
-ms.openlocfilehash: 93fc0c81663931c0a8b0f54b41934287056e6953
-ms.sourcegitcommit: fb22348f917a76e30a6c090fcd4a18decba0b398
+ms.openlocfilehash: 4c43a3dadab11cb8dcf163cf63618795299283ad
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/16/2018
-ms.locfileid: "53450831"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111054"
 ---
 # <a name="batch-scoring-of-python-models-on-azure"></a>Azure에서 Python 모델 일괄 채점
 
@@ -43,7 +43,7 @@ ms.locfileid: "53450831"
 
 ### <a name="parallelizing-across-vms-vs-cores"></a>VM 및 코어에서의 병렬 처리
 
-일괄 처리 모드로 여러 모델의 채점 프로세스를 실행할 때는 VM 전체에서 작업을 병렬 처리해야 합니다. 두 가지 방법이 가능합니다. 
+일괄 처리 모드로 여러 모델의 채점 프로세스를 실행할 때는 VM 전체에서 작업을 병렬 처리해야 합니다. 두 가지 방법이 가능합니다.
 
 * 저비용 VM을 사용하여 대규모 클러스터를 만듭니다.
 

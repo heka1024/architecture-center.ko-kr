@@ -5,12 +5,12 @@ description: Azure에서 실행되는 기본 웹 애플리케이션에 권장하
 author: MikeWasson
 ms.date: 12/12/2017
 ms.custom: seodec18
-ms.openlocfilehash: 17750a57835f017d13eb205a7b4e821a5834b741
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 2b985052e8799a8aa108fc6921d48cb8e003e480
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120257"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114303"
 ---
 # <a name="run-a-basic-web-application-in-azure"></a>Azure의 기본 웹 애플리케이션 실행
 
@@ -30,7 +30,7 @@ ms.locfileid: "53120257"
 
 - **리소스 그룹**. [리소스 그룹](/azure/azure-resource-manager/resource-group-overview)은 Azure 리소스에 대한 논리적 컨테이너입니다.
 
-- **App Service 앱**. [Azure App Service][app-service]는 클라우드 응용 프로그램을 만들고 배포하기 위한 완전히 관리되는 플랫폼입니다.
+- **App Service 앱**. [Azure App Service][app-service]는 클라우드 애플리케이션을 만들고 배포하기 위한 완전히 관리되는 플랫폼입니다.
 
 - **App Service 계획**. [App Service 계획][app-service-plans]은 앱을 호스트하는 관리되는 VM(가상 머신)을 제공합니다. 계획과 연결된 모든 앱은 같은 VM 인스턴스에서 실행됩니다.
 
@@ -158,7 +158,7 @@ App Service App에는 라이브 프로덕션 사이트를 나타내는 `producti
 
 애플리케이션 로깅 및 웹 서버 로깅을 포함하여 [진단 로깅][diagnostic-logs]을 사용하도록 설정합니다. Blob Storage를 사용하도록 로깅을 구성합니다. 성능을 위해 진단 로그를 저장할 별도의 저장소 계정을 만듭니다. 로그와 애플리케이션 데이터에 동일한 저장소 계정을 사용하지 마세요. 로깅에 대한 자세한 내용은 [모니터링 및 진단 지침][monitoring-guidance]을 참조하세요.
 
-[New Relic][ new-relic] 또는 [Application Insights][app-insights] 같은 서비스를 사용하여 응용 프로그램 성능 및 부하를 받을 때의 동작을 모니터링합니다. Application Insights에 대한 [데이터 속도 제한][app-insights-data-rate]을 알아둡니다.
+[New Relic][new-relic] 또는 [Application Insights][app-insights] 같은 서비스를 사용하여 애플리케이션 성능 및 부하를 받을 때의 동작을 모니터링합니다. Application Insights에 대한 [데이터 속도 제한][app-insights-data-rate]을 알아둡니다.
 
 [Azure DevOps][azure-devops] 또는 [Visual Studio Team Foundation Server][tfs]와 같은 도구를 사용하여 부하 테스트를 수행합니다. 클라우드 애플리케이션의 성능 분석에 대한 개요는 [Performance Analysis Primer][perf-analysis]를 참조하세요.
 
@@ -166,7 +166,7 @@ App Service App에는 라이브 프로덕션 사이트를 나타내는 `producti
 
 - Azure Portal에 [문제 해결 블레이드][troubleshoot-blade]를 사용하여 일반적인 문제에 대한 해결 방법을 찾습니다.
 - [로그 스트리밍][web-app-log-stream]을 사용하도록 설정하여 로그 정보를 거의 실시간으로 확인할 수 있습니다.
-- [Kudu 대시보드][ kudu]에는 응용 프로그램을 모니터링하고 디버깅하기 위한 여러 도구가 있습니다. 자세한 내용은 [Azure Websites online tools you should know about][kudu](알아 두면 도움이 되는 Azure 웹 사이트 온라인 도구)(블로그 게시물)를 참조하세요. Azure Portal에서 Kudu 대시보드에 연결할 수 있습니다. 앱의 블레이드를 열고 **도구**, **Kudu**를 차례로 클릭합니다.
+- [Kudu 대시보드][kudu]에는 애플리케이션을 모니터링하고 디버깅하기 위한 여러 도구가 있습니다. 자세한 내용은 [Azure Websites online tools you should know about][kudu](알아 두면 도움이 되는 Azure 웹 사이트 온라인 도구)(블로그 게시물)를 참조하세요. Azure Portal에서 Kudu 대시보드에 연결할 수 있습니다. 앱의 블레이드를 열고 **도구**, **Kudu**를 차례로 클릭합니다.
 - Visual Studio를 사용하는 경우 [Visual Studio를 사용하여 Azure App Service에서 웹앱 문제 해결][troubleshoot-web-app]에서 디버깅 및 문제 해결 팁을 참조하세요.
 
 ## <a name="security-considerations"></a>보안 고려 사항
@@ -232,7 +232,7 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 [aad-auth]: /azure/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication
 [app-insights]: /azure/application-insights/app-insights-overview
 [app-insights-data-rate]: /azure/application-insights/app-insights-pricing
-[app-service]: https://azure.microsoft.com/documentation/services/app-service/
+[app-service]: /azure/app-service/
 [app-service-auth]: /azure/app-service-api/app-service-api-authentication
 [app-service-plans]: /azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview
 [app-service-plans-tiers]: https://azure.microsoft.com/pricing/details/app-service/
@@ -256,7 +256,7 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 [sla]: https://azure.microsoft.com/support/legal/sla/
 [sql-audit]: /azure/sql-database/sql-database-auditing-get-started
 [sql-backup]: /azure/sql-database/sql-database-business-continuity
-[sql-db]: https://azure.microsoft.com/documentation/services/sql-database/
+[sql-db]: /azure/sql-database/
 [sql-db-overview]: /azure/sql-database/sql-database-technical-overview
 [sql-db-scale]: /azure/sql-database/sql-database-service-tiers#scaling-up-or-scaling-down-a-single-database
 [sql-db-service-tiers]: /azure/sql-database/sql-database-service-tiers

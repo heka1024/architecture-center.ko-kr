@@ -6,18 +6,19 @@ ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: adfs
 pnp.series.next: key-vault
-ms.openlocfilehash: 58eed82c982fe1c6cba0f04b237d92d117a26fd4
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: b5951153fff109b648e7e4f74daac0f414240fe4
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902275"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113147"
 ---
 # <a name="use-client-assertion-to-get-access-tokens-from-azure-ad"></a>Azure AD에서 액세스 토큰을 가져오는 데 클라이언트 어설션 사용
 
 [![GitHub](../_images/github.png) 샘플 코드][sample application]
 
 ## <a name="background"></a>백그라운드
+
 OpenID Connect에서 인증 코드 흐름 또는 하이브리드 흐름을 사용하는 경우 클라이언트는 액세스 토큰에 대한 인증 코드를 교환합니다. 이 단계에서 클라이언트는 서버에 자신을 인증해야 합니다.
 
 ![클라이언트 암호](./images/client-secret.png)
@@ -26,7 +27,7 @@ OpenID Connect에서 인증 코드 흐름 또는 하이브리드 흐름을 사�
 
 다음은 IDP에 액세스 토큰을 요청하는 클라이언트 요청의 예입니다. `client_secret` 매개 변수에 주목하세요.
 
-```
+```http
 POST https://login.microsoftonline.com/b9bd2162xxx/oauth2/token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
@@ -45,7 +46,7 @@ resource=https://tailspin.onmicrosoft.com/surveys.webapi
 
 다음은 클라이언트 어설션을 사용한 토큰 요청입니다.
 
-```
+```http
 POST https://login.microsoftonline.com/b9bd2162xxx/oauth2/token HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
@@ -61,8 +62,6 @@ resource=https://tailspin.onmicrosoft.com/surveys.webapi
 
 > [!NOTE]
 > X.509 인증서는 클라이언트 어설션의 유일한 형식이 아닙니다. 그렇지만 Azure AD에서 지원되므로 여기서는 이 인증서를 중점적으로 다룹니다.
-> 
-> 
 
 웹 애플리케이션은 런타임에 인증서 저장소에서 인증서를 읽습니다. 웹앱과 동일한 컴퓨터에 인증서를 설치해야 합니다.
 
@@ -100,7 +99,8 @@ public class CertificateCredentialService : ICredentialService
 
 [**다음**][key vault]
 
-<!-- Links -->
+<!-- links -->
+
 [configure-web-app]: /azure/app-service-web/web-sites-configure/
 [azure-management-portal]: https://portal.azure.com
 [클라이언트 어설션]: https://tools.ietf.org/html/rfc7521

@@ -4,12 +4,12 @@ titleSuffix: Azure Example Scenarios
 description: 여러 원본의 데이터를 통합하고 데이터 분석을 최적화합니다.
 author: alexbuckgit
 ms.date: 09/15/2018
-ms.openlocfilehash: 5727b6ab475224541e272c6da6243cabe851b919
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 2ac06fcd0805b66371fcc004794b123c46a6ce0e
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643996"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112382"
 ---
 # <a name="data-warehousing-and-analytics-for-sales-and-marketing"></a>영업 및 마케팅에 대한 데이터 웨어하우징 및 분석
 
@@ -66,7 +66,7 @@ ms.locfileid: "53643996"
 
 - 이 예제 파이프라인에는 여러 종류의 데이터 원본이 포함되어 있습니다. 이 아키텍처는 다양한 관계형 및 비관계형 데이터 원본을 처리할 수 있습니다.
 - Data Factory는 데이터 파이프라인에 대한 워크플로를 오케스트레이션합니다. 데이터를 한 번만 또는 주문이 있을 때만 로드하려면 SQL Server 대량 복사(bcp) 및 AzCopy 같은 도구를 사용하여 Blob 저장소로 데이터를 복사하면 됩니다. 그런 다음, Polybase를 사용하여 SQL Data Warehouse로 데이터를 직접 로드하면 됩니다.
-- 매우 큰 데이터 세트가 있는 경우 분석 데이터용 무제한 저장소를 제공하는 [Data Lake Storage](/azure/storage/data-lake-storage/introduction)를 고려해 볼 수 있습니다.
+- 매우 큰 데이터 집합이 있는 경우 분석 데이터용 무제한 스토리지를 제공하는 [Data Lake Storage](/azure/storage/data-lake-storage/introduction)를 고려해 볼 수 있습니다.
 - 온-프레미스 [SQL Server 병렬 데이터 웨어하우스](/sql/analytics-platform-system) 어플라이언스를 빅 데이터 처리에도 사용할 수 있습니다. 그러나 SQL Data Warehouse 같은 관리되는 클라우드 기반 솔루션을 사용하면 운영 비용이 대폭 절감되는 것을 자주 볼 수 있습니다.
 - SQL Data Warehouse는 250GB 미만 OLTP 워크로드 또는 데이터 집합에 적합하지 않습니다. 이러한 시나리오에는 Azure SQL Database 또는 SQL Server를 사용해야 합니다.
 - 다른 대안을 비교하면 다음 항목을 참조하세요.
@@ -103,6 +103,7 @@ Azure 가격 계산기를 통해 [데이터 웨어하우징 시나리오를 위�
 - [Azure 데이터 아키텍처 가이드](/azure/architecture/data-guide)의 데이터 파이프라인, 데이터 웨어하우징, OLAP(온라인 분석 처리) 및 빅 데이터에 대한 포괄적인 아키텍처 지침을 찾아봅니다.
 
 <!-- links -->
+
 [source-document]: https://customers.microsoft.com/story/maritz
 [calculator]: https://azure.com/e/b798fb70c53e4dd19fdeacea4db78276
 [architecture]: ./media/architecture-data-warehouse.png

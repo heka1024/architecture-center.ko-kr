@@ -2,14 +2,14 @@
 title: R 기계 학습 모델의 실시간 채점
 description: AKS(Azure Kubernetes Service)에서 실행되는 Machine Learning Server를 사용하여 R에서 실시간 예측 서비스를 구현합니다.
 author: njray
-ms.date: 12/12/18
+ms.date: 12/12/2018
 ms.custom: azcat-ai
-ms.openlocfilehash: a6069704c48fbc1f1a1e4b5df428011d6b5b883d
-ms.sourcegitcommit: 62d2211badd1d6950e8cb819d70c9a4ab1ee01d9
+ms.openlocfilehash: 6f3447d1dcab801ccdaf4cf88611725cc00eb68d
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318995"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112280"
 ---
 # <a name="real-time-scoring-of-r-machine-learning-models"></a>R 기계 학습 모델의 실시간 채점
 
@@ -51,7 +51,7 @@ Machine Learning Server [모델 운영화][operationalization]를 사용하려�
 
 컨테이너에서 모델 운영화가 Machine Learning Server와 함께 제대로 작동하려면 JWT(JSON Web Token) 인증서를 설치해야 합니다. 이 배포에서는 Microsoft가 제공하는 인증서를 사용합니다. 프로덕션 설정에서는 사용자 고유의 인증서를 제공하면 됩니다.
 
-Container Registry와 AKS 간 트래픽에 대해서는 [RBAC(역할 기반 액세스 제어)][rbac]를 사용하여 꼭 필요한 액세스 권한만 허용하도록 제한하는 방안을 고려해야 합니다. 
+Container Registry와 AKS 간 트래픽에 대해서는 [RBAC(역할 기반 액세스 제어)][rbac]를 사용하여 꼭 필요한 액세스 권한만 허용하도록 제한하는 방안을 고려해야 합니다.
 
 ### <a name="separate-storage"></a>별도의 스토리지
 

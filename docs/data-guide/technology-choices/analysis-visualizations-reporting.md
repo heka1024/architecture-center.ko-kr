@@ -3,18 +3,22 @@ title: 데이터 분석 및 보고 기술 선택
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: a5e793c9caf50daca4ef7e40c49e54f25f04e856
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 5b4947f53edf595c206ef4f55572dadc1a9daa09
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902419"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111413"
 ---
 # <a name="choosing-a-data-analytics-technology-in-azure"></a>Azure에서 데이터 분석 기술 선택
 
-대부분의 빅 데이터 솔루션의 목표는 분석 및 보고를 통해 데이터에 대한 정보를 제공하는 것입니다. 여기에는 미리 구성된 보고서 및 시각화나 대화형 데이터 탐색이 포함될 수 있습니다. 
+대부분의 빅 데이터 솔루션의 목표는 분석 및 보고를 통해 데이터에 대한 정보를 제공하는 것입니다. 여기에는 미리 구성된 보고서 및 시각화나 대화형 데이터 탐색이 포함될 수 있습니다.
+
+<!-- markdownlint-disable MD026 -->
 
 ## <a name="what-are-your-options-when-choosing-a-data-analytics-technology"></a>데이터 분석 기술을 선택할 때 사용할 수 있는 옵션은 무엇인가요?
+
+<!-- markdownlint-disable MD026 -->
 
 Azure에서는 사용자의 요구에 따라 분석, 시각화 및 보고에 대한 여러 옵션을 사용할 수 있습니다.
 
@@ -25,11 +29,11 @@ Azure에서는 사용자의 요구에 따라 분석, 시각화 및 보고에 대
 
 ### <a name="power-bi"></a>Power BI
 
-[Power BI](/power-bi/)는 비즈니스 분석 도구 제품군입니다. 이 제품군은 수백 개의 데이터 원본에 연결될 수 있으며 임시 분석에 사용될 수 있습니다. 현재 사용 가능한 데이터 원본에 대해서는 [이 목록](/power-bi/desktop-data-sources)을 참조하세요. [Power BI Embedded](https://azure.microsoft.com/services/power-bi-embedded/)를 사용하여 추가 라이선스 없이도 응용 프로그램 내에 Power BI를 통합할 수 있습니다.
+[Power BI](/power-bi/)는 비즈니스 분석 도구 제품군입니다. 이 제품군은 수백 개의 데이터 원본에 연결될 수 있으며 임시 분석에 사용될 수 있습니다. 현재 사용 가능한 데이터 원본에 대해서는 [이 목록](/power-bi/desktop-data-sources)을 참조하세요. [Power BI Embedded](https://azure.microsoft.com/services/power-bi-embedded/)를 사용하여 추가 라이선스 없이도 애플리케이션 내에 Power BI를 통합할 수 있습니다.
 
 조직에서는 Power BI를 사용하여 보고서를 생성하고 조직에 게시할 수 있습니다. 모든 사용자는 거버넌스 및 [기본 제공된 보안](/power-bi/service-admin-power-bi-security)을 사용하여 개인별 대시보드를 만들 수 있습니다. Power BI는 [Azure AD](/azure/active-directory/)(Azure Active Directory)를 사용하여 Power BI 서비스에 로그인하는 사용자를 인증하고, 사용자가 인증을 요구하는 리소스에 액세스하려고 할 때마다 Power BI 로그인 자격 증명을 사용합니다.
 
-### <a name="jupyter-notebooks"></a>Jupyter 노트북 
+### <a name="jupyter-notebooks"></a>Jupyter 노트북
 
 [Jupyter 노트](https://jupyter.readthedocs.io/en/latest/index.html)는 데이터 과학자가 Python, Scala 또는 R 코드와 Markdown 텍스트를 포함하는 *노트* 파일을 만들어 코드 및 결과를 공유하고 단일 문서로 문서화함으로써 효과적으로 공동 작업하는 방법을 제공할 수 있도록 하는 브라우저 기반 셸을 제공합니다.
 
@@ -49,15 +53,15 @@ HDInsight 클러스터에서 실행되며 클러스터의 기본 저장소 계�
 
 주요 이점:
 
-* 무료 서비스&mdash;Azure 구독이 필요하지 않습니다.
-* Jupyter 및 지원하는 R 또는 Python 배포를 로컬로 설치할 필요가 없음&mdash;브라우저만 사용하면 됩니다.
-* 자체 온라인 라이브러리를 관리하고 모든 디바이스에서 액세스할 수 있습니다.
-* 공동 작업자와 노트를 공유합니다.
+- 무료 서비스&mdash;Azure 구독이 필요하지 않습니다.
+- Jupyter 및 지원하는 R 또는 Python 배포를 로컬로 설치할 필요가 없음&mdash;브라우저만 사용하면 됩니다.
+- 자체 온라인 라이브러리를 관리하고 모든 디바이스에서 액세스할 수 있습니다.
+- 공동 작업자와 노트를 공유합니다.
 
 고려 사항:
 
-* 오프라인 상태에서는 노트에 액세스할 수 없습니다.
-* 무료 노트 서비스의 제한된 처리 기능만으로 크거나 복잡한 모델을 학습하기 어려울 수 있습니다.
+- 오프라인 상태에서는 노트에 액세스할 수 없습니다.
+- 무료 노트 서비스의 제한된 처리 기능만으로 크거나 복잡한 모델을 학습하기 어려울 수 있습니다.
 
 ## <a name="key-selection-criteria"></a>주요 선택 조건
 
@@ -73,22 +77,26 @@ HDInsight 클러스터에서 실행되며 클러스터의 기본 저장소 계�
 
 ## <a name="capability-matrix"></a>기능 매트릭스
 
-다음 표에서는 주요 기능 차이점을 요약해서 보여 줍니다. 
+다음 표에서는 주요 기능 차이점을 요약해서 보여 줍니다.
 
 ### <a name="general-capabilities"></a>일반 기능
 
+<!-- markdownlint-disable MD033 -->
+
 | | Power BI | Jupyter 노트북 | Zeppelin 노트 | Microsoft Azure 노트 |
 | --- | --- | --- | --- | --- |
-| 고급 처리를 위해 빅 데이터 클러스터에 연결 | yes | 예 | yes | 아니요 |
-| 관리되는 서비스 | yes | 예 <sup>1</sup> | 예 <sup>1</sup> | yes |
-| 수백 개의 데이터 원본에 연결 | yes | 아니요 | 아니요 | 아니요 |
+| 고급 처리를 위해 빅 데이터 클러스터에 연결 | 예 | 예 | 예 | 아니요 |
+| 관리되는 서비스 | 예 | 예 <sup>1</sup> | 예 <sup>1</sup> | 예 |
+| 수백 개의 데이터 원본에 연결 | 예 | 아니요 | 아니요 | 아니요 |
 | 오프라인 기능 | 예 <sup>2</sup> | 아니요 | 아니요 | 아니요 |
-| 포함 기능 | yes | 아니요 | 아니요 | 아니요 |
-| 자동 데이터 새로 고침 | yes | 아니요 | 아니요 | 아니요 |
+| 포함 기능 | 예 | 아니요 | 아니요 | 아니요 |
+| 자동 데이터 새로 고침 | 예 | 아니요 | 아니요 | 아니요 |
 | 다양한 오픈 소스 패키지에 액세스 | 아니요 | 예 <sup>3</sup> | 예 <sup>3</sup> | 예 <sup>4</sup> |
 | 데이터 변환/정리 옵션 | [파워 쿼리](https://powerbi.microsoft.com/blog/getting-started-with-power-query-part-i/), R | 40개 언어(Python, R, Julia 및 Scala 포함) | 20개 이상의 인터프리터(Python, JDBC 및 R 포함) | Python, F#, R |
 | 가격 | 무료 Power BI Desktop(제작)에 대해서는 호스팅 옵션에 대한 [가격 책정](https://powerbi.microsoft.com/pricing/)을 참조하세요. | 무료 | 무료 | 무료 |
-| 다중 사용자 공동 작업 | [예](/power-bi/service-how-to-collaborate-distribute-dashboards-reports) | 예(공유를 통해 또는 [JupyterHub](https://github.com/jupyterhub/jupyterhub)와 같은 다중 사용자 서버를 사용하여) | yes | 예(공유를 통해) |
+| 다중 사용자 공동 작업 | [예](/power-bi/service-how-to-collaborate-distribute-dashboards-reports) | 예(공유를 통해 또는 [JupyterHub](https://github.com/jupyterhub/jupyterhub)와 같은 다중 사용자 서버를 사용하여) | 예 | 예(공유를 통해) |
+
+<!-- markdownlint-enable MD033 -->
 
 [1] 관리되는 HDInsight 클러스터의 일부로 사용되는 경우
 
@@ -97,4 +105,3 @@ HDInsight 클러스터에서 실행되며 클러스터의 기본 저장소 계�
 [2] [Maven 리포지토리](https://search.maven.org/)에서 커뮤니티 제공 패키지를 검색할 수 있습니다.
 
 [3] Python 패키지를 pip 또는 conda를 사용하여 설치할 수 있습니다. R 패키지는 CRAN 또는 GitHub에서 설치할 수 있습니다. F#의 패키지는 [Paket 종속성 관리자](https://fsprojects.github.io/Paket/)를 사용하여 nuget.org를 통해 설치할 수 있습니다.
-

@@ -1,19 +1,17 @@
 ---
-title: Cache-Aside
-description: 필요할 때 데이터를 데이터 저장소에서 캐시로 로드
+title: 캐시 배제 패턴
+titleSuffix: Cloud Design Patterns
+description: 필요할 때 데이터를 데이터 저장소에서 캐시로 로드합니다.
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 11/01/2018
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- data-management
-- performance-scalability
-ms.openlocfilehash: 4c93ed02ff28e79cedc26f83364592baba96821d
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.custom: seodec18
+ms.openlocfilehash: 96dee3ca766414a3a17ea161f13c9fcd15001b4d
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916383"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114167"
 ---
 # <a name="cache-aside-pattern"></a>캐시 배제 패턴
 
@@ -35,14 +33,13 @@ ms.locfileid: "50916383"
 
 ![캐시 배제 패턴을 사용해 데이터를 캐시에 저장](./_images/cache-aside-diagram.png)
 
-
 정보를 업데이트한 애플리케이션은 데이터 저장소에 수정 사항을 저장하고 캐시의 해당 항목을 무효화해 write-through 전략을 구현할 수 있습니다.
 
 다음에도 해당 항목이 필요한 경우, 캐시 배제 전략을 사용하면 데이터 저장소에서 업데이트된 데이터가 검색된 후 캐시에 다시 추가됩니다.
 
 ## <a name="issues-and-considerations"></a>문제 및 고려 사항
 
-이 패턴을 구현할 방법을 결정할 때 다음 사항을 고려하세요. 
+이 패턴을 구현할 방법을 결정할 때 다음 사항을 고려하세요.
 
 **캐시된 데이터의 수명**. 대부분의 캐시는 규정된 기간 동안 액세스하지 않은 경우 데이터를 무효화하고 캐시에서 삭제하는 만료 정책을 구현합니다. 캐시 배제가 효과적이려면 만료 정책이 데이터를 사용하는 애플리케이션의 액세스 패턴과 일치해야 합니다. 애플리케이션은 데이터 저장소에서 데이터를 지속적으로 검색해서 캐시에 추가할 수 있기 때문에, 만료 기간이 너무 짧아서도 안 됩니다. 마찬가지로 캐시된 데이터는 오래 유지될 수 있기 때문에 만료 기간이 너무 길어서도 안 됩니다. 캐싱은 비교적 정적인 데이터 또는 자주 읽는 데이터에 가장 효과입니다.
 
@@ -68,9 +65,9 @@ ms.locfileid: "50916383"
 
 ## <a name="example"></a>예
 
-Microsoft Azure에서는 Azure Redis Cache를 사용해 애플리케이션의 여러 인스턴스가 공유할 수 있는 분산 캐시를 생성할 수 있습니다. 
+Microsoft Azure에서는 Azure Redis Cache를 사용해 애플리케이션의 여러 인스턴스가 공유할 수 있는 분산 캐시를 생성할 수 있습니다.
 
-다음 코드 예제는 .NET 용으로 작성된 Redis 클라이언트 라이브러리인 [StackExchange.Redis] 클라이언트를 사용합니다. Azure Redis Cache 인스턴스에 연결하려면 정적 `ConnectionMultiplexer.Connect` 메서드를 호출하고 연결 문자열을 제공합니다. 이 메서드는 연결을 나타내는 `ConnectionMultiplexer`를 반환합니다. 애플리케이션의 `ConnectionMultiplexer` 인스턴스를 공유하는 방법은 다음 예제와 비슷하게 연결된 인스턴스를 반환하는 정적 속성을 갖는 것입니다. 이 방법은 스레드가 안전하도록 단일 연결된 인스턴스를 초기화하는 방법을 제공합니다.
+다음 코드 예제는 .NET 용으로 작성된 Redis 클라이언트 라이브러리인 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 클라이언트를 사용합니다. Azure Redis Cache 인스턴스에 연결하려면 정적 `ConnectionMultiplexer.Connect` 메서드를 호출하고 연결 문자열을 제공합니다. 이 메서드는 연결을 나타내는 `ConnectionMultiplexer`를 반환합니다. 애플리케이션의 `ConnectionMultiplexer` 인스턴스를 공유하는 방법은 다음 예제와 비슷하게 연결된 인스턴스를 반환하는 정적 속성을 갖는 것입니다. 이 방법은 스레드가 안전하도록 단일 연결된 인스턴스를 초기화하는 방법을 제공합니다.
 
 ```csharp
 private static ConnectionMultiplexer Connection;
@@ -89,7 +86,6 @@ public static ConnectionMultiplexer Connection => lazyConnection.Value;
 
 개체 식별 키는 정수 ID입니다. `GetMyEntityAsync` 메서드는 이 키를 포함한 항목을 캐시에서 검색하려고 합니다. 일치하는 항목이 발견되면 해당 항목이 반환됩니다. 캐시에 일치하는 항목이 없으면 `GetMyEntityAsync` 메서드는 개체를 데이터 저장소에서 검색해 캐시에 추가한 후 반환합니다. 데이터 저장소의 종속성 때문에, 데이터 저장소에서 데이터를 실제로 읽는 코드는 여기에 표시되지 않습니다. 캐시된 항목을 만료 방식으로 구성하여 다른 위치에서 업데이트되더라도 오래되지 않도록 조치해야 합니다.
 
-
 ```csharp
 // Set five minute expiration as a default
 private const double DefaultExpirationTimeInMinutes = 5.0;
@@ -99,23 +95,23 @@ public async Task<MyEntity> GetMyEntityAsync(int id)
   // Define a unique key for this method and its parameters.
   var key = $"MyEntity:{id}";
   var cache = Connection.GetDatabase();
-  
+
   // Try to get the entity from the cache.
   var json = await cache.StringGetAsync(key).ConfigureAwait(false);
-  var value = string.IsNullOrWhiteSpace(json) 
-                ? default(MyEntity) 
+  var value = string.IsNullOrWhiteSpace(json)
+                ? default(MyEntity)
                 : JsonConvert.DeserializeObject<MyEntity>(json);
-  
+
   if (value == null) // Cache miss
   {
     // If there's a cache miss, get the entity from the original store and cache it.
-    // Code has been omitted because it's data store dependent.  
+    // Code has been omitted because it is data store dependent.
     value = ...;
 
     // Avoid caching a null value.
     if (value != null)
     {
-      // Put the item in the cache with a custom expiration time that 
+      // Put the item in the cache with a custom expiration time that
       // depends on how critical it is to have stale data.
       await cache.StringSetAsync(key, JsonConvert.SerializeObject(value)).ConfigureAwait(false);
       await cache.KeyExpireAsync(key, TimeSpan.FromMinutes(DefaultExpirationTimeInMinutes)).ConfigureAwait(false);
@@ -126,7 +122,7 @@ public async Task<MyEntity> GetMyEntityAsync(int id)
 }
 ```
 
->  이 예제에서는 Redis Cache를 사용하여 저장소에 액세스하고 캐시에서 정보를 검색합니다. 자세한 내용은 [Microsoft Azure Redis Cache 사용](https://docs.microsoft.com/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache) 및 [Redis Cache를 사용하여 웹앱을 만드는 방법](https://docs.microsoft.com/azure/redis-cache/cache-web-app-howto)을 참조하세요.
+> 이 예제에서는 Redis Cache를 사용하여 저장소에 액세스하고 캐시에서 정보를 검색합니다. 자세한 내용은 [Microsoft Azure Redis Cache 사용](https://docs.microsoft.com/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache) 및 [Redis Cache를 사용하여 웹앱을 만드는 방법](https://docs.microsoft.com/azure/redis-cache/cache-web-app-howto)을 참조하세요.
 
 아래에 표시된 `UpdateEntityAsync` 메서드는 애플리케이션에서 값이 변경될 때 캐시의 개체를 무효화하는 방법을 보여 줍니다. 다음 코드는 원래 데이터 저장소를 업데이트한 다음, 캐시에서 캐시된 항목을 제거합니다.
 
@@ -134,7 +130,7 @@ public async Task<MyEntity> GetMyEntityAsync(int id)
 public async Task UpdateEntityAsync(MyEntity entity)
 {
     // Update the object in the original data store.
-    await this.store.UpdateEntityAsync(entity).ConfigureAwait(false); 
+    await this.store.UpdateEntityAsync(entity).ConfigureAwait(false);
 
     // Invalidate the current cache object.
     var cache = Connection.GetDatabase();
@@ -147,14 +143,10 @@ public async Task UpdateEntityAsync(MyEntity entity)
 > [!NOTE]
 > 이 시퀀스에서는 단계의 순서가 중요합니다. 캐시에서 항목을 제거하기 *전에* 데이터 저장소를 업데이트합니다. 캐시된 항목을 먼저 제거하면 데이터 저장소가 업데이트되기 전에 클라이언트 응용 프로그램이 데이터를 가져오는 시간이 짧아집니다. 이 경우 캐시에서 항목이 제거되었으므로 캐시 누락이 발생하며, 이전 버전의 항목을 데이터 저장소에서 가져온 후 캐시에 다시 추가하는 결과를 가져옵니다. 따라서 캐시는 오래된 데이터를 포함하게 됩니다.
 
-
-## <a name="related-guidance"></a>관련 지침 
+## <a name="related-guidance"></a>관련 지침
 
 이 패턴의 구현과 관련된 정보는 다음과 같습니다.
 
 - [캐싱 지침](https://docs.microsoft.com/azure/architecture/best-practices/caching) 클라우드 솔루션에서 데이터를 캐시할 수 있는 방법에 대한 추가 정보뿐 아니라 캐시 구현 시 고려해야 하는 문제를 제공합니다.
 
 - [데이터 일관성 입문서](https://msdn.microsoft.com/library/dn589800.aspx). 보통 클라우드 애플리케이션은 여러 데이터 저장소에 걸쳐 있는 데이터를 사용합니다. 이런 환경에서는 데이터 일관성의 관리와 유지가 시스템에서 중요한 측면으로 작용하는데, 구체적으로 동시성과 가용성 문제가 발생할 수 있습니다. 이 입문서는 분산 데이터의 일관성 문제를 설명할 뿐 아니라 애플리케이션에서 일관성을 구현해 데이터의 가용성을 유지하는 방법도 요약하고 있습니다.
-
-
-[StackExchange.Redis]: https://github.com/StackExchange/StackExchange.Redis

@@ -3,12 +3,12 @@ title: OLTP(온라인 트랜잭션 처리)
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: be24bc173359539785385de4a188e7536f6d2ffe
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 331da288384bf14581eeda35116085d759807245
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902768"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113963"
 ---
 # <a name="online-transaction-processing-oltp"></a>OLTP(온라인 트랜잭션 처리)
 
@@ -16,11 +16,11 @@ ms.locfileid: "52902768"
 
 ## <a name="transactional-data"></a>트랜잭션 데이터
 
-트랜잭션 데이터는 조직의 활동과 관련된 상호 작용을 추적하는 정보입니다. 이러한 상호 작용은 일반적으로 고객으로부터 수신된 지불, 공급업체로 수행된 지불, 인벤토리를 통해 이동되는 제품, 수행된 주문 또는 배달된 서비스와 같은 비즈니스 트랜잭션입니다. 트랜잭션 자체를 나타내는 트랜잭션 이벤트는 일반적으로 시간 차원, 일부 숫자 값 및 다른 데이터에 대한 참조를 포함합니다. 
+트랜잭션 데이터는 조직의 활동과 관련된 상호 작용을 추적하는 정보입니다. 이러한 상호 작용은 일반적으로 고객으로부터 수신된 지불, 공급업체로 수행된 지불, 인벤토리를 통해 이동되는 제품, 수행된 주문 또는 배달된 서비스와 같은 비즈니스 트랜잭션입니다. 트랜잭션 자체를 나타내는 트랜잭션 이벤트는 일반적으로 시간 차원, 일부 숫자 값 및 다른 데이터에 대한 참조를 포함합니다.
 
 트랜잭션은 일반적으로 *원자성*을 가지고 *일관*되어야 합니다. 원자성은 전체 트랜잭션이 항상 하나의 작업 단위로 성공 또는 실패하고, 절반만 완료된 상태를 유지하지 않는다는 것을 의미합니다. 트랜잭션을 완료할 수 없는 경우 데이터베이스 시스템은 해당 트랜잭션의 일부로 이미 수행된 모든 단계를 롤백해야 합니다. 전형적인 RDBMS에서, 이 롤백은 트랜잭션을 완료할 수 없을 때 자동으로 발생합니다. 일관성은 트랜잭션이 항상 데이터를 유효한 상태로 유지함을 의미합니다. (원자성 및 일관성에 대한 매우 비공식적인 설명입니다. 이러한 속성에 대해 [ACID](https://en.wikipedia.org/wiki/ACID)와 같은 좀 더 공식적인 설명이 있습니다.)
 
-트랜잭션 데이터베이스는 모든 데이터가 모든 사용자 및 프로세스에 대해 엔터프라이즈의 컨텍스트 내에서 강력하게 일관된 상태를 유지하도록 하기 위해 비관적 잠금과 같은 다양한 잠금 전략을 사용하여 트랜잭선의 강력한 일관성을 지원할 수 있습니다. 
+트랜잭션 데이터베이스는 모든 데이터가 모든 사용자 및 프로세스에 대해 엔터프라이즈의 컨텍스트 내에서 강력하게 일관된 상태를 유지하도록 하기 위해 비관적 잠금과 같은 다양한 잠금 전략을 사용하여 트랜잭선의 강력한 일관성을 지원할 수 있습니다.
 
 트랜잭션 데이터를 사용하는 가장 일반적인 배포 아키텍처는 3계층 아키텍처의 데이터 저장소 계층입니다. 3계층 아키텍처는 일반적으로 프레젠테이션 계층, 비즈니스 논리 계층 및 데이터 저장소 계층으로 구성됩니다. 관련된 배포 아키텍처는 여러 중간 계층 처리 비즈니스 논리를 가질 수 있는 [N 계층](/azure/architecture/guide/architecture-styles/n-tier)입니다.
 
@@ -34,17 +34,17 @@ ms.locfileid: "52902768"
 | 스키마 | 쓰기 시 스키마, 강력하게 적용|
 | 일관성 | 강력한 일관성 ACID 보장 |
 | 무결성 | 높은 무결성 |
-| 트랜잭션 사용 | yes |
+| 트랜잭션 사용 | 예 |
 | 잠금 전략 | 비관적 또는 낙관적|
-| 업데이트 가능 | yes |
-| 추가 가능 | yes |
+| 업데이트 가능 | 예 |
+| 추가 가능 | 예 |
 | 워크로드 | 과도 쓰기, 보통 읽기 |
 | 인덱싱 | 기본 및 보조 인덱스 |
 | 데이터 크기 | 소규모~중간 규모 |
 | 모델 | 관계형 |
 | 데이터 모양 | 테이블 형식 |
 | 쿼리 유연성 | 매우 유연 |
-| 확장 | 작음(MB) ~ 큼(몇 TB) | 
+| 확장 | 작음(MB) ~ 큼(몇 TB) |
 
 ## <a name="when-to-use-this-solution"></a>이 솔루션을 사용해야 하는 경우
 
@@ -53,6 +53,7 @@ ms.locfileid: "52902768"
 OLTP 시스템은 트랜잭션을 효율적으로 처리 및 저장할 뿐만 아니라 트랜잭션 데이터를 쿼리하도록 디자인되었습니다. OLTP 시스템에서 개별 트랜잭션을 효율적으로 처리하고 저장한다는 목적은 데이터 정규화, 즉 데이터를 덜 중복되는 좀 더 작은 청크로 분할함으로써 어느 정도 달성됩니다. 이 경우 OLTP 시스템이 많은 수의 트랜잭션을 독립적으로 처리할 수 있도록 하고, 중복 데이터가 있을 때 데이터 무결성을 유지하기 위해 필요한 추가 처리가 해소되므로 효율성이 유지됩니다.
 
 ## <a name="challenges"></a>과제
+
 OLTP 시스템을 구현 및 사용할 경우 다음과 같은 몇 가지 해결 과제가 발생할 수 있습니다.
 
 - 잘 계획된 SQL Server 기반 솔루션과 같은 예외도 있지만, OLTP 시스템이 대량의 데이터에 대한 집계를 처리하는 데 항상 적절한 것은 아닙니다. 수백만 개의 개별 트랜잭션에 대한 집계 계산에 의존하는 데이터 분석은 OLTP 시스템의 리소스를 과도하게 사용합니다. 따라서 실행이 느려질 수 있으며, 데이터베이스의 다른 트랜잭션을 차단하게 되어 속도 저하를 야기할 수 있습니다.
@@ -61,7 +62,7 @@ OLTP 시스템을 구현 및 사용할 경우 다음과 같은 몇 가지 해결
 
 ## <a name="oltp-in-azure"></a>Azure의 OLTP
 
-[App Service Web Apps](/azure/app-service/app-service-web-overview)에 호스트되는 웹 사이트, App Service에서 실행되는 REST API 등의 응용 프로그램이나 모바일 또는 데스크톱 응용 프로그램은 일반적으로 REST API를 매개자로 사용해서 OLTP 시스템과 통신합니다.
+[App Service Web Apps](/azure/app-service/app-service-web-overview)에 호스트되는 웹 사이트, App Service에서 실행되는 REST API 등의 애플리케이션이나 모바일 또는 데스크톱 애플리케이션은 일반적으로 REST API를 매개자로 사용해서 OLTP 시스템과 통신합니다.
 
 실제로 대부분의 워크로드는 순수한 OLTP가 아닙니다. 분석 구성 요소의 역할을 하기도 합니다. 또한, 운영 체제에 대한 보고서 실행 등, 실시간 보고에 대한 요구도 높아지고 있습니다. 이것을 HTAP(하이브리드 트랜잭션 및 분석 처리)라고도 합니다. 자세한 내용은 [OLAP(온라인 분석 처리)](./online-analytical-processing.md)를 참조하세요.
 
@@ -80,7 +81,7 @@ Azure에서 다음의 모든 데이터 저장소는 OLTP 및 트랜잭션 데이
 
 - 사용하는 솔루션이 Microsoft SQL Server, MySQL 또는 PostgreSQL 호환성에 대해 특정 종속성을 갖나요? 애플리케이션은 데이터 저장소와 통신하기 위해, 선택 가능한 데이터 저장소를 지원되는 드라이버를 기준으로 또는 사용되는 데이터베이스에 대해 가정되는 조건에 따라 제한할 수 있습니다.
 
-- 쓰기 처리량 요구 수준이 특히 높은 편인가요? 그렇다면 메모리 내 테이블을 제공하는 옵션을 선택합니다. 
+- 쓰기 처리량 요구 수준이 특히 높은 편인가요? 그렇다면 메모리 내 테이블을 제공하는 옵션을 선택합니다.
 
 - 사용하는 솔루션이 다중 테넌트 솔루션인가요? 그렇다면 데이터베이스마다 고정 리소스가 있는 것이 아니라, 탄력적인 리소스 풀에서 여러 데이터베이스 인스턴스를 가져오는 방식의 용량 풀을 지원하는 옵션을 고려합니다. 이렇게 하면 모든 데이터베이스 인스턴스에서 용량을 보다 잘 분산하고, 좀 더 비용 효율적인 솔루션을 만들 수 있습니다.
 
@@ -94,13 +95,17 @@ Azure에서 다음의 모든 데이터 저장소는 OLTP 및 트랜잭션 데이
 
 다음 표에서는 주요 기능 차이점을 요약해서 보여 줍니다.
 
-### <a name="general-capabilities"></a>일반 기능 
+### <a name="general-capabilities"></a>일반 기능
+
+<!-- markdownlint-disable MD033 -->
 
 |                              | Azure SQL Database | Azure Virtual Machine의 SQL Server | Azure Database for MySQL | Azure Database for PostgreSQL |
 |------------------------------|--------------------|----------------------------------------|--------------------------|-------------------------------|
-|      관리되는 서비스인지 여부      |        yes         |                   아니요                   |           예            |              yes              |
+|      관리되는 서비스인지 여부      |        예         |                   no                   |           예            |              예              |
 |       플랫폼에서 실행       |        해당 없음         |         Windows, Linux, Docker         |           해당 없음            |              해당 없음              |
 | 프로그래밍 기능 <sup>1</sup> |   T-SQL, .NET, R   |         T-SQL, .NET, R, Python         |  T-SQL, .NET, R, Python  |              SQL              |
+
+<!-- markdownlint-enable MD033 -->
 
 [1] 많은 프로그래밍 언어가 OLTP 데이터 저장소에 연결하고 이 저장소를 사용할 수 있도록 하는 클라이언트 드라이버 지원은 포함되지 않습니다.
 
@@ -109,40 +114,39 @@ Azure에서 다음의 모든 데이터 저장소는 OLTP 및 트랜잭션 데이
 | | Azure SQL Database | Azure Virtual Machine의 SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
 | --- | --- | --- | --- | --- | --- |
 | 최대 데이터베이스 인스턴스 크기 | [4TB](/azure/sql-database/sql-database-resource-limits) | 256TB | [1 TB](/azure/mysql/concepts-limits) | [1 TB](/azure/postgresql/concepts-limits) |
-| 용량 풀 지원 여부  | yes | yes | 아니요 | 아니요 |
-| 클러스터 스케일 아웃 지원 여부  | 아니요 | yes | 아니요 | 아니요 |
-| 동적 확장성(강화)  | yes | 아니요 | 예 | yes |
+| 용량 풀 지원 여부  | 예 | 예 | 아니요 | 아니요 |
+| 클러스터 스케일 아웃 지원 여부  | 아니요 | 예 | 아니요 | 아니요 |
+| 동적 확장성(강화)  | 예 | no | 예 | 예 |
 
 ### <a name="analytic-workload-capabilities"></a>분석 워크로드 기능
 
 | | Azure SQL Database | Azure Virtual Machine의 SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
-| --- | --- | --- | --- | --- | --- | 
-| 임시 테이블 | yes | yes | 아니요 | 아니요 |
-| 메모리 내(메모리 최적화) 테이블 | yes | yes | 아니요 | 아니요 |
-| Columnstore 지원 여부 | yes | yes | 아니요 | 아니요 |
-| 적응 쿼리 처리 | yes | yes | 아니요 | 아니요 |
+| --- | --- | --- | --- | --- | --- |
+| 임시 테이블 | 예 | 예 | 아니요 | 아니요 |
+| 메모리 내(메모리 최적화) 테이블 | 예 | 예 | 아니요 | 아니요 |
+| Columnstore 지원 여부 | 예 | 예 | 아니요 | 아니요 |
+| 적응 쿼리 처리 | 예 | 예 | 아니요 | 아니요 |
 
 ### <a name="availability-capabilities"></a>가용성 기능
 
 | | Azure SQL Database | Azure Virtual Machine의 SQL Server| Azure Database for MySQL | Azure Database for PostgreSQL|
-| --- | --- | --- | --- | --- | --- | 
-| 읽기 가능 보조 복제본 | yes | yes | 아니요 | 아니요 | 
-| 지리적 복제 | yes | yes | 아니요 | 아니요 | 
-| 보조 복제본으로 자동 장애 조치(Failover) | yes | 아니요 | 아니요 | 아니요|
-| 지정 시간 복원 | yes | 예 | 예 | yes |
+| --- | --- | --- | --- | --- | --- |
+| 읽기 가능 보조 복제본 | 예 | 예 | 아니요 | 아니요 |
+| 지리적 복제 | 예 | 예 | 아니요 | 아니요 |
+| 보조 복제본으로 자동 장애 조치(Failover) | 예 | 아니요 | 아니요 | 아니요|
+| 지정 시간 복원 | 예 | 예 | 예 | 예 |
 
 ### <a name="security-capabilities"></a>보안 기능
 
 |                                                                                                             | Azure SQL Database | Azure Virtual Machine의 SQL Server | Azure Database for MySQL | Azure Database for PostgreSQL |
 |-------------------------------------------------------------------------------------------------------------|--------------------|----------------------------------------|--------------------------|-------------------------------|
-|                                             행 수준 보안                                              |        yes         |                  예                   |           예            |              yes              |
-|                                                데이터 마스킹                                                 |        yes         |                  yes                   |            아니요            |              아니요               |
-|                                         투명한 데이터 암호화                                         |        yes         |                  예                   |           예            |              yes              |
-|                                  특정 IP 주소로 액세스 제한                                   |        yes         |                  예                   |           예            |              yes              |
-|                                  VNET 액세스만 허용하도록 액세스 제한                                  |        yes         |                  yes                   |            아니요            |              아니요               |
-|                                    Azure Active Directory 인증                                    |        yes         |                  yes                   |            아니요            |              아니요               |
-|                                       Active Directory 인증                                       |         아니요         |                  yes                   |            아니요            |              아니요               |
-|                                         Multi-Factor Authentication                                         |        yes         |                  yes                   |            아니요            |              아니요               |
-| [상시 암호화](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 지원 여부 |        yes         |                  예                   |           yes            |              아니요               |
-|                                                 개인 IP                                                  |         아니요         |                  예                   |           yes            |              아니요               |
-
+|                                             행 수준 보안                                              |        예         |                  예                   |           예            |              예              |
+|                                                데이터 마스킹                                                 |        예         |                  예                   |            아니요            |              아니요               |
+|                                         투명한 데이터 암호화                                         |        예         |                  예                   |           예            |              예              |
+|                                  특정 IP 주소로 액세스 제한                                   |        예         |                  예                   |           예            |              예              |
+|                                  VNET 액세스만 허용하도록 액세스 제한                                  |        예         |                  예                   |            아니요            |              아니요               |
+|                                    Azure Active Directory 인증                                    |        예         |                  예                   |            아니요            |              아니요               |
+|                                       Active Directory 인증                                       |         아니요         |                  예                   |            아니요            |              아니요               |
+|                                         Multi-Factor Authentication                                         |        예         |                  예                   |            아니요            |              아니요               |
+| [상시 암호화](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 지원 여부 |        예         |                  예                   |           예            |              아니요               |
+|                                                 개인 IP                                                  |         아니요         |                  예                   |           예            |              아니요               |

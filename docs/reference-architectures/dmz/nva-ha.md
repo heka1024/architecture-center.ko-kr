@@ -5,12 +5,12 @@ description: 고가용성의 네트워크 가상 어플라이언스를 배포합
 author: telmosampaio
 ms.date: 12/08/2018
 ms.custom: seodec18
-ms.openlocfilehash: d3f9017db1bbf9741b10db16eb5a3dbab78f1160
-ms.sourcegitcommit: 7d21aec9d9de0004ac777c1d1e364f53aac2350d
+ms.openlocfilehash: 646721f80d19f493b7674884f8108762d743201b
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53120755"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011092"
 ---
 # <a name="deploy-highly-available-network-virtual-appliances"></a>고가용성 네트워크 가상 어플라이언스 배포
 
@@ -30,6 +30,8 @@ NVA의 가용성을 높이려면 가용성 집합에 여러 NVA를 배포합니�
 
 다음 아키텍처는 고가용성 NVA에 필요한 리소스와 구성을 보여 줍니다.
 
+<!-- markdownlint-disable MD033 -->
+
 | 해결 방법 | 이점 | 고려 사항 |
 | --- | --- | --- |
 | [수신용 레이어 7 NVA][ingress-with-layer-7] |모든 NVA 노드가 활성 상태 |연결을 종료하고 SNAT을 사용할 수 있는 NVA가 필요<br/> 인터넷과 Azure로부터 오는 트래픽을 위한 별도의 NVA 집합이 필요 <br/> Azure 외부에서 오는 트래픽에 대해서만 사용 가능 |
@@ -37,6 +39,8 @@ NVA의 가용성을 높이려면 가용성 집합에 여러 NVA를 배포합니�
 | [수신-송신 레이어 7 NVA][ingress-egress-with-layer-7] |모든 노드가 활성 상태<br/>Azure에서 발생한 트래픽을 처리할 수 있음 |연결을 종료하고 SNAT을 사용할 수 있는 NVA가 필요<br/>인터넷과 Azure로부터 오는 트래픽을 위한 별도의 NVA 집합이 필요 |
 | [PIP-UDR 전환][pip-udr-switch] |단일 NVA 집합으로 모든 트래픽 처리<br/>(포트 규칙 제한 없이) 모든 트래픽 처리 |활성-수동<br/>장애 조치(Failover) 프로세스가 필요 |
 | [SNAT가 없는 PIP-UDR](#pip-udr-nvas-without-snat) | 단일 NVA 집합으로 모든 트래픽 처리<br/>(포트 규칙 제한 없이) 모든 트래픽 처리<br/>인바운드 요청에 대한 SNAT를 구성할 필요 없음 |활성-수동<br/>장애 조치(Failover) 프로세스가 필요<br/>가상 네트워크 외부에서 실행되는 프로빙 및 장애 조치(failover) 논리 |
+
+<!-- markdown-enable MD033 -->
 
 ## <a name="ingress-with-layer-7-nvas"></a>수신용 레이어 7 NVA
 

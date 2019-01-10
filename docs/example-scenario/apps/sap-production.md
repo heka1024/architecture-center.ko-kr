@@ -3,14 +3,14 @@ title: Oracle 데이터베이스를 사용하여 SAP 프로덕션 워크로드 �
 titleSuffix: Azure Example Scenarios
 description: Oracle 데이터베이스를 사용하여 Azure에서 SAP 프로덕션 배포를 실행합니다.
 author: DharmeshBhagat
-ms.date: 9/12/2018
+ms.date: 09/12/2018
 ms.custom: fasttrack
-ms.openlocfilehash: 2f398e98e383053f40fa8debcf5636c609339baf
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 02a6eb43d3e11604857b8bd1f461c22a48f655c7
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643733"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54110930"
 ---
 # <a name="running-sap-production-workloads-using-an-oracle-database-on-azure"></a>Azure에서 Oracle 데이터베이스를 사용하여 SAP 프로덕션 워크로드 실행
 
@@ -43,9 +43,13 @@ SAP 시스템은 중요 업무용 비즈니스 애플리케이션을 실행하�
 ### <a name="components"></a>구성 요소
 
 - [Virtual Network](/azure/virtual-network/virtual-networks-overview)는 이 시나리오에서 Azure에 가상 허브-스포크 토폴로지를 만드는 데 사용됩니다.
+
 - [Virtual Machines](/azure/virtual-machines/windows/overview)는 솔루션의 각 계층에 대한 계산 리소스를 제공합니다. 가상 머신의 각 클러스터는 [가용성 집합](/azure/virtual-machines/windows/regions-and-availability#availability-sets)으로 구성됩니다.
+
 - [ExpressRoute](/azure/expressroute/expressroute-introduction)는 연결 공급자가 설정한 비공개 연결을 통해 온-프레미스 네트워크를 Microsoft 클라우드로 확장합니다.
+
 - [NSG(네트워크 보안 그룹)](/azure/virtual-network/security-overview)는 네트워크 액세스를 가상 네트워크의 리소스로 제한합니다. NSG에는 원본 또는 대상 IP 주소, 포트 및 프로토콜에 따라 네트워크 트래픽을 허용하거나 거부하는 보안 규칙 목록이 포함되어 있습니다.
+
 - [리소스 그룹](/azure/azure-resource-manager/resource-group-overview#resource-groups)은 Azure 리소스에 대한 논리 컨테이너 역할을 합니다.
 
 ### <a name="alternatives"></a>대안
@@ -54,13 +58,13 @@ SAP는 Azure 환경에서 다양한 운영 체제, 데이터베이스 관리 시
 
 ## <a name="considerations"></a>고려 사항
 
-Azure에 고가용성 SAP 환경을 구축하기 위한 모범 사례가 정의되어 있습니다. 자세한 내용은 [SAP NetWeaver에 대한 고가용성 아키텍처 및 시나리오](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)를 참조하세요. [Azure VM의 SAP 애플리케이션 고가용성](/azure/virtual-machines/workloads/sap/high-availability-guide)도 참조하세요.
+- Azure에 고가용성 SAP 환경을 구축하기 위한 모범 사례가 정의되어 있습니다. 자세한 내용은 [SAP NetWeaver에 대한 고가용성 아키텍처 및 시나리오](/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)를 참조하세요. [Azure VM의 SAP 애플리케이션 고가용성](/azure/virtual-machines/workloads/sap/high-availability-guide)도 참조하세요.
 
-Oracle 데이터베이스도 Azure에 대한 모범 사례를 제공합니다. 자세한 내용은 [Azure에서 Oracle 데이터베이스 설계 및 구현](/azure/virtual-machines/workloads/oracle/oracle-design)을 참조하세요.
+- Oracle 데이터베이스도 Azure에 대한 모범 사례를 제공합니다. 자세한 내용은 [Azure에서 Oracle 데이터베이스 설계 및 구현](/azure/virtual-machines/workloads/oracle/oracle-design)을 참조하세요.
 
-Oracle Data Guard는 중요 업무용 Oracle 데이터베이스의 단일 실패 지점을 제거하는 데 사용됩니다. 자세한 내용은 [Azure에서 Linux 가상 머신에 Oracle Data Guard 구현](/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)을 참조하세요.
+- Oracle Data Guard는 중요 업무용 Oracle 데이터베이스의 단일 실패 지점을 제거하는 데 사용됩니다. 자세한 내용은 [Azure에서 Linux 가상 머신에 Oracle Data Guard 구현](/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)을 참조하세요.
 
-Microsoft Azure는 Oracle 데이터베이스를 사용하여 SAP 제품을 배포하는 데 사용할 수 있는 인프라 서비스를 제공합니다. 자세한 내용은 [SAP 워크로드용 Azure에 Oracle DBMS 배포](/azure/virtual-machines/workloads/sap/dbms_guide_oracle)를 참조하세요.
+- Microsoft Azure는 Oracle 데이터베이스를 사용하여 SAP 제품을 배포하는 데 사용할 수 있는 인프라 서비스를 제공합니다. 자세한 내용은 [SAP 워크로드용 Azure에 Oracle DBMS 배포](/azure/virtual-machines/workloads/sap/dbms_guide_oracle)를 참조하세요.
 
 ## <a name="pricing"></a>가격
 

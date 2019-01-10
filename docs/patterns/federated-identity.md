@@ -1,18 +1,17 @@
 ---
-title: 페더레이션 ID
+title: 페더레이션 ID 패턴
+titleSuffix: Cloud Design Patterns
 description: 외부 ID 공급자에게 인증을 위임합니다.
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- security
-ms.openlocfilehash: a1edbdd080309383201d33e73602e2f18928c080
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.custom: seodec18
+ms.openlocfilehash: b268000a81edbb2f224a9244d5949def75854f04
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582802"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54110360"
 ---
 # <a name="federated-identity-pattern"></a>페더레이션 ID 패턴
 
@@ -42,7 +41,6 @@ ms.locfileid: "26582802"
 
 ![페더레이션 인증 개요](./_images/federated-identity-overview.png)
 
-
 이 모델을 클레임 기반 액세스 제어라고도 합니다. 애플리케이션과 서비스는 토큰에 포함된 클레임을 기준으로 기능과 특성에 대한 액세스 권한을 부여합니다. 인증이 필요한 서비스는 IdP를 신뢰해야 합니다. 클라이언트 애플리케이션은 인증을 수행하는 IdP에 연결됩니다. 인증에 성공하면 IdP는 사용자를 식별하는 클레임이 포함된 토큰을 STS에 반환합니다(IdP와 STS는 동일한 서비스일 수 있음). STS는 사전 정의된 규칙에 따라 토큰의 클레임을 변환하고 보강한 후 클라이언트 응용 프로그램에 반환할 수 있습니다. 그러면 클라이언트 애플리케이션이 이 토큰을 해당 ID 증명으로 서비스에 전달할 수 있습니다.
 
 > 신뢰 체인에 추가 STS가 있을 수도 있습니다. 예를 들어, 나중에 설명하는 시나리오에서 온-프레미스 STS는 사용자를 인증하기 위해 ID 공급자 액세스를 담당하는 다른 STS를 신뢰합니다. 이 접근 방법은 온-프레미스 STS 및 디렉터리가 있는 엔터프라이즈 시나리오에서 일반적으로 사용됩니다.
@@ -71,7 +69,7 @@ ms.locfileid: "26582802"
 
 - **여러 파트너에서 페더레이션 ID 사용**. 이 시나리오에서는 회사 직원 및 회사 디렉터리에 계정이 없는 비즈니스 파트너를 둘 다 인증해야 합니다. 이 시나리오는 B2B 애플리케이션, 타사 서비스와 통합된 애플리케이션, 서로 다른 IT 시스템을 가진 회사에 병합 또는 공유된 리소스가 있는 경우에 일반적으로 사용됩니다.
 
-- **SaaS 응용 프로그램에서 페더레이션 ID 사용**. 이 시나리오에서는 독립 소프트웨어 공급업체가 여러 클라이언트 또는 테넌트에 즉시 사용할 수 있는 서비스를 제공합니다. 각 테넌트는 적합한 ID 공급자를 사용하여 인증합니다. 예를 들어 비즈니스 사용자는 회사 자격 증명을 사용하는 반면, 테넌트의 소비자와 클라이언트는 해당 소셜 ID 자격 증명을 사용합니다.
+- **SaaS 애플리케이션에서 페더레이션 ID 사용**. 이 시나리오에서는 독립 소프트웨어 공급업체가 여러 클라이언트 또는 테넌트에 즉시 사용할 수 있는 서비스를 제공합니다. 각 테넌트는 적합한 ID 공급자를 사용하여 인증합니다. 예를 들어 비즈니스 사용자는 회사 자격 증명을 사용하는 반면, 테넌트의 소비자와 클라이언트는 해당 소셜 ID 자격 증명을 사용합니다.
 
 이 패턴은 다음과 같은 경우에 유용하지 않을 수 있습니다.
 
@@ -85,7 +83,6 @@ ms.locfileid: "26582802"
 
 ![대규모 엔터프라이즈 구독자의 사용자가 애플리케이션에 액세스하는 방법](./_images/federated-identity-multitenat.png)
 
-
 이 그림은 테넌트가 해당 ID 공급자, 이 경우에는 ADFS로 인증하는 방법(1단계)을 보여 줍니다. ADFS는 테넌트를 성공적으로 인증한 후 토큰을 발급합니다. 클라이언트 브라우저는 테넌트의 ADFS에서 발급한 토큰을 신뢰하는 SaaS 애플리케이션의 페더레이션 공급자에게 이 토큰을 전달하여, SaaS 페더레이션 공급자에 유효한 토큰을 다시 가져옵니다(2단계). 필요한 경우 SaaS 페더레이션 공급자는 토큰의 클레임을 애플리케이션에서 인식하는 토큰으로 변환(3단계)한 후 새 토큰을 클라이언트 브라우저에 반환합니다. 애플리케이션은 SaaS 페더레이션 공급자가 발급한 토큰을 신뢰하고 토큰의 클레임을 사용하여 권한 부여 규칙을 적용합니다(4단계).
 
 테넌트는 애플리케이션에 액세스하기 위해 별도의 자격 증명을 기억할 필요가 없으며, 테넌트 회사의 관리자가 애플리케이션에 액세스할 수 있는 사용자 목록을 해당 ADFS에 구성할 수 있습니다.
@@ -95,5 +92,5 @@ ms.locfileid: "26582802"
 - [Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/)
 - [Active Directory Domain Services](https://msdn.microsoft.com/library/bb897402.aspx)
 - [ADFS(Active Directory Federation Services)](https://msdn.microsoft.com/library/bb897402.aspx)
-- [Microsoft Azure에서 다중 테넌트 응용 프로그램에 대한 ID 관리](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity/)
-- [Azure의 다중 테넌트 응용 프로그램](https://azure.microsoft.com/documentation/articles/dotnet-develop-multitenant-applications/)
+- [Microsoft Azure에서 다중 테넌트 애플리케이션에 대한 ID 관리](/azure/architecture/multitenant-identity)
+- [Azure의 다중 테넌트 애플리케이션](/azure/dotnet-develop-multitenant-applications)

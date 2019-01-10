@@ -1,23 +1,23 @@
 ---
 title: 데이터 관리 패턴
+titleSuffix: Cloud Design Patterns
 description: 데이터 관리는 클라우드 애플리케이션의 핵심 요소이며 대부분의 품질 특성에 영향을 줍니다. 일반적으로 데이터는 성능, 확장성, 가용성 등의 이유로 여러 위치의 여러 서버에 호스팅되며, 이로 인해 다양한 문제가 발생할 수 있습니다. 예를 들어 데이터 일관성을 유지해야 하며, 일반적으로 여러 위치 간에 데이터를 동기화해야 합니다.
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-ms.openlocfilehash: b80c2a127af07e1e362e9078e2a476d33a26ef7c
-ms.sourcegitcommit: e67b751f230792bba917754d67789a20810dc76b
+ms.custom: seodec18
+ms.openlocfilehash: ff6d5703af64ddd8b012b588ddfe810da0b6630c
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30847093"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54009188"
 ---
 # <a name="data-management-patterns"></a>데이터 관리 패턴
 
 [!INCLUDE [header](../../_includes/header.md)]
 
 데이터 관리는 클라우드 애플리케이션의 핵심 요소이며 대부분의 품질 특성에 영향을 줍니다. 일반적으로 데이터는 성능, 확장성, 가용성 등의 이유로 여러 위치의 여러 서버에 호스팅되며, 이로 인해 다양한 문제가 발생할 수 있습니다. 예를 들어 데이터 일관성을 유지해야 하며, 일반적으로 여러 위치 간에 데이터를 동기화해야 합니다.
-
 
 |                        패턴                         |                                                                  요약                                                                  |
 |--------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
@@ -29,4 +29,3 @@ ms.locfileid: "30847093"
 |               [분할](../sharding.md)               |                                    데이터 저장소를 수평 파티션 또는 분할 집합으로 나눕니다.                                     |
 | [정적 콘텐츠 호스팅](../static-content-hosting.md) |                   정적 콘텐츠를 클라이언트에 직접 제공할 수 있는 클라우드 기반 저장소 서비스에 배포합니다.                    |
 |              [발레 키](../valet-key.md)              |                 클라이언트에 특정 리소스 또는 서비스에 대한 제한된 직접 액세스를 제공하는 토큰 또는 키를 사용합니다.                 |
-

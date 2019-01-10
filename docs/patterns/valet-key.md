@@ -1,19 +1,17 @@
 ---
-title: 발레 키
+title: 발레 키 패턴
+titleSuffix: Cloud Design Patterns
 description: 클라이언트에 특정 리소스 또는 서비스에 대한 제한된 직접 액세스를 제공하는 토큰 또는 키를 사용합니다.
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- data-management
-- security
-ms.openlocfilehash: 99d3fbe05e34d61edc0d339f34665e557b250b05
-ms.sourcegitcommit: fb22348f917a76e30a6c090fcd4a18decba0b398
+ms.custom: seodec18
+ms.openlocfilehash: 09173717d499d524d4d5dad2c1202c1bf361b1e5
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/16/2018
-ms.locfileid: "53450890"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54009868"
 ---
 # <a name="valet-key-pattern"></a>발레 키 패턴
 
@@ -105,7 +103,7 @@ Azure는 Blob, 테이블, 큐에 있는 데이터에 대한 세분화된 액세�
 
 Azure 공유 액세스 서명은 테이블 또는 Blob과 같은 특정 리소스와 관련이 있을 수 있는 서버 저장 액세스 정책을 지원합니다. 이 기능은 애플리케이션이 생성한 공유 액세스 서명 토큰과 비교할 때 추가 제어 및 유연성을 제공하므로, 가능한 한 사용해야 합니다. 서버 저장 정책에 정의된 설정은 새 토큰을 발급하지 않고 토큰에 변경되고 반영될 수 있지만, 토큰에 정의된 설정은 새 토큰을 발급하지 않고 변경될 수 없습니다. 이 접근 방식은 만료 전에 유효한 공유 액세스 서명을 취소하는 것이 가능합니다.
 
-> 자세한 내용은 MSDN의 [테이블 SAS(공유 액세스 서명), 큐 SAS 및 Blob SAS 업데이트 소개](https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas/) 및 [공유 액세스 서명 사용](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)을 참조하세요.
+> 자세한 내용은 MSDN의 [테이블 SAS(공유 액세스 서명), 큐 SAS 및 Blob SAS 업데이트 소개](https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas/) 및 [공유 액세스 서명 사용](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)을 참조하세요.
 
 다음 코드는 5분 동안 유효한 공유 액세스 서명 토큰을 생성하는 방법을 보여 줍니다. `GetSharedAccessReferenceForUpload` 메서드는 Azure Blob Storage에 파일을 업로드하는 데 사용될 수 있는 공유 액세스 서명 토큰을 반환합니다.
 
@@ -162,9 +160,10 @@ public class ValuesController : ApiController
 ## <a name="next-steps"></a>다음 단계
 
 이 패턴을 구현할 때 다음 패턴 및 지침도 관련이 있을 수 있습니다.
+
 - 이 패턴의 사용을 보여주는 예제는 [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/valet-key)에서 확인할 수 있습니다.
-- [게이트키퍼 패턴](gatekeeper.md) 이 패턴은 클라이언트와 애플리케이션 또는 서비스 간 브로커 역할을 하는 전용 호스트 인스턴스를 사용하여 애플리케이션 및 서비스를 보호하는 데 발레 키 패턴과 함께 사용될 수 있습니다. 게이트키퍼는 요청의 유효성을 검사하고 삭제하고, 클라이언트와 애플리케이션 간에 요청 및 데이터를 전달합니다. 보안의 추가적인 계층을 제공하고 공격에 노출되는 시스템 부분을 줄일 수 있습니다.
-- [정적 콘텐츠 호스팅 패턴](static-content-hosting.md). 정적 리소스를 클라이언트에 직접 전달할 수 있는 클라우드 기반 저장소 서비스에 배포하여 비용이 많이 드는 계산 인스턴스에 대한 요구를 줄이는 방법을 설명합니다. 리소스를 공개적으로 사용하려는 경우가 아니면 발레 키 패턴을 사용하여 보안을 유지할 수 있습니다.
+- [게이트키퍼 패턴](./gatekeeper.md) 이 패턴은 클라이언트와 애플리케이션 또는 서비스 간 브로커 역할을 하는 전용 호스트 인스턴스를 사용하여 애플리케이션 및 서비스를 보호하는 데 발레 키 패턴과 함께 사용될 수 있습니다. 게이트키퍼는 요청의 유효성을 검사하고 삭제하고, 클라이언트와 애플리케이션 간에 요청 및 데이터를 전달합니다. 보안의 추가적인 계층을 제공하고 공격에 노출되는 시스템 부분을 줄일 수 있습니다.
+- [정적 콘텐츠 호스팅 패턴](./static-content-hosting.md). 정적 리소스를 클라이언트에 직접 전달할 수 있는 클라우드 기반 저장소 서비스에 배포하여 비용이 많이 드는 계산 인스턴스에 대한 요구를 줄이는 방법을 설명합니다. 리소스를 공개적으로 사용하려는 경우가 아니면 발레 키 패턴을 사용하여 보안을 유지할 수 있습니다.
 - [테이블 SAS(공유 액세스 서명), 큐 SAS 및 Blob SAS 업데이트 소개](https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas/)
-- [공유 액세스 서명 사용](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)
-- [Service Bus를 사용한 공유 액세스 서명 인증](https://azure.microsoft.com/documentation/articles/service-bus-shared-access-signature-authentication/)
+- [공유 액세스 서명 사용](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+- [Service Bus를 사용한 공유 액세스 서명 인증](/azure/service-bus-messaging/service-bus-sas)
