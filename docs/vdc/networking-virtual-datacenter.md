@@ -7,12 +7,12 @@ tags: azure-resource-manager
 ms.service: virtual-network
 ms.date: 11/28/2018
 ms.author: jonor
-ms.openlocfilehash: 1d8a9e860ab1a66104dc4133eb5f22ffb4706b84
-ms.sourcegitcommit: 5a3fa0bf35376bbe4a6dd668f2d7d44f9cf9c806
+ms.openlocfilehash: f02cc7df1e90ba3de97a1c25777ab6d27bfdf697
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411687"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011196"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Azure Virtual Datacenter: 네트워크 측면
 
@@ -51,15 +51,6 @@ VDC 구현은 다음과 같은 시나리오에서 기업이 워크로드 및 애
 -   여러 워크로드에 걸쳐 공유 또는 중앙 집중식 보안과 액세스 요구 사항 구현.
 -   대기업에 적합하게 Azure DevOps 및 중앙 집중식 IT 혼합.
 
-VDC의 장점을 활용하기 위한 핵심은 중앙 집중식 토폴로지, 허브 및 스포크와 다양한 Azure 기능입니다. 
-
-- [Azure Virtual Network][VNet]. 
-- [NSG(네트워크 보안 그룹)][NSG].
-- [가상 네트워크 피어링][VNetPeering]. 
-- [UDR(사용자 정의 경로)][UDR].
-- [RBAC(역할 기반 액세스 제어)][RBAC]를 사용하는 Azure ID 서비스. 
-- 필요에 따라 [Azure Firewall][AzFW], [Azure DNS][DNS], [Azure Front Door][AFD] 및 [Azure Virtual WAN][vWAN].
-
 VDC의 장점을 활용하기 위한 핵심은 Azure 서비스 및 기능이 결합된 중앙 집중식 허브 및 스포크 네트워크 토폴로지입니다.
 
 * [Azure Virtual Network][VNet],
@@ -79,9 +70,6 @@ DevOps를 원하는 조직은 또한 VDC 개념을 활용하여 권한이 부여
 ## <a name="considerations-for-implementing-a-virtual-datacenter"></a>가상 데이터 센터 구현 시 고려 사항
 
 VDC 구현을 디자인할 때 다음과 같은 몇 가지 중대한 문제를 고려해야 합니다.
-
-### <a name="identity-and-directory-services"></a>ID 및 디렉터리 서비스
-ID 및 디렉터리 서비스는 온-프레미스와 클라우드의 모든 데이터 센터에서 핵심적인 요소입니다. ID는 VDC 내의 서비스에 대한 액세스 및 권한 부여의 모든 측면과 관련이 있습니다. 권한 있는 사용자 및 프로세스만 Azure 계정과 리소스에 액세스할 수 있도록, Azure는 여러 가지 유형의 자격 증명을 인증에 사용합니다. 여기에는 Azure 계정에 액세스하기 위한 암호, 암호화 키, 디지털 서명 및 인증서가 포함됩니다. 
 
 ### <a name="identity-and-directory-service"></a>ID 및 디렉터리 서비스
 
@@ -340,7 +328,7 @@ Operations Management Suite의 [네트워크 성능 모니터][NPM] 솔루션은
 
 **빅 데이터/분석**: 데이터를 큰 볼륨으로 확장해야 하는 경우 데이터베이스가 제대로 확장되지 않을 수 있습니다. Hadoop 기술은 많은 수의 노드에서 동시에 분산 쿼리를 실행하는 시스템을 제공합니다. 고객은 IaaS VM 또는 PaaS([HDInsight][HDI]) 중 하나에서 데이터 작업을 실행할 수 있습니다. HDInsight는 위치 기반 VNet으로의 배포를 지원하며, VDC의 스포크에 있는 클러스터에 배포할 수 있습니다.
 
-**이벤트 및 메시징**: [Azure Event Hubs][EventHubs]는 수백만 개의 이벤트를 수집, 변환 및 저장하는 하이퍼스케일(hyper-scale) 원격 분석 수집 서비스입니다. 분산 스트리밍 플랫폼으로서 Azure Event Hubs는 짧은 대기 시간과 구성 가능한 시간 보존을 제공하여 엄청난 양의 원격 분석을 Azure로 수집하고 여러 애플리케이션에서 데이터를 읽을 수 있게 해줍니다. Event Hubs를 통해 단일 스트림은 실시간 및 일괄 처리 기반 파이프라인을 모두 지원할 수 있습니다.
+**이벤트 및 메시징**: Azure Event Hubs[EventHubs]는 수백만 개의 이벤트를 수집, 변환 및 저장하는 하이퍼스케일(hyper-scale) 원격 분석 수집 서비스입니다. 분산 스트리밍 플랫폼으로서 Azure Event Hubs는 짧은 대기 시간과 구성 가능한 시간 보존을 제공하여 엄청난 양의 원격 분석을 Azure로 수집하고 여러 애플리케이션에서 데이터를 읽을 수 있게 해줍니다. Event Hubs를 통해 단일 스트림은 실시간 및 일괄 처리 기반 파이프라인을 모두 지원할 수 있습니다.
 
 [Azure Service Bus][ServiceBus]를 통해 애플리케이션과 서비스 간에 매우 안정적인 클라우드 메시지 서비스를 구현할 수 있습니다. 클라이언트와 서버 간의 비동기 조정된 메시징, 구조적 FIFO(선입 선출) 메시지 및 게시/구독 기능을 제공합니다.
 
