@@ -4,12 +4,12 @@ description: Azure에서 고가용성 및 재해 복구를 제공하는 복원 �
 author: MikeWasson
 ms.date: 12/18/2018
 ms.custom: resiliency
-ms.openlocfilehash: 28ad589c6d54a1574b5cd5c4f08e3c6adfe349c3
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: ef8fd64756c483528aa83048e23f6387dedb74d6
+ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113130"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160862"
 ---
 # <a name="designing-resilient-applications-for-azure"></a>Azure용 복원 애플리케이션 디자인
 
@@ -148,7 +148,7 @@ Azure SQL Database에 쓰는 App Service 웹앱을 고려해 보세요. 이 문�
 
 **다중 지역 배포의 SLA**. 또 다른 HA 기술은 여러 지역에 애플리케이션을 배포 하고, 한 지역의 애플리케이션에 오류가 발생하면 Azure Traffic Manager를 사용하여 장애 조치(failover)하는 것입니다. 다중 지역 배포의 경우 복합 SLA는 다음과 같이 계산합니다.
 
-한 지역에 배포된 애플리케이션의 복합 SLA를 *N*, 애플리케이션이 배포된 지역 수를 *R*이라 하겠습니다. 모든 지역의 애플리케이션이 동시에 중단될 확률은 ((1 &minus N) ^ R)입니다.
+한 지역에 배포된 애플리케이션의 복합 SLA를 *N*, 애플리케이션이 배포된 지역 수를 *R*이라 하겠습니다. 모든 지역의 애플리케이션이 동시에 중단될 확률은 ((1 &minus; N) ^ R)입니다.
 
 예를 들어 단일 지역 SLA가 99.95%이면,
 
