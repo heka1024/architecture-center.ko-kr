@@ -4,18 +4,18 @@ description: Azure의 일반 워크로드에 대한 참조 아키텍처, 청사�
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 08/30/2018
-ms.openlocfilehash: 173698aee0a67578beaa806a59e1c7b0265cdd61
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 4e0f3b32abc8d2e0da9b139b0e6aae1d48152a37
+ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011806"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160777"
 ---
 # <a name="azure-reference-architectures"></a>Azure 참조 아키텍처
 
 Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍처가 함께 그룹화됩니다. 각 아키텍처는 확장성, 가용성, 관리성 및 보안에 대한 고려 사항과 함께 권장 방법을 포함하고 있습니다. 또한 대부분은 배포 가능한 솔루션을 포함하고 있습니다.
 
-이동: [AI](#ai-and-machine-learning) | [빅 데이터](#big-data-solutions) | [서버리스](#serverless-applications) | [가상 네트워크](#virtual-networks) | [VM 워크로드](#vm-workloads) | [SAP](#sap) | [웹앱](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
+이동: [AI](#ai-and-machine-learning) | [빅 데이터](#big-data-solutions) | [IoT](#internet-of-things) | [서버리스](#serverless-applications) | [가상 네트워크](#virtual-networks) | [VM 워크로드](#vm-workloads) | [SAP](#sap) | [웹앱](#web-applications) | [Active Directory](#extend-on-premises-active-directory-to-azure)
 
 <!-- markdownlint-disable MD033 -->
 
@@ -209,7 +209,32 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
 </li>
 </ul>
 
-## <a name="serverless-applications"></a>서버리스 응용 프로그램
+## <a name="internet-of-things"></a>사물 인터넷
+
+<ul class="panelContent cardsF">
+<!-- IoT reference architecture -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./iot/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./iot/_images/iot.svg" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure IoT 참조 아키텍처</h3>
+                        <p>PaaS(platform-as-a-service) 구성 요소를 사용하는 Azure에서 IoT 애플리케이션에 대한 권장 아키텍처입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
+
+## <a name="serverless-applications"></a>서버리스 애플리케이션
 
 <ul class="panelContent cardsF">
 <!-- Serverless web application -->
