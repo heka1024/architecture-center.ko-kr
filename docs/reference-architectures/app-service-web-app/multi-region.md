@@ -5,12 +5,12 @@ description: Azure의 여러 지역에서 실행 중인 고가용성 웹 애플�
 author: MikeWasson
 ms.date: 10/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: 61ee7220dbc37140ff1598de78f89aaef8a3e922
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 04ba786ea16aa3245a8f0b7fcafeacc60ac447c2
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53119849"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113334"
 ---
 # <a name="run-a-web-application-in-multiple-azure-regions-for-high-availability"></a>여러 Azure 지역에서 웹 애플리케이션을 실행하여 고가용성 구현
 
@@ -147,7 +147,7 @@ az network traffic-manager endpoint update --resource-group <resource-group> --p
 
 <!-- links -->
 
-[azure-sql-db]: https://azure.microsoft.com/documentation/services/sql-database/
+[azure-sql-db]: /azure/sql-database/
 [azure-dns]: /azure/dns/dns-overview
 [cosmosdb-geo]: /azure/cosmos-db/distribute-data-globally
 [guidance-web-apps-scalability]: ./scalable-web-app.md

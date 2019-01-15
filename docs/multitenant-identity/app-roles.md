@@ -6,18 +6,18 @@ ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: signup
 pnp.series.next: authorize
-ms.openlocfilehash: 4a694eb65de717e6b5a7c65a2d6fb28f192dcdc5
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 04749bff820132e40f3cbb5195bf65648ab39ab3
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902513"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112535"
 ---
 # <a name="application-roles"></a>애플리케이션 역할
 
 [![GitHub](../_images/github.png) 샘플 코드][sample application]
 
-애플리케이션 역할은 사용자에게 사용 권한을 할당하는 데 사용됩니다. 예를 들어 [Tailspin Surveys][Tailspin] 애플리케이션은 다음 역할을 정의합니다.
+애플리케이션 역할은 사용자에게 사용 권한을 할당하는 데 사용됩니다. 예를 들어 [Tailspin Surveys][tailspin] 애플리케이션은 다음 역할을 정의합니다.
 
 * 관리자. 해당 테넌트에 속하는 모든 설문 조사에 대한 모든 CRUD 작업을 수행할 수 있습니다.
 * 작성자. 새 설문 조사를 만들 수 있습니다.
@@ -27,17 +27,16 @@ ms.locfileid: "52902513"
 
 * [Azure AD 앱 역할](#roles-using-azure-ad-app-roles)
 * [Azure AD 보안 그룹](#roles-using-azure-ad-security-groups)
-* [응용 프로그램 역할 관리자](#roles-using-an-application-role-manager)
+* [애플리케이션 역할 관리자](#roles-using-an-application-role-manager)
 
 ## <a name="roles-using-azure-ad-app-roles"></a>Azure AD 앱 역할을 사용하는 역할
+
 이 방식은 Tailspin 설문 조사 앱에서 사용하는 방식입니다.
 
 이 방법에서 SaaS 공급자는 애플리케이션 역할을 애플리케이션 매니페스트에 추가하여 애플리케이션 역할을 정의합니다. 고객이 등록하면 고객의 AD 디렉터리 관리자가 사용자를 해당 역할에 할당합니다. 사용자가 로그인하면 사용자에게 할당된 역할이 클레임으로 전송됩니다.
 
 > [!NOTE]
 > 고객에게 Azure AD Premium이 있는 경우 관리자는 보안 그룹을 역할에 할당할 수 있으며 해당 그룹의 구성원은 앱 역할을 상속합니다. 그룹 소유자가 AD 관리자일 필요가 없으므로 역할을 관리할 수 있는 편리한 방법입니다.
-> 
-> 
 
 이 방법의 장점
 
@@ -52,6 +51,7 @@ ms.locfileid: "52902513"
 * 웹앱과 별도로 백 엔드 Web API가 있는 경우 웹앱에 대한 역할 할당은 Web API에 적용되지 않습니다. 이에 대한 자세한 내용은 [백 엔드 Web API 보안]을 참조하세요.
 
 ### <a name="implementation"></a>구현
+
 **역할 정의.** SaaS 공급자는 [애플리케이션 매니페스트]에서 앱 역할을 선언합니다. 예를 들어 다음은 설문 조사 앱을 위한 매니페스트 항목입니다.
 
 ```json
@@ -85,8 +85,6 @@ ms.locfileid: "52902513"
 
 > [!NOTE]
 > 앞에서 설명한 대로 Azure AD Premium이 있는 고객은 보안 그룹을 역할에 할당할 수도 있습니다.
-> 
-> 
 
 Azure Portal의 다음 스크린샷은 설문 조사 애플리케이션의 사용자와 그룹을 보여 줍니다. Admin 및 Creator는 각각 SurveyAdmin 및 SurveyCreator 역할에 할당된 그룹입니다. Alice는 SurveyAdmin 역할에 직접 할당된 사용자입니다. Bob과 Charles는 역할에 직접 할당되지 않은 사용자입니다.
 
@@ -96,12 +94,10 @@ Azure Portal의 다음 스크린샷은 설문 조사 애플리케이션의 사�
 
 ![Admin 그룹 구성원](./images/running-the-app/admin-members.png)
 
-
 > [!NOTE]
 > 또는 애플리케이션이 Azure AD Graph API를 사용하여 프로그래밍 방식으로 역할을 할당할 수 있습니다. 그러나 이 경우 애플리케이션이 고객의 AD 디렉터리에 대한 쓰기 권한을 확보해야 합니다. 이러한 권한을 가진 애플리케이션은 많은 오류를 만들 수 있으며, 앱이 해당 디렉터리를 손상하지 않을 것이라고 고객이 신뢰해야 합니다. 많은 고객이 이 수준의 액세스를 부여하는 것을 꺼려할 수 있습니다.
-> 
 
-**역할 클레임 가져오기**. 사용자가 로그인하는 경우 애플리케이션은 유형이 `http://schemas.microsoft.com/ws/2008/06/identity/claims/role`인 클레임에서 사용자의 할당된 역할을 수신합니다.  
+**역할 클레임 가져오기**. 사용자가 로그인하는 경우 애플리케이션은 유형이 `http://schemas.microsoft.com/ws/2008/06/identity/claims/role`인 클레임에서 사용자의 할당된 역할을 수신합니다.
 
 사용자는 여러 역할을 보유하거나 역할이 없을 수 있습니다. 인증 코드에서 사용자가 정확한 한 개의 역할 클레임만 포함한다고 가정하지 마세요. 대신, 특정 클레임 값이 있는지 여부를 확인하는 코드를 작성합니다.
 
@@ -110,6 +106,7 @@ if (context.User.HasClaim(ClaimTypes.Role, "Admin")) { ... }
 ```
 
 ## <a name="roles-using-azure-ad-security-groups"></a>Azure AD 보안 그룹을 사용하는 역할
+
 이 접근 방법에서는 역할이 AD 보안 그룹으로 표시됩니다. 애플리케이션은 보안 그룹 구성원 자격에 따라 사용자에게 권한을 할당합니다.
 
 장점
@@ -121,7 +118,12 @@ if (context.User.HasClaim(ClaimTypes.Role, "Admin")) { ... }
 * 복잡성. 모든 테넌트가 서로 다른 그룹 클레임을 전송하므로 앱이 각 테넌트에 대해 어떤 보안 그룹이 어떤 애플리케이션 역할에 해당하는지를 추적해야 합니다.
 * 고객이 AD 테넌트에서 애플리케이션을 제거하면 보안 그룹은 AD 디렉터리에 남아 있습니다.
 
+<!-- markdownlint-disable MD024 -->
+
 ### <a name="implementation"></a>구현
+
+<!-- markdownlint-enable MD024 -->
+
 애플리케이션 매니페스트에서 `groupMembershipClaims` 속성을 "SecurityGroup"으로 설정합니다. 이를 위해서는 AAD에서 그룹 구성원 자격 클레임을 가져와야 합니다.
 
 ```json
@@ -135,8 +137,6 @@ if (context.User.HasClaim(ClaimTypes.Role, "Admin")) { ... }
 
 > [!NOTE]
 > 또는 애플리케이션이 Azure AD Graph API를 사용하여 그룹을 프로그래밍 방식으로 만들 수 있습니다.  이렇게 하면 오류 가능성이 적습니다. 그러나 이 경우 애플리케이션이 고객의 AD 디렉터리에 대한 "모든 그룹의 읽기 및 쓰기" 권한을 확보해야 합니다. 많은 고객이 이 수준의 액세스를 부여하는 것을 꺼려할 수 있습니다.
-> 
-> 
 
 사용자가 로그인하는 경우
 
@@ -148,6 +148,7 @@ if (context.User.HasClaim(ClaimTypes.Role, "Admin")) { ... }
 권한 부여 정책은 그룹 클레임이 아닌, 사용자 지정 역할 클레임을 사용해야 합니다.
 
 ## <a name="roles-using-an-application-role-manager"></a>애플리케이션 역할 관리자를 사용하는 역할
+
 이 접근 방법에서는 애플리케이션 역할이 Azure AD에 저장되지 않습니다. 대신, 애플리케이션이 ASP.NET ID의 **RoleManager** 클래스 등을 사용하여 각 사용자에 대한 역할 할당을 해당 DB&mdash;에 저장합니다.
 
 장점
@@ -158,14 +159,13 @@ if (context.User.HasClaim(ClaimTypes.Role, "Admin")) { ... }
 
 * 좀더 복잡하고 유지 관리하기 어렵습니다.
 * 역할 할당을 관리하는 데 AD 보안 그룹을 사용할 수 없습니다.
-* 사용자를 추가하거나 제거하면 테넌트의 AD 디렉터리와 동기화되지 않을 수 있는 애플리케이션 데이터베이스에 사용자 정보를 저장합니다.   
-
+* 사용자를 추가하거나 제거하면 테넌트의 AD 디렉터리와 동기화되지 않을 수 있는 애플리케이션 데이터베이스에 사용자 정보를 저장합니다.
 
 [**다음**][권한 부여]
 
-<!-- Links -->
-[Tailspin]: tailspin.md
+<!-- links -->
 
+[tailspin]: tailspin.md
 [권한 부여]: authorize.md
 [백 엔드 Web API 보안]: web-api.md
 [애플리케이션 매니페스트]: /azure/active-directory/active-directory-application-manifest/

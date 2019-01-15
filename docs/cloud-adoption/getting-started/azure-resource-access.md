@@ -1,16 +1,16 @@
 ---
-title: '엔터프라이즈 클라우드 채택: Azure의 리소스 액세스 관리'
-description: 'Azure에서 리소스 액세스 관리 구문 설명: Azure Resource Manager, 구독, 리소스 그룹 및 리소스'
+title: '엔터프라이즈 클라우드 채택: Azure에서 리소스 액세스 관리'
+description: 리소스 액세스 관리의 설명으로 Azure에서 다음을 생성합니다. Azure Resource Manager, 구독, 리소스 그룹 및 리소스
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: c26b01d207bc4eb100653a826a053b394d03d1e6
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 8cb28d0dd5dbdfcef846786083d5197f435bf3ea
+ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428706"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160794"
 ---
-# <a name="enterprise-cloud-adoption-resource-access-management-in-azure"></a>엔터프라이즈 클라우드 채택: Azure의 리소스 액세스 관리
+# <a name="enterprise-cloud-adoption-resource-access-management-in-azure"></a>엔터프라이즈 클라우드 채택: Azure에서 리소스 액세스 관리
 
 [리소스 거버넌스란?](what-is-governance.md)에서 거버넌스가 조직의 요구 사항 및 목표 달성을 위해 Azure 리소스의 사용을 관리, 모니터링 및 감사하는 지속적인 프로세스를 가리킨다는 점을 알아보았습니다. 거버넌스 모델을 디자인하는 방법을 알아보기 위해 이동하려면 먼저 Azure에서 리소스 액세스 관리 제어를 이해해야 합니다. 이러한 리소스 액세스 관리 제어의 구성은 거버넌스 모델의 기본을 형성합니다.
 
@@ -46,7 +46,7 @@ Azure 구독은 리소스 그룹 및 해당 리소스를 함께 그룹화하는 
 ![](../_images/governance-1-12.png)   
 *그림 4. Azure Resource Manager.*
 
-다음 그림은 [PowerShell](/powershell/azure/overview), [Azure Portal](https://portal.azure.com) 및 [Azure CLI(명령줄 인터페이스)](/cli/azure)라는 세 가지 클라이언트를 보여줍니다.
+다음 그림은 세 가지 클라이언트를 보여줍니다. [PowerShell](/powershell/azure/overview), [Azure Portal](https://portal.azure.com) 및 [Azure CLI(명령줄 인터페이스)](/cli/azure)입니다.
 
 ![](../_images/governance-1-13.png)   
 *그림 5. Azure Resource Manager RESTful API에 대한 Azure 클라이언트 연결.*

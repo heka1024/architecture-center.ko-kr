@@ -1,14 +1,17 @@
 ---
 title: 게이트웨이 오프로딩 패턴
+titleSuffix: Cloud Design Patterns
 description: 공유 또는 특수 서비스 기능을 게이트웨이 프록시에 오프로드합니다.
+keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 6b3e4541aae77349ca91c18c788ddb508912361d
-ms.sourcegitcommit: b0482d49aab0526be386837702e7724c61232c60
+ms.custom: seodec18
+ms.openlocfilehash: 50af3d8593279986ed6efee55667187424c18e56
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/14/2017
-ms.locfileid: "26582682"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54010217"
 ---
 # <a name="gateway-offloading-pattern"></a>게이트웨이 오프로딩 패턴
 
@@ -24,12 +27,12 @@ ms.locfileid: "26582682"
 
 ## <a name="solution"></a>해결 방법
 
-일부 기능, 특히 인증서 관리, 인증, SSL 종료, 모니터링, 프로토콜 변환 또는 제한과 같이 교차 적용되는 문제를 API 게이트웨이에 오프로드합니다. 
+일부 기능, 특히 인증서 관리, 인증, SSL 종료, 모니터링, 프로토콜 변환 또는 제한과 같이 교차 적용되는 문제를 API 게이트웨이에 오프로드합니다.
 
 다음 다이어그램에서는 인바운드 SSL 연결을 종료하는 API 게이트웨이를 보여 줍니다. 여기서는 원래 요청자 대신, API 게이트웨이의 업스트림 HTTP 서버에서 데이터를 요청합니다.
 
- ![](./_images/gateway-offload.png)
- 
+ ![게이트웨이 오프로딩 패턴의 다이어그램](./_images/gateway-offload.png)
+
 이 패턴의 이점은 다음과 같습니다.
 
 - 웹 서버 인증서 및 보안 웹 사이트의 구성 등과 같은 지원 리소스를 배포하고 유지 관리할 필요를 없앰으로써 서비스의 개발을 단순화합니다. 구성이 좀 더 단순해지면 관리 및 확장이 용이해지며, 서비스 업그레이드가 더 간단해집니다.
@@ -40,10 +43,10 @@ ms.locfileid: "26582682"
 
 ## <a name="issues-and-considerations"></a>문제 및 고려 사항
 
-- API 게이트웨이가 높은 가용성을 유지하고 오류에 대해 복원력을 가지는지 확인합니다. API 게이트웨이의 여러 인스턴스를 실행하여 단일 실패 지점을 방지합니다. 
-- 게이트웨이가 응용 프로그램 및 끝점의 용량 및 크기 조정 요구 사항에 맞게 디자인되었는지 확인합니다. 게이트웨이가 애플리케이션에서 병목 현상을 유발하는 요인이 되지 않으면서 충분히 확장 가능하도록 합니다.
+- API 게이트웨이가 높은 가용성을 유지하고 오류에 대해 복원력을 가지는지 확인합니다. API 게이트웨이의 여러 인스턴스를 실행하여 단일 실패 지점을 방지합니다.
+- 게이트웨이가 애플리케이션 및 엔드포인트의 용량 및 크기 조정 요구 사항에 맞게 디자인되었는지 확인합니다. 게이트웨이가 애플리케이션에서 병목 현상을 유발하는 요인이 되지 않으면서 충분히 확장 가능하도록 합니다.
 - 보안 또는 데이터 전송 등의 전체 애플리케이션에서 사용되는 기능만 오프로드합니다.
-- 비즈니스 논리는 API 게이트웨이로 절대 오프로드하지 않아야 합니다. 
+- 비즈니스 논리는 API 게이트웨이로 절대 오프로드하지 않아야 합니다.
 - 트랜잭션을 추적해야 할 경우 로깅을 위한 상관 관계 ID를 생성하는 것이 좋습니다.
 
 ## <a name="when-to-use-this-pattern"></a>이 패턴을 사용해야 하는 경우
@@ -60,7 +63,7 @@ ms.locfileid: "26582682"
 
 Nginx를 SSL 오프로드 어플라이언스로 사용할 경우 다음 구성은 인바운드 SSL 연결을 종료하고 업스트림 HTTP 서버 3개 중 하나로 연결을 분산합니다.
 
-```
+```console
 upstream iis {
         server  10.3.0.10    max_fails=3    fail_timeout=15s;
         server  10.3.0.20    max_fails=3    fail_timeout=15s;
@@ -89,4 +92,3 @@ proxy_set_header X-Real-IP $remote_addr;
 - [프런트 엔드에 대한 백 엔드 패턴](./backends-for-frontends.md)
 - [게이트웨이 집계 패턴](./gateway-aggregation.md)
 - [게이트웨이 라우팅 패턴](./gateway-routing.md)
-

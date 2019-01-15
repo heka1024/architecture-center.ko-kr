@@ -5,12 +5,12 @@ description: 성능 및 확장성을 향상하기 위한 캐시에 대한 지침
 author: dragon119
 ms.date: 05/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: b7f720b9e08b0316f9967a19e1b93069aa04e55f
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: da676ba3037f5c232ea97b9cb41488c7c2202476
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307472"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113113"
 ---
 # <a name="caching"></a>구성
 
@@ -95,7 +95,7 @@ ms.locfileid: "53307472"
 
 ### <a name="cache-highly-dynamic-data"></a>매우 동적인 데이터 캐싱
 
-영구 데이터 저장소에 빠르게 변경되는 정보를 저장하는 경우 시스템에 오버헤드가 부과될 수 있습니다. 예를 들어 상태 또는 일부 다른 측정을 지속적으로 보고하는 장치를 고려합니다. 애플리케이션이 캐시된 정보가 거의 항상 오래된 기준으로 이 데이터를 캐시하지 않도록 선택하면 데이터 저장소에서 이 정보를 저장하고 검색하는 경우 동일하게 고려합니다. 이 데이터를 저장하고 가져오는 데 걸리는 시간에 변경되었을 수 있습니다.
+영구 데이터 저장소에 빠르게 변경되는 정보를 저장하는 경우 시스템에 오버헤드가 부과될 수 있습니다. 예를 들어 상태 또는 일부 다른 측정을 지속적으로 보고하는 디바이스를 고려합니다. 애플리케이션이 캐시된 정보가 거의 항상 오래된 기준으로 이 데이터를 캐시하지 않도록 선택하면 데이터 저장소에서 이 정보를 저장하고 검색하는 경우 동일하게 고려합니다. 이 데이터를 저장하고 가져오는 데 걸리는 시간에 변경되었을 수 있습니다.
 
 이와 같은 상황에서 영구 데이터 저장소 대신 캐시에 동적 정보를 직접 저장하는 것의 이점을 고려하세요. 데이터가 중요하지 않고 감사를 필요로 하지 않으면 필요에 따른 변경이 손실된 경우 중요하지 않습니다.
 
@@ -476,9 +476,9 @@ var customer1 = cache.Wait(task1);
 var customer2 = cache.Wait(task2);
 ```
 
-Azure Redis Cache를 수행할 수 있는 클라이언트 애플리케이션 작성 방법에 대한 자세한 내용은 [Azure Redis Cache 설명서](https://azure.microsoft.com/documentation/services/cache/)를 참조하세요. [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Basics.md)에서도 자세한 내용을 확인할 수 있습니다.
+Azure Redis Cache를 수행할 수 있는 클라이언트 애플리케이션 작성 방법에 대한 자세한 내용은 [Azure Redis Cache 설명서](/azure/azure-cache-for-redis/)를 참조하세요. [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Basics.md)에서도 자세한 내용을 확인할 수 있습니다.
 
-동일한 웹 사이트의 [파이프라인 및 멀티플렉서](https://stackexchange.github.io/StackExchange.Redis/PipelinesMultiplexers) 페이지에서 Redis와 StackExchange 라이브러리를 통한 파이프라인 및 비동기 작업에 대한 자세한 정보를 제공합니다. 
+동일한 웹 사이트의 [파이프라인 및 멀티플렉서](https://stackexchange.github.io/StackExchange.Redis/PipelinesMultiplexers) 페이지에서 Redis와 StackExchange 라이브러리를 통한 파이프라인 및 비동기 작업에 대한 자세한 정보를 제공합니다.
 
 ## <a name="using-redis-caching"></a>Redis 캐싱 사용
 
@@ -898,7 +898,7 @@ ISubscriber subscriber = redisHostConnection.GetSubscriber();
 
 ## <a name="more-information"></a>자세한 정보
 
-- [Azure Redis Cache 설명서](https://azure.microsoft.com/documentation/services/cache/) 
+- [Azure Redis Cache 설명서](/azure/azure-cache-for-redis/)
 - [Azure Redis Cache FAQ](/azure/redis-cache/cache-faq)
 - [작업 기반 비동기 패턴](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap)
 - [Redis 설명서](https://redis.io/documentation)

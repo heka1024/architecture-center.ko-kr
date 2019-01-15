@@ -1,16 +1,16 @@
 ---
 title: HA/DR용으로 빌드된 다중 계층 웹 애플리케이션
 titleSuffix: Azure Example Scenarios
-description: Azure Virtual Machines, 가용성 집합, 가용성 영역, Azure Site Recovery 및 Azure Traffic Manager를 사용하여 Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션 만들기
+description: Azure Virtual Machines, 가용성 집합, 가용성 영역, Azure Site Recovery 및 Azure Traffic Manager를 사용하여 Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션을 만듭니다.
 author: sujayt
 ms.date: 11/16/2018
 ms.custom: product-team
-ms.openlocfilehash: baa468697b4a72975e3b192efc9bdf1861a0c0da
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: d2b466cc691c02ea3c5fb6ff72d91865d33c3378
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53644051"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114099"
 ---
 # <a name="multitier-web-application-built-for-high-availability-and-disaster-recovery-on-azure"></a>Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션
 

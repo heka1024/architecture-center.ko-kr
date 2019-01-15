@@ -3,12 +3,12 @@ title: 조건부로 Azure Resource Manager 템플릿의 리소스 배포
 description: 조건부로 매개 변수의 값에 종속되는 리소스를 배포하도록 Azure Resource Manager 템플릿의 기능을 확장하는 방법을 설명합니다.
 author: petertay
 ms.date: 10/30/2018
-ms.openlocfilehash: 2c74e17a5f38f9225b696640a23b55b1285276bb
-ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
+ms.openlocfilehash: 0e02fbbd130bd6be2fc10173c8466b028d5d61da
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251841"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113470"
 ---
 # <a name="conditionally-deploy-a-resource-in-an-azure-resource-manager-template"></a>조건부로 Azure Resource Manager 템플릿의 리소스 배포
 
@@ -22,7 +22,7 @@ ms.locfileid: "50251841"
 
 템플릿의 각 섹션에 살펴보겠습니다.
 
-`parameters` 요소는 `virtualNetworkPeerings`라는 단일 매개 변수를 정의합니다. 
+`parameters` 요소는 `virtualNetworkPeerings`라는 단일 매개 변수를 정의합니다.
 
 ```json
 {
@@ -35,6 +35,7 @@ ms.locfileid: "50251841"
     }
   },
 ```
+
 `virtualNetworkPeerings` 매개 변수는 `array`이며 다음 스키마를 갖습니다.
 
 ```json
@@ -95,9 +96,10 @@ ms.locfileid: "50251841"
     }
 ]
 ```
+
 템플릿의 이 부분에서 진행되는 몇 가지 작업이 있습니다. 먼저, 배포될 실제 리소스는 `Microsoft.Network/virtualNetworks/virtualNetworkPeerings`를 실제로 배포하는 자체 템플릿을 포함하는 `Microsoft.Resources/deployments` 형식의 인라인 템플릿입니다.
 
-인라인 템플릿의 `name`은 `copyIndex()`의 현재 반복을 접두사 `vnp-`와 연결해서 고유하게 생성됩니다. 
+인라인 템플릿의 `name`은 `copyIndex()`의 현재 반복을 접두사 `vnp-`와 연결해서 고유하게 생성됩니다.
 
 `condition` 요소는 `greater()` 함수가 `true`로 평가될 때 리소스가 처리되도록 지정합니다. 여기서는 `virtualNetworkPeerings` 매개 변수 배열이 0보다 `greater()` 상태인지를 테스트합니다. 0보다 크면 `true`로 평가되고 `condition`은 충족됩니다. 0보다 작으면 `false`입니다.
 
@@ -116,7 +118,7 @@ ms.locfileid: "50251841"
   },
 ```
 
-`workaround` 변수에는 `true` 및 `false`라는 2개의 속성이 포함됩니다. `true` 속성은 `virtualNetworkPeerings` 매개 변수 배열의 값으로 평가됩니다. `false` 속성은 유효성 검사를 충족하는 `virtualNetworkPeerings` 매개 변수와 마찬가지로, `false`가 실제로 배열이라는 &mdash; 사실을 알기 위해 Resource Manager가 예상하는 명명된 속성을 포함하는 빈 개체로 평가됩니다. 
+`workaround` 변수에는 `true` 및 `false`라는 2개의 속성이 포함됩니다. `true` 속성은 `virtualNetworkPeerings` 매개 변수 배열의 값으로 평가됩니다. `false` 속성은 유효성 검사를 충족하는 `virtualNetworkPeerings` 매개 변수와 마찬가지로, `false`가 실제로 배열이라는 &mdash; 사실을 알기 위해 Resource Manager가 예상하는 명명된 속성을 포함하는 빈 개체로 평가됩니다.
 
 `peerings` 변수는 `workaround` 변수를 한 번 더 사용하여, `virtualNetworkPeerings` 매개 변수 배열의 길이가 0보다 큰지 테스트합니다. 0보다 크면 `string`은 `true`로 평가되고, `workaround` 변수는 `virtualNetworkPeerings` 매개 변수 배열로 평가됩니다. 그렇지 않은 경우 `false`로 평가되고, `workaround` 변수는 배열의 첫 번째 요소에 있는 빈 개체로 평가됩니다.
 
@@ -137,7 +139,7 @@ az group deployment create -g <resource-group-name> \
 * 템플릿 매개 변수로 스칼라 값이 아닌 개체를 사용합니다. [Azure Resource Manager 템플릿에서 개체를 매개 변수로 사용](./objects-as-parameters.md)을 참조하세요.
 
 <!-- links -->
-[azure-resource-manager-condition]: /azure/azure-resource-manager/resource-group-authoring-templates#resources
+[azure-resource-manager-condition]: /azure/azure-resource-manager/resource-manager-templates-resources#condition
 [azure-resource-manager-variable]: /azure/azure-resource-manager/resource-group-authoring-templates#variables
 [vnet-peering-resource-schema]: /azure/templates/microsoft.network/virtualnetworks/virtualnetworkpeerings
 [cli]: /cli/azure/?view=azure-cli-latest

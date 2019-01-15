@@ -3,14 +3,14 @@ title: 전자상거래 프런트 엔드
 titleSuffix: Azure Example Scenarios
 description: Azure에서 전자상거래 사이트를 호스트합니다.
 author: masonch
-ms.date: 7/13/18
+ms.date: 07/13/2018
 ms.custom: fasttrack
-ms.openlocfilehash: d6587218813fa450b284f3a300c7254a3c9fe41f
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: f07c21b8eb9d812b9831abe8f2e4f6d131893df2
+ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643954"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54160811"
 ---
 # <a name="an-e-commerce-front-end-on-azure"></a>Azure의 전자상거래 프런트 엔드
 
@@ -67,7 +67,7 @@ ms.locfileid: "53643954"
 - [Service Fabric][docs-service-fabric] - 높은 수준의 제어를 통해 클러스터 전체에 배포되고 실행되는 이점이 있는 분산 구성 요소를 구축하는 데 중점을 둔 플랫폼입니다. Service Fabric은 컨테이너를 호스팅하는 데도 사용할 수 있습니다.
 - [Azure Kubernetes Service][docs-kubernetes-service] - 마이크로 서비스 아키텍처의 한 구현으로 사용할 수 있는 컨테이너 기반 솔루션을 구축하고 배포하는 플랫폼입니다. 필요에 따라 애플리케이션의 여러 구성 요소를 독립적으로 민첩하게 크기 조정할 수 있습니다.
 - [Azure Container Instances][docs-container-instances] - 짧은 수명 주기의 컨테이너를 빠르게 배포하고 실행할 수 있습니다. 여기에 있는 컨테이너는 메시지 처리 또는 계산 수행과 같은 빠른 처리 작업을 실행하기 위해 배포된 다음, 완료되는 즉시 프로비전 해제됩니다.
-- [Service Bus][service-bus]는 저장소 큐를 대신하여 사용할 수 있습니다.
+- [Service Bus][service-bus]는 스토리지 큐를 대신하여 사용할 수 있습니다.
 
 데이터 계층에 대한 다른 옵션은 다음과 같습니다.
 
@@ -156,5 +156,6 @@ ms.locfileid: "53643954"
 [resiliency]: /azure/architecture/checklist/resiliency
 [scalability]: /azure/architecture/checklist/scalability
 [secure-development]: https://www.microsoft.com/SDL/process/design.aspx
+[service-bus]: /azure/service-bus-messaging/
 [sql-geo-replication]: /azure/sql-database/sql-database-geo-replication-overview
 [storage-geo-redudancy]: /azure/storage/common/storage-redundancy-grs

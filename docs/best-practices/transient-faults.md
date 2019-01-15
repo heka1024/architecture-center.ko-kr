@@ -5,12 +5,12 @@ description: 일시적인 오류 처리를 위한 재시도 관련 지침입니�
 author: dragon119
 ms.date: 07/13/2016
 ms.custom: seodec18
-ms.openlocfilehash: fe07364e1a6846f9b7b47b2b79ce8031122edbbd
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: 00ea1e21bcef2c3de271bec8aebb4a3cb482f57f
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307115"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011823"
 ---
 # <a name="transient-fault-handling"></a>일시적인 오류 처리
 

@@ -1,20 +1,23 @@
 ---
 title: 격벽 패턴
+titleSuffix: Cloud Design Patterns
 description: 하나가 고장 나더라도 나머지는 정상적으로 작동하도록 애플리케이션의 요소를 여러 풀에 격리합니다.
+keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 9917870e1dcbed87aaa41e051f1622ad4950456a
-ms.sourcegitcommit: f665226cec96ec818ca06ac6c2d83edb23c9f29c
+ms.custom: seodec18
+ms.openlocfilehash: 0a2ae4789d3c1653405a59ef8cb4f6171a8abc81
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31012708"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112195"
 ---
 # <a name="bulkhead-pattern"></a>격벽 패턴
 
 하나가 고장 나더라도 나머지는 정상적으로 작동하도록 애플리케이션의 요소를 여러 풀에 격리합니다.
 
-이 패턴은 구역이 구분된 선체의 파티션과 유사하므로 *격벽*이라고 합니다. 선체가 손상될 경우 손상된 부분만 물로 채워져 배가 가라앉는 것을 방지할 수 있습니다. 
+이 패턴은 구역이 구분된 선체의 파티션과 유사하므로 *격벽*이라고 합니다. 선체가 손상될 경우 손상된 부분만 물로 채워져 배가 가라앉는 것을 방지할 수 있습니다.
 
 ## <a name="context-and-problem"></a>컨텍스트 및 문제점
 
@@ -34,16 +37,16 @@ ms.locfileid: "31012708"
 
 - 소비자 및 서비스를 연속 실패로부터 격리합니다. 소비자 또는 서비스에 영향을 주는 문제는 자체 격벽 내에 격리하여 전체 솔루션의 실패를 방지할 수 있습니다.
 - 서비스 실패가 발생할 경우 일부 기능을 보존할 수 있습니다. 애플리케이션의 다른 서비스 및 기능은 계속 작동합니다.
-- 다른 품질의 소비 애플리케이션 서비스를 제공하는 서비스를 배포할 수 있습니다. 우선 순위가 높은 소비자 풀은 우선 순위가 높은 서비스를 사용하도록 구성할 수 있습니다. 
+- 다른 품질의 소비 애플리케이션 서비스를 제공하는 서비스를 배포할 수 있습니다. 우선 순위가 높은 소비자 풀은 우선 순위가 높은 서비스를 사용하도록 구성할 수 있습니다.
 
 다음 다이어그램은 개별 서비스를 호출하는 연결 풀 주위의 격벽 구조를 보여 줍니다. 서비스 A가 실패하거나 약간의 다른 문제를 야기하는 경우 연결 풀이 격리되어 있으므로 서비스 A에 할당된 스레드 풀을 사용하는 워크로드만 영향을 받습니다. 서비스 B와 C를 사용하는 워크로드는 영향을 받지 않고 중단 없이 계속 작업할 수 있습니다.
 
-![](./_images/bulkhead-1.png) 
+![격벽 패턴의 첫 번째 다이어그램](./_images/bulkhead-1.png)
 
 다음 다이어그램은 단일 서비스를 호출하는 여러 클라이언트를 보여 줍니다. 각 클라이언트를 별도 서비스 인스턴스에 할당합니다. 클라이언트 1의 너무 많은 요청으로 해당 인스턴스가 과부하됩니다. 각 서비스 인스턴스는 서로 격리되어 있으므로 다른 클라이언트는 호출 작업을 계속할 수 있습니다.
 
-![](./_images/bulkhead-2.png)
-     
+![격벽 패턴의 첫 번째 다이어그램](./_images/bulkhead-2.png)
+
 ## <a name="issues-and-considerations"></a>문제 및 고려 사항
 
 - 애플리케이션의 비즈니스 및 기술 요구 사항과 관련하여 파티션을 정의합니다.
@@ -92,11 +95,10 @@ spec:
 
 ## <a name="related-guidance"></a>관련 지침
 
+- [Azure용 복원 애플리케이션 디자인](../resiliency/index.md)
 - [회로 차단기 패턴](./circuit-breaker.md)
-- [Azure용 복원 응용 프로그램 디자인](../resiliency/index.md)
 - [재시도 패턴](./retry.md)
 - [제한 패턴](./throttling.md)
-
 
 <!-- links -->
 

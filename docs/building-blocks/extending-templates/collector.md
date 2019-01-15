@@ -3,12 +3,12 @@ title: Azure Resource Manager 템플릿에서 속성 변환기 및 수집기 구
 description: Azure Resource Manager 템플릿에서 속성 변환기 및 수집기를 구현하는 방법을 설명합니다.
 author: petertay
 ms.date: 10/30/2018
-ms.openlocfilehash: ad5b3a71f516ec12fee311e25c43f434f9f306ed
-ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
+ms.openlocfilehash: 1a6a01ee513609132d8522a79ccb81b7938651b5
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251790"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113810"
 ---
 # <a name="implement-a-property-transformer-and-collector-in-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿에서 속성 변환기 및 수집기 구현
 
@@ -24,12 +24,14 @@ ms.locfileid: "50251790"
 ![속성 수집기 및 변환기 아키텍처](../_images/collector-transformer.png)
 
 **호출 템플릿**에는 다음 두 리소스가 포함됩니다.
-* **수집기 템플릿**을 호출하는 템플릿 링크
-* 배포할 NSG 리소스
+
+- **수집기 템플릿**을 호출하는 템플릿 링크.
+- 배포할 NSG 리소스.
 
 **수집기 템플릿**에는 다음 두 리소스가 포함됩니다.
-* **앵커** 리소스
-* 복사 루프에서 변환 템플릿을 호출하는 템플릿 링크
+
+- **앵커** 리소스.
+- 복사 루프에서 변환 템플릿을 호출하는 템플릿 링크.
 
 **변환 템플릿**에는 단일 리소스가 포함되어 있습니다. 이 템플릿은 `source` JSON을 **주 템플릿**의 NSG 리소스에 필요한 JSON 스키마로 변환하는 변수를 포함하는 빈 템플릿입니다.
 
@@ -41,7 +43,7 @@ ms.locfileid: "50251790"
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
-    "parameters":{ 
+    "parameters": {
       "networkSecurityGroupsSettings": {
       "value": {
           "securityRules": [
@@ -80,9 +82,10 @@ ms.locfileid: "50251790"
 
 ## <a name="transform-template"></a>변환 템플릿
 
-**변환 템플릿**에는 **수집기 템플릿**에서 전달되는 다음 두 매개 변수가 포함되어 있습니다. 
-* `source`는 속성 배열에서 속성 값 개체 중 하나를 수신하는 개체입니다. 이 예제에서 `"securityRules"` 배열의 각 개체는 한 번에 하나의 전달됩니다.
-* `state`는 모든 이전 변환의 연결된 결과를 수신하는 배열입니다. 변환된 JSON의 컬렉션입니다.
+**변환 템플릿**에는 **수집기 템플릿**에서 전달되는 다음 두 매개 변수가 포함되어 있습니다.
+
+- `source`는 속성 배열에서 속성 값 개체 중 하나를 수신하는 개체입니다. 이 예제에서 `"securityRules"` 배열의 각 개체는 한 번에 하나의 전달됩니다.
+- `state`는 모든 이전 변환의 연결된 결과를 수신하는 배열입니다. 변환된 JSON의 컬렉션입니다.
 
 매개 변수는 다음과 같습니다.
 
@@ -115,7 +118,7 @@ ms.locfileid: "50251790"
             "destinationAddressPrefix": "[parameters('source').destinationAddressPrefix]",
             "access": "[parameters('source').access]",
             "priority": "[parameters('source').priority]",
-            "direction": "[parameters('source').direction]"            
+            "direction": "[parameters('source').direction]"
         }
       }
     ]
@@ -139,9 +142,10 @@ ms.locfileid: "50251790"
 ## <a name="collector-template"></a>수집기 템플릿
 
 **수집기 템플릿**에는 다음 3가지 매개 변수가 포함되어 있습니다.
-* `source`는 완전한 매개 변수 개체 배열입니다. 이 개체는 **호출 템플릿**에 의해 전달됩니다. 이 개체는 **변환 템플릿**에서 `source` 매개 변수와 같은 이름을 가지지만, 이미 알려져 있는 한 가지 주요 차이점이 있습니다. 완전한 배열이지만, 이 배열의 요소를 한 번에 하나씩만 **변환 템플릿**에 전달한다는 것입니다.
-* `transformTemplateUri`는 **변환 템플릿**의 URI입니다. 여기서는 템플릿 재사용을 위해 매개 변수로 정의합니다.
-* `state`는 **변환 템플릿**에 전달하는 배열로, 처음에는 빈 상태입니다. 복사 루프가 완료되면 변환된 매개 변수 개체 컬렉션이 저장됩니다.
+
+- `source`는 완전한 매개 변수 개체 배열입니다. 이 개체는 **호출 템플릿**에 의해 전달됩니다. 이 개체는 **변환 템플릿**에서 `source` 매개 변수와 같은 이름을 가지지만, 이미 알려져 있는 한 가지 주요 차이점이 있습니다. 완전한 배열이지만, 이 배열의 요소를 한 번에 하나씩만 **변환 템플릿**에 전달한다는 것입니다.
+- `transformTemplateUri`는 **변환 템플릿**의 URI입니다. 여기서는 템플릿 재사용을 위해 매개 변수로 정의합니다.
+- `state`는 **변환 템플릿**에 전달하는 배열로, 처음에는 빈 상태입니다. 복사 루프가 완료되면 변환된 매개 변수 개체 컬렉션이 저장됩니다.
 
 매개 변수는 다음과 같습니다.
 
@@ -153,7 +157,7 @@ ms.locfileid: "50251790"
       "type": "array",
       "defaultValue": [ ]
     }
-``` 
+```
 
 다음으로, `count`라는 변수를 정의합니다. 해당 값은 `source` 매개 변수 개체 배열의 길이를 갖습니다.
 
@@ -166,8 +170,9 @@ ms.locfileid: "50251790"
 예상할 수 있는 것처럼, 이 변수는 복사 루프의 반복 횟수에 사용합니다.
 
 이제 리소스를 살펴보겠습니다. 다음 두 리소스를 정의합니다.
-* `loop-0`는 복사 루프의 0부터 시작하는 리소스입니다.
-* `loop-`는 `copyIndex(1)` 함수의 결과와 연결되어, `1`부터 시작하는 리소스의 고유한 반복 기반 이름을 생성합니다.
+
+- `loop-0`는 복사 루프의 0부터 시작하는 리소스입니다.
+- `loop-`는 `copyIndex(1)` 함수의 결과와 연결되어, `1`부터 시작하는 리소스의 고유한 반복 기반 이름을 생성합니다.
 
 리소스는 다음과 같습니다.
 
@@ -231,6 +236,7 @@ ms.locfileid: "50251790"
     }
   }
 ```
+
 **변환 템플릿** 마지막 반복의 `output`을 **호출 템플릿**에 반환하는 것은 간단해 보이지 않을 수 있습니다. 이러한 항목은 `source` 매개 변수에 저장한 것으로 보이기 때문입니다. 그렇지만 변환된 속성 개체의 완전한 배열을 포함하는 것이 바로 **변환 템플릿** 마지막 반복이며, 반환하려는 항목은 바로 이것입니다.
 
 마지막으로 **호출 템플릿**에서 **수집기 템플릿**을 호출하는 방법을 살펴보겠습니다.
@@ -277,8 +283,9 @@ ms.locfileid: "50251790"
 ```
 
 다음 두 매개 변수를 **수집기 템플릿**에 전달합니다.
-* `source`는 이 속성 개체 배열입니다. 이 예제에서는 `networkSecurityGroupsSettings` 매개 변수입니다.
-* `transformTemplateUri`는 **수집기 템플릿**의 URI로 방금 정의한 변수입니다.
+
+- `source`는 이 속성 개체 배열입니다. 이 예제에서는 `networkSecurityGroupsSettings` 매개 변수입니다.
+- `transformTemplateUri`는 **수집기 템플릿**의 URI로 방금 정의한 변수입니다.
 
 마지막으로, `Microsoft.Network/networkSecurityGroups` 리소스는 `collector` 연결된 템플릿 리소스의 `output`을 해당 `securityRules` 속성에 직접 할당합니다.
 

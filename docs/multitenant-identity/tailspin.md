@@ -1,17 +1,14 @@
 ---
 title: Tailspin 설문 조사 애플리케이션 정보
-description: Tailspin 설문 조사 애플리케이션 개요
+description: Tailspin 설문 조사 애플리케이션의 개요입니다.
 author: MikeWasson
 ms.date: 07/21/2017
-pnp.series.title: Manage Identity in Multitenant Applications
-pnp.series.prev: index
-pnp.series.next: authenticate
-ms.openlocfilehash: a1c357bd1b5306d1255c66aaea96d86be55e7b77
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 95e170c584b8ec5694be69e595b7791c1bcdfdc0
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902071"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111464"
 ---
 # <a name="the-tailspin-scenario"></a>Tailspin 시나리오
 
@@ -25,10 +22,9 @@ Tailspin은 설문 조사라는 SaaS 애플리케이션을 개발하는 가상 �
 
 > [!NOTE]
 > 애플리케이션을 시작하려면 [설문 조사 애플리케이션 실행]을 참조하세요.
-> 
-> 
 
 ## <a name="users-can-create-edit-and-view-surveys"></a>사용자는 설문 조사를 만들고, 편집하고, 볼 수 있습니다.
+
 인증된 사용자는 자신이 만들었거나 참가자 권한이 있는 모든 설문 조사를 볼 수 있고, 새 설문 조사를 만들 수 있습니다. 사용자가 조직 ID, `bob@contoso.com`을 사용하여 로그인합니다.
 
 ![설문 조사 앱](./images/surveys-screenshot.png)
@@ -42,7 +38,8 @@ Tailspin은 설문 조사라는 SaaS 애플리케이션을 개발하는 가상 �
 ![테넌트 설문 조사](./images/tenant-surveys.png)
 
 ## <a name="survey-owners-can-invite-contributors"></a>설문 조사 소유자는 참가자를 초대할 수 있습니다.
-사용자는 설문 조사를 만들 때 다른 사람을 설문 조사의 참가자로 초대할 수 있습니다. 참가자는 설문 조사를 편집할 수 있으나 삭제하거나 게시할 수는 없습니다.  
+
+사용자는 설문 조사를 만들 때 다른 사람을 설문 조사의 참가자로 초대할 수 있습니다. 참가자는 설문 조사를 편집할 수 있으나 삭제하거나 게시할 수는 없습니다.
 
 ![참여자 추가](./images/add-contributor.png)
 
@@ -55,6 +52,7 @@ Alice가 로그인할 때 "Surveys I can contribute to" 아래에 나열된 설�
 Alice는 Contoso 테넌트의 게스트가 아니라 자신의 테넌트로 로그인합니다. Alice는 해당 설문 조사에 대해서만 참가자 권한을 가지며 Contoso 테넌트의 다른 설문 조사는 볼 수 없습니다.
 
 ## <a name="architecture"></a>아키텍처
+
 설문 조사 애플리케이션은 웹 프런트 엔드 및 Web API 백 엔드로 구성됩니다. 둘 다 [ASP.NET Core]를 사용하여 구현됩니다.
 
 웹 애플리케이션은 Azure AD(Azure Active Directory)를 사용하여 사용자를 인증합니다. 또한 웹 애플리케이션은 Azure AD를 호출하여 Web API에 대한 OAuth 2 액세스 토큰을 가져옵니다. 액세스 토큰은 Azure Redis Cache에 캐시됩니다. 캐시는 여러 인스턴스가 동일한 토큰 캐시를 공유할 수 있도록 해줍니다(예: 서버 팜에서).
@@ -63,7 +61,7 @@ Alice는 Contoso 테넌트의 게스트가 아니라 자신의 테넌트로 로�
 
 [**다음**][authentication]
 
-<!-- Links -->
+<!-- links -->
 
 [authentication]: authenticate.md
 

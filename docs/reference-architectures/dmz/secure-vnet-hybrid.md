@@ -5,16 +5,12 @@ description: Azure에서 보안 하이브리드 네트워크 아키텍처를 구
 author: telmosampaio
 ms.date: 10/22/2018
 ms.custom: seodec18
-pnp.series.title: Network DMZ
-pnp.series.prev: ./index
-pnp.series.next: secure-vnet-dmz
-cardTitle: DMZ between Azure and on-premises
-ms.openlocfilehash: c57f741aa0e68783f457f94ea6fd84e1d552f059
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 9a74401d3496807ce2dfc113476e001d19e657e5
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120427"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112297"
 ---
 # <a name="implement-a-dmz-between-azure-and-your-on-premises-datacenter"></a>Azure와 온-프레미스 데이터 센터 간의 DMZ를 구현합니다.
 
@@ -26,7 +22,7 @@ ms.locfileid: "53120427"
 
 이 아키텍처는 [VPN Gateway][ra-vpn] 또는 [ExpressRoute][ra-expressroute] 연결을 사용하여 온-프레미스 데이터 센터에 연결해야 합니다. 일반적으로 이 아키텍처는 다음과 같은 용도로 사용됩니다.
 
-- 워크로드의 일부는 온-프레미스에서, 일부는 Azure에서 실행되는 하이브리드 애플리케이션
+- 작업이 부분적으로 온-프레미스 및 부분적으로 Azure에서 실행되는 하이브리드 애플리케이션
 - 온-프레미스 데이터 센터에서 Azure VNet을 입력하는 트래픽을 통해 세부적으로 제어해야 하는 인프라
 - 나가는 트래픽을 감사해야 하는 애플리케이션 이 항목은 여러 상용 시스템의 규제 요구 사항이며 개인 정보를 공개하지 않도록 방지할 수 있습니다.
 
@@ -116,7 +112,7 @@ jumpbox에 대한 공용 IP 주소를 만들지 마십시오. 대신 들어오�
 
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
-참조 아키텍처는 부하 분산 장치를 사용하여 온-프레미스 네트워크 트래픽을 NVA 장치의 풀로 전달합니다. 여기서 트래픽을 라우팅합니다. NVA는 [가용성 집합][availability-set]에 배치됩니다. 이 디자인을 사용하면 시간에 따라 NVA의 처리량을 모니터링하고 부하의 증가에 대한 대응으로 NVA 장치를 추가할 수 있습니다.
+참조 아키텍처는 부하 분산 디바이스를 사용하여 온-프레미스 네트워크 트래픽을 NVA 디바이스의 풀로 전달합니다. 여기서 트래픽을 라우팅합니다. NVA는 [가용성 집합][availability-set]에 배치됩니다. 이 디자인을 사용하면 시간에 따라 NVA의 처리량을 모니터링하고 부하의 증가에 대한 대응으로 NVA 디바이스를 추가할 수 있습니다.
 
 표준 SKU VPN Gateway는 최대 100Mbps 지속 처리량을 지원합니다. 고성능 SKU는 최대 200Mbps를 제공합니다. 높은 대역폭의 경우 ExpressRoute 게이트웨이로 업그레이드하는 것이 좋습니다. ExpressRoute는 VPN 연결보다 대기 시간이 낮은 최대 10Gbps 대역폭을 제공합니다.
 
@@ -124,7 +120,7 @@ Azure 게이트웨이의 확장성에 대한 자세한 내용은 [Azure 및 온-
 
 ## <a name="availability-considerations"></a>가용성 고려 사항
 
-언급했듯이 참조 아키텍처는 부하 분산 장치 뒤의 NVA 장치 풀을 사용합니다. 부하 분산 장치는 상태 프로브를 사용하여 각 NVA를 모니터링하고 응답하지 않는 NVA를 풀에서 제거합니다.
+언급했듯이 참조 아키텍처는 부하 분산 디바이스 뒤의 NVA 디바이스 풀을 사용합니다. 부하 분산 장치는 상태 프로브를 사용하여 각 NVA를 모니터링하고 응답하지 않는 NVA를 풀에서 제거합니다.
 
 VNet과 온-프레미스 네트워크 간의 연결을 제공하는 데 Azure ExpressRoute를 사용하는 경우 ExpressRoute 연결을 사용할 수 없게 되면 [장애 조치를 제공하는 VPN Gateway를 구성합니다][ra-vpn-failover].
 
@@ -150,7 +146,7 @@ VPN 및 ExpressRoute 연결을 모니터링하고 관리하는 방법에 대해 
 
 게이트웨이 서브넷의 UDR은 온-프레미스에서 수신되지 않은 모든 사용자 요청을 차단합니다. UDR은 개인 DMZ 서브넷의 NVA에 허용된 요청을 전달하고 이러한 요청이 NVA 규칙에 의해 허용된 경우 애플리케이션에 전달됩니다. UDR에 다른 경로를 추가할 수 있지만 NVA를 실수로 우회하거나 관리 서브넷에 전달하려는 관리 트래픽을 차단하지 않습니다.
 
-NVA 앞의 부하 분산 장치는 부하 분산 규칙에서 열려 있지 않은 포트에 있는 트래픽을 무시하여 보안 장치의 역할을 수행합니다. 참조 아키텍처의 부하 분산 장치는 포트 80의 HTTP 요청 및 포트 443의 HTTPS 요청만을 수신합니다. 부하 분산 장치에 추가한 모든 추가 규칙을 문서화하고 보안 문제가 없는지 확인하기 위해 트래픽을 모니터링합니다.
+NVA 앞의 부하 분산 디바이스는 부하 분산 규칙에서 열려 있지 않은 포트에 있는 트래픽을 무시하여 보안 디바이스의 역할을 수행합니다. 참조 아키텍처의 부하 분산 장치는 포트 80의 HTTP 요청 및 포트 443의 HTTPS 요청만을 수신합니다. 부하 분산 장치에 추가한 모든 추가 규칙을 문서화하고 보안 문제가 없는지 확인하기 위해 트래픽을 모니터링합니다.
 
 ### <a name="using-nsgs-to-blockpass-traffic-between-application-tiers"></a>NSG를 사용하여 애플리케이션 계층 간 트래픽 차단/통과
 
@@ -222,7 +218,7 @@ NSG를 사용하여 계층 간 트래픽을 제한합니다. 비즈니스 계층
 
 ## <a name="next-steps"></a>다음 단계
 
-- [Azure와 인터넷 간의 DMZ](secure-vnet-dmz.md)를 구현하는 방법에 대해 알아봅니다.
+- [Azure와 인터넷 간의 DMZ](./secure-vnet-dmz.md)를 구현하는 방법에 대해 알아봅니다.
 - [고가용성 하이브리드 네트워크 아키텍처][ra-vpn-failover]를 구현하는 방법에 대해 알아봅니다.
 - Azure에서 네트워크 보안을 관리하는 방법에 대한 자세한 내용은 [Microsoft Cloud Services 및 네트워크 보안][cloud-services-network-security]을 참조하세요.
 - Azure에서 리소스를 보호하는 방법에 대한 자세한 내용은 [Microsoft Azure 보안 시작][getting-started-with-azure-security]을 참조하세요.
@@ -235,7 +231,7 @@ NSG를 사용하여 계층 간 트래픽을 제한합니다. 비즈니스 계층
 [azurect]: https://github.com/Azure/NetworkMonitoring/tree/master/AzureCT
 [azure-forced-tunneling]: https://azure.microsoft.com/en-gb/documentation/articles/vpn-gateway-forced-tunneling-rm/
 [azure-marketplace-nva]: https://azuremarketplace.microsoft.com/marketplace/apps/category/networking
-[cloud-services-network-security]: https://azure.microsoft.com/documentation/articles/best-practices-network-security/
+[cloud-services-network-security]: /azure/best-practices-network-security
 [getting-started-with-azure-security]: /azure/security/azure-security-getting-started
 [github-folder]: https://github.com/mspnp/reference-architectures/tree/master/dmz/secure-vnet-hybrid
 [guidance-expressroute]: ../hybrid-networking/expressroute.md

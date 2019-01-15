@@ -3,12 +3,12 @@ title: Azure Resource Manager 템플릿의 리소스 업데이트
 description: Azure Resource Manager 템플릿의 기능을 확장하여 리소스를 업데이트하는 방법을 설명합니다.
 author: petertay
 ms.date: 10/31/2018
-ms.openlocfilehash: dc97534e658c9728ac617b4e52031e2553600458
-ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
+ms.openlocfilehash: 927826283163b2ae45575035168d6238de98dc00
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251824"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113419"
 ---
 # <a name="update-a-resource-in-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿의 리소스 업데이트
 
@@ -20,7 +20,7 @@ ms.locfileid: "50251824"
 
 ## <a name="example-template"></a>예제 템플릿
 
-이 내용을 설명하는 예제 템플릿을 살펴보겠습니다. 템플릿은 `firstSubnet`이라는 서브넷이 있는 `firstVNet`이라는 VNet(가상 네트워크)을 배포합니다. 그런 후 `nic1`라는 가상 NIC(네트워크 인터페이스)를 배포하고 해당 서브넷에 연결합니다. 그런 다음 `secondSubnet`이라는 두 번째 서브넷을 추가하여 `updateVNet`라는 배포 리소스에 `firstVNet` 리소스를 업데이트하는 중첩된 템플릿이 포함됩니다. 
+이 내용을 설명하는 예제 템플릿을 살펴보겠습니다. 템플릿은 `firstSubnet`이라는 서브넷이 있는 `firstVNet`이라는 가상 네트워크를 배포합니다. 그런 후 `nic1`라는 가상 NIC(네트워크 인터페이스)를 배포하고 해당 서브넷에 연결합니다. 그런 다음 `secondSubnet`이라는 두 번째 서브넷을 추가하여 `updateVNet`라는 배포 리소스에 `firstVNet` 리소스를 업데이트하는 중첩된 템플릿이 포함됩니다.
 
 ```json
 {
@@ -37,7 +37,7 @@ ms.locfileid: "50251824"
           "addressSpace":{"addressPrefixes": [
               "10.0.0.0/22"
           ]},
-          "subnets":[              
+          "subnets":[
               {
                   "name":"firstSubnet",
                   "properties":{
@@ -130,11 +130,11 @@ az group deployment create -g <resource-group-name> \
     --template-uri https://raw.githubusercontent.com/mspnp/template-examples/master/example1-update/deploy.json
 ```
 
-배포가 완료된 후 포털에서 지정한 리소스 그룹을 엽니다. `firstVNet`라는 가상 네트워크와 `nic1`라는 NIC가 표시됩니다. `firstVNet`을 클릭한 후 `subnets`를 클릭합니다. 처음에 만들어진 `firstSubnet`이 표시된 후 `updateVNet` 리소스에 추가된 `secondSubnet`이 표시됩니다. 
+배포가 완료된 후 포털에서 지정한 리소스 그룹을 엽니다. `firstVNet`라는 가상 네트워크와 `nic1`라는 NIC가 표시됩니다. `firstVNet`을 클릭한 후 `subnets`를 클릭합니다. 처음에 만들어진 `firstSubnet`이 표시된 후 `updateVNet` 리소스에 추가된 `secondSubnet`이 표시됩니다.
 
 ![원래 서브넷 및 업데이트된 서브넷](../_images/firstVNet-subnets.png)
 
-그런 후 리소스 그룹으로 다시 이동하고 `nic1`을 클릭한 후 `IP configurations`를 클릭합니다. `IP configurations` 섹션에서 `subnet`은 `firstSubnet (10.0.0.0/24)`으로 설정되어 있습니다. 
+그런 후 리소스 그룹으로 다시 이동하고 `nic1`을 클릭한 후 `IP configurations`를 클릭합니다. `IP configurations` 섹션에서 `subnet`은 `firstSubnet (10.0.0.0/24)`으로 설정되어 있습니다.
 
 ![nic1 IP configurations 설정](../_images/nic1-ipconfigurations.png)
 

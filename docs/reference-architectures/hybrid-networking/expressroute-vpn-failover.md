@@ -5,12 +5,12 @@ description: VPN Gateway 장애 조치(failover)를 사용하는 ExpressRoute를
 author: telmosampaio
 ms.date: 10/22/2017
 ms.custom: seodec18
-ms.openlocfilehash: d44c046f2351d6103a01108574e0295302f0ba11
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: d32e4dfa81cf74a4ca74746120c15f1ddc066c3e
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53119951"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011109"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute-with-vpn-failover"></a>VPN 장애 조치(failover)를 사용하는 ExpressRoute를 사용하여 온-프레미스 네트워크를 Azure에 연결
 
@@ -28,7 +28,7 @@ ExpressRoute 회로를 사용할 수 없는 경우 VPN 경로가 개인 피어�
 
 - **온-프레미스 네트워크**. 조직 내에서 실행되는 개인 로컬 영역 네트워크입니다.
 
-- **VPN 어플라이언스**. 온-프레미스 네트워크에 외부 연결을 제공하는 장치 또는 서비스입니다. VPN 어플라이언스는 하드웨어 장치일 수도 있고 Windows Server 2012의 RRAS(라우팅 및 원격 액세스 서비스)와 같은 소프트웨어 솔루션일 수도 있습니다. 지원되는 VPN 어플라이언스 목록 및 선택한 VPN 어플라이언스를 Azure에 연결하도록 구성하는 방법에 대한 자세한 내용은 [사이트 간 VPN Gateway 연결에 대한 VPN 장치 정보][vpn-appliance]를 참조하세요.
+- **VPN 어플라이언스**. 온-프레미스 네트워크에 외부 연결을 제공하는 디바이스 또는 서비스입니다. VPN 어플라이언스는 하드웨어 디바이스일 수도 있고 Windows Server 2012의 RRAS(라우팅 및 원격 액세스 서비스)와 같은 소프트웨어 솔루션일 수도 있습니다. 지원되는 VPN 어플라이언스 목록 및 선택한 VPN 어플라이언스를 Azure에 연결하도록 구성하는 방법에 대한 자세한 내용은 [사이트 간 VPN Gateway 연결에 대한 VPN 디바이스 정보][vpn-appliance]를 참조하세요.
 
 - **ExpressRoute 회로**. 에지 라우터를 통해 Azure에서 온-프레미스 네트워크를 연결하는 연결 공급자가 제공하는 레이어 2 또는 레이어 3 회로입니다. 이 회로는 연결 공급자가 관리하는 하드웨어 인프라를 사용합니다.
 
@@ -42,7 +42,7 @@ ExpressRoute 회로를 사용할 수 없는 경우 VPN 경로가 개인 피어�
 
 - **게이트웨이 서브넷**. 가상 네트워크 게이트웨이는 동일한 서브넷에 있습니다.
 
-- **클라우드 응용 프로그램**. Azure에 호스팅된 애플리케이션입니다. Azure Load Balancer를 통해 여러 서브넷이 연결된 여러 계층이 포함될 수 있습니다. 애플리케이션 인프라에 대한 자세한 내용은 [Windows VM 워크로드 실행][windows-vm-ra] 및 [Linux VM 워크로드 실행][linux-vm-ra]을 참조하세요.
+- **클라우드 애플리케이션**. Azure에 호스팅된 애플리케이션입니다. Azure Load Balancer를 통해 여러 서브넷이 연결된 여러 계층이 포함될 수 있습니다. 애플리케이션 인프라에 대한 자세한 내용은 [Windows VM 워크로드 실행][windows-vm-ra] 및 [Linux VM 워크로드 실행][linux-vm-ra]을 참조하세요.
 
 ## <a name="recommendations"></a>권장 사항
 

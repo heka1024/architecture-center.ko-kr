@@ -1,20 +1,24 @@
 ---
 title: Azure 계산 서비스를 선택하기 위한 조건
-description: 여러 축에서 Azure 계산 서비스 비교
+titleSuffix: Azure Application Architecture Guide
+description: 여러 축에서 Azure 계산 서비스를 비교합니다.
 author: MikeWasson
 ms.date: 08/08/2018
-ms.openlocfilehash: dbd5314c4c77e83f5b45ef0b49e83860479c8f92
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.custom: seojan19
+ms.openlocfilehash: 4874e68d6ac1b9bac2bc1e4d2ac3c8c2f1a428d6
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916386"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112246"
 ---
 # <a name="criteria-for-choosing-an-azure-compute-service"></a>Azure 계산 서비스를 선택하기 위한 조건
 
-*계산*이라는 용어는 응용 프로그램이 실행되는 계산 리소스의 호스팅 모델을 말합니다. 아래 표에서는 다양한 축에 걸쳐 Azure 계산 서비스를 비교합니다. 애플리케이션에 사용할 계산 옵션을 선택할 때 아래 표를 참조하세요.
+*계산*이라는 용어는 애플리케이션이 실행되는 계산 리소스의 호스팅 모델을 말합니다. 아래 표에서는 다양한 축에 걸쳐 Azure 계산 서비스를 비교합니다. 애플리케이션에 사용할 계산 옵션을 선택할 때 아래 표를 참조하세요.
 
 ## <a name="hosting-model"></a>호스팅 모델
+
+<!-- markdownlint-disable MD033 -->
 
 | 조건 | Virtual Machines | App Service | Service Fabric | Azure 기능 | Azure Kubernetes Service | Container Instances | Azure Batch |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
@@ -47,8 +51,7 @@ ms.locfileid: "50916386"
 메모
 
 1. <span id="note1b">옵션에는 ASP.NET 또는 node.js(iisnode)용 IIS Express, PHP 웹 서버, IntelliJ용 Azure Toolkit, Eclipse용 Azure Toolkit이 포함됩니다. App Service는 배포된 웹앱의 원격 디버깅도 지원합니다.</span>
-2. <span id="note2b">[Resource Manager 공급자, 지역, API 버전 및 스키마][resource-manager-supported-services]를 참조하세요.</span> 
-
+2. <span id="note2b">[Resource Manager 공급자, 지역, API 버전 및 스키마][resource-manager-supported-services]를 참조하세요.</span>
 
 ## <a name="scalability"></a>확장성
 
@@ -56,7 +59,7 @@ ms.locfileid: "50916386"
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
 | 자동 확장 | VM 확장 집합 | 기본 제공 서비스 | VM 확장 집합 | 기본 제공 서비스 | 지원되지 않음 | 지원되지 않음 | 해당 없음 |
 | 부하 분산 장치 | Azure Load Balancer | 통합형 | Azure Load Balancer | 통합형 | 통합형 |  기본 제공 지원 없음 | Azure Load Balancer |
-| 규모 한도<a href="#note1c"><sup>1</sup></a> | 플랫폼 이미지: VMSS당 노드 1000개, 사용자 지정 이미지: VMSS당 노드 100개 | 인스턴스 20개, App Service Environment를 갖는 인스턴스 100개 | VMSS당 노드 100개 | 함수 앱당 인스턴스 200개 | 클러스터당 노드 100개(기본 한도) |구독당 20개의 컨테이너 그룹(기본 한도) | 코어 한도 20개(기본 한도) |
+| 규모 한도<a href="#note1c"><sup>1</sup></a> | 플랫폼 이미지: 사용자 지정 이미지 VMSS당 노드 1000개: VMSS당 노드 100개 | 인스턴스 20개, App Service Environment를 갖는 인스턴스 100개 | VMSS당 노드 100개 | 함수 앱당 인스턴스 200개 | 클러스터당 노드 100개(기본 한도) |구독당 20개의 컨테이너 그룹(기본 한도) | 코어 한도 20개(기본 한도) |
 
 메모
 
@@ -67,7 +70,7 @@ ms.locfileid: "50916386"
 | 조건 | Virtual Machines | App Service | Service Fabric | Azure 기능 | Azure Kubernetes Service | Container Instances | Azure Batch |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
 | SLA | [Virtual Machines용 SLA][sla-vm] | [App Service용 SLA][sla-app-service] | [Service Fabric용 SLA][sla-sf] | [Functions용 SLA][sla-functions] | [AKS용 SLA][sla-acs] | [Container instances용 SLA](https://azure.microsoft.com/support/legal/sla/container-instances/) | [Azure Batch용 SLA][sla-batch] |
-| 다중 지역 장애 조치(failover) | 트래픽 관리자 | 트래픽 관리자 | 트래픽 관리자, 다중 지역 클러스터 | 지원되지 않음  | 트래픽 관리자 | 지원되지 않음 | 지원되지 않음 |
+| 다중 지역 장애 조치(failover) | 트래픽 관리자 | 트래픽 관리자 | 트래픽 관리자, 다중 지역 클러스터 | 지원되지 않음 | 트래픽 관리자 | 지원되지 않음 | 지원되지 않음 |
 
 ## <a name="other"></a>기타
 
@@ -76,6 +79,8 @@ ms.locfileid: "50916386"
 | SSL | VM에 구성됨 | 지원됨 | 지원됨  | 지원됨 | [수신 컨트롤러](/azure/aks/ingress) | [사이드카](../../patterns/sidecar.md) 컨테이너 사용 | 지원됨 |
 | 비용 | [Windows][cost-windows-vm], [Linux][cost-linux-vm] | [App Service 가격][cost-app-service] | [Service Fabric 가격][cost-service-fabric] | [Azure Functions 가격][cost-functions] | [AKS 가격 책정][cost-acs] | [Container Instances 가격 책정](https://azure.microsoft.com/pricing/details/container-instances/) | [Azure Batch 가격][cost-batch]
 | 적합한 아키텍처 스타일 | [N 계층][n-tier], [큰 계산][big-compute](HPC) | [Web-Queue-Worker][w-q-w], [N-Tier][n-tier] | [마이크로 서비스][microservices], [이벤트 기반 아키텍처][event-driven] | [마이크로 서비스][microservices], [이벤트 기반 아키텍처][event-driven] | [마이크로 서비스][microservices], [이벤트 기반 아키텍처][event-driven] | [마이크로 서비스][microservices], 작업 자동화, 일괄 처리 작업  | [큰 계산][big-compute](HPC) |
+
+<!-- markdownlint-enable MD033 -->
 
 [cost-linux-vm]: https://azure.microsoft.com/pricing/details/virtual-machines/linux/
 [cost-windows-vm]: https://azure.microsoft.com/pricing/details/virtual-machines/windows/

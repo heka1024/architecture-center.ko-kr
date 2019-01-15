@@ -3,12 +3,12 @@ title: 데이터 전송 기술 선택
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: d5fbdc3a49ab16be2626b772ffd1af782963a2f0
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 1cb763ade2aa263d07a59cc6bfc29d59bec7af19
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902683"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113045"
 ---
 # <a name="transferring-data-to-and-from-azure"></a>Azure에서의 데이터 전송
 
@@ -20,24 +20,25 @@ ms.locfileid: "52902683"
 
 - 네트워크 속도가 느리거나 불안정한 경우
 - 추가 네트워크 대역폭을 사용하는 데 드는 비용을 감수하기 어려운 경우
-- 보안 또는 조직 정책이 중요한 데이터를 처리할 때 아웃바운드 연결을 허용하지 않는 경우 
+- 보안 또는 조직 정책이 중요한 데이터를 처리할 때 아웃바운드 연결을 허용하지 않는 경우
 
 데이터를 전송하는 데 소요되는 시간이 1차적으로 고려되는 경우, 테스트를 통해 네트워크 전송 방식이 물리적 전송보다 실제로 느린지 확인할 수 있습니다.
 
 Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 다음과 같습니다.
+
 - **Azure Import/Export**. [Azure Import/Export 서비스](/azure/storage/common/storage-import-export-service)를 사용하면 내부 SATA HDD 또는 SDD를 Azure 데이터 센터에 배송하여 대량의 데이터를 Azure Blob 저장소 또는 Azure Files에 안전하게 전송할 수 있습니다. 이 서비스를 사용하여 데이터를 Azure Storage에서 하드 디스크 드라이브로 전송하고, 온-프레미스에 로드할 수 있게 사용자에게 배송할 수도 있습니다.
 
-- **Azure Data Box**. [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)는 Azure Import/Export 서비스처럼 작동하는 Microsoft에서 제공한 어플라이언스입니다. Microsoft는 독자적이며 안전한 변조 방지 전송 어플라이언스를 사용자에게 배송한 후, 종단 간 내부 프로세스를 처리합니다. 사용자는 이러한 프로세스를 포털을 통해 추적할 수 있습니다. Azure Data Box 서비스의 한 가지 이점은 사용 편의성입니다. 여러 하드 드라이브를 구입하고, 준비하고, 각 드라이브로 파일을 전송할 필요가 없습니다. Azure Data Box는 다양한 업계의 주도적인 Azure 파트너가 지원하므로, 제품에서 클라우드로의 오프라인 전송을 보다 쉽게 원활히 진행할 수 있습니다. 
+- **Azure Data Box**. [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)는 Azure Import/Export 서비스처럼 작동하는 Microsoft에서 제공한 어플라이언스입니다. Microsoft는 독자적이며 안전한 변조 방지 전송 어플라이언스를 사용자에게 배송한 후, 종단 간 내부 프로세스를 처리합니다. 사용자는 이러한 프로세스를 포털을 통해 추적할 수 있습니다. Azure Data Box 서비스의 한 가지 이점은 사용 편의성입니다. 여러 하드 드라이브를 구입하고, 준비하고, 각 드라이브로 파일을 전송할 필요가 없습니다. Azure Data Box는 다양한 업계의 주도적인 Azure 파트너가 지원하므로, 제품에서 클라우드로의 오프라인 전송을 보다 쉽게 원활히 진행할 수 있습니다.
 
 ## <a name="command-line-tools-and-apis"></a>명령줄 도구 및 API
 
 스크립트 및 프로그래밍 방식으로 데이터를 전송하려는 경우 이러한 옵션을 고려합니다.
 
-- **Azure CLI**. [Azure CLI](/azure/hdinsight/hdinsight-upload-data#commandline)는 Azure 서비스를 관리하고 Azure Storage로 데이터를 업로드할 수 있도록 하는 플랫폼 간 도구입니다. 
+- **Azure CLI**. [Azure CLI](/azure/hdinsight/hdinsight-upload-data#commandline)는 Azure 서비스를 관리하고 Azure Storage로 데이터를 업로드할 수 있도록 하는 플랫폼 간 도구입니다.
 
-- **AzCopy**. [Windows](/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 또는 [Linux](/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 명령줄에서 AzCopy를 사용하여 최적의 성능으로 Azure Blob, File 및 Table Storage 간에 쉽게 데이터를 복사할 수 있습니다. AzCopy는 동시성 및 병렬 처리 기능과 중단된 복사 작업을 다시 시작하는 기능을 지원합니다. 또한 대부분의 다른 옵션보다 빠릅니다. 프로그래밍 방식 액세스에서 [Microsoft Azure Storage 데이터 이동 라이브러리](/azure/storage/common/storage-use-data-movement-library)는 AzCopy를 구동하는 핵심 프레임워크입니다. .NET Core 라이브러리로도 제공됩니다. 
+- **AzCopy**. [Windows](/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 또는 [Linux](/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 명령줄에서 AzCopy를 사용하여 최적의 성능으로 Azure Blob, File 및 Table Storage 간에 쉽게 데이터를 복사할 수 있습니다. AzCopy는 동시성 및 병렬 처리 기능과 중단된 복사 작업을 다시 시작하는 기능을 지원합니다. 또한 대부분의 다른 옵션보다 빠릅니다. 프로그래밍 방식 액세스에서 [Microsoft Azure Storage 데이터 이동 라이브러리](/azure/storage/common/storage-use-data-movement-library)는 AzCopy를 구동하는 핵심 프레임워크입니다. .NET Core 라이브러리로도 제공됩니다.
 
-- **PowerShell**. [`Start-AzureStorageBlobCopy` PowerShell cmdlet](/powershell/module/azure.storage/start-azurestorageblobcopy?view=azurermps-5.0.0)은 PowerShell을 수행하는 데 사용되는 Windows 관리자를 위한 옵션입니다.  
+- **PowerShell**. [`Start-AzureStorageBlobCopy` PowerShell cmdlet](/powershell/module/azure.storage/start-azurestorageblobcopy?view=azurermps-5.0.0)은 PowerShell을 수행하는 데 사용되는 Windows 관리자를 위한 옵션입니다.
 
 - **AdlCopy**. [AdlCopy](/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)를 사용하면 Azure Storage Blob에서 Data Lake Store로 데이터를 복사할 수 있습니다. 또한 이 기능은 두 Azure Data Lake Store 계정 간에 데이터를 복사하는 데도 사용될 수 있습니다. 그러나 Data Lake Store에서 Storage Blob으로 데이터를 복사하는 데는 사용할 수 없습니다.
 
@@ -79,63 +80,69 @@ Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 �
 
 다음 표에서는 주요 기능 차이점을 요약해서 보여 줍니다.
 
+<!-- markdownlint-disable MD024 -->
+
 ### <a name="physical-transfer"></a>실제 전송
+
+<!-- markdownlint-enable MD033 -->
 
 | | Azure Import/Export 서비스 | Azure Data Box |
 | --- | --- | --- |
 | 폼 팩터 | 내부 SATA HDD 또는 SDD | 안전한, 변조 방지, 단일 하드웨어 어플라이언스 |
-| Microsoft에서 배송 내부 프로세스 관리 | 아니요 | yes |
-| 파트너 제품과의 통합 | 아니요 | yes |
-| 사용자 지정 어플라이언스 | 아니요 | yes |
+| Microsoft에서 배송 내부 프로세스 관리 | 아니요 | 예 |
+| 파트너 제품과의 통합 | 아니요 | 예 |
+| 사용자 지정 어플라이언스 | 아니요 | 예 |
 
 ### <a name="command-line-tools"></a>명령줄 도구.
 
-**Hadoop/HDInsight**
+**Hadoop/HDInsight:**
 
 | | Distcp | Sqoop | Hadoop CLI |
 | --- | --- | --- | --- |
-| 빅 데이터에 최적화 | yes | 예 |  yes |
-| 관계형 데이터베이스로 복사 |  아니요 | yes | 아니요 |
-| 관계형 데이터베이스에서 복사 |  아니요 | yes | 아니요 |
-| Blob 저장소로 복사 |  yes | 예 | yes |
-| Blob 저장소에서 복사 | yes |  yes | 아니요 |
-| Data Lake Store로 복사 | yes | 예 | yes |
-| Data Lake Store에서 복사 | yes | yes | 아니요 |
+| 빅 데이터에 최적화 | 예 | 예 |  예 |
+| 관계형 데이터베이스로 복사 |  아니요 | 예 | 아니요 |
+| 관계형 데이터베이스에서 복사 |  아니요 | 예 | 아니요 |
+| Blob 저장소로 복사 |  예 | 예 | 예 |
+| Blob 저장소에서 복사 | 예 |  예 | 아니요 |
+| Data Lake Store로 복사 | 예 | 예 | 예 |
+| Data Lake Store에서 복사 | 예 | 예 | 아니요 |
 
-**기타**
+**기타:**
+
+<!-- markdownlint-disable MD033 -->
 
 | | Azure CLI | AzCopy | PowerShell | AdlCopy | PolyBase |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 호환 플랫폼 | Linux, OS X, Windows | Linux, Windows | Windows | Linux, OS X, Windows | SQL Server, Azure SQL Data Warehouse | 
+| 호환 플랫폼 | Linux, OS X, Windows | Linux, Windows | Windows | Linux, OS X, Windows | SQL Server, Azure SQL Data Warehouse |
 | 빅 데이터에 최적화 | 아니요 | 아니요 | 아니요 | 예 <sup>1</sup> | 예 <sup>2</sup> |
-| 관계형 데이터베이스로 복사 | 아니요 | 아니요 | 아니요 | 아니요 | yes | 
-| 관계형 데이터베이스에서 복사 | 아니요 | 아니요 | 아니요 | 아니요 | yes | 
-| Blob 저장소로 복사 | yes | 예 | yes | 아니요 | yes | 
-| Blob 저장소에서 복사 | yes | 예 | 예 | 예 | yes |
-| Data Lake Store로 복사 | 아니요 | 아니요 | 예 | 예 |  yes | 
-| Data Lake Store에서 복사 | 아니요 | 아니요 | 예 | 예 | yes | 
+| 관계형 데이터베이스로 복사 | 아니요 | 아니요 | 아니요 | 아니요 | 예 |
+| 관계형 데이터베이스에서 복사 | 아니요 | 아니요 | 아니요 | 아니요 | 예 |
+| Blob 저장소로 복사 | 예 | 예 | 예 | no | 예 |
+| Blob 저장소에서 복사 | 예 | 예 | 예 | 예 | 예 |
+| Data Lake Store로 복사 | 아니요 | 아니요 | 예 | 예 |  예 |
+| Data Lake Store에서 복사 | 아니요 | 아니요 | 예 | 예 | 예 |
 
+<!-- markdownlint-enable MD033 -->
 
 [1] AdlCopy는 Data Lake Analytics 계정과 함께 사용할 경우 빅 데이터를 전송하는 데 최적화되어 있습니다.
 
-[2] PolyBase는 Hadoop에 계산을 푸시하고 [PolyBase 스케일 아웃 그룹](/sql/relational-databases/polybase/polybase-scale-out-groups)을 사용하여 SQL Server 인스턴스와 Hadoop 노드 간에 병렬 데이터 전송을 허용함으로써 [성능을 늘릴 수 있습니다](/sql/relational-databases/polybase/polybase-guide#performance).
+[2] PolyBase는 Hadoop에 컴퓨팅을 푸시하고 [PolyBase 스케일 아웃 그룹](/sql/relational-databases/polybase/polybase-scale-out-groups)을 사용하여 SQL Server 인스턴스와 Hadoop 노드 간에 병렬 데이터 전송을 허용함으로써 [성능을 높일 수 있습니다](/sql/relational-databases/polybase/polybase-guide#performance).
 
 ### <a name="graphical-interface-and-azure-data-factory"></a>그래픽 인터페이스 및 Azure Data Factory
 
 | | Azure Storage 탐색기 | Azure Portal * | Azure 데이터 팩터리 |
 | --- | --- | --- | --- |
-| 빅 데이터에 최적화 | 아니요 | 아니요 | yes | 
-| 관계형 데이터베이스로 복사 | 아니요 | 아니요 | yes |
-| 관계형 데이터베이스로 복사 | 아니요 | 아니요 | yes |
-| Blob 저장소로 복사 | yes | 아니요 | yes |
-| Blob 저장소에서 복사 | yes | 아니요 | yes |
-| Data Lake Store로 복사 | 아니요 | 아니요 | yes |
-| Data Lake Store에서 복사 | 아니요 | 아니요 | yes |
-| Blob 저장소로 업로드 | yes | 예 | yes |
-| Data Lake Store로 업로드 | yes | 예 | yes |
-| 데이터 전송 조정 | 아니요 | 아니요 | yes |
-| 사용자 지정 데이터 변환 | 아니요 | 아니요 | yes |
+| 빅 데이터에 최적화 | 아니요 | 아니요 | 예 |
+| 관계형 데이터베이스로 복사 | 아니요 | 아니요 | 예 |
+| 관계형 데이터베이스로 복사 | 아니요 | 아니요 | 예 |
+| Blob 저장소로 복사 | 예 | no | 예 |
+| Blob 저장소에서 복사 | 예 | no | 예 |
+| Data Lake Store로 복사 | 아니요 | 아니요 | 예 |
+| Data Lake Store에서 복사 | 아니요 | 아니요 | 예 |
+| Blob 저장소로 업로드 | 예 | 예 | 예 |
+| Data Lake Store로 업로드 | 예 | 예 | 예 |
+| 데이터 전송 조정 | 아니요 | 아니요 | 예 |
+| 사용자 지정 데이터 변환 | 아니요 | 아니요 | 예 |
 | 가격 책정 모델 | 무료 | 무료 | 사용당 지급 |
 
 \* 이 경우의 Azure Portal은 Blob 저장소 및 Data Lake Store에 대해 웹 기반 탐색 도구를 사용하는 것을 의미합니다.
-

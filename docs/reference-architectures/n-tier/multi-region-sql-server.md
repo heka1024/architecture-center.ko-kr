@@ -5,12 +5,12 @@ description: 여러 지역의 Azure Virtual Machines에 애플리케이션을 �
 author: MikeWasson
 ms.date: 07/19/2018
 ms.custom: seodec18
-ms.openlocfilehash: 84da8aaef7e552beff1f06befbaa2e50a3ac3d8b
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 5eef936dded1829ee561ce1b13df4fb147694dc7
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643713"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111991"
 ---
 # <a name="run-an-n-tier-application-in-multiple-azure-regions-for-high-availability"></a>여러 Azure 지역에서 N 계층 애플리케이션을 실행하여 고가용성 구현
 
@@ -172,7 +172,7 @@ SQL Server 클러스터의 경우 다음과 같은 두 가지 장애 조치(fail
 [hybrid-vpn]: ../hybrid-networking/vpn.md
 [azure-dns]: /azure/dns/dns-overview
 [azure-sla]: https://azure.microsoft.com/support/legal/sla/
-[azure-sql-db]: https://azure.microsoft.com/documentation/services/sql-database/
+[azure-sql-db]: /azure/sql-database/
 [health-endpoint-monitoring-pattern]: https://msdn.microsoft.com/library/dn589789.aspx
 [azure-cli]: /cli/azure/
 [regional-pairs]: /azure/best-practices-availability-paired-regions

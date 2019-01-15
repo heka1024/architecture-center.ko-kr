@@ -3,14 +3,14 @@ title: SAP 워크로드에 대한 개발/테스트 환경
 titleSuffix: Azure Example Scenarios
 description: SAP 워크로드에 대한 개발/테스트 환경을 빌드합니다.
 author: AndrewDibbins
-ms.date: 7/11/18
+ms.date: 07/11/2018
 ms.custom: fasttrack
-ms.openlocfilehash: 3f6c828e8757a3f82ad6972a8f21cd2fed629162
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 9f9e8ec971373e4309703800c200ba2c62fe9a66
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643971"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111022"
 ---
 # <a name="devtest-environments-for-sap-workloads-on-azure"></a>Azure의 SAP 워크로드에 대한 개발/테스트 환경
 
@@ -31,12 +31,12 @@ ms.locfileid: "53643971"
 
 ## <a name="architecture"></a>아키텍처
 
-![SAP 워크로드용 개발/테스트 환경을 위한 아키텍처 다이어그램](media/architecture-sap-dev-test.png)
+![SAP 워크로드용 개발/테스트 환경을 위한 아키텍처 다이어그램](./media/architecture-sap-dev-test.png)
 
 이 시나리오는 단일 가상 머신에 단일 SAP 시스템 데이터베이스와 SAP 애플리케이션 서버를 프로비전하는 방법을 보여줍니다. 시나리오를 통한 데이터 흐름은 다음과 같습니다.
 
 1. 고객이 SAP 사용자 인터페이스 또는 다른 클라이언트 도구(Excel, 웹 브라우저 또는 기타 웹 애플리케이션)를 사용하여 Azure 기반 SAP 시스템에 액세스합니다.
-2. 설정된 ExpressRoute를 사용하여 연결이 제공됩니다. ExpressRoute 연결은 Azure의 ExpressRoute 게이트웨이에서 종료됩니다. 네트워크 트래픽은 ExpressRoute 게이트웨이를 통해 게이트웨이 서브넷으로 라우팅되고, 게이트웨이 서브넷에서 애플리케이션 계층 스포크 서브넷([허브-스포크][hub-spoke] 패턴 참조)으로 라우팅되며, 네트워크 보안 게이트웨이를 통해 SAP 애플리케이션 가상 머신으로 라우팅됩니다.
+2. 설정된 ExpressRoute를 사용하여 연결이 제공됩니다. ExpressRoute 연결은 Azure의 ExpressRoute 게이트웨이에서 종료됩니다. 네트워크 트래픽은 ExpressRoute 게이트웨이를 통해 게이트웨이 서브넷으로 라우팅되고, 게이트웨이 서브넷에서 애플리케이션 계층 스포크 서브넷([허브-스포크 네트워크 토폴로지][hub-spoke] 참조)으로 라우팅되며, 네트워크 보안 게이트웨이를 통해 SAP 애플리케이션 가상 머신으로 라우팅됩니다.
 3. ID 관리 서버는 인증 서비스를 제공합니다.
 4. 점프 박스는 로컬 관리 기능을 제공합니다.
 
@@ -52,7 +52,7 @@ ms.locfileid: "53643971"
 
 ### <a name="availability"></a>가용성
 
- Microsoft는 단일 VM 인스턴스에 대한 SLA(서비스 수준 계약)를 제공합니다. Virtual Machines와 관련된 Microsoft Azure 서비스 수준 계약에 대한 자세한 내용은 [Virtual Machines에 대한 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)를 참조하세요.
+Microsoft는 단일 VM 인스턴스에 대한 SLA(서비스 수준 계약)를 제공합니다. Virtual Machines와 관련된 Microsoft Azure 서비스 수준 계약에 대한 자세한 내용은 [Virtual Machines에 대한 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)를 참조하세요.
 
 ### <a name="scalability"></a>확장성
 

@@ -3,12 +3,12 @@ title: Azure Resource Manager 템플릿에서 개체를 매개 변수로 사용
 description: Azure Resource Manager 템플릿의 기능을 확장하여 개체를 매개 변수로 사용하는 방법을 설명합니다.
 author: petertay
 ms.date: 10/30/2018
-ms.openlocfilehash: c1955823b3474efa0abea1d9634add5f13d02eda
-ms.sourcegitcommit: e9eb2b895037da0633ef3ccebdea2fcce047620f
+ms.openlocfilehash: f0826d8ed1ce446d295ebdacc66d8b0bef0b0dec
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251892"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111209"
 ---
 # <a name="use-an-object-as-a-parameter-in-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿에서 개체를 매개 변수로 사용
 
@@ -24,10 +24,11 @@ ms.locfileid: "50251892"
     "VNetSettings":{"type":"object"}
 },
 ```
+
 그런 다음 `VNetSettings` 개체의 값을 제공합니다.
 
 > [!NOTE]
-> 배포 동안 매개 변수 값을 제공하는 방법을 알아보려면 [Azure Resource Manager 템플릿의 구조 및 구문 이해][azure-resource-manager-authoring-templates]의 **매개 변수** 섹션을 참조하세요. 
+> 배포 동안 매개 변수 값을 제공하는 방법을 알아보려면 [Azure Resource Manager 템플릿의 구조 및 구문 이해][azure-resource-manager-authoring-templates]의 **매개 변수** 섹션을 참조하세요.
 
 ```json
 "parameters":{
@@ -91,9 +92,10 @@ ms.locfileid: "50251892"
     }
   ]
 ```
-`VNetSettings` 개체 값은 `parameters()` 함수를 `[]` 배열 인덱서 및 점 연산자와 함께 사용하여 가상 네트워크 리소스에 필요한 속성에 적용됩니다. 이 방법은 매개 변수 개체의 값을 리소스에 정적으로 적용하려는 경우에만 작동합니다. 그러나 배포하는 동안 속성 값의 배열을 동적으로 할당하려는 경우에는 [복사 루프][azure-resource-manager-create-multiple-instances]를 사용할 수 있습니다. 복사 루프를 사용 하려면 리소스 속성 값의 JSON 배열을 제공하면, 복사 루프가 해당 값을 리소스 속성에 동적으로 적용합니다. 
 
-한 가지 문제점은 동적 방법을 사용하는지를 인식하는 것입니다. 이 문제를 이해하기 위해 속성 값의 일반 배열을 살펴보겠습니다. 이 예제에서 속성 값은 변수에 저장됩니다. 여기에는 이름이 각각 `firstProperty` 및 `secondProperty`인 두 배열이 있습니다. 
+`VNetSettings` 개체 값은 `parameters()` 함수를 `[]` 배열 인덱서 및 점 연산자와 함께 사용하여 가상 네트워크 리소스에 필요한 속성에 적용됩니다. 이 방법은 매개 변수 개체의 값을 리소스에 정적으로 적용하려는 경우에만 작동합니다. 그러나 배포하는 동안 속성 값의 배열을 동적으로 할당하려는 경우에는 [복사 루프][azure-resource-manager-create-multiple-instances]를 사용할 수 있습니다. 복사 루프를 사용 하려면 리소스 속성 값의 JSON 배열을 제공하면, 복사 루프가 해당 값을 리소스 속성에 동적으로 적용합니다.
+
+한 가지 문제점은 동적 방법을 사용하는지를 인식하는 것입니다. 이 문제를 이해하기 위해 속성 값의 일반 배열을 살펴보겠습니다. 이 예제에서 속성 값은 변수에 저장됩니다. 여기에는 이름이 각각 `firstProperty` 및 `secondProperty`인 두 배열이 있습니다.
 
 ```json
 "variables": {
@@ -166,9 +168,9 @@ ms.locfileid: "50251892"
 
 ## <a name="using-a-property-object-in-a-copy-loop"></a>복사 루프에 속성 개체 사용
 
-이 방법은 [직렬 복사 루프][azure-resource-manager-create-multiple]와 함께 사용할 경우(특히 자식 리소스를 배포하는 경우) 훨씬 더 유용해집니다. 
+이 방법은 [직렬 복사 루프][azure-resource-manager-create-multiple]와 함께 사용할 경우(특히 자식 리소스를 배포하는 경우) 훨씬 더 유용해집니다.
 
-이를 이해하기 위해 2개의 보안 규칙과 함께 [NSG(네트워크 보안 그룹)][nsg]를 배포하는 템플릿을 살펴보겠습니다. 
+이를 이해하기 위해 2개의 보안 규칙과 함께 [NSG(네트워크 보안 그룹)][nsg]를 배포하는 템플릿을 살펴보겠습니다.
 
 먼저, 매개 변수를 살펴보겠습니다. 템플릿을 확인하면, `securityRules`라는 배열을 포함하는 `networkSecurityGroupsSettings` 매개 변수를 정의했다는 것을 알 수 있습니다. 이 배열에는 보안 규칙에 대한 다양한 설정을 지정하는 두 가지 JSON 개체가 포함되어 있습니다.
 
@@ -176,7 +178,7 @@ ms.locfileid: "50251892"
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
-    "parameters":{ 
+    "parameters":{
       "networkSecurityGroupsSettings": {
       "value": {
           "securityRules": [
@@ -249,7 +251,7 @@ ms.locfileid: "50251892"
                 "resources": [],
                 "outputs": {}
             }
-        }       
+        }
     },
     {
         "apiVersion": "2015-01-01",
@@ -292,12 +294,12 @@ ms.locfileid: "50251892"
           }
         }
     }
-  ],          
+  ],
   "outputs": {}
 }
 ```
 
-`securityRules` 자식 리소스에서 속성 값을 지정하는 방법을 좀 더 자세히 살펴보겠습니다. 모든 속성이 `parameter()` 기능을 사용해서 참조됩니다. 그러면 점 연산자를 사용하여 반복의 현재 값으로 인덱싱된 `securityRules` 배열을 참조합니다. 마지막으로 다른 점 연산자를 사용하여 개체의 이름을 참조합니다. 
+`securityRules` 자식 리소스에서 속성 값을 지정하는 방법을 좀 더 자세히 살펴보겠습니다. 모든 속성이 `parameter()` 기능을 사용해서 참조됩니다. 그러면 점 연산자를 사용하여 반복의 현재 값으로 인덱싱된 `securityRules` 배열을 참조합니다. 마지막으로 다른 점 연산자를 사용하여 개체의 이름을 참조합니다.
 
 ## <a name="try-the-template"></a>템플릿 시도
 
@@ -316,8 +318,8 @@ az group deployment create -g <resource-group-name> \
 
 - 개체 배열을 반복하고 JSON 스키마로 변환하는 템플릿을 만드는 방법을 알아봅니다. [Azure Resource Manager 템플릿에서 속성 변환기 및 수집기 구현](./collector.md)을 참조하세요.
 
-
 <!-- links -->
+
 [azure-resource-manager-authoring-templates]: /azure/azure-resource-manager/resource-group-authoring-templates
 [azure-resource-manager-create-template]: /azure/azure-resource-manager/resource-manager-create-first-template
 [azure-resource-manager-create-multiple-instances]: /azure/azure-resource-manager/resource-group-create-multiple

@@ -1,18 +1,21 @@
 ---
 title: 스트랭글러 패턴
+titleSuffix: Cloud Design Patterns
 description: 특정 기능을 새로운 애플리케이션 및 서비스로 점진적으로 교체하여 레거시 시스템을 단계적으로 마이그레이션합니다.
+keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-ms.openlocfilehash: 0bf0b76a69f947419da83edd894a04dbea02371b
-ms.sourcegitcommit: 2ae794de13c45cf24ad60d4f4dbb193c25944eff
+ms.custom: seodec18
+ms.openlocfilehash: 7d7c58c97537537ae9f2f96b7ecf1b437fc258b4
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50001884"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54010220"
 ---
 # <a name="strangler-pattern"></a>스트랭글러 패턴
 
-특정 기능을 새로운 애플리케이션 및 서비스로 점진적으로 교체하여 레거시 시스템을 단계적으로 마이그레이션합니다. 레거시 시스템의 기능이 교체되면 결국 새 시스템이 기존 시스템의 모든 기능을 대체하여 기존 시스템을 중단하고 서비스 해제할 수 있습니다. 
+특정 기능을 새로운 애플리케이션 및 서비스로 점진적으로 교체하여 레거시 시스템을 단계적으로 마이그레이션합니다. 레거시 시스템의 기능이 교체되면 결국 새 시스템이 기존 시스템의 모든 기능을 대체하여 기존 시스템을 중단하고 서비스 해제할 수 있습니다.
 
 ## <a name="context-and-problem"></a>컨텍스트 및 문제점
 
@@ -24,7 +27,7 @@ ms.locfileid: "50001884"
 
 특정 부분의 기능을 새로운 애플리케이션 및 서비스로 점진적으로 교체합니다. 백 엔드 레거시 시스템으로 이동하는 요청을 가로채는 외관을 만듭니다. 외관은 레거시 애플리케이션 또는 새 서비스로 이러한 요청을 라우트합니다. 기존 기능을 새로운 시스템으로 점차적으로 마이그레이션할 수 있으며, 소비자는 마이그레이션이 발생한 것을 인식하지 못하고 동일한 인터페이스를 계속 사용할 수 있습니다.
 
-![](./_images/strangler.png)  
+![스트랭글러 패턴의 다이어그램](./_images/strangler.png)
 
 이 패턴을 통해 마이그레이션의 위험을 최소화하고 시간이 지남에 따라 개발 활동을 분산할 수 있습니다. 올바른 애플리케이션에 사용자를 안전하게 라우팅하는 외관을 사용하여 레거시 애플리케이션이 계속 작동하도록 하면서 원하는 속도로 새 시스템에 기능을 추가할 수 있습니다. 시간이 지남에 따라 새 시스템에 기능이 마이그레이션되므로 결국 레거시 시스템은 "스트랭글되고" 더 이상 필요가 없습니다. 이 프로세스가 완료되면 레거시 시스템을 안전하게 사용 중지할 수 있습니다.
 
@@ -48,9 +51,3 @@ ms.locfileid: "50001884"
 ## <a name="related-guidance"></a>관련 지침
 
 - Martin Fowler의 [StranglerApplication](https://www.martinfowler.com/bliki/StranglerApplication.html) 관련 블로그 게시물
-- [손상 방지 레이어 패턴](./anti-corruption-layer.md)
-- [게이트웨이 라우팅 패턴](./gateway-routing.md)
-
-
- 
-

@@ -4,12 +4,12 @@ titleSuffix: Azure Reference Architectures
 description: 가용성, 보안, 확장성 및 관리 효율성을 위해 Azure에서 다중 계층 아키텍처를 구현합니다.
 author: MikeWasson
 ms.date: 11/12/2018
-ms.openlocfilehash: 38983dec83718f53fc1ffd79c1347582200f5db0
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: e7dbd8dd2b8e5aff8f18ff9b87fce0b76a850bce
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120132"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011381"
 ---
 # <a name="windows-n-tier-application-on-azure-with-sql-server"></a>SQL Server를 사용한 Azure의 Windows N계층 애플리케이션
 
@@ -143,7 +143,7 @@ jumpbox를 보호하려면 안전한 공용 IP 주소 집합의 RDP 연결만 �
 - 프로브는 [알려진 IP 주소][health-probe-ip]인 168.63.129.16에서 전송됩니다. 모든 방화벽 정책 또는 NSG 규칙에서 이 IP 주소 간에 이동하는 트래픽을 차단하지 않습니다.
 - [상태 프로브 로그][health-probe-log]를 사용하여 상태 프로브의 상태를 확인합니다. Azure Portal에서 각 부하 분산 장치에 대해 로깅을 활성화합니다. 로그는 Azure Blob Storage에 쓰기됩니다. 로그에서는 실패한 프로브 응답으로 인해 네트워크 트래픽을 가져오지 않는 VM 개수를 보여줍니다.
 
-[VM용 Azure SLA][vm-sla]에서 제공하는 가용성보다 더 높은 가용성이 필요한 경우, 장애 조치를 위해 Azure Traffic Manager를 사용하여 두 지역 간에 응용 프로그램을 복제하는 것이 좋습니다. 자세한 내용은 [고가용성을 위한 다중 지역 N 계층 애플리케이션][multi-dc]을 참조하세요.
+[VM용 Azure SLA][vm-sla]에서 제공하는 가용성보다 더 높은 가용성이 필요한 경우, 장애 조치를 위해 Azure Traffic Manager를 사용하여 두 지역 간에 애플리케이션을 복제하는 것이 좋습니다. 자세한 내용은 [고가용성을 위한 다중 지역 N 계층 애플리케이션][multi-dc]을 참조하세요.
 
 ## <a name="security-considerations"></a>보안 고려 사항
 

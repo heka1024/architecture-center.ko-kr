@@ -1,16 +1,16 @@
 ---
 title: Azure Functions를 사용한 서버리스 이벤트 처리
 titleSuffix: Azure Reference Architectures
-description: 서버리스 이벤트 수집 및 처리를 보여 주는 참조 아키텍처입니다.
+description: Azure Functions를 사용한 서버리스 이벤트 수집 및 처리를 위한 참조 아키텍처
 author: MikeWasson
 ms.date: 10/16/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1a3c73ca35f7e849211837dee33a530d786c827f
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 23edc69e52981cfd15717b491875b34ed025958a
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53119900"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54111396"
 ---
 # <a name="serverless-event-processing-using-azure-functions"></a>Azure Functions를 사용한 서버리스 이벤트 처리
 
@@ -35,7 +35,7 @@ ms.locfileid: "53119900"
 
 **Azure Monitor** [Monitor][monitor]는 솔루션에 배포된 Azure 서비스에 대한 성능 메트릭을 수집합니다. 이러한 메트릭을 대시보드에서 시각화하여 솔루션의 상태를 볼 수 있습니다.
 
-**Azure Pipelines**. [Pipelines][pipelines]는 응용 프로그램을 빌드, 테스트 및 배포하는 CI(지속적인 통합) 및 CD(지속적인 업데이트) 서비스입니다.
+**Azure Pipelines**. [Pipelines][pipelines]는 애플리케이션을 빌드, 테스트 및 배포하는 CI(지속적인 통합) 및 CD(지속적인 업데이트) 서비스입니다.
 
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
@@ -56,7 +56,7 @@ Cosmos DB의 처리 용량은 [RU(요청 단위)][ru]로 측정됩니다. 10,000
 - 단일 키 값에 저장되는 최대 데이터 크기는 최대 실제 파티션 크기(10GB)를 초과하지 않습니다.
 - 문서에 대한 파티션 키는 변경되지 않습니다. 기존 문서의 파티션 키는 업데이트할 수 없습니다.
 
-이 참조 아키텍처에 대한 시나리오에서 함수는 정확히 데이터를 보내는 장치당 하나의 문서를 저장합니다. 함수에서 지속적으로 upsert 작업을 사용하여 문서를 최신 장치 상태로 업데이트합니다. 쓰기가 키 전체에 균등하게 분산되므로 장치 ID가 이 시나리오에 적합한 파티션 키이며, 각 키 값에 대해 하나의 문서가 있으므로 각 파티션의 크기가 엄격하게 제한됩니다. 파티션 키에 대한 자세한 내용은 [Azure Cosmos DB의 파티션 및 확장][cosmosdb-scale]을 참조하세요.
+이 참조 아키텍처에 대한 시나리오에서 함수는 정확히 데이터를 보내는 디바이스당 하나의 문서를 저장합니다. 함수에서 지속적으로 upsert 작업을 사용하여 문서를 최신 디바이스 상태로 업데이트합니다. 쓰기가 키 전체에 균등하게 분산되므로 디바이스 ID가 이 시나리오에 적합한 파티션 키이며, 각 키 값에 대해 하나의 문서가 있으므로 각 파티션의 크기가 엄격하게 제한됩니다. 파티션 키에 대한 자세한 내용은 [Azure Cosmos DB의 파티션 및 확장][cosmosdb-scale]을 참조하세요.
 
 ## <a name="resiliency-considerations"></a>복원력 고려 사항
 

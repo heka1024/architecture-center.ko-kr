@@ -6,12 +6,12 @@ ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: claims
 pnp.series.next: app-roles
-ms.openlocfilehash: 541a4dd9abb2168eef4a60a0ec99e1e7c06049b5
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: d112cb65e3cd8bae7b273a974bf8e5d2b04aff8a
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902479"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112722"
 ---
 # <a name="tenant-sign-up-and-onboarding"></a>테넌트 등록 및 온보딩
 
@@ -25,7 +25,8 @@ ms.locfileid: "52902479"
 * 애플리케이션에 필요한 모든 일회성 테넌트별 설치를 수행합니다.
 
 ## <a name="admin-consent-and-azure-ad-permissions"></a>관리자 동의 및 Azure AD 사용 권한
-Azure AD를 인증하려면 애플리케이션은 사용자의 디렉터리에 대한 액세스가 필요합니다. 최소한 애플리케이션에서 사용자의 프로필을 읽을 수 있는 권한이 필요합니다. 사용자가 처음으로 로그인할 때 Azure AD는 요청되는 권한을 나열하는 동의 페이지를 보여 줍니다. **동의함**을 클릭하여 응용 프로그램에 권한을 부여합니다.
+
+Azure AD를 인증하려면 애플리케이션은 사용자의 디렉터리에 대한 액세스가 필요합니다. 최소한 애플리케이션에서 사용자의 프로필을 읽을 수 있는 권한이 필요합니다. 사용자가 처음으로 로그인할 때 Azure AD는 요청되는 권한을 나열하는 동의 페이지를 보여 줍니다. **동의함**을 클릭하여 애플리케이션에 권한을 부여합니다.
 
 기본적으로 동의는 사용자 단위로 부여됩니다. 로그인하는 모든 사용자에게 동의 페이지가 표시됩니다. 그러나 Azure AD는 AD 관리자가 전체 조직에 대한 동의를 허용하는 *관리자 동의*를 지원합니다.
 
@@ -39,10 +40,11 @@ Azure AD를 인증하려면 애플리케이션은 사용자의 디렉터리에 �
 
 ![동의 오류](./images/consent-error.png)
 
-애플리케이션이 나중에 추가 권한이 필요한 경우 고객은 다시 등록하고 업데이트된 사용 권한에 동의해야 합니다.  
+애플리케이션이 나중에 추가 권한이 필요한 경우 고객은 다시 등록하고 업데이트된 사용 권한에 동의해야 합니다.
 
 ## <a name="implementing-tenant-sign-up"></a>테넌트 등록 구현
-[Tailspin 설문 조사][Tailspin] 응용 프로그램의 경우 등록 프로세스에 대한 몇 가지 요구 사항을 정의했습니다.
+
+[Tailspin 설문 조사][Tailspin] 애플리케이션의 경우 등록 프로세스에 대한 몇 가지 요구 사항을 정의했습니다.
 
 * 테넌트는 사용자가 로그인하려면 등록해야 합니다.
 * 등록은 관리자 동의 흐름을 사용합니다.
@@ -58,7 +60,7 @@ Azure AD를 인증하려면 애플리케이션은 사용자의 디렉터리에 �
 
 이러한 단추는 `AccountController` 클래스에서 작업을 호출합니다.
 
-`SignIn` 작업은 OpenID Connect 미들웨어를 인증 엔드포인트로 리디렉션할 수 있게 하는 **ChallegeResult**를 반환합니다. 이는 ASP.NET Core에서 인증을 트리거하는 기본 방법입니다.  
+`SignIn` 작업은 OpenID Connect 미들웨어를 인증 엔드포인트로 리디렉션할 수 있게 하는 **ChallegeResult**를 반환합니다. 이는 ASP.NET Core에서 인증을 트리거하는 기본 방법입니다.
 
 ```csharp
 [AllowAnonymous]
@@ -92,7 +94,7 @@ public IActionResult SignUp()
 
 `SignIn`과 마찬가지로 `SignUp` 작업도 `ChallengeResult`를 반환합니다. 하지만 이번에 `AuthenticationProperties` in the `ChallengeResult`에 상태 정보의 일부를 추가합니다.
 
-* 등록: 사용자가 등록 프로세스를 시작했음을 나타내는 부울 플래그.
+* 등록: 사용자가 등록 프로세스를 시작했음을 나타내는 부울 플래그입니다.
 
 `AuthenticationProperties` 의 상태 정보는 인증 흐름 중 왕복하는 OpenID Connect [상태] 매개 변수에 추가됩니다.
 
@@ -101,11 +103,16 @@ public IActionResult SignUp()
 사용자가 Azure AD에서 인증하고 애플리케이션으로 리디렉션된 후 인증 티켓은 상태를 포함합니다. 이 팩트를 사용하여 "등록" 값이 전체 인증 흐름에서 유지되도록 합니다.
 
 ## <a name="adding-the-admin-consent-prompt"></a>관리자 동의 프롬프트 추가
+
 Azure AD에서 관리자 동의 흐름은 "prompt" 매개 변수를 인증 요청의 쿼리 문자열에 추가하여 트리거됩니다.
+
+<!-- markdownlint-disable MD040 -->
 
 ```
 /authorize?prompt=admin_consent&...
 ```
+
+<!-- markdownlint-enable MD040 -->
 
 설문 조사 애플리케이션은 `RedirectToAuthenticationEndpoint` 이벤트 중 프롬프트를 추가합니다. 이 이벤트는 미들웨어가 인증 엔드포인트에 리디렉션하기 직전에 호출됩니다.
 
@@ -122,7 +129,7 @@ public override Task RedirectToAuthenticationEndpoint(RedirectContext context)
 }
 ```
 
-설정` ProtocolMessage.Prompt` 은(는) "prompt" 매개 변수를 인증 요청에 추가하도록 미들웨어에 알려 줍니다.
+설정 `ProtocolMessage.Prompt`는 “prompt” 매개 변수를 인증 요청에 추가하도록 미들웨어에 알려 줍니다.
 
 프롬프트는 등록하는 동안만 필요합니다. 일반 로그인은 이를 포함하면 안됩니다. 서로 구분하려면 인증 상태에서 `signup` 값을 확인합니다. 다음 확장 메서드는 이러한 조건을 확인합니다.
 
@@ -143,7 +150,8 @@ internal static bool IsSigningUp(this BaseControlContext context)
     bool isSigningUp;
     if (!bool.TryParse(signupValue, out isSigningUp))
     {
-        // The value for signup is not a valid boolean, throw                
+        // The value for signup is not a valid boolean, throw
+
         throw new InvalidOperationException($"'{signupValue}' is an invalid boolean value");
     }
 
@@ -152,6 +160,7 @@ internal static bool IsSigningUp(this BaseControlContext context)
 ```
 
 ## <a name="registering-a-tenant"></a>테넌트 등록
+
 설문 조사 애플리케이션은 애플리케이션 데이터베이스에 각 테넌트 및 사용자에 대한 정보를 저장합니다.
 
 ![테넌트 테이블](./images/tenant-table.png)
@@ -255,7 +264,8 @@ private async Task<Tenant> SignUpTenantAsync(BaseControlContext context, TenantM
 
 [**다음**][app roles]
 
-<!-- Links -->
+<!-- links -->
+
 [app roles]: app-roles.md
 [Tailspin]: tailspin.md
 

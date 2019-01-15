@@ -1,31 +1,31 @@
 ---
 title: 다중 테넌트 애플리케이션에서 백 엔드 웹 API 보안 유지
-description: 백 엔드 웹 API의 보안을 유지하는 방법
+description: 백 엔드 웹 API의 보안을 유지하는 방법.
 author: MikeWasson
 ms.date: 07/21/2017
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authorize
 pnp.series.next: token-cache
-ms.openlocfilehash: e738eb94b5978efa4e7a4bebcc72daa7968ac904
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 517bdbb6e1a1063db9337b63905e2ff5f4bdd4d4
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52901595"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114031"
 ---
 # <a name="secure-a-backend-web-api"></a>백 엔드 웹 API의 보안 유지
 
 [![GitHub](../_images/github.png) 샘플 코드][sample application]
 
-[Tailspin 설문 조사] 응용 프로그램은 백 엔드 웹 API를 사용하여 설문 조사에 대한 CRUD 작업을 관리합니다. 예를 들어 사용자가 "내 설문 조사"를 클릭하면 웹 애플리케이션은 웹 API에 HTTP 요청을 보냅니다.
+[Tailspin 설문 조사] 애플리케이션은 백 엔드 웹 API를 사용하여 설문 조사에 대한 CRUD 작업을 관리합니다. 예를 들어 사용자가 "내 설문 조사"를 클릭하면 웹 애플리케이션은 웹 API에 HTTP 요청을 보냅니다.
 
-```
+```http
 GET /users/{userId}/surveys
 ```
 
 웹 API는 JSON 개체를 반환합니다.
 
-```
+```http
 {
   "Published":[],
   "Own":[
@@ -40,8 +40,6 @@ GET /users/{userId}/surveys
 
 > [!NOTE]
 > 이는 서버 간 시나리오입니다. 애플리케이션은 브라우저 클라이언트에서 API에 대한 AJAX 호출을 만들지 않습니다.
-> 
-> 
 
 실행할 수 있는 두 가지 주요 방법이 있습니다.
 
@@ -50,7 +48,7 @@ GET /users/{userId}/surveys
 
 Tailspin 애플리케이션은 위임된 사용자 ID를 구현합니다. 주요 차이점은 다음과 같습니다.
 
-**위임된 사용자 ID**
+**위임된 사용자 ID:**
 
 * 웹 API로 전송되는 전달자 토큰은 사용자 ID를 포함합니다.
 * 웹 API는 사용자 ID에 따라 권한 부여를 결정합니다.
@@ -58,7 +56,7 @@ Tailspin 애플리케이션은 위임된 사용자 ID를 구현합니다. 주요
 * 일반적으로 웹 애플리케이션은 UI 요소 표시 또는 숨기기와 같은 UI에 영향을 주는 몇 가지 권한 부여를 결정합니다.)
 * 웹 API는 JavaScript 애플리케이션 또는 네이티브 클라이언트 애플리케이션과 같은 신뢰할 수 없는 클라이언트에서 잠재적으로 사용될 수 있습니다.
 
-**응용 프로그램 ID**
+**애플리케이션 ID:**
 
 * 웹 API는 사용자에 대한 정보를 가져오지 않습니다.
 * 웹 API는 사용자 ID에 따라 권한 부여를 수행할 수 없습니다. 웹 애플리케이션에서 모든 권한 부여를 결정합니다.  
@@ -75,23 +73,25 @@ Tailspin 애플리케이션은 위임된 사용자 ID를 구현합니다. 주요
 ![액세스 토큰 가져오기](./images/access-token.png)
 
 ## <a name="register-the-web-api-in-azure-ad"></a>Azure AD에서 웹 API 등록
+
 Azure AD에서 웹 API에 대한 전달자 토큰을 발급하려면 Azure AD에서 몇 가지를 구성해야 합니다.
 
 1. Azure AD에서 웹 API를 등록합니다.
 
-2. 웹앱의 클라이언트 ID를 `knownClientApplications` 속성의 웹 API 애플리케이션 매니페스트에 추가합니다. [응용 프로그램 매니페스트 업데이트]를 참조하세요.
+2. 웹앱의 클라이언트 ID를 `knownClientApplications` 속성의 웹 API 애플리케이션 매니페스트에 추가합니다. [애플리케이션 매니페스트 업데이트]를 참조하세요.
 
-3. 웹 애플리케이션에 웹 API를 호출하는 권한을 부여합니다. Azure 관리 포털에서 애플리케이션 ID(클라이언트 자격 증명 흐름)에 대한 "애플리케이션 권한" 또는 위임된 사용자 ID에 대한 "위임된 권한", 두 가지 유형의 사용 권한을 설정할 수 있습니다.
-   
+3. 웹 애플리케이션에 웹 API를 호출하는 권한을 부여합니다. Azure 관리 포털에서 애플리케이션 ID(클라이언트 자격 증명 흐름)에 대한 “애플리케이션 권한” 또는 위임된 사용자 ID에 대한 “위임된 권한”, 두 가지 유형의 사용 권한을 설정할 수 있습니다.
+
    ![위임된 권한](./images/delegated-permissions.png)
 
 ## <a name="getting-an-access-token"></a>액세스 토큰 가져오기
+
 웹 API를 호출하기 전에 웹 애플리케이션은 Azure AD에서 액세스 토큰을 가져옵니다. .NET 애플리케이션에서는 [.NET용 ADAL(Azure AD 인증 라이브러리)][ADAL]을 사용합니다.
 
 OAuth 2 권한 부여 코드 흐름에서 애플리케이션은 액세스 토큰에 대한 권한 부여 코드를 교환합니다. 다음 코드는 ADAL을 사용하여 액세스 토큰을 가져옵니다. 이 코드는 `AuthorizationCodeReceived` 이벤트 중에 호출됩니다.
 
 ```csharp
-// The OpenID Connect middleware sends this event when it gets the authorization code.   
+// The OpenID Connect middleware sends this event when it gets the authorization code.
 public override async Task AuthorizationCodeReceived(AuthorizationCodeReceivedContext context)
 {
     string authorizationCode = context.ProtocolMessage.Code;
@@ -127,9 +127,10 @@ var result = await authContext.AcquireTokenSilentAsync(resourceID, credential, n
 여기서 `userId`는 `http://schemas.microsoft.com/identity/claims/objectidentifier` 클레임에 있는 사용자의 개체 ID입니다.
 
 ## <a name="using-the-access-token-to-call-the-web-api"></a>액세스 토큰을 사용하여 웹 API 호출
+
 토큰을 가지면 웹 API에 대한 HTTP 요청의 인증 헤더에 전송합니다.
 
-```
+```http
 Authorization: Bearer xxxxxxxxxx
 ```
 
@@ -155,6 +156,7 @@ public static async Task<HttpResponseMessage> SendRequestWithBearerTokenAsync(th
 ```
 
 ## <a name="authenticating-in-the-web-api"></a>웹 API에서 인증
+
 웹 API는 전달자 토큰을 인증해야 합니다. ASP.NET Core에서는 [Microsoft.AspNet.Authentication.JwtBearer][JwtBearer] 패키지를 사용할 수 있습니다. 이 패키지는 애플리케이션에서 OpenID Connect 전달자 토큰을 받을 수 있게 해 주는 미들웨어를 제공합니다.
 
 웹 API `Startup` 클래스에서 미들웨어를 등록합니다.
@@ -172,7 +174,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Applicat
         },
         Events= new SurveysJwtBearerEvents(loggerFactory.CreateLogger<SurveysJwtBearerEvents>())
     });
-    
+
     // ...
 }
 ```
@@ -183,6 +185,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Applicat
 * **Events**는 **JwtBearerEvents**에서 파생된 클래스입니다.
 
 ### <a name="issuer-validation"></a>발급자 유효성 검사
+
 **JwtBearerEvents.TokenValidated** 이벤트에서 토큰 발급자의 유효성을 검사합니다. 발급자는 "iss" 클레임에서 전송됩니다.
 
 설문 조사 애플리케이션에서 웹 API는 [테넌트 등록]을 처리하지 않습니다. 따라서 발급자가 이미 애플리케이션 데이터베이스에 있는지만을 확인합니다. 그렇지 않으면 인증이 실패되는 예외를 throw합니다.
@@ -221,7 +224,8 @@ public override async Task TokenValidated(TokenValidatedContext context)
 이 예제에서처럼 **TokenValidated** 이벤트를 사용하여 클레임을 수정할 수도 있습니다. 클레임은 Azure AD에서 직접 가져온 것입니다. 웹 애플리케이션에서 가져오는 클레임을 수정할 경우 해당 변경 내용이 웹 API를 수신하는 전달자 토큰에 나타나지 않습니다. 자세한 내용은 [클레임 변환][claims-transformation]을 참조하세요.
 
 ## <a name="authorization"></a>권한 부여
-권한 부여에 대한 일반적 내용은 [역할 기반 및 리소스 기반 권한 부여][Authorization]를 참조하세요. 
+
+권한 부여에 대한 일반적 내용은 [역할 기반 및 리소스 기반 권한 부여][Authorization]를 참조하세요.
 
 JwtBearer 미들웨어는 인증 응답을 처리합니다. 예를 들어 컨트롤러 작업을 인증된 사용자로 제한하려면 **[Authorize]** 특성을 사용하고 **JwtBearerDefaults.AuthenticationScheme**을 인증 체계로 지정합니다.
 
@@ -248,18 +252,18 @@ public void ConfigureServices(IServiceCollection services)
             policy =>
             {
                 policy.AddRequirements(new SurveyCreatorRequirement());
-                policy.RequireAuthenticatedUser(); // Adds DenyAnonymousAuthorizationRequirement 
+                policy.RequireAuthenticatedUser(); // Adds DenyAnonymousAuthorizationRequirement
                 policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
             });
         options.AddPolicy(PolicyNames.RequireSurveyAdmin,
             policy =>
             {
                 policy.AddRequirements(new SurveyAdminRequirement());
-                policy.RequireAuthenticatedUser(); // Adds DenyAnonymousAuthorizationRequirement 
+                policy.RequireAuthenticatedUser(); // Adds DenyAnonymousAuthorizationRequirement
                 policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
             });
     });
-    
+
     // ...
 }
 ```
@@ -272,7 +276,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [Tailspin 설문 조사]: tailspin.md
 [IdentityServer4]: https://github.com/IdentityServer/IdentityServer4
-[응용 프로그램 매니페스트 업데이트]: ./run-the-app.md#update-the-application-manifests
+[애플리케이션 매니페스트 업데이트]: ./run-the-app.md#update-the-application-manifests
 [토큰 캐싱]: token-cache.md
 [테넌트 등록]: signup.md
 [claims-transformation]: claims.md#claims-transformations

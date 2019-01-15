@@ -5,12 +5,12 @@ description: Azure에서 허브-스포크 네트워크 토폴로지를 구현합
 author: telmosampaio
 ms.date: 10/08/2018
 ms.custom: seodec18
-ms.openlocfilehash: fe56630b621f02fe71b864642b75688ba1965862
-ms.sourcegitcommit: 8d951fd7e9534054b160be48a1881ae0857561ef
+ms.openlocfilehash: c7cf2923856b3c659876afcc89bb312e492c6409
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53329435"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112450"
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>Azure에서 허브-스포크 네트워크 토폴로지 구현
 
@@ -176,11 +176,9 @@ VNet 피어링은 두 VNet 사이에 존재하는 비전이적 관계입니다. 
 
 5. 배포가 완료될 때까지 기다립니다. 이 배포는 가상 네트워크, 가상 머신, VPN 게이트웨이 및 게이트웨이에 대한 연결을 생성합니다.  VPN 게이트웨이를 만드는 데 약 40분 정도 걸릴 수 있습니다.
 
-### <a name="test-connectivity-with-the-hub"></a>허브를 사용하여 연결 테스트
+### <a name="test-connectivity-to-the-hub-vnet-mdash-windows-deployment"></a>허브 VNet에 대한 연결 테스트 &mdash; Windows 배포
 
-시뮬레이션된 온-프레미스 환경에서 허브 VNet으로의 연결을 테스트합니다.
-
-**Windows 배포**
+Windows VM을 사용하여 시뮬레이션된 온-프레미스 환경에서 허브 VNet으로의 연결을 테스트하려면 다음 단계를 수행합니다.
 
 1. Azure Portal을 사용하여 `onprem-jb-rg` 리소스 그룹에서 `jb-vm1`이라는 VM을 찾습니다.
 
@@ -206,11 +204,13 @@ TcpTestSucceeded : True
 > [!NOTE]
 > 기본적으로 Windows Server VM을 사용하면 Azure에서 ICMP 응답을 허용하지 않습니다. `ping`을 사용하여 연결을 테스트하려는 경우 각 VM에 대한 Windows 고급 방화벽에서 ICMP 트래픽을 사용하도록 설정해야 합니다.
 
-**Linux 배포**
+### <a name="test-connectivity-to-the-hub-vnet-mdash-linux-deployment"></a>허브 VNet에 대한 연결 테스트 &mdash; Linux 배포
+
+Linux VM을 사용하여 시뮬레이션된 온-프레미스 환경에서 허브 VNet으로의 연결을 테스트하려면 다음 단계를 수행합니다.
 
 1. Azure Portal을 사용하여 `onprem-jb-rg` 리소스 그룹에서 `jb-vm1`이라는 VM을 찾습니다.
 
-2. `Connect`를 클릭하고 포털에 표시되는 `ssh` 명령을 복사합니다. 
+2. `Connect`를 클릭하고 포털에 표시되는 `ssh` 명령을 복사합니다.
 
 3. Linux 프롬프트에서 `ssh`를 실행하여 시뮬레이션된 온-프레미스 환경에 연결합니다. `onprem.json` 매개 변수 파일에서 지정한 암호를 사용합니다.
 
@@ -253,11 +253,9 @@ TcpTestSucceeded : True
    azbb -s <subscription_id> -g hub-vnet-rg -l <location> -p hub-vnet-peering.json --deploy
    ```
 
-### <a name="test-connectivity"></a>연결 테스트
+### <a name="test-connectivity-to-the-spoke-vnets-mdash-windows-deployment"></a>스포크 VNet에 대한 연결 테스트 &mdash; Windows 배포
 
-시뮬레이션된 온-프레미스 환경에서 스포크 VNet으로의 연결을 테스트합니다.
-
-**Windows 배포**
+Windows VM을 사용하여 시뮬레이션된 온-프레미스 환경에서 스포크 VNet으로의 연결을 테스트하려면 다음 단계를 수행합니다.
 
 1. Azure Portal을 사용하여 `onprem-jb-rg` 리소스 그룹에서 `jb-vm1`이라는 VM을 찾습니다.
 
@@ -270,7 +268,7 @@ TcpTestSucceeded : True
    Test-NetConnection 10.2.0.68 -CommonTCPPort RDP
    ```
 
-**Linux 배포**
+### <a name="test-connectivity-to-the-spoke-vnets-mdash-linux-deployment"></a>스포크 VNet에 대한 연결 테스트 &mdash; Linux 배포
 
 Linux VM을 사용하여 시뮬레이션된 온-프레미스 환경에서 스포크 VNet으로의 연결을 테스트하려면 다음 단계를 수행합니다.
 
@@ -329,4 +327,3 @@ Linux VM을 사용하여 시뮬레이션된 온-프레미스 환경에서 스포
 [1]: ./images/hub-spoke-gateway-routing.svg "전이적 라우팅이 사용되는 Azure의 허브-스포크 토폴로지"
 [2]: ./images/hub-spoke-no-gateway-routing.svg "NVA로 전이적 라우팅이 사용되는 Azure의 허브-스포크 토폴로지"
 [3]: ./images/hub-spokehub-spoke.svg "Azure의 허브-스포크-허브-스포크 토폴로지"
-[ARM-Templates]: https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/

@@ -1,20 +1,17 @@
 ---
-title: CQRS
+title: CQRS(명령 및 쿼리 책임 분리) 패턴
+titleSuffix: Cloud Design Patterns
 description: 별도의 인터페이스를 사용하여 데이터를 업데이트하는 작업과 데이터를 읽는 작업을 분리합니다.
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- data-management
-- design-implementation
-- performance-scalability
-ms.openlocfilehash: de9530f7dd55c0ce5460cd3b58ab9f216c9b5c8c
-ms.sourcegitcommit: fb22348f917a76e30a6c090fcd4a18decba0b398
+ms.custom: seodec18
+ms.openlocfilehash: 320f6cd51a44b3a6732d8395f0a5e1db8f9f5774
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/16/2018
-ms.locfileid: "53450873"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54010378"
 ---
 # <a name="command-and-query-responsibility-segregation-cqrs-pattern"></a>CQRS(명령 및 쿼리 책임 분리) 패턴
 
@@ -56,7 +53,7 @@ CQRS 기반 시스템에서 데이터의 쿼리와 업데이트가 분리된 모
 
 읽기 및 쓰기 저장소를 분리하면 부하를 감안해 각 저장소를 적절하게 확장할 수도 있습니다. 예를 들어 보통 읽기 저장소는 쓰기 저장소보다 부하가 훨씬 더 높습니다.
 
-쿼리/읽기 모델에 비정규화된 데이터([구체화된 뷰 패턴](materialized-view.md) 참조)가 포함되어 있으면 애플리케이션에서 각각의 보기를 위해 데이터를 읽거나 시스템 내 데이터를 쿼리할 때 성능이 최대화됩니다.
+쿼리/읽기 모델에 비정규화된 데이터([구체화된 뷰 패턴](./materialized-view.md) 참조)가 포함되어 있으면 애플리케이션에서 각각의 보기를 위해 데이터를 읽거나 시스템 내 데이터를 쿼리할 때 성능이 최대화됩니다.
 
 ## <a name="issues-and-considerations"></a>문제 및 고려 사항
 
@@ -96,7 +93,7 @@ CQRS 기반 시스템에서 데이터의 쿼리와 업데이트가 분리된 모
 
 ## <a name="event-sourcing-and-cqrs"></a>이벤트 소싱 및 CQRS
 
-CQRS 패턴은 이벤트 소싱 패턴과 함께 사용되는 경우가 많습니다. CQRS 기반 시스템은 별도의 읽기 및 쓰기 데이터 모델을 사용하며 각각 관련 작업에 맞춤화되고 종종 물리적으로 분리된 저장소에 배치됩니다. [이벤트 소싱](event-sourcing.md) 패턴과 함께 사용할 때 이벤트 저장소는 쓰기 모델이며 정보의 공식적인 출처입니다. 보통 CQRS 기반 시스템의 읽기 모델은 고도로 비정규화된 뷰의 형태로 데이터의 구체화된 뷰를 제공합니다. 이러한 뷰는 애플리케이션의 인터페이스 및 디스플레이 요구 사항에 맞춤화되어 디스플레이 및 쿼리 성능을 모두 최대화하는 데 기여합니다.
+CQRS 패턴은 이벤트 소싱 패턴과 함께 사용되는 경우가 많습니다. CQRS 기반 시스템은 별도의 읽기 및 쓰기 데이터 모델을 사용하며 각각 관련 작업에 맞춤화되고 종종 물리적으로 분리된 저장소에 배치됩니다. [이벤트 소싱 패턴](./event-sourcing.md)과 함께 사용할 때 이벤트 저장소는 쓰기 모델이며 정보의 공식적인 출처입니다. 보통 CQRS 기반 시스템의 읽기 모델은 고도로 비정규화된 뷰의 형태로 데이터의 구체화된 뷰를 제공합니다. 이러한 뷰는 애플리케이션의 인터페이스 및 디스플레이 요구 사항에 맞춤화되어 디스플레이 및 쿼리 성능을 모두 최대화하는 데 기여합니다.
 
 특정 시점의 실제 데이터 대신 이벤트의 스트림을 쓰기 저장소로 사용하면 단일 집계에서 업데이트 충돌을 방지하고 성능과 확장성을 최대화할 수 있습니다. 읽기 저장소를 채우는 데 사용하는 데이터의 구체화된 뷰를 비동기적으로 생성하는 데 이벤트를 사용할 수 있습니다.
 
@@ -242,10 +239,10 @@ public interface IProductsDomain
 
 - [데이터 분할 지침](https://msdn.microsoft.com/library/dn589795.aspx). CQRS 패턴에 사용하는 읽기 및 쓰기 데이터 저장소를 별도로 관리하고 액세스할 수 있는 파티션으로 분할해 확장성을 향상시키고, 경합을 줄이며, 성능을 최적화할 수 있는 방법을 설명합니다.
 
-- [이벤트 소싱 패턴](event-sourcing.md). 이벤트 소싱을 CQRS 패턴과 함께 사용하여 복잡한 도메인의 작업을 간소화하면서 성능, 확장성 및 응답성을 향상시킬 수 있는 방법을 자세히 설명합니다. 또한 트랜잭션 데이터의 일관성을 제공하면서 보상 동작을 가능하게 하는 전체 감사 내역과 기록을 유지하는 방법도 설명합니다.
+- [이벤트 소싱 패턴](./event-sourcing.md) 이벤트 소싱을 CQRS 패턴과 함께 사용하여 복잡한 도메인의 작업을 간소화하면서 성능, 확장성 및 응답성을 향상시킬 수 있는 방법을 자세히 설명합니다. 또한 트랜잭션 데이터의 일관성을 제공하면서 보상 동작을 가능하게 하는 전체 감사 내역과 기록을 유지하는 방법도 설명합니다.
 
-- [구체화된 뷰 패턴](materialized-view.md). CQRS를 구현한 읽기 모델은 쓰기 모델 데이터의 구체화된 뷰를 포함할 수 있습니다. 또는 구체화된 뷰를 생성하는 데 읽기 모델을 사용할 수 있습니다.
+- [구체화된 뷰 패턴](./materialized-view.md). CQRS를 구현한 읽기 모델은 쓰기 모델 데이터의 구체화된 뷰를 포함할 수 있습니다. 또는 구체화된 뷰를 생성하는 데 읽기 모델을 사용할 수 있습니다.
 
-- 패턴 및 사례 가이드 [CQRS 과정](https://aka.ms/cqrs). 특히 [명령과 쿼리의 역할 분리 패턴 소개](https://msdn.microsoft.com/library/jj591573.aspx)에서는 이러한 패턴, 이러한 패턴이 유용한 경우를 살펴봅니다. [에필로그: 배운 내용](https://msdn.microsoft.com/library/jj591568.aspx)은 이 패턴을 사용할 때 발생하는 몇 가지 문제를 이해하는 데 도움이 됩니다.
+- 패턴 및 사례 가이드 [CQRS 과정](https://aka.ms/cqrs). 특히 [명령 쿼리 책임 분리 패턴 소개](https://msdn.microsoft.com/library/jj591573.aspx)에서는 이러한 패턴 및 유용한 경우를 살펴봅니다. [에필로그: 배운 내용](https://msdn.microsoft.com/library/jj591568.aspx)은 이 패턴을 사용할 때 발생하는 몇 가지 문제를 이해하는 데 도움이 됩니다.
 
 - [Martin Fowler의 CQRS](https://martinfowler.com/bliki/CQRS.html) 게시물. 패턴의 기본 내용을 설명하고 다른 유용한 리소스에 연결되는 링크를 제공합니다.

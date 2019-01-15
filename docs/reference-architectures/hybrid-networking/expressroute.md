@@ -5,12 +5,12 @@ description: Azure ExpressRoute를 사용하여 연결된 온-프레미스 네�
 author: telmosampaio
 ms.date: 10/22/2017
 ms.custom: seodec18
-ms.openlocfilehash: 8e9de168fe2969159f62ce84a19f4b21fd1cb538
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 1308f85f2f6d05b86e22f2558d89f164d076d182
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120393"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54112790"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute"></a>ExpressRoute를 사용하여 온-프레미스 네트워크를 Azure에 연결
 
@@ -207,8 +207,7 @@ ExpressRoute는 고가용성 구현을 위해 HSRP(Hot Standby Routing Protocol)
 
 - 다른 서비스 공급자가 제공하는 여러 ExpressRoute 회로에 VNet을 연결합니다. 이 전략은 추가 고가용성 및 재해 복구 기능을 제공합니다.
 
-- 사이트 간 VPN을 ExpressRoute에 대한 장애 조치(failover) 경로로 구성합니다. 이 옵션에 대한 자세한 내용은 [VPN 장애 조치(failover)와 함께 ExpressRoute를 사용하여 온-프레미스 네트워크를 Azure에 연결][highly-available-network-architecture]을 참조하세요.
- 이 옵션은 개인 피어링에만 적용됩니다. Azure 및 Office 365 서비스의 경우 인터넷이 유일한 장애 조치(failover) 경로입니다.
+- 사이트 간 VPN을 ExpressRoute에 대한 장애 조치(failover) 경로로 구성합니다. 이 옵션에 대한 자세한 내용은 [VPN 장애 조치(failover)와 함께 ExpressRoute를 사용하여 온-프레미스 네트워크를 Azure에 연결][highly-available-network-architecture]을 참조하세요. 이 옵션은 개인 피어링에만 적용됩니다. Azure 및 Office 365 서비스의 경우 인터넷이 유일한 장애 조치(failover) 경로입니다.
 
 ## <a name="manageability-considerations"></a>관리 효율성 고려 사항
 
@@ -224,7 +223,7 @@ ExpressRoute는 레이어 3에서 작동합니다. 애플리케이션 레이어�
 
 ![[2]][2]
 
-감사 또는 준수를 위해 VNet에서 실행 중인 구성 요소에서 인터넷에 직접 액세스하지 못하도록 차단하고 [강제 터널링][forced-tuneling]을 구현해야 할 수도 있습니다. 이 경우 온-프레미스에서 실행 중인 프록시를 통해 인터넷 트래픽을 감사할 수 있는 위치로 다시 리디렉션해야 합니다. 권한 없는 트래픽의 유출을 차단하고 잠재적인 악성 인바운드 트래픽을 필터링하도록 프록시를 구성할 수 있습니다.
+감사 또는 준수를 위해 VNet에서 실행 중인 구성 요소에서 인터넷에 직접 액세스하지 못하도록 차단하고 [강제 터널링][forced-tunneling]을 구현해야 할 수도 있습니다. 이 경우 온-프레미스에서 실행 중인 프록시를 통해 인터넷 트래픽을 감사할 수 있는 위치로 다시 리디렉션해야 합니다. 권한 없는 트래픽의 유출을 차단하고 잠재적인 악성 인바운드 트래픽을 필터링하도록 프록시를 구성할 수 있습니다.
 
 ![[3]][3]
 
@@ -270,7 +269,7 @@ VM의 관리 엔드포인트를 외부 네트워크에 노출해야 하는 경�
 
 <!-- links -->
 
-[forced-tuneling]: ../dmz/secure-vnet-hybrid.md
+[forced-tunneling]: ../dmz/secure-vnet-hybrid.md
 [highly-available-network-architecture]: ./expressroute-vpn-failover.md
 
 [expressroute-technical-overview]: /azure/expressroute/expressroute-introduction
@@ -286,11 +285,11 @@ VM의 관리 엔드포인트를 외부 네트워크에 노출해야 하는 경�
 [azurect]: https://github.com/Azure/NetworkMonitoring/tree/master/AzureCT
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-architectures.vsdx
 [er-circuit-parameters]: https://github.com/mspnp/reference-architectures/tree/master/hybrid-networking/expressroute/parameters/expressRouteCircuit.parameters.json
-[azure-powershell-download]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
-[azure-cli]: https://azure.microsoft.com/documentation/articles/xplat-cli-install/
+[azure-powershell-download]: /powershell/azure/overview
+[azure-cli]: /cli/azure/install-azure-cli
 
 [0]: ./images/expressroute.png "Azure ExpressRoute를 사용하는 하이브리드 네트워크 아키텍처"
 [1]: ../_images/guidance-hybrid-network-expressroute/figure2.png "ExpressRoute 기본 및 보조 회로와 함께 중복 라우터 사용"
-[2]: ../_images/guidance-hybrid-network-expressroute/figure3.png "온-프레미스 네트워크에 보안 장치 추가"
+[2]: ../_images/guidance-hybrid-network-expressroute/figure3.png "온-프레미스 네트워크에 보안 디바이스 추가"
 [3]: ../_images/guidance-hybrid-network-expressroute/figure4.png "강제 터널링을 사용하여 인터넷 바인딩된 트래픽 감사"
 [4]: ../_images/guidance-hybrid-network-expressroute/figure5.png "ExpressRoute 회로의 ServiceKey 찾기"

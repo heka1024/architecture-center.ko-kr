@@ -3,23 +3,22 @@ title: 검색을 위해 자유 형식 텍스트 처리
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 2e61713dccb6064968bfb906fb17b0bd62ae013d
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 6b90d70129f6b5ba978ce0f79dc5a04d57126b5d
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902037"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113028"
 ---
 # <a name="processing-free-form-text-for-search"></a>검색을 위해 자유 형식 텍스트 처리
 
 검색을 지원하기 위해 텍스트 단락이 포함된 문서에 대해 자유 형식 텍스트 처리를 수행할 수 있습니다.
 
-텍스트 검색은 문서 컬렉션에 대해 미리 계산되는 특수한 인덱스를 구성하여 작동합니다. 클라이언트 애플리케이션은 검색 용어를 포함하는 쿼리를 제출합니다. 이 쿼리는 각 문서가 검색 조건과 얼마나 잘 일치하는지를 기준으로 정렬된 문서 목록으로 구성되는 결과 집합을 반환합니다. 또한 결과 집합에는 해당 문서가 기준과 일치하는 컨텍스트도 포함되어, 애플리케이션에서 문서의 일치하는 구문이 강조 표시될 수 있습니다. 
+텍스트 검색은 문서 컬렉션에 대해 미리 계산되는 특수한 인덱스를 구성하여 작동합니다. 클라이언트 애플리케이션은 검색 용어를 포함하는 쿼리를 제출합니다. 이 쿼리는 각 문서가 검색 조건과 얼마나 잘 일치하는지를 기준으로 정렬된 문서 목록으로 구성되는 결과 집합을 반환합니다. 또한 결과 집합에는 해당 문서가 기준과 일치하는 컨텍스트도 포함되어, 애플리케이션에서 문서의 일치하는 구문이 강조 표시될 수 있습니다.
 
-![](./images/search-pipeline.png)
+![검색 파이프라인의 다이어그램](./images/search-pipeline.png)
 
 자유 형식 텍스트 처리는 많은 양의 불필요한 텍스트 데이터에서 유용하고 실행 가능한 데이터를 생성할 수 있습니다. 결과적으로 구조화되지 않은 문서가 잘 정의되고 쿼리 가능한 구조를 갖게 될 수 있습니다.
-
 
 ## <a name="challenges"></a>과제
 
@@ -32,8 +31,8 @@ ms.locfileid: "52902037"
 
 ## <a name="technology-choices"></a>기술 선택
 
-검색 인덱스를 만드는 옵션에는 Azure Search, Elasticsearch, HDInsight(Solr 포함)가 포함됩니다. 이러한 각 기술은 문서 컬렉션으로 검색 인덱스를 채울 수 있습니다. Azure Search는 일반 텍스트에서 Excel 및 PDF 형식 문서에 대한 인덱스를 자동으로 채울 수 있는 인덱서를 제공합니다. HDInsight에서 Apache Solr은 일반 텍스트, Word 및 PDF를 비롯한 다양한 형식의 이진 파일을 인덱싱할 수 있습니다. 인덱스가 생성되면 클라이언트는 REST API를 사용하여 검색 인터페이스에 액세스할 수 있습니다. 
+검색 인덱스를 만드는 옵션에는 Azure Search, Elasticsearch, HDInsight(Solr 포함)가 포함됩니다. 이러한 각 기술은 문서 컬렉션으로 검색 인덱스를 채울 수 있습니다. Azure Search는 일반 텍스트에서 Excel 및 PDF 형식 문서에 대한 인덱스를 자동으로 채울 수 있는 인덱서를 제공합니다. HDInsight에서 Apache Solr은 일반 텍스트, Word 및 PDF를 비롯한 다양한 형식의 이진 파일을 인덱싱할 수 있습니다. 인덱스가 생성되면 클라이언트는 REST API를 사용하여 검색 인터페이스에 액세스할 수 있습니다.
 
-텍스트 데이터가 SQL Server 또는 Azure SQL Database에 저장되면 데이터베이스로 작성된 전체 텍스트 검색을 사용할 수 있습니다. 데이터베이스는 텍스트, 이진 또는 동일한 데이터베이스 내에 저장된 XML 데이터를 사용해서 인덱스를 채웁니다. 클라이언트는 T-SQL 쿼리를 사용하여 검색합니다. 
+텍스트 데이터가 SQL Server 또는 Azure SQL Database에 저장되면 데이터베이스로 작성된 전체 텍스트 검색을 사용할 수 있습니다. 데이터베이스는 텍스트, 이진 또는 동일한 데이터베이스 내에 저장된 XML 데이터를 사용해서 인덱스를 채웁니다. 클라이언트는 T-SQL 쿼리를 사용하여 검색합니다.
 
 자세한 내용은 [지원되는 데이터 원본](../technology-choices/search-options.md)을 참조하세요.

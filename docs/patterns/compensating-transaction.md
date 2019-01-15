@@ -1,18 +1,17 @@
 ---
-title: 보정 트랜잭션
+title: 보상 트랜잭션 패턴
+titleSuffix: Cloud Design Patterns
 description: 여러 단계로 나뉘어 있지만 결국에는 일관적인 작업을 정의하는 일련의 단계에서 수행한 작업을 실행 취소합니다.
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
-pnp.series.title: Cloud Design Patterns
-pnp.pattern.categories:
-- resiliency
-ms.openlocfilehash: 3d58537d9c77b97332bcabf762b9af7ed2f20421
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.custom: seodec18
+ms.openlocfilehash: b81151a6db08c2c14c7f26af3b4b79bfd22a18bb
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428145"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011619"
 ---
 # <a name="compensating-transaction-pattern"></a>보상 트랜잭션 패턴
 
@@ -86,7 +85,7 @@ ms.locfileid: "47428145"
 
 ![여행 일정을 예약하는 장기 실행 트랜잭션을 실행 취소하는 보정 트랜잭션 생성](./_images/compensating-transaction-diagram.png)
 
-
+> [!NOTE]
 > 각 단계에 대해 보정 논리를 디자인한 방식에 따라, 보정 트랜잭션의 단계가 동시에 수행될 수도 있습니다.
 
 많은 비즈니스 솔루션에서 단일 단계가 실패한다고 해서 반드시 보정 트랜잭션을 사용하여 시스템을 롤백해야 하는 것은 아닙니다. 예를 들어, 고객이 여행 웹 사이트 시나리오에서 항공편 F1, F2 및 F3를 예약한 후에 호텔 H1에서 객실을 예약할 수 없는 경우, 항공편을 취소하지 말고 같은 도시에 있는 다른 호텔의 객실을 고객에게 제공하는 것이 바람직할 수 있습니다. 고객은 여전히 취소하기로 결정할 수 있지만(이 경우 보정 트랜잭션이 실행되고 항공편 F1, F2 및 F3에 대한 예약을 실행 취소함) 이 결정은 시스템이 아닌 고객이 내려야 합니다.
@@ -97,6 +96,6 @@ ms.locfileid: "47428145"
 
 - [Data Consistency Primer](https://msdn.microsoft.com/library/dn589800.aspx)(데이터 일관성 입문서). 보정 트랜잭션 패턴은 종종 최종 일관성 모델이 구현하는 작업을 실행 취소하는 데 사용됩니다. 이 입문서는 최종 일관성의 장단점에 대한 정보를 제공합니다.
 
-- [스케줄러-에이전트-감독자 패턴](scheduler-agent-supervisor.md). 분산 서비스 및 리소스를 사용하는 비즈니스 작업을 수행하는 복원력 있는 시스템을 구현하는 방법을 설명합니다. 경우에 따라 보정 트랜잭션을 사용하여 작업에 의해 수행된 결과를 실행 취소해야 할 수도 있습니다.
+- [스케줄러-에이전트-감독자 패턴](./scheduler-agent-supervisor.md). 분산 서비스 및 리소스를 사용하는 비즈니스 작업을 수행하는 복원력 있는 시스템을 구현하는 방법을 설명합니다. 경우에 따라 보정 트랜잭션을 사용하여 작업에 의해 수행된 결과를 실행 취소해야 할 수도 있습니다.
 
-- [다시 시도 패턴](./retry.md). 보정 트랜잭션은 수행하는 데 비용이 많이 들 수 있으며, 다시 시도 패턴에 따라 실패한 작업을 다시 시도하는 효과적인 정책을 구현함으로써 보정 트랜잭션 사용을 최소화할 수 있습니다.
+- [재시도 패턴](./retry.md). 보정 트랜잭션은 수행하는 데 비용이 많이 들 수 있으며, 다시 시도 패턴에 따라 실패한 작업을 다시 시도하는 효과적인 정책을 구현함으로써 보정 트랜잭션 사용을 최소화할 수 있습니다.

@@ -4,14 +4,14 @@ description: 기업에서 안전하고 관리하기 쉬운 환경을 보장하�
 author: rdendtler
 ms.author: rodend
 ms.date: 9/22/2018
-ms.openlocfilehash: a1962a3d5be79715de4781d955b6be1db5923bea
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
+ms.openlocfilehash: 66af73f5bfc7f7145c20446af05f33a9d69e6c28
+ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47429297"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54011738"
 ---
-# <a name="azure-enterprise-scaffold-prescriptive-subscription-governance"></a>Azure 엔터프라이즈 스캐폴드: 규범적 구독 거버넌스
+# <a name="azure-enterprise-scaffold-prescriptive-subscription-governance"></a>Azure Enterprise 스캐폴드: 규범적 구독 거버넌스
 
 기업은 민첩성과 유연성을 위해 공용 클라우드 도입을 확대하고 있습니다. 또한 수익을 창출하고 비즈니스에 맞게 리소스 사용을 최적화하는 클라우드의 장점을 활용합니다. Microsoft Azure는 광범위한 워크로드 및 애플리케이션을 처리할 구성 요소와 같이 기업에서 조합할 수 있는 다양한 서비스와 기능을 제공합니다.
 
@@ -81,7 +81,7 @@ Microsoft는 최근에 계층 구조를 모델링하는 새로운 방식인 [Azu
 
 부서 및 계정(또는 관리 그룹)을 결정할 때는 주로 조직에 맞게 Azure 환경을 구분하는 방법을 고려하게 됩니다. 그러나 구독은 실제 작업이 발생하는 위치로, 여기에서 내리는 의사 결정은 보안, 확장성 및 청구에 영향을 줍니다.  많은 조직은 다음 패턴을 참조합니다.
 
-* **응용 프로그램/서비스**: 구독은 응용 프로그램 또는 서비스(응용 프로그램 포트폴리오)를 나타냅니다.
+* **애플리케이션/서비스**: 구독은 애플리케이션 또는 서비스(애플리케이션의 포트폴리오)를 나타냅니다.
 * **수명 주기**: 구독은 프로덕션 또는 개발과 같은 서비스 수명 주기를 나타냅니다.
 * **부서**: 구독은 조직의 부서를 나타냅니다.
 
@@ -124,7 +124,6 @@ Azure Resource Manager를 사용하면 리소스를 관리, 청구 또는 자연
 ## <a name="azure-policy-and-initiatives"></a>Azure 정책 및 이니셔티브
 
 스캐폴드의 두 번째 기본 요소는 [Azure 정책 및 이니셔티브](/azure/azure-policy/azure-policy-introduction)를 사용하여 구독의 리소스 및 서비스에 대해 규칙을 적용함으로써 위험을 관리하는 것과 관련이 있습니다. Azure 이니셔티브는 단일 목표를 달성하도록 디자인된 정책 컬렉션입니다. Azure 정책 및 이니셔티브는 특정 정책의 적용을 시작하도록 리소스 범위에 할당됩니다.
-<이니셔티브/정책/할당의 IMG>
 
 Azure 정책 및 이니셔티브를 이전에 언급한 관리 그룹과 함께 사용할 경우 더욱 강력한 효과를 발휘합니다. 관리 그룹은 이니셔티브 또는 정책을 전체 구독 집합에 할당할 수 있도록 합니다.
 
@@ -233,23 +232,23 @@ AzSK는 전체 Azure 거버넌스 계획의 중요한 부분이 되는 풍부한
 
 * **Azure Monitor**: Azure Monitor는 Azure 리소스를 모니터링하는 단일 원본이 되는 핵심 플랫폼 서비스입니다. Azure Monitor의 Azure Portal 인터페이스를 사용하면 한곳에서 Application Insights, Log Analytics, 네트워크 모니터링, 관리 솔루션 및 서비스 맵의 심층 모니터링 기능을 비롯한 Azure 전반의 모든 모니터링 기능에 액세스할 수 있습니다. Azure Monitor를 통해 전체 클라우드 위치에서 Azure 리소스의 메트릭과 로그에 대해 시각화, 쿼리, 라우팅, 보관 및 작업을 수행할 수 있습니다. 포털 외에도, Monitor PowerShell Cmdlet, 플랫폼 간 CLI 또는 Azure Monitor REST API를 통해 데이터를 검색할 수 있습니다.
 
-* **Azure Advisor**: Azure Advisor는 구독 및 환경에서 원격 분석을 지속적으로 모니터링하고, 응용 프로그램을 구성하는 리소스의 성능, 보안 및 가용성을 개선하고 비용을 절감하도록 Azure 리소스를 최적화하는 방법에 대한 모범 사례 권장 사항을 제공합니다.
+* **Azure Advisor**: Azure Advisor는 구독 및 환경에서 원격 분석을 지속적으로 모니터링하고, 애플리케이션을 구성하는 리소스의 성능, 보안 및 가용성을 개선하고 비용을 절감하도록 Azure 리소스를 최적화하는 방법에 대한 모범 사례 권장 사항을 제공합니다.
 
-* **Service Health**: Azure Service Health는 응용 프로그램에 영향을 줄 수 있는 Azure 서비스의 문제를 식별하고 예약된 유지 관리 창을 계획하는 데 도움을 줍니다.
+* **Service Health**: Azure Service Health는 애플리케이션에 영향을 줄 수 있는 Azure 서비스의 문제를 식별하고 예약된 유지 관리 창을 계획하는 데 도움을 줍니다.
 
 * **활동 로그**: 활동 로그는 구독의 리소스에 대한 모든 작업을 설명합니다. 이 로그는 리소스에 대한 만들기, 업데이트, 삭제 작업의 ‘대상’, ‘주체’ 및 ‘시기’를 파악할 수 있는 감사 추적을 제공합니다. 활동 로그 이벤트는 90일 동안 플랫폼에 저장되어 쿼리에서 사용할 수 있습니다. 좀 더 장기적으로 보존하고 여러 리소스에 대해 심층 쿼리 및 분석을 수행하기 위해 활동 로그를 Log Analytics에 수집할 수 있습니다.
 
 ### <a name="deep-application-monitoring"></a>심층 애플리케이션 모니터링
 
-* **Application Insights**: Application Insights를 사용하면 클라우드 또는 온-프레미스에서 응용 프로그램별 원격 분석을 수집하고 응용 프로그램의 성능, 가용성, 사용 현황을 모니터링할 수 있습니다. .NET, JavaScript, JAVA, Node.js, Ruby 및 Python을 비롯한 여러 언어로 지원되는 SDK를 사용하여 애플리케이션을 계측할 수 있습니다. Application Insights 이벤트는 인프라 및 보안 모니터링을 지원하는 동일한 Log Analytics 데이터 저장소에 수집되므로 풍부한 쿼리 언어를 통해 이벤트 간 상관 관계를 파악하고 시간에 따라 이벤트를 집계할 수 있습니다.
+* **Application Insights**: Application Insights를 사용하면 클라우드 또는 온-프레미스에서 애플리케이션별 원격 분석을 수집하고 애플리케이션의 성능, 가용성, 사용 현황을 모니터링할 수 있습니다. .NET, JavaScript, JAVA, Node.js, Ruby 및 Python을 비롯한 여러 언어로 지원되는 SDK를 사용하여 애플리케이션을 계측할 수 있습니다. Application Insights 이벤트는 인프라 및 보안 모니터링을 지원하는 동일한 Log Analytics 데이터 저장소에 수집되므로 풍부한 쿼리 언어를 통해 이벤트 간 상관 관계를 파악하고 시간에 따라 이벤트를 집계할 수 있습니다.
 
 ### <a name="deep-infrastructure-monitoring"></a>심층 인프라 모니터링
 
-* **Log Analytics**: Log Analytics는 다양한 원본에서 원격 분석 및 기타 데이터를 수집하고 응용 프로그램 및 리소스의 작업에 대한 인사이트를 제공하는 쿼리 언어 및 분석 엔진을 제공하여 Azure 모니터링에서 중심적인 역할을 수행합니다. 고성능 로그 검색 및 보기를 통해 Log Analytics 데이터와 직접 상호 작용하거나 Application Insights 또는 Azure Security Center 같은 Log Analytics에 데이터를 저장하는 다른 Azure 서비스에서 분석 도구를 사용할 수도 있습니다.
+* **Log Analytics**: Log Analytics는 다양한 원본에서 원격 분석 및 기타 데이터를 수집하고 애플리케이션 및 리소스의 작업에 대한 인사이트를 제공하는 쿼리 언어 및 분석 엔진을 제공하여 Azure 모니터링에서 중심적인 역할을 수행합니다. 고성능 로그 검색 및 보기를 통해 Log Analytics 데이터와 직접 상호 작용하거나 Application Insights 또는 Azure Security Center 같은 Log Analytics에 데이터를 저장하는 다른 Azure 서비스에서 분석 도구를 사용할 수도 있습니다.
 
 * **네트워크 모니터링**: Azure의 네트워크 모니터링 서비스를 통해 네트워크 트래픽 흐름, 성능, 보안, 연결 및 병목 상태에 대한 인사이트를 얻을 수 있습니다. 잘 계획된 네트워크 디자인에는 Network Watcher 및 ExpressRoute Monitor와 같은 Azure 네트워크 모니터링 서비스의 구성 작업이 포함되어야 합니다.
 
-* **관리 솔루션**: 관리 솔루션은 응용 프로그램 또는 서비스의 패키지된 논리, 인사이트 및 사전 정의된 Log Analytics 쿼리 집합입니다. 이러한 솔루션은 이벤트 데이터를 저장하고 분석하기 위한 토대로 Log Analytics를 활용합니다. 샘플 관리 솔루션에는 모니터링 컨테이너 및 Azure SQL Database 분석이 포함됩니다.
+* **관리 솔루션**: 관리 솔루션은 애플리케이션 또는 서비스의 패키지된 논리, 인사이트 및 사전 정의된 Log Analytics 쿼리 집합입니다. 이러한 솔루션은 이벤트 데이터를 저장하고 분석하기 위한 토대로 Log Analytics를 활용합니다. 샘플 관리 솔루션에는 모니터링 컨테이너 및 Azure SQL Database 분석이 포함됩니다.
 
 * **서비스 맵**: 서비스 맵은 인프라 구성 요소, 해당 프로세스 및 다른 컴퓨터와 외부 프로세스에 대한 상호 종속성을 그래픽 보기로 표시합니다. 이 기능은 이벤트, 성능 데이터 및 관리 솔루션을 Log Analytics에 통합합니다.
 
@@ -260,14 +259,14 @@ AzSK는 전체 Azure 거버넌스 계획의 중요한 부분이 되는 풍부한
 
 온-프레미스 클라우드에서 공용 클라우드로 전환할 때 직면하게 되는 주요 변경 중 하나는 자본 지출(하드웨어 구매 )에서 운영 지출(사용한 서비스 비용)로 전환된다는 것입니다. 이러한 CAPEX에서 OPEX로의 전환은 보다 신중한 비용 관리 요구를 발생합니다. 클라우드의 장점은 필요하지 않을 때 끄거나 크기를 조정하여 사용하는 서비스 비용에 근본적으로 긍정적인 영향을 줄 수 있다는 것입니다. 분별있는 고객이라면 클라우드의 비용을 신중히 관리하는 것이 필요합니다.
 
-Microsoft는 비용을 시각화, 추적 및 관리할 수 있는 몇 가지 도구를 제공합니다. 또한 비용 관리를 사용자 지정하고 사용자 고유의 도구 및 대시보드에 통합하는 API 풀세트도 제공합니다. 이러한 도구는 Azure Portal 기능 및 외부 기능에 느슨하게 연결됩니다.
+Microsoft는 비용을 시각화, 추적 및 관리할 수 있는 몇 가지 도구를 제공합니다. 또한 비용 관리를 사용자 지정하고 사용자 고유의 도구 및 대시보드에 통합하는 API 풀세트도 제공합니다. 이러한 도구는 다음으로 유연하게 그룹화됩니다. Azure Portal 기능 및 외부 기능
 
 ### <a name="azure-portal-capabilities"></a>Azure Portal 기능
 
 작업 수행 기능 뿐만 아니라 비용에 대한 즉각적인 정보를 제공하는 도구입니다.
 
-* **구독 리소스 비용**: 포털에 있는 [Azure 비용 분석](/azure/cost-management/overview) 보기는 리소스 또는 리소스 그룹별로 비용과 일별 지출 정보를 간단히 표시합니다.
-* **Azure 비용 관리**: 이 제품은 Microsoft가 Cloudyn을 구입하면서 확보한 제품으로, Azure 지출과 다른 공용 클라우드 공급자에서 지출한 내역을 관리 및 분석할 수 있도록 합니다. [개요](/azure/cost-management/overview)에서 제공된 것과 같은 다양한 기능을 포함하는 무료 및 유료 계층이 제공됩니다.
+* **구독 리소스 비용**: 포털에 있는 [Azure 비용 분석](/azure/cost-management/overview) 보기는 리소스 또는 리소스 그룹별로 비용과 일별 정보를 간단히 표시합니다.
+* **Azure Cost Management**: 이 제품은 Microsoft가 Cloudyn을 구입하면서 확보한 제품으로, Azure 지출과 다른 공용 클라우드 공급 기업에서 지출한 내역을 관리 및 분석할 수 있도록 합니다. [개요](/azure/cost-management/overview)에서 제공된 것과 같은 다양한 기능을 포함하는 무료 및 유료 계층이 제공됩니다.
 * **Azure 예산 및 작업 그룹** 최근까지 어떤 항목에 얼마의 비용이 드는지와 그와 관련해서 어떤 작업을 수행하고 있는지를 파악하는 일은 수동으로 진행되는 경향이 많았습니다. Azure 예산 및 해당 API를 사용하게 되면서 이제 비용이 임계값에 도달하면 작업을 만들 수 있습니다([이](https://channel9.msdn.com/Shows/Azure-Friday/Managing-costs-with-the-Azure-Budgets-API-and-Action-Groups) 예제 참조). 예를 들어, 해당 예산의 100% 또는 [다른 예제]에 도달하면 “테스트” 리소스 그룹을 종료합니다.
 * **Azure Advisor** 어떤 항목에 얼마의 비용이 드는지를 아는 것은 전투의 절반에 지나지 않습니다. 나머지 절반은 이러한 정보로 무엇을 할 것인지입니다. [Azure Advisor](/azure/advisor/advisor-overview)는 돈을 절약하거나, 안정성을 향상시키거나, 보안을 강화하기 위한 권장 작업을 제공합니다.
 
@@ -282,7 +281,7 @@ Microsoft는 비용을 시각화, 추적 및 관리할 수 있는 몇 가지 도
 * **능동적인 비용 모니터링**. 완성된 경지에 오른 Azure 사용자 조직은 비용을 지속적으로 모니터링하고 필요할 때 조치를 취합니다. 일부 조직은 전담 직원이 분석을 수행하고, 사용 변경을 제안하도록 하며, 이러한 직원들은 수개월 동안 실행되었으나 사용되지 않은 HDInsight 클러스터를 처음 찾게 될 때 기대 이상의 성과를 거두게 됩니다.
 * **예약 인스턴스 사용**. 클라우드에서 비용을 관리하기 위한 또 다른 주요 테넌트는 작업에 적합한 도구를 사용하는 것입니다. 연중무휴로 작동해야 하는 IaaS VM이 있는 경우 예약 인스턴스를 사용하면 비용을 크게 절감할 수 있습니다. VM 종료 자동화와 RI 사용 간에 적절한 균형을 찾으려면 일정한 경험과 분석 능력이 필요합니다.
 * **효과적인 자동화 사용**: 대부분의 워크로드는 매일 실행하지 않아도 됩니다. 매일 4시간 동안 VM을 끄기만 해도 15%의 비용을 절감할 수 있습니다. Automation은 투자 비용을 단기간에 회수할 수 있습니다.
-* **가시성을 위해 리소스 태그 사용**: 이 문서의 다른 위치에서 언급된 것처럼, 리소스 태그를 사용하여 비용을 보다 잘 분석할 수 있습니다.
+* **가시성을 위해 리소스 태그 사용**: 이 문서의 다른 위치에서 언급된 것처럼, 리소스 태그를 사용하여 비용을 더 잘 분석할 수 있습니다.
 
 비용 관리는 공용 클라우드의 효과적이면서 효율적인 실행에 핵심적인 규정입니다. 비용 관리에 성공하는 기업은 비용을 제어하고, 과도한 구매 및 수요 폭증 없이 실제 수요에 맞게 비용을 지출할 수 있게 됩니다.
 
@@ -292,7 +291,7 @@ Microsoft는 비용을 시각화, 추적 및 관리할 수 있는 몇 가지 도
 
 이 기능을 구축할 때 Azure Automation, EventGrid 및 AzureCLI와 같은 자사 도구부터 Terraform, Jenkins, Chef 및 Puppet 등의 광범위한 타사 도구에 이르기까지 다양한 도구를 사용할 수 있습니다. 운영 팁의 자동화 기능의 핵심에는 Azure Automation, Event Grid 및 Azure Cloud Shell이 있습니다.
 
-* **Azure Automation**: 클라우드 기반 기능을 사용하여 Runbook을 작성하고(PowerShell 또는 Python에서), 프로세스를 자동화하고 리소스를 구성하고, 패치를 적용할 수 있도록 하는 클라우드 기반 기능입니다.  [Azure Automation](/azure/automation/automation-intro)에는 배포에 중요한 광범위한 플랫폼 간 기능이 포함되어 있지만 너무 광범위하므로 여기서는 다루지 않습니다.
+* **Azure Automation**: Runbook을 작성하고(PowerShell 또는 Python에서), 프로세스를 자동화하고 리소스를 구성하고, 패치를 적용할 수 있도록 하는 클라우드 기반 기능입니다.  [Azure Automation](/azure/automation/automation-intro)에는 배포에 중요한 광범위한 플랫폼 간 기능이 포함되어 있지만 너무 광범위하므로 여기서는 다루지 않습니다.
 * **Event Grid**: 이 [서비스](/azure/event-grid)는 Azure 환경 내의 이벤트에 대응할 수 있는 완전히 관리되는 이벤트 라우팅 시스템입니다. Automation이 완성된 클라우드 조직의 연결 조직인 것처럼, Event Grid도 적절한 자동화를 위한 연결 조직입니다. Event Grid를 사용하여 새 리소스를 만들고 해당 리소스를 데이터베이스에 해당 로깅할 때마다 관리자에게 메일을 전송하는 단순, 서버리스 작업을 만들 수 있습니다. 동일한 Event Grid는 리소스가 삭제될 때 알림을 제공하고, 데이터베이스에서 해당 항목을 제거할 수 있습니다.
 * **Azure Cloud Shell**: Azure에서 리소스를 관리하기 위한 대화형 브라우저 기반 [셸](/azure/cloud-shell/overview)입니다. 스크립트를 실행할 일관된 환경을 유지하도록 필요할 때 시작(및 사용자를 위해 유지 관리)되는 완전한 PowerShell 또는 Bash용 환경을 제공합니다. Azure Cloud Shell에서는 [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), [Terraform](/azure/virtual-machines/linux/terraform-install-configure) 및 컨테이너, 데이터베이스(sqlcmd) 등을 관리하기 위한 점점 더 증가하는 추가 [도구](https://azure.microsoft.com/updates/cloud-shell-new-cli-tools-and-font-size-selection/) 목록을 비롯하여 작업 환경 자동화를 위해 미리 설치된 추가 핵심 도구에 액세스할 수 있습니다.
 

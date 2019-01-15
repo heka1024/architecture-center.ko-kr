@@ -3,27 +3,31 @@ title: 데이터 저장소 기술 선택
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: c97249228ca45a7a17822b6dd55acad6360c6f6b
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.openlocfilehash: 9fe28249b51083bb588808770aba9ac7d48d560e
+ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902649"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54113164"
 ---
 # <a name="choosing-a-big-data-storage-technology-in-azure"></a>Azure의 빅 데이터 저장소 기술 선택
 
 이 항목에서는 [분석 데이터 저장소](./analytical-data-stores.md) 또는 [실시간 스트리밍 수집](./real-time-ingestion.md)과는 반대로, 빅 데이터 솔루션&mdash;에 대한 데이터 저장소 옵션, 특히 대량 데이터 수집 및 일괄 처리를 위한 데이터 저장소에 대해 비교합니다.
 
+<!-- markdownlint-disable MD026 -->
+
 ## <a name="what-are-your-options-when-choosing-data-storage-in-azure"></a>Azure에서 데이터 저장소를 선택할 때의 옵션은 무엇인가요?
 
-Azure에서는 사용자의 요구에 따라 다음과 같은 몇 가지 데이터 수집 옵션을 사용할 수 있습니다.
+<!-- markdownlint-enable MD026 -->
 
-**File Storage**
+Azure에서는 사용자의 요구에 따라 몇 가지 데이터 수집 옵션을 사용할 수 있습니다.
+
+**파일 저장소:**
 
 - [Azure Storage Blob](/azure/storage/blobs/storage-blobs-introduction)
 - [Azure Data Lake Storage](/azure/data-lake-store/)
 
-**NoSQL 데이터베이스**
+**NoSQL 데이터베이스:**
 
 - [Azure Cosmos DB](/azure/cosmos-db/)
 - [HDInsight의 HBase](https://hbase.apache.org/)
@@ -59,7 +63,7 @@ Azure Data Lake Analytics와 함께 사용되는 Data Lake Store는 저장된 �
 
 [Azure Cosmos DB](/azure/cosmos-db/)는 전 세계에 배포된 Microsoft의 멀티모델 데이터베이스입니다. Cosmos DB는 전 세계 어디서나 99 백분위수의 한 자리 밀리초 대기 시간을 보장하고, 제대로 정의된 여러 일관성 모델을 제공하여 성능을 미세 조정하고, 멀티 호밍 기능으로 고가용성을 보장합니다.
 
-Azure Cosmos DB는 스키마에 구애받지 않습니다. 또한 사용자가 스키마 및 인덱스 관리를 처리하지 않아도 되도록 모든 데이터를 자동으로 인덱싱합니다. 또한 기본적으로 문서, 키-값, 그래프 및 열 패밀리 데이터 모델을 지원하는 다중 모델입니다. 
+Azure Cosmos DB는 스키마에 구애받지 않습니다. 또한 사용자가 스키마 및 인덱스 관리를 처리하지 않아도 되도록 모든 데이터를 자동으로 인덱싱합니다. 또한 기본적으로 문서, 키-값, 그래프 및 열 패밀리 데이터 모델을 지원하는 다중 모델입니다.
 
 Azure DB Cosmos 기능은 다음과 같습니다.
 
@@ -96,7 +100,7 @@ Azure DB Cosmos 기능은 다음과 같습니다.
 |  | Azure Data Lake Store | Azure Blob 저장소 컨테이너 |
 | --- | --- | --- |
 | 목적 | 빅 데이터 분석 워크로드에 대해 최적화된 저장소 |다양한 저장소 시나리오에 대한 범용 개체 저장소 |
-| 사용 사례 | 일괄 처리, 스트리밍 분석 및 로그 파일, IoT 데이터, 클릭 스트림, 대형 데이터 집합 등과 같은 기계 학습 데이터 | 애플리케이션 백 엔드, 백업 데이터, 스트리밍용 미디어 저장소 및 범용 데이터 등과 같은 모든 종류의 텍스트 또는 이진 데이터 |
+| 사용 사례 | 일괄 처리, 스트리밍 분석 및 로그 파일, IoT 데이터, 클릭 스트림, 대형 데이터 세트 등과 같은 기계 학습 데이터 | 애플리케이션 백 엔드, 백업 데이터, 스트리밍용 미디어 저장소 및 범용 데이터 등과 같은 모든 종류의 텍스트 또는 이진 데이터 |
 | 구조 | 계층적 파일 시스템 | 단일 구조 네임스페이스를 가진 개체 저장소 |
 | 인증 | [Azure Active Directory ID](/azure/active-directory/active-directory-authentication-scenarios) | 공유 비밀 기반 [계정 액세스 키](/azure/storage/common/storage-create-storage-account#manage-your-storage-account), [공유 액세스 서명 키](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 및 [RBAC(역할 기반 액세스 제어)](/azure/security/security-storage-overview) |
 | 인증 프로토콜 | OAuth 2.0. 호출은 Azure Active Directory가 발급한 유효한 JWT(JSON Web Token)를 포함해야 합니다. | HMAC(해시 기반 메시지 인증 코드). 호출은 HTTP 요청 일부를 통해 Base64 인코딩된 SHA-256 해시를 포함해야 합니다. |
@@ -113,10 +117,9 @@ Azure DB Cosmos 기능은 다음과 같습니다.
 |                                    |                                           Azure Cosmos DB                                           |                                                             HDInsight의 HBase                                                             |
 |------------------------------------|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 |       주 데이터베이스 모델       |                      문서 저장소, 그래프, 키-값 저장소, 넓은 열 저장소                      |                                                             넓은 열 저장소                                                              |
-|         보조 인덱스          |                                                 yes                                                 |                                                                     아니요                                                                     |
-|        SQL 언어 지원        |                                                 yes                                                 |                                     예([Phoenix](https://phoenix.apache.org/) JDBC 드라이버 사용)                                      |
+|         보조 인덱스          |                                                 예                                                 |                                                                     아니요                                                                     |
+|        SQL 언어 지원        |                                                 예                                                 |                                     예([Phoenix](https://phoenix.apache.org/) JDBC 드라이버 사용)                                      |
 |            일관성             |                   강력, 제한된 부실, 세션, 일관적인 접두사, 최종                   |                                                                   강력                                                                   |
 | 네이티브 Azure Functions 통합 |                        [예](/azure/cosmos-db/serverless-computing-database)                        |                                                                     아니요                                                                     |
 |   자동 글로벌 배포    |                          [예](/azure/cosmos-db/distribute-data-globally)                           | 아니요 [HBase 클러스터 복제](/azure/hdinsight/hbase/apache-hbase-replication)를 최종 일관성을 갖는 지역 간에 구성할 수 있습니다. |
 |           가격 책정 모델            | 탄력적으로 확장 가능한 RU(요청 단위)에 필요에 따라 초당 요금 부과, 탄력적으로 확장 가능한 저장소 |                              HDInsight 클러스터에 대해 분단위 가격 책정(수평 노드 확장), 저장소                               |
-

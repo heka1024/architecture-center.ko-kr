@@ -5,12 +5,12 @@ description: 가상 머신, 스토리지 계정, 네트워크, 가상 네트워�
 author: telmosampaio
 ms.date: 10/19/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4f934102acea24e8e1070ed6a25d63927f0bd252
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: f0349b5db7eb15037bd92567eaf917b5d044daa0
+ms.sourcegitcommit: 036cd03c39f941567e0de4bae87f4e2aa8c84cf8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307081"
+ms.lasthandoff: 01/05/2019
+ms.locfileid: "54058202"
 ---
 # <a name="naming-conventions-for-azure-resources"></a>Azure 리소스에 대한 명명 규칙
 
@@ -62,7 +62,7 @@ Azure에서 리소스를 명명하는 경우 리소스의 유형 및 컨텍스�
 | --- | --- | --- |
 | Environment |개발, 프로덕션, QA |리소스에 대한 환경 식별 |
 | 위치 |uw(미국 서부), ue(미국 동부) |리소스가 배포되는 지역 식별 |
-| 인스턴스 |01, 02 |둘 이상의 명명된 인스턴스가 있는 리소스의 경우(웹 서버 등). |
+| 인스턴스 |1, 2, ... |둘 이상의 명명된 인스턴스가 있는 리소스의 경우(예: VM 또는 NIC). |
 | 제품 또는 서비스 |서비스 |리소스가 지원하는 제품, 애플리케이션 또는 서비스 식별 |
 | 역할 |sql, 웹, 메시징 |연결된 리소스의 역할 식별 |
 
@@ -175,7 +175,7 @@ Azure Resource Manager는 임의적인 텍스트 문자열로 태그 지정 엔�
 
 Azure Storage 계정에서 Blob 데이터에 액세스할 수 있도록 사용자 지정 도메인 이름을 구성할 수 있습니다. Blob service의 기본 엔드포인트는 `https://<name>.blob.core.windows.net`입니다.
 
-그러나 사용자 지정 도메인(예: www.contoso.com )을 저장소 계정의 Blob 엔드포인트에 매핑하는 경우 해당 도메인을 사용하여 저장소 계정의 Blob 데이터에 액세스할 수 있습니다. 예를 들어 사용자 지정 도메인 이름을 통해 `https://mystorage.blob.core.windows.net/mycontainer/myblob`에 `https://www.contoso.com/mycontainer/myblob`로 액세스할 수 있습니다.
+그러나 사용자 지정 도메인(예: `www.contoso.com`)을 스토리지 계정의 Blob 엔드포인트에 매핑하는 경우 해당 도메인을 사용하여 스토리지 계정의 Blob 데이터에 액세스할 수 있습니다. 예를 들어 사용자 지정 도메인 이름을 통해 `https://mystorage.blob.core.windows.net/mycontainer/myblob`에 `https://www.contoso.com/mycontainer/myblob`로 액세스할 수 있습니다.
 
 이 기능 구성에 대한 자세한 내용은 [Blob 저장소 엔드포인트에 대한 사용자 지정 도메인 이름 구성](/azure/storage/storage-custom-domain-name/)을 참조하세요.
 
