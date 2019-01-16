@@ -4,12 +4,12 @@ description: PaaS(platform-as-a-service) 구성 요소를 사용하는 Azure에�
 titleSuffix: Azure Reference Architectures
 author: MikeWasson
 ms.date: 01/09/2019
-ms.openlocfilehash: bde507527262a722219edba534275fb7ab499069
-ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
+ms.openlocfilehash: c0aa1771abc99b1f17f1e553c9626e50a386f34c
+ms.sourcegitcommit: d5ea427c25f9f7799cc859b99f328739ca2d8c1c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54166046"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54307691"
 ---
 # <a name="azure-iot-reference-architecture"></a>Azure IoT 참조 아키텍처
 
@@ -35,7 +35,7 @@ IoT 애플리케이션은 **인사이트**를 생성하는 데이터를 보내�
 
 **IoT 디바이스** 디바이스는 클라우드에서 안전하게 등록할 수 있고 클라우드에 연결하여 데이터를 받고 보낼 수 있습니다. 일부 디바이스는 디바이스 자체 또는 필드 게이트웨이에서 데이터 처리를 수행하는 **에지 디바이스**일 수 있습니다. 에지 처리에 [Azure IoT Edge](/azure/iot-edge/)를 사용하는 것이 좋습니다.
 
-**클라우드 게이트웨이** 클라우드 게이트웨이는 클라우드로 안전하게 연결하고 데이터를 전송하기 위해 디바이스에 클라우드 허브를 제공합니다. 또한 디바이스의 명령 및 컨트롤을 비롯한 디바이스 관리, 기능을 제공합니다. 클라우드 게이트웨이의 경우 [IoT Hub](/azure/iot-hub/)를 사용하는 것이 좋습니다. IoT Hub는 디바이스에서 이벤트를 수집하는 호스트된 클라우드 서비스이며 디바이스와 백 엔드 서비스 간에 분할된 메시지로 작동합니다. IoT Hub에서는 보안 연결, 이벤트 수집, 양방향 통신 및 디바이스 관리를 제공합니다.
+**클라우드 게이트웨이** 클라우드 게이트웨이는 클라우드로 안전하게 연결하고 데이터를 전송하기 위해 디바이스에 클라우드 허브를 제공합니다. 또한 디바이스의 명령 및 컨트롤을 비롯한 디바이스 관리, 기능을 제공합니다. 클라우드 게이트웨이의 경우 [IoT Hub](/azure/iot-hub/)를 사용하는 것이 좋습니다. IoT Hub는 디바이스에서 이벤트를 수집하는 호스트된 클라우드 서비스이며 디바이스와 백 엔드 서비스 간에 메시지 broker 역할을 합니다. IoT Hub에서는 보안 연결, 이벤트 수집, 양방향 통신 및 디바이스 관리를 제공합니다.
 
 **디바이스 프로비전** 일련의 대규모 디바이스를 등록하고 연결하기 위해 [IoT Hub DPS(Device Provisioning Service)](/azure/iot-dps/)를 사용하는 것이 좋습니다. DPS를 통해 대규모로 특정 Azure IoT Hub 엔드포인트에 디바이스를 할당하고 등록할 수 있습니다.
 
