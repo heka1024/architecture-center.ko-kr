@@ -5,12 +5,12 @@ description: 확장 집합, Application Gateway 및 부하 분산 장치를 사�
 author: iainfoulds
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2c5f77f265c10388f42138e7d3f6da9e3ead1cd8
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: c5c1d4468df72edd989f2ab8f303781b26d50017
+ms.sourcegitcommit: 71ee0859e19fe58416b4c0056d67f2f34dd9ca0a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643536"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54211991"
 ---
 # <a name="building-secure-web-applications-with-windows-virtual-machines-on-azure"></a>Azure에서 Windows 가상 머신으로 안전한 웹 애플리케이션 빌드
 
@@ -97,7 +97,7 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오에 대한 핵�
 
 <!-- markdownlint-disable MD033 -->
 
-1. **Azure에 배포** 단추를 선택합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Finfrastructure%2Fregulated-multitier-app%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+1. **Azure에 배포** 단추를 선택합니다.<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Fsolution-architectures%2Fmaster%2Finfrastructure%2Fregulated-multitier-app.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 2. Azure Portal에서 템플릿 배포가 열릴 때까지 기다린 후에 다음 단계를 수행합니다.
    - 리소스 그룹 **새로 만들기**를 선택한 다음, 텍스트 상자에서 이름(예: *myWindowsscenario*)을 입력합니다.
    - **위치** 드롭다운 상자에서 지역을 선택합니다.
