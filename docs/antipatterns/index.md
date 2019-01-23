@@ -4,13 +4,16 @@ titleSuffix: Azure Architecture Center
 description: 확장성 문제를 일으킬 가능성이 있는 일반적인 사례입니다.
 author: dragon119
 ms.date: 06/05/2017
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 9ce1177bac2c93139faf6bc757f2866d6b7eac2d
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 212930368942728fc0be0c9b2af1a90293906b39
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54009732"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483057"
 ---
 # <a name="performance-antipatterns-for-cloud-applications"></a>클라우드 애플리케이션에 대한 성능 안티패턴
 

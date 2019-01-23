@@ -3,12 +3,15 @@ title: 다중 테넌트 애플리케이션에 대한 ID 관리
 description: 다중 테넌트 앱에서 인증, 권한 부여 및 ID 관리에 대한 모범 사례입니다.
 author: MikeWasson
 ms.date: 07/21/2017
-ms.openlocfilehash: 864317cc98ee0211d4f4274253eda12b72beceed
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.openlocfilehash: f8875612ad6b1a71fdb6f7a768078ae599eb70b5
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54114150"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54480559"
 ---
 # <a name="manage-identity-in-multitenant-applications"></a>다중 테넌트 애플리케이션의 ID 관리
 

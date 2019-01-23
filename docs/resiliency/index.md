@@ -3,13 +3,16 @@ title: Azure용 복원 애플리케이션 디자인
 description: Azure에서 고가용성 및 재해 복구를 제공하는 복원 애플리케이션을 빌드하는 방법을 설명합니다.
 author: MikeWasson
 ms.date: 12/18/2018
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
 ms.custom: resiliency
-ms.openlocfilehash: ef8fd64756c483528aa83048e23f6387dedb74d6
-ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
+ms.openlocfilehash: ba3637ce90b793425b1238ee0d99d36a936da6ca
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160862"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488599"
 ---
 # <a name="designing-resilient-applications-for-azure"></a>Azure용 복원 애플리케이션 디자인
 

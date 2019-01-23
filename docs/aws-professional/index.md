@@ -5,13 +5,16 @@ description: Microsoft Azure 계정, 플랫폼 및 서비스의 기본 사항에
 keywords: AWS 전문가, Azure 비교, AWS 비교, azure와 aws의 차이점, azure 및 aws
 author: lbrader
 ms.date: 09/19/2018
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 92cc81c1bc697bea0feafd63e61a63a41f455eaa
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 56e308b40e24d2febefe995dffc7a14069a5c078
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113079"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482241"
 ---
 # <a name="azure-for-aws-professionals"></a>AWS 전문가를 위한 Azure
 
@@ -182,7 +185,7 @@ AWS 인스턴스 형식과 Azure 가상 머신 크기는 비슷한 방식으로 
 
 #### <a name="ebs-and-azure-storage-for-vm-disks"></a>VM 디스크용 EBS 및 Azure Storage
 
-BLOB 저장소에 상주하는 [데이터 디스크](/azure/virtual-machines/linux/about-disks-and-vhds)가 내구성이 우수한 Azure VM용 데이터 저장소를 제공합니다. EC2 인스턴스가 EBS(Elastic Block Store)에 디스크 볼륨을 저장하는 방식과 비슷합니다. [Azure 임시 저장소](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) 역시 EC2 인스턴스 저장소(사용 후 삭제 저장소라고도 함)와 동일하게 대기 시간이 짧은 임시 읽기-쓰기 저장소를 VM에 제공합니다.
+Blob Storage에 상주하는 [데이터 디스크](/azure/virtual-machines/linux/about-disks-and-vhds)가 내구성이 우수한 Azure VM용 데이터 스토리지를 제공합니다. EC2 인스턴스가 EBS(Elastic Block Store)에 디스크 볼륨을 저장하는 방식과 비슷합니다. [Azure 임시 저장소](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) 역시 EC2 인스턴스 저장소(사용 후 삭제 저장소라고도 함)와 동일하게 대기 시간이 짧은 임시 읽기-쓰기 저장소를 VM에 제공합니다.
 
 [Azure Premium Storage](/azure/virtual-machines/windows/premium-storage)를 사용하여 고성능 디스크 IO를 지원합니다. 이것은 AWS에서 제공하는 프로비전된 IOPS 스토리지 옵션과 비슷합니다.
 
@@ -361,7 +364,7 @@ AWS Device Farm은 디바이스 간 테스트 서비스를 제공합니다. Azur
 
 #### <a name="see-also"></a>참고 항목
 
-- [Node.js에서 큐 저장소를 사용하는 방법](/azure/storage/queues/storage-nodejs-how-to-use-queues)
+- [Node.js에서 Queue Storage를 사용하는 방법](/azure/storage/queues/storage-nodejs-how-to-use-queues)
 
 - [Service Bus 큐를 사용하는 방법](/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues)
 

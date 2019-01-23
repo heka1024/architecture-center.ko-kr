@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: dfc4af0a5be29b32d90cc4a05715fd3e2f71427b
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488667"
+---
 
 ## <a name="ai-scenarios"></a>AI 시나리오
 
@@ -13,7 +21,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure에서 호텔 예약을 위한 대화형 챗봇</h3>
+                        <h3>호텔 예약을 위한 대화형 챗봇</h3>
                         <p>Azure Bot Service를 사용하여 상거래 애플리케이션에 대해 대화형 챗봇을 빌드합니다.</p>
                     </div>
                 </div>
@@ -32,8 +40,27 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure에서 보험 청구에 대한 이미지 분류</h3>
+                        <h3>보험 청구에 대한 이미지 분류</h3>
                         <p>Azure 애플리케이션에 이미지 처리를 빌드합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/movie-recommendations.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./ai/media/architecture-movie-recommender.png" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure에서 동영상 추천</h3>
+                        <p>기계 학습을 사용하여 영화, 제품 및 기타 추천 사항을 자동화하고, 기계 학습과 Azure DSVM(Data Science Virtual Machine)을 사용하여 Azure에서 모델을 학습합니다.</p>
                     </div>
                 </div>
             </div>
@@ -57,7 +84,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure의 API 기반 아키텍처에 레거시 웹 애플리케이션 마이그레이션</h3>
+                        <h3>API 기반 아키텍처로 웹앱 마이그레이션</h3>
                         <p>Azure API Management를 사용하여 레거시 웹 애플리케이션을 현대화합니다.</p>
                     </div>
                 </div>
@@ -76,7 +103,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure의 은행 간에 분산 트러스트</h3>
+                        <h3>은행 간에 분산 트러스트</h3>
                         <p>중앙 집중식 데이터베이스로 재분류하지 않고 통신 및 정보 공유에 대해 신뢰할 수 있는 환경을 설정합니다.</p>
                     </div>
                 </div>
@@ -133,7 +160,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure의 전자상거래 프런트 엔드</h3>
+                        <h3>전자상거래 프런트 엔드</h3>
                         <p>Azure에서 전자상거래 사이트를 호스트합니다.</p>
                     </div>
                 </div>
@@ -171,7 +198,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure의 컴퓨터 지원 엔지니어링 서비스</h3>
+                        <h3>컴퓨터 지원 엔지니어링 서비스</h3>
                         <p>Azure에서 CAE(컴퓨터 지원 엔지니어링)에 대한 SaaS(Software-as-a-Service) 플랫폼을 제공합니다.</p>
                     </div>
                 </div>
@@ -190,7 +217,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure의 SAP 워크로드에 대한 개발/테스트 환경</h3>
+                        <h3>SAP 워크로드에 대한 개발/테스트 환경</h3>
                         <p>SAP 워크로드에 대한 개발/테스트 환경을 빌드합니다.</p>
                     </div>
                 </div>
@@ -209,7 +236,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure에서 Oracle 데이터베이스를 사용하여 SAP 프로덕션 워크로드 실행</h3>
+                        <h3>Oracle 데이터베이스를 사용하여 SAP 프로덕션 워크로드 실행</h3>
                         <p>Oracle 데이터베이스를 사용하여 Azure에서 SAP 프로덕션 배포를 실행합니다.</p>
                     </div>
                 </div>
@@ -272,7 +299,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure의 확장성 있는 주문 처리</h3>
+                        <h3>확장성 있는 주문 처리</h3>
                         <p>Azure Cosmos DB를 사용하여 확장성이 높은 주문 처리 파이프라인을 빌드합니다.</p>
                     </div>
                 </div>
@@ -291,7 +318,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure에서 실시간 부정 행위 감지</h3>
+                        <h3>실시간 사기 감지</h3>
                         <p>Azure Event Hubs 및 Stream Analytics를 사용하여 부정 행위를 실시간으로 검색합니다.</p>
                     </div>
                 </div>
@@ -354,7 +381,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션 실행</h3>
+                        <h3>CFD 시뮬레이션 실행</h3>
                         <p>Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션을 실행합니다.</p>
                     </div>
                 </div>
@@ -392,8 +419,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션</h3>
-                        <p>Azure Virtual Machines, 가용성 집합, 가용성 영역, Azure Site Recovery 및 Azure Traffic Manager를 사용하여 Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션 만들기</p>
+                        <h3>HA/DR용으로 빌드된 다중 계층 웹 애플리케이션</h3>
+                        <p>Azure Virtual Machines, 가용성 집합, 가용성 영역, Azure Site Recovery 및 Azure Traffic Manager를 사용하여 Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션을 만듭니다.</p>
                     </div>
                 </div>
             </div>
@@ -411,7 +438,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure에서 Windows 가상 머신으로 안전한 웹앱 빌드</h3>
+                        <h3>Windows VM으로 안전한 웹앱 빌드</h3>
                         <p>확장 집합, Application Gateway 및 부하 분산 장치를 사용하여 Azure의 Windows Server에서 안전한 다중 계층 웹 애플리케이션을 빌드합니다.</p>
                     </div>
                 </div>
@@ -430,7 +457,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Service Fabric을 사용하여 모놀리식 애플리케이션 분해</h3>
+                        <h3>Service Fabric을 사용하여 애플리케이션 분해</h3>
                         <p>대규모 모놀리식 애플리케이션을 마이크로 서비스로 분해합니다.</p>
                     </div>
                 </div>
@@ -449,7 +476,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure의 3D 비디오 렌더링</h3>
+                        <h3>3D 비디오 렌더링</h3>
                         <p>Azure Batch 서비스를 사용하여 Azure에서 원시 HPC 워크로드를 실행합니다.</p>
                     </div>
                 </div>
@@ -468,7 +495,7 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>확장성이 높고 안전한 Azure의 WordPress 웹 사이트</h3>
+                        <h3>확장성이 높고 안전한 WordPress 웹 사이트</h3>
                         <p>미디어 이벤트에 대해 확장성이 높고 안전한 WordPress 웹 사이트를 빌드합니다.</p>
                     </div>
                 </div>
