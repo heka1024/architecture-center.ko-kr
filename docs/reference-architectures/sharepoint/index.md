@@ -4,14 +4,12 @@ titleSuffix: Azure Reference Architectures
 description: Azure에서 고가용성 SharePoint Server 2016 팜을 배포하기 위해 권장되는 아키텍처입니다.
 author: njray
 ms.date: 07/26/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: 6cc8255f95cb4944ff3ef138ad5edf2e5bbea4b4
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120104"
 ---
+
 # <a name="run-a-highly-available-sharepoint-server-2016-farm-in-azure"></a>Azure에서 고가용성 SharePoint Server 2016 팜 실행
 
 이 참조 아키텍처에서는 MinRole 토폴로지 및 SQL Server Always On 가용성 그룹을 사용하여 Azure에 고가용성 SharePoint Server 2016 팜을 배포하는 검증된 사례를 보여줍니다. SharePoint 팜은 인터넷 연결 엔드포인트 또는 실체가 없는 안전한 가상 네트워크에 배포됩니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
@@ -22,7 +20,7 @@ ms.locfileid: "53120104"
 
 ## <a name="architecture"></a>아키텍처
 
-이 아키텍처는 [N 계층 애플리케이션에 대한 Windows VM 실행][windows-n-tier]에 나와 있는 아키텍처를 사용합니다. Azure 가상 네트워크(VNet) 내부에 고가용성 SharePoint Server 2016 팜을 배포합니다. 이 아키텍처는 테스트 또는 프로덕션 환경, Office 365를 사용하는 SharePoint 하이브리드 인프라 또는 재해 복구 시나리오의 기준으로 사용하기에 적합합니다.
+이 아키텍처는 [N 계층 응용 프로그램에 대한 Windows VM 실행][windows-n-tier]에 나와 있는 아키텍처를 사용합니다. Azure 가상 네트워크(VNet) 내부에 고가용성 SharePoint Server 2016 팜을 배포합니다. 이 아키텍처는 테스트 또는 프로덕션 환경, Office 365를 사용하는 SharePoint 하이브리드 인프라 또는 재해 복구 시나리오의 기준으로 사용하기에 적합합니다.
 
 이 아키텍처는 다음과 같은 구성 요소로 구성됩니다.
 
@@ -123,7 +121,7 @@ SharePoint 팜을 구성하기 전에 서비스마다 Windows Server Active Dire
 
 이 참조 아키텍처는 [SharePoint 하이브리드 환경] [sharepoint-hybrid]&mdash;으로 사용할 수 있는, 다시 말해서 SharePoint Server 2016을 Office 365 SharePoint Online으로 확장하는 SharePoint Server 2016 팜을 배포합니다. Office Online Server가 있는 분은 [Azure의 Office Web Apps 및 Office Online Server 지원 여부][office-web-apps]를 참조하세요.
 
-이 배포의 기본 서비스 애플리케이션은 하이브리드 워크로드를 지원하도록 설계되었습니다. SharePoint 인프라를 변경하지 않고도 모든 SharePoint Server 2016 및 Office 365 하이브리드 워크로드를 이 팜에 배포할 수 있지만 한 가지 예외가 있습니다. 클라우드 하이브리드 검색 서비스 애플리케이션은 기존 검색 토폴로지를 호스팅하는 서버에 배포하면 안 됩니다. 따라서 이 하이브리드 시나리오를 지원하려면 하나 이상의 검색-역할 기반 VM을 팜에 추가해야 합니다.
+이 배포의 기본 서비스 애플리케이션은 하이브리드 워크로드를 지원하도록 설계되었습니다. 모든 SharePoint Server 2016 및 Office 365 하이브리드 워크로드는 SharePoint 인프라를 변경하지 않고 이 팜에 배포할 수 있지만, 한 가지 예외가 있습니다. Cloud Hybrid Search Service Application은 기존 검색 토폴로지를 호스팅하는 서버에 배포되면 안 됩니다. 따라서 이 하이브리드 시나리오를 지원하려면 하나 이상의 검색-역할 기반 VM을 팜에 추가해야 합니다.
 
 ### <a name="sql-server-always-on-availability-groups"></a>SQL Server Always On 가용성 그룹
 
