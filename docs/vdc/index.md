@@ -3,13 +3,11 @@ title: Azure Virtual Datacenter
 description: Microsoft Azure Virtual Datacenter의 리소스
 keywords: Azure
 layout: LandingPage
-ms.openlocfilehash: 5b5b6f58911e39ae1296722194b58c601b9baea8
-ms.sourcegitcommit: 94d50043db63416c4d00cebe927a0c88f78c3219
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47428094"
+ms.topic: landing-page
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
 ---
+
 # <a name="azure-virtual-datacenter-and-the-enterprise-control-plane"></a>Azure Virtual Datacenter 및 Enterprise Control Plane
 
 Azure Virtual Datacenter는 기존 보안 및 네트워킹 정책을 적용하는 동시에 Azure 클라우드 플랫폼의 기능을 최대한 활용하는 방법입니다. 엔터프라이즈 워크로드를 클라우드에 배포할 때 IT 조직과 비즈니스 단위는 규제와 개발자 유연성 간에 적절한 균형을 이루어야 합니다. Azure Virtual Datacenter는 규제를 강조하면서 이러한 균형을 이루는 모델을 제공합니다.
