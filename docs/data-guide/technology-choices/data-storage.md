@@ -3,12 +3,15 @@ title: 데이터 저장소 기술 선택
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 9fe28249b51083bb588808770aba9ac7d48d560e
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: 0aac064f30c384520a27d2e42b21c9243d5914b2
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113164"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483465"
 ---
 # <a name="choosing-a-big-data-storage-technology-in-azure"></a>Azure의 빅 데이터 저장소 기술 선택
 
@@ -36,11 +39,11 @@ Azure에서는 사용자의 요구에 따라 몇 가지 데이터 수집 옵션�
 
 Azure Storage는 가용성, 보안, 내구성, 확장성 및 중복성이 높은 관리되는 스토리지 서비스입니다. Microsoft는 유지 관리를 담당하고 사용자에 대한 중요한 문제를 처리합니다. Azure Storage는 함께 사용할 수 많은 서비스 및 도구 때문에, Azure에서 제공하는 가장 보편적인 스토리지 솔루션입니다.
 
-다양한 Azure Storage 서비스를 사용하여 데이터를 저장할 수 있습니다. 다양한 데이터 원본의 Blob을 저장하는 가장 유연한 옵션은 [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)입니다. Blob은 기본적으로 파일입니다. 사진, 문서, HTML 파일, VHD(가상 하드 디스크), 로그와 같은 빅 데이터, 데이터베이스 백업 등 거의 모든 항목을 저장합니다. Blob은 폴더와 유사한 컨테이너에 저장됩니다. 컨테이너는 Blob 집합의 그룹화를 제공합니다. 한 저장소 계정에 포함될 수 있는 컨테이너 수에 제한이 없으며, 컨테이너에 저장될 수 있는 Blob 수에도 제한이 없습니다.
+다양한 Azure Storage 서비스를 사용하여 데이터를 저장할 수 있습니다. 다양한 데이터 원본의 Blob을 저장하는 가장 유연한 옵션은 [Blob Storage](/azure/storage/blobs/storage-blobs-introduction)입니다. Blob은 기본적으로 파일입니다. 사진, 문서, HTML 파일, VHD(가상 하드 디스크), 로그와 같은 빅 데이터, 데이터베이스 백업 등 거의 모든 항목을 저장합니다. Blob은 폴더와 유사한 컨테이너에 저장됩니다. 컨테이너는 Blob 집합의 그룹화를 제공합니다. 한 저장소 계정에 포함될 수 있는 컨테이너 수에 제한이 없으며, 컨테이너에 저장될 수 있는 Blob 수에도 제한이 없습니다.
 
 Azure Storage는 유연성, 고가용성 및 저렴한 비용으로 인해 빅 데이터 및 분석 솔루션에 적합합니다. 다양한 사용 사례에 맞게 핫 저장소 계층, 쿨 저장소 계층 및 보관 저장소 계층을 제공합니다. 자세한 내용은 [Azure Blob Storage: 핫, 쿨 및 보관 스토리지 계층](/azure/storage/blobs/storage-blob-storage-tiers)을 참조하세요.
 
-Azure Blob 저장소는 Hadoop(HDInsight를 통해 사용 가능)에서 액세스할 수 있습니다. HDInsight는 Azure Storage의 Blob 컨테이너를 클러스터의 기본 파일 시스템으로 사용합니다. WASB 드라이버에서 제공하는 HDFS(Hadoop Distributed File System) 인터페이스를 통해 HDInsight의 전체 구성 요소 집합을 Blob로 저장된 구조적 또는 비구조적 데이터에 대해 직접 작동할 수 있습니다. Azure Blob 저장소는 PolyBase 기능을 사용하여 Azure SQL Data Warehouse를 통해 액세스할 수도 있습니다.
+Azure Blob Storage는 Hadoop(HDInsight를 통해 사용 가능)에서 액세스할 수 있습니다. HDInsight는 Azure Storage의 Blob 컨테이너를 클러스터의 기본 파일 시스템으로 사용합니다. WASB 드라이버에서 제공하는 HDFS(Hadoop Distributed File System) 인터페이스를 통해 HDInsight의 전체 구성 요소 집합을 Blob로 저장된 구조적 또는 비구조적 데이터에 대해 직접 작동할 수 있습니다. Azure Blob Storage는 PolyBase 기능을 사용하여 Azure SQL Data Warehouse를 통해 액세스할 수도 있습니다.
 
 Azure Storage의 선택 가능성을 높이는 기타 기능에는 다음이 포함됩니다.
 
@@ -97,7 +100,7 @@ Azure DB Cosmos 기능은 다음과 같습니다.
 
 ### <a name="file-storage-capabilities"></a>파일 저장소 기능
 
-|  | Azure Data Lake Store | Azure Blob 저장소 컨테이너 |
+|  | Azure Data Lake Store | Azure Blob Storage 컨테이너 |
 | --- | --- | --- |
 | 목적 | 빅 데이터 분석 워크로드에 대해 최적화된 저장소 |다양한 저장소 시나리오에 대한 범용 개체 저장소 |
 | 사용 사례 | 일괄 처리, 스트리밍 분석 및 로그 파일, IoT 데이터, 클릭 스트림, 대형 데이터 세트 등과 같은 기계 학습 데이터 | 애플리케이션 백 엔드, 백업 데이터, 스트리밍용 미디어 저장소 및 범용 데이터 등과 같은 모든 종류의 텍스트 또는 이진 데이터 |

@@ -3,12 +3,15 @@ title: 데이터 파이프라인 오케스트레이션 기술 선택
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 7d1fddf54216b756a5dc2c183a43449a2f45a122
-ms.sourcegitcommit: e7e0e0282fa93f0063da3b57128ade395a9c1ef9
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: 76a101b76497ae2b2aacff973175bb0fe4703d9e
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52902385"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482445"
 ---
 # <a name="choosing-a-data-pipeline-orchestration-technology-in-azure"></a>Azure의 데이터 파이프라인 오케스트레이션 기술 선택
 
@@ -34,7 +37,7 @@ Azure에서 다음 서비스 및 도구는 파이프라인 오케스트레이션
 
 - 일부 데이터 원본 위치은 온-프레미스에 있나요? 그렇다면 클라우드 및 온-프레미스 데이터 원본 또는 대상에 작동할 수 있는 옵션을 찾아보세요.
 
-- 원본 데이터가 HDFS 파일 시스템의 Blob 저장소에 저장되어 있나요? 그렇다면 Hive 하이브 쿼리를 지원하는 옵션을 선택합니다.
+- 원본 데이터가 HDFS 파일 시스템의 Blob Storage에 저장되어 있나요? 그렇다면 Hive 하이브 쿼리를 지원하는 옵션을 선택합니다.
 
 ## <a name="capability-matrix"></a>기능 매트릭스
 
@@ -44,8 +47,8 @@ Azure에서 다음 서비스 및 도구는 파이프라인 오케스트레이션
 
 | | Azure 데이터 팩터리 | SQL Server 통합 서비스(SSIS) | HDInsight의 Oozie
 | --- | --- | --- | --- |
-| 관리 | yes | 아니요 | yes |
-| 클라우드 기반 | yes | 아니요(로컬) | yes |
+| 관리 | 예 | no | 예 |
+| 클라우드 기반 | 예 | 아니요(로컬) | 예 |
 | 필수 요소 | Azure 구독 | SQL Server  | Azure 구독, HDInsight 클러스터 |
 | 관리 도구 | Azure Portal, PowerShell, CLI, .NET SDK | SSMS, PowerShell | Bash 셸, Oozie REST API, Oozie Web UI |
 | 가격 | 사용당 지급 | 라이선스/기능 요금 | HDInsight 클러스터 실행에 대한 추가 비용 없음 |
@@ -54,22 +57,22 @@ Azure에서 다음 서비스 및 도구는 파이프라인 오케스트레이션
 
 | | Azure 데이터 팩터리 | SQL Server 통합 서비스(SSIS) | HDInsight의 Oozie
 | --- | --- | --- | --- |
-| 데이터 복사 | yes | 예 | yes |
-| 사용자 지정 변환 | yes | yes | 예(MapReduce, Pig 및 Hive 작업) |
-| Azure Machine Learning 점수 매기기 | yes | 예(스크립팅 사용) | 아니요 |
-| 요청 시 HDInsight | yes | 아니요 | 아니요 |
-| Azure Batch | yes | 아니요 | 아니요 |
-| Pig, Hive, MapReduce | yes | 아니요 | yes |
-| Spark | yes | 아니요 | 아니요 |
-| SSIS 패키지 실행 | yes | yes | 아니요 |
-| 흐름 제어 | yes | 예 | yes |
-| 온-프레미스 데이터 액세스 | yes | yes | 아니요 |
+| 데이터 복사 | 예 | 예 | 예 |
+| 사용자 지정 변환 | 예 | 예 | 예(MapReduce, Pig 및 Hive 작업) |
+| Azure Machine Learning 점수 매기기 | 예 | 예(스크립팅 사용) | 아니요 |
+| 요청 시 HDInsight | 예 | 아니요 | 아니요 |
+| Azure Batch | 예 | 아니요 | 아니요 |
+| Pig, Hive, MapReduce | 예 | no | 예 |
+| Spark | 예 | 아니요 | 아니요 |
+| SSIS 패키지 실행 | 예 | 예 | 아니요 |
+| 흐름 제어 | 예 | 예 | 예 |
+| 온-프레미스 데이터 액세스 | 예 | 예 | 아니요 |
 
 ### <a name="scalability-capabilities"></a>확장성 기능
 
 | | Azure 데이터 팩터리 | SQL Server 통합 서비스(SSIS) | HDInsight의 Oozie
 | --- | --- | --- | --- |
-| 강화 | yes | 아니요 | 아니요 |
-| 확장 | yes | 아니요 | 예(클러스터에 작업자 노드 추가) |
-| 빅 데이터에 최적화 | yes | 아니요 | yes |
+| 강화 | 예 | 아니요 | 아니요 |
+| 확장 | 예 | 아니요 | 예(클러스터에 작업자 노드 추가) |
+| 빅 데이터에 최적화 | 예 | no | 예 |
 

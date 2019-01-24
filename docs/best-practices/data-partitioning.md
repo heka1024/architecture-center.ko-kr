@@ -4,13 +4,16 @@ titleSuffix: Best practices for cloud applications
 description: 별도로 관리하고 액세스할 수 있도록 파티션을 구분하는 방법에 대한 참고 자료입니다.
 author: dragon119
 ms.date: 11/04/2018
+ms.topic: best-practice
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 9441c4404af991b327cd027c145604921f0223fb
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: 561fe6e47a4cd64aa545349dde4c76260d76e78e
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307098"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482311"
 ---
 # <a name="horizontal-vertical-and-functional-data-partitioning"></a>수평, 수직 및 기능별 데이터 분할
 
@@ -139,7 +142,7 @@ ms.locfileid: "53307098"
 
 ## <a name="designing-partitions-for-availability"></a>가용성을 위한 파티션 디자인
 
-데이터를 분할하면 전체 데이터 세트에 단일 실패 지점이 구성되지 않도록 하고, 데이터 세트의 개별 하위 집합을 독립적으로 관리할 수 있도록 하여 응용 프로그램의 가용성을 향상시킬 수 있습니다.
+데이터를 분할하면 전체 데이터 집합에 단일 실패 지점이 구성되지 않도록 하고, 데이터 집합의 개별 하위 집합을 독립적으로 관리할 수 있도록 하여 애플리케이션의 가용성을 향상시킬 수 있습니다.
 
 가용성에 영향을 주는 다음 요인을 고려합니다.
 

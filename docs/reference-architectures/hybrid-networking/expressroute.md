@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Azure ExpressRoute를 사용하여 연결된 온-프레미스 네트워크 및 Azure Virtual Network를 포괄하는 보안 사이트 간 네트워크 아키텍처를 구현합니다.
 author: telmosampaio
 ms.date: 10/22/2017
-ms.custom: seodec18
-ms.openlocfilehash: 1308f85f2f6d05b86e22f2558d89f164d076d182
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, networking
+ms.openlocfilehash: eff7d3e88cc9578b6d5ff83628f7d03b00717b5f
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112790"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487864"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute"></a>ExpressRoute를 사용하여 온-프레미스 네트워크를 Azure에 연결
 

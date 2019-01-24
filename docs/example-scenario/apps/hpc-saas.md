@@ -4,12 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: Azure에서 CAE(컴퓨터 지원 엔지니어링)에 대한 SaaS(Software-as-a-Service) 플랫폼을 제공합니다.
 author: alexbuckgit
 ms.date: 08/22/2018
-ms.openlocfilehash: 0e8ce29639e4e189acef633585191b178c6c8721
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.custom: HPC
+ms.openlocfilehash: 7c543df71176ca0da621d6ec67fc6fe2ca36f9fa
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643869"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481510"
 ---
 # <a name="a-computer-aided-engineering-service-on-azure"></a>Azure의 컴퓨터 지원 엔지니어링 서비스
 
@@ -49,7 +53,7 @@ ms.locfileid: "53643869"
 - [Application Gateway](/azure/application-gateway/overview)는 웹 서버로 들어오는 요청을 부하 분산합니다.
 - [AKS(Azure Kubernetes Service)](/azure/aks/intro-kubernetes)는 HPC 또는 GPU 가상 머신의 고성능 기능이 필요 없는 시뮬레이션에 확장 가능한 워크로드를 저렴하게 실행하는 데 사용됩니다.
 - [Altair PBS Works Suite](https://www.pbsworks.com/PBSProduct.aspx?n=PBS-Works-Suite&c=Overview-and-Capabilities)는 HPC 워크플로를 오케스트레이션하여 현재 부하를 처리하기에 충분한 가상 머신 인스턴스를 제공합니다. 또한 수요가 적으면 가상 머신을 할당 취소하여 비용을 줄입니다.
-- [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)는 예약된 작업을 지원하는 파일을 저장합니다.
+- [Blob Storage](/azure/storage/blobs/storage-blobs-introduction)는 예약된 작업을 지원하는 파일을 저장합니다.
 
 ### <a name="alternatives"></a>대안
 

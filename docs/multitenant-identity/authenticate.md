@@ -3,15 +3,18 @@ title: 다중 테넌트 애플리케이션의 인증
 description: 다중 테넌트 애플리케이션이 Azure Active Directory에서 사용자를 인증하는 방법
 author: MikeWasson
 ms.date: 07/21/2017
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: tailspin
 pnp.series.next: claims
-ms.openlocfilehash: c66fd80a539b507ee7a78c87a2ffa0d735b9def1
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: b4a833a18b44e40f544449a222fb082d71e4268d
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112433"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481646"
 ---
 # <a name="authenticate-using-azure-ad-and-openid-connect"></a>Azure AD 및 OpenID Connect를 사용하여 인증
 

@@ -3,13 +3,16 @@ title: R 기계 학습 모델의 실시간 채점
 description: AKS(Azure Kubernetes Service)에서 실행되는 Machine Learning Server를 사용하여 R에서 실시간 예측 서비스를 구현합니다.
 author: njray
 ms.date: 12/12/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 6f3447d1dcab801ccdaf4cf88611725cc00eb68d
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 00bea3cae0c3d2f0fea2babd7b0157382cf9890a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112280"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487171"
 ---
 # <a name="real-time-scoring-of-r-machine-learning-models"></a>R 기계 학습 모델의 실시간 채점
 

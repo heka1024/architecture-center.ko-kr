@@ -4,15 +4,17 @@ titleSuffix: Azure Reference Architectures
 description: Azure Logic Apps, Azure API Management, Azure Service Bus 및 Azure Event Grid를 사용하여 엔터프라이즈 통합 패턴을 구현하는 권장 아키텍처를 제공합니다.
 author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
-ms.topic: article
+ms.topic: reference-architecture
 ms.date: 12/03/2018
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: integration-services
-ms.openlocfilehash: 6357cb5015c8f10c0f4a8aa1b310ddbb38367004
-ms.sourcegitcommit: a0a9981e7586bed8d876a54e055dea1e392118f8
+ms.openlocfilehash: 4c9d2e201bcfc077990d746a1decd55ede2f220a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53233866"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54480680"
 ---
 # <a name="enterprise-integration-on-azure-using-message-queues-and-events"></a>Azure에서 메시지 큐 및 이벤트를 사용하여 엔터프라이즈 통합
 

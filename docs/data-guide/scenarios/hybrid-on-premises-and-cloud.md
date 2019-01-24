@@ -3,12 +3,15 @@ title: 클라우드로 온-프레미스 데이터 솔루션 확장
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 38838d5409b29fe987d4d83c9ccb87cd489b93c7
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: b54f56fbc6aab526f37d537c201f4e4955a112fd
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54114235"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486960"
 ---
 # <a name="extending-on-premises-data-solutions-to-the-cloud"></a>클라우드로 온-프레미스 데이터 솔루션 확장
 
@@ -69,7 +72,7 @@ ms.locfileid: "54114235"
 
 ## <a name="sql-server-data-stores"></a>SQL Server 데이터 저장소
 
-온-프레미스에서 SQL Server를 실행하는 경우 백업 및 복원을 위해 Microsoft Azure Blob 저장소 서비스를 사용할 수 있습니다. 자세한 내용은 [Microsoft Azure Blob Storage 서비스로 SQL Server 백업 및 복원](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)을 참조하세요. 이 기능은 무제한 오프사이트 저장소와 온-프레미스에서 실행되는 SQL Server와 Azure의 가상 머신에서 실행되는 SQL Server 간에 동일한 백업을 공유하는 기능을 제공합니다.
+온-프레미스에서 SQL Server를 실행하는 경우 백업 및 복원을 위해 Microsoft Azure Blob Storage 서비스를 사용할 수 있습니다. 자세한 내용은 [Microsoft Azure Blob Storage 서비스로 SQL Server 백업 및 복원](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)을 참조하세요. 이 기능은 무제한 오프사이트 저장소와 온-프레미스에서 실행되는 SQL Server와 Azure의 가상 머신에서 실행되는 SQL Server 간에 동일한 백업을 공유하는 기능을 제공합니다.
 
 [Azure SQL Database](/azure/sql-database/)는 관리되는 관계형 DaaS(Database as-a-Service)입니다. Azure SQL Database는 Microsoft SQL Server 엔진을 사용하므로 애플리케이션은 두 기술에서 모두 동일한 방식으로 데이터에 액세스할 수 있습니다. 또한 Azure SQL Database를 유용한 방식으로 SQL Server에 결합할 수도 있습니다. 예를 들어, [SQL Server Stretch Database](/sql/sql-server/stretch-database/stretch-database) 기능을 사용하면 해당 테이블의 일부 또는 전체 행이 Azure SQL Database에 저장되지만, 애플리케이션은 SQL Server Database에서 단일 테이블로 보이는 데이터에 액세스할 수 있습니다. 이 기술은 정의된 기간 동안 클라우드에 액세스하지 않은 데이터를 자동으로 이동합니다. 이 데이터를 읽는 애플리케이션은 데이터가 클라우드로 이동되었음을 알지 못합니다.
 
@@ -89,7 +92,7 @@ ms.locfileid: "54114235"
 
 Azure Files의 파일 공유를 온-프레미스 Windows Server와 동기화하려면 [Azure 파일 동기화](/azure/storage/files/storage-sync-files-planning)를 사용합니다. Azure 파일 동기화의 주요 이점 중 하나는 온-프레미스 파일 서버와 Azure Files 간에 파일을 계층화하는 기능입니다. 이렇게 하면 가장 최신이면서 가장 최근에 액세스한 파일만 로컬로 유지할 수 있습니다.
 
-자세한 내용은 [Azure Blob 저장소, Azure Files 또는 Azure Disks를 사용하는 경우 결정](/azure/storage/common/storage-decide-blobs-files-disks)을 참조하세요.
+자세한 내용은 [Azure Blob Storage, Azure Files 또는 Azure Disks를 사용하는 경우 결정](/azure/storage/common/storage-decide-blobs-files-disks)을 참조하세요.
 
 ## <a name="hybrid-networking"></a>하이브리드 네트워킹
 

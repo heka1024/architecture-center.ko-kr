@@ -3,12 +3,16 @@ title: '기술 지침: Azure에서 로컬 오류로부터 복구'
 description: Azure 내에서 로컬 오류에 중점을 둔 재해 복구에 대한 계획 뿐만 아니라 복원력 있고 항상 사용 가능한 내결함성 애플리케이션을 이해하고 설계하는 방법에 대한 문서입니다.
 author: adamglick
 ms.date: 08/18/2016
-ms.openlocfilehash: c5e26eefb8d5a8d424534081ddd5d1ea0454c17e
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
+ms.custom: resiliency
+ms.openlocfilehash: a567b138580999c7b7a6ae8dedb244f4e37970e7
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112858"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486049"
 ---
 [!INCLUDE [header](../_includes/header.md)]
 
@@ -164,7 +168,7 @@ Azure Service Bus의 일시적 중단을 줄이려면 내구성이 있는 클라
 
 ### <a name="hdinsight"></a>HDInsight
 
-Azure HDInsight와 연결된 데이터는 기본적으로 Azure Blob 저장소에 저장됩니다. Azure Storage는 Blob Storage에 고가용성 및 내구성 속성을 지정합니다. Hadoop MapReduce 작업과 연결된 다중 노드는 HDInsight에서 필요할 경우 프로비전되는 일시적인 HDFS(Hadoop 분산 파일 시스템)에서 처리됩니다. 또한 MapReduce 작업의 결과가 기본적으로 Azure Blob 저장소에 저장되므로 처리된 데이터는 Hadoop 클러스터의 프로비전을 해제한 후에 내구성 있고 항상 사용 가능한 상태로 유지합니다. 자세한 내용은 [HDInsight(재해 복구)](recovery-loss-azure-region.md#other-azure-platform-services)를 참조하세요.
+Azure HDInsight와 연결된 데이터는 기본적으로 Azure Blob Storage에 저장됩니다. Azure Storage는 Blob Storage에 고가용성 및 내구성 속성을 지정합니다. Hadoop MapReduce 작업과 연결된 다중 노드는 HDInsight에서 필요할 경우 프로비전되는 일시적인 HDFS(Hadoop 분산 파일 시스템)에서 처리됩니다. 또한 MapReduce 작업의 결과가 기본적으로 Azure Blob Storage에 저장되므로 처리된 데이터는 Hadoop 클러스터의 프로비전을 해제한 후에 내구성 있고 항상 사용 가능한 상태로 유지합니다. 자세한 내용은 [HDInsight(재해 복구)](recovery-loss-azure-region.md#other-azure-platform-services)를 참조하세요.
 
 ## <a name="checklists-for-local-failures"></a>로컬 오류의 검사 목록
 

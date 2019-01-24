@@ -7,13 +7,16 @@ description: >-
   지침, vpn-게이트웨이, expressroute, 부하 분산 장치, 가상 네트워크, active-directory
 author: telmosampaio
 ms.date: 05/02/2018
-ms.custom: seodec18
-ms.openlocfilehash: e4415a2f9c2d37e61190f2fd60bbfe5990693697
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, identity
+ms.openlocfilehash: 5be463856b858ab75a2e402d6690f8240ebf9af6
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113317"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54480771"
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>Azure에서 AAD DS(Active Directory Domain Services) 리소스 포리스트 만들기
 

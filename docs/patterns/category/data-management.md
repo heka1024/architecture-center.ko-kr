@@ -5,13 +5,16 @@ description: 데이터 관리는 클라우드 애플리케이션의 핵심 요�
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: ff6d5703af64ddd8b012b588ddfe810da0b6630c
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 25571a431836656856ed3f299455dfdb94ae3477
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54009188"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486984"
 ---
 # <a name="data-management-patterns"></a>데이터 관리 패턴
 

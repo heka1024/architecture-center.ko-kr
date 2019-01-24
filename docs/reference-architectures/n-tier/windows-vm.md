@@ -4,12 +4,15 @@ titleSuffix: Azure Reference Architectures
 description: Azure에서 Windows 가상 머신을 실행하는 방법에 대한 모범 사례입니다.
 author: telmosampaio
 ms.date: 12/13/2018
-ms.openlocfilehash: b874fd3958a7f5571e6b77a24b266b113af49331
-ms.sourcegitcommit: 032f402482762f4e674aeebbc122ad18dfba11eb
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.openlocfilehash: a25488357eb11b80e8f79ddae7f7d69735a6bec3
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53396456"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485268"
 ---
 # <a name="run-a-windows-virtual-machine-on-azure"></a>Azure에서 Windows 가상 머신 실행
 
@@ -74,7 +77,7 @@ OS 디스크는 [Azure Storage][azure-storage]에 저장된 VHD이므로 호스�
 
 **VM 중지**. Azure에서는 "중지됨"과 "할당 취소됨" 상태를 구분합니다. VM 상태가 중지되면 요금이 청구되지만 VM 할당이 취소되면 청구되지 않습니다. Azure Portal에서 **중지** 버튼은 VM 할당을 취소합니다. 로그인한 상태에서 OS를 통해 종료하면 VM은 중지되지만 할당 취소되지 **않으므로** 비용이 계속 청구됩니다.
 
-**VM 삭제**. VM을 삭제하는 경우 VHD는 삭제되지 않습니다. 즉, 데이터 손실 없이 안전하게 VM을 삭제할 수 있습니다. 그러나 저장소에 대한 비용은 계속 청구됩니다. VHD를 삭제하려면 [Blob 저장소][blob-storage]에서 파일을 삭제합니다. 실수로 삭제하지 않도록 하려면 [리소스 잠금][resource-lock]을 사용하여 전체 리소스 그룹을 잠그거나 VM과 같은 개별 리소스를 잠급니다.
+**VM 삭제**. VM을 삭제하는 경우 VHD는 삭제되지 않습니다. 즉, 데이터 손실 없이 안전하게 VM을 삭제할 수 있습니다. 그러나 저장소에 대한 비용은 계속 청구됩니다. VHD를 삭제하려면 [Blob Storage][blob-storage]에서 파일을 삭제합니다. 실수로 삭제하지 않도록 하려면 [리소스 잠금][resource-lock]을 사용하여 전체 리소스 그룹을 잠그거나 VM과 같은 개별 리소스를 잠급니다.
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
@@ -108,7 +111,7 @@ OS 디스크는 [Azure Storage][azure-storage]에 저장된 VHD이므로 호스�
 [disk-encryption]: /azure/security/azure-security-disk-encryption
 [enable-monitoring]: /azure/monitoring-and-diagnostics/insights-how-to-use-diagnostics
 [fqdn]: /azure/virtual-machines/virtual-machines-windows-portal-create-fqdn
-[group-policy]: https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn595129(v=ws.11)
+[group-policy]: /windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates
 [manage-vm-availability]: /azure/virtual-machines/virtual-machines-windows-manage-availability
 [managed-disks]: /azure/storage/storage-managed-disks-overview
 [naming-conventions]: ../../best-practices/naming-conventions.md

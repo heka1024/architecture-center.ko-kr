@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Azure Active Directory(Azure AD)를 사용하여 안전한 하이브리드 네트워크 아키텍처를 구현합니다.
 author: telmosampaio
 ms.date: 11/28/2016
-ms.custom: seodec18
-ms.openlocfilehash: cab80adad91626d0e02a6d0a27de23a9dfc43769
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, identity
+ms.openlocfilehash: 3dc70c7eaea18f010d67befa5969d1be0423239c
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120070"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484400"
 ---
 # <a name="integrate-on-premises-active-directory-domains-with-azure-active-directory"></a>Azure Active Directory와 온-프레미스 Active Directory 도메인 통합
 
@@ -49,7 +52,7 @@ Azure AD(Azure Active Directory)는 클라우드 기반의 다중 테넌트 디�
   > 보안상의 이유로 Azure AD는 사용자 암호를 해시로 저장합니다. 사용자가 암호 재설정을 요구하는 경우 이 작업은 온-프레미스에서 수행되어야 하며 새 해시는 Azure AD로 보내야 합니다. Azure AD Premium 버전에는 사용자가 자신의 암호를 다시 설정할 수 있도록 이 작업을 자동화할 수 있는 기능이 포함되어 있습니다.
   >
 
-- **N 계층 응용 프로그램용 VM**. 배포에는 N 계층 애플리케이션용 인프라가 포함됩니다. 이러한 리소스에 대한 자세한 내용은 [N 계층 아키텍처를 위한 VM 실행][implementing-a-multi-tier-architecture-on-Azure]을 참조하세요.
+- **N 계층 애플리케이션용 VM**. 배포에는 N 계층 애플리케이션용 인프라가 포함됩니다. 이러한 리소스에 대한 자세한 내용은 [N 계층 아키텍처를 위한 VM 실행][implementing-a-multi-tier-architecture-on-Azure]을 참조하세요.
 
 ## <a name="recommendations"></a>권장 사항
 
@@ -73,9 +76,9 @@ AD Connect 동기화 서비스에 대한 고가용성을 구현하려면 보조 
 
 **사용자 암호 관리**. Azure AD Premium 버전은 암호 쓰기 저장을 지원하여 온-프레미스 사용자가 Azure Portal에서 셀프 서비스 암호 재설정을 수행할 수 있습니다. 이 기능은 조직의 암호 보안 정책을 검토한 후에만 사용하도록 설정해야 합니다. 예를 들어 자신의 암호를 변경할 수 있는 사용자를 제한할 수 있으며, 암호 관리 환경을 조정할 수 있습니다. 자세한 내용은 [조직의 요구에 맞게 암호 관리 사용자 지정][aad-password-management]을 참조하세요.
 
-**외부에서 액세스할 수 있는 온-프레미스 응용 프로그램 보호.** Azure AD 애플리케이션 프록시를 사용하여 Azure AD를 통해 외부 사용자에게 온 프레미스 웹 애플리케이션에 대한 제어된 액세스를 제공합니다. Azure 디렉터리에 유효한 자격 증명이 있는 사용자만 애플리케이션을 사용할 수 있는 권한이 있습니다. 자세한 내용은 [Azure Portal에서 애플리케이션 프록시 사용][aad-application-proxy] 문서를 참조하세요.
+**외부에서 액세스할 수 있는 온-프레미스 애플리케이션 보호.** Azure AD 애플리케이션 프록시를 사용하여 Azure AD를 통해 외부 사용자에게 온 프레미스 웹 애플리케이션에 대한 제어된 액세스를 제공합니다. Azure 디렉터리에 유효한 자격 증명이 있는 사용자만 애플리케이션을 사용할 수 있는 권한이 있습니다. 자세한 내용은 [Azure Portal에서 애플리케이션 프록시 사용][aad-application-proxy] 문서를 참조하세요.
 
-**의심스러운 활동 징후에 대한 적극적인 Azure AD 모니터링.** Azure AD Identity Protection이 포함된 Azure AD Premium P2 버전을 사용하는 것이 좋습니다. ID 보호는 적응형 기계 학습 알고리즘 및 추론을 사용하여 ID가 손상되었음을 나타낼 수 있는 비정상 및 위험 이벤트를 검색합니다. 예를 들어 불규칙한 로그인 활동, 알 수 없는 출처 또는 의심스러운 활동이 있는 IP 주소의 로그인, 감염되었을 수 있는 장치의 로그인과 같이 잠재적으로 비정상적인 활동을 감지할 수 있습니다. ID 보호는 이 데이터를 사용하여 이러한 위험 이벤트를 조사하고 적절한 조치를 수행할 수 있도록 하는 보고서와 경고를 생성합니다. 자세한 내용은 [Azure Active Directory Identity Protection][aad-identity-protection]을 참조하세요.
+**의심스러운 활동 징후에 대한 적극적인 Azure AD 모니터링.** Azure AD Identity Protection이 포함된 Azure AD Premium P2 버전을 사용하는 것이 좋습니다. ID 보호는 적응형 기계 학습 알고리즘 및 추론을 사용하여 ID가 손상되었음을 나타낼 수 있는 비정상 및 위험 이벤트를 검색합니다. 예를 들어 불규칙한 로그인 활동, 알 수 없는 출처 또는 의심스러운 활동이 있는 IP 주소의 로그인, 감염되었을 수 있는 디바이스의 로그인과 같이 잠재적으로 비정상적인 활동을 감지할 수 있습니다. ID 보호는 이 데이터를 사용하여 이러한 위험 이벤트를 조사하고 적절한 조치를 수행할 수 있도록 하는 보고서와 경고를 생성합니다. 자세한 내용은 [Azure Active Directory Identity Protection][aad-identity-protection]을 참조하세요.
 
 Azure Portal에서 Azure AD의 보고 기능을 사용하여 시스템에서 발생하는 보안 관련 활동을 모니터링할 수 있습니다. 이러한 보고서를 사용하는 방법에 대한 자세한 내용은 [Azure Active Directory 보고 가이드][aad-reporting-guide]를 참조하세요.
 
@@ -201,7 +204,7 @@ Azure AD Connect를 관리하는 방법에 대한 자세한 내용과 팁은 [Az
 
 - 사용자의 장치 플랫폼 유형(iOS, Android, Windows Mobile, Windows)을 사용하여 애플리케이션 및 기능에 대한 액세스 정책을 결정합니다.
 
-- 사용자 장치의 사용/사용 안 함 상태를 기록하고, 이 정보를 액세스 정책 검사에 통합합니다. 예를 들어 사용자의 전화를 분실하거나 도난당한 경우 액세스 권한을 얻는 데 사용되지 않도록 '사용 안 함'으로 기록되어야 합니다.
+- 사용자 디바이스의 사용/사용 안 함 상태를 기록하고, 이 정보를 액세스 정책 검사에 통합합니다. 예를 들어 사용자의 전화를 분실하거나 도난당한 경우 액세스 권한을 얻는 데 사용되지 않도록 '사용 안 함'으로 기록되어야 합니다.
 
 - 그룹 멤버 자격에 따라 리소스에 대한 사용자 액세스를 제어합니다. [Azure AD 동적 멤버 자격 규칙][aad-dynamic-membership-rules]을 사용하여 그룹 관리를 간소화합니다. 이러한 작동 방식에 대한 간단한 개요는 [그룹에 대한 동적 멤버 자격 소개][aad-dynamic-memberships]를 참조하세요.
 

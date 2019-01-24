@@ -3,13 +3,16 @@ title: 실패 모드 분석
 description: Azure에 기반한 클라우드 솔루션에 대한 장애 모드 분석을 수행하기 위한 지침입니다.
 author: MikeWasson
 ms.date: 05/07/2018
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
 ms.custom: resiliency
-ms.openlocfilehash: e74a98ed1d57c3bd0b3b518ff4fae743dd12f02b
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 6d0f58161c5b9d5922c21f24b1b1a50bab836bb1
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113215"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484281"
 ---
 # <a name="failure-mode-analysis"></a>실패 모드 분석
 
@@ -198,7 +201,7 @@ Application_End 로깅은 애플리케이션 도메인 종료(소프트 프로�
 
 **진단**. Elasticsearch에 대한 모니터링 도구를 사용하거나 클라이언트 쪽에서 페이로드를 사용하여 모든 오류를 기록할 수 있습니다. [Azure에서 Elasticsearch 실행][elasticsearch-azure]의 '모니터링' 섹션을 참조하세요.
 
-## <a name="queue-storage"></a>큐 저장소
+## <a name="queue-storage"></a>Queue Storage
 
 ### <a name="writing-a-message-to-azure-queue-storage-fails-consistently"></a>Azure Queue 저장소에 메시지를 쓰는 작업이 일관되게 실패합니다.
 
@@ -222,7 +225,7 @@ Application_End 로깅은 애플리케이션 도메인 종료(소프트 프로�
 이 목적을 위해 [배달 못 한 편지 큐][sb-dead-letter-queue] 기능을 제공하는 Azure Service Bus 메시지 큐를 사용하는 것이 좋습니다.
 
 > [!NOTE]
-> WebJobs를 통해 저장소 큐를 사용하는 경우 WebJobs SDK에서 기본적으로 포이즌 메시지 처리를 제공합니다. [WebJobs SDK를 통해 Azure 큐 저장소를 사용하는 방법][sb-poison-message]을 참조하세요.
+> WebJobs를 통해 저장소 큐를 사용하는 경우 WebJobs SDK에서 기본적으로 포이즌 메시지 처리를 제공합니다. [WebJobs SDK를 통해 Azure Queue Storage를 사용하는 방법][sb-poison-message]을 참조하세요.
 
 **진단**. 애플리케이션 로깅을 사용합니다.
 

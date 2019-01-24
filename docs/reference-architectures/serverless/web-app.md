@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: 서버리스 웹 애플리케이션 및 웹 API에 권장되는 아키텍처입니다.
 author: MikeWasson
 ms.date: 10/16/2018
-ms.custom: seodec18
-ms.openlocfilehash: 71c6bcdb35ba19435566086386ba7260581fec19
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, serverless
+ms.openlocfilehash: 60af3df5bbb75d97d6ba797874c8b37319b2fad5
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011398"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487392"
 ---
 # <a name="serverless-web-application-on-azure"></a>Azure의 서버리스 웹 애플리케이션
 

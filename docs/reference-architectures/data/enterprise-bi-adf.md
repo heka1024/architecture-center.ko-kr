@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: SQL Data Warehouse와 Azure Data Factory를 사용하여 Azure의 ELT(추출, 로드, 변환) 워크플로를 자동화하세요.
 author: MikeWasson
 ms.date: 11/06/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: 579ef0361ec44d0eb82b9076490eed5a6d88df35
-ms.sourcegitcommit: cd3de23543f739a95a1daf38886561f67add9d64
+ms.openlocfilehash: 020c401e9db85b76fd48c6df9be9c80d2ba5c7e4
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54183595"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481476"
 ---
 # <a name="automated-enterprise-bi-with-sql-data-warehouse-and-azure-data-factory"></a>SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 Enterprise BI
 
@@ -41,7 +44,7 @@ ms.locfileid: "54183595"
 
 ### <a name="ingestion-and-data-storage"></a>수집 및 데이터 저장소
 
-**Blob Storage** Blob 저장소는 SQL Data Warehouse로 로딩하기 전에 원본 데이터에 대한 준비 영역으로 사용됩니다.
+**Blob Storage** Blob Storage는 SQL Data Warehouse로 로딩하기 전에 원본 데이터에 대한 준비 영역으로 사용됩니다.
 
 **Azure SQL Data Warehouse** [SQL Data Warehouse](/azure/sql-data-warehouse/)는 대규모 데이터 분석을 수행하도록 설계되고 배포된 시스템입니다. 고성능 분석을 실행하는 데 적합하도록 하는 MPP(대규모 병렬 처리)를 지원합니다.
 
@@ -112,7 +115,7 @@ HAVING COUNT(RowNumber) = 4)
 
 데이터 웨어하우스는 종종 여러 소스의 데이터를 통합합니다. 이 참조 아키텍처는 인구 통계 데이터를 포함하는 외부 데이터 원본을 로드합니다. 이 데이터 세트는 [WorldWideImportersDW](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/wide-world-importers/sample-scripts/polybase) 샘플의 일부로 Azure Blob Storage에서 사용할 수 있습니다.
 
-Azure Data Factory는 [Blob Storage 커넥터](/azure/data-factory/connector-azure-blob-storage)를 사용하여 Blob Storage에서 직접 복사할 수 있습니다. 그러나 커넥터는 연결 문자열 또는 공유 액세스 서명이 필요하므로 공용 읽기 액세스를 사용하여 BLOB을 복사하는 데 사용할 수 없습니다. 해결 방법으로 PolyBase를 사용하여 Blob 저장소에서 외부 테이블을 만든 다음, 외부 테이블을 SQL Data Warehouse에 복사할 수 있습니다.
+Azure Data Factory는 [Blob Storage 커넥터](/azure/data-factory/connector-azure-blob-storage)를 사용하여 Blob Storage에서 직접 복사할 수 있습니다. 그러나 커넥터는 연결 문자열 또는 공유 액세스 서명이 필요하므로 공용 읽기 액세스를 사용하여 BLOB을 복사하는 데 사용할 수 없습니다. 해결 방법으로 PolyBase를 사용하여 Blob Storage에서 외부 테이블을 만든 다음, 외부 테이블을 SQL Data Warehouse에 복사할 수 있습니다.
 
 ## <a name="handling-large-binary-data"></a>큰 이진 데이터 처리
 
@@ -196,7 +199,7 @@ SET [Integration].[Sale_Staging].[WWI Customer ID] =  CustomerHolder.[WWI Custom
 참조 구현을 배포하고 실행하려면 [GitHub readme][github]의 단계를 따릅니다. 다음을 배포합니다.
 
 - 온-프레미스 데이터베이스 서버를 시뮬레이션하는 Windows VM Power BI Desktop과 함께 SQL Server 2017 및 관련된 도구를 포함합니다.
-- SQL Server 데이터베이스에서 가져온 데이터를 저장할 Blob 저장소를 제공하는 Azure 저장소 계정
+- SQL Server 데이터베이스에서 가져온 데이터를 저장할 Blob Storage를 제공하는 Azure 스토리지 계정
 - Azure SQL Data Warehouse 인스턴스
 - Azure Analysis Services 인스턴스
 - ELT 작업에 대한 Azure Data Factory 및 Data Factory 파이프라인

@@ -3,12 +3,15 @@ title: '엔터프라이즈 클라우드 채택: Azure에서 리소스 액세스 
 description: 리소스 액세스 관리의 설명으로 Azure에서 다음을 생성합니다. Azure Resource Manager, 구독, 리소스 그룹 및 리소스
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: 8cb28d0dd5dbdfcef846786083d5197f435bf3ea
-ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: 9f1d28cfeb062f44b2c58cd52c58f163d6de5b9d
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160794"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483075"
 ---
 # <a name="enterprise-cloud-adoption-resource-access-management-in-azure"></a>엔터프라이즈 클라우드 채택: Azure에서 리소스 액세스 관리
 

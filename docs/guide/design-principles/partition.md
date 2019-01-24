@@ -4,13 +4,16 @@ titleSuffix: Azure Application Architecture Guide
 description: 분할을 사용하여 데이터베이스, 네트워크 및 계산 한도를 해결합니다.
 author: MikeWasson
 ms.date: 08/30/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: f6c0daa1b1ea469413156fdf3cd6969f98528fb3
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 76590d2a0c16df9d599e7d4a856a84b5e3bdcec8
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110495"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486015"
 ---
 # <a name="partition-around-limits"></a>한도에 맞춘 분할
 

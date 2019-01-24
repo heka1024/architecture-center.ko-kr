@@ -4,12 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: 여러 원본의 데이터를 통합하고 데이터 분석을 최적화합니다.
 author: alexbuckgit
 ms.date: 09/15/2018
-ms.openlocfilehash: 2ac06fcd0805b66371fcc004794b123c46a6ce0e
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.custom: data-analytics
+ms.openlocfilehash: ddf9935d534b6902c407c22ba765e8c84558547b
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112382"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488446"
 ---
 # <a name="data-warehousing-and-analytics-for-sales-and-marketing"></a>영업 및 마케팅에 대한 데이터 웨어하우징 및 분석
 
@@ -38,8 +42,8 @@ ms.locfileid: "54112382"
 
 솔루션을 통한 데이터 흐름은 다음과 같습니다.
 
-1. 각 데이터 원본에서 주기적으로 Azure Blob 저장소의 스테이징 영역으로 업데이트가 내보내집니다.
-2. Data Factory가 Blob 저장소의 데이터를 SQL Data Warehouse의 스테이징 테이블에 증분 방식으로 로드합니다. 이 프로세스에서 데이터가 정리 및 변환됩니다. Polybase는 큰 데이터 세트에 대한 프로세스를 병렬로 처리할 수 있습니다.
+1. 각 데이터 원본에서 주기적으로 Azure Blob Storage의 스테이징 영역으로 업데이트가 내보내집니다.
+2. Data Factory가 Blob Storage의 데이터를 SQL Data Warehouse의 스테이징 테이블에 증분 방식으로 로드합니다. 이 프로세스에서 데이터가 정리 및 변환됩니다. Polybase는 큰 데이터 세트에 대한 프로세스를 병렬로 처리할 수 있습니다.
 3. 새로운 데이터 일괄 처리를 웨어하우스에 로드하면 이전에 만든 Analysis Services 테이블 형식 모델이 새로 고침됩니다. 이 의미 체계 모델은 비즈니스 데이터 및 관계 분석을 간소화합니다.
 4. 비즈니스 분석가는 Microsoft Power BI를 사용하여 Analysis Services 의미 체계 모델을 통해 웨어하우징된 데이터를 분석합니다.
 
@@ -55,9 +59,9 @@ ms.locfileid: "54112382"
 
 여러 Azure 구성 요소를 사용하여 여러 데이터 원본에서 데이터가 로드됩니다.
 
-- [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)는 SQL Data Warehouse로 로드될 원본 데이터를 스테이징하는 데 사용됩니다.
+- [Blob Storage](/azure/storage/blobs/storage-blobs-introduction)는 SQL Data Warehouse로 로드될 원본 데이터를 스테이징하는 데 사용됩니다.
 - [Data Factory](/azure/data-factory)는 스테이징된 데이터를 SQL Data Warehouse의 일반적인 구조체로 변환할 때 오케스트레이션을 수행합니다. Data Factory는 [SQL Data Warehouse에 데이터를 로드할 때 Polybase를 사용](/azure/data-factory/connector-azure-sql-data-warehouse#use-polybase-to-load-data-into-azure-sql-data-warehouse)하여 처리량을 극대화합니다.
-- [SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)는 대규모 데이터 세트를 저장하고 분석하는 분산 시스템입니다. MPP(대규모 병렬 처리)를 사용하기 때문에 고성능 분석을 실행하는 데 적합합니다. SQL Data Warehouse [PolyBase](/sql/relational-databases/polybase/polybase-guide)를 사용하여 Blob 저장소에서 신속하게 데이터를 로드할 수 있습니다.
+- [SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)는 대규모 데이터 세트를 저장하고 분석하는 분산 시스템입니다. MPP(대규모 병렬 처리)를 사용하기 때문에 고성능 분석을 실행하는 데 적합합니다. SQL Data Warehouse [PolyBase](/sql/relational-databases/polybase/polybase-guide)를 사용하여 Blob Storage에서 신속하게 데이터를 로드할 수 있습니다.
 - [Analysis Services](/azure/analysis-services)는 데이터에 대한 의미 체계 모델을 제공합니다. 또한 데이터를 분석할 때 시스템 성능을 향상합니다.
 - [Power BI](/power-bi) 는 데이터를 분석하고 통찰력을 공유하는 비즈니스 분석 도구 제품군입니다. Power BI는 Analysis Services에 저장된 의미 체계 모델을 쿼리할 수도 있고, SQL Data Warehouse를 직접 쿼리할 수도 있습니다.
 - [Azure Active Directory](/azure/active-directory)(Azure AD)는 Power BI를 통해 Analysis Services 서버에 연결하는 사용자를 인증합니다. 또한 Data Factory는 Azure AD를 사용하여 서비스 주체 또는 [Azure 리소스용 관리 ID](/azure/active-directory/managed-identities-azure-resources/overview)를 통해 SQL Data Warehouse를 인증할 수 있습니다.
@@ -65,7 +69,7 @@ ms.locfileid: "54112382"
 ### <a name="alternatives"></a>대안
 
 - 이 예제 파이프라인에는 여러 종류의 데이터 원본이 포함되어 있습니다. 이 아키텍처는 다양한 관계형 및 비관계형 데이터 원본을 처리할 수 있습니다.
-- Data Factory는 데이터 파이프라인에 대한 워크플로를 오케스트레이션합니다. 데이터를 한 번만 또는 주문이 있을 때만 로드하려면 SQL Server 대량 복사(bcp) 및 AzCopy 같은 도구를 사용하여 Blob 저장소로 데이터를 복사하면 됩니다. 그런 다음, Polybase를 사용하여 SQL Data Warehouse로 데이터를 직접 로드하면 됩니다.
+- Data Factory는 데이터 파이프라인에 대한 워크플로를 오케스트레이션합니다. 데이터를 한 번만 또는 주문이 있을 때만 로드하려면 SQL Server 대량 복사(bcp) 및 AzCopy 같은 도구를 사용하여 Blob Storage로 데이터를 복사하면 됩니다. 그런 다음, Polybase를 사용하여 SQL Data Warehouse로 데이터를 직접 로드하면 됩니다.
 - 매우 큰 데이터 집합이 있는 경우 분석 데이터용 무제한 스토리지를 제공하는 [Data Lake Storage](/azure/storage/data-lake-storage/introduction)를 고려해 볼 수 있습니다.
 - 온-프레미스 [SQL Server 병렬 데이터 웨어하우스](/sql/analytics-platform-system) 어플라이언스를 빅 데이터 처리에도 사용할 수 있습니다. 그러나 SQL Data Warehouse 같은 관리되는 클라우드 기반 솔루션을 사용하면 운영 비용이 대폭 절감되는 것을 자주 볼 수 있습니다.
 - SQL Data Warehouse는 250GB 미만 OLTP 워크로드 또는 데이터 집합에 적합하지 않습니다. 이러한 시나리오에는 Azure SQL Database 또는 SQL Server를 사용해야 합니다.

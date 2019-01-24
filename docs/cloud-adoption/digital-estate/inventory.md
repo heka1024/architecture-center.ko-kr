@@ -4,12 +4,15 @@ titleSuffix: Enterprise Cloud Adoption
 description: 디지털 자산에 대한 인벤토리를 만드는 방법
 author: BrianBlanchard
 ms.date: 12/10/2018
-ms.openlocfilehash: c8c2671a76ab09ab3f817872fb9d78cf84d7daa5
-ms.sourcegitcommit: e7f8676bbffe500fc4d6deb603b7c0b7ba1884a6
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: 5c2f270cf8de81c8a94d1f924f51611e657ed0ed
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53179721"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481799"
 ---
 # <a name="enterprise-cloud-adoption-gather-inventory-data-for-a-digital-estate"></a>엔터프라이즈 클라우드 채택: 디지털 자산에 대한 인벤토리 데이터 수집
 

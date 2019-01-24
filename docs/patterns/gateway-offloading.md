@@ -5,13 +5,16 @@ description: 공유 또는 특수 서비스 기능을 게이트웨이 프록시�
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 50af3d8593279986ed6efee55667187424c18e56
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 28dbd1798060d1bdd01b1e6bee03337a2239a9ef
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54010217"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487664"
 ---
 # <a name="gateway-offloading-pattern"></a>게이트웨이 오프로딩 패턴
 

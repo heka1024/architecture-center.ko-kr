@@ -5,14 +5,12 @@ description: Microsoft Azure에 대한 클라우드 디자인 패턴
 keywords: Azure
 author: dragon119
 ms.date: 12/10/2018
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 873d4cf02690a2cc3ffe4f35b044dedf70700fb5
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011026"
 ---
+
 # <a name="cloud-design-patterns"></a>클라우드 디자인 패턴
 
 [!INCLUDE [header](../../_includes/header.md)]

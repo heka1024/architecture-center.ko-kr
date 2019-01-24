@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: VPN Gateway 장애 조치(failover)를 사용하는 ExpressRoute를 사용하여 연결된 Azure 가상 네트워크 및 온-프레미스 네트워크를 포함하는 고가용성의 보안 사이트 간 네트워크 아키텍처를 구축합니다.
 author: telmosampaio
 ms.date: 10/22/2017
-ms.custom: seodec18
-ms.openlocfilehash: d32e4dfa81cf74a4ca74746120c15f1ddc066c3e
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, networking
+ms.openlocfilehash: fba07823d49aa43fdb67652f99a26bd7df3a57c3
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011109"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488293"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-expressroute-with-vpn-failover"></a>VPN 장애 조치(failover)를 사용하는 ExpressRoute를 사용하여 온-프레미스 네트워크를 Azure에 연결
 

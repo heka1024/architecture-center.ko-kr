@@ -5,13 +5,16 @@ description: 별도의 인터페이스를 사용하여 데이터를 업데이트
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 320f6cd51a44b3a6732d8395f0a5e1db8f9f5774
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: f1ccb867530dada3844aa19ef2639c2af209509f
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54010378"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483635"
 ---
 # <a name="command-and-query-responsibility-segregation-cqrs-pattern"></a>CQRS(명령 및 쿼리 책임 분리) 패턴
 

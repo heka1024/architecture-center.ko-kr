@@ -4,13 +4,16 @@ titleSuffix: Best practices for cloud applications
 description: 가상 머신, 스토리지 계정, 네트워크, 가상 네트워크, 서브넷 및 기타 Azure 엔터티 이름을 지정하는 방법을 추천합니다.
 author: telmosampaio
 ms.date: 10/19/2018
+ms.topic: best-practice
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: f0349b5db7eb15037bd92567eaf917b5d044daa0
-ms.sourcegitcommit: 036cd03c39f941567e0de4bae87f4e2aa8c84cf8
+ms.openlocfilehash: a5fbe72e81a169fd4b29e07e037bb7f8928e0c45
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/05/2019
-ms.locfileid: "54058202"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482396"
 ---
 # <a name="naming-conventions-for-azure-resources"></a>Azure 리소스에 대한 명명 규칙
 
@@ -177,7 +180,7 @@ Azure Storage 계정에서 Blob 데이터에 액세스할 수 있도록 사용�
 
 그러나 사용자 지정 도메인(예: `www.contoso.com`)을 스토리지 계정의 Blob 엔드포인트에 매핑하는 경우 해당 도메인을 사용하여 스토리지 계정의 Blob 데이터에 액세스할 수 있습니다. 예를 들어 사용자 지정 도메인 이름을 통해 `https://mystorage.blob.core.windows.net/mycontainer/myblob`에 `https://www.contoso.com/mycontainer/myblob`로 액세스할 수 있습니다.
 
-이 기능 구성에 대한 자세한 내용은 [Blob 저장소 엔드포인트에 대한 사용자 지정 도메인 이름 구성](/azure/storage/storage-custom-domain-name/)을 참조하세요.
+이 기능 구성에 대한 자세한 내용은 [Blob Storage 엔드포인트에 대한 사용자 지정 도메인 이름 구성](/azure/storage/storage-custom-domain-name/)을 참조하세요.
 
 Blob, 컨테이너 및 테이블 명명에 대한 자세한 내용은 다음 목록을 참조하세요.
 

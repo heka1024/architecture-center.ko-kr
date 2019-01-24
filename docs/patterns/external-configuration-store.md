@@ -5,13 +5,16 @@ description: 구성 정보를 애플리케이션 배포 패키지에서 중앙 �
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 7e37e5bc052a9d8e8747a3a4ac3d79a311185ea4
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: fd006437aab934d951d0a0bc947d32878edbf9d8
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011313"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482397"
 ---
 # <a name="external-configuration-store-pattern"></a>외부 구성 저장소 패턴
 
@@ -77,7 +80,7 @@ ms.locfileid: "54011313"
 
 Microsoft Azure 호스티드 응용 프로그램에서 구성 정보를 외부적으로 저장하기 위한 대표적인 선택은 Azure Storage를 사용하는 것입니다. Azure Storage는 복원력이 있고, 고성능을 제공하며, 자동 장애 조치(Failover)로 3번 복제되어 고가용성을 제공합니다. Azure Table Storage는 값에 유연한 스키마를 사용할 수 있는 키/값 저장소를 제공합니다. Azure Blob Storage는 데이터의 유형을 개별적으로 명명된 blob에 보관할 수 있는 계층적 컨테이너 기반 저장소를 제공합니다.
 
-다음 예제는 구성 저장소를 구성 정보를 저장하고 표시하는 Blob 저장소로 구현하는 방법을 보여 줍니다. `BlobSettingsStore` 클래스는 구성 정보를 보관하는 Blob 저장소를 추상화하고, 다음 코드에 제시되는 `ISettingsStore` 인터페이스를 구현합니다.
+다음 예제는 구성 스토리지를 구성 정보를 저장하고 표시하는 Blob Storage로 구현하는 방법을 보여 줍니다. `BlobSettingsStore` 클래스는 구성 정보를 보관하는 Blob Storage를 추상화하고, 다음 코드에 제시되는 `ISettingsStore` 인터페이스를 구현합니다.
 
 > 이 코드는 _ExternalConfigurationStore_ 솔루션의 _ExternalConfigurationStore.Cloud_ 프로젝트에 포함되어 있고 [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/external-configuration-store)에서 다운로드할 수 있습니다.
 
@@ -98,7 +101,7 @@ public interface ISettingsStore
 
 모든 설정은 빠른 액세스를 위해 `ExternalConfigurationManager` 클래스 내의 `Dictionary` 개체에 캐시되기도 합니다. 구성 설정을 검색하는 데 사용되는 `GetSetting` 메서드는 캐시에서 데이터를 읽습니다. 설정이 캐시에 없으면 그 대신 `BlobSettingsStore` 개체에서 가져옵니다.
 
-`GetSettings` 메서드는 `CheckForConfigurationChanges` 메서드를 호출해 blob 저장소의 구성 정보가 변경되었는지 여부를 검색합니다. 이런 검색은 버전 번호를 검사하고 검사한 버전 번호와 `ExternalConfigurationManager` 개체에 보관된 현재 버전 번호의 비교를 통해 이루어집니다. 하나 이상의 변경 내용이 발생하면 `Changed` 이벤트가 발생하고 `Dictionary` 개체에 캐시된 구성 설정이 새로 고쳐집니다. 이런 과정은 [캐시 배제 패턴](./cache-aside.md)의 적용에 해당합니다.
+`GetSettings` 메서드는 `CheckForConfigurationChanges` 메서드를 호출해 Blob Storage의 구성 정보가 변경되었는지 여부를 검색합니다. 이런 검색은 버전 번호를 검사하고 검사한 버전 번호와 `ExternalConfigurationManager` 개체에 보관된 현재 버전 번호의 비교를 통해 이루어집니다. 하나 이상의 변경 내용이 발생하면 `Changed` 이벤트가 발생하고 `Dictionary` 개체에 캐시된 구성 설정이 새로 고쳐집니다. 이런 과정은 [캐시 배제 패턴](./cache-aside.md)의 적용에 해당합니다.
 
 다음 코드 샘플은 `Changed` 이벤트, `GetSettings` 메서드 및 `CheckForConfigurationChanges` 메서드의 구현 방법을 보여줍니다.
 

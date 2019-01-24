@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Microsoft Azure에서 실행되는 웹 애플리케이션의 확장성을 향상합니다.
 author: MikeWasson
 ms.date: 10/25/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: aa4579b45c5ecf090a896e252f2d2e460f282c0e
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: b015a130a74f3160c0e737b436d41e1b1ea7b5bf
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110972"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483040"
 ---
 # <a name="improve-scalability-in-an-azure-web-application"></a>Azure 웹 애플리케이션에서 확장성 향상
 
@@ -76,7 +79,7 @@ ms.locfileid: "54110972"
 | 저장 형식 | 예 | 권장 저장소 |
 | --- | --- | --- |
 | 파일 |이미지, 문서, PDF |Azure Blob Storage |
-| 키/값 쌍 |사용자 ID로 조회된 사용자 프로필 데이터 |Azure 테이블 저장소 |
+| 키/값 쌍 |사용자 ID로 조회된 사용자 프로필 데이터 |Azure Table Storage |
 | 추가 처리를 트리거할 짧은 메시지 |주문 요청 |Azure Queue Storage, Service Bus 큐 또는 Service Bus 항목 |
 | 기본 쿼리를 요구하는 유연한 스키마를 사용하는 비관계형 데이터 |제품 카탈로그 |Azure Cosmos DB, MongoDB 또는 Apache CouchDB와 같은 문서 데이터베이스 |
 | 보다 풍부한 쿼리 지원, 엄격한 스키마 및/또는 강력한 일관성이 필요한 관계형 데이터 |제품 인벤토리 |Azure SQL Database |

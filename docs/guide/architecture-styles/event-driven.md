@@ -4,13 +4,16 @@ titleSuffix: Azure Application Architecture Guide
 description: Azure에서 이벤트 기반 아키텍처와 IoT 아키텍처의 혜택, 과제 및 모범 사례를 설명합니다.
 author: MikeWasson
 ms.date: 08/30/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: 87a4c859517d50f3cc9f0125c5596c1cb4f92207
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: b83a919e4ccd41d20b508b10604365a0b4ca90af
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111345"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485477"
 ---
 # <a name="event-driven-architecture-style"></a>이벤트 기반 아키텍처 스타일
 

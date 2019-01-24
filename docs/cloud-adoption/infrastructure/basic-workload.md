@@ -3,16 +3,20 @@ title: '엔터프라이즈 클라우드 채택: 기본 워크로드 배포'
 description: Azure에 기본 워크로드를 배포하는 방법 설명
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: 363e7e6f394389fb6c1577e2cbaeffeddcf2de1a
-ms.sourcegitcommit: b38ba378c9d6110da2dfd50b4233fadd94604bb0
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: Windows, Linux
+ms.openlocfilehash: 031a8f2e1dc0b137fc830733d025997a2657ef3c
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167356"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481408"
 ---
 # <a name="enterprise-cloud-adoption-deploy-a-basic-workload"></a>엔터프라이즈 클라우드 채택: 기본 워크로드 배포
 
-**워크로드**라는 용어는 일반적으로 응용 프로그램이나 서비스 같은 임의 단위의 기능을 정의하는 것으로 이해됩니다. 워크로드를 서버에 배포되는 코드 아티팩트의 관점뿐만 아니라 필요한 기타 서비스의 관점으로도 고려해야 합니다. 이는 온-프레미스 애플리케이션 또는 서비스에 대한 유용한 정의이지만 클라우드에서는 이를 확장해야 합니다.
+**워크로드**라는 용어는 일반적으로 애플리케이션이나 서비스 같은 임의 단위의 기능을 정의하는 것으로 이해됩니다. 워크로드를 서버에 배포되는 코드 아티팩트의 관점뿐만 아니라 필요한 기타 서비스의 관점으로도 고려해야 합니다. 이는 온-프레미스 애플리케이션 또는 서비스에 대한 유용한 정의이지만 클라우드에서는 이를 확장해야 합니다.
 
 클라우드에서 워크로드는 모든 아티팩트뿐만 아니라 클라우드 리소스도 포함합니다. infrastructure-as-code로 알려진 개념 때문에 클라우드 리소스를 정의의 일부로 포함합니다. [Azure 작동 방법](../getting-started/what-is-azure.md)에서 알아본 것처럼 오케스트레이터 서비스에서 Azure의 리소스를 배포합니다. 오케스트레이터 서비스는 웹 API를 통해 이 기능을 공개하고 Powershell, Azure CLI(명령줄 인터페이스) 및 Azure Portal 같은 여러 도구를 사용하여 이 웹 API를 호출할 수 있습니다. 즉, 애플리케이션과 연결된 코드 아티팩트와 함께 저장될 수 있는 컴퓨터가 읽을 수 있는 파일에서 리소스를 지정할 수 있습니다.
 
@@ -22,7 +26,7 @@ ms.locfileid: "47167356"
 
 ## <a name="basic-workload"></a>기본 워크로드
 
-**기본 워크로드**는 일반적으로 단일 웹 응용 프로그램 또는 VM(가상 머신)을 사용하는 VNet(가상 네트워크)로 정의됩니다. 
+**기본 워크로드**는 일반적으로 단일 웹 애플리케이션 또는 VM(가상 머신)을 사용하는 VNet(가상 네트워크)로 정의됩니다. 
 
 > [!NOTE]
 > 이 가이드는 애플리케이션 개발을 다루지 않습니다. Azure에서 애플리케이션을 개발하는 방법에 대한 자세한 내용은 [Azure 애플리케이션 아키텍처 가이드](/azure/architecture/guide/)를 참조하세요.

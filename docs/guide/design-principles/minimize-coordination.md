@@ -4,13 +4,16 @@ titleSuffix: Azure Application Architecture Guide
 description: 확장성을 위해 애플리케이션 서비스 간의 조정을 최소화합니다.
 author: MikeWasson
 ms.date: 08/30/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: ec1a7a3de2be4954b07a87b774f8ae7c2bd1f736
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: e124e6720b909bafc74a4c074454ec0a3ec30c59
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113096"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488582"
 ---
 # <a name="minimize-coordination"></a>조정 최소화
 

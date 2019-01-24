@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: 확장 집합, Application Gateway 및 부하 분산 장치를 사용하여 Azure의 Windows Server에서 안전한 다중 계층 웹 애플리케이션을 빌드합니다.
 author: iainfoulds
 ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: c5c1d4468df72edd989f2ab8f303781b26d50017
-ms.sourcegitcommit: 71ee0859e19fe58416b4c0056d67f2f34dd9ca0a
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.custom: seodec18, Windows
+ms.openlocfilehash: 12c7b4749507d4b96e5ce43f98739885c8133e7e
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54211991"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485539"
 ---
 # <a name="building-secure-web-applications-with-windows-virtual-machines-on-azure"></a>Azure에서 Windows 가상 머신으로 안전한 웹 애플리케이션 빌드
 

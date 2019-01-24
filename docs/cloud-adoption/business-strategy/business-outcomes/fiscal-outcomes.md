@@ -3,12 +3,15 @@ title: '엔터프라이즈 클라우드 채택: 회계 결과의 예'
 description: 회계 결과의 예
 author: BrianBlanchard
 ms.date: 10/10/2018
-ms.openlocfilehash: 89c162b45158ff2d83bdd7e7e9b553ac3c504f1c
-ms.sourcegitcommit: e7f8676bbffe500fc4d6deb603b7c0b7ba1884a6
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: d502294121d9c11d504068ff622cba26fa76db04
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53179743"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484939"
 ---
 # <a name="enterprise-cloud-adoption-examples-of-fiscal-outcomes"></a>엔터프라이즈 클라우드 채택: 회계 결과의 예
 

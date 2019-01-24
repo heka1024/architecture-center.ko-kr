@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: Oracle 데이터베이스를 사용하여 Azure에서 SAP 프로덕션 배포를 실행합니다.
 author: DharmeshBhagat
 ms.date: 09/12/2018
-ms.custom: fasttrack
-ms.openlocfilehash: 02a6eb43d3e11604857b8bd1f461c22a48f655c7
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.custom: fasttrack, SAP, Windows, Linux
+ms.openlocfilehash: 0f96f173d5db682ccc719869aaa22225345cb3f0
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110930"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487478"
 ---
 # <a name="running-sap-production-workloads-using-an-oracle-database-on-azure"></a>Azure에서 Oracle 데이터베이스를 사용하여 SAP 프로덕션 워크로드 실행
 
@@ -82,13 +85,13 @@ SAP는 Azure 환경에서 다양한 운영 체제, 데이터베이스 관리 시
 > [!NOTE]
 > 이 가격 책정은 VM 및 저장소 비용만 나타내는 가이드입니다. 네트워킹, 백업 저장소 및 데이터 수신/송신 요금은 제외됩니다.
 
-- [소형](https://azure.com/e/45880ba0bfdf47d497851a7cf2650c7c): 소형 시스템은 vCPU 8개, 56GB RAM, 112GB 임시 스토리지가 있는 DS13_v2 VM 유형으로 구성되며, 512GB 프리미엄 스토리지 디스크 5개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 8개, 56GB RAM, 400GB 임시 저장소가 있는 SAP 애플리케이션 서버용 단일 VM 유형 DS13_v2이며, 128GB 프리미엄 저장소 디스크 1개를 추가할 수 있습니다.
+- [소형](https://azure.com/e/45880ba0bfdf47d497851a7cf2650c7c): 소형 시스템은 vCPU 8개, 56GB RAM, 112GB 임시 스토리지가 있는 DS13_v2 VM 유형으로 구성되며, 512GB 프리미엄 스토리지 디스크 5개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 8개, 56GB RAM, 400GB 임시 스토리지가 있는 SAP 응용 프로그램 서버용 단일 VM 유형 DS13_v2이며, 128GB Premium Storage 디스크 1개를 추가할 수 있습니다.
 
-- [중형](https://azure.com/e/9a523f79591347ca9a48c3aaa1406f8a): 중형 시스템은 vCPU 16개, 112GB RAM, 800GB 임시 스토리지가 있는 DS14_v2 VM 유형으로 구성되며, 512GB 프리미엄 스토리지 디스크 7개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 8개, 56GB RAM, 400GB 임시 저장소가 있는 SAP 애플리케이션 서버용 4VM DS13_v2 유형이며, 128GB 프리미엄 저장소 디스크 1개를 추가할 수 있습니다.
+- [중형](https://azure.com/e/9a523f79591347ca9a48c3aaa1406f8a): 중형 시스템은 vCPU 16개, 112GB RAM, 800GB 임시 스토리지가 있는 DS14_v2 VM 유형으로 구성되며, 512GB 프리미엄 스토리지 디스크 7개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 8개, 56GB RAM, 400GB 임시 스토리지가 있는 SAP 응용 프로그램 서버용 4VM DS13_v2 유형이며, 128GB Premium Storage 디스크 1개를 추가할 수 있습니다.
 
-- [대형](https://azure.com/e/f70fccf571e948c4b37d4fecc07cbf42): 대형 시스템은 vCPU 32개, 256GB RAM, 800GB 임시 스토리지가 있는 E32s_v3 VM 유형으로 구성되며, 512GB 프리미엄 스토리지 디스크 3개와 128GB 프리미엄 스토리지 디스크 1개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 16개, 112GB RAM, 224GB 임시 저장소가 있는 SAP 애플리케이션 서버용 6VM DS14_v2 유형이며, 128GB 프리미엄 저장소 디스크 6개를 추가할 수 있습니다.
+- [대형](https://azure.com/e/f70fccf571e948c4b37d4fecc07cbf42): 대형 시스템은 vCPU 32개, 256GB RAM, 800GB 임시 스토리지가 있는 E32s_v3 VM 유형으로 구성되며, 512GB 프리미엄 스토리지 디스크 3개와 128GB 프리미엄 스토리지 디스크 1개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 16개, 112GB RAM, 224GB 임시 스토리지가 있는 SAP 응용 프로그램 서버용 6VM DS14_v2 유형이며, 128GB Premium Storage 디스크 6개를 추가할 수 있습니다.
 
-- [초대형](https://azure.com/e/58c636922cf94faf9650f583ff35e97b): 초대형 시스템은 vCPU 64개, 1024GB RAM, 2000GB 임시 스토리지가 있는 M64s VM 유형으로 구성되며, 1024GB 프리미엄 스토리지 디스크 7개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 16개, 112GB RAM, 224GB 임시 저장소가 있는 SAP 애플리케이션 서버용 10VM DS14_v2 유형이며, 128GB 프리미엄 저장소 디스크 10개를 추가할 수 있습니다.
+- [초대형](https://azure.com/e/58c636922cf94faf9650f583ff35e97b): 초대형 시스템은 vCPU 64개, 1024GB RAM, 2000GB 임시 스토리지가 있는 M64s VM 유형으로 구성되며, 1024GB 프리미엄 스토리지 디스크 7개를 추가할 수 있습니다. vCPU 2개, 14GB RAM, 28GB 임시 저장소가 있는 DS11_v2 VM 유형을 사용하는 SAP Central Instance 서버. vCPU 16개, 112GB RAM, 224GB 임시 스토리지가 있는 SAP 응용 프로그램 서버용 10VM DS14_v2 유형이며, 128GB Premium Storage 디스크 10개를 추가할 수 있습니다.
 
 ## <a name="deployment"></a>배포
 

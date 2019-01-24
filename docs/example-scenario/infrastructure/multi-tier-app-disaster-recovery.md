@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: Azure Virtual Machines, 가용성 집합, 가용성 영역, Azure Site Recovery 및 Azure Traffic Manager를 사용하여 Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션을 만듭니다.
 author: sujayt
 ms.date: 11/16/2018
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
 ms.custom: product-team
-ms.openlocfilehash: d2b466cc691c02ea3c5fb6ff72d91865d33c3378
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 377c1663b8cd81f7788a1f2ce82b562a9695f3b0
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54114099"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483992"
 ---
 # <a name="multitier-web-application-built-for-high-availability-and-disaster-recovery-on-azure"></a>Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션
 

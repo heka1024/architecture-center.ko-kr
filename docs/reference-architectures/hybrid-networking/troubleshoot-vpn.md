@@ -4,12 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: 온-프레미스 네트워크와 Azure 간의 VPN 게이트웨이 연결 문제를 해결합니다.
 author: telmosampaio
 ms.date: 10/08/2018
-ms.openlocfilehash: 501429a614fb39177312a374c19ac40213234e42
-ms.sourcegitcommit: 8d951fd7e9534054b160be48a1881ae0857561ef
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: networking
+ms.openlocfilehash: 49dfcf444665ef526e76cac0f4ad13104a142840
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53329468"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485931"
 ---
 # <a name="troubleshoot-a-hybrid-vpn-connection"></a>하이브리드 VPN 컬렉션 문제 해결
 
@@ -266,9 +270,9 @@ ProvisioningState          : Succeeded
 
 ![VPN 네트워크 성능 그래프 예](../_images/guidance-hybrid-network-vpn/RRAS-perf-graph.png)
 
-**응용 프로그램 부하에 맞는 올바른 VM 개수와 크기를 배포했는지 확인합니다.** Azure VNet의 가상 머신 중 느리게 실행되고 있는 VM은 없는지 확인합니다. 느리게 실행되고 있는 VM이 있다면 과부하되었거나 부하를 처리할 VM이 너무 적거나 부하 분산 장치가 올바르게 구성되어 있지 않은 것일 수 있습니다. 원인을 알아내려면 [진단 정보를 캡처 및 분석][azure-vm-diagnostics]합니다. 결과는 Azure Portal을 사용하여 검사할 수 있으며, 그 밖에도 다양한 타사 도구를 사용하여 성능 데이터를 자세히 검사할 수 있습니다.
+**애플리케이션 부하에 맞는 올바른 VM 개수와 크기를 배포했는지 확인합니다.** Azure VNet의 가상 머신 중 느리게 실행되고 있는 VM은 없는지 확인합니다. 느리게 실행되고 있는 VM이 있다면 과부하되었거나 부하를 처리할 VM이 너무 적거나 부하 분산 장치가 올바르게 구성되어 있지 않은 것일 수 있습니다. 원인을 알아내려면 [진단 정보를 캡처 및 분석][azure-vm-diagnostics]합니다. 결과는 Azure Portal을 사용하여 검사할 수 있으며, 그 밖에도 다양한 타사 도구를 사용하여 성능 데이터를 자세히 검사할 수 있습니다.
 
-**응용 프로그램이 클라우드 리소스를 효율적으로 사용하고 있는지 확인합니다.** 각 VM에서 실행 중인 애플리케이션 코드를 이용하여 각 애플리케이션에서 리소스를 최대한 효율적으로 사용하고 있는지 확인합니다. [Application Insights][application-insights]와 같은 도구를 사용할 수 있습니다.
+**애플리케이션이 클라우드 리소스를 효율적으로 사용하고 있는지 확인합니다.** 각 VM에서 실행 중인 애플리케이션 코드를 이용하여 각 애플리케이션에서 리소스를 최대한 효율적으로 사용하고 있는지 확인합니다. [Application Insights][application-insights]와 같은 도구를 사용할 수 있습니다.
 
 <!-- links -->
 

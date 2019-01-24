@@ -3,12 +3,16 @@ title: 마이크로 서비스의 수집 및 워크플로
 description: 마이크로 서비스의 수집 및 워크플로
 author: MikeWasson
 ms.date: 10/23/2018
-ms.openlocfilehash: 8a6d2d3209ca61e0588c96ed92862c1a7b91109f
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: microservices
+ms.openlocfilehash: aa5c2b4357ed53da9bebf4795fcbefb89afe0c78
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112807"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482581"
 ---
 # <a name="designing-microservices-ingestion-and-workflow"></a>마이크로서비스 디자인: 수집 및 워크플로
 

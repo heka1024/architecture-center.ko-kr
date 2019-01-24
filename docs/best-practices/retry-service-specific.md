@@ -4,13 +4,16 @@ titleSuffix: Best practices for cloud applications
 description: 재시도 메커니즘 설정에 대한 서비스 관련 지침입니다.
 author: dragon119
 ms.date: 08/13/2018
+ms.topic: best-practice
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: ad26b55625276ae95004652acfd745b2c4b53a8f
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: d99c63b9cb5f2ed7ffcd869b5b8ac7910b9dabe3
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307353"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487146"
 ---
 # <a name="retry-guidance-for-specific-services"></a>특정 서비스에 대한 다시 시도 지침
 
@@ -158,7 +161,7 @@ Azure IoT 장치 SDK는 네트워크, 프로토콜 또는 애플리케이션에�
 ### <a name="more-information"></a>자세한 정보
 
 - [IoT Hub 재시도 정책](/azure/iot-hub/iot-hub-reliability-features-in-sdks)
-- [IoT Hub 장치 연결 끊김 문제 해결](/azure/iot-hub/iot-hub-troubleshoot-connectivity)
+- [IoT Hub 디바이스 연결 끊김 문제 해결](/azure/iot-hub/iot-hub-troubleshoot-connectivity)
 
 ## <a name="azure-redis-cache"></a>Azure Redis 캐시(영문)
 
@@ -689,7 +692,7 @@ public class BloggingContextConfiguration : DbConfiguration
 }
 ```
 
-그런 다음, 애플리케이션이 시작될 때 **DbConfiguration** 인스턴스의 **SetConfiguration** 메서드를 사용하여 모든 작업에 대해 기본 재시도 전략으로 지정할 수 있습니다. 기본적으로 EF는 구성 클래스를 자동으로 검색하고 사용합니다.
+그런 다음 애플리케이션이 시작될 때 **DbConfiguration** 인스턴스의 **SetConfiguration** 메서드를 사용하여 모든 작업에 대해 기본 재시도 전략으로 지정할 수 있습니다. 기본적으로 EF는 구성 클래스를 자동으로 검색하고 사용합니다.
 
 ```csharp
 DbConfiguration.SetConfiguration(new BloggingContextConfiguration());

@@ -4,12 +4,15 @@ description: 일반적인 시나리오에서 Azure 구독 관리를 구현하는
 author: rdendtler
 ms.date: 01/03/2017
 ms.author: rodend
-ms.openlocfilehash: 51be0e1cdbcb3258102c9e4a4790764cada98d1e
-ms.sourcegitcommit: 9eecff565392273d11b8702f1fcecb4d75e27a15
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: cbf3aae20639d26a73aac07e1b66374af09fbb38
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48243668"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486211"
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Azure 엔터프라이즈 스캐폴드 구현 예제
 이 문서에서는 기업에서 [Azure 엔터프라이즈 스캐폴드](azure-scaffold.md)에 대한 권장 사항을 구현하는 방법에 대한 예를 제공합니다. Contoso라는 가상의 회사를 사용하여 일반적인 시나리오의 모범 사례를 보여 줍니다.

@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Azure에서 Linux 가상 머신을 실행하는 방법에 대한 모범 사례입니다.
 author: telmosampaio
 ms.date: 12/13/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: 2989cd812c7a3ac6c9e7b8fbf23639b2a95d0b41
-ms.sourcegitcommit: 032f402482762f4e674aeebbc122ad18dfba11eb
+ms.openlocfilehash: ec71e35bec0fa9fad604456130f8596fcf127ebb
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53396439"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485658"
 ---
 # <a name="run-a-linux-virtual-machine-on-azure"></a>Azure에서 Linux 가상 머신 실행
 
@@ -62,7 +65,7 @@ sudo mount /dev/sdc1 /data1
 
 데이터 디스크를 추가하면 디스크에 LUN(논리 단위 번호) ID가 할당됩니다. 예를 들어, 디스크를 교체하고 동일한 LUN ID를 유지하거나 특정 LUN ID를 검색하는 애플리케이션이 있는 경우 필요에 따라 LUN ID &mdash;을(를) 지정할 수 있습니다. 그렇지만 LUN ID는 디스크마다 고유해야 합니다.
 
-프리미엄 저장소 계정에서 VM의 디스크가 SSD이기 때문에 I/O 스케줄러를 변경하여 SSD의 성능을 최적화하려고 할 수 있습니다. SSD에 NOOP 스케줄러를 사용하는 것이 일반적으로 권장되지만 [iostat] 와 같은 도구를 사용하여 워크로드에 대한 디스크 I/O 성능을 모니터링할 수 있습니다.
+Premium Storage 계정에서 VM의 디스크가 SSD이기 때문에 I/O 스케줄러를 변경하여 SSD의 성능을 최적화하려고 할 수 있습니다. SSD에 NOOP 스케줄러를 사용하는 것이 일반적으로 권장되지만 [iostat] 와 같은 도구를 사용하여 워크로드에 대한 디스크 I/O 성능을 모니터링할 수 있습니다.
 
 VM은 임시 디스크를 사용하여 만들어집니다. 이 디스크는 호스트 컴퓨터의 실제 드라이브에 저장됩니다. Azure Storage에는 저장되지 *않으며* 다시 부팅되는 동안에 그리고 다른 VM의 수명 주기 이벤트 동안에 삭제될 수 있습니다. 페이지 또는 스왑 파일과 같은 임시 데이터에 대해서만 이 디스크를 사용합니다. Linux VM의 경우 임시 디스크는 `/dev/sdb1`이며 `/mnt/resource` 또는 `/mnt`에 탑재됩니다.
 
@@ -95,13 +98,13 @@ VM은 임시 디스크를 사용하여 만들어집니다. 이 디스크는 호�
 
 **VM 중지**. Azure에서는 "중지됨"과 "할당 취소됨" 상태를 구분합니다. VM 상태가 중지되면 요금이 청구되지만 VM 할당이 취소되면 청구되지 않습니다. Azure Portal에서 **중지** 버튼은 VM 할당을 취소합니다. 로그인한 상태에서 OS를 통해 종료하면 VM은 중지되지만 할당 취소되지 **않으므로** 비용이 계속 청구됩니다.
 
-**VM 삭제**. VM을 삭제하는 경우 VHD는 삭제되지 않습니다. 즉, 데이터 손실 없이 안전하게 VM을 삭제할 수 있습니다. 그러나 저장소에 대한 비용은 계속 청구됩니다. VHD를 삭제하려면 [Blob 저장소][blob-storage]에서 파일을 삭제합니다. 실수로 삭제하지 않도록 하려면 [리소스 잠금][resource-lock]을 사용하여 전체 리소스 그룹을 잠그거나 VM과 같은 개별 리소스를 잠급니다.
+**VM 삭제**. VM을 삭제하는 경우 VHD는 삭제되지 않습니다. 즉, 데이터 손실 없이 안전하게 VM을 삭제할 수 있습니다. 그러나 저장소에 대한 비용은 계속 청구됩니다. VHD를 삭제하려면 [Blob Storage][blob-storage]에서 파일을 삭제합니다. 실수로 삭제하지 않도록 하려면 [리소스 잠금][resource-lock]을 사용하여 전체 리소스 그룹을 잠그거나 VM과 같은 개별 리소스를 잠급니다.
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
 [Azure Security Center][security-center]를 사용하여 Azure 리소스의 보안 상태를 중앙에서 살펴볼 수 있습니다. Security Center는 잠재적인 보안 문제를 모니터링하고 배포의 보안 상태에 대한 종합적인 그림을 제공합니다. 보안 센터는 각 Azure 구독을 기준으로 구성됩니다. [Security Center 표준에 Azure 구독 온보딩][security-center-get-started]에서 설명된 대로 보안 데이터 컬렉션을 활성화합니다. 데이터 수집이 사용되도록 설정되면 보안 센터는 해당 구독에서 만든 모든 VM을 자동으로 검색합니다.
 
-**패치 관리**. 이 기능이 설정된 경우 Security Center는 보안 및 중요 업데이트 누락 여부를 확인합니다. VM의 [그룹 정책 설정][group-policy]를 사용하여 자동 시스템 업데이트를 사용하도록 설정합니다.
+**패치 관리**. 이 기능이 설정된 경우 Security Center는 보안 및 중요 업데이트 누락 여부를 확인합니다. VM의 [그룹 정책 설정][group-policy]을 사용하여 자동 시스템 업데이트를 사용하도록 설정합니다.
 
 **맬웨어 방지**. 이 기능이 설정되면 보안 센터는 맬웨어 방지 소프트웨어 설치 여부를 확인합니다. 또한 보안 센터를 사용하여 Azure 포털 내에서 맬웨어 방지 소프트웨어를 설치할 수도 있습니다.
 
@@ -130,6 +133,7 @@ VM은 임시 디스크를 사용하여 만들어집니다. 이 디스크는 호�
 [disk-encryption]: /azure/security/azure-security-disk-encryption
 [enable-monitoring]: /azure/monitoring-and-diagnostics/insights-how-to-use-diagnostics
 [fqdn]: /azure/virtual-machines/virtual-machines-linux-portal-create-fqdn
+[group-policy]: /windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates
 [iostat]: https://en.wikipedia.org/wiki/Iostat
 [manage-vm-availability]: /azure/virtual-machines/virtual-machines-linux-manage-availability
 [managed-disks]: /azure/storage/storage-managed-disks-overview

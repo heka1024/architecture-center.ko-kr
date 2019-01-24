@@ -4,13 +4,16 @@ titleSuffix: Azure Resiliency Technical Guidance
 description: 온-프레미스 인프라에서 Azure에 이르는 복구 시스템의 이해 및 설계.
 author: adamglick
 ms.date: 08/18/2016
-ms.custom: seojan19
-ms.openlocfilehash: 5e4c4ea4eede5f11e787b9957b8de47736645672
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
+ms.custom: seojan19, resiliency
+ms.openlocfilehash: 768e53e1024533b384c610378385c96d88d8571f
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111362"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487375"
 ---
 [!INCLUDE [header](../_includes/header.md)]
 
@@ -53,7 +56,7 @@ Azure Backup을 통해 Windows Server 2012(또는 이상), Windows Server 2012 E
 
 ## <a name="database"></a>데이터베이스
 
-AlwaysOn 가용성 그룹, 데이터베이스 미러링, 로그 전달, Azure Blob 저장소를 사용한 백업 및 복원을 사용하여 하이브리드 IT 환경 내에 SQL Server 데이터베이스에 대한 재해 복구 솔루션을 구축할 수 있습니다. 다음 솔루션은 모두 Azure Virtual Machines에서 실행되는 SQL Server를 사용합니다.
+AlwaysOn 가용성 그룹, 데이터베이스 미러링, 로그 전달, Azure Blob Storage를 사용한 백업 및 복원을 사용하여 하이브리드 IT 환경 내에 SQL Server 데이터베이스에 대한 재해 복구 솔루션을 구축할 수 있습니다. 다음 솔루션은 모두 Azure Virtual Machines에서 실행되는 SQL Server를 사용합니다.
 
 데이터베이스 복제본이 온-프레미스와 클라우드 모두에 존재하는 하이브리드 IT 환경에서 AlwaysOn 가용성 그룹을 사용할 수 있습니다. 다음 다이어그램에 나와 있습니다.
 
@@ -67,9 +70,9 @@ AlwaysOn 가용성 그룹, 데이터베이스 미러링, 로그 전달, Azure Bl
 
 ![하이브리드 클라우드 아키텍처에서 SQL 서버 로그 전달](./images/technical-guidance-recovery-on-premises-azure/SQL_Server_Disaster_Recovery-5.png)
 
-마지막으로 Azure Blob 저장소에 직접 온-프레미스 데이터베이스를 백업할 수 있습니다.
+마지막으로 Azure Blob Storage에 직접 온-프레미스 데이터베이스를 백업할 수 있습니다.
 
-![하이브리드 클라우드 아키텍처의 Azure Blob 저장소에 SQL 서버 백업](./images/technical-guidance-recovery-on-premises-azure/SQL_Server_Disaster_Recovery-6.png)
+![하이브리드 클라우드 아키텍처의 Azure Blob Storage에 SQL 서버 백업](./images/technical-guidance-recovery-on-premises-azure/SQL_Server_Disaster_Recovery-6.png)
 
 자세한 내용은 [Azure 가상 머신에서 SQL Server의 고가용성 및 재해 복구](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr/) 및 [Azure 가상 머신에서 SQL Server Backup 및 복원](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery/)을 참조하세요.
 
@@ -100,6 +103,6 @@ AlwaysOn 가용성 그룹, 데이터베이스 미러링, 로그 전달, Azure Bl
 3. AlwaysOn 가용성 그룹을 설정합니다.
 4. 인증서 기반 데이터베이스 미러링을 구성합니다.
 5. 로그 전달을 사용합니다.
-6. 온-프레미스 데이터베이스를 Azure Blob 저장소에 백업합니다.
+6. 온-프레미스 데이터베이스를 Azure Blob Storage에 백업합니다.
 
 <!-- markdownlint-enable MD024 -->

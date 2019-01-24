@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션을 실행합니다.
 author: mikewarr
 ms.date: 09/20/2018
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
 ms.custom: fasttrack
-ms.openlocfilehash: af43a60e952d75f84b4c7903a1567b0c76b9f4c4
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 0bd0590ccc2975481e23ac2154c4f0998e1f0877
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643937"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488480"
 ---
 # <a name="running-computational-fluid-dynamics-cfd-simulations-on-azure"></a>Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션 실행
 
@@ -86,7 +89,7 @@ Resource Manager 템플릿을 배포하기 전에 다음 단계를 수행하세�
 3. [CycleCloud 서버에 로그인][cycle-login]하여 새 클러스터를 만들고 구성합니다.
 4. [클러스터를 만듭니다][cycle-create].
 
-Avere Cache는 애플리케이션 작업 데이터의 읽기 처리량을 대폭 높일 수 있는 선택적 솔루션입니다. Avere vFXT for Azure는 이러한 엔터프라이즈 HPC 애플리케이션을 클라우드에서 실행하는 문제를 해결하는 한편, 온-프레미스 또는 Azure Blob 저장소에 저장된 데이터를 활용합니다.
+Avere Cache는 애플리케이션 작업 데이터의 읽기 처리량을 대폭 높일 수 있는 선택적 솔루션입니다. Avere vFXT for Azure는 이러한 엔터프라이즈 HPC 응용 프로그램을 클라우드에서 실행하는 문제를 해결하는 한편, 온-프레미스 또는 Azure Blob Storage에 저장된 데이터를 활용합니다.
 
 온-프레미스 저장소와 클라우드 계산을 모두 사용하는 하이브리드 인프라를 계획하고 있는 조직의 경우 HPC 애플리케이션이 NAS 장치에 저장된 데이터를 사용하여 Azure로 “버스트”하고 필요에 따라 가상 CPU를 작동할 수 있습니다. 데이터 집합은 클라우드로 완전히 이동되지 않습니다. 요청된 바이트는 처리 중에 Avere 클러스터를 사용하여 일시적으로 캐시됩니다.
 

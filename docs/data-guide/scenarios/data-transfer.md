@@ -3,12 +3,15 @@ title: 데이터 전송 기술 선택
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 1cb763ade2aa263d07a59cc6bfc29d59bec7af19
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: c58d06813e3a500c6bb1b6c7889e65f401be6c33
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113045"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484536"
 ---
 # <a name="transferring-data-to-and-from-azure"></a>Azure에서의 데이터 전송
 
@@ -26,7 +29,7 @@ ms.locfileid: "54113045"
 
 Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 다음과 같습니다.
 
-- **Azure Import/Export**. [Azure Import/Export 서비스](/azure/storage/common/storage-import-export-service)를 사용하면 내부 SATA HDD 또는 SDD를 Azure 데이터 센터에 배송하여 대량의 데이터를 Azure Blob 저장소 또는 Azure Files에 안전하게 전송할 수 있습니다. 이 서비스를 사용하여 데이터를 Azure Storage에서 하드 디스크 드라이브로 전송하고, 온-프레미스에 로드할 수 있게 사용자에게 배송할 수도 있습니다.
+- **Azure Import/Export**. [Azure Import/Export 서비스](/azure/storage/common/storage-import-export-service)를 사용하면 내부 SATA HDD 또는 SDD를 Azure 데이터 센터에 배송하여 대량의 데이터를 Azure Blob Storage 또는 Azure Files에 안전하게 전송할 수 있습니다. 이 서비스를 사용하여 데이터를 Azure Storage에서 하드 디스크 드라이브로 전송하고, 온-프레미스에 로드할 수 있게 사용자에게 배송할 수도 있습니다.
 
 - **Azure Data Box**. [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)는 Azure Import/Export 서비스처럼 작동하는 Microsoft에서 제공한 어플라이언스입니다. Microsoft는 독자적이며 안전한 변조 방지 전송 어플라이언스를 사용자에게 배송한 후, 종단 간 내부 프로세스를 처리합니다. 사용자는 이러한 프로세스를 포털을 통해 추적할 수 있습니다. Azure Data Box 서비스의 한 가지 이점은 사용 편의성입니다. 여러 하드 드라이브를 구입하고, 준비하고, 각 드라이브로 파일을 전송할 필요가 없습니다. Azure Data Box는 다양한 업계의 주도적인 Azure 파트너가 지원하므로, 제품에서 클라우드로의 오프라인 전송을 보다 쉽게 원활히 진행할 수 있습니다.
 
@@ -46,7 +49,7 @@ Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 �
 
 - **Sqoop**. [Sqoop](/azure/hdinsight/hadoop/hdinsight-use-sqoop)는 Apache 프로젝트이며, Hadoop 에코시스템의 일부입니다. 모든 HDInsight 클러스터에 미리 설치됩니다. HDInsight 클러스터와 관계형 데이터베이스(예: SQL, Oracle, MySQL 등) 간의 데이터 전송을 허용합니다. Sqoop는 가져오기 및 내보내기를 포함하는 관련 도구의 컬렉션입니다. Sqoop는 Azure Storage Blob 또는 Data Lake Store 연결 스토리지를 사용하는 HDInsight 클러스터에 작동합니다.
 
-- **PolyBase**. [PolyBase](/sql/relational-databases/polybase/get-started-with-polybase)는 T-SQL 언어를 통해 데이터베이스 외부의 데이터에 액세스하는 기술입니다. SQL Server 2016에서는 이 기술을 통해 Hadoop에서 외부 데이터에 대해 쿼리를 실행하거나 Azure Blob 저장소에서 데이터를 가져오거나 내보낼 수 있습니다. Azure SQL Data Warehouse에서는 Azure Blob 저장소 및 Azure Data Lake Store에서 데이터를 가져오거나 내보낼 수 있습니다. 현재, PolyBase는 SQL Data Warehouse로 데이터를 가져오는 가장 빠른 방법입니다.
+- **PolyBase**. [PolyBase](/sql/relational-databases/polybase/get-started-with-polybase)는 T-SQL 언어를 통해 데이터베이스 외부의 데이터에 액세스하는 기술입니다. SQL Server 2016에서는 이 기술을 통해 Hadoop에서 외부 데이터에 대해 쿼리를 실행하거나 Azure Blob Storage에서 데이터를 가져오거나 내보낼 수 있습니다. Azure SQL Data Warehouse에서는 Azure Blob Storage 및 Azure Data Lake Store에서 데이터를 가져오거나 내보낼 수 있습니다. 현재, PolyBase는 SQL Data Warehouse로 데이터를 가져오는 가장 빠른 방법입니다.
 
 - **Hadoop 명령줄**. HDInsight 클러스터 헤드 노드에 데이터가 있는 경우 `hadoop -copyFromLocal` 명령을 사용하여 해당 데이터를 Azure Storage Blob 또는 Azure Data Lake Store 같은 클러스터 연결 스토리지로 복사할 수 있습니다. Hadoop 명령을 사용하려면 먼저 헤드 노드에 연결해야 합니다. 연결되면 저장소에 파일을 업로드할 수 있습니다.
 
@@ -54,9 +57,9 @@ Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 �
 
 소수의 파일 또는 데이터 개체만 전송하려고 하며 프로세스를 자동화할 필요는 없다면 다음 옵션을 고려합니다.
 
-- **Azure Storage 탐색기**. [Azure Storage 탐색기](https://azure.microsoft.com/features/storage-explorer/)는 Azure Storage 계정의 내용을 관리할 수 있는 플랫폼 간 도구입니다. BLOB, 파일, 큐, 테이블 및 Azure Cosmos DB 엔터티를 업로드, 다운로드 및 관리할 수 있습니다. Blob 저장소에서 사용하여 Blob 및 폴더를 관리하고, 로컬 파일 시스템과 Blob 저장소 간에 또는 저장소 계정 간에 Blob을 업로드 및 다운로드할 수 있습니다.
+- **Azure Storage 탐색기**. [Azure Storage 탐색기](https://azure.microsoft.com/features/storage-explorer/)는 Azure Storage 계정의 내용을 관리할 수 있는 플랫폼 간 도구입니다. BLOB, 파일, 큐, 테이블 및 Azure Cosmos DB 엔터티를 업로드, 다운로드 및 관리할 수 있습니다. Blob Storage에서 사용하여 Blob 및 폴더를 관리하고, 로컬 파일 시스템과 Blob Storage 간에 또는 스토리지 계정 간에 Blob을 업로드 및 다운로드할 수 있습니다.
 
-- **Azure Portal**. Blob 저장소와 Data Lake Store 둘 다 파일을 탐색한 호 새 파일을 한 번에 하나씩 업로드하기 위한 웹 기반 인터페이스를 제공합니다. 파일을 빠르게 탐색하거나 많은 새 파일을 간편하게 업로드하기 위해 도구를 설치하거나 명령을 실행하는 방식을 원치 않을 경우에 유용한 옵션입니다.
+- **Azure Portal**. Blob Storage와 Data Lake Store 둘 다 파일을 탐색한 호 새 파일을 한 번에 하나씩 업로드하기 위한 웹 기반 인터페이스를 제공합니다. 파일을 빠르게 탐색하거나 많은 새 파일을 간편하게 업로드하기 위해 도구를 설치하거나 명령을 실행하는 방식을 원치 않을 경우에 유용한 옵션입니다.
 
 ## <a name="data-pipeline"></a>데이터 파이프라인
 
@@ -102,8 +105,8 @@ Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 �
 | 빅 데이터에 최적화 | 예 | 예 |  예 |
 | 관계형 데이터베이스로 복사 |  아니요 | 예 | 아니요 |
 | 관계형 데이터베이스에서 복사 |  아니요 | 예 | 아니요 |
-| Blob 저장소로 복사 |  예 | 예 | 예 |
-| Blob 저장소에서 복사 | 예 |  예 | 아니요 |
+| Blob Storage로 복사 |  예 | 예 | 예 |
+| Blob Storage에서 복사 | 예 |  예 | 아니요 |
 | Data Lake Store로 복사 | 예 | 예 | 예 |
 | Data Lake Store에서 복사 | 예 | 예 | 아니요 |
 
@@ -117,8 +120,8 @@ Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 �
 | 빅 데이터에 최적화 | 아니요 | 아니요 | 아니요 | 예 <sup>1</sup> | 예 <sup>2</sup> |
 | 관계형 데이터베이스로 복사 | 아니요 | 아니요 | 아니요 | 아니요 | 예 |
 | 관계형 데이터베이스에서 복사 | 아니요 | 아니요 | 아니요 | 아니요 | 예 |
-| Blob 저장소로 복사 | 예 | 예 | 예 | no | 예 |
-| Blob 저장소에서 복사 | 예 | 예 | 예 | 예 | 예 |
+| Blob Storage로 복사 | 예 | 예 | 예 | no | 예 |
+| Blob Storage에서 복사 | 예 | 예 | 예 | 예 | 예 |
 | Data Lake Store로 복사 | 아니요 | 아니요 | 예 | 예 |  예 |
 | Data Lake Store에서 복사 | 아니요 | 아니요 | 예 | 예 | 예 |
 
@@ -134,15 +137,15 @@ Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 �
 | --- | --- | --- | --- |
 | 빅 데이터에 최적화 | 아니요 | 아니요 | 예 |
 | 관계형 데이터베이스로 복사 | 아니요 | 아니요 | 예 |
-| 관계형 데이터베이스로 복사 | 아니요 | 아니요 | 예 |
-| Blob 저장소로 복사 | 예 | no | 예 |
-| Blob 저장소에서 복사 | 예 | no | 예 |
+| 관계형 데이터베이스에서 복사 | 아니요 | 아니요 | 예 |
+| Blob Storage로 복사 | 예 | no | 예 |
+| Blob Storage에서 복사 | 예 | no | 예 |
 | Data Lake Store로 복사 | 아니요 | 아니요 | 예 |
 | Data Lake Store에서 복사 | 아니요 | 아니요 | 예 |
-| Blob 저장소로 업로드 | 예 | 예 | 예 |
+| Blob Storage로 업로드 | 예 | 예 | 예 |
 | Data Lake Store로 업로드 | 예 | 예 | 예 |
 | 데이터 전송 조정 | 아니요 | 아니요 | 예 |
 | 사용자 지정 데이터 변환 | 아니요 | 아니요 | 예 |
 | 가격 책정 모델 | 무료 | 무료 | 사용당 지급 |
 
-\* 이 경우의 Azure Portal은 Blob 저장소 및 Data Lake Store에 대해 웹 기반 탐색 도구를 사용하는 것을 의미합니다.
+\* 이 경우의 Azure Portal은 Blob Storage 및 Data Lake Store에 대해 웹 기반 탐색 도구를 사용하는 것을 의미합니다.

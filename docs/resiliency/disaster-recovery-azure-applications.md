@@ -3,12 +3,16 @@ title: Azure 애플리케이션에 대한 재해 복구
 description: Microsoft Azure에서 재해 복구를 위한 애플리케이션 설계에 대한 기술 개요와 자세한 정보입니다.
 author: adamglick
 ms.date: 09/12/2018
-ms.openlocfilehash: 5101230a628cb70501cb3e6122b616c8c55cf6b2
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
+ms.custom: resiliency
+ms.openlocfilehash: bb9045e5656f86fe6b164b5ba831c1069cef6183
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113181"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486835"
 ---
 # <a name="disaster-recovery-for-azure-applications"></a>Azure 애플리케이션에 대한 재해 복구
 
@@ -127,7 +131,7 @@ Azure Redis Cache는 클라우드 서비스 배포 내에서 애플리케이션�
 
 기본, 표준 및 프리미엄 SQL Database 계층의 경우 특정 시점 복원을 활용하여 데이터베이스를 복구할 수 있습니다. 자세한 내용은 [개요: SQL Database의 클라우드 무중단 업무 방식 및 데이터베이스 재해 복구](/azure/sql-database/sql-database-business-continuity/)를 참조하세요. 또 다른 방법은 SQL Database에 활성 지역 복제를 사용하는 것입니다. 이는 동일한 Azure 지역 또는 다른 Azure 지역에서도 보조 데이터베이스에 대한 데이터베이스 변경 사항을 자동으로 복제합니다. 이 문서에 나타난 수동 데이터 동기화 기술 중 일부에 대해 잠재적인 대체 형식을 제공합니다. 자세한 내용은 [개요: SQL Database 활성 지역 복제](/azure/sql-database/sql-database-geo-replication-overview/)를 참조하세요.
 
-백업 및 복원에 수동 접근 방식을 사용할 수도 있습니다. DATABASE COPY 명령을 사용하여 트랜잭션 일관성으로 데이터베이스의 백업 복사본을 만듭니다. Azure Blob 저장소에 저장된 BACPAC 파일(데이터베이스 스키마 및 연결된 데이터가 들어 있는 압축된 파일)에 데이터베이스 내보내기를 지원하는 Azure SQL Database의 가져오기/내보내기 서비스를 사용할 수도 있습니다.
+백업 및 복원에 수동 접근 방식을 사용할 수도 있습니다. DATABASE COPY 명령을 사용하여 트랜잭션 일관성으로 데이터베이스의 백업 복사본을 만듭니다. Azure Blob Storage에 저장된 BACPAC 파일(데이터베이스 스키마 및 연결된 데이터가 들어 있는 압축된 파일)에 데이터베이스 내보내기를 지원하는 Azure SQL Database의 가져오기/내보내기 서비스를 사용할 수도 있습니다.
 
 Azure Storage의 기본 제공 중복성으로 인해 동일한 지역에 두 개의 백업 파일 복제본을 만듭니다. 그러나 백업 프로세스를 실행하는 빈도가 RPO를 결정하며 이는 재해 시나리오에서 손실될 수는 데이터 양입니다. 예를 들어 매 정시에 백업을 수행하고 재해는 정시가 되기 2분 전에 발생한다고 가정합니다. 마지막으로 백업이 수행된 후에 기록된 데이터의 58분이 손실됩니다. 또한 지역 전체 서비스 중단을 방지하려면 대체 지역에 BACPAC 파일을 복사해야 합니다. 그러면 대체 지역에 이러한 백업을 복원하는 옵션이 있습니다. 자세한 내용은 [개요: SQL Database의 클라우드 무중단 업무 방식 및 데이터베이스 재해 복구](/azure/sql-database/sql-database-business-continuity/)를 참조하세요.
 
@@ -241,7 +245,7 @@ Azure Site Recovery를 사용하여 Azure VM 복제를 활성화하는 경우 �
 
 활성-수동 토폴로지의 첫 번째 변형에서 주 지역에는 배포된 클라우드 서비스 애플리케이션이 있습니다. 하지만 재배포 방식과 달리 두 영역은 데이터베이스의 내용과 동기화됩니다. 자세한 내용은 [재해 복구를 위한 트랜잭션 데이터 패턴](#transactional-data-pattern-for-disaster-recovery)의 섹션을 참조하세요. 재해가 발생하는 경우 활성화 요구 사항이 더 적어집니다. 트래픽을 다시 라우팅하기 위해 보조 지역에서 애플리케이션을 시작하고 연결 문자열을 새로운 데이터베이스로 변경하며 DNS 항목을 변경합니다.
 
-재배포 방식과 마찬가지로 빠른 배포를 위해 보조 지역의 Azure Blob 저장소에 서비스 패키지를 이미 저장했어야 합니다. 그러나 데이터베이스가 준비되어 실행되므로 데이터베이스 복원 작업에 필요한 오버헤드의 다수를 발생시키지 않습니다. 이렇게 하면 상당한 시간을 절약하여 저렴한 DR 패턴(및 가장 자주 사용되는 패턴)이 됩니다.
+재배포 방식과 마찬가지로 빠른 배포를 위해 보조 지역의 Azure Blob Storage에 서비스 패키지를 이미 저장했어야 합니다. 그러나 데이터베이스가 준비되어 실행되므로 데이터베이스 복원 작업에 필요한 오버헤드의 다수를 발생시키지 않습니다. 이렇게 하면 상당한 시간을 절약하여 저렴한 DR 패턴(및 가장 자주 사용되는 패턴)이 됩니다.
 
 ![활성-수동, 데이터베이스에만 해당](./images/disaster-recovery-azure-applications/active-passive-database-only.png)
 

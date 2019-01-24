@@ -4,13 +4,16 @@ titleSuffix: Best practices for cloud applications
 description: CDN(Content Delivery Network)을 사용하여 Azure에 호스팅되는 고대역폭 콘텐츠를 제공하는 방법에 대한 지침입니다.
 author: dragon119
 ms.date: 02/02/2018
+ms.topic: best-practice
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 5fb3ac17833a2399bb73e9cc7064651090ac7ee1
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: f4ffe9c5cdd7a53ab8359ef303076c5e53e9e45c
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307207"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485216"
 ---
 # <a name="content-delivery-networks-cdns"></a>CDN(Content Delivery Network)
 
@@ -30,7 +33,7 @@ Azure에서 [Azure CDN(콘텐츠 배달 네트워크)](/azure/cdn/cdn-overview)�
 
 - 웹 사이트에서 종종 클라이언트 애플리케이션에 대한 정적 리소스를 제공합니다. 이미지, 스타일 시트, 문서, 파일, 클라이언트쪽 스크립트, HTML 페이지, HTML 조각 또는 서버가 각 요청에 대해 수정할 필요가 없는 기타 콘텐츠 등이 이러한 리소스에 해당할 수 있습니다. 애플리케이션이 런타임 시 항목을 만들고 CDN에서 사용할 수 있게 만들 수 있지만(현재 뉴스 헤드라인 목록 작성을 통해) 각 요청에 대해서는 그렇게 할 수 없습니다.
 
-- 휴대폰 및 태블릿 컴퓨터와 같은 장치에 공용 정적 및 공유 콘텐츠를 전달합니다. 애플리케이션 자체는 다양한 장치에서 실행되는 클라이언트에 API를 제공하는 웹 서비스입니다. 또한 클라이언트가 CDN 클라이언트 UI를 생성하는 데 사용할 정적 데이터 세트를 (웹 서비스를 통해) 제공할 수 있습니다. 예를 들어, CDN은 JSON 또는 XML 문서를 배포하는 데 사용할 수 있습니다.
+- 휴대폰 및 태블릿 컴퓨터와 같은 디바이스에 공용 정적 및 공유 콘텐츠를 전달합니다. 애플리케이션 자체는 다양한 장치에서 실행되는 클라이언트에 API를 제공하는 웹 서비스입니다. 또한 클라이언트가 CDN 클라이언트 UI를 생성하는 데 사용할 정적 데이터 세트를 (웹 서비스를 통해) 제공할 수 있습니다. 예를 들어, CDN은 JSON 또는 XML 문서를 배포하는 데 사용할 수 있습니다.
 
 - 어떠한 전용 계산 리소스 필요 없이 공용 정적 콘텐츠만으로 구성된 전체 웹 사이트를 클라이언트에 제공합니다.
 
@@ -40,7 +43,7 @@ Azure에서 [Azure CDN(콘텐츠 배달 네트워크)](/azure/cdn/cdn-overview)�
 
 - IoT(사물 인터넷) 솔루션 지원. 각 장치에 직접 펌웨어 업데이트를 배포해야 한다면 IoT 솔루션에 포함되는 방대한 수의 장치 및 어플라이언스 때문에 애플리케이션에 쉽게 과부하가 걸릴 수 있을 것입니다.
 
-- 애플리케이션을 확장할 필요 없이 필요 시 최대치 및 급격한 증가에 대처하여 그에 따른 실행 비용의 증가를 방지합니다. 예를 들어 특정 라우터 모델과 같은 하드웨어 장치 또는 스마트 TV와 같은 소비자 장치에 대한 운영 체제 업데이트를 릴리스할 때는 짧은 기간 동안 수백만 명의 사용자 및 장치가 이를 다운로드하므로 최고치의 수요가 발생하게 됩니다.
+- 애플리케이션을 확장할 필요 없이 필요 시 최대치 및 급격한 증가에 대처하여 그에 따른 실행 비용의 증가를 방지합니다. 예를 들어 특정 라우터 모델과 같은 하드웨어 디바이스 또는 스마트 TV와 같은 소비자 디바이스에 대한 운영 체제 업데이트를 릴리스할 때는 짧은 기간 동안 수백만 명의 사용자 및 디바이스가 이를 다운로드하므로 최고치의 수요가 발생하게 됩니다.
 
 ## <a name="challenges"></a>과제
 
@@ -108,7 +111,7 @@ CDN을 사용하여 글꼴 파일 같은 정적 자산을 배달하는 경우 *X
 
 - 응답에 CORS 헤더를 추가하도록 CDN을 구성합니다. 자세한 내용은 [CORS에서 Azure CDN 사용](/azure/cdn/cdn-cors)을 참조하세요.
 
-- 원본이 Azure Blob 저장소인 경우 저장소 엔드포인트에 CORS 규칙을 추가합니다. 자세한 내용은 [Azure Storage 서비스에 대한 크로스-원본 자원 공유(CORS) 지원](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services)을 참조하세요.
+- 원본이 Azure Blob Storage인 경우 스토리지 엔드포인트에 CORS 규칙을 추가합니다. 자세한 내용은 [Azure Storage 서비스에 대한 크로스-원본 자원 공유(CORS) 지원](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services)을 참조하세요.
 
 - CORS 헤더를 설정하도록 애플리케이션을 구성합니다. 예를 들어 ASP.NET Core 설명서에서 [CORS(원본 간 요청) 사용](/aspnet/core/security/cors)을 참조하세요.
 

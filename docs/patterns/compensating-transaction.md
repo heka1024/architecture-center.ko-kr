@@ -5,13 +5,16 @@ description: 여러 단계로 나뉘어 있지만 결국에는 일관적인 작�
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: b81151a6db08c2c14c7f26af3b4b79bfd22a18bb
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 5cefef36b7c763324de2e962d47509b1d1b2c968
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011619"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481208"
 ---
 # <a name="compensating-transaction-pattern"></a>보상 트랜잭션 패턴
 

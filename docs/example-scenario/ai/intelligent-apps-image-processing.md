@@ -4,12 +4,15 @@ titleSuffix: Azure Example Scenarios
 description: Azure 애플리케이션에 이미지 처리를 빌드합니다.
 author: david-stanford
 ms.date: 07/05/2018
-ms.openlocfilehash: 12dd197c6df4a8d7a90a09436d86ce4a9e5ccc72
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.openlocfilehash: 2630a2a353b2fb5fd6e77e49c7f2027b00503ea6
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643448"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484892"
 ---
 # <a name="image-classification-for-insurance-claims-on-azure"></a>Azure에서 보험 청구에 대한 이미지 분류
 
@@ -33,8 +36,8 @@ Computer Vision API 및 Azure Functions와 같은 Azure 서비스를 사용하�
 이 시나리오에서는 웹 또는 모바일 애플리케이션의 백 엔드 구성 요소에 대해 설명합니다. 시나리오를 통한 데이터 흐름은 다음과 같습니다.
 
 1. API 레이어는 Azure Functions를 사용하여 빌드됩니다. 이러한 API를 통해 애플리케이션은 Cosmos DB에서 이미지를 업로드하고 데이터를 검색할 수 있습니다.
-2. 이미지가 API 호출을 통해 업로드되면 Blob 저장소에 저장됩니다.
-3. Blob 저장소에 새 파일이 추가되면 Azure Function으로 Event Grid 알림이 전송됩니다.
+2. 이미지가 API 호출을 통해 업로드되면 Blob Storage에 저장됩니다.
+3. Blob Storage에 새 파일이 추가되면 Azure Function으로 Event Grid 알림이 전송됩니다.
 4. Azure Functions에서 분석을 위해 새로 업로드된 파일에 대한 링크를 Computer Vision API로 보냅니다.
 5. 데이터가 Computer Vision API로부터 반환되면 Azure Functions에서 Cosmos DB에 항목을 만들어 이미지 메타데이터와 함께 분석 결과를 유지합니다.
 
@@ -42,8 +45,8 @@ Computer Vision API 및 Azure Functions와 같은 Azure 서비스를 사용하�
 
 - [Computer Vision API](/azure/cognitive-services/computer-vision/home)는 Cognitive Services 제품군의 일부이며 각 이미지에 대한 정보를 검색하는 데 사용됩니다.
 - [Azure Functions](/azure/azure-functions/functions-overview)는 업로드된 이미지에 대한 이벤트 처리뿐만 아니라 웹 애플리케이션에 대한 백 엔드 API도 제공합니다.
-- [Event Grid](/azure/event-grid/overview)는 Blob 저장소에 새 이미지가 업로드되면 이벤트를 트리거합니다. 그런 다음, 이미지는 Azure Functions에서 처리됩니다.
-- [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)는 웹 애플리케이션에 업로드되는 모든 이미지 파일과 웹 애플리케이션에서 사용하는 모든 정적 파일을 저장합니다.
+- [Event Grid](/azure/event-grid/overview)는 Blob Storage에 새 이미지가 업로드되면 이벤트를 트리거합니다. 그런 다음, 이미지는 Azure Functions에서 처리됩니다.
+- [Blob Storage](/azure/storage/blobs/storage-blobs-introduction)는 웹 응용 프로그램에 업로드되는 모든 이미지 파일과 웹 응용 프로그램에서 사용하는 모든 정적 파일을 저장합니다.
 - [Cosmos DB](/azure/cosmos-db/introduction)는 Computer Vision API에서 처리한 결과를 포함하여 업로드된 각 이미지에 대한 메타데이터를 저장합니다.
 
 ## <a name="alternatives"></a>대안

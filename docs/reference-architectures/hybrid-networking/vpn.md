@@ -4,12 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: VPN을 사용하여 연결된 온-프레미스 네트워크 및 Azure Virtual Network를 포괄하는 보안 사이트 간 네트워크 아키텍처를 구현합니다.
 author: RohitSharma-pnp
 ms.date: 10/22/2018
-ms.openlocfilehash: 63e919041e4a8c7c9f90a49de05effc48cb743d8
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: networking
+ms.openlocfilehash: 515cd3f5d23957e0e153c9d25198b3cb98b92a5d
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110914"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487979"
 ---
 # <a name="connect-an-on-premises-network-to-azure-using-a-vpn-gateway"></a>VPN 게이트웨이를 사용하여 온-프레미스 네트워크를 Azure에 연결
 

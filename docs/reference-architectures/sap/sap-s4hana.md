@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Azure의 Linux 환경에서 고가용성을 통해 SAP S/4HANA를 실행하는 검증된 사례입니다.
 author: lbrader
 ms.date: 05/11/2018
-ms.custom: seodec18
-ms.openlocfilehash: 9eb73ddaf5b1cb815f037f46c7e187f61d126876
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, SAP, Linux
+ms.openlocfilehash: 519dac655065d53df5c918b55bda06ce8751c012
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53644175"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485743"
 ---
 # <a name="sap-s4hana-for-linux-virtual-machines-on-azure"></a>Azure의 Linux Virtual Machines용 SAP S/4HANA
 
@@ -48,7 +51,7 @@ ms.locfileid: "53644175"
 
 **게이트웨이**. 게이트웨이는 온-프레미스 네트워크를 Azure 가상 네트워크로 확장합니다. [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute)는 공용 인터넷을 통해 통신하지 않는 사설 연결을 만드는 데 권장되는 Azure 서비스이지만 [사이트 간 연결](/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)도 사용할 수 있습니다.
 
-**Azure Storage**. [Azure Storage](/azure/storage/)는 가상 머신의 VHD(가상 하드 디스크)용 영구 저장소를 제공하기 위해 필요합니다.
+**Azure Storage**. [Azure Storage](/azure/storage/)는 가상 머신의 VHD(가상 하드 디스크)용 영구 스토리지를 제공하기 위해 필요합니다.
 
 ## <a name="recommendations"></a>권장 사항
 

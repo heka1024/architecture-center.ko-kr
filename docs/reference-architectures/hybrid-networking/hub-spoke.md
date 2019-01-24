@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Azure에서 허브-스포크 네트워크 토폴로지를 구현합니다.
 author: telmosampaio
 ms.date: 10/08/2018
-ms.custom: seodec18
-ms.openlocfilehash: c7cf2923856b3c659876afcc89bb312e492c6409
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, networking
+ms.openlocfilehash: 4235e5d1bb3b202cff9f7c703f079651982aac59
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112450"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481272"
 ---
 # <a name="implement-a-hub-spoke-network-topology-in-azure"></a>Azure에서 허브-스포크 네트워크 토폴로지 구현
 

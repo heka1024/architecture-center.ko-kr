@@ -3,12 +3,15 @@ title: Azure Resource Manager 템플릿에서 개체를 매개 변수로 사용
 description: Azure Resource Manager 템플릿의 기능을 확장하여 개체를 매개 변수로 사용하는 방법을 설명합니다.
 author: petertay
 ms.date: 10/30/2018
-ms.openlocfilehash: f0826d8ed1ce446d295ebdacc66d8b0bef0b0dec
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.openlocfilehash: d7ef704670aa78738098f08d7a81fb74fa5ad59a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111209"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485998"
 ---
 # <a name="use-an-object-as-a-parameter-in-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿에서 개체를 매개 변수로 사용
 

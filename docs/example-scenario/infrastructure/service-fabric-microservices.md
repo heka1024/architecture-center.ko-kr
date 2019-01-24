@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: 대규모 모놀리식 애플리케이션을 마이크로 서비스로 분해합니다.
 author: timomta
 ms.date: 09/20/2018
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
 ms.custom: fasttrack
-ms.openlocfilehash: 90159b0cbfd3e7af542a79d050d153b4a3435a0d
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: 4563bf943d19def55ea18734b2d67df5087a99bd
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643818"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487108"
 ---
 # <a name="using-service-fabric-to-decompose-monolithic-applications"></a>Service Fabric을 사용하여 모놀리식 애플리케이션 분해
 

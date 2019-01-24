@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Azure를 사용하여 온-프레미스에 저장된 관계형 데이터에서 비즈니스 정보를 얻으세요.
 author: MikeWasson
 ms.date: 11/06/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: 2f15b8d4376638e6e8e522e5150a3b3c247cba8f
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 14adb9de7f46c3196e893451859385d87212b375
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54010293"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482408"
 ---
 # <a name="enterprise-bi-in-azure-with-sql-data-warehouse"></a>SQL Data Warehouse를 사용하는 Azure의 Enterprise BI
 
@@ -34,7 +37,7 @@ ms.locfileid: "54010293"
 
 ### <a name="ingestion-and-data-storage"></a>수집 및 데이터 저장소
 
-**Blob Storage** Blob 저장소는 SQL Data Warehouse로 로딩하기 전에 데이터를 복사하는 준비 영역으로 사용됩니다.
+**Blob Storage** Blob Storage는 SQL Data Warehouse로 로딩하기 전에 데이터를 복사하는 준비 영역으로 사용됩니다.
 
 **Azure SQL Data Warehouse** [SQL Data Warehouse](/azure/sql-data-warehouse/)는 대규모 데이터 분석을 수행하도록 설계되고 배포된 시스템입니다. 고성능 분석을 실행하는 데 적합하도록 하는 MPP(대규모 병렬 처리)를 지원합니다.
 
@@ -80,9 +83,9 @@ ms.locfileid: "54010293"
 
 Gzip 압축된 형식으로 내보낸 데이터를 저장하여 네트워크 전송 속도를 높일 수 있습니다. 그러나 압축된 파일을 웨어하우스로 로드하는 것은 압축되지 않은 파일을 로드하는 것보다 느리므로 더 빠른 네트워크 전송과 더 빠른 로딩 간에 균형 유지가 있습니다. Gzip 압축을 사용하려는 경우 단일 Gzip 파일을 만들지 마십시오. 대신 여러 개의 압축된 파일로 데이터를 분할합니다.
 
-### <a name="copy-flat-files-into-blob-storage"></a>플랫 파일을 Blob 저장소에 복사
+### <a name="copy-flat-files-into-blob-storage"></a>플랫 파일을 Blob Storage에 복사
 
-[AzCopy](/azure/storage/common/storage-use-azcopy) 유틸리티는 Azure Blob 저장소로 데이터의 고성능 복사를 위해 설계되었습니다.
+[AzCopy](/azure/storage/common/storage-use-azcopy) 유틸리티는 Azure Blob Storage로 데이터의 고성능 복사를 위해 설계되었습니다.
 
 **권장 사항:**
 
@@ -98,11 +101,11 @@ AzCopy는 공용 인터넷을 통해 저장소로 데이터를 이동합니다. 
 
 ### <a name="load-data-into-sql-data-warehouse"></a>SQL Data Warehouse로 데이터 로드
 
-[PolyBase](/sql/relational-databases/polybase/polybase-guide)를 사용하여 Blob 저장소에서 데이터 웨어하우스로 파일을 로드합니다. PolyBase는 SQL Data Warehouse의 MPP(대규모 병렬 처리) 아키텍처를 활용하도록 디자인되었으며 가장 빠르게 SQL Data Warehouse로 데이터를 로드할 수 있게 합니다.
+[PolyBase](/sql/relational-databases/polybase/polybase-guide)를 사용하여 Blob Storage에서 데이터 웨어하우스로 파일을 로드합니다. PolyBase는 SQL Data Warehouse의 MPP(대규모 병렬 처리) 아키텍처를 활용하도록 디자인되었으며 가장 빠르게 SQL Data Warehouse로 데이터를 로드할 수 있게 합니다.
 
 데이터 로드는 두 단계 프로세스로 이루어집니다.
 
-1. 데이터에 대한 외부 테이블 집합을 만듭니다. 외부 테이블은 웨어하우스의 외부에 저장된 데이터를 가리키는 테이블 정의이며 &mdash; 이 경우 Blob 저장소의 플랫 파일입니다. 이 단계는 데이터를 웨어하우스로 이동하지 않습니다.
+1. 데이터에 대한 외부 테이블 집합을 만듭니다. 외부 테이블은 웨어하우스의 외부에 저장된 데이터를 가리키는 테이블 정의이며 &mdash; 이 경우 Blob Storage의 플랫 파일입니다. 이 단계는 데이터를 웨어하우스로 이동하지 않습니다.
 2. 준비 테이블을 만들고, 준비 테이블로 데이터를 로드합니다. 이 단계는 데이터를 웨어하우스로 복사합니다.
 
 **권장 사항:**
@@ -195,7 +198,7 @@ Azure Analysis Services는 Azure AD(Azure Active Directory)를 사용하여 Anal
 참조 구현을 배포하고 실행하려면 [GitHub readme][github-folder]의 단계를 따릅니다. 다음을 배포합니다.
 
 - 온-프레미스 데이터베이스 서버를 시뮬레이션하는 Windows VM Power BI Desktop과 함께 SQL Server 2017 및 관련된 도구를 포함합니다.
-- SQL Server 데이터베이스에서 가져온 데이터를 저장할 Blob 저장소를 제공하는 Azure 저장소 계정
+- SQL Server 데이터베이스에서 가져온 데이터를 저장할 Blob Storage를 제공하는 Azure 스토리지 계정
 - Azure SQL Data Warehouse 인스턴스
 - Azure Analysis Services 인스턴스
 

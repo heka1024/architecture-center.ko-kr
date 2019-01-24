@@ -4,12 +4,15 @@ titleSuffix: Azure Example Scenarios
 description: Azure Bot Service를 사용하여 상거래 애플리케이션에 대해 대화형 챗봇을 빌드합니다.
 author: iainfoulds
 ms.date: 07/05/2018
-ms.openlocfilehash: 31a7384b11262ac967ab5f8a6c5e7f17e9a00b6f
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.openlocfilehash: a8540f61a8c5ec500147dc04dc94f3ea6742e6f3
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643852"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487001"
 ---
 # <a name="conversational-chatbot-for-hotel-reservations-on-azure"></a>Azure에서 호텔 예약을 위한 대화형 챗봇
 

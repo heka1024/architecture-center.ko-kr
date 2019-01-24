@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: Azure에서 전자상거래 사이트를 호스트합니다.
 author: masonch
 ms.date: 07/13/2018
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
 ms.custom: fasttrack
-ms.openlocfilehash: f07c21b8eb9d812b9831abe8f2e4f6d131893df2
-ms.sourcegitcommit: 7d9efe716e8c9e99f3fafa9d0213d48c23d9713d
+ms.openlocfilehash: 6ba4d98055258ca10b1ac06df217196a8a0151f5
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160811"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483924"
 ---
 # <a name="an-e-commerce-front-end-on-azure"></a>Azure의 전자상거래 프런트 엔드
 
@@ -71,7 +74,7 @@ ms.locfileid: "54160811"
 
 데이터 계층에 대한 다른 옵션은 다음과 같습니다.
 
-- [Cosmos DB](/azure/cosmos-db/introduction): 전역적으로 배포된 Microsoft의 멀티모델 데이터베이스입니다. 이 서비스는 Mongo DB, Cassandra, Graph 데이터 또는 간단한 테이블 저장소와 같은 다른 데이터 모델을 실행하는 플랫폼을 제공합니다.
+- [Cosmos DB](/azure/cosmos-db/introduction): 전역적으로 배포된 Microsoft의 멀티모델 데이터베이스입니다. 이 서비스는 Mongo DB, Cassandra, Graph 데이터 또는 간단한 Table Storage와 같은 다른 데이터 모델을 실행하는 플랫폼을 제공합니다.
 
 ## <a name="considerations"></a>고려 사항
 

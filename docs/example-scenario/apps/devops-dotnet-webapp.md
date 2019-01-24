@@ -4,15 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: Azure DevOps를 사용하여 Azure Web Apps에 .NET 앱을 빌드하고 릴리스합니다.
 author: christianreddington
 ms.date: 12/06/2018
-ms.custom:
-- fasttrack
-- seodec18
-ms.openlocfilehash: ae2dddd7567c6b69f936b3b9c9339313389e3bf6
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.custom: fasttrack, seodec18
+ms.openlocfilehash: 8934200aca8e4055596dd6dc27ede2f0a4d03f23
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643801"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483363"
 ---
 # <a name="design-a-cicd-pipeline-using-azure-devops"></a>Azure DevOps를 사용하여 CI/CD 파이프라인 설계
 

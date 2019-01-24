@@ -3,15 +3,18 @@ title: 다중 테넌트 애플리케이션의 권한 부여
 description: 다중 테넌트 애플리케이션에서 권한 부여를 수행하는 방법
 author: MikeWasson
 ms.date: 07/21/2017
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: app-roles
 pnp.series.next: web-api
-ms.openlocfilehash: 6e406a7e80b77dea161db194a82ccae043bdc777
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 1238f1cd3bc8e6f5f3d174ea5fa0c98b4da795f3
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110342"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488616"
 ---
 # <a name="role-based-and-resource-based-authorization"></a>역할 기반 및 리소스 기반 권한 부여
 

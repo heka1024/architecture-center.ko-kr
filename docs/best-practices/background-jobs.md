@@ -4,13 +4,16 @@ titleSuffix: Best practices for cloud applications
 description: 사용자 인터페이스와 독립적으로 실행되는 백그라운드 작업에 대한 지침.
 author: dragon119
 ms.date: 11/05/2018
+ms.topic: best-practice
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 78b5dd35b1d97d96d434bcd711a20251be37448b
-ms.sourcegitcommit: 4ba3304eebaa8c493c3e5307bdd9d723cd90b655
+ms.openlocfilehash: 4b96c19dd8613a941a7408e1b99945d5fa0f5364
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53307336"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482071"
 ---
 # <a name="background-jobs"></a>백그라운드 작업
 
@@ -94,7 +97,7 @@ WebJob을 구성하는 경우
 - 작업이 일정 기반 트리거에 응답하게 하려면 해당 작업을 **일정에 따라 실행**으로 구성해야 합니다. 스크립트 또는 프로그램은 site/wwwroot/app_data/jobs/triggered라는 폴더에 저장됩니다.
 - 작업을 구성할 때 **요청 시 실행** 옵션을 선택하면 작업을 시작할 때 **일정에 따라 실행** 옵션과 같은 코드를 실행합니다.
 
-Azure WebJobs는 웹앱의 샌드박스 내에서 실행되며, 이는 환경 변수를 액세스하고 연결 문자열 같은 정보를 웹앱과 공유할 수 있음을 의미합니다. 작업은 작업을 실행하는 컴퓨터의 고유 식별자에 액세스할 수 있습니다. **AzureWebJobsStorage**라는 연결 문자열은 Azure Storage 큐, Blob 및 응용 프로그램 데이터에 대한 테이블, 그리고 메시징 및 통신을 위한 Service Bus 액세스를 제공합니다. **AzureWebJobsDashboard**라는 연결 문자열은 작업 동작 로그 파일에 대한 액세스를 제공합니다.
+Azure WebJobs는 웹앱의 샌드박스 내에서 실행되며, 이는 환경 변수를 액세스하고 연결 문자열 같은 정보를 웹앱과 공유할 수 있음을 의미합니다. 작업은 작업을 실행하는 컴퓨터의 고유 식별자에 액세스할 수 있습니다. **AzureWebJobsStorage**라는 연결 문자열은 Azure 스토리지 큐, BLOB 및 애플리케이션 데이터에 대한 테이블, 그리고 메시징 및 통신을 위한 Service Bus 액세스를 제공합니다. **AzureWebJobsDashboard**라는 연결 문자열은 작업 동작 로그 파일에 대한 액세스를 제공합니다.
 
 Azure WebJob은 다음과 같은 특성을 가지고 있습니다.
 

@@ -3,16 +3,19 @@ title: 검색 데이터 저장소 선택
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 331777ff289b2158a1804541a01e8f61be38cdf7
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: c0362ff3bc6c115399892d0f066650aaa96af2dd
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113402"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486559"
 ---
 # <a name="choosing-a-search-data-store-in-azure"></a>Azure에서 검색 데이터 저장소 선택
 
-이 문서에서는 Azure에서 검색 데이터 저장소에 대한 기술 선택 옵션을 비교해서 설명합니다. 검색 데이터 저장소는 자유 형식 텍스트에 대한 검색을 수행하기 위한 특수한 인덱스를 만들고 저장하는 데 사용됩니다. 인덱싱되는 텍스트는 Blob 저장소와 같은 별도 데이터 저장소에 있을 수 있습니다. 애플리케이션은 검색 데이터 저장소로 쿼리를 제출하며, 일치하는 문서 목록이 검색됩니다. 이 시나리오에 대한 자세한 내용은 [검색을 위해 자유 형식 텍스트 처리](../scenarios/search.md)를 참조하세요.
+이 문서에서는 Azure에서 검색 데이터 저장소에 대한 기술 선택 옵션을 비교해서 설명합니다. 검색 데이터 저장소는 자유 형식 텍스트에 대한 검색을 수행하기 위한 특수한 인덱스를 만들고 저장하는 데 사용됩니다. 인덱싱되는 텍스트는 Blob Storage와 같은 별도 데이터 스토리지에 있을 수 있습니다. 애플리케이션은 검색 데이터 저장소로 쿼리를 제출하며, 일치하는 문서 목록이 검색됩니다. 이 시나리오에 대한 자세한 내용은 [검색을 위해 자유 형식 텍스트 처리](../scenarios/search.md)를 참조하세요.
 
 <!-- markdownlint-disable MD026 -->
 

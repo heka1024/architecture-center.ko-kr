@@ -3,12 +3,15 @@ title: 일괄 처리
 description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
-ms.openlocfilehash: 50e50ae121fda7ceb9dd298b8a072bd7cc4053d9
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
+ms.openlocfilehash: 6483b600e657cf0325fc63a645621ccf6c404bb4
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54114184"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481986"
 ---
 # <a name="batch-processing"></a>일괄 처리
 
@@ -50,7 +53,7 @@ ms.locfileid: "54114184"
 
 ### <a name="data-storage"></a>데이터 저장소
 
-- **Azure Storage Blob 컨테이너**. 많은 기존 Azure 비즈니스 프로세스가 이미 Azure Blob 저장소를 활용하고 있으므로 빅 데이터 저장소로도 적합합니다.
+- **Azure Storage Blob 컨테이너**. 많은 기존 Azure 비즈니스 프로세스가 이미 Azure Blob Storage를 활용하고 있으므로 빅 데이터 스토리지로도 적합합니다.
 - **Azure Data Lake Store**. Azure Data Lake Store는 모든 크기의 파일을 위한 거의 제한 없는 저장소와 포괄적인 보안 옵션을 제공하므로, 이기종 형식의 데이터에 대한 중앙 저장소를 요구하는 대규모 빅 데이터 솔루션에 아주 적합합니다.
 
 자세한 내용은 [데이터 저장소](../technology-choices/data-storage.md)를 참조하세요.
@@ -62,7 +65,7 @@ ms.locfileid: "54114184"
 <!-- markdownlint-enable MD024 -->
 
 - **U-SQL**. U-SQL은 Azure Data Lake Analytics에 사용되는 쿼리 처리 언어입니다. 이 언어는 SQL의 선언적 특성을 C#의 프로시저 확장성과 결합하고, 병렬처 리를 활용하여 방대한 데이터를 효율적으로 처리할 수 있도록 합니다.
-- **Hive**. Hive는 HDInsight를 비롯한 대부분의 Hadoop 배포에서 지원되는 SQL 유사 언어입니다. Azure Blob 저장소 및 Azure Data Lake Store를 포함하는 모든 HDFS 호환 저장소에서 데이터를 처리하는 데 사용할 수 있습니다.
+- **Hive**. Hive는 HDInsight를 비롯한 대부분의 Hadoop 배포에서 지원되는 SQL 유사 언어입니다. Azure Blob Storage 및 Azure Data Lake Store를 포함하는 모든 HDFS 호환 스토리지에서 데이터를 처리하는 데 사용할 수 있습니다.
 - **Pig**. Pig는 HDInsight를 비롯한 많은 Hadoop 배포에서 사용되는 선언적 빅 데이터 처리 언어입니다. 구조화되지 않았거나 반구조화된 데이터를 처리하는 데 특히 유용합니다.
 - **Spark**. Spark 엔진은 Java, Scala 및 Python 등의 다양한 언어로 작성된 일괄 처리 프로그램을 지원합니다. Spark는 분산 아키텍처를 사용하여 여러 작업자 노드에서 동시에 데이터를 처리합니다.
 

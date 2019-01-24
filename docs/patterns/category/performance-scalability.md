@@ -5,13 +5,16 @@ description: 성능은 지정된 시간 간격 내에서 어떤 작업을 실행
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 986e17f943e2238d70a5c9e0fd4c84e37c5f06a6
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: a57194f70218a8294507bd389ea9526660e3041b
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011041"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54480728"
 ---
 # <a name="performance-and-scalability-patterns"></a>성능 및 확장성 패턴
 

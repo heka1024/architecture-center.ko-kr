@@ -4,13 +4,16 @@ titleSuffix: Azure Design Review Framework
 description: 다양한 Azure 서비스에 대한 복원력 지침을 제공하는 검사 목록입니다.
 author: petertaylor9999
 ms.date: 11/26/2018
+ms.topic: checklist
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
 ms.custom: resiliency, checklist
-ms.openlocfilehash: e1fb780cf9f54a5078cc5d3c6b597b351f93e05e
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: fbb7501a663c8b5e326b2b601685419c8e5a0806
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112671"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486916"
 ---
 # <a name="resiliency-checklist-for-specific-azure-services"></a>특정 Azure 서비스에 대한 복원력 검사 목록
 
@@ -36,7 +39,7 @@ ms.locfileid: "54112671"
 
 애플리케이션 로깅 및 웹 서버 로깅을 포함하여 **진단 로깅 설정**합니다. 로깅은 모니터링 및 진단을 위해 중요합니다. [Azure App Service에서 웹앱에 대한 진단 로깅 설정](/azure/app-service-web/web-sites-enable-diagnostic-log/) 참조
 
-**Blob 저장소에 기록합니다.** 이렇게 하면 보다 쉽게 데이터를 수집 및 분석할 수 있습니다.
+**Blob Storage에 기록합니다.** 이렇게 하면 보다 쉽게 데이터를 수집 및 분석할 수 있습니다.
 
 **로그에 대한 별도의 저장소 계정을 만듭니다.** 로그와 애플리케이션 데이터에 동일한 저장소 계정을 사용하지 마세요. 이렇게 하면 로깅이 애플리케이션의 성능을 감소시키는 것을 방지하는 데 도움이 됩니다.
 

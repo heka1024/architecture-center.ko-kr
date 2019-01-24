@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Azure의 여러 지역에서 실행 중인 고가용성 웹 애플리케이션에 권장되는 아키텍처입니다.
 author: MikeWasson
 ms.date: 10/25/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: 04ba786ea16aa3245a8f0b7fcafeacc60ac447c2
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 676d968b13625048a9d83d365a1efe05c6093148
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113334"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484332"
 ---
 # <a name="run-a-web-application-in-multiple-azure-regions-for-high-availability"></a>여러 Azure 지역에서 웹 애플리케이션을 실행하여 고가용성 구현
 

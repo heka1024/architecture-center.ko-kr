@@ -3,12 +3,16 @@ title: Azure 지역의 손실로부터 복구
 description: 재해 복구에 대한 계획 뿐만 아니라 복원력 있고 항상 사용 가능한 내결함성 애플리케이션을 이해하고 설계합니다.
 author: adamglick
 ms.date: 08/18/2016
-ms.openlocfilehash: bd0d8a7e544188a79cbba4b58a9e31358e4ccf0d
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: cloud-design-principles
+ms.custom: resiliency
+ms.openlocfilehash: 7f207bbc0bb0128126f9b828dc100d43553cb100
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111974"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487987"
 ---
 [!INCLUDE [header](../_includes/header.md)]
 
@@ -169,7 +173,7 @@ Azure Media Services에는 인코딩 및 스트리밍을 위한 다른 복구 �
 
 1. 이 문서의 Virtual Machines에서 SQL Server 섹션을 검토합니다.
 2. 지역 간 AlwaysOn 가용성 그룹 또는 데이터베이스 미러링을 사용합니다.
-3. 또는 백업 사용 및 Blob 저장소에 복원합니다.
+3. 또는 백업 사용 및 Blob Storage에 복원합니다.
 
 ## <a name="service-bus-checklist"></a>Service Bus 검사 목록
 

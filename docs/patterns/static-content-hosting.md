@@ -5,13 +5,16 @@ description: 정적 콘텐츠를 클라이언트에 직접 제공할 수 있는 
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 01/04/2019
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: cf4f65e935a01e4d84b3cc82b5779edb729bd80e
-ms.sourcegitcommit: 036cd03c39f941567e0de4bae87f4e2aa8c84cf8
+ms.openlocfilehash: 719f0221ecc8d52267cba3136eec20dadef30b99
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/05/2019
-ms.locfileid: "54058185"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483448"
 ---
 # <a name="static-content-hosting-pattern"></a>정적 콘텐츠 호스팅 패턴
 

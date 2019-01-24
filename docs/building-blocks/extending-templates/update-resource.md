@@ -3,12 +3,15 @@ title: Azure Resource Manager 템플릿의 리소스 업데이트
 description: Azure Resource Manager 템플릿의 기능을 확장하여 리소스를 업데이트하는 방법을 설명합니다.
 author: petertay
 ms.date: 10/31/2018
-ms.openlocfilehash: 927826283163b2ae45575035168d6238de98dc00
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: article
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.openlocfilehash: de76e69e94917bbbe94c0f87fda2cdbe415181dc
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54113419"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487154"
 ---
 # <a name="update-a-resource-in-an-azure-resource-manager-template"></a>Azure Resource Manager 템플릿의 리소스 업데이트
 

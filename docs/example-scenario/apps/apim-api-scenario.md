@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: Azure API Management를 사용하여 레거시 웹 애플리케이션을 현대화합니다.
 author: begim
 ms.date: 09/13/2018
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
 ms.custom: fasttrack
-ms.openlocfilehash: 257b9bb5c69afb00917f8934585c1164f909feb6
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.openlocfilehash: c7ddc8e8b5e41768745cf08aede27dc21e2b1a2c
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643486"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485862"
 ---
 # <a name="migrating-a-legacy-web-application-to-an-api-based-architecture-on-azure"></a>Azure의 API 기반 아키텍처에 레거시 웹 애플리케이션 마이그레이션
 

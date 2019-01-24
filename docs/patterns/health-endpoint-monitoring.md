@@ -5,13 +5,16 @@ description: 외부 도구가 노출된 엔드포인트를 통해 주기적으�
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 85a1355ff47e6fce80d9b2ed114024651eb994db
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: 475b9572cb5b34850944fdf03061dc56ea6d0bf9
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54114252"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485148"
 ---
 # <a name="health-endpoint-monitoring-pattern"></a>상태 엔드포인트 모니터링 패턴
 

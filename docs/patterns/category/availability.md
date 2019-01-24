@@ -5,13 +5,16 @@ description: 가용성은 시스템이 기능하고 작동하는 시간의 비�
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: d256ddd39ca3e8a452162b7b75d67f26f7bb22c2
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 897bc3c87beb23770220ef0fc3c5c4394d192f2a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54009817"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486815"
 ---
 # <a name="availability-patterns"></a>가용성 패턴
 
