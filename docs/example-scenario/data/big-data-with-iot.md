@@ -4,12 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: IoT 디바이스 및 데이터 분석을 사용하여 건축 프로젝트의 포괄적인 관리 및 작업을 제공합니다.
 author: alexbuckgit
 ms.date: 08/29/2018
-ms.openlocfilehash: 6c997a4f3396fe7ba04f68f8521fd7a006937a27
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.custom: IoT, data-analytics
+ms.openlocfilehash: dba67dfa7eb480a892229a9bc57d5c5f7ee21017
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643886"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488157"
 ---
 # <a name="iot-and-data-analytics-in-the-construction-industry"></a>건축 산업에서 IoT 및 데이터 분석
 
@@ -45,7 +49,7 @@ IoT Hub 및 HDInsight 같은 관리되는 Azure 서비스를 사용하여 고객
 1. 건설 장비는 주기적으로 센서 데이터를 수집한 후 Azure 가상 머신 클러스터에 호스트되는 부하 분산 웹 서비스로 건설 결과 데이터를 전송합니다.
 2. 사용자 지정 웹 서비스는 건설 결과 데이터를 수집하여 Azure 가상 머신에서 실행되는 Apache Cassandra 클러스터에 저장합니다.
 3. IoT 센서는 다양한 건설 장비에 대한 또 다른 데이터 세트를 수집하여 IoT Hub로 전송합니다.
-4. 수집된 원시 데이터는 IoT Hub에서 Azure Blob 저장소로 직접 전송되어 그 즉시 검토 및 분석에 사용할 수 있습니다.
+4. 수집된 원시 데이터는 IoT Hub에서 Azure Blob Storage로 직접 전송되어 그 즉시 검토 및 분석에 사용할 수 있습니다.
 5. IoT Hub를 통해 수집된 데이터는 Azure Stream Analytics 작업에서 거의 실시간으로 처리된 후 Azure SQL 데이터베이스에 저장됩니다.
 6. 분석가 및 최종 사용자는 스마트 건설 클라우드 웹 애플리케이션을 사용하여 센서 데이터 및 이미지를 살펴보고 분석할 수 있습니다.
 7. 일괄 처리 작업은 웹 애플리케이션 사용자의 요청이 있을 시 시작됩니다. 일괄 처리 작업은 HDInsight 기반의 Apache Spark에서 실행되어 Cassandra 클러스터에 저장된 새 데이터를 분석합니다.
@@ -55,7 +59,7 @@ IoT Hub 및 HDInsight 같은 관리되는 Azure 서비스를 사용하여 고객
 - [IoT Hub](/azure/iot-hub/about-iot-hub)는 장치별 ID를 사용하여 클라우드 플랫폼과 건설 장비 및 기타 현장 요소 간에 안전한 양방향 통신이 가능하도록 중앙 메시지 허브 역할을 합니다. IoT Hub는 각 디바이스에 대한 데이터를 신속하게 데이터 분석 파이프라인으로 수집할 수 있습니다.
 - [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction)는 디바이스 및 다른 데이터 원본에서 스트림하는 대량의 데이터를 분석할 수 있는 이벤트 처리 엔진입니다. 또한 데이터 스트림에서 정보를 추출하여 패턴과 관계를 식별할 수 있습니다. 이 시나리오에서는 Stream Analytics가 IoT 디바이스에서 데이터를 수집 및 분석하고 Azure SQL Database에 결과를 저장합니다.
 - [Azure SQL Database](/azure/sql-database/sql-database-technical-overview)는 IoT 장치 및 계량기 데이터를 분석한 결과를 포함하며, 분석가 및 사용자는 Azure 기반 웹 애플리케이션을 통해 결과를 볼 수 있습니다.
-- [Blob 저장소](/azure/storage/blobs/storage-blobs-introduction)는 IoT 허브 디바이스에서 수집된 이미지 데이터를 저장합니다. 이미지 데이터는 웹 애플리케이션을 통해 볼 수 있습니다.
+- [Blob Storage](/azure/storage/blobs/storage-blobs-introduction)는 IoT 허브 장치에서 수집된 이미지 데이터를 저장합니다. 이미지 데이터는 웹 애플리케이션을 통해 볼 수 있습니다.
 - [Traffic Manager](/azure/traffic-manager/traffic-manager-overview)는 다른 Azure 지역의 서비스 엔드포인트에 대한 사용자 트래픽 분산을 제어합니다.
 - [Load Balancer](/azure/load-balancer/load-balancer-overview)는 건설 장비 디바이스에서 제출된 데이터를 VM 기반 웹 서비스에 분산하여 고가용성을 제공합니다.
 - [Azure Virtual Machines](/azure/virtual-machines)는 건설 결과 데이터를 수신하여 Apache Cassandra 데이터베이스로 수집하는 웹 서비스를 호스트합니다.
@@ -67,9 +71,9 @@ IoT Hub 및 HDInsight 같은 관리되는 Azure 서비스를 사용하여 고객
 
 - [Cosmos DB](/azure/cosmos-db/introduction)는 NoSQL 데이터베이스를 대체하는 기술입니다. Cosmos DB는 다양한 고객 요구 사항을 충족하도록 [여러 일관성 수준이 잘 정의된](/azure/cosmos-db/consistency-levels) [글로벌 규모의 다중 마스터 지원](/azure/cosmos-db/multi-region-writers)을 제공합니다. [Cassandra API](/azure/cosmos-db/cassandra-introduction)도 지원합니다.
 - [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)는 Azure에 최적화된 Apache Spark 기반 분석 플랫폼입니다. Azure와 통합되어 원클릭 설정, 능률적인 워크플로, 대화형 공동 작업 영역을 제공합니다.
-- [Data Lake Storage](/azure/storage/data-lake-storage)는 Blob 저장소를 대체합니다. 이 시나리오에서는 대상 지역에서 Data Lake Storage를 사용할 수 없습니다.
+- [Data Lake Storage](/azure/storage/data-lake-storage)는 Blob 스토리지를 대체합니다. 이 시나리오에서는 대상 지역에서 Data Lake Storage를 사용할 수 없습니다.
 - [웹앱](/azure/app-service)을 사용하여 건설 결과 데이터를 수집하는 웹 서비스를 호스트할 수도 있습니다.
-- 다양한 기술 옵션을 통해 실시간 메시지 수집, 데이터 저장, 스트림 처리, 분석 데이터 저장, 분석 및 보고를 수행할 수 있습니다. 이러한 옵션, 기능 및 주요 선택 조건에 대한 개요는 [Azure 데이터 아키텍처 가이드](/azure/architecture/data-guide)의 [빅 데이터 아키텍처: 실시간 처리](/azure/architecture/data-guide/technology-choices/real-time-ingestion)를 참조하세요.
+- 다양한 기술 옵션을 통해 실시간 메시지 수집, 데이터 저장, 스트림 처리, 분석 데이터 저장, 분석 및 보고를 수행할 수 있습니다. 이러한 옵션, 기능 및 주요 선택 조건에 대한 개요는 Azure 데이터 아키텍처 가이드의 [빅 데이터 아키텍처: 실시간 처리](/azure/architecture/data-guide/technology-choices/real-time-ingestion)를 참조하세요.
 
 ## <a name="considerations"></a>고려 사항
 
