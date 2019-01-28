@@ -4,17 +4,23 @@ titleSuffix: Azure Reference Architectures
 description: Azure에서 인터넷 액세스로 보안 하이브리드 네트워크 아키텍처를 구현하는 방법입니다.
 author: telmosampaio
 ms.date: 10/22/2018
-ms.custom: seodec18
-ms.openlocfilehash: 10c8a23ab09da0555de6a51bc082deceb8c462ff
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, networking
+ms.openlocfilehash: 80125626d0c79888445bc7828577846bcce9fc67
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011534"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488225"
 ---
 # <a name="implement-a-dmz-between-azure-and-the-internet"></a>Azure와 인터넷 간의 DMZ 구현
 
 이 참조 아키텍처는 온-프레미스 네트워크를 Azure로 확장하고 인터넷 트래픽을 수락하는 보안 하이브리드 네트워크를 보여 줍니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
+
+> [!NOTE]
+> 이 시나리오는 클라우드 기반 네트워크 보안 서비스인 [Azure Firewall](/azure/firewall/)을 사용하여 수행할 수도 있습니다.
 
 ![하이브리드 네트워크 아키텍처 보안](./images/dmz-public.png)
 

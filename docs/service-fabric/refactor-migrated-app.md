@@ -3,12 +3,15 @@ title: Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 애
 description: Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 애플리케이션을 리팩터링하는 방법입니다.
 author: petertay
 ms.date: 02/02/2018
-ms.openlocfilehash: 14ecaf81a07c72296e8db300df371e9a0c990434
-ms.sourcegitcommit: dbbf914757b03cdee7a274204f9579fa63d7eed2
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.openlocfilehash: 1fd6bb5df18b46c8df3719fd107dd53a18dfd4ff
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50916468"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487290"
 ---
 # <a name="refactor-an-azure-service-fabric-application-migrated-from-azure-cloud-services"></a>Azure Cloud Services에서 마이그레이션된 Azure Service Fabric 애플리케이션 리팩터링
 
@@ -18,7 +21,7 @@ ms.locfileid: "50916468"
 
 ## <a name="scenario"></a>시나리오
 
-이전의 [Azure Service Fabric으로 Azure Cloud Services 응용 프로그램 마이그레이션][migrate-from-cloud-services] 문서에서 설명한 대로, 패턴 및 실습 팀은 2012년 Azure에서 Cloud Services 응용 프로그램을 설계하고 구현하는 프로세스를 문서화한 한 권의 책을 저술했습니다. 이 책에서는 **설문 조사**라는 Cloud Services 애플리케이션을 만들려는 Tailspin이라는 가상의 회사에 대해 설명합니다. 설문 조사 애플리케이션을 사용하면 일반 사람들이 답변할 수 있는 설문 조사를 만들고 게시할 수 있습니다. 다음 다이어그램에서는 이 버전의 설문 조사 애플리케이션의 아키텍처를 보여 줍니다.
+이전의 [Azure Service Fabric으로 Azure Cloud Services 애플리케이션 마이그레이션][migrate-from-cloud-services] 문서에서 설명한 대로, 패턴 및 실습 팀은 2012년 Azure에서 Cloud Services 애플리케이션을 설계하고 구현하는 프로세스를 문서화한 한 권의 책을 저술했습니다. 이 책에서는 **설문 조사**라는 Cloud Services 애플리케이션을 만들려는 Tailspin이라는 가상의 회사에 대해 설명합니다. 설문 조사 애플리케이션을 사용하면 일반 사람들이 답변할 수 있는 설문 조사를 만들고 게시할 수 있습니다. 다음 다이어그램에서는 이 버전의 설문 조사 애플리케이션의 아키텍처를 보여 줍니다.
 
 ![](./images/tailspin01.png)
 
@@ -33,7 +36,7 @@ ms.locfileid: "50916468"
 
 **Tailspin.Workers.Survey** 작업자 역할은 여러 큐에서 요청을 선택하여 백그라운드 처리를 수행합니다.
 
-패턴 & 실습 팀은 이 응용 프로그램을 Azure Service Fabric으로 이식하기 위한 새 프로젝트를 만들었습니다. 이 프로젝트의 목표는 Azure Service Fabric 클러스터에서 실행되는 애플리케이션을 가져오는 데 필요한 코드만 변경하는 것이었습니다. 결과적으로 원래의 웹 및 작업자 역할은 더 세부적인 아키텍처로 분해되지 않았습니다. 결과 아키텍처는 Cloud Services 버전의 애플리케이션과 매우 비슷합니다.
+패턴 &amp; 실습 팀은 이 애플리케이션을 Azure Service Fabric으로 이식하기 위한 새 프로젝트를 만들었습니다. 이 프로젝트의 목표는 Azure Service Fabric 클러스터에서 실행되는 애플리케이션을 가져오는 데 필요한 코드만 변경하는 것이었습니다. 결과적으로 원래의 웹 및 작업자 역할은 더 세부적인 아키텍처로 분해되지 않았습니다. 결과 아키텍처는 Cloud Services 버전의 애플리케이션과 매우 비슷합니다.
 
 ![](./images/tailspin02.png)
 
@@ -63,7 +66,7 @@ Tailspin에서 설문 조사 애플리케이션을 더 세부적인 아키텍처
 
 ![](./images/surveys_03.png)
 
-**Tailspin.Web**은 Tailspin 고객이 설문 조사를 만들고 설문 조사 결과를 보기 위해 방문하는 ASP.NET MVC 응용 프로그램을 자체 호스팅하는 상태 비저장 서비스입니다. 이 서비스는 대부분의 코드를 이식된 Service Fabric 애플리케이션의 *Tailspin.Web* 서비스와 공유합니다. 앞에서 언급했듯이, 이 서비스는 ASP.NET Core 및 웹 프런트 엔드로 Kestrel을 사용하여 WebListener를 구현하는 스위치를 사용합니다.
+**Tailspin.Web**은 Tailspin 고객이 설문 조사를 만들고 설문 조사 결과를 보기 위해 방문하는 ASP.NET MVC 애플리케이션을 자체 호스팅하는 상태 비저장 서비스입니다. 이 서비스는 대부분의 코드를 이식된 Service Fabric 애플리케이션의 *Tailspin.Web* 서비스와 공유합니다. 앞에서 언급했듯이, 이 서비스는 ASP.NET Core 및 웹 프런트 엔드로 Kestrel을 사용하여 WebListener를 구현하는 스위치를 사용합니다.
 
 **Tailspin.Web.Survey.Public**은 ASP.NET MVC 사이트를 자체 호스팅하는 상태 비저장 서비스입니다. 사용자는 이 사이트를 방문하여 목록에서 설문 조사를 선택한 다음, 작성합니다. 이 서비스는 대부분의 코드를 이식된 Service Fabric 애플리케이션의 *Tailspin.Web.Survey.Public* 서비스와 공유합니다. 또한 이 서비스는 ASP.NET Core를 사용하고, Kestrel을 웹 프런트 엔드로 사용하는 방식에서 WebListener를 구현하는 방식으로 전환합니다.
 

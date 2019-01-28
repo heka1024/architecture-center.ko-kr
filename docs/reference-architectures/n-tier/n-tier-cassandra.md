@@ -4,17 +4,20 @@ titleSuffix: Azure Reference Architectures
 description: Microsoft Azure에서 Apache Cassandra를 사용하는 N 계층 아키텍처에서 Linux Virtual Machines를 실행합니다.
 author: MikeWasson
 ms.date: 11/12/2018
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: bbd1029fe17b5d88d54246127c5d8983a573b012
-ms.sourcegitcommit: 88a68c7e9b6b772172b7faa4b9fd9c061a9f7e9d
+ms.openlocfilehash: 6c9a2b4fe513c959e537f705beb1c024b54c7b50
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53120172"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485451"
 ---
 # <a name="linux-n-tier-application-in-azure-with-apache-cassandra"></a>Apache Cassandra를 사용하는 Azure의 Linux N계층 애플리케이션
 
-이 참조 아키텍처에서는 데이터 계층에 대해 Linux에서 Apache Cassandra를 사용하여 N 계층 애플리케이션을 위해 구성되는 VM(VM) 및 가상 네트워크를 배포하는 방법을 보여 줍니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
+이 참조 아키텍처에서는 데이터 계층에 대해 Linux에서 Apache Cassandra를 사용하여 [N 계층](../../guide/architecture-styles/n-tier.md) 애플리케이션을 위해 구성되는 VM(가상 머신) 및 가상 네트워크를 배포하는 방법을 보여 줍니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
 
 ![Microsoft Azure를 사용하는 N계층 아키텍처](./images/n-tier-cassandra.png)
 
@@ -164,6 +167,10 @@ N 계층 애플리케이션에 대한 Linux VM 참조 아키텍처를 배포하�
    ```
 
 Azure 구성 요소를 사용하여 이 샘플 참조 아키텍처를 배포하는 방법에 대한 자세한 내용은 [GitHub 리포지토리][git]를 방문하세요.
+
+## <a name="next-steps"></a>다음 단계
+
+- [Microsoft 학습 모듈: N 계층 아키텍처 스타일 둘러보기](/learn/modules/n-tier-architecture/)
 
 <!-- links -->
 

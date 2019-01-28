@@ -4,16 +4,19 @@ titleSuffix: Azure Reference Architectures
 description: 가용성, 보안, 확장성 및 관리 효율성을 위해 Azure에서 다중 계층 아키텍처를 구현합니다.
 author: MikeWasson
 ms.date: 11/12/2018
-ms.openlocfilehash: e7dbd8dd2b8e5aff8f18ff9b87fce0b76a850bce
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.openlocfilehash: cf12d27ccaebb9845ada4d4a437e9889ea3325f2
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54011381"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485403"
 ---
 # <a name="windows-n-tier-application-on-azure-with-sql-server"></a>SQL Server를 사용한 Azure의 Windows N계층 애플리케이션
 
-이 참조 아키텍처에서는 데이터 계층에 대해 Windows에서 SQL Server를 사용하여 N 계층 애플리케이션을 위해 구성되는 VM 및 가상 네트워크를 배포하는 방법을 보여 줍니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
+이 참조 아키텍처에서는 데이터 계층에 대해 Windows에서 SQL Server를 사용하여 [N 계층](../../guide/architecture-styles/n-tier.md) 애플리케이션을 위해 구성되는 VM 및 가상 네트워크를 배포하는 방법을 보여 줍니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
 
 ![Microsoft Azure를 사용하는 N계층 아키텍처](./images/n-tier-sql-server.png)
 
@@ -233,6 +236,10 @@ jumpbox를 보호하려면 안전한 공용 IP 주소 집합의 RDP 연결만 �
     ```
 
 Azure 구성 요소를 사용하여 이 샘플 참조 아키텍처를 배포하는 방법에 대한 자세한 내용은 [GitHub 리포지토리][git]를 방문하세요.
+
+## <a name="next-steps"></a>다음 단계
+
+- [Microsoft 학습 모듈: N 계층 아키텍처 스타일 둘러보기](/learn/modules/n-tier-architecture/)
 
 <!-- links -->
 [dmz]: ../dmz/secure-vnet-dmz.md

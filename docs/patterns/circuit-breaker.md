@@ -5,13 +5,16 @@ description: 원격 서비스 또는 리소스에 연결할 때 해결하는 데
 keywords: 디자인 패턴
 author: dragon119
 ms.date: 06/23/2017
+ms.topic: design-pattern
+ms.service: architecture-center
+ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 56c90fcb23fd68b0d1b545db90adeab3272705c2
-ms.sourcegitcommit: 680c9cef945dff6fee5e66b38e24f07804510fa9
+ms.openlocfilehash: 7cc84b3c14ea277aa82643f3141f0693ec702a49
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54009766"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485607"
 ---
 # <a name="circuit-breaker-pattern"></a>회로 차단기 패턴
 
@@ -19,7 +22,7 @@ ms.locfileid: "54009766"
 
 ## <a name="context-and-problem"></a>컨텍스트 및 문제점
 
-분산된 환경에서 원격 리소스 및 서비스에 대한 호출은 느린 네트워크 연결, 제한 시간 또는 과도하게 커밋되거나 일시적으로 사용할 수 없는 리소스와 같은 일시적인 오류로 인해 실패할 수 있습니다. 이러한 오류는 일반적으로 짧은 기간 후에 자체적으로 수정되며 강력한 클라우드 애플리케이션은 [재시도 패턴][retry-pattern]과 같은 전략을 사용하여 이를 처리하도록 준비해야 합니다.
+분산된 환경에서 원격 리소스 및 서비스에 대한 호출은 느린 네트워크 연결, 제한 시간 또는 과도하게 커밋되거나 일시적으로 사용할 수 없는 리소스와 같은 일시적인 오류로 인해 실패할 수 있습니다. 이러한 오류는 일반적으로 짧은 기간 후에 자체적으로 수정되며 강력한 클라우드 애플리케이션은 [재시도 패턴](./retry.md)과 같은 전략을 사용하여 이를 처리하도록 준비해야 합니다.
 
 그러나 예기치 않은 이벤트로 인해 오류가 발생할 수 있으며 이 경우에 문제를 해결하는 시간이 훨씬 더 오래 걸릴 수 있습니다. 이러한 오류는 심각도의 범위가 연결의 부분적인 손실에서 서비스의 전체 오류까지 퍼질 수 있습니다. 이러한 경우에 애플리케이션에서 계속 성공할 가능성이 없는 작업을 계속 다시 시도하는 것은 무의미할 수 있습니다. 대신 애플리케이션은 신속하게 작업이 실패했음을 받아들이고 그에 따라 이 오류를 처리해야 합니다.
 

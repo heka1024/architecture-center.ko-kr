@@ -4,17 +4,23 @@ titleSuffix: Azure Reference Architectures
 description: Azure에서 보안 하이브리드 네트워크 아키텍처를 구현합니다.
 author: telmosampaio
 ms.date: 10/22/2018
-ms.custom: seodec18
-ms.openlocfilehash: 9a74401d3496807ce2dfc113476e001d19e657e5
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: reference-architecture
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: seodec18, networking
+ms.openlocfilehash: 82327cca08e614bfe5226c9ca1a414388878a7c2
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54112297"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482513"
 ---
 # <a name="implement-a-dmz-between-azure-and-your-on-premises-datacenter"></a>Azure와 온-프레미스 데이터 센터 간의 DMZ를 구현합니다.
 
 이 참조 아키텍처는 온-프레미스 네트워크를 Azure로 확장하는 보안 하이브리드 네트워크를 보여줍니다. 아키텍처는 DMZ를 구현하며 또한 온-프레미스 네트워크와 Azure VNet(Virtual Network) 간의 *경계 네트워크*라고도 합니다. DMZ에는 방화벽 및 패킷 검사와 같은 보안 기능을 구현하는 NVA(네트워크 가상 어플라이언스)가 포함됩니다. VNet에서 나가는 모든 트래픽이 감사될 수 있도록 온-프레미스 네트워크를 통해 인터넷에 강제 터널링됩니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
+
+> [!NOTE]
+> 이 시나리오는 클라우드 기반 네트워크 보안 서비스인 [Azure Firewall](/azure/firewall/)을 사용하여 수행할 수도 있습니다.
 
 ![하이브리드 네트워크 아키텍처 보안](./images/dmz-private.png)
 

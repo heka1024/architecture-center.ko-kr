@@ -4,13 +4,16 @@ titleSuffix: Azure Example Scenarios
 description: Azure에서 Citrix를 사용하여 Linux 데스크톱에 대해 VDI 환경을 빌드합니다.
 author: miguelangelopereira
 ms.date: 09/12/2018
-ms.custom: fasttrack
-ms.openlocfilehash: af1cf01cb8b118e829c3870b636018aa5181b180
-ms.sourcegitcommit: bb7fcffbb41e2c26a26f8781df32825eb60df70c
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.custom: fasttrack, Linux
+ms.openlocfilehash: a6fe0b7e53c83c7b932c39f910257a1e7d24834f
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53643920"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481234"
 ---
 # <a name="linux-virtual-desktops-with-citrix"></a>Citrix를 사용한 Linux 가상 데스크톱
 
@@ -90,7 +93,7 @@ ms.locfileid: "53643920"
 - 이 예제는 라이선싱 서버 이외의 모든 역할에 고가용성을 제공할 목적으로 설계되었습니다. 라이선스 서버가 오프라인으로 전환되더라도 환경이 30일의 유예 기간 동안 정상적으로 작동하므로 해당 서버에 추가 중복이 필요 없습니다.
 - 비슷한 역할을 제공하는 모든 서버를 [가용성 집합](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)에 배포해야 합니다.
 - 이 예제 시나리오에는 재해 복구 기능이 없습니다. [Azure Site Recovery](/azure/site-recovery/site-recovery-overview)를 이 디자인에 추가하면 유용하게 사용할 수 있습니다.
-- 이 시나리오의 VM 인스턴스를 [가용성 영역](/azure/availability-zones/az-overview) 전체에 배포하는 것이 좋습니다. 각 가용성 영역은 독립된 전원, 냉각 및 네트워킹을 갖춘 하나 이상의 데이터 센터로 구성됩니다. 설정된 각 지역에는 최소한 세 개의 가용성 영역이 있습니다. 영역을 통한 이러한 VM 인스턴스 배포는 애플리케이션 계층에 고가용성을 제공합니다. 자세한 내용은 [Azure에서 가용성 영역이란?][azureaz-docs]을 참조하세요. [Azure 가용성 영역에서 VPN 및 ExpressRoute 게이트웨이를 배포](/azure/vpn-gateway/about-zone-redundant-vnet-gateways)할 수도 있습니다.
+- 이 시나리오의 VM 인스턴스를 [가용성 영역](/azure/availability-zones/az-overview) 전체에 배포하는 것이 좋습니다. 각 가용성 영역은 독립된 전원, 냉각 및 네트워킹을 갖춘 하나 이상의 데이터 센터로 구성됩니다. 설정된 각 지역에는 최소한 세 개의 가용성 영역이 있습니다. 영역을 통한 이러한 VM 인스턴스 배포는 애플리케이션 계층에 고가용성을 제공합니다. 자세한 내용은 [Azure에서 가용성 영역이란?](/azure/availability-zones/az-overview)을 참조하세요. [Azure 가용성 영역에서 VPN 및 ExpressRoute 게이트웨이를 배포](/azure/vpn-gateway/about-zone-redundant-vnet-gateways)할 수도 있습니다.
 - 프로덕션 배포의 경우 [백업](/azure/backup/backup-introduction-to-azure-backup), [모니터링](/azure/monitoring-and-diagnostics/monitoring-overview), [업데이트 관리](/azure/automation/automation-update-management) 같은 관리 솔루션을 구현해야 합니다.
 - 이 예제는 사용량 혼합 시 동시 사용자 약 250명(VDA 서버당 약 50-60명)을 감당할 수 있습니다. 하지만 사용하는 애플리케이션 종류에 따라 숫자가 크게 달라질 수 있습니다. 프로덕션 사용 시 엄격한 부하 테스트를 수행해야 합니다.
 

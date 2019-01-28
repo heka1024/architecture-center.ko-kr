@@ -1,16 +1,19 @@
 ---
-title: '엔터프라이즈 클라우드 채택: 여러 팀에 대한 Azure의 거버넌스 디자인'
+title: '엔터프라이즈 클라우드 채택: 여러 팀을 위한 Azure의 거버넌스 디자인'
 description: 여러 팀, 여러 워크로드 및 여러 환경에 대한 Azure 거버넌스 컨트롤을 구성하기 위한 지침
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: ac2a63ad6ced1039290dc0bf5132b0d87a2c79cf
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: de2bfeee7d098984a35f56f9e794e6a37933a3bd
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389420"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488429"
 ---
-# <a name="enterprise-cloud-adoption-governance-design-for-multiple-teams"></a>엔터프라이즈 클라우드 채택: 여러 팀에 대한 거버넌스 디자인
+# <a name="enterprise-cloud-adoption-governance-design-for-multiple-teams"></a>엔터프라이즈 클라우드 채택: 여러 팀을 위한 거버넌스 디자인
 
 이 지침의 목적은 여러 팀, 여러 워크로드 및 여러 환경을 지원하기 위해 Azure에서 리소스 거버넌스 모델을 디자인하는 프로세스를 알아보는 데 있습니다.  가상의 거버넌스 요구 사항 집합을 살펴본 다음, 해당 요구 사항을 충족하는 몇 가지 예제 구현을 수행합니다.
 

@@ -4,13 +4,16 @@ titleSuffix: Azure Application Architecture Guide
 description: Azure에서 N 계층 아키텍처의 혜택, 과제 및 모범 사례를 설명합니다.
 author: MikeWasson
 ms.date: 08/30/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: 4e8aae0032d20df05e1b16a47fda4afa720ed0d9
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.openlocfilehash: d7b94d56831a6b9172a9091f0e4f7fa63a8881f1
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54110308"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481493"
 ---
 # <a name="n-tier-architecture-style"></a>N 계층 아키텍처 스타일
 
@@ -81,10 +84,11 @@ N 계층 아키텍처는 기존 온-프레미스 애플리케이션에서 매우
 
 NSG(네트워크 보안 그룹)는 각 계층에 대한 액세스를 제한합니다. 예를 들어 데이터베이스 계층은 비즈니스 계층의 액세스만 허용합니다.
 
-자세한 내용과 배포 가능한 Resource Manager 템플릿은 다음 참조 아키텍처를 참조하세요.
+Azure에서 N 계층 애플리케이션 실행에 대한 자세한 내용은 다음을 참조하세요.
 
 - [N 계층 애플리케이션에 대해 Windows VM 실행][n-tier-windows]
-- [ 계층 애플리케이션에 대해 Linux VM 실행][n-tier-linux]
+- [SQL Server를 사용한 Azure의 Windows N 계층 애플리케이션][n-tier-linux]
+- [Microsoft 학습 모듈: N 계층 아키텍처 스타일 둘러보기](/learn/modules/n-tier-architecture/)
 
 ### <a name="additional-considerations"></a>추가 고려 사항
 

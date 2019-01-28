@@ -3,12 +3,16 @@ title: API 디자인
 description: 마이크로 서비스에 대한 API 디자인
 author: MikeWasson
 ms.date: 10/23/2018
-ms.openlocfilehash: 80e8e081384a7806880878ae95fbdbc2bb6cc440
-ms.sourcegitcommit: 1f4cdb08fe73b1956e164ad692f792f9f635b409
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: microservices
+ms.openlocfilehash: 01f774773b2d2a653e52c9ee961f12c5b9fc833a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54111044"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485981"
 ---
 # <a name="designing-microservices-api-design"></a>마이크로서비스 디자인: API 디자인
 
@@ -95,7 +99,7 @@ export class Location {
 
 또 다른 예로 다른 부분의 애플리케이션이 데이터 저장소에 대해 직접 읽거나 쓰지 않도록 하는 리포지토리 패턴이 있습니다.
 
-드론 리포지토리의 다이어그램[](./images/repository.png)
+![드론 리포지토리의 다이어그램](./images/repository.png)
 
 그러나 마이크로 서비스 아키텍처에서 서비스는 동일한 코드 베이스를 공유하지 않고 데이터 저장소를 공유하지 않습니다. 대신 API를 통해 통신합니다. Scheduler 서비스가 드론 서비스에서 드론에 대한 정보를 요청하는 경우를 고려합니다. 드론 서비스에는 코드를 통해 표시되는 드론의 내부 모델이 있습니다. 하지만 Scheduler는 이를 참조하지 않습니다. 대신 드론 엔터티의 *표현* &mdash; 아마도 HTTP 응답에서 JSON 개체를 다시 가져옵니다.
 

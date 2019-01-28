@@ -3,12 +3,15 @@ title: '엔터프라이즈 클라우드 채택: 운영 기본 사항'
 description: 운영 기본 사항에 관한 지침입니다.
 author: petertaylor9999
 ms.date: 09/20/2018
-ms.openlocfilehash: d5f4c6529e92be387465a6ab9dca55267c584c11
-ms.sourcegitcommit: b7e521ba317f4fcd3253c80ac0c0a355eaaa56c5
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: 26867e3ecce738f18c5a03ff41754281229851f4
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46534363"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481128"
 ---
 # <a name="establishing-an-operational-fitness-review"></a>운영 적합성에 대한 검토 설정
 
@@ -104,7 +107,7 @@ Microsoft에서 수행한 이러한 프로세스는 이 문서에서 설명하�
 ## <a name="recommended-resources"></a>권장되는 리소스
 
 - [소프트웨어 품질 핵심 요소](../../guide/pillars.md).
-Azure 애플리케이션 아키텍처 가이드의 이 섹션에서는 5가지 소프트웨어 품질 핵심 요소인 확장성, 가용성, 복원력, 관리 및 보안에 대해 설명합니다.
+Azure 애플리케이션 아키텍처 가이드의 이 섹션에서는 다음 5가지 소프트웨어 품질 핵심 요소에 대해 설명합니다. 확장성, 가용성, 복원력, 관리 및 보안
 - [Azure 응용 프로그램을 위한 10가지 설계 원칙](../../guide/design-principles/index.md).
 Azure 애플리케이션 아키텍처 가이드의 이 섹션에서는 애플리케이션의 확장성, 복원력 및 관리 용이성을 높이기 위한 일단의 설계 원칙에 대해 설명합니다.
 - [Azure용 복원 응용 프로그램 디자인](../../resiliency/index.md).

@@ -1,16 +1,19 @@
 ---
-title: '엔터프라이즈 클라우드 채택: 간단한 워크로드에 대한 거버넌스 디자인'
+title: '엔터프라이즈 클라우드 채택: 단일 워크로드를 위한 거버넌스 디자인'
 description: 사용자가 간단한 워크로드를 배포할 수 있도록 Azure 거버넌스 컨트롤을 구성하기 위한 지침
 author: petertaylor9999
 ms.date: 09/10/2018
-ms.openlocfilehash: 13c7c4b41df14151d28b9c685f01019af3ec63f2
-ms.sourcegitcommit: c49aeef818d7dfe271bc4128b230cfc676f05230
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: f87584b4182e5eca143f6429220c822b4be2ed70
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44389250"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481731"
 ---
-# <a name="enterprise-cloud-adoption-governance-design-for-a-simple-workload"></a>엔터프라이즈 클라우드 채택: 간단한 워크로드에 대한 거버넌스 디자인
+# <a name="enterprise-cloud-adoption-governance-design-for-a-simple-workload"></a>엔터프라이즈 클라우드 채택: 단일 워크로드를 위한 거버넌스 디자인
 
 이 지침의 목적은 단일 팀 및 간단한 워크로드를 지원하기 위해 Azure에서 리소스 거버넌스 모델을 디자인하는 프로세스를 알아보는 데 있습니다.  가상의 거버넌스 요구 사항 집합을 살펴본 다음, 해당 요구 사항을 충족하는 몇 가지 예제 구현을 수행합니다. 
 

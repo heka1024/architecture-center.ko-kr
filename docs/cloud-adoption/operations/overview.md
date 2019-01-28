@@ -1,16 +1,19 @@
 ---
-title: '엔터프라이즈 클라우드 채택: 운영 개요'
+title: '엔터프라이즈 클라우드 채택: 작업 개요'
 description: Azure 엔터프라이즈 클라우드 채택의 운영 콘텐츠에 대한 개요입니다.
 author: petertaylor9999
 ms.date: 09/20/2018
-ms.openlocfilehash: 04500efe77f19a3e184cceb0446c6032f5e3cf44
-ms.sourcegitcommit: b7e521ba317f4fcd3253c80ac0c0a355eaaa56c5
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.openlocfilehash: e1b401c59ec91797029440824e88d4c4bfd83315
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46534252"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484460"
 ---
-# <a name="enterprise-cloud-adoption-operations-overview"></a>엔터프라이즈 클라우드 채택: 운영 개요
+# <a name="enterprise-cloud-adoption-operations-overview"></a>엔터프라이즈 클라우드 채택: 작업 개요
 
 Azure 엔터프라이즈 클라우드 채택의 이 섹션에서는 **운영** 항목을 다룹니다. 
 
