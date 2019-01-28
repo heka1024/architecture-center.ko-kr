@@ -6,12 +6,12 @@ ms.topic: reference-architecture
 ms.date: 08/30/2018
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: b30744565ff3107a0bffa3b481d6f142be9dc0fb
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.openlocfilehash: bdeaccd651b50f55975de446459d896706146fec
+ms.sourcegitcommit: ed736a0a1b080f6acf4877c8b906cd9b56e12bdf
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908616"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55085789"
 ---
 # <a name="azure-reference-architectures"></a>Azure 참조 아키텍처
 
@@ -268,6 +268,31 @@ Azure 참조 아키텍처는 시나리오별로 정리되며, 관련 아키텍�
                     <div class="cardText">
                         <h3>Azure IoT 참조 아키텍처</h3>
                         <p>PaaS(platform-as-a-service) 구성 요소를 사용하는 Azure에서 IoT 애플리케이션에 대한 권장 아키텍처입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+</ul>
+
+## <a name="microservices"></a>마이크로 서비스
+
+<ul class="panelContent cardsF">
+<!-- IoT reference architecture -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./microservices/aks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/aks.svg" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>AKS(Azure Kubernetes Service)에서 마이크로 서비스</h3>
+                        <p>AKS에서 마이크로 서비스 아키텍처를 배포하기 위한 아키텍처를 권장합니다.</p>
                     </div>
                 </div>
             </div>
