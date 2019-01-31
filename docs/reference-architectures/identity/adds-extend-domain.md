@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, identity
-ms.openlocfilehash: 4e22469af58a08f42abedf34235be5e20f1dceae
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: dc68c0ab4a08e5f47f30050197bb2e68aa559979
+ms.sourcegitcommit: 40f3561cc94f721eca50d33f2d75dc974cb6f92b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482360"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55147266"
 ---
 # <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>AD DS(Active Directory Domain Services)를 Azure로 확장
 
@@ -147,7 +147,7 @@ AD DS 데이터베이스를 호스팅하는 디스크를 BitLocker 또는 Azure 
 3. 다음 명령을 실행하고 배포가 끝나기를 기다립니다.
 
     ```bash
-    azbb -s <subscription_id> -g <resource group> -l <location> -p onoprem.json --deploy
+    azbb -s <subscription_id> -g <resource group> -l <location> -p azure.json --deploy
     ```
 
    온-프레미스 VNet과 동일한 리소스 그룹에 배포합니다.

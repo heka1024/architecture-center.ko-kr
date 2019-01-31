@@ -11,12 +11,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, identity
-ms.openlocfilehash: 5be463856b858ab75a2e402d6690f8240ebf9af6
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: bf62544028741d500e9c4172d4ac0206c95cb919
+ms.sourcegitcommit: 40f3561cc94f721eca50d33f2d75dc974cb6f92b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54480771"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55147317"
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>Azure에서 AAD DS(Active Directory Domain Services) 리소스 포리스트 만들기
 
@@ -137,7 +137,7 @@ Active Directory 관련 보안 고려사항을 확인하려면 [Active Directory
 3. 다음 명령을 실행하고 배포가 끝나기를 기다립니다.
 
     ```bash
-    azbb -s <subscription_id> -g <resource group> -l <location> -p onoprem.json --deploy
+    azbb -s <subscription_id> -g <resource group> -l <location> -p azure.json --deploy
     ```
 
    온-프레미스 VNet과 동일한 리소스 그룹에 배포합니다.

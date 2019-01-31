@@ -7,12 +7,13 @@ ms.date: 07/05/2018
 ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
-ms.openlocfilehash: 392d23ed813a9605392b03de5cb8a7c7638bc4fc
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+social_image_url: /azure/architecture/example-scenario/data/media/architecture-fraud-detection.png
+ms.openlocfilehash: b10838635cb592eb93d35ce745832c55a6daae8b
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487231"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908344"
 ---
 # <a name="real-time-fraud-detection-on-azure"></a>Azure에서 실시간 부정 행위 감지
 

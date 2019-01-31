@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: f9f33421f3e1030e2477379970082f5c45690390
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 0bbe8177abe708cf41c1b5a8d117c05fd280c948
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486874"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908599"
 ---
 # <a name="throttling-pattern"></a>제한 패턴
 
@@ -38,7 +38,7 @@ ms.locfileid: "54486874"
 
 - 충분한 리소스를 사용하여 필수 서비스를 실행하는 데 방해되지 않도록 필수가 아닌 선택된 서비스의 기능을 사용하지 않도록 설정하거나 저하시킵니다. 예를 들어 애플리케이션에서 비디오 출력을 스트리밍하는 경우 낮은 해상도로 전환할 수 있습니다.
 
-- 부하 평준화를 사용하여 작업 볼륨을 완만하게 유지합니다(이 방법은 [큐 기반 부하 평준화 패턴](./queue-based-load-leveling.md)에서 자세히 다룹니다). 이 방법은 다중 테넌트 환경에서 모든 테넌트의 성능을 감소시킵니다. 시스템이 다양한 SLA로 여러 테넌트를 혼합하여 지원해야 하는 경우 중요한 테넌트에 대한 작업을 즉시 수행할 수 있습니다. 다른 테넌트에 대한 요청을 다시 유지하고 백로그가 용이해지면 처리할 수 있습니다. [우선 순위 큐 패턴]을 사용하여 이 방법을 구현할 수 있습니다.
+- 부하 평준화를 사용하여 작업 볼륨을 완만하게 유지합니다(이 방법은 [큐 기반 부하 평준화 패턴](./queue-based-load-leveling.md)에서 자세히 다룹니다). 이 방법은 다중 테넌트 환경에서 모든 테넌트의 성능을 감소시킵니다. 시스템이 다양한 SLA로 여러 테넌트를 혼합하여 지원해야 하는 경우 중요한 테넌트에 대한 작업을 즉시 수행할 수 있습니다. 다른 테넌트에 대한 요청을 다시 유지하고 백로그가 용이해지면 처리할 수 있습니다. [우선 순위 큐 패턴](./priority-queue.md)을 사용하여 이 방법을 구현할 수 있습니다.
 
 - 우선 순위가 낮은 애플리케이션 또는 테넌트를 대신하여 수행할 작업을 연기합니다. 이러한 작업은 시스템이 사용 중이고 작업을 나중에 다시 시도해야 함을 테넌트에 알리기 위해 예외를 생성하며 일시 중단되거나 제한될 수 있습니다.
 
