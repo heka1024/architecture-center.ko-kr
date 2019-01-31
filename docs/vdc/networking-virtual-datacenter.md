@@ -10,12 +10,12 @@ ms.subservice: enterprise-cloud-adoption
 ms.custom: virtual-network
 ms.date: 11/28/2018
 ms.author: jonor
-ms.openlocfilehash: 1f61996d231f3bf0cc2c550f4d3e119116bb7bc0
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: a997a0f03da63bc1432f61f3299e7c6794278e5e
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488650"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908560"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Azure Virtual Datacenter: 네트워크 측면
 
@@ -261,12 +261,6 @@ Azure Firewall 또는 NVA 방화벽은 모두 공통 관리 평면을 사용하�
 [**AFD(Azure Front Door)**][AFD]는 가용성과 확장성이 우수한 Microsoft의 웹 애플리케이션 가속 플랫폼, 글로벌 HTTP 부하 분산 장치, 애플리케이션 보호 및 Content Delivery Network입니다. Microsoft 글로벌 네트워크 Edge의 100개가 넘는 위치에서 실행되는 AFD를 사용하면 동적 웹 애플리케이션 및 정적 콘텐츠를 빌드, 운영 및 규모 확장할 수 있습니다. AFD는 애플리케이션에 세계적 수준의 최종 사용자 성능, 통합된 지역/스탬프 유지 관리 자동화, BCDR 자동화, 통합 클라이언트/사용자 정보, 캐싱 및 서비스 인사이트를 제공합니다. 이 플랫폼은 기본적으로 Azure에서 개발, 운영 및 지원되는 성능, 안정성 및 지원 SLA, 규정 준수 인증, 감사 가능한 보안 사례를 제공합니다.
 
 [**Application Gateway**][AppGW] Microsoft Azure Application Gateway는 전용 가상 어플라이언스이며 ADC(애플리케이션 배달 컨트롤러)를 서비스로 제공하여 다양한 계층 7 부하 분산 기능을 제공합니다. 따라서 사용자는 Application Gateway에 CPU 집약적인 SSL 종료를 오프로드하여 웹 팜 생산성을 최적화할 수 있습니다. 또한 들어오는 트래픽의 라운드 로빈 배포, 쿠키 기반 세션 선호도, URL 경로 기반 라우팅 및 단일 Application Gateway의 여러 웹 사이트를 호스트할 수 있는 능력을 비롯한 다른 계층 7 라우팅 기능이 제공됩니다. WAF(웹 애플리케이션 방화벽) 또한 Application Gateway WAF SKU의 일부로 제공됩니다. 이 SKU 기능은 일반적인 웹 취약점 및 악용으로부터 웹 애플리케이션을 보호합니다. Application Gateway는 인터넷 연결 게이트웨이, 내부 전용 게이트웨이 또는 둘의 조합으로 구성할 수 있습니다. 
-
-[**Application Gateway**][AppGW]는 ADC(애플리케이션 전송 컨트롤러)를 서비스로 제공하여 다양한 7계층 부하 분산 기능을 제공하는 전용 가상 어플라이언스입니다. 고객은 Application Gateway 인스턴스에 CPU 집약적인 SSL 종료를 오프로드하여 웹 팜 생산성을 최적화할 수 있습니다. 또한 다음 예제를 포함하여 기타 계층 7 라우팅 기능을 제공합니다. 
-* 들어오는 트래픽의 라운드 로빈 배포. 
-* 쿠키 기반 세션 선호도. 
-* URL 경로 기반 라우팅. 
-* 단일 Application Gateway 인스턴스 뒤에 여러 웹 사이트를 호스트하는 기능. WAF(웹 애플리케이션 방화벽) 또한 Application Gateway WAF SKU의 일부로 제공됩니다. 이 SKU 기능은 일반적인 웹 취약점 및 악용으로부터 웹 애플리케이션을 보호합니다. Application Gateway는 인터넷 연결 게이트웨이, 내부 전용 게이트웨이 또는 둘의 조합으로 구성될 수 있습니다. 
 
 [**공용 IP**][PIP]. 일부 Azure 기능을 사용하면 서비스 엔드포인트를 공용 IP 주소에 연결할 수 있으므로 인터넷에서 리소스에 액세스할 수 있습니다. 엔드포인트에서는 NAT(Network Address Translation)를 사용하여 트래픽을 Azure Virtual Network상의 내부 주소와 포트로 라우팅합니다. 이 경로가 외부 트래픽을 가상 네트워크 내부로 전달하는 기본 방법입니다. 공용 IP 주소를 구성하여 어떤 트래픽을 안으로 들일 것인지, 가상 네트워크의 어느 부분에서 어떻게 전환할 것인지 결정할 수 있습니다.
 
