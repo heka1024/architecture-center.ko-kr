@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: dfc4af0a5be29b32d90cc4a05715fd3e2f71427b
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488667"
----
 
 ## <a name="ai-scenarios"></a>AI 시나리오
 
@@ -383,6 +375,25 @@ ms.locfileid: "54488667"
                     <div class="cardText">
                         <h3>CFD 시뮬레이션 실행</h3>
                         <p>Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션을 실행합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
+    <a href="./infrastructure/image-modeling.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./infrastructure/media/architecture-image-modeling.png" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure에서 디지털 이미지 기반 모델링 가속화</h3>
+                        <p>Avere 및 Agisoft PhotoScan을 사용하여 Azure에서 디지털 이미지 기반 모델링 가속화</p>
                     </div>
                 </div>
             </div>
