@@ -3,21 +3,21 @@ title: Python 모델의 실시간 점수 매기기
 titleSuffix: Azure Reference Architectures
 description: 이 참조 아키텍처에서는 Python 모델을 Azure에서 웹 서비스로 배포하여 실시간으로 예측하는 방법을 보여줍니다.
 author: msalvaris
-ms.date: 11/09/2018
+ms.date: 01/28/2019
 ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 135e86b447684efd9f54340eda4b6bf6e4c35bbb
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: ba2d9a295e5a231f0ffca9e3cf2d53ace4deddfe
+ms.sourcegitcommit: 1ee873aaf40010eb2a38314ac56974bc9e227736
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487681"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55141024"
 ---
 # <a name="real-time-scoring-of-python-scikit-learn-and-deep-learning-models-on-azure"></a>Azure의 Python Scikit-Learn 및 딥러닝 모델의 실시간 채점
 
-이 참조 아키텍처에서는 Python 모델을 웹 서비스로 배포하여 실시간으로 예측하는 방법을 보여줍니다. 두 시나리오에서는 정규 Python 모델을 배포하는 방법 및 딥 러닝 모델을 배포하는 특정 요구 사항을 다룹니다. 시나리오는 모두 표시된 아키텍처를 사용합니다.
+이 참조 아키텍처에서는 Azure Machine Learning 서비스를 사용하여 Python 모델을 실시간으로 예측하는 웹 서비스로 배포하는 방법을 보여 줍니다. 두 시나리오에서는 정규 Python 모델을 배포하는 방법 및 딥 러닝 모델을 배포하는 특정 요구 사항을 다룹니다. 시나리오는 모두 표시된 아키텍처를 사용합니다.
 
 이 아키텍처의 두 참조 구현은 GitHub에서 지원됩니다([정규 Python 모델][github-python] 및 [딥 러닝 모델][github-dl]에 각각 하나씩).
 
@@ -33,13 +33,13 @@ ms.locfileid: "54487681"
 
 이 아키텍처에 대한 애플리케이션 흐름은 다음과 같습니다.
 
-1. 클라이언트는 인코딩된 질문 데이터를 포함한 HTTP POST 요청을 보냅니다.
-
-2. Flask 앱은 요청에서 질문을 추출합니다.
-
-3. 기능화 및 점수 매기기를 위해 질문을 scikit-learn 파이프라인 모델에 보냅니다.
-
-4. 해당 점수를 포함한 일치 FAQ 질문은 JSON 개체로 파이핑되며 클라이언트에 반환됩니다.
+1. 학습된 모델은 Machine Learning 모델 레지스트리에 등록됩니다.
+2. Machine Learning 서비스는 모델과 채점 스크립트가 포함된 Docker 이미지를 만듭니다.
+3. Machine Learning은 AKS(Azure Kubernetes Service)의 채점 이미지를 웹 서비스로 배포합니다.
+4. 클라이언트는 인코딩된 질문 데이터를 포함한 HTTP POST 요청을 보냅니다.
+5. Machine Learning에서 만든 웹 서비스는 요청에서 질문을 추출합니다.
+6. 기능화 및 채점을 위해 질문을 Scikit-learn 파이프라인 모델에 보냅니다. 
+7. 해당 점수와 일치하는 FAQ 질문이 클라이언트에 반환됩니다.
 
 결과를 사용하는 예제 앱의 스크린샷은 다음과 같습니다.
 
@@ -53,25 +53,24 @@ ms.locfileid: "54487681"
 
 딥 러닝 모델의 애플리케이션 흐름은 다음과 같습니다.
 
-1. 클라이언트는 인코딩된 이미지 데이터를 포함한 HTTP POST 요청을 보냅니다.
-
-2. Flask 앱은 요청에서 이미지를 추출합니다.
-
-3. 이미지는 전처리되고 점수 매기기를 위해 모델로 보내집니다.
-
-4. 점수 매기기 결과는 JSON 개체로 파이핑되고 클라이언트에 반환됩니다.
+1. 딥 러닝 모델은 Machine Learning 모델 레지스트리에 등록됩니다.
+2. Machine Learning 서비스는 모델과 채점 스크립트가 포함된 Docker 이미지를 만듭니다.
+3. Machine Learning은 AKS(Azure Kubernetes Service)의 채점 이미지를 웹 서비스로 배포합니다.
+4. 클라이언트는 인코딩된 이미지 데이터를 포함한 HTTP POST 요청을 보냅니다.
+5. Machine Learning에서 만든 웹 서비스는 이미지 데이터를 전처리하여 점수를 매기는 모델에 보냅니다. 
+6. 점수가 있는 예측된 범주가 클라이언트에 반환됩니다.
 
 ## <a name="architecture"></a>아키텍처
 
 이 아키텍처는 다음과 같은 구성 요소로 구성됩니다.
 
+**[Azure Machine Learning Service][aml]** 는 클라우드에서 제공하는 다양한 모든 규모의 기계 학습 모델을 학습, 배포, 자동화 및 관리하는 데 사용되는 클라우드 서비스입니다. 이 아키텍처에서는 웹 서비스의 인증, 라우팅 및 부하 분산뿐만 아니라 모델 배포를 관리하는 데도 사용됩니다.
+
 VM(**[가상 머신][vm]**) VM은 HTTP 요청을 보낼 수 있는 &mdash; 로컬 또는 &mdash; 클라우드 디바이스의 예제로 표시됩니다.
 
 AKS(**[Azure Kubernetes Service][aks]**)는 Kubernetes 클러스터에서 애플리케이션을 배포하는 데 사용됩니다. AKS는 Kubernetes의 배포 및 작업을 간소화합니다. 정규 Python 모델의 경우 CPU 전용 VM을 사용하고 딥 러닝 모델의 경우 GPU 설정 VM을 사용하여 클러스터를 구성할 수 있습니다.
 
-**[부하 분산 장치][lb]** AKS에서 프로비전된 부하 분산 장치는 외부에서 서비스를 노출하는 데 사용됩니다. 부하 분산 장치의 트래픽은 백 엔드 pod에 전달됩니다.
-
-**[Docker 허브][docker]** 는 Kubernetes 클러스터에 배포된 Docker 이미지를 저장하는 데 사용됩니다. 이 아키텍처에서는 Docker 허브를 사용하기 쉽고 Docker 사용자의 기본 이미지 리포지토리이므로 이 항목을 선택했습니다. 이 아키텍처에 [Azure Container Registry][acr]를 사용할 수도 있습니다.
+**[Azure Container Registry][acr]** 를 사용하면 DC/OS, Docker Swarm 및 Kubernetes를 포함한 모든 유형의 Docker 컨테이너 배포에 대한 이미지를 저장할 수 있습니다. 채점 이미지는 Azure Kubernetes Service의 컨테이너로 배포되고 채점 스크립트를 실행하는 데 사용됩니다. 여기에 사용되는 이미지는 Machine Learning에서 학습된 모델 및 채점 스크립트를 통해 만든 다음, Azure Container Registry에 푸시됩니다.
 
 ## <a name="performance-considerations"></a>성능 고려 사항
 
@@ -83,7 +82,7 @@ AKS(**[Azure Kubernetes Service][aks]**)는 Kubernetes 클러스터에서 애플
 
 ## <a name="scalability-considerations"></a>확장성 고려 사항
 
-AKS 클러스터가 CPU 전용 VM을 사용하여 프로비전되는 정규 Python 모델의 경우 [pod 수를 확장][manually-scale-pods]할 때 주의하세요. 목표는 클러스터를 완벽하게 활용하는 것입니다. 크기 조정은 pod에 정의된 CPU 요청 및 제한에 따라 달라집니다. Kubernetes는 pod의 [자동 크기 조정][autoscale-pods]을 지원하여 CPU 사용률 또는 다른 선택 메트릭에 따라 배포에서 pod 수를 조정할 수도 있습니다. [클러스터 자동 크기 조정기][autoscaler](미리 보기 상태)는 보류 중인 pod에 따라 에이전트 노드 크기를 조정할 수 있습니다.
+CPU 전용 VM을 사용하여 AKS 클러스터를 프로비전하는 일반 Python 모델의 경우 [Pod 수를 확장][manually-scale-pods]할 때 주의해야 합니다. 목표는 클러스터를 완벽하게 활용하는 것입니다. 크기 조정은 pod에 정의된 CPU 요청 및 제한에 따라 달라집니다. 또한 Kubernetes를 통한 Machine Learning은 CPU 사용률 또는 기타 메트릭에 기반한 [Pod 자동 크기 조정][autoscale-pods]도 지원합니다. [클러스터 자동 크기 조정기][autoscaler](미리 보기)는 보류 중인 Pod에 따라 에이전트 노드의 크기를 조정할 수 있습니다.
 
 GPU 지원 VM을 사용하는 딥 러닝 시나리오의 경우 pod에 대한 리소스 제한은 하나의 pod에 하나의 GPU를 할당하는 것과 같습니다. 사용된 VM의 형식에 따라 [클러스터의 노드를 크기 조정][scale-cluster]하여 서비스에 대한 수요를 충족해야 합니다. Azure CLI 및 kubectl을 사용하여 쉽게 수행할 수 있습니다.
 
@@ -117,7 +116,7 @@ AKS는 클러스터의 pod 로그에 모든 stdout/stderr을 자동으로 기록
 
 **인증**. 이 솔루션은 엔드포인트에 대한 액세스를 제한하지 않습니다. 엔터프라이즈 환경에서 아키텍처를 배포하려면 API 키를 통해 엔드포인트를 보호하고, 클라이언트 애플리케이션에 특정 형태의 사용자 인증을 추가합니다.
 
-**컨테이너 레지스트리** 이 솔루션에서는 Docker 이미지를 저장하는 데 공개 레지스트리를 사용합니다. 애플리케이션에서 사용하는 코드 및 모델은 이 이미지에 포함됩니다. 엔터프라이즈 애플리케이션은 비공개 레지스트리를 사용하여 악의적인 코드 실행으로부터 보호하고 컨테이너 내의 정보를 손상되지 않도록 유지해야 합니다.
+**컨테이너 레지스트리** 이 솔루션에서는 Azure Container Registry를 사용하여 Docker 이미지를 저장합니다. 애플리케이션에서 사용하는 코드 및 모델은 이 이미지에 포함됩니다. 엔터프라이즈 애플리케이션은 비공개 레지스트리를 사용하여 악의적인 코드 실행으로부터 보호하고 컨테이너 내의 정보를 손상되지 않도록 유지해야 합니다.
 
 **DDoS 보호** [DDoS Protection 표준][ddos]을 사용하는 것이 좋습니다. 기본 DDoS 보호가 Azure 플랫폼의 일부로 활성화되어 있지만 DDoS Protection 표준은 Azure Virtual Network 리소스에 맞게 조정된 완화 기능을 제공합니다.
 
@@ -140,15 +139,14 @@ AKS는 클러스터의 pod 로그에 모든 stdout/stderr을 자동으로 기록
 [autoscale-pods]: /azure/aks/tutorial-kubernetes-scale#autoscale-pods
 [azcopy]: /azure/storage/common/storage-use-azcopy-linux
 [ddos]: /azure/virtual-network/ddos-protection-overview
-[docker]: https://hub.docker.com/
 [get-started]: /azure/security-center/security-center-get-started
-[github-python]: https://github.com/Azure/MLAKSDeployment
-[github-dl]: https://github.com/Microsoft/AKSDeploymentTutorial
+[github-python]: https://github.com/Microsoft/MLAKSDeployAML
+[github-dl]: https://github.com/Microsoft/AKSDeploymentTutorial_AML
 [gpus-vs-cpus]: https://azure.microsoft.com/en-us/blog/gpus-vs-cpus-for-deployment-of-deep-learning-models/
 [https-ingress]: /azure/aks/ingress-tls
 [ingress-controller]: https://kubernetes.io/docs/concepts/services-networking/ingress/
 [kubectl]: https://kubernetes.io/docs/tasks/tools/install-kubectl/
-[lb]: /azure/load-balancer/load-balancer-overview
+[aml]: /azure/machine-learning/service/overview-what-is-azure-ml
 [manually-scale-pods]: /azure/aks/tutorial-kubernetes-scale#manually-scale-pods
 [monitor-containers]: /azure/monitoring/monitoring-container-insights-overview
 [사용 권한]: /azure/aks/concepts-identity

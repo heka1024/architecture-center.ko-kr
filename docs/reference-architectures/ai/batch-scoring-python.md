@@ -7,12 +7,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai, AI
-ms.openlocfilehash: a291821860a8e503ba4c6173ac6d8fd449d6ebf3
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 1ca6cf385ddd3be56e247a3439e737c114a88dcb
+ms.sourcegitcommit: 40f3561cc94f721eca50d33f2d75dc974cb6f92b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485369"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55147283"
 ---
 # <a name="batch-scoring-of-python-models-on-azure"></a>Azure에서 Python 모델 일괄 채점
 
@@ -33,6 +33,9 @@ ms.locfileid: "54485369"
 [Azure Stream Analytics][stream-analytics]. 이벤트 처리 엔진입니다. Stream Analytics 작업은 이벤트 허브에서 데이터 스트림을 읽고 스트림 처리를 수행합니다.
 
 [Azure Batch AI][batch-ai]. 이 분산 컴퓨팅 엔진은 Azure에서 대규모로 기계 학습 및 AI 모델을 학습시키고 테스트하는 데 사용됩니다. Batch AI는 자동 크기 조정 옵션을 사용하여 필요 시 가상 머신을 만들고, Batch AI 클러스터의 각 노드는 특정 센서에 대한 채점 작업을 실행합니다. 채점용 Python [스크립트][python-script]는 클러스터의 각 노드에 생성된 Docker 컨테이너에서 실행되며, 관련 센서 데이터를 읽고, 예측 항목을 생성하여 Blob Storage에 저장합니다.
+
+> [!NOTE]
+> Azure Batch AI 서비스는 2019년 3월에 사용 중지되며, 이제 [Azure Machine Learning Service][amls]에서 해당 학습 및 채점 기능을 규모에 맞게 사용할 수 있습니다. 이 참조 아키텍처는 기계 학습 모델을 학습, 배포 및 채점하기 위해 [Azure Machine Learning 컴퓨팅][aml-compute]이라는 관리형 컴퓨팅 대상을 제공하는 Machine Learning을 사용하도록 곧 업데이트 될 예정입니다.
 
 [Azure Blob Storage][storage]. Blob 컨테이너는 미리 학습된 모델, 데이터 및 출력 예측 항목을 저장하는 데 사용됩니다. 모델은 [create\_resources.ipynb][create-resources] 노트북의 Blob Storage에 업로드됩니다. 이러한 [1클래스 SVM][one-class-svm] 모델은 여러 디바이스의 다양한 센서 값을 나타내는 데이터를 학습합니다. 이 솔루션에서는 데이터 값이 고정된 시간 간격에 걸쳐 집계된다고 가정합니다.
 
@@ -94,6 +97,8 @@ Batch AI 클러스터 크기는 큐의 작업에 따라 확장 및 축소됩니�
 
 [acr]: /azure/container-registry/container-registry-intro
 [ai]: /azure/application-insights/app-insights-overview
+[aml-compute]: /azure/machine-learning/service/how-to-set-up-training-targets#amlcompute
+[amls]: /azure/machine-learning/service/overview-what-is-azure-ml
 [automatic-scaling]: /azure/batch/batch-automatic-scaling
 [azure-files]: /azure/storage/files/storage-files-introduction
 [batch-ai]: /azure/batch-ai/

@@ -7,12 +7,12 @@ ms.date: 12/10/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: 53beb2ee0f99c107ed390a4309273ad20e405b69
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 06058967e6ffcd9e3554a46c67144f72fb19078f
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484298"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908582"
 ---
 # <a name="enterprise-cloud-adoption-the-5-rs-of-rationalization"></a>엔터프라이즈 클라우드 채택: 합리화의 5가지 R
 
@@ -95,7 +95,7 @@ PaaS(Platform as a Service) 옵션은 여러 애플리케이션과 관련된 운
 
 ## <a name="rebuild"></a>다시 빌드
 
-일부 시나리오에서는 애플리케이션을 추진하기 위해 극복해야 하는 델타가 너무 커서 추가 투자가 정당화되지 않을 수 있습니다. 비즈니스 요구 사항을 충족했었으나 이제는 비즈니스 프로세스가 수행되는 방식과 맞지 않거나 지원되지 않는 애플리케이션의 경우에 특히 그렇습니다. 이 경우 새 코드 베이스를 만들어 클라우드 네이티브 방식과 맞출 수 있습니다.
+일부 시나리오에서는 애플리케이션을 추진하기 위해 극복해야 하는 델타가 너무 커서 추가 투자가 정당화되지 않을 수 있습니다. 비즈니스 요구 사항을 충족했었으나 이제는 비즈니스 프로세스가 수행되는 방식과 맞지 않거나 지원되지 않는 애플리케이션의 경우에 특히 그렇습니다. 이 경우 새 코드베이스를 만들어 [클라우드 네이티브](https://azure.microsoft.com/overview/cloudnative/) 방식과 맞출 수 있습니다.
 
 일반적인 동기는 다음과 같습니다.
 

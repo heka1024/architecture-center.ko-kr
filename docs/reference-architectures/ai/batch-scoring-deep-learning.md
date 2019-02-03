@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 26a83b3f75b2e7e9ec4a8a99ab8b4d8f1b1ef4d7
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 27975b42179e87f4520186778610159943a93090
+ms.sourcegitcommit: 40f3561cc94f721eca50d33f2d75dc974cb6f92b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488565"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55147249"
 ---
 # <a name="batch-scoring-on-azure-for-deep-learning-models"></a>Azure의 Deep Learning 모델 일괄 채점
 
@@ -45,6 +45,9 @@ ms.locfileid: "54488565"
 ### <a name="compute"></a>컴퓨팅
 
 **[Azure Batch AI][batch-ai]** 는 신경망 스타일 전송 알고리즘을 실행하는 데 사용됩니다. Batch AI는 GPU 지원 VM에서 Deep Learning 프레임워크용으로 사전 구성된 컨테이너화된 환경을 제공하여 Deep Learning 워크로드를 지원합니다. 또한 Batch AI는 계산 클러스터를 Blob Storage에 연결할 수도 있습니다.
+
+> [!NOTE]
+> Azure Batch AI 서비스는 2019년 3월에 사용 중지되며, 이제 [Azure Machine Learning Service][amls]에서 해당 학습 및 채점 기능을 규모에 맞게 사용할 수 있습니다. 이 참조 아키텍처는 기계 학습 모델을 학습, 배포 및 채점하기 위해 [Azure Machine Learning 컴퓨팅][aml-compute]이라는 관리형 컴퓨팅 대상을 제공하는 Machine Learning을 사용하도록 곧 업데이트 될 예정입니다.
 
 ### <a name="storage"></a>Storage
 
@@ -149,6 +152,8 @@ Batch AI 클러스터 크기는 큐의 작업에 따라 자동으로 확장 및 
 
 <!-- links -->
 
+[aml-compute]: /azure/machine-learning/service/how-to-set-up-training-targets#amlcompute
+[amls]: /azure/machine-learning/service/overview-what-is-azure-ml
 [azcopy]: /azure/storage/common/storage-use-azcopy-linux
 [batch-ai]: /azure/batch-ai/
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
