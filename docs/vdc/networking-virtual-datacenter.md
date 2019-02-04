@@ -10,12 +10,12 @@ ms.subservice: enterprise-cloud-adoption
 ms.custom: virtual-network
 ms.date: 11/28/2018
 ms.author: jonor
-ms.openlocfilehash: a997a0f03da63bc1432f61f3299e7c6794278e5e
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.openlocfilehash: 484f41f64b676b08ae8adb4ba082f9bff75a6a54
+ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908560"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55483116"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Azure Virtual Datacenter: 네트워크 측면
 
@@ -391,7 +391,9 @@ Traffic Manager는 DNS를 사용하므로 Azure 공용 엔드포인트 전용입
 
  - VDC 허브 및 스포크 디자인에 대한 기본 기술인 [VNet 피어링][VNetPeering] 알아보기
  - [Azure AD][AAD]를 구현하여 [RBAC][RBAC] 탐색 시작
- - 조직의 구조, 요구 사항 및 정책을 충족하도록 구독 및 리소스 관리 모델과 RBAC 모델을 개발하세요. 가장 중요한 작업은 계획입니다. 재구성, 합병, 신제품 라인 등에 대한 실제 계획도 중요합니다.<!--Image References-->
+ - 조직의 구조, 요구 사항 및 정책을 충족하도록 구독 및 리소스 관리 모델과 RBAC 모델을 개발하세요. 가장 중요한 작업은 계획입니다. 재구성, 합병, 신제품 라인 등에 대한 실제 계획도 중요합니다.
+
+<!--Image References-->
 [0]: ./images/networking-redundant-equipment.png "구성 요소 중복 예제" 
 [1]: ./images/networking-vdc-high-level.png "고급 수준의 허브 및 스포크 VDC 예제"
 [2]: ./images/networking-hub-spokes-cluster.png "허브 및 스포크 클러스터"
