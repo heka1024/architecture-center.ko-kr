@@ -3,14 +3,17 @@ title: Azure에서 동영상 추천
 description: 기계 학습을 사용하여 영화, 제품 및 기타 추천 사항을 자동화하고, 기계 학습과 Azure DSVM(Data Science Virtual Machine)을 사용하여 Azure에서 모델을 학습합니다.
 author: njray
 ms.date: 1/9/2019
-ms.custom: azcat-ai
+ms.custom: azcat-ai, AI
 social_image_url: /azure/architecture/example-scenario/ai/media/architecture-movie-recommender.png
-ms.openlocfilehash: 9e68f38cb61d7a3255b76a662c58907704914052
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.topic: example-scenario
+ms.service: architecture-center
+ms.subservice: example-scenario
+ms.openlocfilehash: 9387ab7989695df29df53d7aa4a437010cdd9fdf
+ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908259"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55482997"
 ---
 # <a name="movie-recommendations-on-azure"></a>Azure에서 동영상 추천
 
