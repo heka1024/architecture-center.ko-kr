@@ -357,6 +357,8 @@ items:
       href: reference-architectures/ai/batch-scoring-deep-learning.md
     - name: Python 모델의 일괄 처리 채점
       href: reference-architectures/ai/batch-scoring-python.md
+    - name: Azure Databricks에서 Spark 모델의 일괄 처리 점수 매기기
+      href: reference-architectures/ai/batch-scoring-databricks.md
     - name: Python 및 딥 러닝 모델의 실시간 채점
       href: reference-architectures/ai/realtime-scoring-python.md
     - name: R 기계 학습 모델의 실시간 채점
@@ -493,7 +495,7 @@ items:
       href: multitenant-identity/index.md
     - name: Tailspin 시나리오
       href: multitenant-identity/tailspin.md
-    - name: 인증
+    - name: Authentication
       href: multitenant-identity/authenticate.md
     - name: 클레임 기반 ID
       href: multitenant-identity/claims.md
@@ -815,9 +817,9 @@ items:
           href: cloud-adoption/decision-guides/software-defined-network/hub-spoke.md
       - name: 로그 및 보고
         href: cloud-adoption/decision-guides/log-and-report/overview.md
-ms.openlocfilehash: 608761d954c2a26968a970c99f506ee03b40867d
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 2ba7e4b0b9eb049c0492557a0543778d2fbb2518
+ms.sourcegitcommit: a68f248402c598f9d25bc1dc62f27a6a934ff001
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55898462"
+ms.locfileid: "55903251"
