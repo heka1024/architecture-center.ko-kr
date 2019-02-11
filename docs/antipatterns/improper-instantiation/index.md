@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: a98a3f41d766354771af917aa126dc53bd0683a4
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: a2e42e35ae1b56b61c8f9f9ecb21ee104cd3222e
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482768"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898054"
 ---
 # <a name="improper-instantiation-antipattern"></a>부적절한 인스턴스화 안티패턴
 
@@ -126,7 +126,7 @@ public class SingleHttpClientInstanceController : ApiController
 3. 프로덕션 시스템이 아닌 통제된 테스트 환경에서 의심되는 각 작업의 부하를 테스트합니다.
 4. 소스 코드를 검토하고 broker 개체가 관리되는 방식을 검사합니다.
 
-시스템에 부하가 걸렸을 때 느리게 실행되거나 예외를 생성하는 작업에 대한 스택 추적을 살펴봅니다. 이 정보는 해당 작업이 리소스를 활용하는 방법을 파악하는 데 도움이 될 수 있습니다. 예외는 오류가 공유 자원이 소진되어 발생했는지를 파악하는 데 도움이 됩니다.
+시스템에 부하가 걸렸을 때 느리게 실행되거나 예외를 생성하는 작업에 대한 스택 추적을 살펴봅니다. 이 정보는 해당 작업이 리소스를 사용하는 방법을 파악하는 데 도움이 될 수 있습니다. 예외는 오류가 공유 자원이 소진되어 발생했는지를 파악하는 데 도움이 됩니다.
 
 ## <a name="example-diagnosis"></a>예제 진단
 

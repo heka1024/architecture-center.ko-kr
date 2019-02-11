@@ -4,12 +4,12 @@ description: PaaS(platform-as-a-service) 구성 요소를 사용하는 Azure에�
 titleSuffix: Azure Reference Architectures
 author: MikeWasson
 ms.date: 01/09/2019
-ms.openlocfilehash: c0aa1771abc99b1f17f1e553c9626e50a386f34c
-ms.sourcegitcommit: d5ea427c25f9f7799cc859b99f328739ca2d8c1c
+ms.openlocfilehash: 5a4b104044f3e64ffdce98e3952201d397d41f33
+ms.sourcegitcommit: 700a4f6ce61b1ebe68e227fc57443e49282e35aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54307691"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55887355"
 ---
 # <a name="azure-iot-reference-architecture"></a>Azure IoT 참조 아키텍처
 
@@ -145,3 +145,5 @@ IoT Hub는 디바이스 ID에 따라 디바이스 메시지를 자동으로 분�
 - 권장 아키텍처 및 구현 선택에 대한 자세한 내용은 [Microsoft Azure IoT 참조 아키텍처](http://aka.ms/iotrefarchitecture)(PDF)를 참조하세요.
 
 - 다양한 Azure IoT 서비스의 자세한 설명서는 [Azure IoT 기본 사항](/azure/iot-fundamentals/)을 참조하세요.
+
+- 샘플 IoT 구현은 [GitHub](https://github.com/mspnp/iot-guidance)에서 사용할 수 있습니다.

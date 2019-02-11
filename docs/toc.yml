@@ -537,11 +537,11 @@ items:
     href: checklist/resiliency-per-service.md
   - name: 확장성 검사 목록
     href: checklist/scalability.md
-- name: 엔터프라이즈 클라우드 채택
+- name: 클라우드 채택 프레임워크
   items:
   - name: 소개
     href: cloud-adoption/overview.md
-  - name: 시작하기
+  - name: 시작
     items:
     - name: 개요
       href: cloud-adoption/getting-started/overview.md
@@ -549,14 +549,16 @@ items:
       href: cloud-adoption/getting-started/what-is-azure.md
     - name: 클라우드 리소스 거버넌스란?
       href: cloud-adoption/getting-started/what-is-governance.md
-    - name: Azure에서 리소스 액세스 거버넌스
+    - name: Azure에서 리소스 액세스 관리
       href: cloud-adoption/getting-started/azure-resource-access.md
   - name: 비즈니스 타당성
     items:
     - name: 클라우드 마이그레이션 비즈니스 사례 빌드
       href: cloud-adoption/business-strategy/cloud-migration-business-case.md
-    - name: 재무 모델 이해
+    - name: 클라우드 전환을 위한 금융 모델 만들기
       href: cloud-adoption/business-strategy/financial-models.md
+    - name: 회계 결과의 예
+      href: cloud-adoption/business-strategy/business-outcomes/fiscal-outcomes.md
   - name: 디지털 자산
     items:
     - name: 합리화의 5가지 R
@@ -569,27 +571,211 @@ items:
       href: cloud-adoption/digital-estate/inventory.md
     - name: 디지털 자산 합리화
       href: cloud-adoption/digital-estate/rationalize.md
-    - name: 클라우드 비용 예측
+    - name: 비용을 예측하도록 비용 모델 맞춤
       href: cloud-adoption/digital-estate/calculate.md
   - name: 거버넌스
     items:
     - name: 개요
       href: cloud-adoption/governance/overview.md
-    - name: 단일 팀을 위한 거버넌스 디자인
-      href: cloud-adoption/governance/governance-single-team.md
-    - name: 여러 팀을 위한 거버넌스 디자인
-      href: cloud-adoption/governance/governance-multiple-teams.md
+    - name: 실행 가능한 거버넌스 경험
+      items:
+      - name: 경험의 개요
+        href: cloud-adoption/governance/journeys/overview.md
+      - name: 중소 엔터프라이즈 경험
+        items:
+        - name: 모범 사례
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/overview.md
+        - name: 내러티브
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/narrative.md
+        - name: 초기 회사 정책
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/initial-corporate-policy.md
+        - name: 설명된 모범 사례
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/best-practice-explained.md
+        - name: 보안 기준 진화
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/security-baseline-evolution.md
+        - name: 리소스 일관성 진화
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/resource-consistency-evolution.md
+        - name: Cost Management 진화
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/cost-management-evolution.md
+        - name: 다중 클라우드 진화
+          href: cloud-adoption/governance/journeys/small-to-medium-enterprise/multi-cloud-evolution.md
+      - name: 대규모 엔터프라이즈 경험
+        items:
+        - name: 모범 사례
+          href: cloud-adoption/governance/journeys/large-enterprise/overview.md
+        - name: 내러티브
+          href: cloud-adoption/governance/journeys/large-enterprise/narrative.md
+        - name: 초기 회사 정책
+          href: cloud-adoption/governance/journeys/large-enterprise/initial-corporate-policy.md
+        - name: 설명된 모범 사례
+          href: cloud-adoption/governance/journeys/large-enterprise/best-practice-explained.md
+        - name: ID 기준 진화
+          href: cloud-adoption/governance/journeys/large-enterprise/identity-baseline-evolution.md
+        - name: 보안 기준 진화
+          href: cloud-adoption/governance/journeys/large-enterprise/security-baseline-evolution.md
+        - name: 리소스 일관성 진화
+          href: cloud-adoption/governance/journeys/large-enterprise/resource-consistency-evolution.md
+        - name: Cost Management 진화
+          href: cloud-adoption/governance/journeys/large-enterprise/cost-management-evolution.md
+        - name: 다중 클라우드 진화
+          href: cloud-adoption/governance/journeys/large-enterprise/multi-cloud-evolution.md
+        - name: 거버넌스의 여러 계층
+          href: cloud-adoption/governance/journeys/large-enterprise/multiple-layers-of-governance.md
+    - name: 거버넌스 이론
+      items:
+      - name: 클라우드 거버넌스 전략 구현
+        href: cloud-adoption/governance/corporate-policy.md
+      - name: 클라우드 거버넌스의 5분야
+        href: cloud-adoption/governance/governance-disciplines.md
+      - name: 회사 정책 및 규정 준수 진화
+        items:
+        - name: 회사 IT 정책이 어떻게 클라우드 지원될 수 있나요?
+          href: cloud-adoption/governance/policy-compliance/overview.md
+        - name: 비즈니스 위험 이해
+          href: cloud-adoption/governance/policy-compliance/understanding-business-risk.md
+        - name: 위험 허용치 평가
+          href: cloud-adoption/governance/policy-compliance/risk-tolerance.md
+        - name: 회사 정책 명령문 정의
+          href: cloud-adoption/governance/policy-compliance/define-policy.md
+        - name: 아키텍처 설계 맞춤 가이드
+          href: cloud-adoption/governance/policy-compliance/align-governance-journeys.md
+        - name: 정책 준수 프로세스 개발
+          href: cloud-adoption/governance/policy-compliance/processes.md
+        - name: 규정 준수란 무엇인가요?
+          href: cloud-adoption/governance/policy-compliance/what-is-regulatory-compliance.md
+        - name: 클라우드 정책 검토란 무엇인가요?
+          href: cloud-adoption/governance/policy-compliance/what-is-a-cloud-policy-review.md
+        - name: 클라우드에 대한 CISO를 어떻게 준비하나요?
+          href: cloud-adoption/governance/policy-compliance/how-can-a-ciso-prepare-for-the-cloud.md
+        - name: 데이터 분류란 무엇인가요?
+          href: cloud-adoption/governance/policy-compliance/what-is-data-classification.md
+      - name: 클라우드 거버넌스의 5분야 구현
+        items:
+        - name: Cost Management
+          items:
+          - name: Cost Management 분야의 개요
+            href: cloud-adoption/governance/cost-management/overview.md
+          - name: 템플릿 다운로드
+            href: cloud-adoption/governance/cost-management/template.md
+          - name: 비즈니스 위험 이해
+            href: cloud-adoption/governance/cost-management/business-risks.md
+          - name: 위험 허용치 메트릭 및 표시기
+            href: cloud-adoption/governance/cost-management/metrics-tolerance.md
+          - name: 샘플 정책 명령문
+            href: cloud-adoption/governance/cost-management/policy-statements.md
+          - name: 정책 준수 프로세스
+            href: cloud-adoption/governance/cost-management/compliance-processes.md
+          - name: 분야 개선
+            href: cloud-adoption/governance/cost-management/discipline-improvement.md
+          - name: Azure 관련 도구 체인
+            href: cloud-adoption/governance/cost-management/toolchain.md
+        - name: 보안 기준
+          items:
+          - name: 보안 기준 분야의 개요
+            href: cloud-adoption/governance/security-baseline/overview.md
+          - name: 템플릿 다운로드
+            href: cloud-adoption/governance/security-baseline/template.md
+          - name: 비즈니스 위험 이해
+            href: cloud-adoption/governance/security-baseline/business-risks.md
+          - name: 위험 허용치 메트릭 및 표시기
+            href: cloud-adoption/governance/security-baseline/metrics-tolerance.md
+          - name: 샘플 정책 명령문
+            href: cloud-adoption/governance/security-baseline/policy-statements.md
+          - name: 정책 준수 프로세스
+            href: cloud-adoption/governance/security-baseline/compliance-processes.md
+          - name: 분야 개선
+            href: cloud-adoption/governance/security-baseline/discipline-improvement.md
+          - name: 클라우드 네이티브 보안 기준
+            href: cloud-adoption/governance/security-baseline/cloud-native-policy.md
+          - name: 추가 Azure 보안 지침
+            href: cloud-adoption/governance/security-baseline/azure-security-guidance.md
+          - name: Azure 관련 도구 체인
+            href: cloud-adoption/governance/security-baseline/toolchain.md
+        - name: ID 기준
+          items:
+          - name: ID 기준 분야의 개요
+            href: cloud-adoption/governance/identity-baseline/overview.md
+          - name: 템플릿 다운로드
+            href: cloud-adoption/governance/identity-baseline/template.md
+          - name: 비즈니스 위험 이해
+            href: cloud-adoption/governance/identity-baseline/business-risks.md
+          - name: 위험 허용치 메트릭 및 표시기
+            href: cloud-adoption/governance/identity-baseline/metrics-tolerance.md
+          - name: 샘플 정책 명령문
+            href: cloud-adoption/governance/identity-baseline/policy-statements.md
+          - name: 정책 준수 프로세스
+            href: cloud-adoption/governance/identity-baseline/compliance-processes.md
+          - name: 분야 개선
+            href: cloud-adoption/governance/identity-baseline/discipline-improvement.md
+          - name: Azure 관련 도구 체인
+            href: cloud-adoption/governance/identity-baseline/toolchain.md
+        - name: 리소스 일관성
+          items:
+          - name: 리소스 일관성 분야의 개요
+            href: cloud-adoption/governance/resource-consistency/overview.md
+          - name: 템플릿 다운로드
+            href: cloud-adoption/governance/resource-consistency/template.md
+          - name: 비즈니스 위험 이해
+            href: cloud-adoption/governance/resource-consistency/business-risks.md
+          - name: 위험 허용치 메트릭 및 표시기
+            href: cloud-adoption/governance/resource-consistency/metrics-tolerance.md
+          - name: 샘플 정책 명령문
+            href: cloud-adoption/governance/resource-consistency/policy-statements.md
+          - name: 정책 준수 프로세스
+            href: cloud-adoption/governance/resource-consistency/compliance-processes.md
+          - name: 분야 개선
+            href: cloud-adoption/governance/resource-consistency/discipline-improvement.md
+          - name: 리소스 액세스 관리
+            href: cloud-adoption/governance/resource-consistency/azure-resource-access.md
+          - name: 단일 워크로드를 위한 거버넌스 디자인
+            href: cloud-adoption/governance/resource-consistency/governance-simple-workload.md
+          - name: 여러 팀을 위한 거버넌스 디자인
+            href: cloud-adoption/governance/resource-consistency/governance-multiple-teams.md
+          - name: Azure 관련 도구 체인
+            href: cloud-adoption/governance/resource-consistency/toolchain.md
+        - name: 배포 가속
+          items:
+          - name: 배포 가속 분야의 개요
+            href: cloud-adoption/governance/deployment-acceleration/overview.md
+          - name: 템플릿 다운로드
+            href: cloud-adoption/governance/deployment-acceleration/template.md
+          - name: 비즈니스 위험 이해
+            href: cloud-adoption/governance/deployment-acceleration/business-risks.md
+          - name: 위험 허용치 메트릭 및 표시기
+            href: cloud-adoption/governance/deployment-acceleration/metrics-tolerance.md
+          - name: 샘플 정책 명령문
+            href: cloud-adoption/governance/deployment-acceleration/policy-statements.md
+          - name: 정책 준수 프로세스
+            href: cloud-adoption/governance/deployment-acceleration/compliance-processes.md
+          - name: 분야 개선
+            href: cloud-adoption/governance/deployment-acceleration/discipline-improvement.md
+          - name: Azure 관련 도구 체인
+            href: cloud-adoption/governance/deployment-acceleration/toolchain.md
   - name: 인프라
     items:
-    - name: 기본 워크로드 배포
-      href: cloud-adoption/infrastructure/basic-workload.md
+    - name: Virtual Machines
+      items:
+      - name: 기본 워크로드 배포
+        href: cloud-adoption/infrastructure/virtual-machines/basic-workload.md
+    - name: 메인프레임 마이그레이션
+      items:
+      - name: 개요
+        href: cloud-adoption/infrastructure/mainframe-migration/overview.md
+      - name: 허구 및 팩트
+        href: cloud-adoption/infrastructure/mainframe-migration/myths-and-facts.md
+      - name: 마이그레이션 전략
+        href: cloud-adoption/infrastructure/mainframe-migration/migration-strategies.md
+      - name: 애플리케이션 전략
+        href: cloud-adoption/infrastructure/mainframe-migration/application-strategies.md
+    - name: 하이브리드 클라우드 일관성 만들기
+      href: cloud-adoption/infrastructure/misc/hybrid-consistency.md
   - name: 작업
     items:
     - name: 개요
       href: cloud-adoption/operations/overview.md
     - name: 운영 적합성에 대한 검토 설정
       href: cloud-adoption/operations/operational-fitness-review.md
-  - name: 부록
+  - name: 참조
     items:
     - name: VDC(가상 데이터 센터)
       href: vdc/index.md
@@ -597,9 +783,41 @@ items:
       href: cloud-adoption/appendix/azure-scaffold.md
     - name: Azure 엔터프라이즈 스캐폴드 구현
       href: cloud-adoption/appendix/azure-scaffold-examples.md
-ms.openlocfilehash: 82543ba5afed9d4bb32f0779b332d1425d089cfe
-ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
+    - name: 의사 결정 가이드
+      items:
+      - name: 개요
+        href: cloud-adoption/decision-guides/overview.md
+      - name: 구독
+        href: cloud-adoption/decision-guides/subscriptions/overview.md
+      - name: ID
+        href: cloud-adoption/decision-guides/identity/overview.md
+      - name: 정책 적용
+        href: cloud-adoption/decision-guides/policy-enforcement/overview.md
+      - name: 리소스 일관성
+        href: cloud-adoption/decision-guides/resource-consistency/overview.md
+      - name: 리소스 태그 지정
+        href: cloud-adoption/decision-guides/resource-tagging/overview.md
+      - name: 암호화
+        href: cloud-adoption/decision-guides/encryption/overview.md
+      - name: 소프트웨어 정의 네트워크
+        items:
+        - name: 개요
+          href: cloud-adoption/decision-guides/software-defined-network/overview.md
+        - name: PaaS 전용
+          href: cloud-adoption/decision-guides/software-defined-network/paas-only.md
+        - name: 클라우드 네이티브
+          href: cloud-adoption/decision-guides/software-defined-network/cloud-native.md
+        - name: Cloud DMZ
+          href: cloud-adoption/decision-guides/software-defined-network/cloud-dmz.md
+        - name: 하이브리드
+          href: cloud-adoption/decision-guides/software-defined-network/hybrid.md
+        - name: 허브 및 스포크 모델
+          href: cloud-adoption/decision-guides/software-defined-network/hub-spoke.md
+      - name: 로그 및 보고
+        href: cloud-adoption/decision-guides/log-and-report/overview.md
+ms.openlocfilehash: 608761d954c2a26968a970c99f506ee03b40867d
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55483048"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898462"
