@@ -5,12 +5,12 @@ layout: LandingPage
 ms.topic: landing-page
 ms.date: 09/28/2018
 google-site-verification: b-xRLveOzJ9oSOh37wgRTRB2lMOoFY8HiHf9_0DIawE
-ms.openlocfilehash: f690d95c78becbf16f02f913983533513d2f7c01
-ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
+ms.openlocfilehash: 3c48ba77b7f97c6047f5d1441a22f2bd79ee0a3e
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55483082"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898292"
 ---
 # <a name="azure-architecture-center"></a>Azure 아키텍처 센터
 
@@ -58,8 +58,8 @@ ms.locfileid: "55483082"
                     <div class="card">
                         <img src="_images/cloud-adoption.svg" alt="" />
                         <div class="cardText">
-                            <h3>엔터프라이즈 클라우드 채택</h3>
-                            <p>이 가이드는 조직 전체의 클라우드 채택 전략을 수립하는 프로세스를 설명합니다. 조직의 준비 상태, 거버넌스 및 인프라에 중점을 둡니다.</p>
+                            <h3>Azure에 대한 Microsoft 클라우드 채택 프레임워크</h3>
+                            <p>정책, 관리 및 인프라에 집중하는 조직 전체의 클라우드 채택 전략을 만드는 프로세스입니다.</p>
                         </div>
                     </div>
                 </div>
