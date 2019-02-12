@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 28dbd1798060d1bdd01b1e6bee03337a2239a9ef
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 8be05c30ac974b3e58fb0decc52ab623fc5478c8
+ms.sourcegitcommit: eee3a35dd5a5a2f0dc117fa1c30f16d6db213ba2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487664"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55782033"
 ---
 # <a name="gateway-offloading-pattern"></a>게이트웨이 오프로딩 패턴
 
@@ -89,6 +89,8 @@ proxy_set_header X-Real-IP $remote_addr;
         }
 }
 ```
+
+Azure에서 [Application Gateway에서 SSL 종료를 설정](/azure/application-gateway/tutorial-ssl-cli)하여 수행할 수 있습니다.
 
 ## <a name="related-guidance"></a>관련 지침
 

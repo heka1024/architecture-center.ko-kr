@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: a5fbe72e81a169fd4b29e07e037bb7f8928e0c45
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 9f14b47a9659ad0b7451d106168f4d7b5a6ab0c7
+ms.sourcegitcommit: eee3a35dd5a5a2f0dc117fa1c30f16d6db213ba2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482396"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55782084"
 ---
 # <a name="naming-conventions-for-azure-resources"></a>Azure 리소스에 대한 명명 규칙
 
@@ -83,7 +83,7 @@ Azure의 각 리소스 또는 서비스 유형은 명명 제한 및 범위 집�
 | --- | --- | --- | --- | --- | --- | --- |
 |리소스 그룹 |구독 |1-90 |대/소문자 구분하지 않음 |[여기](/rest/api/resources/resourcegroups/createorupdate)에 설명된 regex와 일치하는 영숫자, 밑줄, 괄호, 하이픈, 마침표(맨 끝에 있는 마침표는 제외) 및 유니코드 문자 |`<service short name>-<environment>-rg` |`profx-prod-rg` |
 |가용성 집합 |리소스 그룹 |1-80 |대/소문자 구분하지 않음 |영숫자, 밑줄 및 하이픈 |`<service-short-name>-<context>-as` |`profx-sql-as` |
-|태그 |연결된 엔터티 |512(이름), 256(값) |대/소문자 구분하지 않음 |영숫자 |`"key" : "value"` |`"department" : "Central IT"` |
+|태그 |연결된 엔터티 |512(이름), 256(값) |대/소문자 구분하지 않음 |`<`, `>`, `%`, `&`, `\`, `?`, `/`를 제외한 영숫자, 특수 문자. [여기](/azure/azure-resource-manager/resource-group-using-tags)에서 제한을 참조하세요. |`"key" : "value"` |`"department" : "Central IT"` |
 
 ### <a name="compute"></a>컴퓨팅
 

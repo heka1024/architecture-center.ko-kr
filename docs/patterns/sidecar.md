@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 447400c543c27d8655ca2d8b1dbadd8d0fdb4ba1
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 2b0e46a06f7fe47f281f726f73128db1d7dd1067
+ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486799"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55482929"
 ---
 # <a name="sidecar-pattern"></a>사이드카 패턴
 
@@ -61,7 +61,7 @@ ms.locfileid: "54486799"
 
 다음 경우에 이 패턴을 사용합니다.
 
-- 기본 애플리케이션이 다른 유형의 언어 집합 및 프레임워크를 사용합니다. 사이드카 서비스에 있는 구성 요소는 다양한 프레임워크를 사용하여 서로 다른 언어로 작성된 애플리케이션에서 사용할 수 있습니다.
+- 기본 애플리케이션이 다른 유형의 언어 세트 및 프레임워크를 사용합니다. 사이드카 서비스에 있는 구성 요소는 다양한 프레임워크를 사용하여 서로 다른 언어로 작성된 애플리케이션에서 사용할 수 있습니다.
 - 구성 요소가 원격 팀 또는 다른 조직에 있습니다.
 - 구성 요소 또는 기능을 애플리케이션과 동일한 호스트에 함께 배치해야 합니다.
 - 주 애플리케이션의 전체 수명 주기를 공유하지만 개별적으로 업데이트할 수 있는 서비스가 필요합니다.
