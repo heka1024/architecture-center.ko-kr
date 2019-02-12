@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: cfbe877a4e3a4a1d5aa87c4a77ad2c5f23a6d664
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: a87972a3901ed9499b5b25831131a79ff5db8f87
+ms.sourcegitcommit: eee3a35dd5a5a2f0dc117fa1c30f16d6db213ba2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484485"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55782101"
 ---
 # <a name="data-partitioning-strategies"></a>데이터 분할 전략
 
@@ -242,7 +242,7 @@ Redis 데이터 저장소를 분할하려면 데이터를 Redis 서비스의 여
 이 모델은 Redis 클러스터링을 사용하여 구현되며, Redis 웹 사이트의 [Redis 클러스터 자습서] 페이지에 설명되어 있습니다. Redis 클러스터링은 클라이언트 애플리케이션에 대해 투명합니다. 클라이언트를 다시 구성하지 않고도 Redis 서버를 클러스터 및 다시 분할될 수 있는 데이터에 추가할 수 있습니다.
 
 > [!IMPORTANT]
-> Azure Redis Cache는 현재 Redis 클러스터링을 지원하지 않습니다. Azure에서 이 방법을 구현하려면 Azure 가상 머신 집합에 Redis를 설치하고 수동으로 구성하여 자체 Redis 서버를 구현해야 합니다. [Azure의 CentOS Linux VM에서 Redis 실행] 페이지는 Azure VM으로 실행하는 Redis 노드를 빌드하고 구성하는 방법을 보여주는 예제를 안내합니다.
+> Azure Redis Cache는 현재 [프리미엄](/azure/azure-cache-for-redis/cache-how-to-premium-clustering) 계층에서만 Redis 클러스터링을 지원합니다.
 
 Redis 웹 사이트의 [분할: 여러 Redis 인스턴스 간에 데이터를 분할하는 방법] 페이지는 Redis와 분할을 구현하는 자세한 정보를 제공합니다. 이 섹션의 나머지 부분에서는 클라이언트 쪽 또는 프록시 기반 분할을 구현하는 것으로 가정합니다.
 
@@ -324,7 +324,7 @@ Event Hubs에서 파티션을 사용하는 방법에 대한 자세한 내용은 
 [분할: 여러 Redis 인스턴스 간에 데이터를 분할하는 방법]: https://redis.io/topics/partitioning
 [엔터티 그룹 트랜잭션 수행]: /rest/api/storageservices/Performing-Entity-Group-Transactions
 [Redis 클러스터 자습서]: https://redis.io/topics/cluster-tutorial
-[Azure의 CentOS Linux VM에서 Redis 실행]: https://blogs.msdn.microsoft.com/tconte/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure/
+[Running Redis on a CentOS Linux VM in Azure]: https://blogs.msdn.microsoft.com/tconte/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure/
 [Scaling using the Elastic Database split-merge tool]: /azure/sql-database/sql-database-elastic-scale-overview-split-and-merge
 [Using Azure Content Delivery Network]: /azure/cdn/cdn-create-new-endpoint
 [Service Bus 할당량]: /azure/service-bus-messaging/service-bus-quotas
