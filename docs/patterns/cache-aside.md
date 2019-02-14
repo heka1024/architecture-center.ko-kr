@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: bb2aa5a7ae6d7a33eac33dce4588380ec82a0df7
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: c4b423b2031699210d5917f12a4c14df0f4a694c
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488174"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898275"
 ---
 # <a name="cache-aside-pattern"></a>캐시 배제 패턴
 
@@ -125,7 +125,7 @@ public async Task<MyEntity> GetMyEntityAsync(int id)
 }
 ```
 
-> 이 예제에서는 Redis Cache를 사용하여 저장소에 액세스하고 캐시에서 정보를 검색합니다. 자세한 내용은 [Microsoft Azure Redis Cache 사용](https://docs.microsoft.com/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache) 및 [Redis Cache를 사용하여 웹앱을 만드는 방법](https://docs.microsoft.com/azure/redis-cache/cache-web-app-howto)을 참조하세요.
+> 이 예제에서는 Redis Cache를 사용하여 저장소에 액세스하고 캐시에서 정보를 검색합니다. 자세한 내용은 [Microsoft Azure Redis Cache 사용](/azure/redis-cache/cache-dotnet-how-to-use-azure-redis-cache) 및 [Redis Cache를 사용하여 웹앱을 만드는 방법](/azure/redis-cache/cache-web-app-howto)을 참조하세요.
 
 아래에 표시된 `UpdateEntityAsync` 메서드는 애플리케이션에서 값이 변경될 때 캐시의 개체를 무효화하는 방법을 보여 줍니다. 다음 코드는 원래 데이터 저장소를 업데이트한 다음, 캐시에서 캐시된 항목을 제거합니다.
 
@@ -150,6 +150,6 @@ public async Task UpdateEntityAsync(MyEntity entity)
 
 이 패턴의 구현과 관련된 정보는 다음과 같습니다.
 
-- [캐싱 지침](https://docs.microsoft.com/azure/architecture/best-practices/caching) 클라우드 솔루션에서 데이터를 캐시할 수 있는 방법에 대한 추가 정보뿐 아니라 캐시 구현 시 고려해야 하는 문제를 제공합니다.
+- [캐싱 지침](/azure/architecture/best-practices/caching) 클라우드 솔루션에서 데이터를 캐시할 수 있는 방법에 대한 추가 정보뿐 아니라 캐시 구현 시 고려해야 하는 문제를 제공합니다.
 
 - [데이터 일관성 입문서](https://msdn.microsoft.com/library/dn589800.aspx). 보통 클라우드 애플리케이션은 여러 데이터 저장소에 걸쳐 있는 데이터를 사용합니다. 이런 환경에서는 데이터 일관성의 관리와 유지가 시스템에서 중요한 측면으로 작용하는데, 구체적으로 동시성과 가용성 문제가 발생할 수 있습니다. 이 입문서는 분산 데이터의 일관성 문제를 설명할 뿐 아니라 애플리케이션에서 일관성을 구현해 데이터의 가용성을 유지하는 방법도 요약하고 있습니다.

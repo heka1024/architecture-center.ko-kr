@@ -7,12 +7,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: f3b637d61c929e5523ea5409426f3d7a72096dfa
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: ac7ab8b8dd154999a05dc531e41b0994f66ddf10
+ms.sourcegitcommit: 700a4f6ce61b1ebe68e227fc57443e49282e35aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484128"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55887406"
 ---
 # <a name="microservices-architecture-on-azure-kubernetes-service-aks"></a>AKS(Azure Kubernetes Service)의 마이크로 서비스 아키텍처
 
@@ -360,7 +360,7 @@ trigger:
 
 1. `helm upgrade`를 실행하여 QA 환경에 Helm 차트를 배포합니다.
 1. 승인자가 서명한 후 패키지가 프로덕션 단계로 이동합니다. [승인을 통해 릴리스 배포 제어](/azure/devops/pipelines/release/approvals/approvals)를 참조하세요.
-1. Azure Container Registry에서 프로덕션 네임스페이스용 Docker 이미지에 다시 태그를 지정합니다. 예를 들어 현재 태그가 `myrepo.azurecr.io/delivery:v1.0.2`라면 프로덕션 태그는 `reponame.azurecr.io/prod/delivery:v1.0.2`입니다.
+1. Azure Container Registry에서 프로덕션 네임스페이스용 Docker 이미지에 다시 태그를 지정합니다. 예를 들어 현재 태그가 `myrepo.azurecr.io/delivery:v1.0.2`라면 프로덕션 태그는 `myrepo.azurecr.io/prod/delivery:v1.0.2`입니다.
 1. `helm upgrade`를 실행하여 프로덕션 환경에 Helm 차트를 배포합니다.
 
 ![CI/CD 워크플로](./_images/aks-cicd-3.png)

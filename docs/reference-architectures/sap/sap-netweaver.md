@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, SAP, Windows
-ms.openlocfilehash: 1167a65786c3df946ebaed3e52e4ed4033f50fd5
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: e866727a40551b60e74fc26878a15a5a48e69cf6
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486406"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897629"
 ---
 # <a name="deploy-sap-netweaver-windows-for-anydb-on-azure-virtual-machines"></a>Azure Virtual Machines에서 AnyDB용 SAP NetWeaver(Windows) 배포
 
@@ -91,7 +91,7 @@ ABAP 애플리케이션 서버에 대한 로그온 그룹을 관리하기 위해
 
 이 아키텍처는 가상 네트워크 주소 공간을 서브넷으로 세분화합니다. 이 참조 아키텍처는 주로 애플리케이션 계층 서브넷에 중점을 둡니다. 각 서브넷은 해당 서브넷에 대한 액세스 정책을 정의하는 NSG와 연결할 수 있습니다. 애플리케이션 서버를 별도의 서브넷에 배치하면 개별 서버가 아니라 서브넷 보안 정책을 관리하여 더 쉽게 보안을 유지할 수 있습니다.
 
-NSG가 서브넷과 연결되면 서브넷 내의 모든 서버에 적용됩니다. NSG를 사용하여 서브넷의 서버를 더 자세히 제어하는 방법에 대한 자세한 내용은 [네트워크 보안 그룹을 통한 네트워크 트래픽 필터링](https://azure.microsoft.com/en-us/blog/multiple-vm-nics-and-network-virtual-appliances-in-azure/)을 참조하세요.
+NSG가 서브넷과 연결되면 서브넷 내의 모든 서버에 적용됩니다. NSG를 사용하여 서브넷의 서버를 더 자세히 제어하는 방법에 대한 자세한 내용은 [네트워크 보안 그룹을 통한 네트워크 트래픽 필터링](https://azure.microsoft.com/blog/multiple-vm-nics-and-network-virtual-appliances-in-azure)을 참조하세요.
 
 ### <a name="load-balancers"></a>부하 분산 장치
 

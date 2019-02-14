@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: 384634acb8690c64f75eabbfebc5f1de414f6da2
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 9fce082a0e762e25981929f6fa8685033017f3eb
+ms.sourcegitcommit: f4ed242dff8b204cfd8ebebb7778f356a19f5923
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484621"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56224184"
 ---
 # <a name="run-an-n-tier-application-in-multiple-azure-regions-for-high-availability"></a>여러 Azure 지역에서 N 계층 애플리케이션을 실행하여 고가용성 구현
 
@@ -119,7 +119,7 @@ Windows Server 2016 이전 버전에서는 SQL Server Always On 가용성 그룹
     ```
 
 - 두 지역의 SQL Server 인스턴스를 포함하는 WSFC([Windows Server 장애 조치(failover) 클러스터링)][wsfc] 클러스터를 만듭니다.
-- 주 지역과 보조 지역 모두에서 SQL Server 인스턴스를 포함하는 SQL Server Always On 가용성 그룹을 만듭니다. 단계는 [Extending Always On Availability Group to Remote Azure Datacenter (PowerShell)](https://blogs.msdn.microsoft.com/sqlcat/2014/09/22/extending-alwayson-availability-group-to-remote-azure-datacenter-powershell/)(원격 Azure 데이터 센터에 Always On 가용성 그룹 확장(PowerShell))를 참조하세요.
+- 주 지역과 보조 지역 모두에서 SQL Server 인스턴스를 포함하는 SQL Server Always On 가용성 그룹을 만듭니다. 단계는 [Extending Always On Availability Group to Remote Azure Datacenter (PowerShell)](https://techcommunity.microsoft.com/t5/DataCAT/Extending-AlwaysOn-Availability-Group-to-Remote-Azure-Datacenter/ba-p/305217)(원격 Azure 데이터 센터에 Always On 가용성 그룹 확장(PowerShell))를 참조하세요.
 
   - 주 지역에 주 복제본을 배치합니다.
   - 주 지역에 하나 이상의 보조 복제본을 배치합니다. 자동 장애 조치(failover)를 사용하는 동기 커밋을 사용하도록 구성합니다.
