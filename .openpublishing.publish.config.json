@@ -1,5 +1,6 @@
 {
   "need_generate_pdf": true,
+  "need_generate_intellisense": false,
   "docsets_to_publish": [
     {
       "docset_name": "azure-architecture-center",
@@ -14,12 +15,13 @@
         "RestApi": "Content"
       },
       "build_entry_point": "docs",
-      "template_folder": "_themes"
+      "template_folder": "_themes",
+      "version": 0
     }
   ],
   "notification_subscribers": [],
   "branches_to_filter": [
-    "live-sxs",
+    "live",
     "master-sxs"
   ],
   "git_repository_url_open_to_public_contributors": "https://github.com/mspnp/architecture-center.ko-kr",
@@ -27,6 +29,7 @@
   "continue_with_document_error": true,
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
+  "enable_incremental_build": true,
   "dependent_repositories": [
     {
       "path_to_root": "_themes",
