@@ -1,0 +1,86 @@
+---
+title: 'CAF: 중소기업 – 다중 클라우드 개선'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+ms.date: 02/11/2019
+description: 중소기업의 다중 클라우드 관련 설명을 개선하는 과정을 설명합니다.
+author: BrianBlanchard
+ms.openlocfilehash: a5b09c92acc4e165590b5a35827b88b0ca099bed
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55902055"
+---
+# <a name="small-to-medium-enterprise-multi-cloud-evolution"></a><span data-ttu-id="70b90-103">중소기업: 다중 클라우드 진화</span><span class="sxs-lookup"><span data-stu-id="70b90-103">Small-to-medium enterprise: Multi-cloud evolution</span></span>
+
+<span data-ttu-id="70b90-104">이 문서에서는 다중 클라우드 채택을 위한 컨트롤을 추가하여 설명을 개선합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-104">This article evolves the narrative by adding controls for multi-cloud adoption.</span></span>
+
+## <a name="evolution-of-the-narrative"></a><span data-ttu-id="70b90-105">설명 개선</span><span class="sxs-lookup"><span data-stu-id="70b90-105">Evolution of the narrative</span></span>
+
+<span data-ttu-id="70b90-106">Microsoft는 고객들이 특정 용도로 여러 클라우드를 채택한다는 점을 잘 알고 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-106">Microsoft recognizes that customers are adopting multiple clouds for specific purposes.</span></span> <span data-ttu-id="70b90-107">이 경험에서 소개하는 가상의 고객도 마찬가지입니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-107">The fictional customer in this journey is no exception.</span></span> <span data-ttu-id="70b90-108">이 고객은 Azure 채택 경험을 진행하는 과정에서 우수한 사업 실적을 기록하여 기존 사업을 보완하는 소규모 기업을 인수하게 되었습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-108">In parallel to the Azure adoption journey, the business success has led to the acquisition of a small, but complementary business.</span></span> <span data-ttu-id="70b90-109">이 기업은 다른 클라우드 공급자의 서비스를 통해 모든 IT 작업을 실행하고 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-109">That business is running all of their IT operations on a different cloud provider.</span></span>
+
+<span data-ttu-id="70b90-110">이 문서에서는 새 조직 통합 시의 클라우드 변경 방식에 대해 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-110">This article describes how things change when integrating the new organization.</span></span> <span data-ttu-id="70b90-111">이 설명에서는 회사가 이 고객 경험에 요약된 각 거버넌스 개선 단계를 완료했다고 가정합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-111">For purposes of the narrative, we assume this company has completed each of the governance evolutions outlined in this customer journey.</span></span>
+
+### <a name="evolution-of-the-current-state"></a><span data-ttu-id="70b90-112">현재 상태의 발전</span><span class="sxs-lookup"><span data-stu-id="70b90-112">Evolution of the current state</span></span>
+
+<span data-ttu-id="70b90-113">이 설명의 이전 단계에서 회사는 CI/CD 파이프라인을 통해 프로덕션 애플리케이션을 클라우드로 푸시하는 작업을 시작했습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-113">In the previous phase of this narrative, the company had begun actively pushing production applications to the cloud through CI/CD pipelines.</span></span>
+
+<span data-ttu-id="70b90-114">그 이후로 거버넌스에 영향을 주는 다음의 몇 가지 사항이 변경되었습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-114">Since then, some things have changed that will affect governance:</span></span>
+
+- <span data-ttu-id="70b90-115">Active Directory의 온-프레미스 인스턴스를 통해 ID를 제어합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-115">Identity is controlled by an on-premises instance of Active Directory.</span></span> <span data-ttu-id="70b90-116">Azure Active Directory로의 복제를 통해 하이브리드 ID를 손쉽게 사용할 수 있게 되었습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-116">Hybrid identity is facilitated through replication to Azure Active Directory.</span></span>
+- <span data-ttu-id="70b90-117">대개 Azure Monitor 및 관련 자동화 기능을 통해 IT 운영 또는 클라우드 운영을 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-117">IT Operations or Cloud Operations are largely managed by Azure Monitor and related automations.</span></span>
+- <span data-ttu-id="70b90-118">Azure Vault 인스턴스를 통해 재해 복구/비즈니스 연속성을 제어합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-118">Disaster Recovery / Business Continuity is controlled by Azure Vault instances.</span></span>
+- <span data-ttu-id="70b90-119">Azure Security Center를 사용하여 보안 위반과 공격을 모니터링합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-119">Azure Security Center is used to monitor security violations and attacks.</span></span>
+- <span data-ttu-id="70b90-120">클라우드 거버넌스 모니터링에는 Azure Security Center 및 Azure Monitor가 둘 다 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-120">Azure Security Center and Azure Monitor are both used to monitor governance of the cloud.</span></span>
+- <span data-ttu-id="70b90-121">Azure Blueprints, Azure Policy 및 Azure 관리 그룹을 사용하여 정책 준수를 자동화합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-121">Azure Blueprints, Azure Policy, and Azure management groups are used to automate compliance with policy.</span></span>
+
+### <a name="evolution-of-the-future-state"></a><span data-ttu-id="70b90-122">향후 상태의 발전</span><span class="sxs-lookup"><span data-stu-id="70b90-122">Evolution of the future state</span></span>
+
+<span data-ttu-id="70b90-123">개선 과정의 목표는 가능한 모든 영역에서 인수 대상 회사를 기존 운영 분야에 통합하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-123">The goal is to integrate the acquisition company into existing operations wherever possible.</span></span>
+
+## <a name="evolution-of-tangible-risks"></a><span data-ttu-id="70b90-124">실질적인 위험의 심화</span><span class="sxs-lookup"><span data-stu-id="70b90-124">Evolution of tangible risks</span></span>
+
+<span data-ttu-id="70b90-125">**기업 인수 비용**: 새 기업 인수를 통한 수익 창출 효과는 약 5년 이내에 나타날 것으로 전망됩니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-125">**Business acquisition cost**: Acquisition of the new business is slated to be profitable in approximately five years.</span></span> <span data-ttu-id="70b90-126">하지만 수익 창출 속도가 느려서 이사회에서는 인수 비용을 최대한 제어하고자 합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-126">Because of the slow rate of return, the board wants to control acquisition costs, as much as possible.</span></span> <span data-ttu-id="70b90-127">이로 인해 비용 제어와 기술 통합이 상충할 위험이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-127">There is a risk of cost control and technical integration conflicting with one another.</span></span>
+
+<span data-ttu-id="70b90-128">이 비즈니스 위험은 다음과 같은 몇 가지 기술적 위험으로 확장될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-128">This business risk can be expanded into a few technical risks:</span></span>
+
+- <span data-ttu-id="70b90-129">클라우드 마이그레이션 과정에서 인수 비용이 추가로 발생할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-129">Cloud migration might produce additional acquisition costs</span></span>
+- <span data-ttu-id="70b90-130">새로운 환경이 적절하게 제어되지 않아 정책 위반 상황이 발생할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-130">The new environment might not be properly governed which could result in policy violations.</span></span>
+
+## <a name="evolution-of-the-policy-statements"></a><span data-ttu-id="70b90-131">정책 설명 개선</span><span class="sxs-lookup"><span data-stu-id="70b90-131">Evolution of the policy statements</span></span>
+
+<span data-ttu-id="70b90-132">정책을 다음과 같이 변경하면 새로운 위험을 완화하고 구현 과정을 안내할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-132">The following changes to policy will help mitigate the new risks and guide implementation.</span></span>
+
+1. <span data-ttu-id="70b90-133">기존의 운영 관리 및 보안 모니터링 도구를 통해 보조 클라우드의 모든 자산을 모니터링해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-133">All assets in a secondary cloud must be monitored through existing operational management and security monitoring tools</span></span>
+2. <span data-ttu-id="70b90-134">모든 조직 구성 단위를 기존 ID 공급자에 통합해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-134">All Organization Units must be integrated into the existing identity provider</span></span>
+3. <span data-ttu-id="70b90-135">기본 ID 공급자가 보조 클라우드의 자산에 대한 인증을 제어해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-135">The primary identity provider should govern authentication to assets in the secondary cloud</span></span>
+
+## <a name="evolution-of-the-best-practices"></a><span data-ttu-id="70b90-136">모범 사례 개선</span><span class="sxs-lookup"><span data-stu-id="70b90-136">Evolution of the best practices</span></span>
+
+<span data-ttu-id="70b90-137">이 문서 섹션에서는 Azure Cost Management 구현 및 새로운 Azure 정책을 포함하도록 거버넌스 MVP 디자인을 개선합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-137">This section of the article will evolve the governance MVP design to include new Azure policies and an implementation of Azure Cost Management.</span></span> <span data-ttu-id="70b90-138">이 두 가지 디자인 변경을 통해 새 기업 정책 설명 작성을 처리하게 됩니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-138">Together, these two design changes will fulfill the new corporate policy statements.</span></span>
+
+1. <span data-ttu-id="70b90-139">네트워크를 연결합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-139">Connect the networks.</span></span> <span data-ttu-id="70b90-140">이 단계는 네트워킹 및 IT 보안 팀이 실행하며 클라우드 거버넌스 팀이 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-140">This step is executed by the Networking and IT Security teams, and supported by the Cloud Governance team.</span></span> <span data-ttu-id="70b90-141">MPLS/임대 회선 공급자에서 새 클라우드로의 연결을 추가하면 네트워크가 통합됩니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-141">Adding a connection from the MPLS/leased-line provider to the new cloud will integrate networks.</span></span> <span data-ttu-id="70b90-142">라우팅 테이블과 방화벽 구성을 추가하면 환경 간의 액세스 및 트래픽을 제어할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-142">Adding routing tables and firewall configurations will control access and traffic between the environments.</span></span>
+2. <span data-ttu-id="70b90-143">ID 공급자를 통합합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-143">Consolidate identity providers.</span></span> <span data-ttu-id="70b90-144">보조 클라우드에서 호스트되는 워크로드에 따라 다양한 옵션을 통해 ID 공급자를 통합할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-144">Depending on the workloads being hosted in the secondary cloud, there are a variety of options to identity provider consolidation.</span></span> <span data-ttu-id="70b90-145">다음은 몇 가지 예제입니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-145">The following are a few examples:</span></span>
+    1. <span data-ttu-id="70b90-146">OAuth 2를 사용하여 인증하는 애플리케이션의 경우에는 보조 클라우드의 Active Directory에 속한 사용자를 기존 Azure AD 테넌트로 복제하면 됩니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-146">For applications that authenticate using OAuth 2, users from Active Directory in the secondary cloud can simply be replicated to the existing Azure AD tenant.</span></span> <span data-ttu-id="70b90-147">그러면 테넌트에서 모든 사용자를 인증할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-147">This ensures all users can be authenticated in the tenant.</span></span>
+    2. <span data-ttu-id="70b90-148">반면 페더레이션을 사용하면 OU를 온-프레미스 Active Directory로 이동한 다음 Azure AD 인스턴스로 이동할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-148">At the other extreme, federation allows OUs to flow into Active Directory on-premises, then into the Azure AD instance.</span></span>
+3. <span data-ttu-id="70b90-149">Azure Site Recovery에 자산을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-149">Add assets to Azure Site Recovery.</span></span>
+    1. <span data-ttu-id="70b90-150">Azure Site Recovery는 원래 하이브리드/다중 클라우드 도구로 설계되었습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-150">Azure Site Recovery was designed from the beginning as a hybrid/multi-cloud tool.</span></span>
+    2. <span data-ttu-id="70b90-151">온-프레미스 자산을 보호하는 데 사용한 것과 같은 Azure Site Recovery 프로세스를 통해 보조 클라우드의 VM을 보호할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-151">VMs in the secondary cloud might be able to be protected by the same Azure Site Recovery processes used to protect on-premises assets.</span></span>
+4. <span data-ttu-id="70b90-152">Azure Cost Management에 자산을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-152">Add assets to Azure Cost Management</span></span>
+    1. <span data-ttu-id="70b90-153">Azure Cost Management는 원래 다중 클라우드 도구로 설계되었습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-153">Azure Cost Management was designed from the beginning as a multi-cloud tool.</span></span>
+    2. <span data-ttu-id="70b90-154">일부 클라우드 공급자의 경우에는 보조 클라우드의 가상 머신이 Azure Cost Management와 호환될 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-154">Virtual machines in the secondary cloud may be compatible with Azure Cost Management for some cloud providers.</span></span> <span data-ttu-id="70b90-155">단, 추가 비용이 발생할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-155">Additional costs may apply.</span></span>
+5. <span data-ttu-id="70b90-156">Azure Monitor에 자산을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-156">Add assets to Azure Monitor.</span></span>
+    1. <span data-ttu-id="70b90-157">Azure Monitor는 원래 하이브리드 클라우드 도구로 설계되었습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-157">Azure Monitor was designed as a hybrid cloud tool from inception.</span></span>
+    2. <span data-ttu-id="70b90-158">보조 클라우드의 가상 머신이 Azure Monitor 에이전트와 호환될 수도 있으며, 그러면 운영 모니터링을 위해 가상 머신을 Azure Monitor에 포함할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-158">Virtual machines in the secondary cloud may be compatible with Azure Monitor agents, allowing them to be included in Azure Monitor for operational monitoring.</span></span>
+6. <span data-ttu-id="70b90-159">거버넌스 적용 도구:</span><span class="sxs-lookup"><span data-stu-id="70b90-159">Governance enforcement tools:</span></span>
+    1. <span data-ttu-id="70b90-160">거버넌스 적용 도구는 클라우드별로 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-160">Governance enforcement is cloud-specific.</span></span>
+    2. <span data-ttu-id="70b90-161">거버넌스 경험에서 설정되는 기업 정책은 클라우드별로 다르지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-161">The corporate policies established in the governance journey are not cloud-specific.</span></span> <span data-ttu-id="70b90-162">그러므로 구현은 클라우드별로 다를 수도 있지만 보조 공급자에도 정책을 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-162">While the implementation may vary from cloud to cloud, the policies can be applied to the secondary provider.</span></span>
+
+<span data-ttu-id="70b90-163">다중 클라우드 채택 범위가 확대되면 위에서 설명한 디자인 개선 과정이 계속 진행되어 디자인이 완성됩니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-163">As multi-cloud adoption grows, the design evolution above will continue to mature.</span></span>
+
+## <a name="conclusion"></a><span data-ttu-id="70b90-164">결론</span><span class="sxs-lookup"><span data-stu-id="70b90-164">Conclusion</span></span>
+
+<span data-ttu-id="70b90-165">이 문서 시리즈에서는 가상의 회사 환경에 맞는 거버넌스 모범 사례를 개선하는 과정을 간략하게 살펴보았습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-165">This series of articles outlined the evolution of governance best practices, aligned with the experiences of this fictional company.</span></span> <span data-ttu-id="70b90-166">이 회사는 소규모로 창립되었지만 적절한 토대를 구축하면 클라우드로 신속하게 이전하는 동시에 적절한 수준의 거버넌스를 제때 적용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-166">By starting small, but with the right foundation, the company could move quickly and yet still apply the right amount of governance at the right time.</span></span> <span data-ttu-id="70b90-167">MVP 자체는 고객을 보호하지 않으며,</span><span class="sxs-lookup"><span data-stu-id="70b90-167">The MVP by itself did not protect the customer.</span></span> <span data-ttu-id="70b90-168">위험을 완화하고 보호 기능을 추가하는 토대로 사용되었습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-168">Instead, it created the foundation to mitigate risk and add protections.</span></span> <span data-ttu-id="70b90-169">이러한 토대를 기반으로 하여 실질적인 위험을 완화하기 위한 거버넌스 계층이 적용되었습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-169">From there, layers of governance were applied to mitigate tangible risks.</span></span> <span data-ttu-id="70b90-170">여기서 제공되는 정확한 경험은 독자의 환경과 완전히 일치한다고 할 수는 없으며,</span><span class="sxs-lookup"><span data-stu-id="70b90-170">The exact journey presented here won't align 100% with the experiences of any reader.</span></span> <span data-ttu-id="70b90-171">증분 방식 거버넌스를 위한 패턴으로 사용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-171">Rather, it serves as a pattern for incremental governance.</span></span> <span data-ttu-id="70b90-172">따라서 독자는 고유한 제약 조건 및 거버넌스 요구 사항에 맞게 이러한 모범 사례를 조정하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="70b90-172">The reader is advised to mold these best practices to fit their own unique constraints and governance requirements.</span></span>
