@@ -1,20 +1,21 @@
 ---
-title: 클라우드 전환을 위한 금융 모델 만들기
-titleSuffix: Enterprise Cloud Adoption
-description: 클라우드 전환을 위한 금융 모델을 만드는 방법
+title: 'CAF: 클라우드 전환을 위한 금융 모델 만들기'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+description: 클라우드 전환을 위한 금융 모델을 만드는 방법입니다.
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
-ms.service: architecture-center
-ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: d1a5cd0cefef4786a0f55592cad58451c3cae9c4
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 4fe9b178962bf2cd6a79233278c73085237772f0
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482190"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898207"
 ---
-# <a name="enterprise-cloud-adoption-how-to-create-a-financial-model-for-cloud-transformation"></a>엔터프라이즈 클라우드 채택: 클라우드 전환을 위한 금융 모델을 만드는 방법
+# <a name="create-a-financial-model-for-cloud-transformation"></a>클라우드 전환을 위한 금융 모델 만들기
 
 클라우드 전환의 전체 비즈니스 가치를 정확히 나타내는 금융 모델을 만드는 과정은 복잡할 수 있습니다. 금융 모델 및 비즈니스 근거는 조직마다 다른 경우가 많습니다. 이 문서에서는 금융 모델을 만들 때 일반적으로 누락되는 몇 가지 요소와 수식을 설정합니다.
 
@@ -97,3 +98,10 @@ OpEx(운영 비용)가 예상되지만 아직 승인된 예산에 없을 경우 
 CapEx(자본 비용)는 운영 비용과 약간 다릅니다. 일반적으로 이 범주는 갱신 주기 또는 데이터 센터 확장에 좌우됩니다. 데이터 센터 확장의 예로 빅 데이터 솔루션 또는 데이터 웨어하우스를 호스트하며, 일반적으로 CapEx 범주에 속하는 새로운 고성능 클러스터가 있습니다. 기본 갱신 주기가 더 일반적입니다. 일부 회사는 자산이 정기적으로(일반적으로 3, 5, 8년 간격으로) 사용 중지되고 교체되는 엄격한 하드웨어 갱신 주기를 두고 있습니다. 이러한 주기는 자산 임대 주기 또는 장비의 예상 수명과 일치하는 경우가 많습니다. 갱신 주기가 도래하면 IT에서 CapEx를 인출하여 새 장비를 구입합니다.
 
 갱신 주기가 승인되고 예산이 책정되면 클라우드 전환을 통해 비용을 회피할 수 있습니다. 갱신 주기가 계획되었으나 아직 승인되지 않은 경우 클라우드 전환에서 CapEx 비용 회피를 만들 수 있습니다. 두 시나리오는 모두 비용 델타에 추가됩니다.
+
+## <a name="next-steps"></a>다음 단계
+
+클라우드 전환의 컨텍스트에서 몇 가지 회계 결과의 예에 대해 알아봅니다.
+
+> [!div class="nextstepaction"]
+> [회계 결과의 예](./business-outcomes/fiscal-outcomes.md)

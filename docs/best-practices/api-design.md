@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 2c4a76ea3a9acdeb1141a1274f6926667c67c81b
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: b15b97de2042a0e213192dd586ffdcc4c51b1f11
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484111"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897986"
 ---
 # <a name="api-design"></a>API 디자인
 
@@ -446,7 +446,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="header-versioning"></a>헤더 버전 관리
 
-버전 번호를 쿼리 문자열 매개 변수로 추가하지 않고 리소스의 버전을 나타내는 사용자 지정 헤더를 구현할 수 있습니다. 이 접근 방식을 사용하려면 클라이언트 애플리케이션이 적절한 헤더를 요청에 추가해야 하지만, version 헤더가 생략된 경우 클라이언트 요청을 처리하는 코드가 기본값(버전 1)을 사용할 수 있습니다. 다음 예제에서는 *Custom-Header*라는 사용자 지정 헤더를 이용합니다. 이 헤더의 값은 웹 API의 버전을 나타냅니다.
+버전 번호를 쿼리 문자열 매개 변수로 추가하지 않고 리소스의 버전을 나타내는 사용자 지정 헤더를 구현할 수 있습니다. 이 접근 방식을 사용하려면 클라이언트 애플리케이션이 적절한 헤더를 요청에 추가해야 하지만, version 헤더가 생략된 경우 클라이언트 요청을 처리하는 코드가 기본값(버전 1)을 사용할 수 있습니다. 다음 예제에서는 *Custom-Header*라는 사용자 지정 헤더를 사용합니다. 이 헤더의 값은 웹 API의 버전을 나타냅니다.
 
 버전 1:
 

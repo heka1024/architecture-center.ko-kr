@@ -1,20 +1,21 @@
 ---
-title: 디지털 자산 계획에 대한 접근 방법
-titleSuffix: Enterprise Cloud Adoption
+title: 'CAF: 디지털 자산 계획에 대한 접근 방법'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
 description: 디지털 자산 계획에 대한 일부 접근 방법 설명
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
-ms.service: architecture-center
-ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: 59c9e208254eaa0e8beb365718ef59d0694094f3
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 8b6c680cf477ea188cbd263ecc04389d6daaed89
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482224"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898020"
 ---
-# <a name="enterprise-cloud-adoption-approaches-to-digital-estate-planning"></a>엔터프라이즈 클라우드 채택: 디지털 자산 계획에 대한 접근 방법
+# <a name="approaches-to-digital-estate-planning"></a>디지털 자산 계획에 대한 접근 방법
 
 원하는 결과와 기존 자산의 크기에 따라 디지털 자산 계획에 여러 도형이 필요할 수 있습니다. 또한 사용하는 접근법과 관련된 여러 옵션이 있습니다. 계획 주기 초기에 접근 방식과 관련한 기대치를 설정하는 것이 중요합니다. 기대치가 명확하지 않으면 추가 인벤토리 수집 활동과 관련된 지연이 발생할 수 있습니다. 이 문서에서는 세 가지 분석 방법을 간략히 설명합니다.
 
@@ -36,7 +37,7 @@ ms.locfileid: "54482224"
 
 ## <a name="incremental-approach"></a>증분 방식
 
-대부분의 Enterprise Cloud Adoption 프레임워크와 마찬가지로 증분 방식을 적극 권장합니다. 디지털 자산 계획의 경우 다음과 같은 다단계 프로세스와 같습니다.
+대부분의 CAF처럼 증분 방식이 가장 좋습니다. 디지털 자산 계획의 경우 다음과 같은 다단계 프로세스와 같습니다.
 
 - 초기 비용 분석: 금융 확인이 필요할 경우, 위에 설명된 자산 기반 접근 방식으로 시작하여 합리화 없이 전체 디지털 자산의 초기 비용 계산 결과를 산출합니다. 그러면 최악의 시나리오 벤치마크가 구축됩니다.
 

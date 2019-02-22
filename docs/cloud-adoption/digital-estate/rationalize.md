@@ -1,20 +1,21 @@
 ---
-title: 디지털 자산 합리화
-titleSuffix: Enterprise Cloud Adoption
-description: 디지털 자산을 클라우드에서 호스트하는 가장 좋은 방법을 찾기 위해 디지털 자산을 평가하는 프로세스입니다.
+title: 'CAF: 디지털 자산 합리화'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+description: 디지털 자산을 평가하여 클라우드에서 호스트하는 최적의 방법을 결정합니다.
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
-ms.service: architecture-center
-ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: 2002b5273aed4aef2d283f23f83aa08d1d6f5c95
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 02189c9edcbfea0a55fe69a53bf610e85470a4d0
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485726"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897204"
 ---
-# <a name="enterprise-cloud-adoption-rationalize-the-digital-estate"></a>엔터프라이즈 클라우드 채택: 디지털 자산 합리화
+# <a name="rationalize-the-digital-estate"></a>디지털 자산 합리화
 
 클라우드 합리화는 자산을 클라우드에서 호스트하는 가장 좋은 방법을 결정하기 위해 자산을 평가하는 프로세스입니다. [방법](approach.md)이 결정되고 [인벤토리](inventory.md)가 집계되면 클라우드 합리화를 시작할 수 있습니다. [합리화의 5가지 R](5-rs-of-rationalization.md)에서는 가장 일반적인 합리화 옵션을 설명합니다.
 
@@ -122,7 +123,7 @@ ms.locfileid: "54485726"
 - 장기적 비전에 필요한 핵심 서비스(및 Azure 표준)를 정의합니다.
 - 변환의 이후 과정에서 필요한 작업의 발전 방향을 정확하게 이해합니다.
 - 내재된 비즈니스 위험과 이러한 위험에 대한 기업의 허용 한도를 이해합니다.
-- 기업의 위험 허용 한도에 따라 기준선 또는 MVP(minimally viable product)를 설정합니다.
+- 기업의 위험 허용 한도에 따라 기준선 또는 MVP(minimum viable product)를 설정합니다.
 
 ## <a name="release-planning"></a>릴리스 계획
 
@@ -154,7 +155,7 @@ ms.locfileid: "54485726"
 
 ## <a name="next-steps"></a>다음 단계
 
-합리화 활동의 결과는 선택한 변환의 영향을 받는 모든 자산의 우선 순위가 지정된 백로그입니다. 이 백로그를 클라우드 서비스의 비용 모델 기초로 사용할 수 있습니다.
+합리화 활동의 결과는 선택한 변환의 영향을 받게 될 모든 자산의 우선 순위가 지정된 백로그입니다. 이 백로그를 클라우드 서비스의 비용 모델 기초로 사용할 수 있습니다.
 
 > [!div class="nextstepaction"]
 > [비용 모델을 디지털 자산에 맞춰 조정](calculate.md)

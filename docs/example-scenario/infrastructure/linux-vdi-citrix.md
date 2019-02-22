@@ -9,12 +9,12 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack, Linux
 social_image_url: /azure/architecture/example-scenario/infrastructure/media/azure-citrix-sample-diagram.png
-ms.openlocfilehash: d236ff9fb61660553c7ea512f0298663dbcc303c
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.openlocfilehash: 77093cba0e5646146ec9de68655754d9ac1e5461
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908310"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897718"
 ---
 # <a name="linux-virtual-desktops-with-citrix"></a>Citrix를 사용한 Linux 가상 데스크톱
 
@@ -71,7 +71,7 @@ ms.locfileid: "54908310"
 - [Azure SQL Database](/azure/sql-database/sql-database-technical-overview)는 최신의 안정적인 Microsoft SQL Server 데이터베이스 엔진 버전을 기반으로 하는 관계형 DBaaS(Database-as-a-Service)입니다. Citrix 데이터베이스 호스팅에 사용됩니다.
 - [ExpressRoute](/azure/expressroute/expressroute-introduction)를 사용하면 연결 공급자가 지원하는 개인 연결을 통해 온-프레미스 네트워크를 Microsoft 클라우드로 확장할 수 있습니다.
 - [Active Directory Domain Services]는 디렉터리 서비스 및 사용자 인증에 사용됩니다.
-- [Azure 가용성 집합](/azure/virtual-machines/windows/tutorial-availability-sets)을 사용하면 Azure에 배포한 VM이 클러스터의 격리된 여러 하드웨어 노드에 분산됩니다. 이렇게 하면 Azure 내의 하드웨어 또는 소프트웨어 오류가 발생할 때 VM의 하위 집합에만 영향을 주며 전체 솔루션을 사용 가능한 운영 상태로 유지할 수 있습니다.
+- [Azure 가용성 집합](/azure/virtual-machines/windows/tutorial-availability-sets)을 사용하면 Azure에 배포한 VM이 클러스터의 격리된 여러 하드웨어 노드에 분산됩니다. 이렇게 하면 Azure 내의 하드웨어 또는 소프트웨어 오류가 발생할 때 VM의 하위 세트에만 영향을 주며 전체 솔루션을 사용 가능한 운영 상태로 유지할 수 있습니다.
 - [Citrix ADC(NetScaler)](https://www.citrix.com/products/citrix-adc)는 애플리케이션별로 트래픽을 분석하여 웹 애플리케이션의 레이어 4-레이어 7(L4–L7) 네트워크 트래픽을 지능적으로 분산, 최적화, 보호하는 애플리케이션 전송 컨트롤러입니다.
 - [Citrix Storefront](https://www.citrix.com/products/citrix-virtual-apps-and-desktops/citrix-storefront.html)는 보안을 개선하고 배포를 간소화하는 엔터프라이즈 앱 저장소로, 모든 플랫폼의 Citrix Receiver에서 거의 네이티브에 가까운 강력한 최신 사용자 경험을 제공합니다. StoreFront를 사용하면 다중 사이트 및 다중 버전 Citrix 가상 앱 및 데스크톱 환경을 간편하게 관리할 수 있습니다.
 - [Citrix 라이선스 서버](https://www.citrix.com/buy/licensing/overview.html)는 Citrix 제품의 라이선스를 관리합니다.
