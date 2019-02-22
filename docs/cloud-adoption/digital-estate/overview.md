@@ -1,20 +1,22 @@
 ---
-title: 디지털 자산이란?
-titleSuffix: Enterprise Cloud Adoption
-description: 디지털 자산 개념 설명
+title: 'CAF: 디지털 자산이란?'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+description: 디지털 자산이란?
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: ce21a2d72fcb630f5f197dbd6b87b16ef8f41435
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: d23bdbdd98226e8b9cdb9bbb5fefa5a918a498d8
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481544"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898428"
 ---
-# <a name="enterprise-cloud-adoption-what-is-a-digital-estate"></a>엔터프라이즈 클라우드 채택: 디지털 자산이란?
+<!-- markdownlint-disable MD026 -->
+
+# <a name="caf-what-is-a-digital-estate"></a>CAF: 디지털 자산이란?
 
 오늘날 모든 회사에는 특정 형태의 디지털 자산이 있습니다. 물리적 자산과 마찬가지로, 디지털 자산은 여러 실체적인 소유 자산을 가리키는 추상적인 용어입니다. 디지털 자산에서 이러한 자산은 VM(가상 머신), 서버, 애플리케이션, 데이터 등으로 구성됩니다. 기본적으로, 디지털 자산은 비즈니스 프로세스 및 지원 작업을 지원하는 IT 자산의 컬렉션입니다.
 
@@ -53,4 +55,4 @@ ms.locfileid: "54481544"
 디지털 자산 계획을 시작하기 전에 어떤 접근 방식을 사용할지 결정해야 합니다.
 
 > [!div class="nextstepaction"]
-> [분석 방법 결정](approach.md)
+> [디지털 자산 계획에 대한 접근 방법](approach.md)

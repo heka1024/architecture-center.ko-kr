@@ -1,20 +1,21 @@
 ---
-title: 클라우드 마이그레이션 비즈니스 사례 빌드
-titleSuffix: Enterprise Cloud Adoption
-description: 클라우드 마이그레이션의 비즈니스 근거 개발 시 고려해야 할 사항
+title: 'CAF: 클라우드 마이그레이션 비즈니스 사례 빌드'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+description: 클라우드 마이그레이션의 비즈니스 근거를 마련할 때 고려해야 할 사항입니다.
 author: BrianBlanchard
 ms.date: 12/10/2018
 ms.topic: guide
-ms.service: architecture-center
-ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: 8c27ce211f500ee2eec4f7775a7f68f214dba433
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 21c2b877a0f329711027f020fd0047479e8c7bfb
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488327"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55898309"
 ---
-# <a name="enterprise-cloud-adoption-building-a-cloud-migration-business-case"></a>엔터프라이즈 클라우드 채택: 클라우드 마이그레이션 비즈니스 사례 빌드
+# <a name="build-a-business-justification-for-cloud-migration"></a>클라우드 마이그레이션의 비즈니스 근거 마련
 
 클라우드 마이그레이션은 클라우드 전환 활동으로 초기 투자 수익률(ROI)을 창출할 수 있습니다. 그러나 실체적인 관련 비용과 수익으로 명확한 비즈니스 근거를 개발하는 것은 복잡한 프로세스가 될 수 있습니다. 이 문서는 클라우드 마이그레이션 결과와 부합하는 금융 모델을 만드는 데 필요한 데이터에 대해 생각하도록 도와줍니다. 먼저, 조직이 일반적인 실수를 피할 수 있도록 클라우드 마이그레이션에 관한 몇 가지 통념을 불식시키겠습니다.
 
@@ -26,7 +27,7 @@ ms.locfileid: "54488327"
 
 **통념: 내 온-프레미스 환경을 미러링하면 클라우드 비용을 절약하는 데 도움이 된다.** 디지털 자산 계획 시 고객이 프로비전된 환경의 50%를 초과하는 미사용 용량을 감지한다는 것은 금시초문입니다. 현재 프로비저닝에 맞게 클라우드에 자산이 프로비전될 경우 비용 절감을 구현하기가 어려워집니다. 프로비저닝 패턴이 아닌 사용량 패턴에 맞게 배포 자산의 크기를 줄이는 것이 좋습니다.
 
-**통념: 서버 비용에 따라 비즈니스 클라우드 마이그레이션 사례가 달라진다.** 사실인 경우도 있습니다. 일부 회사에서는 서버와 관련된 지속적인 자본 비용을 줄이는 것이 중요합니다. 하지만 이는 여러 요인에 따라 달라집니다. 하드웨어 갱신 주기가 5&ndash;~8&ndash;년인 회사는 클라우드 마이그레이션 후 빠르게 수익을 볼 가능성이 낮습니다. 갱신 주기가 표준화되거나 엄격히 시행 중인 회사는 손익분기점에 빠르게 도달할 수 있습니다. 두 경우 모두 다른 비용이 마이그레이션을 정당화하는 금융 트리거가 될 수 있습니다. 다음은 서버 전용 또는 VM 전용 비용 관점을 취할 때 일반적으로 간과되는 비용의 몇 가지 예입니다.
+**통념: 서버 비용에 따라 비즈니스 클라우드 마이그레이션 사례가 달라진다.** 사실인 경우도 있습니다. 일부 회사에서는 서버와 관련된 지속적인 자본 비용을 줄이는 것이 중요합니다. 하지만 이는 여러 요인에 따라 달라집니다. 하드웨어 갱신 주기가 5~8년인 회사는 클라우드 마이그레이션 후 빠르게 수익을 볼 가능성이 낮습니다. 갱신 주기가 표준화되거나 엄격히 시행 중인 회사는 손익분기점에 빠르게 도달할 수 있습니다. 두 경우 모두 다른 비용이 마이그레이션을 정당화하는 금융 트리거가 될 수 있습니다. 다음은 서버 전용 또는 VM 전용 비용 관점을 취할 때 일반적으로 간과되는 비용의 몇 가지 예입니다.
 
 - 가상화, 서버 및 미들웨어의 소프트웨어 비용이 아주 많을 수 있습니다. 클라우드 공급자는 이러한 비용 중 일부를 없애줍니다. 가상화 비용을 절감하는 클라우드 공급자의 두 가지 예로는 [Azure 하이브리드 혜택](https://azure.microsoft.com/pricing/hybrid-benefit/#services)과 [예약](https://azure.microsoft.com/reservations/) 프로그램이 있습니다.
 - 서비스 중단으로 인한 비즈니스 손실은 하드웨어 또는 소프트웨어 비용을 금세 초과할 수 있습니다. 현재 데이터 센터가 불안정한 경우, 비즈니스 팀과 협의하여 기회 비용 또는 실제 비즈니스 비용 측면에서 서비스 중단의 영향을 정량화하세요.
@@ -109,4 +110,4 @@ ROI가 20% 미만일 경우 [합리화](../digital-estate/rationalize.md)에 특
 ## <a name="next-steps"></a>다음 단계
 
 > [!div class="nextstepaction"]
-> [클라우드 전환을 위한 금융 모델 만들기](financial-models.md)
+> [클라우드 전환을 위한 금융 모델 만들기](./financial-models.md)

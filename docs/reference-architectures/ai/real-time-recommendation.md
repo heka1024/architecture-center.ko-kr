@@ -7,18 +7,18 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 8fa15c82275f18af78d1f42ec1750ab9b28119fb
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: c4bfd6e92fc9c770a03a63355fc922d19ef27b7b
+ms.sourcegitcommit: f4ed242dff8b204cfd8ebebb7778f356a19f5923
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487120"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56224167"
 ---
 # <a name="build-a-real-time-recommendation-api-on-azure"></a>Azure에서 실시간 추천 API 빌드
 
 이 참조 아키텍처에서는 Azure Databricks를 사용하여 추천 모델을 학습시키고 Azure Cosmos DB, Azure Machine Learning, Azure Kubernetes Service(AKS)를 사용하여 API로 배포하는 방법을 보여줍니다. 이 아키텍처는 제품, 동영상, 뉴스 추천 등 대부분의 추천 엔진 시나리오에 맞게 일반화할 수 있습니다.
 
-이 아키텍처에 대한 참조 구현은 [GitHub](https://github.com/Microsoft/Recommenders/blob/master/notebooks/04_operationalize/als_movie_o16n.ipynb)에서 사용할 수 있습니다.
+이 아키텍처에 대한 참조 구현은 [GitHub](https://github.com/Microsoft/Recommenders/blob/master/notebooks/05_operationalize/als_movie_o16n.ipynb)에서 사용할 수 있습니다.
 
 ![학습 동영상 추천을 위한 기계 학습 모델 아키텍처](./_images/recommenders-architecture.png)
 
@@ -132,6 +132,10 @@ Spark 클러스터를 사용하지 않을 때 자주 재학습시키지 않고 �
 
 7. ALS Movie Operationalization 노트북을 실행하여 특정 사용자를 위한 상위 10개 동영상 추천 항목을 제공하는 추천 API를 만드는 데 필요한 리소스를 만듭니다.
 
+## <a name="related-architectures"></a>관련 아키텍처
+
+Spark 및 Azure Databricks를 사용하여 예약된 [일괄 처리 점수 매기기 프로세스][batch-scoring]를 실행하는 참조 아키텍처도 구축했습니다. 새 추천 사항을 정기적으로 생성하는 데 추천되는 방법을 이해하려면 해당 참조 아키텍처를 참조하세요.
+
 <!-- links -->
 [aci]: /azure/container-instances/container-instances-overview
 [aad]: /azure/active-directory-b2c/active-directory-b2c-overview
@@ -141,6 +145,7 @@ Spark 클러스터를 사용하지 않을 때 자주 재학습시키지 않고 �
 [autoscaling]: https://docs.azuredatabricks.net/user-guide/clusters/sizing.html
 [autoscale]: https://docs.azuredatabricks.net/user-guide/clusters/sizing.html#autoscaling
 [availability]: /azure/architecture/checklist/availability
+[batch-scoring]: /azure/architecture/reference-architectures/ai/batch-scoring-databricks
 [blob]: /azure/storage/blobs/storage-blobs-introduction
 [blog]: https://blogs.technet.microsoft.com/machinelearning/2018/03/20/scaling-azure-container-service-cluster/
 [clusters]: https://docs.azuredatabricks.net/user-guide/clusters/configure.html
@@ -161,12 +166,12 @@ Spark 클러스터를 사용하지 않을 때 자주 재학습시키지 않고 �
 [notebook]: https://github.com/Microsoft/Recommenders/notebooks/00_quick_start/als_pyspark_movielens.ipynb
 [partition-data]: /azure/cosmos-db/partition-data
 [redis]: /azure/redis-cache/cache-overview
-[regions]: https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtual-machines&regions=all
+[regions]: https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all
 [resiliency]: /azure/architecture/resiliency/
 [ru]: /azure/cosmos-db/request-units
 [sec-docs]: /azure/security/
 [setup]: https://github.com/Microsoft/Recommenders/blob/master/SETUP.md%60
 [scale]: /azure/aks/tutorial-kubernetes-scale
-[sla]: https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/
+[sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/
 [vm-size]: /azure/virtual-machines/virtual-machines-linux-change-vm-size
 [workspace]: https://docs.azuredatabricks.net/getting-started/index.html

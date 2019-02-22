@@ -9,18 +9,18 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: tsp-team
 social_image_url: /azure/architecture/example-scenario/data/media/architecture-diagram-hybrid-etl-with-adf.png
-ms.openlocfilehash: e8d80bb55d51bfbc982936d2b5dc98a232e061b5
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.openlocfilehash: 354b8ee14f82631842902da3de852f777b1954cc
+ms.sourcegitcommit: f4ed242dff8b204cfd8ebebb7778f356a19f5923
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908531"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56224133"
 ---
 # <a name="hybrid-etl-with-existing-on-premises-ssis-and-azure-data-factory"></a>기존 온-프레미스 SSIS와 Azure Data Factory를 사용한 하이브리드 ETL
 
 SQL Server 데이터베이스를 클라우드로 마이그레이션하는 조직은 엄청난 비용 절감, 성능 향상, 추가 유연성 및 확장성을 얻을 수 있습니다. 그러나 SSIS(SQL Server Integration Services)를 사용하여 빌드된 기존의 ETL(추출, 변환 및 로드) 프로세스를 다시 작업하는 것은 마이그레이션에 방해가 될 수 있습니다. 또는 데이터 로드 프로세스에는 아직 Azure Data Factory v2에서 지원되지 않는 복잡한 논리 및/또는 특정 데이터 도구 구성 요소가 필요합니다. 자주 사용되는 SSIS 기능으로는 유사 항목 조회 및 유사 항목 그룹화 변환, CDC(변경 데이터 캡처), SCD(느린 변경 차원) 및 DQS(Data Quality Services)가 있습니다.
 
-기존 SQL 데이터베이스를 간편하게 리프트 앤 시프트 방식으로 마이그레이션하는 가장 적합한 옵션은 하이브리드 ETL입니다. 하이브리드 접근 방식은 Data Factory를 기본 오케스트레이션 엔진으로 사용하지만, 기존 SSIS 패키지를 계속 활용하여 데이터를 정리하고 온-프레미스 리소스를 사용합니다. 이 방법은 Data Factory SQL Server IR(통합 런타임)을 사용하여 기존 데이터베이스를 클라우드로 리프트 앤 시프트할 수 있도록 지원하는 한편, 기존 코드 및 SSIS 패키지를 사용합니다.
+기존 SQL 데이터베이스를 간편하게 리프트 앤 시프트 방식으로 마이그레이션하는 가장 적합한 옵션은 하이브리드 ETL입니다. 하이브리드 방법에서는 Data Factory를 기본 오케스트레이션 엔진으로 사용하지만, 기존 SSIS 패키지를 계속 활용하여 데이터를 정리하고 온-프레미스 리소스를 사용합니다. 이 방법은 Data Factory SQL Server IR(통합 런타임)을 사용하여 기존 데이터베이스를 클라우드로 리프트 앤 시프트할 수 있도록 지원하는 한편, 기존 코드 및 SSIS 패키지를 사용합니다.
 
 이 예제 시나리오는 데이터베이스를 클라우드로 이동하고, Data Factory를 기본 클라우드 기반 ETL 엔진으로 사용하고 기존 SSIS 패키지를 새 클라우드 데이터 워크플로에 통합하는 방안을 고려하는 조직과 관련이 있습니다. 여러 조직에서 특정 데이터 작업을 위한 SSIS ETL 패키지 개발에 많은 비용을 투자했습니다. 이러한 패키지를 다시 작성하기가 어려울 수 있습니다. 또한 많은 기존 코드 패키지가 로컬 리소스에 종속되어 있어서 클라우드로 마이그레이션할 수 없습니다.
 
@@ -64,7 +64,7 @@ IR(통합 런타임)은 자체 호스팅 IR 또는 Azure 호스팅 IR의 두 가
 
 Azure 호스팅 방법의 경우 데이터 처리에 필요한 성능을 결정해야 합니다. Azure 호스팅 구성을 사용하면 구성 단계에서 VM 크기를 선택할 수 있습니다. VM 크기 선택에 대한 자세한 내용은 [VM 성능 고려 사항](/azure/cloud-services/cloud-services-sizes-specs#performance-considerations)을 참조하세요.
 
-Azure에서 액세스할 수 없는 데이터 원본 또는 파일처럼 온-프레미스에 종속된 기존 SSIS 패키지가 이미 있는 경우 의사 결정이 훨씬 간단합니다. 이 시나리오에서 선택 가능한 유일한 옵션은 자체 호스팅 IR입니다. 이 방법은 기존 패키지를 다시 작성할 필요 없이 클라우드를 오케스트레이션 엔진으로 활용하는 최고의 유연성을 제공합니다.
+Azure에서 액세스할 수 없는 데이터 원본이나 파일과 같이 온-프레미스에 종속된 기존 SSIS 패키지가 이미 있는 경우 훨씬 쉽게 결정할 수 있습니다. 이 시나리오에서 선택 가능한 유일한 옵션은 자체 호스팅 IR입니다. 이 방법은 기존 패키지를 다시 작성할 필요 없이 클라우드를 오케스트레이션 엔진으로 활용하는 최고의 유연성을 제공합니다.
 
 궁극적인 의도는 처리된 데이터를 클라우드로 이동하여 추가로 구체화하거나 클라우드에 저장된 다른 데이터와 결합하는 것입니다. 디자인 프로세스의 일부로 Data Factory 파이프라인에서 사용되는 작업의 수를 추적합니다. 자세한 내용은 [Azure Data Factory의 파이프라인 및 작업](/azure/data-factory/concepts-pipelines-activities)을 참조하세요.
 
