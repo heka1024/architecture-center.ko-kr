@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: aa69746b59ddfff02381dd811caa9a7aa62d8b7b
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: 9b6bef0fd803db5b488e93d246642d4e3681a94c
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484808"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897765"
 ---
 # <a name="api-implementation"></a>API 구현
 
@@ -614,7 +614,7 @@ public class OrdersController : ApiController
 
 ## <a name="maintaining-responsiveness-scalability-and-availability"></a>응답성, 확장성 및 가용성 유지 관리
 
-동일한 Web API를 전세계 어디에서나 실행되고 있는 많은 클라이언트 애플리케이션에서 활용할 수 있습니다. Web API는 부하가 큰 경우에도 응답성을 유지하도록, 변화가 매우 큰 워크로드를 지원하기 위해 축소와 확장이 가능하도록, 주요 비즈니스 작업을 수행하는 클라이언트에 대한 가용성을 보장하도록 구현하는 것이 중요합니다. 이러한 요구 사항을 충족하기 위한 방법을 결정할 때 다음 사항을 고려합니다.
+동일한 Web API를 전 세계 어디에서나 실행되고 있는 많은 클라이언트 애플리케이션에서 사용할 수 있습니다. Web API는 부하가 큰 경우에도 응답성을 유지하도록, 변화가 매우 큰 워크로드를 지원하기 위해 축소와 확장이 가능하도록, 주요 비즈니스 작업을 수행하는 클라이언트에 대한 가용성을 보장하도록 구현하는 것이 중요합니다. 이러한 요구 사항을 충족하기 위한 방법을 결정할 때 다음 사항을 고려합니다.
 
 ### <a name="provide-asynchronous-support-for-long-running-requests"></a>오래 실행되는 요청에 대해 비동기 지원을 제공합니다.
 
