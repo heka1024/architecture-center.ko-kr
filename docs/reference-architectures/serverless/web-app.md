@@ -69,7 +69,7 @@ API Management에서 제공하는 기능 중 일부만 필요한 경우 다른 �
 
 ## <a name="recommendations"></a>권장 사항
 
-### <a name="function-app-plans"></a>함수 앱 계획
+### <a name="function-app-plans"></a>Function App 계획
 
 Azure Functions는 두 가지 호스팅 모델을 지원합니다. **사용 계획**을 사용하면 코드가 실행될 때 계산 성능이 자동으로 할당됩니다.  **App Service** 계획을 사용하면 코드에 일단의 VM이 할당됩니다. App Service 계획은 VM의 수와 크기를 정의합니다.
 
@@ -83,7 +83,7 @@ Azure Functions는 두 가지 호스팅 모델을 지원합니다. **사용 계�
 - **가격 책정 모델**. 사용 계획은 실행 횟수와 리소스 사용량 따라 청구됩니다(메모리 &times; 실행 시간)에. App Service 계획은 VM 인스턴스 SKU에 따라 시간당 기준으로 청구됩니다. 사용하는 계산 리소스에 대해서만 비용을 지불하므로 사용 계획이 App Service 계획보다 저렴한 경우가 많습니다. 트래픽이 최고점 및 최저점에 있는 경우 특히 그렇습니다. 그러나 애플리케이션에서 지속적으로 대량의 처리량이 발생하는 경우 App Service 계획이 사용 계획보다 비용이 저렴할 수 있습니다.
 - **크기 조정**. 소비 모델의 큰 장점은 들어오는 트래픽을 기반으로 하여 필요에 따라 동적으로 크기가 조정된다는 것입니다. 이 크기 조정은 빠르게 수행되지만 램프 업(ramp-up) 기간이 여전히 있습니다. 일부 워크로드의 경우 VM을 의도적으로 과도하게 프로비전하여 램프 업 시간 없이 트래픽 급증을 처리할 수 있습니다. 이 경우 App Service 계획을 사용하는 것이 좋습니다.
 
-### <a name="function-app-boundaries"></a>함수 앱 경계
+### <a name="function-app-boundaries"></a>Function App 경계
 
 *함수 앱*은 실행할 하나 이상의 *함수*를 호스팅합니다. 함수 앱을 사용하여 여러 함수를 논리적 단위로 그룹화할 수 있습니다. 함수 앱 내에서 함수는 동일한 애플리케이션 설정, 호스팅 계획 및 배포 수명 주기를 공유합니다. 각 함수 앱에는 자체의 호스트 이름이 있습니다.
 
@@ -129,7 +129,7 @@ public static Task<IActionResult> Run(
 
 - API Management는 여러 Azure 지역에 걸쳐 단일 API Management 인스턴스를 배포하는 데 사용할 수 있는 다중 지역 배포를 지원합니다. 자세한 내용은 [여러 Azure 지역에 Azure API Management 서비스 인스턴스를 배포하는 방법][api-geo]을 참조하세요.
 
-- [Traffic Manager][tm]를 사용하여 HTTP 요청을 주 지역으로 라우팅합니다. 해당 지역에서 실행하는 함수 앱을 사용할 수 없게 되면 Traffic Manager에서 보조 지역으로 조치 할 수 있습니다.
+- [Traffic Manager][tm]를 사용하여 HTTP 요청을 주 지역으로 라우팅합니다. 해당 지역에서 실행하는 Function App을 사용할 수 없게 되면 Traffic Manager에서 보조 지역으로 조치 할 수 있습니다.
 
 - Cosmos DB는 [다중 마스터 지역][cosmosdb-geo]을 지원하므로 Cosmos DB 계정에 추가하는 모든 지역에 쓸 수 있습니다. 다중 마스터를 사용하도록 설정하지 않은 경우에도 주 쓰기 지역을 장애 조치할 수 있습니다. Cosmos DB 클라이언트 SDK 및 Azure Function 바인딩은 장애 조치를 자동으로 처리하므로 애플리케이션 구성 설정을 업데이트할 필요가 없습니다.
 
@@ -152,7 +152,7 @@ public static Task<IActionResult> Run(
 
 - Azure AD 테넌트에 애플리케이션을 등록합니다. 그러면 클라이언트에서 로그인 URL에 포함하는 애플리케이션 ID가 생성됩니다.
 
-- 함수 앱 내에서 Azure AD 인증을 사용하도록 설정합니다. 자세한 내용은 [Azure App Service의 인증 및 권한 부여][app-service-auth]를 참조하세요.
+- Function App 내에서 Azure AD 인증을 사용하도록 설정합니다. 자세한 내용은 [Azure App Service의 인증 및 권한 부여][app-service-auth]를 참조하세요.
 
 - 액세스 토큰의 유효성을 검사하여 요청을 사전 승인하는 [validate-jwt policy][apim-validate-jwt] 정책을 API Management에 추가합니다.
 
@@ -286,9 +286,9 @@ API는 서비스와 클라이언트 간의 계약입니다. 이 아키텍처에�
 
 - *수정 버전*을 통해 API 관리자는 API에서 호환성이 손상되지 않는 변경 작업을 수행하고 변경 내용을 배포할 수 있으며, 변경 로그를 통해 API 소비자에게 변경 관련 정보를 제공할 수 있습니다.
 
-API에서 호환성이 손상되는 변경을 수행하는 경우 API Management에서 새 버전을 게시합니다. 새 버전은 원래 버전과 함께 별도의 함수 앱에 배포됩니다. 이렇게 하면 클라이언트 애플리케이션을 중단하지 않고 기존 클라이언트를 새 API로 마이그레이션할 수 있습니다. 결국에는 이전 버전을 더 이상 사용하지 않을 수 있습니다. API Management는 여러 [버전 관리 체계][apim-versioning-schemes]: URL 경로, HTTP 헤더 또는 쿼리 문자열을 지원합니다. 일반적인 API 버전 관리에 대한 자세한 내용은 [RESTful 웹 API 버전 관리][api-versioning]를 참조하세요.
+API에서 호환성이 손상되는 변경을 수행하는 경우 API Management에서 새 버전을 게시합니다. 새 버전은 원래 버전과 함께 별도의 Function App에 배포됩니다. 이렇게 하면 클라이언트 애플리케이션을 중단하지 않고 기존 클라이언트를 새 API로 마이그레이션할 수 있습니다. 결국에는 이전 버전을 더 이상 사용하지 않을 수 있습니다. API Management는 여러 [버전 관리 체계][apim-versioning-schemes]: URL 경로, HTTP 헤더 또는 쿼리 문자열을 지원합니다. 일반적인 API 버전 관리에 대한 자세한 내용은 [RESTful 웹 API 버전 관리][api-versioning]를 참조하세요.
 
-API 변경을 차단하지 않는 업데이트의 경우 동일한 함수 앱의 스테이징 슬롯에 새 버전을 배포합니다. 배포가 성공했는지 확인한 다음, 준비된 버전을 프로덕션 버전으로 바꿉니다. API Management에서 수정 버전을 게시합니다.
+API 변경을 차단하지 않는 업데이트의 경우 동일한 Function App의 스테이징 슬롯에 새 버전을 배포합니다. 배포가 성공했는지 확인한 다음, 준비된 버전을 프로덕션 버전으로 바꿉니다. API Management에서 수정 버전을 게시합니다.
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
