@@ -30,7 +30,7 @@ ms.locfileid: "54486219"
 
 **함수 앱**. [Azure Functions][functions]는 서버리스 계산 옵션입니다. 트리거를 통해 코드("함수")가 호출되는 이벤트 구동 모델을 사용합니다. 이 아키텍처에서는 이벤트가 Event Hubs에 도착하면 이벤트를 처리하고 결과를 저장소에 쓰는 함수를 트리거합니다.
 
-함수 앱은 Event Hubs에서 개별 레코드를 처리하는 데 적합합니다. 더 복잡한 스트림 처리 시나리오의 경우 Azure Databricks 또는 Azure Stream Analytics를 사용하는 Apache Spark를 고려해 보세요.
+Function App은 Event Hubs에서 개별 레코드를 처리하는 데 적합합니다. 더 복잡한 스트림 처리 시나리오의 경우 Azure Databricks 또는 Azure Stream Analytics를 사용하는 Apache Spark를 고려해 보세요.
 
 **Cosmos DB** [Cosmos DB][cosmosdb]는 다중 모델 데이터베이스 서비스입니다. 이 시나리오의 경우 이벤트 처리 함수는 Cosmos DB [SQL API][cosmosdb-sql]를 사용하여 JSON 레코드를 저장합니다.
 
