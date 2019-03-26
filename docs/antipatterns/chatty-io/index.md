@@ -8,13 +8,8 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: b21ef5f772eb4e2572833ab15085651ac3766a5e
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54480609"
 ---
+
 # <a name="chatty-io-antipattern"></a>번잡한 I/O 안티패턴
 
 수많은 I/O 요청의 누적 효과는 성능 및 응답성에 상당한 영향을 미칠 수 있습니다.

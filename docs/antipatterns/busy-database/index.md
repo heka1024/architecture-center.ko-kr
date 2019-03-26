@@ -8,13 +8,8 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 7d3fe47407eff7168dfd227a1dd1bd5917c7d431
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487035"
 ---
+
 # <a name="busy-database-antipattern"></a>사용량이 많은 데이터베이스 안티패턴
 
 처리를 데이터베이스 서버로 오프로드하면 데이터 저장 및 검색 요청에 응답하는 대신 코드를 실행하는 데 상당한 시간이 소요될 수 있습니다.

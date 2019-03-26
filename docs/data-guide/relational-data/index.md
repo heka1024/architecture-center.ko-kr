@@ -1,18 +1,13 @@
 ---
 title: 관계형 데이터
-description: ''
+description: null
 author: zoinerTejada
 ms.date: 02/12/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
-ms.openlocfilehash: d68bddcb75e5c8f786a7739e85de2645a2c3d641
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484937"
 ---
+
 # <a name="traditional-relational-database-solutions"></a>기존 관계형 데이터베이스 솔루션
 
 관계형 데이터는 관계형 모델을 사용하여 모델링되는 데이터입니다. 이 모델에서 데이터는 튜플으로 표현됩니다. *튜플*은 특성/값 쌍의 집합입니다. 예를 들어, 튜플은 (itemid = 5, orderid = 1, item = "Chair", amount = 200.00)일 수 있습니다. 모두 동일한 특성을 공유하는 튜플 집합을 *관계*라고 합니다.

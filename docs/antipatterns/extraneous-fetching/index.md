@@ -8,13 +8,8 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: c1172531b332854a6d4940c072b61cb3f6bcd7ba
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488191"
 ---
+
 # <a name="extraneous-fetching-antipattern"></a>불필요한 가져오기 안티패턴
 
 비즈니스 작업에 필요한 것보다 더 많은 데이터를 검색하면 불필요한 I/O 오버헤드가 발생하고 응답성이 감소할 수 있습니다.

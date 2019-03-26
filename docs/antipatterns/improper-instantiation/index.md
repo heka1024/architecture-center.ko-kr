@@ -8,13 +8,8 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: a2e42e35ae1b56b61c8f9f9ecb21ee104cd3222e
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55898054"
 ---
+
 # <a name="improper-instantiation-antipattern"></a>부적절한 인스턴스화 안티패턴
 
 한 번 만든 다음 공유하는 개체의 새 인스턴스를 계속 만들면 성능이 떨어질 수 있습니다.

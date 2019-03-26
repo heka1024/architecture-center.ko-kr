@@ -8,13 +8,8 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 1b53806b2939a7c44a8b48c9146d5e86c84d9e2e
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486168"
 ---
+
 # <a name="synchronous-io-antipattern"></a>동기 I/O 안티패턴
 
 I/O가 완료하는 동안 호출 스레드를 차단하면 성능이 감소하고 수직 확장성에 영향을 미칠 수 있습니다.

@@ -8,13 +8,8 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 212930368942728fc0be0c9b2af1a90293906b39
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54483057"
 ---
+
 # <a name="performance-antipatterns-for-cloud-applications"></a>클라우드 애플리케이션에 대한 성능 안티패턴
 
 *성능 안티패턴*은 애플리케이션이 압력을 받고 있을 때 확장성 문제를 일으킬 가능성이 있는 일반적인 사례입니다.

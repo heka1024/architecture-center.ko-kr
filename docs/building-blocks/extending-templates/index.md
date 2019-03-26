@@ -6,13 +6,8 @@ ms.date: 06/09/2017
 ms.topic: article
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: 108d82066d9867682c246c4de802849e2e561cbc
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486440"
 ---
+
 # <a name="extend-azure-resource-manager-template-functionality"></a>Azure Resource Manager 템플릿 기능 확장
 
 2016년에 Microsoft 패턴 및 사례 팀은 리소스 배포의 단순화를 목표로 Azure Resource Manager [템플릿 구성 요소](https://github.com/mspnp/template-building-blocks/wiki) 집합을 만들었습니다. 각 구성 요소는 별도의 매개 변수 파일에 의해 지정한 리소스 집합을 배포하는 미리 작성된 템플릿 집합을 포함합니다.

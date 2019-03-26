@@ -4,13 +4,8 @@ ms.topic: landing-page
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.date: 08/30/2018
-ms.openlocfilehash: 651f59344e7785a8a23e7b56dd67b4c4a3044741
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484383"
 ---
+
 # <a name="azure-application-architecture-guide"></a>Azure 애플리케이션 아키텍처 가이드
 
 이 가이드는 확장성과 복원력이 있고 가용성이 뛰어난 Azure에서 애플리케이션을 디자인하기 위한 체계적인 방식을 제시합니다. 고객의 참여를 통해 확보한 검증된 사례를 기반으로 합니다.

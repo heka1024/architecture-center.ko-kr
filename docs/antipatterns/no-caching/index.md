@@ -8,13 +8,8 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 5c3062c0a17de708ada83ba81dcb111e6b1f8440
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488055"
 ---
+
 # <a name="no-caching-antipattern"></a>캐싱 없음 안티패턴
 
 다수의 동시 요청을 처리하는 클라우드 애플리케이션에서 같은 데이터를 반복적으로 가져오면 성능과 확장성을 감소시킬 수 있습니다.

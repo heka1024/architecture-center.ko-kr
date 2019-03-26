@@ -8,13 +8,8 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: e3d6fbb789e422af22ce54b0defd6bb73099f15a
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487273"
 ---
+
 # <a name="monolithic-persistence-antipattern"></a>모놀리식 지속성 안티패턴
 
 애플리케이션의 모든 데이터를 단일 데이터 저장소에 저장하면 리소스 경합이 발생하기 때문에, 또는 데이터 저장소가 데이터의 일부에 맞지 않기 때문에 성능이 저하될 수 있습니다.
