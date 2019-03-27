@@ -8,13 +8,8 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 61470b630f735c1d49ad9b4bfbec853b308630cf
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481527"
 ---
+
 # <a name="busy-front-end-antipattern"></a>붐비는 프런트 엔드 안태패턴
 
 다수의 백그라운드 스레드에서 비동기 작업을 수행하면 리소스의 다른 동시 포그라운드 작업에 결핍이 발생하여 응답 시간이 허용할 수 없는 수준으로 감소됩니다.
@@ -146,7 +141,7 @@ public async Task RunAsync(CancellationToken cancellationToken)
 
 ### <a name="identify-points-of-slowdown"></a>느려지는 지점 파악
 
-각 요청이 소비하는 기간 및 자원을 추적하기 위해 각 메서드를 계측합니다. 그런 다음, 프로덕션 환경에서 애플리케이션을 모니터링합니다. 요청이 서로 경쟁하는 방식을 전반적으로 볼 수 있습니다. 스트레스 상황에서 느리게 실행되는 리소스가 부족한 요청은 다른 작업에 영향을 미칠 수 있으며 이러한 동작은 시스템을 모니터링하고 성능 저하에 주목함으로써 관찰할 수 있습니다.
+각 요청이 소비하는 기간 및 자원을 추적하기 위해 각 메서드를 계측합니다. 그런 다음, 프로덕션 환경에서 애플리케이션을 모니터링합니다. 요청이 서로 경쟁하는 방식을 전반적으로 볼 수 있습니다. 스트레스 상황에서 느리게 실행되는 리소스가 부족한 요청은 다른 작업에 영향을 미칠 수 있으며, 시스템을 모니터링하고 성능 저하를 주목하면 이러한 동작을 발견할 수 있습니다.
 
 다음 이미지는 모니터링 대시보드입니다. (테스트에는 [AppDynamics]가 사용되었습니다.) 초기에는 시스템 부하가 적습니다. 그런 다음 사용자가 `UserProfile` GET 메서드를 요청하기 시작합니다. 성능은 다른 사용자가 `WorkInFrontEnd` POST 메서드에 대한 요청 발급을 시작할 때가지 상당히 좋습니다. 이 시점에서 응답 시간이 크게 증가합니다(첫 번째 화살표). 응답 시간은 `WorkInFrontEnd` 컨트롤러에 대한 요청 볼륨이 줄어든 후에야 증가합니다(두 번째 화살표).
 

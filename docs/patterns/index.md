@@ -4,18 +4,13 @@ titleSuffix: Azure Architecture Center
 description: 클라우드에서 안정적이고 확장성 있는 안전한 애플리케이션을 빌드하기 위한 디자인 패턴입니다.
 keywords: Azure
 author: dragon119
-ms.date: 12/10/2018
+ms.date: 03/01/2018
 ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 1f3a76a104f0157526db3cff338c2b8b08dd573c
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488259"
 ---
+
 # <a name="cloud-design-patterns"></a>클라우드 디자인 패턴
 
 이러한 디자인 패턴은 클라우드에서 안정적이고 확장성 있는 안전한 애플리케이션을 빌드하는 데 유용합니다.
@@ -95,10 +90,11 @@ ms.locfileid: "54488259"
 |                       [격벽](./bulkhead.md)                       |                                                        하나가 고장 나더라도 나머지는 정상적으로 작동하도록 애플리케이션의 요소를 여러 풀에 격리합니다.                                                        |
 |                    [Cache-Aside](./cache-aside.md)                    |                                                                                   필요할 때 데이터를 데이터 저장소에서 캐시로 로드                                                                                    |
 |                [회로 차단기](./circuit-breaker.md)                |                                                     원격 서비스 또는 리소스에 연결할 때 해결하는 데 걸리는 시간이 유동적인 오류를 처리합니다.                                                     |
-|                           [CQRS](./cqrs.md)                           |                                                           별도의 인터페이스를 사용하여 데이터를 업데이트하는 작업과 데이터를 읽는 작업을 분리합니다.                                                            |
+| [클레임 검사](./claim-check.md) | 큰 메시지를 클레임 검사 및 페이로드로 분할하면 메시지 버스의 과부하를 피할 수 있습니다. |
 |       [보정 트랜잭션](./compensating-transaction.md)       |                                                         여러 단계로 나뉘어 있지만 결국에는 일관적인 작업을 정의하는 일련의 단계에서 수행한 작업을 실행 취소합니다.                                                         |
 |            [경쟁 소비자](./competing-consumers.md)            |                                                            여러 동시 소비자가 동일한 메시징 채널에 수신된 메시지를 처리할 수 있게 해 줍니다.                                                             |
 | [계산 리소스 통합](./compute-resource-consolidation.md) |                                                                        여러 작업을 단일 계산 단위로 통합합니다.                                                                        |
+|                           [CQRS](./cqrs.md)                           |                                                           별도의 인터페이스를 사용하여 데이터를 업데이트하는 작업과 데이터를 읽는 작업을 분리합니다.                                                            |
 |                 [이벤트 소싱](./event-sourcing.md)                 |                                                      추가 전용 저장소를 사용하여 도메인의 데이터에 대해 수행된 작업을 설명하는 일련의 이벤트 전체를 기록합니다.                                                      |
 |   [외부 구성 저장소](./external-configuration-store.md)   |                                                           구성 정보를 애플리케이션 배포 패키지에서 중앙 위치로 이동합니다.                                                           |
 |             [페더레이션 ID](./federated-identity.md)             |                                                                                외부 ID 공급자에게 인증을 위임합니다.                                                                                |

@@ -1,17 +1,12 @@
 ---
 title: Azure 아키텍처 센터
-description: Azure 아키텍처 센터는 Microsoft Azure를 사용하여 솔루션을 구축하기 위한 지침, 청사진, 패턴 및 모범 사례를 위한 공식 센터입니다. Microsoft 패턴 및 작업 방식 팀에 의해 엄선됩니다.
+description: 'Azure 아키텍처 센터는 Microsoft Azure를 사용하여 솔루션을 구축하기 위한 지침, 청사진, 패턴 및 모범 사례를 위한 공식 센터입니다. Microsoft 패턴 및 작업 방식 팀에 의해 엄선됩니다.'
 layout: LandingPage
 ms.topic: landing-page
 ms.date: 09/28/2018
 google-site-verification: b-xRLveOzJ9oSOh37wgRTRB2lMOoFY8HiHf9_0DIawE
-ms.openlocfilehash: 3c48ba77b7f97c6047f5d1441a22f2bd79ee0a3e
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55898292"
 ---
+
 # <a name="azure-architecture-center"></a>Azure 아키텍처 센터
 
 <!-- markdownlint-disable MD033 -->
@@ -104,6 +99,26 @@ ms.locfileid: "55898292"
                         <div class="cardText">
                             <h3>Azure Data Architecture 가이드</h3>
                             <p>Microsoft Azure에서 데이터 중심 솔루션을 디자인하는 구조적 접근 방식입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <!-- HPC Topic Page -->
+    <li>
+        <a href="./topics/high-performance-computing/index.md">
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img src="_images/hpc-blue-multi.svg" alt="" />
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3>Azure의 HPC(고성능 컴퓨팅)</h3>
+                            <p>Azure에서 HPC(고성능 컴퓨팅) 애플리케이션을 빌드하기 위한 디자인 지침 및 구성 요소 정보를 제공합니다.</p>
                         </div>
                     </div>
                 </div>
@@ -210,26 +225,6 @@ ms.locfileid: "55898292"
             </div>
         </a>
     </li>
-    <!-- Azure Virtual Datacenter -->
-    <li>
-        <a href="./vdc/index.md">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="_images/virtual-datacenter.svg" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>Azure Virtual Datacenter</h3>
-                            <p>엔터프라이즈 워크로드를 클라우드에 배포할 때 조직은 규제와 개발자 유연성 간에 적절한 균형을 이루어야 합니다. Azure Virtual Datacenter는 규제를 강조하면서 이러한 균형을 이루는 모델을 제공합니다.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
         <!-- Azure for AWS Professionals -->
     <li>
         <a href="/azure/architecture/aws-professional">
@@ -264,6 +259,26 @@ ms.locfileid: "55898292"
                         <div class="cardText">
                             <h3>성능 안티패턴</h3>
                             <p>클라우드 애플리케이션에서 성능 및 확장성 문제의 일반적인 원인을 감지하고 수정하는 방법입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <!-- Azure Virtual Datacenter -->
+    <li>
+        <a href="./vdc/index.md">
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage">
+                                <img src="_images/virtual-datacenter.svg" alt="" />
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3>Azure Virtual Datacenter</h3>
+                            <p>엔터프라이즈 워크로드를 클라우드에 배포할 때 조직은 규제와 개발자 유연성 간에 적절한 균형을 이루어야 합니다. Azure Virtual Datacenter는 규제를 강조하면서 이러한 균형을 이루는 모델을 제공합니다.</p>
                         </div>
                     </div>
                 </div>

@@ -3,13 +3,7 @@ title: Azure 참조 아키텍처
 description: Azure의 일반 워크로드에 대한 참조 아키텍처 및 구현 지침입니다.
 layout: LandingPage
 ms.topic: landing-page
-ms.date: 02/07/2019
-ms.openlocfilehash: 44111f5f10997c7aba38414b518245c5791d1cd0
-ms.sourcegitcommit: a68f248402c598f9d25bc1dc62f27a6a934ff001
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55903234"
+ms.date: 03/07/2019
 ---
 <!-- This file is generated! -->
 <!-- See the templates in ./build/reference-architectures  -->
@@ -40,6 +34,26 @@ ms.locfileid: "55903234"
                     <div class="cardText">
                         <h3>딥 러닝 모델의 분산 학습</h3>
                         <p>GPU를 지원하는 VM 클러스터 간에 딥 러닝 모델 분산 학습을 실행합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Training of Python scikit-learn models -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/training-python-models.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/python-powered-h.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Python scikit-learn 모델 학습</h3>
+                        <p>scikit-learn Python 모델의 하이퍼 매개 변수 튜닝에 대한 권장 사례를 소개합니다.</p>
                     </div>
                 </div>
             </div>
@@ -79,7 +93,7 @@ ms.locfileid: "55903234"
                     </div>
                     <div class="cardText">
                         <h3>Python 모델의 일괄 처리 채점</h3>
-                        <p>Azure Batch AI를 사용하여 일정에 따라 여러 Python 모델을 일괄 처리로 채점합니다.</p>
+                        <p>Azure Machine Learning을 사용하여 일정에 따라 여러 Python 모델을 일괄 처리로 채점합니다.</p>
                     </div>
                 </div>
             </div>
@@ -314,7 +328,27 @@ ms.locfileid: "55903234"
                     </div>
                     <div class="cardText">
                         <h3>AKS(Azure Kubernetes Service)에서 마이크로 서비스</h3>
-                        <p>AKS에서 마이크로 서비스 아키텍처를 배포하기 위한 아키텍처를 권장합니다.</p>
+                        <p>AKS에 마이크로서비스를 배포할 때 권장하는 아키텍처입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Microservices architecture on Azure Service Fabric -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./microservices/service-fabric.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/sf.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Service Fabric의 마이크로서비스 아키텍처</h3>
+                        <p>Service Fabric의 마이크로서비스에 권장하는 아키텍처입니다.</p>
                     </div>
                 </div>
             </div>

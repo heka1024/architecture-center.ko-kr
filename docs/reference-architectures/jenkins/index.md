@@ -8,13 +8,8 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: 2717b3b11f0315b698d43d067b30472481ffa527
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54483431"
 ---
+
 # <a name="run-a-jenkins-server-on-azure"></a>Azure에서 Jenkins 서버 실행
 
 이 참조 아키텍처는 SSO(Single Sign-On)로 보호된 Azure에서 확장성 있는 엔터프라이즈급 Jenkins 서버를 배포하고 작동하는 방법을 보여 줍니다. 이 아키텍처는 또한 Jenkins 서버의 상태를 모니터링하는 데 Azure Monitor를 사용합니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
@@ -65,7 +60,7 @@ Azure 구독을 위한 [Azure AD][azure-ad] 테넌트가 Jenkins 사용자를 �
 
 SSO 인증 및 권한 부여는 Jenkins 서버에 설치된 Azure AD 플러그 인에서 구현됩니다. SSO를 사용하면 Jenkins 서버에 로그온할 때 Azure AD에서 조직 자격 증명을 사용하여 인증할 수 있습니다. Azure AD 플러그 인을 구성할 때 Jenkins 서버에 대한 권한이 있는 사용자의 수준을 지정할 수 있습니다.
 
-Azure 리소스에 대한 액세스 권한과 함께 Jenkins 작업을 제공하기 위해 Azure AD 관리자는 서비스 주체를 작성합니다. 이러한 권한 부여 애플리케이션(이 경우 Jenkins 작업)은 Azure 리소스에 대해 [인증되고 권한 부여된 액세스][ad-sp]를 포함합니다.
+Azure 리소스에 대한 액세스 권한과 함께 Jenkins 작업을 제공하기 위해 Azure AD 관리자는 서비스 주체를 작성합니다. 이렇게 하면 애플리케이션(이 예에서는 Jenkins 작업)에 Azure 리소스에 대한 [인증되고 권한이 부여된 액세스][ad-sp]가 제공됩니다.
 
 [RBAC][rbac]는 할당된 역할을 통해 사용자 또는 서비스 주체의 Azure 리소스에 대한 액세스를 추가로 정의 및 제어합니다. 기본 제공 및 사용자 지정 역할 둘 다 지원됩니다. 역할은 또한 파이프라인을 보호하고 사용자 또는 에이전트의 책임이 올바르게 할당되고 권한 부여되는지 확인하는 데 도움이 됩니다. 또한 Azure 자산에 대한 액세스를 제한하는 데 RBAC를 설정할 수 있습니다. 예를 들어 사용자는 특정 리소스 그룹의 자산으로만 작업하도록 제한할 수 있습니다.
 
@@ -123,7 +118,7 @@ Jenkins 서버의 컨텍스트에서 가용성이란 테스트 결과, 만든 �
 
 - RPO(복구 지점 목표)는 서비스 중단으로 인해 Jenkins에 영향을 줄 경우 잃을 수 있는 데이터 양을 나타냅니다.
 
-실제로 RTO와 RPO는 중복성과 백업을 의미합니다. 가용성은 Azure의 일부인 하드웨어 복구의 문제가 아니라 Jenkins 서버의 상태를 유지하는 것을 보장합니다. Microsoft에서는 단일 VM 인스턴스를 위한 [SLA(서비스 수준 계약)][sla]를 제공합니다. 이 SLA가 가동 시간 요구 사항을 충족시키지 못하는 경우 재해 복구 계획을 수립했는지 확인하거나 [다중 마스터 Jenkins 서버][multi-master] 배포(이 문서에서는 다루지 않음)를 사용하는 것을 고려하세요.
+실제로 RTO와 RPO는 중복성과 백업을 의미합니다. 가용성은 Azure의 일부인 하드웨어 복구의 문제가 아니라 Jenkins 서버의 상태 유지를 보장하는 것입니다. Microsoft에서는 단일 VM 인스턴스를 위한 [SLA(서비스 수준 계약)][sla]를 제공합니다. 이 SLA가 가동 시간 요구 사항을 충족시키지 못하는 경우 재해 복구 계획을 수립했는지 확인하거나 [다중 마스터 Jenkins 서버][multi-master] 배포(이 문서에서는 다루지 않음)를 사용하는 것을 고려하세요.
 
 배포 7단계에서 재해 복구 [스크립트][disaster]를 사용하여 Jenkins 서버 상태를 저장할 관리 디스크가 있는 Azure Storage 계정을 만드는 것이 좋습니다. Jenkins가 다운되면 이 별도의 저장소 계정에 저장된 상태로 복원할 수 있습니다.
 
