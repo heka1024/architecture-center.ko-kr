@@ -10,11 +10,11 @@ author: BrianBlanchard
 layout: LandingPage
 ms.topic: landing-page
 ms.openlocfilehash: 14569b8db68434ee30fa7bff7fba2da5fa537049
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902039"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242034"
 ---
 # <a name="caf-identity-baseline-discipline-overview"></a>CAF: ID 기준 분야 개요
 
@@ -128,7 +128,7 @@ CAF 지침의 이 섹션에서는 클라우드 거버넌스 전략의 일환으�
                     </div>
                     <div class="cardText" style="padding-left:0px;">
                         <h3>완성도</h3>
-                        <p class="x-hidden-focus">클라우드 관리 완성도를 클라우드 채택 단계에 맞게 조정합니다.</p>
+                        <p class="x-hidden-focus">클라우드 관리 완성도를 클라우드 도입 단계에 맞게 조정합니다.</p>
                     </div>
                 </div>
             </div>
