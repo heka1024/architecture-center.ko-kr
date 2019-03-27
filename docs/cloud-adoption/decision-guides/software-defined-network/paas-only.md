@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: 클라우드 기반 네트워킹 기능을 위한 PaaS 전용 모델에 대한 설명
 author: rotycenh
 ms.openlocfilehash: 2f3f82d781ddb6544721e82e7b7d795222a2f8ff
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901727"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241204"
 ---
 # <a name="software-defined-networks-paas-only"></a>소프트웨어 정의 네트워크: PaaS 전용
 

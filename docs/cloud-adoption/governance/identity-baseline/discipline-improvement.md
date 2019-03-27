@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: ID 기준 분야 개선
 author: BrianBlanchard
 ms.openlocfilehash: c96a638af549782fec22b2068c9b4943df4b943a
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901317"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243254"
 ---
 # <a name="identity-baseline-discipline-improvement"></a>ID 기준 분야 개선
 
@@ -50,7 +50,7 @@ ID 기준 분야는 애플리케이션 또는 워크로드를 호스트하는 �
 
 ## <a name="build-and-pre-deployment"></a>빌드 및 배포 전 단계
 
-여러 기술적 및 비기술적 필수 조건은 환경을 성공적으로 마이그레이션해야 합니다. 이 프로세스에서는 결정, 준비 및 마이그레이션을 진행하는 핵심 인프라에 중점을 둡니다.
+환경을 적절하게 마이그레이션하려면 여러 가지 기술적/비기술적 필수 조건을 충족해야 합니다. 이 프로세스에서는 결정, 준비 및 마이그레이션을 진행하는 핵심 인프라에 중점을 둡니다.
 
 **최소 권장 활동:**
 

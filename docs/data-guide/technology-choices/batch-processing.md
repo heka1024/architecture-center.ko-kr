@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 53f8b233b0e0c1ff83a72a04b2707caa528d6f6b
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486457"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58248518"
 ---
 # <a name="choosing-a-batch-processing-technology-in-azure"></a>Azure에서 일괄 처리 기술 선택
 
@@ -102,7 +102,7 @@ AZTK는 Azure 서비스가 아닙니다. CLI 및 Python SDK 인터페이스를 �
 | 스케일 아웃 단위  | 작업 기준 | 클러스터 기준 | 클러스터 기준 | 클러스터 기준 | 클러스터 기준 | 클러스터 기준 |
 | 데이터의 메모리 내 캐싱 | 아니요 | 예 | 예 | no | 예 | 예 |
 | 외부 관계형 저장소에서 쿼리 | 예 | no | 예 | 아니요 | 아니요 | 예 |
-| 인증  | Azure AD | SQL / Azure AD | 아니요 | Azure AD<sup>1</sup> | Azure AD<sup>1</sup> | Azure AD |
+| Authentication  | Azure AD | SQL / Azure AD | 아니요 | Azure AD<sup>1</sup> | Azure AD<sup>1</sup> | Azure AD |
 | 감사  | 예 | 예 | 아니요 | 예 <sup>1</sup> | 예 <sup>1</sup> | 예 |
 | 행 수준 보안 | 아니요 | 아니요 | 아니요 | 예 <sup>1</sup> | 예 <sup>1</sup> | 아니요 |
 | 방화벽 지원 여부 | 예 | 예 | 예 | 예 <sup>2</sup> | 예 <sup>2</sup> | 아니요 |

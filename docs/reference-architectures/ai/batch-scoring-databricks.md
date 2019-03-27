@@ -8,11 +8,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
 ms.openlocfilehash: 1b6f10edf098ed8d9fa14c16de113fc765372835
-ms.sourcegitcommit: a68f248402c598f9d25bc1dc62f27a6a934ff001
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55903275"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58231411"
 ---
 # <a name="batch-scoring-of-spark-models-on-azure-databricks"></a>Azure Databricks에서 Spark 모델의 일괄 처리 점수 매기기
 

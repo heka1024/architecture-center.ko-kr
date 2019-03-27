@@ -7,21 +7,18 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: ac7ab8b8dd154999a05dc531e41b0994f66ddf10
-ms.sourcegitcommit: 700a4f6ce61b1ebe68e227fc57443e49282e35aa
+ms.openlocfilehash: c8ce4c77666ab7b9c55e6f144d514fadc6b6ad73
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55887406"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246084"
 ---
 # <a name="microservices-architecture-on-azure-kubernetes-service-aks"></a>AKS(Azure Kubernetes Service)의 마이크로 서비스 아키텍처
 
 이 참조 아키텍처는 AKS(Azure Kubernetes Service)에 배포된 마이크로 서비스 애플리케이션을 보여줍니다. 대부분의 배포에서 시작점으로 사용할 수 있는 기본 AKS 구성을 보여줍니다. 고급 네트워킹 옵션을 비롯한 고급 옵션은 별도의 참조 아키텍처에서 다룰 것입니다.
 
 이 문서에서는 Kubernetes에 대한 기본 지식을 다룹니다. 이 문서는 AKS에서 마이크로 서비스 아키텍처를 실행하기 위한 인프라 및 DevOps 고려 사항에 중점을 둡니다. DDD(도메인 중심 디자인) 관점에서 마이크로 서비스를 디자인하는 방법에 대한 지침은 [Azure에서 마이크로 서비스 설계, 빌드 및 운영](/azure/architecture/microservices)을 참조하세요.
-
-> [!NOTE]
-> 이 문서와 함께 제공할 RI(참조 구현)를 현재 만드는 중이며, 2019년 초에 게시할 예정입니다. 이 문서는 이 RI의 추가 모범 사례를 포함하도록 업데이트될 것입니다.
 
 ![AKS 참조 아키텍처](./_images/aks.png)
 
@@ -310,7 +307,7 @@ CI/CD 워크플로를 만들기 전에 코드 베이스가 구조화되고 관�
 - 팀이 [Azure Pipelines](/azure/devops/pipelines)를 사용하여 CI/CD 프로세스를 실행합니다.
 - 팀이 Azure Container Registry에서 [네임스페이스](/azure/container-registry/container-registry-best-practices#repository-namespaces)를 사용하여 아직 테스트 중인 이미지에서 프로덕션용으로 승인된 이미지를 분리합니다.
 
-이 예에서는 개발자가 Delivery Service라는 마이크로 서비스를 작업합니다. (이 이름은 [여기](../../microservices/index.md#the-drone-delivery-application)에 설명된 참조 구현에서 따온 것입니다.) 개발자는 새 기능을 개발할 때 기능 분기에 코드를 체크 인합니다.
+이 예에서는 개발자가 Delivery Service라는 마이크로 서비스를 작업합니다. (이 이름은 [여기](../../microservices/design/index.md#scenario)에 설명된 참조 구현에서 따온 것입니다.) 개발자는 새 기능을 개발할 때 기능 분기에 코드를 체크 인합니다.
 
 ![CI/CD 워크플로](./_images/aks-cicd-1.png)
 

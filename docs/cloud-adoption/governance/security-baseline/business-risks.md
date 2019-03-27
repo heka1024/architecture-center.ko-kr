@@ -4,15 +4,15 @@ titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
-ms.date: 1/8/2019
+ms.date: 02/11/2019
 description: 보안 기준 동기 부여 및 비즈니스 위험
 author: BrianBlanchard
-ms.openlocfilehash: d57b79b37aa257d07df0168a7fee53ec8ecd1526
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 8407ed358e5862e466176096ee6a82ad792027cb
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901245"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58247314"
 ---
 # <a name="security-baseline-motivations-and-business-risks"></a>보안 기준 동기 부여 및 비즈니스 위험
 
@@ -46,7 +46,7 @@ ms.locfileid: "55901245"
 
 [클라우드 관리 템플릿](./template.md)을 사용하여 현재 클라우드 도입 계획으로 인해 발생할 가능성이 있는 비즈니스 위험을 문서화합니다.
 
-현실적인 비즈니스 위험을 이해했다면, 그 다음 단계는 회사의 위험 허용 범위와 허용 범위를 모니터링할 지표 및 핵심 메트릭을 문서화하는 것입니다.
+현실적인 비즈니스 위험이 이해되었으면 다음 단계는 회사의 위험 허용 범위와 이러한 허용 범위를 모니터링할 지표와 주요 메트릭을 문서화하는 것입니다.
 
 > [!div class="nextstepaction"]
-> [지표, 메트릭 및 위험 허용 범위의 이해](./metrics-tolerance.md)
+> [지표, 메트릭 및 위험 허용 범위 이해](./metrics-tolerance.md)

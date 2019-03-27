@@ -8,18 +8,22 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: 020c401e9db85b76fd48c6df9be9c80d2ba5c7e4
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: d52d2a323727760463c0b5694b9116e0ed469c93
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481476"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243854"
 ---
 # <a name="automated-enterprise-bi-with-sql-data-warehouse-and-azure-data-factory"></a>SQL Data Warehouse 및 Azure Data Factory를 사용하는 자동화된 Enterprise BI
 
 이 참조 아키텍처는 [ELT(추출, 로드, 변환)](../../data-guide/relational-data/etl.md#extract-load-and-transform-elt) 파이프라인에서 증분 로드를 수행하는 방법을 보여줍니다. Azure Data Factory를 사용하여 ELT 파이프라인을 자동화합니다. 파이프라인은 증분 방식으로 최신 OLTP 데이터를 온-프레미스 SQL Server 데이터베이스에서 SQL Data Warehouse로 이동합니다. 트랜잭션 데이터는 분석을 위해 테이블 형식 모델로 변환됩니다.
 
+<!-- markdownlint-disable MD034 -->
+
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2Gnz2]
+
+<!-- markdownlint-enable MD034 -->
 
 이 아키텍처에 대한 참조 구현은 [GitHub][github]에서 사용할 수 있습니다.
 
@@ -56,7 +60,7 @@ ms.locfileid: "54481476"
 
 **Power BI**. Power BI는 비즈니스 정보에 대한 데이터를 분석하는 비즈니스 분석 도구 제품군입니다. 이 아키텍처에서 Analysis Services에 저장된 의미 체계 모델을 쿼리합니다.
 
-### <a name="authentication"></a>인증
+### <a name="authentication"></a>Authentication
 
 **Azure Active Directory**(Azure AD)는 Power BI를 통해 Analysis Services 서버에 연결하는 사용자를 인증합니다.
 

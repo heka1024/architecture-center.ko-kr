@@ -3,12 +3,12 @@ title: 'CAF: CISO 준비'
 description: CISO가 클라우드 사용을 준비하는 방법
 author: BrianBlanchard
 ms.date: 10/03/2018
-ms.openlocfilehash: cedb86488304e2fc84897e1da373730768adce66
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: a4535163990797decdacdacdcb6a33f0118366e9
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902168"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58238351"
 ---
 # <a name="ciso-cloud-readiness-guide"></a>CISO 클라우드 준비 가이드
 
@@ -38,7 +38,7 @@ PaaS(Platform as a Service) 또는 SaaS(Software as a Service) 모델을 통합�
 * [필수 보안 교육, 백그라운드 검사](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)
 * [침투 테스트, 침입 검색, DDoS, 감사 및 로깅](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging)
 * [최첨단 데이터 센터](https://www.microsoft.com/cloud-platform/global-datacenters), 물리적 보안, [보안 네트워크](/azure/security/security-network-overview)
-* [클라우드에서 Microsoft Azure의 보안 대응(PDF)](http://aka.ms/SecurityResponsePaper)
+* [클라우드에서 Microsoft Azure의 보안 대응(PDF)](https://aka.ms/SecurityResponsePaper)
 
 개인 정보 및 컨트롤:
 
@@ -58,7 +58,7 @@ PaaS(Platform as a Service) 또는 SaaS(Software as a Service) 모델을 통합�
 투명성:
 
 * [Microsoft Azure 서비스에서 고객 데이터를 보호하는 방법](https://www.microsoft.com/trustcenter/Transparency/default.aspx)(영문)
-* [Microsoft에서 Azure 서비스의 데이터 위치를 관리하는 방법](http://azuredatacentermap.azurewebsites.net/)
+* [Microsoft에서 Azure 서비스의 데이터 위치를 관리하는 방법](https://azuredatacentermap.azurewebsites.net/)
 * [데이터에 누가 그리고 어떤 조건으로 액세스할 수 있는가](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)
 * [Microsoft Azure 서비스에서 고객 데이터를 보호하는 방법](https://www.microsoft.com/trustcenter/Transparency/default.aspx)(영문)
 * [Azure 서비스, 투명성 허브에 대한 인증 검토](https://www.microsoft.com/trustcenter/Compliance/default.aspx)

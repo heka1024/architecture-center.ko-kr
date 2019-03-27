@@ -10,11 +10,11 @@ ms.subservice: example-scenario
 ms.custom: fasttrack
 social_image_url: /azure/architecture/example-scenario/apps/media/architecture-ecommerce-scenario.png
 ms.openlocfilehash: 989dec6afccbb836b61eb32e39904f43ffff65ac
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908366"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244014"
 ---
 # <a name="an-e-commerce-front-end-on-azure"></a>Azure의 전자상거래 프런트 엔드
 

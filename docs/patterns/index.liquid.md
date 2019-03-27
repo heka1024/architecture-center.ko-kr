@@ -9,8 +9,13 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: 4229531366f1b0c3257384694cf4358da9e63177
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241484"
 ---
-
 # <a name="cloud-design-patterns"></a>클라우드 디자인 패턴
 
 [!INCLUDE [header](../../_includes/header.md)]

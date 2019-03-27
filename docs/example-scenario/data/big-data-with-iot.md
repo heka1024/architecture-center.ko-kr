@@ -10,11 +10,11 @@ ms.subservice: example-scenario
 ms.custom: IoT, data-analytics
 social_image_url: /azure/architecture/example-scenario/data/media/architecture-big-data-with-iot.png
 ms.openlocfilehash: bf963c0467acd4ecbb4bdca6272385d7532167f2
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908462"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244774"
 ---
 # <a name="iot-and-data-analytics-in-the-construction-industry"></a>건축 산업에서 IoT 및 데이터 분석
 
@@ -74,7 +74,7 @@ IoT Hub 및 HDInsight 같은 관리되는 Azure 서비스를 사용하여 고객
 - [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)는 Azure에 최적화된 Apache Spark 기반 분석 플랫폼입니다. Azure와 통합되어 원클릭 설정, 능률적인 워크플로, 대화형 공동 작업 영역을 제공합니다.
 - [Data Lake Storage](/azure/storage/data-lake-storage)는 Blob 스토리지를 대체합니다. 이 시나리오에서는 대상 지역에서 Data Lake Storage를 사용할 수 없습니다.
 - [웹앱](/azure/app-service)을 사용하여 건설 결과 데이터를 수집하는 웹 서비스를 호스트할 수도 있습니다.
-- 다양한 기술 옵션을 통해 실시간 메시지 수집, 데이터 저장, 스트림 처리, 분석 데이터 저장, 분석 및 보고를 수행할 수 있습니다. 이러한 옵션, 기능 및 주요 선택 조건에 대한 개요는 [Azure 데이터 아키텍처 가이드](/azure/architecture/data-guide)의 [빅 데이터 아키텍처: 실시간 처리](/azure/architecture/data-guide/technology-choices/real-time-ingestion)를 참조하세요.
+- 다양한 기술 옵션을 통해 실시간 메시지 수집, 데이터 저장, 스트림 처리, 분석 데이터 저장, 분석 및 보고를 수행할 수 있습니다. 이러한 옵션, 기능 및 주요 선택 조건에 대한 개요는 Azure 데이터 아키텍처 가이드의 [빅 데이터 아키텍처: 실시간 처리](/azure/architecture/data-guide/technology-choices/real-time-ingestion)를 참조하세요.
 
 ## <a name="considerations"></a>고려 사항
 

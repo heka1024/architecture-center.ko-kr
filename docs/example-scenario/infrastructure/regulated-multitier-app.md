@@ -10,11 +10,11 @@ ms.subservice: example-scenario
 ms.custom: seodec18, Windows
 social_image_url: /azure/architecture/example-scenario/infrastructure/media/architecture-regulated-multitier-app.png
 ms.openlocfilehash: 440d208b423703fe791dcbe2cad0609fef0e6508
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908276"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246224"
 ---
 # <a name="building-secure-web-applications-with-windows-virtual-machines-on-azure"></a>Azure에서 Windows 가상 머신으로 안전한 웹 애플리케이션 빌드
 

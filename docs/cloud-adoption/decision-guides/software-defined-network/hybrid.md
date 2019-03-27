@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: 하이브리드 네트워크를 통해 클라우드 가상 네트워크를 온-프레미스 리소스에 연결하는 방법을 설명합니다.
 author: rotycenh
 ms.openlocfilehash: 02d181db0ae9baef3b453b8623d212b624f6b16a
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901293"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243364"
 ---
 # <a name="software-defined-networks-hybrid-network"></a>소프트웨어 정의 네트워크: 하이브리드 네트워크
 

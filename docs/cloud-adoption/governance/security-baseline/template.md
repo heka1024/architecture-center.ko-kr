@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: 클라우드 거버넌스 관련 보안 기준의 개념 설명
 author: BrianBlanchard
 ms.openlocfilehash: 93622fee899824fffe604d7b3f588f5ed179b371
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901598"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241694"
 ---
 # <a name="security-baseline-template"></a>보안 기준 템플릿
 
@@ -31,7 +31,7 @@ ms.locfileid: "55901598"
 
 ## <a name="next-steps"></a>다음 단계
 
-견고한 거버넌스 사례는 비즈니스 위험을 이해하는 것으로 시작됩니다. 비즈니스 위험에 관한 문서를 검토하고 현재 클라우드 채택 계획과 관련된 비즈니스 위험을 문서화합니다.
+견고한 거버넌스 사례는 비즈니스 위험을 이해하는 것으로 시작됩니다. 비즈니스 위험에 관한 문서를 검토하고, 현재 클라우드 채택 계획에 부합하는 비즈니스 위험을 문서화합니다.
 
 > [!div class="nextstepaction"]
 > [비즈니스 위험 이해](./business-risks.md)

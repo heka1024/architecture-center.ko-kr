@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: 클라우드 네이티브 가상 네트워킹 서비스 설명
 author: rotycenh
 ms.openlocfilehash: c6200491bc9ba35a9f00e0003e51716b58628980
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901242"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242154"
 ---
 # <a name="software-defined-networks-cloud-native"></a>소프트웨어 정의 네트워크: 네이티브 클라우드
 

@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: 리소스 액세스 관리의 설명으로 Azure에서 다음을 생성합니다. Azure Resource Manager, 구독, 리소스 그룹 및 리소스
 author: petertaylor9999
 ms.openlocfilehash: b98cdc94d6d3a37c1e65da1d4de35d5d9520d6eb
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902152"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243204"
 ---
 # <a name="resource-access-management-in-azure"></a>Azure에서 리소스 액세스 관리
 
@@ -52,7 +52,7 @@ Azure 구독은 리소스 그룹 및 해당 리소스를 함께 그룹화하는 
 ![Azure Resource Manager의 다이어그램](../../_images/governance-1-12.png)
 *그림 4. Azure Resource Manager*
 
-다음 그림에서는 [PowerShell](/powershell/azure/overview), [Azure Portal](https://portal.azure.com) 및 [Azure CLI(명령줄 인터페이스)](/cli/azure)의 세 가지 클라이언트를 보여줍니다.:
+다음 그림은 세 가지 클라이언트를 보여줍니다. [PowerShell](/powershell/azure/overview), [Azure Portal](https://portal.azure.com) 및 [Azure CLI(명령줄 인터페이스)](/cli/azure)의 세 가지 클라이언트를 보여줍니다.:
 
 ![Azure Resource Manager API에 연결하는 Azure 클라이언트 다이어그램](../../_images/governance-1-13.png)
 *그림 5. Azure 클라이언트에서 Azure Resource Manager RESTful API에 연결합니다.*

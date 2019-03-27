@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 8d37bc2aed17bfef4d54f29f269b23ce4a5c52c0
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: edd73fd68ca4708faed92c6b1bcf5cfa3e6b2f07
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897663"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242344"
 ---
 # <a name="retry-pattern"></a>다시 시도 패턴
 
@@ -52,7 +52,7 @@ ms.locfileid: "55897663"
 
 애플리케이션은 오류 및 실패 작업의 세부 정보를 기록해야 합니다. 이 정보는 작업자에게 유용 합니다. 서비스를 자주 사용할 수 없거나 사용 중인 경우는 서비스가 종종 해당 리소스를 모두 사용했기 때문에 발생합니다. 서비스를 확장하여 이러한 오류 발생 빈도를 줄일 수 있습니다. 예를 들어 데이터베이스 서비스가 지속적으로 과부하가 걸리는 경우 데이터베이스를 분할하고 여러 서버에 부하를 분산하는 것이 유용할 수 있습니다.
 
-> [Microsoft Entity Framework](https://docs.microsoft.com/ef/)는 데이터베이스 작업 다시 시도를 위한 기능을 제공합니다. 또한 대부분의 Azure 서비스 및 클라이언트 SDK는 다시 시도 메커니즘을 제공합니다. 자세한 내용은 [특정 서비스에 대한 다시 시도 지침](/azure/architecture/best-practices/retry-service-specific)을 참조하세요.
+> [Microsoft Entity Framework](/ef)는 데이터베이스 작업 다시 시도를 위한 기능을 제공합니다. 또한 대부분의 Azure 서비스 및 클라이언트 SDK는 다시 시도 메커니즘을 제공합니다. 자세한 내용은 [특정 서비스에 대한 다시 시도 지침](/azure/architecture/best-practices/retry-service-specific)을 참조하세요.
 
 ## <a name="issues-and-considerations"></a>문제 및 고려 사항
 
@@ -177,4 +177,4 @@ private bool IsTransient(Exception ex)
 
 - [회로 차단기 패턴](./circuit-breaker.md). 다시 시도 패턴은 일시적인 오류 처리 하는 데 유용합니다. 오류가 오래 지속될 것 같은 경우 회로 차단기 패턴을 구현하는 것이 적절할 수도 있습니다. 또한 다시 시도 패턴은 오류를 처리하기 위해 포괄적인 접근 방법을 제공하는 회로 차단기와 함께 사용할 수 있습니다.
 - [특정 서비스에 대한 다시 시도 지침](/azure/architecture/best-practices/retry-service-specific)
-- [연결 복원력](https://docs.microsoft.com/ef/core/miscellaneous/connection-resiliency)
+- [연결 복원력](/ef/core/miscellaneous/connection-resiliency)

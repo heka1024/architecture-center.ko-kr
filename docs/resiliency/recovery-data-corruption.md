@@ -8,11 +8,11 @@ ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
 ms.openlocfilehash: e28f26683c6d7dba196d4351ef3942830c9e7fc2
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486321"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242784"
 ---
 # <a name="recover-from-data-corruption-or-accidental-deletion"></a>데이터 손상 또는 우발적 삭제로부터 복구
 

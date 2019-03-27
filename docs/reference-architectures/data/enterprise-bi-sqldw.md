@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
 ms.openlocfilehash: 14adb9de7f46c3196e893451859385d87212b375
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482408"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243864"
 ---
 # <a name="enterprise-bi-in-azure-with-sql-data-warehouse"></a>SQL Data Warehouse를 사용하는 Azure의 Enterprise BI
 
@@ -49,7 +49,7 @@ ms.locfileid: "54482408"
 
 **Power BI**. Power BI는 비즈니스 정보에 대한 데이터를 분석하는 비즈니스 분석 도구 제품군입니다. 이 아키텍처에서 Analysis Services에 저장된 의미 체계 모델을 쿼리합니다.
 
-### <a name="authentication"></a>인증
+### <a name="authentication"></a>Authentication
 
 **Azure Active Directory**(Azure AD)는 Power BI를 통해 Analysis Services 서버에 연결하는 사용자를 인증합니다.
 

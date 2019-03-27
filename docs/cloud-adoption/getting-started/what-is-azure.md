@@ -3,16 +3,15 @@ title: 'CAF: Azure의 작동 방식'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
-ms.custom: governance
 description: Azure의 내부 작동 방식 설명
 author: petertaylor9999
-ms.date: 2/11/2019
-ms.openlocfilehash: 5ce9f0535584cbc45d757be5aa6f2fd64c7cc39f
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.date: 02/11/2019
+ms.openlocfilehash: 724d16a810865dd947a7ade34766818c8ea525a1
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55898071"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245274"
 ---
 <!-- markdownlint-disable MD026 -->
 
@@ -20,7 +19,11 @@ ms.locfileid: "55898071"
 
 Azure는 Microsoft의 공용 클라우드 플랫폼입니다. Azure는 PaaS(Platform as a Service), IaaS(Infrastructure as a Service), DBaaS(Database as a Service) 등을 비롯한 다양한 서비스 컬렉션을 제공합니다. 하지만 Azure란 정확히 무엇이며 어떤 방식으로 작동할까요?
 
+<!-- markdownlint-disable MD034 -->
+
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2ixGo]
+
+<!-- markdownlint-enable MD034 -->
 
 다른 클라우드 플랫폼과 마찬가지로, Azure는 **가상화**라는 기술에 의존합니다. 대부분의 컴퓨터 하드웨어는 간단히 말해서 실리콘에 영구적으로 또는 반영구적으로 인코딩되는 명령 집합이므로, 소프트웨어에 에뮬레이트할 수 있습니다. 소프트웨어 명령을 하드웨어의 명령에 매핑하는 에뮬레이션 계층을 사용하여, 가상화된 하드웨어는 마치 실제 하드웨어인 것처럼 소프트웨어에서 실행될 수 있습니다.
 

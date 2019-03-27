@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: 리소스 일관성 메트릭, 지표 및 위험 허용 범위
 author: BrianBlanchard
 ms.openlocfilehash: 3a2561a6d1d81a6395bb256e921a7a26898b45a0
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901896"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241994"
 ---
 # <a name="resource-consistency-metrics-indicators-and-risk-tolerance"></a>리소스 일관성 메트릭, 지표 및 위험 허용 범위
 

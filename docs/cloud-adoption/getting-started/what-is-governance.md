@@ -1,14 +1,17 @@
 ---
 title: 'CAF: 클라우드 리소스 거버넌스란?'
+titleSuffix: Microsoft Cloud Adoption Framework for Azure
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.date: 02/11/2019
 description: Azure에서 클라우드 리소스 거버넌스 설명
 author: petertaylor9999
-ms.date: 2/11/2019
-ms.openlocfilehash: ec8b0b04ac8a4782c215359cf907c3c092ae2f4d
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 5d022e83a1c97a5e5af8208ec00339575bb88be1
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897952"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242124"
 ---
 <!-- markdownlint-disable MD026 -->
 
@@ -20,7 +23,11 @@ ms.locfileid: "55897952"
 
 이 문제의 솔루션은 리소스 액세스 **관리**입니다. 거버넌스는 조직의 요구 사항 및 목표 달성을 위해 Azure 리소스의 사용을 관리, 모니터링 및 감사하는 지속적인 프로세스를 가리킵니다.
 
+<!-- markdownlint-disable MD034 -->
+
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2ii94]
+
+<!-- markdownlint-enable MD034 -->
 
 이러한 목표와 요구 사항은 각 조직에 고유하므로 거버넌스에 대한 모든 접근에 보편적으로 적용할 수 있는 단일 크기 전략은 가능하지 않습니다. Azure는 **RBAC(역할 기반 액세스 제어)** 및 **리소스 정책**의 두 가지 기본 거버넌스 도구를 구현합니다. 이 둘을 사용하여 해당 거버넌스 모델을 디자인하는 것은 각 조직에 달려 있습니다.
 

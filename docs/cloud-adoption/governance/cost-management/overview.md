@@ -10,11 +10,11 @@ author: BrianBlanchard
 layout: LandingPage
 ms.topic: landing-page
 ms.openlocfilehash: a86b1a75da57cec9c9aaf88abb70049f70731561
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901680"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243704"
 ---
 # <a name="cost-management-discipline-overview"></a>Cost Management 분야 개요
 
@@ -126,7 +126,7 @@ Cost Management는 [CAF 거버넌스 모델](../overview.md)의 [5개 클라우�
                     </div>
                     <div class="cardText" style="padding-left:0px;">
                         <h3>완성도</h3>
-                        <p class="x-hidden-focus">클라우드 관리 완성도를 클라우드 채택 단계에 맞게 조정합니다.</p>
+                        <p class="x-hidden-focus">클라우드 관리 완성도를 클라우드 도입 단계에 맞게 조정합니다.</p>
                     </div>
                 </div>
             </div>

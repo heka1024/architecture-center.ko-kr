@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: 이 네트워크 아키텍처를 통해 온-프레미스 네트워크와 클라우드 기반 네트워크 간에 제한적으로 액세스할 수 있습니다.
 author: rotycenh
 ms.openlocfilehash: a192541dcfb0f3d713f4139a2ab0541d0c7202db
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901671"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242814"
 ---
 # <a name="software-defined-networks-cloud-dmz"></a>소프트웨어 정의 네트워크: Cloud DMZ
 

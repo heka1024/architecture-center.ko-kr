@@ -4,11 +4,11 @@ description: 현재 메인프레임에서 실행되는 시스템에 사용할 �
 author: njray
 ms.date: 12/26/2018
 ms.openlocfilehash: 9243f757182f95cc227fd6cd7a5374f9c1371ccc
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902183"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243114"
 ---
 # <a name="make-the-switch-from-mainframes-to-azure"></a>메인프레임에서 Azure로 전환
 

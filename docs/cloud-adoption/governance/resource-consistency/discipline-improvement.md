@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: 리소스 일관성 분야 개선
 author: BrianBlanchard
 ms.openlocfilehash: bc81b894d46266c52291c53dba5532ab2ab6b860
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901341"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241574"
 ---
 # <a name="resource-consistency-discipline-improvement"></a>리소스 일관성 분야 개선
 
@@ -52,7 +52,7 @@ ms.locfileid: "55901341"
 
 ## <a name="build-and-pre-deployment"></a>빌드 및 배포 전 단계
 
-성공적으로 환경을 마이그레이션하려면 여러 가지 기술적/비기술적 필수 조건이 필요합니다. 이 프로세스에서는 결정, 준비 및 마이그레이션을 진행하는 핵심 인프라에 중점을 둡니다.
+환경을 성공적으로 마이그레이션하려면 여러 가지 기술 및 비기술적 필수 구성 요소가 필요합니다. 이 프로세스는 의사 결정, 준비 및 마이그레이션을 진행하는 핵심 인프라에 중점을 둡니다.
 
 **최소 권장 활동:**
 

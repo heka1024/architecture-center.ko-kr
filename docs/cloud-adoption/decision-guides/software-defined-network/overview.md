@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: Azure 마이그레이션의 핵심 서비스인 소프트웨어 정의 네트워크에 대해 설명합니다.
 author: rotycenh
 ms.openlocfilehash: d164ba488552715dc97719329ae9de3fcf5d83ed
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901919"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58243344"
 ---
 # <a name="caf-software-defined-network-decision-guide"></a>CAF: 소프트웨어 정의 네트워크 의사 결정 가이드
 

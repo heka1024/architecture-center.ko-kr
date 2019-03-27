@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 236f5eaffffa8eb1206f13f3eb7fb57828f0a12d
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54483771"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246174"
 ---
 # <a name="choosing-an-analytical-data-store-in-azure"></a>Azure에서 분석 데이터 저장소 선택
 
@@ -80,7 +80,7 @@ Azure에서는 사용자의 요구에 따라 다음과 같은 몇 가지 데이�
 
 | | SQL Database | SQL Data Warehouse | HDInsight의 HBase/Phoenix | HDInsight의 Hive LLAP | Azure Analysis Services | Cosmos DB |
 | --- | --- | --- | --- | --- | --- | --- |
-| 인증  | SQL/Azure AD(Azure Active Directory) | SQL/Azure AD | 로컬/Azure AD <sup>1</sup> | 로컬/Azure AD <sup>1</sup> | Azure AD | 액세스 제어(IAM)을 통한 데이터베이스 사용자/Azure AD |
+| Authentication  | SQL/Azure AD(Azure Active Directory) | SQL/Azure AD | 로컬/Azure AD <sup>1</sup> | 로컬/Azure AD <sup>1</sup> | Azure AD | 액세스 제어(IAM)을 통한 데이터베이스 사용자/Azure AD |
 | 휴지 상태의 암호화 | 예 <sup>2</sup> | 예 <sup>2</sup> | 예 <sup>1</sup> | 예 <sup>1</sup> | 예 | 예 |
 | 행 수준 보안 | 예 | 아니요 | 예 <sup>1</sup> | 예 <sup>1</sup> | 예(모델에 개체 수준 보안 사용) | 아니요 |
 | 방화벽 지원 여부 | 예 | 예 | 예 <sup>3</sup> | 예 <sup>3</sup> | 예 | 예 |

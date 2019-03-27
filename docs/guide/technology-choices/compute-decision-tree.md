@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
 ms.openlocfilehash: e3df1cbdd049e8c40597a85eca29899d8d0d1bc3
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484655"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245594"
 ---
 # <a name="decision-tree-for-azure-compute-services"></a>Azure 계산 서비스에 대한 의사 결정 트리
 

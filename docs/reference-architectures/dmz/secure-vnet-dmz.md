@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, networking
-ms.openlocfilehash: 45ae8de1138b738fdfb42bdf57402711e1be6ebb
-ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
+ms.openlocfilehash: 2595352075c708e015a0f0c536be31ceb5614fcd
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55482912"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245684"
 ---
 # <a name="implement-a-dmz-between-azure-and-the-internet"></a>Azure와 인터넷 간의 DMZ 구현
 
@@ -101,12 +101,10 @@ NVA 수준에서 애플리케이션 연결을 종료하고 백 엔드 계층 호
     azbb -s <subscription_id> -g <resource_group_name> -l <region> -p onprem.json --deploy
     ```
 
-3. 참조 아키텍처 GitHub 리포지토리의 `/dmz/ssecure-vnet-hybrid` 폴더로 이동합니다.
-
 4. 다음 명령 실행:
 
     ```bash
-    azbb -s <subscription_id> -g <resource_group_name> -l <region> -p secure-vnet-hybrid.json --deploy
+    azbb -s <subscription_id> -g <resource_group_name> -l <region> -p secure-vnet-dmz.json --deploy
     ```
 
 ### <a name="connect-the-on-premises-and-azure-gateways"></a>온-프레미스와 Azure 게이트웨이 연결

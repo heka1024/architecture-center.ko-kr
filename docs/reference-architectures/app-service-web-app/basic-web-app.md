@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
 ms.openlocfilehash: 95f634284fe821386704174894a85a4dbca815f7
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54485080"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58248668"
 ---
 # <a name="run-a-basic-web-application-in-azure"></a>Azure의 기본 웹 애플리케이션 실행
 
@@ -194,7 +194,7 @@ App Service 앱에서는 추가 비용 없이 `azurewebsites.net`의 하위 도�
 
 보안을 극대화하려면 앱에서 HTTP 요청을 리디렉션하여 HTTPS를 적용해야 합니다. 애플리케이션 내부에서 이를 구현하거나 로[Azure App Service에서 앱에 HTTPS 사용][ssl-redirect]에 설명된 대로 URL 다시 쓰기 규칙을 사용할 수 있습니다.
 
-### <a name="authentication"></a>인증
+### <a name="authentication"></a>Authentication
 
 Azure AD, Facebook, Google 또는 Twitter 같은 IDP(ID 공급자)를 통해 인증하는 것이 좋습니다. 인증 흐름에 OAuth 2 또는 OIDC(OpenID Connect)를 사용합니다. Azure AD는 사용자 및 그룹을 관리하고, 애플리케이션 역할을 만들고, 온-프레미스 ID를 통합하고, Office 365, 비즈니스용 Skype 같은 백 엔드 서비스를 사용할 수 있는 기능을 제공합니다.
 

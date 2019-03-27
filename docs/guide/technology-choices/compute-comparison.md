@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
 ms.openlocfilehash: 2b6b9b941bf7a3c0136b71ecb65bfe4b4a59e07b
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484859"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245604"
 ---
 # <a name="criteria-for-choosing-an-azure-compute-service"></a>Azure 계산 서비스를 선택하기 위한 조건
 

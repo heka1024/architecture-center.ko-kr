@@ -3,12 +3,12 @@ title: '메인프레임 마이그레이션: 메인프레임 애플리케이션 �
 description: 현재 메인프레임에서 실행되는 시스템에 사용할 수 있는 가용성과 확장성이 뛰어난 검증된 인프라인 Azure로 메인프레임 환경의 애플리케이션을 마이그레이션하는 방법을 설명합니다.
 author: njray
 ms.date: 12/26/2018
-ms.openlocfilehash: dcae5077e26ab8ba9b08e0da71a5e69d0d9f62e3
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 2a22eb038da693671ce309c76afcfc41946034f3
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901428"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246394"
 ---
 # <a name="mainframe-application-migration"></a>메인프레임 애플리케이션 마이그레이션
 
@@ -168,7 +168,7 @@ Azure에서는 보통 이러한 용도로 별도의 VM을 사용합니다. Azure
 
 이러한 방식의 일반적인 시나리오로는 애플리케이션이 사용하는 데이터는 메인프레임에 유지하고 애플리케이션만 Azure로 이동하는 경우를 들 수 있습니다. 특정 소프트웨어를 사용하여 Azure의 애플리케이션이 메인프레임의 데이터에 액세스할 수 있도록 설정합니다. Azure와 기존 메인프레임 환경 간의 통합, 하이브리드 시나리오 지원, 그리고 장기적인 마이그레이션 기능을 지원하는 솔루션이 많이 있습니다. 이 과정에서 Microsoft 파트너, ISV(Independent Software Vendor) 및 SI(시스템 통합자)의 지원을 받을 수 있습니다.
 
-사용 가능한 지원 옵션의 예로는 [Microsoft Host Integration Server](https://docs.microsoft.com/host-integration-server/)(HIS)가 있습니다. HIS는 Azure의 애플리케이션이 메인프레임에 남아 있는 DB2의 데이터에 액세스하는 데 필요한 DRDA(분산 관계형 데이터베이스 아키텍처)를 제공하는 솔루션입니다. 메인프레임과 Azure 통합에 사용할 수 있는 기타 옵션으로는 IBM, Attunity, Codit 및 기타 공급업체에서 제공하는 솔루션과 오픈 소스 옵션 등이 있습니다.
+사용 가능한 지원 옵션의 예로는 [Microsoft Host Integration Server](/host-integration-server)(HIS)가 있습니다. HIS는 Azure의 애플리케이션이 메인프레임에 남아 있는 DB2의 데이터에 액세스하는 데 필요한 DRDA(분산 관계형 데이터베이스 아키텍처)를 제공하는 솔루션입니다. 메인프레임과 Azure 통합에 사용할 수 있는 기타 옵션으로는 IBM, Attunity, Codit 및 기타 공급업체에서 제공하는 솔루션과 오픈 소스 옵션 등이 있습니다.
 
 ## <a name="partner-solutions"></a>파트너 솔루션
 
@@ -188,4 +188,4 @@ Azure는 현재 메인프레임에서 실행되는 시스템에 사용할 수 �
 
 - [Azure에서 IBM DB2 pureScale 배포](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure)
 
-- [Host Integration Server(HIS) 설명서](https://docs.microsoft.com/host-integration-server/)
+- [Host Integration Server(HIS) 설명서](/host-integration-server)

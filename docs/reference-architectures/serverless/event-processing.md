@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, serverless
 ms.openlocfilehash: 9d2535c3e350000783265dc58c83d00a38d45448
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486219"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58244314"
 ---
 # <a name="serverless-event-processing-using-azure-functions"></a>Azure Functions를 사용한 서버리스 이벤트 처리
 
@@ -28,7 +28,7 @@ ms.locfileid: "54486219"
 > [!NOTE]
 > IoT 시나리오의 경우 IoT Hub를 사용하는 것이 좋습니다. IoT Hub에는 Azure Event Hubs API와 호환되는 기본 제공 엔드포인트가 있으므로 이 아키텍처에서는 백 엔드 처리를 크게 변경하지 않고도 두 가지 서비스 중 하나를 사용할 수 있습니다. 자세한 내용은 [IoT 디바이스를 Azure에 연결: IoT Hub 및 Event Hubs][iot]를 참조하세요.
 
-**함수 앱**. [Azure Functions][functions]는 서버리스 계산 옵션입니다. 트리거를 통해 코드("함수")가 호출되는 이벤트 구동 모델을 사용합니다. 이 아키텍처에서는 이벤트가 Event Hubs에 도착하면 이벤트를 처리하고 결과를 저장소에 쓰는 함수를 트리거합니다.
+**Function App**. [Azure Functions][functions]는 서버리스 계산 옵션입니다. 트리거를 통해 코드("함수")가 호출되는 이벤트 구동 모델을 사용합니다. 이 아키텍처에서는 이벤트가 Event Hubs에 도착하면 이벤트를 처리하고 결과를 저장소에 쓰는 함수를 트리거합니다.
 
 Function App은 Event Hubs에서 개별 레코드를 처리하는 데 적합합니다. 더 복잡한 스트림 처리 시나리오의 경우 Azure Databricks 또는 Azure Stream Analytics를 사용하는 Apache Spark를 고려해 보세요.
 
@@ -125,7 +125,7 @@ public class DeadLetterMessage
 
 - **Event Hubs**. 두 개의 Event Hubs 네임스페이스, 즉 기본(활성) 네임스페이스 및 보조(수동) 네임스페이스를 만듭니다. 메시지는 보조 네임스페이스로 장애 조치하지 않는 한 자동으로 활성 네임스페이스로 라우팅됩니다. 자세한 내용은 [Azure Event Hubs 지역 재해 복구][eh-dr]를 참조하세요.
 
-- **함수 앱**. 보조 Event Hubs 네임스페이스에서 읽기를 기다리는 두 번째 함수 앱을 배포합니다. 이 함수는 배달 못한 편지 큐에 대한 보조 저장소 계정에 씁니다.
+- **Function App**. 보조 Event Hubs 네임스페이스에서 읽기를 기다리는 두 번째 함수 앱을 배포합니다. 이 함수는 배달 못한 편지 큐에 대한 보조 저장소 계정에 씁니다.
 
 - **Cosmos DB** Cosmos DB는 [다중 마스터 지역][cosmosdb-geo]을 지원하므로 Cosmos DB 계정에 추가하는 모든 지역에 쓸 수 있습니다. 다중 마스터를 사용하도록 설정하지 않은 경우에도 주 쓰기 지역을 장애 조치할 수 있습니다. Cosmos DB 클라이언트 SDK 및 Azure Function 바인딩은 장애 조치를 자동으로 처리하므로 애플리케이션 구성 설정을 업데이트할 필요가 없습니다.
 

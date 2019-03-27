@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
 ms.openlocfilehash: b015a130a74f3160c0e737b436d41e1b1ea7b5bf
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54483040"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241374"
 ---
 # <a name="improve-scalability-in-an-azure-web-application"></a>Azure 웹 애플리케이션에서 확장성 향상
 
@@ -29,7 +29,7 @@ ms.locfileid: "54483040"
 
 - **리소스 그룹**. [리소스 그룹][resource-group]은 Azure 리소스에 대한 논리적 컨테이너입니다.
 - **[웹앱][app-service-web-app]**. 일반적인 최신 애플리케이션에는 웹 사이트와 하나 이상의 RESTful 웹 API가 모두 포함되어 있을 수 있습니다. AJAX를 통한 브라우저 클라이언트, 기본 클라이언트 애플리케이션 또는 서버 쪽 애플리케이션에서 웹 API를 사용할 수 있습니다. 웹 API 디자인에 대한 고려 사항은 [API 디자인 지침][api-guidance]을 참조하세요.
-- **함수 앱**. [함수 앱][functions]을 사용하여 백그라운드 작업을 실행합니다. 함수는 큐에 배치되는 타이머 이벤트 또는 메시지와 같은 트리거에 의해 호출됩니다. 장기 실행 상태 저장 작업의 경우 [Durable Functions][durable-functions]를 사용합니다.
+- **Function App**. [Function App][functions]을 사용하여 백그라운드 작업을 실행합니다. 함수는 큐에 배치되는 타이머 이벤트 또는 메시지와 같은 트리거에 의해 호출됩니다. 장기 실행 상태 저장 작업의 경우 [Durable Functions][durable-functions]를 사용합니다.
 - **큐**. 여기에 표시된 아키텍처에서는 애플리케이션이 [Azure Queue Storage][queue-storage] 큐에 메시지를 넣어 백그라운드 작업을 큐에 넣습니다. 메시지가 함수 앱을 트리거합니다. 또는 Service Bus 큐를 사용할 수 있습니다. 비교하려면 [Azure 큐 및 Service Bus 큐 - 비교 및 대조][queues-compared]를 참조하세요.
 - **캐시**. [Azure Redis Cache][azure-redis]의 반정적 데이터를 저장합니다.
 - **CDN**. [Azure CDN(Content Delivery Network)][azure-cdn]을 사용하여 지연 시간을 단축하고 더 신속한 콘텐츠 배달을 위해 공개적으로 사용 가능한 콘텐츠를 캐시합니다.

@@ -5,14 +5,14 @@ titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
-ms.date: 1/18/2019
+ms.date: 02/11/2019
 author: alexbuckgit
-ms.openlocfilehash: 13fbe778f2641b5c0482055aa474e6eec13f023a
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 779e9a802a7e7870c76fa54eefb05d58a737a9fc
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901253"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246534"
 ---
 # <a name="caf-deployment-acceleration-template"></a>CAF: 배포 가속 템플릿
 
@@ -31,7 +31,7 @@ ms.locfileid: "55901253"
 
 ## <a name="next-steps"></a>다음 단계
 
-견고한 거버넌스 관행은 비즈니스 위험을 이해하는 것으로 시작됩니다. 비즈니스 위험에 관한 문서를 검토하고 현재 클라우드 도입 계획과 관련된 비즈니스 위험을 문서화합니다.
+견고한 거버넌스 사례는 비즈니스 위험을 이해하는 것으로 시작됩니다. 비즈니스 위험에 관한 문서를 검토하고, 현재 클라우드 채택 계획에 부합하는 비즈니스 위험을 문서화합니다.
 
 > [!div class="nextstepaction"]
 > [비즈니스 위험 이해](./business-risks.md)

@@ -10,11 +10,11 @@ ms.subservice: example-scenario
 ms.custom: fasttrack
 social_image_url: /azure/architecture/example-scenario/infrastructure/media/architecture-service-fabric-complete.png
 ms.openlocfilehash: 67610f016321623cbffb0759cc9e75d2352b60bd
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54907902"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58245744"
 ---
 # <a name="using-service-fabric-to-decompose-monolithic-applications"></a>Service Fabric을 사용하여 모놀리식 애플리케이션 분해
 

@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: 클라우드 거버넌스와 관련된 Cost Management에 대해 설명합니다.
 author: BrianBlanchard
 ms.openlocfilehash: 76e6b1b32dd862322f6cafd9aa63c6c4f79f4f5d
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55902024"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241734"
 ---
 # <a name="cost-management-metrics-indicators-and-risk-tolerance"></a>Cost Management 메트릭, 지표 및 위험 허용 범위
 

@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: ID 기준 동기 부여 및 비즈니스 위험
 author: BrianBlanchard
 ms.openlocfilehash: ef831d1b3b01251b27f1f7b18e551c49996a2468
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901282"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246524"
 ---
 # <a name="identity-baseline-motivations-and-business-risks"></a>ID 기준 동기 부여 및 비즈니스 위험
 
@@ -43,7 +43,7 @@ ID 기준 분야는 ID 서비스 및 액세스 제어와 관련된 핵심 비즈
 
 [클라우드 관리 템플릿](./template.md)을 사용하여 현재 클라우드 도입 계획으로 인해 발생할 가능성이 있는 비즈니스 위험을 문서화합니다.
 
-현실적인 비즈니스 위험을 이해했다면, 그 다음 단계는 회사의 위험 허용 범위와 허용 범위를 모니터링할 지표 및 핵심 메트릭을 문서화하는 것입니다.
+현실적인 비즈니스 위험이 이해되었으면 다음 단계는 회사의 위험 허용 범위와 이러한 허용 범위를 모니터링할 지표와 주요 메트릭을 문서화하는 것입니다.
 
 > [!div class="nextstepaction"]
-> [지표, 메트릭 및 위험 허용 범위의 이해](./metrics-tolerance.md)
+> [지표, 메트릭 및 위험 허용 범위 이해](./metrics-tolerance.md)

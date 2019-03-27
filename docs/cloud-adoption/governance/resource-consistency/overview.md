@@ -10,11 +10,11 @@ author: BrianBlanchard
 layout: LandingPage
 ms.topic: landing-page
 ms.openlocfilehash: ce29efab1502d59513528ab4b640173346aee516
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901605"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58241984"
 ---
 # <a name="caf-resource-consistency-discipline-overview"></a>CAF: 리소스 일관성 분야 개요
 
@@ -128,7 +128,7 @@ CAF의 이 섹션에서는 클라우드 거버넌스 전략의 일환으로 리�
                     </div>
                     <div class="cardText" style="padding-left:0px;">
                         <h3>완성도</h3>
-                        <p class="x-hidden-focus">클라우드 관리 완성도를 클라우드 채택 단계에 맞게 조정합니다.</p>
+                        <p class="x-hidden-focus">클라우드 관리 완성도를 클라우드 도입 단계에 맞게 조정합니다.</p>
                     </div>
                 </div>
             </div>

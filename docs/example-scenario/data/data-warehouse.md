@@ -10,11 +10,11 @@ ms.subservice: example-scenario
 ms.custom: data-analytics
 social_image_url: /azure/architecture/example-scenario/data/media/architecture-data-warehouse.png
 ms.openlocfilehash: 9eaa9cc472e2222b5cde04a3b84ba38623f65543
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908214"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246264"
 ---
 # <a name="data-warehousing-and-analytics-for-sales-and-marketing"></a>영업 및 마케팅에 대한 데이터 웨어하우징 및 분석
 

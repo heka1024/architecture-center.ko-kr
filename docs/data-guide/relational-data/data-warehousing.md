@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 6679ff620ca9e64036c02fce38608de38c57df93
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482176"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58246364"
 ---
 # <a name="data-warehousing-and-data-marts"></a>데이터 웨어하우징 및 데이터 마트
 
@@ -170,7 +170,7 @@ MPP 시스템은 계산 노드(자체 CUP, 메모리 및 I/O 하위 시스템 �
 
 |                         |           Azure SQL Database            |  가상 컴퓨터의 SQL Server  | SQL Data Warehouse |   HDInsight의 Apache Hive    |    HDInsight의 Hive LLAP     |
 |-------------------------|-----------------------------------------|-----------------------------------|--------------------|-------------------------------|-------------------------------|
-|     인증      | SQL/Azure AD(Azure Active Directory) | SQL / Azure AD / Active Directory |   SQL / Azure AD   | 로컬/Azure AD <sup>1</sup> | 로컬/Azure AD <sup>1</sup> |
+|     Authentication      | SQL/Azure AD(Azure Active Directory) | SQL / Azure AD / Active Directory |   SQL / Azure AD   | 로컬/Azure AD <sup>1</sup> | 로컬/Azure AD <sup>1</sup> |
 |      권한 부여      |                   예                   |                예                |        예         |              예              |       예 <sup>1</sup>        |
 |        감사         |                   예                   |                예                |        예         |              예              |       예 <sup>1</sup>        |
 | 휴지 상태의 암호화 |            예 <sup>2</sup>             |         예 <sup>2</sup>          |  예 <sup>2</sup>  |       예 <sup>2</sup>        |       예 <sup>1</sup>        |

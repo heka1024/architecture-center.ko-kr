@@ -7,12 +7,12 @@ ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
 ms.date: 02/11/2019
 author: BrianBlanchard
-ms.openlocfilehash: 8d2cae87b8a3a11bfde87aafc04d4d2ef55cbbe9
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: cd00f2fa132f5f177ccc12f61be8b5342b71197d
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901951"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58247424"
 ---
 # <a name="deployment-acceleration-tools-in-azure"></a>Azure의 배포 가속 도구
 
@@ -22,7 +22,7 @@ ms.locfileid: "55901951"
 
 이 거버넌스 분야를 지원하는 정책과 프로세스를 완성하는 데 도움이 되는 Azure 도구 목록은 다음과 같습니다.
 
-|  |Azure Policy  |Azure 관리 그룹  |Azure 리소스 관리자 템플릿  |Azure Blueprints  | Azure Resource Graph | Azure Cost Management |
+|  | Azure Policy | Azure 관리 그룹 | Azure 리소스 관리자 템플릿 | Azure Blueprints | Azure Resource Graph | Azure Cost Management |
 |---------|---------|---------|---------|---------|---------|---------|
 |회사 정책 구현     |예 |아니요  |아니요  |아니요 | 아니요 |아니요 |
 |구독 간 정책 적용     |필수 |예  |아니요  |아니요 | 아니요 |아니요 |

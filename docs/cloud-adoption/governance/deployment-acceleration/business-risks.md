@@ -8,11 +8,11 @@ ms.date: 02/11/2019
 description: 클라우드 거버넌스 전략의 일부인 배포 가속 분야에 대해 알아봅니다.
 author: alexbuckgit
 ms.openlocfilehash: 854b1fd420de605a665922e9b207e6aecbfab2f0
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901277"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58242144"
 ---
 # <a name="deployment-acceleration-motivations-and-business-risks"></a>배포 가속 동기 부여 및 비즈니스 위험
 
