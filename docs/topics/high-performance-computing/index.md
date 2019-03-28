@@ -165,8 +165,8 @@ Azure에서 HPC 시스템을 처음부터 새로 빌드하면 유연성의 측�
 
 1. Azure 가상 머신 또는 [가상 머신 확장 집합](/azure/virtual-machine-scale-sets/overview?context=/azure/architecture/topics/high-performance-computing/context/hpc-context)에서 고유한 클러스터 환경을 설정합니다.
 2. Azure Resource Manager 템플릿을 사용하여 선행 [워크로드 관리자](#workload-managers), 인프라 및 [애플리케이션](#hpc-applications)을 배포합니다.
-3. MPI 또는 GPU 워크로드에 대한 특수한 하드웨어 및 네트워크 연결을 포함하는 [HPC 및 GPU VM 크기](#hpc-and-gpu-sizes)를 선택합니다.
-4. I/O 사용량이 많은 워크로드에 [고성능 저장소](#hpc-storage)를 추가합니다.
+3. MPI 또는 GPU 워크로드에 대한 특수한 하드웨어 및 네트워크 연결을 포함하는 HPC 및 GPU [VM 크기](#compute)를 선택합니다.
+4. I/O 사용량이 많은 워크로드에 [고성능 저장소](#storage)를 추가합니다.
 
 ### <a name="hybrid-and-cloud-bursting"></a>하이브리드 및 클라우드 버스팅
 
@@ -231,7 +231,7 @@ Azure에서 HPC 시스템을 처음부터 새로 빌드하면 유연성의 측�
     </li>
 </ul>
 
-네트워크 연결이 안전하게 설정되면 기존 [워크로드 관리자](#workload-manager)의 버스팅 기능을 통해 필요할 때 클라우드 컴퓨팅 리소스 사용을 시작할 수 있습니다.
+네트워크 연결이 안전하게 설정되면 기존 [워크로드 관리자](#workload-managers)의 버스팅 기능을 통해 필요할 때 클라우드 컴퓨팅 리소스 사용을 시작할 수 있습니다.
 
 ### <a name="marketplace-solutions"></a>Marketplace 솔루션
 

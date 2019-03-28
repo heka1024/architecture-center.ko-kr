@@ -3,6 +3,25 @@
 
 <ul  class="panelContent cardsC">
 <li style="display: flex; flex-direction: column;">
+    <a href="./ai/newsfeed-ingestion.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="./ai/media/mass-ingestion-newsfeeds-architecture.png" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure에서 뉴스 피드 대량 수집 및 분석</h3>
+                        <p>Azure Cosmos DB 및 Azure Cognitive Services를 포함한 Azure 서비스만을 사용하여 RSS 뉴스 피드에서 텍스트, 이미지, 감정 및 다른 데이터를 수집하고 분석하는 파이프라인을 만듭니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<li style="display: flex; flex-direction: column;">
     <a href="./ai/commerce-chatbot.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
         <div class="cardSize" style="flex: 1 0 auto; display: flex;">
             <div class="cardPadding" style="display: flex;">
