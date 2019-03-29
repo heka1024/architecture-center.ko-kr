@@ -119,7 +119,7 @@ Azure AD Connect를 구성하여 조직의 요구 사항과 가장 잘 맞는 �
 
 ### <a name="user-authentication"></a>사용자 인증
 
-기본적으로 Azure AD Connect 동기화 서버는 온-프레미스 도메인과 Azure AD 간의 암호 해시 동기화를 구성하고, Azure AD 서비스는 사용자가 온-프레미스에서 사용하는 것과 동일한 암호를 제공하여 사용자를 인증한다고 간주합니다. 이 방식은 많은 조직에서 적절하지만 조직의 기존 정책과 인프라를 고려해야 합니다. 예: 
+기본적으로 Azure AD Connect 동기화 서버는 온-프레미스 도메인과 Azure AD 간의 암호 해시 동기화를 구성하고, Azure AD 서비스는 사용자가 온-프레미스에서 사용하는 것과 동일한 암호를 제공하여 사용자를 인증한다고 간주합니다. 이 방식은 많은 조직에서 적절하지만 조직의 기존 정책과 인프라를 고려해야 합니다. 예를 들면 다음과 같습니다.
 
 - 조직의 보안 정책에 따라 암호 해시를 클라우드에 동기화하지 못하도록 금지할 수 있습니다. 이 경우 조직은 [통과 인증](/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication)을 고려해야 합니다.
 - 회사 네트워크의 도메인 조인 컴퓨터에서 클라우드 리소스에 액세스할 때 원활한 SSO(Single Sign-On)가 필요할 수 있습니다.

@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
 ms.openlocfilehash: 76870f58fc957f6d82f6dc176d1c538c795a7d20
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58243064"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486236"
 ---
 # <a name="pillars-of-software-quality"></a>소프트웨어 품질 핵심 요소
 
@@ -94,7 +94,7 @@ Azure에서 Service Level Agreement(서비스 수준 약정)는 작동 시간 �
 - 애플리케이션은 종종 외부 서비스를 사용합니다. 여기에서는 일시적으로 대량 사용자를 사용할 수 없거나 제한하게 됩니다.
 - 오늘날 사용자는 애플리케이션을 오프라인으로 전환하지 않고 언제든지 사용 가능합니다.
 
-이러한 요인으로 인해 모두 클라우드 애플리케이션은 종종 오류가 발생하고 여기서 복구하도록 디자인되어야 합니다. Azure에는 플랫폼에 기본 제공된 여러 복원력 기능이 있습니다. 예: 
+이러한 요인으로 인해 모두 클라우드 애플리케이션은 종종 오류가 발생하고 여기서 복구하도록 디자인되어야 합니다. Azure에는 플랫폼에 기본 제공된 여러 복원력 기능이 있습니다. 예를 들면 다음과 같습니다.
 
 - Azure Storage, SQL Database 및 Cosmos DB는 모두 지역 내 및 지역 간에 기본 제공 데이터 복제를 제공합니다.
 - Azure Managed Disks는 하드웨어 오류의 영향을 제한하도록 여러 저장소 배율 단위에 자동으로 배치됩니다.

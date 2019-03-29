@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: 4b96c19dd8613a941a7408e1b99945d5fa0f5364
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248968"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482071"
 ---
 # <a name="background-jobs"></a>백그라운드 작업
 
@@ -109,7 +109,7 @@ Azure WebJob은 다음과 같은 특성을 가지고 있습니다.
 - **로깅**: Console.Out은 INFO로 처리(표시)됩니다. Console.Error는 ERROR로 처리됩니다. 모니터링 및 진단 정보는 Azure 포털을 사용하여 액세스할 수 있으며 로그 파일은 사이트에서 직접 다운로드할 수 있습니다. 이들은 다음 위치에 저장됩니다.
   - 트리거된 실행: Vfs/data/jobs/triggered/jobName
   - 연속 실행: Vfs/data/jobs/continuous/jobName
-- **구성**: 포털, REST API 및 PowerShell을 사용하여 WebJobs를 구성할 수 있습니다. 루트 디렉터리의 settings.job이라는 구성 파일을 작업 스크립트로 사용하여 작업에 대한 구성 정보를 제공할 수 있습니다. 예: 
+- **구성**: 포털, REST API 및 PowerShell을 사용하여 WebJobs를 구성할 수 있습니다. 루트 디렉터리의 settings.job이라는 구성 파일을 작업 스크립트로 사용하여 작업에 대한 구성 정보를 제공할 수 있습니다. 예를 들면 다음과 같습니다.
   - { "stopping_wait_time": 60 }
   - { "is_singleton": true }
 

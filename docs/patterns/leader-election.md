@@ -10,11 +10,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: 1b74228fcceecb350d8df9b7ca2327b5de329a07
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58242974"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486126"
 ---
 # <a name="leader-election-pattern"></a>리더 선택 패턴
 
@@ -28,7 +28,7 @@ ms.locfileid: "58242974"
 
 태스크 인스턴스는 대부분의 시간 동안 개별적으로 실행될 수 있지만 각 인스턴스의 작업을 조정하여 충돌하거나, 공유 리소스에 대한 경합을 일으키거나, 실수로 다른 태스크 인스턴스가 수행 중인 작업을 방해하지 않도록 해야 할 수도 있습니다.
 
-예: 
+예를 들면 다음과 같습니다.
 
 - 수평적 크기 조정을 구현하는 클라우드 기반 시스템에서는 동일한 태스크의 여러 인스턴스가 동시에 실행되고 각 인스턴스가 다른 사용자에게 서비스를 제공할 수 있습니다. 이러한 인스턴스가 공유 리소스에 쓰는 경우 해당 작업을 조정하여 각 인스턴스가 다른 인스턴스의 변경 내용을 덮어쓰지 못하도록 해야 합니다.
 - 태스크가 복잡한 계산의 개별 요소를 병렬로 수행하는 경우 모두 완료되면 결과를 집계해야 합니다.

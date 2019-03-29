@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
 ms.openlocfilehash: ec71e35bec0fa9fad604456130f8596fcf127ebb
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58241179"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485658"
 ---
 # <a name="run-a-linux-virtual-machine-on-azure"></a>Azure에서 Linux 가상 머신 실행
 
@@ -49,7 +49,7 @@ az vm list-sizes --location <location>
 
 OS 디스크는 [Azure Storage][azure-storage]에 저장된 VHD이므로 호스트 컴퓨터가 중단되어도 계속 유지됩니다.  Linux VM의 경우 OS 디스크는 `/dev/sda1`입니다. 또한 애플리케이션 데이터에 사용되는 영구 VHD인 [데이터 디스크][data-disk]를 하나 이상 만드는 것이 좋습니다.
 
-VHD를 만들 때 형식은 지정되지 않습니다. 디스크를 포맷하려면 VM에 로그인합니다. Linux 셸에서 데이터 디스크는 `/dev/sdc`, `/dev/sdd` 등으로 표시됩니다. `lsblk`를 실행하여 디스크를 포함하는 블록 디바이스를 나열할 수 있습니다. 데이터 디스크를 사용하려면 파티션 및 파일 시스템을 만들고 디스크를 탑재합니다. 예: 
+VHD를 만들 때 형식은 지정되지 않습니다. 디스크를 포맷하려면 VM에 로그인합니다. Linux 셸에서 데이터 디스크는 `/dev/sdc`, `/dev/sdd` 등으로 표시됩니다. `lsblk`를 실행하여 디스크를 포함하는 블록 디바이스를 나열할 수 있습니다. 데이터 디스크를 사용하려면 파티션 및 파일 시스템을 만들고 디스크를 탑재합니다. 예를 들면 다음과 같습니다.
 
 ```bash
 # Create a partition.

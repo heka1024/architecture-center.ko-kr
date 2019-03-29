@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.openlocfilehash: bdc2f4da6dd151cf395bee700e6a44e827c1e4f9
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58246134"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54481587"
 ---
 # <a name="run-the-surveys-application"></a>설문 조사 애플리케이션 실행
 
@@ -175,7 +175,7 @@ Tailspin은 설문 조사 애플리케이션을 호스트하는 가상의 회사
    }
    ```
 
-4. 이전에 설문 조사 애플리케이션을 등록할 때 얻은 설문 조사 웹 애플리케이션의 애플리케이션 ID를 `knownClientApplications` 속성에 추가합니다. 예: 
+4. 이전에 설문 조사 애플리케이션을 등록할 때 얻은 설문 조사 웹 애플리케이션의 애플리케이션 ID를 `knownClientApplications` 속성에 추가합니다. 예를 들면 다음과 같습니다.
 
    ```json
    "knownClientApplications": ["be2cea23-aa0e-4e98-8b21-2963d494912e"],

@@ -8,11 +8,11 @@ ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
 ms.openlocfilehash: 6d0f58161c5b9d5922c21f24b1b1a50bab836bb1
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248070"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484281"
 ---
 # <a name="failure-mode-analysis"></a>실패 모드 분석
 
@@ -385,7 +385,7 @@ Application_End 로깅은 애플리케이션 도메인 종료(소프트 프로�
 
 1. 작업을 다시 시도하여 일시적인 장애로부터 복구합니다. 클라이언트 SDK의 [다시 시도 정책][Storage.RetryPolicies]에서 이 작업을 자동으로 처리합니다.
 2. 저장소의 과부하를 방지하도록 회로 차단기 패턴을 구현합니다.
-3. N회의 다시 시도가 실패하면 정상적인 대체(fallback)를 수행합니다. 예: 
+3. N회의 다시 시도가 실패하면 정상적인 대체(fallback)를 수행합니다. 예를 들면 다음과 같습니다.
 
    - 로컬 캐시에 데이터를 저장하고, 나중에 서비스를 사용할 수 있게 되면 저장소에 쓰기를 전달합니다.
    - 쓰기 작업이 트랜잭션 범위에 있는 경우 트랜잭션을 보정합니다.

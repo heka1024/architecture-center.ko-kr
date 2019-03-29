@@ -1095,7 +1095,7 @@ Azure 또는 타사 서비스에 액세스하는 경우 다음 사항을 고려�
 
 다음은 일반적인 재시도 전략 간격의 유형입니다.
 
-- **지수**. 재시도 사이의 간격을 결정하는 무작위 추출 지수 백오프 방법을 사용하여 지정된 횟수의 재시도를 수행하는 재시도 정책입니다. 예: 
+- **지수**. 재시도 사이의 간격을 결정하는 무작위 추출 지수 백오프 방법을 사용하여 지정된 횟수의 재시도를 수행하는 재시도 정책입니다. 예를 들면 다음과 같습니다.
 
     ```csharp
     var random = new Random();
@@ -1108,14 +1108,14 @@ Azure 또는 타사 서비스에 액세스하는 경우 다음 사항을 고려�
     retryInterval = TimeSpan.FromMilliseconds(interval);
     ```
 
-- **증분**. 재시도 횟수가 지정되고 재시도 간의 시간 간격이 증분되는 재시도 전략입니다. 예: 
+- **증분**. 재시도 횟수가 지정되고 재시도 간의 시간 간격이 증분되는 재시도 전략입니다. 예를 들면 다음과 같습니다.
 
     ```csharp
     retryInterval = TimeSpan.FromMilliseconds(this.initialInterval.TotalMilliseconds +
                     (this.increment.TotalMilliseconds * currentRetryCount));
     ```
 
-- **LinearRetry**. 재시도 간에 지정된 고정 시간 간격을 사용하여 지정된 횟수의 재시도를 수행하는 재시도 정책입니다. 예: 
+- **LinearRetry**. 재시도 간에 지정된 고정 시간 간격을 사용하여 지정된 횟수의 재시도를 수행하는 재시도 정책입니다. 예를 들면 다음과 같습니다.
 
     ```csharp
     retryInterval = this.deltaBackoff;

@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: 561fe6e47a4cd64aa545349dde4c76260d76e78e
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248958"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482311"
 ---
 # <a name="horizontal-vertical-and-functional-data-partitioning"></a>수평, 수직 및 기능별 데이터 분할
 
@@ -154,7 +154,7 @@ ms.locfileid: "58248958"
 
 - 적절한 빈도로 함께 백업할 수 있도록 중요도 수준이 동일한 데이터를 같은 파티션에 배치합니다. 예를 들어 트랜잭션 데이터를 보관하는 파티션은 로깅 또는 추적 정보가 있는 파티션보다 더 자주 백업해야 합니다.
 
-**개별 파티션을 관리하는 방법** 파티션을 독립적으로 관리 및 유지 관리할 수 있도록 디자인하면 몇 가지 이점이 있습니다. 예: 
+**개별 파티션을 관리하는 방법** 파티션을 독립적으로 관리 및 유지 관리할 수 있도록 디자인하면 몇 가지 이점이 있습니다. 예를 들면 다음과 같습니다.
 
 - 한 파티션이 실패하는 경우 다른 파티션에 있는 데이터에 액세스하는 애플리케이션 없이 파티션을 독립적으로 복구할 수 있습니다.
 
