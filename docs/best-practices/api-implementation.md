@@ -582,7 +582,7 @@ ServicePoint sp = ServicePointManager.FindServicePoint(uri);
 sp.Expect100Continue = false;
 ```
 
-후속으로 생성되는 모든 [ServicePoint]](/dotnet/api/system.net.servicepoint) 개체에 대해 이 속성의 기본값을 지정하기 위하여 `ServicePointManager` 클래스의 정적 `Expect100Continue` 속성을 설정할 수도 있습니다.
+후속으로 생성되는 모든 [ServicePoint]\(/dotnet/api/system.net.servicepoint) 개체에 대해 이 속성의 기본값을 지정하기 위하여 `ServicePointManager` 클래스의 정적 `Expect100Continue` 속성을 설정할 수도 있습니다.
 
 ### <a name="support-pagination-for-requests-that-may-return-large-numbers-of-objects"></a>다수의 개체를 반환할 수 있는 요청에 대해 페이지 매김을 지원합니다.
 
@@ -695,7 +695,7 @@ Web API의 특성에 따라 제대로 작동하는지를 확인하기 위한 요
 
 - 응답 메시지의 모든 링크와 URI를 확인합니다. 예를 들어, HTTP POST 메시지는 새로 생성된 리소스의 URI를 반환해야 합니다. 모든 HATEOAS 링크는 유효해야 합니다.
 
-- 각 작업이 다양한 입력 조합에 대해 올바른 상태 코드를 반환하는지 확인합니다. 예: 
+- 각 작업이 다양한 입력 조합에 대해 올바른 상태 코드를 반환하는지 확인합니다. 예를 들면 다음과 같습니다.
 
   - 쿼리가 성공적이면 상태 코드 200(OK)을 반환해야 합니다.
   - 리소스를 찾을 수 없으면 작업은 HTTP 상태 코드 404(찾을 수 없음)을 반환해야 합니다.
