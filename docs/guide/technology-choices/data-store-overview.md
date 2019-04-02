@@ -8,12 +8,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: 91a551025ae697d5828fc1e398b204d2901d17f6
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: c76b28fc53f36024867838e8ac36f256b242bf4a
+ms.sourcegitcommit: 548374a0133f3caed3934fda6a380c76e6eaecea
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58242024"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419957"
 ---
 # <a name="choose-the-right-data-store"></a>적절한 데이터 저장소 선택
 
@@ -40,6 +40,8 @@ RDBMS는 강력한 일관성 보장이 중요한 경우 매우 유용합니다. 
 - [Azure SQL Database][sql-db]
 - [Azure Database for MySQL][mysql]
 - [Azure Database for PostgreSQL][postgres]
+- [Azure Database for MariaDB][mariadb]
+
 
 ## <a name="keyvalue-stores"></a>키/값 저장소
 
@@ -112,6 +114,7 @@ RDBMS는 강력한 일관성 보장이 중요한 경우 매우 유용합니다. 
 
 - [SQL Data Warehouse][sql-dw]
 - [Azure Data Lake][data-lake]
+- [Azure Data Explorer](https://azure.microsoft.com/services/data-explorer/)
 
 ## <a name="search-engine-databases"></a>검색 엔진 데이터베이스  
 
@@ -152,6 +155,7 @@ RDBMS는 강력한 일관성 보장이 중요한 경우 매우 유용합니다. 
 [hbase]: /azure/hdinsight/hdinsight-hbase-overview
 [mysql]: https://azure.microsoft.com/services/mysql/
 [postgres]: https://azure.microsoft.com/services/postgresql/
+[mariadb]: https://azure.microsoft.com/services/mariadb/
 [redis-cache]: https://azure.microsoft.com/services/cache/
 [search]: https://azure.microsoft.com/services/search/
 [sql-db]: https://azure.microsoft.com/services/sql-database

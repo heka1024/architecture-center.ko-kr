@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 9f14b47a9659ad0b7451d106168f4d7b5a6ab0c7
-ms.sourcegitcommit: eee3a35dd5a5a2f0dc117fa1c30f16d6db213ba2
-ms.translationtype: HT
+ms.openlocfilehash: 87869d1b38d2b4a71cd5b604436e04deab993131
+ms.sourcegitcommit: 548374a0133f3caed3934fda6a380c76e6eaecea
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55782084"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58420025"
 ---
 # <a name="naming-conventions-for-azure-resources"></a>Azure 리소스에 대한 명명 규칙
 
@@ -84,6 +84,7 @@ Azure의 각 리소스 또는 서비스 유형은 명명 제한 및 범위 집�
 |리소스 그룹 |구독 |1-90 |대/소문자 구분하지 않음 |[여기](/rest/api/resources/resourcegroups/createorupdate)에 설명된 regex와 일치하는 영숫자, 밑줄, 괄호, 하이픈, 마침표(맨 끝에 있는 마침표는 제외) 및 유니코드 문자 |`<service short name>-<environment>-rg` |`profx-prod-rg` |
 |가용성 집합 |리소스 그룹 |1-80 |대/소문자 구분하지 않음 |영숫자, 밑줄 및 하이픈 |`<service-short-name>-<context>-as` |`profx-sql-as` |
 |태그 |연결된 엔터티 |512(이름), 256(값) |대/소문자 구분하지 않음 |`<`, `>`, `%`, `&`, `\`, `?`, `/`를 제외한 영숫자, 특수 문자. [여기](/azure/azure-resource-manager/resource-group-using-tags)에서 제한을 참조하세요. |`"key" : "value"` |`"department" : "Central IT"` |
+|웹앱 |전역 |1-60 |대/소문자 구분하지 않음 |영숫자 및 하이픈 |`<app_name>-<source-slot-name>` |`contoso-staging` |
 
 ### <a name="compute"></a>컴퓨팅
 
@@ -128,6 +129,12 @@ Azure의 각 리소스 또는 서비스 유형은 명명 제한 및 범위 집�
 | 엔터티 | 범위 | 길이 | 대/소문자 구분 | 사용할 수 있는 문자 | 제안된 패턴 | 예 |
 | --- | --- | --- | --- | --- | --- | --- |
 |Container Registry | 전역 |5-50 |대/소문자 구분하지 않음 | 영숫자 |`<service short name>registry` |`app1registry` |
+
+### <a name="service-bus"></a>Service Bus
+
+| 엔터티 | 범위 | 길이 | 대/소문자 구분 | 사용할 수 있는 문자 | 제안된 패턴 | 예 |
+| --- | --- | --- | --- | --- | --- | --- |
+|Service Bus 네임스페이스 | 전역 |6-50 |대/소문자 구분하지 않음 | 영숫자, 하이픈, leter;로 시작 해야 합니다 참조 [여기](/rest/api/servicebus/create-namespace) 세부 정보에 대 한 합니다. |`<service short name>-bus` |`app1-bus` |
 
 ## <a name="organize-resources-with-tags"></a>태그로 리소스 정리
 

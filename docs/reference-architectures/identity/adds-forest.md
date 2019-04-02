@@ -11,12 +11,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, identity
-ms.openlocfilehash: bf62544028741d500e9c4172d4ac0206c95cb919
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 5fe966f657782b41ec1926d0fd4bb83eb7a3c0fb
+ms.sourcegitcommit: 548374a0133f3caed3934fda6a380c76e6eaecea
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58241354"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58420042"
 ---
 # <a name="create-an-active-directory-domain-services-ad-ds-resource-forest-in-azure"></a>Azure에서 AAD DS(Active Directory Domain Services) 리소스 포리스트 만들기
 
@@ -44,10 +44,7 @@ AD DS(Active Directory Domain Services)는 ID 정보를 계층 구조에 저장�
 
 ## <a name="recommendations"></a>권장 사항
 
-Azure에서 Active Directory를 구현하는 방법에 대한 특정 권장 구성은 다음 문서를 참조하세요.
-
-- [AD DS(Active Directory Domain Services)를 Azure로 확장][adds-extend-domain]
-- [Azure Virtual Machines에 Windows Server Active Directory를 배포하기 위한 지침][ad-azure-guidelines]
+Azure에서 Active Directory의 구현에 특정 권장 사항을 참조 하세요 [확장 Active Directory Domain Services (AD DS)에서 Azure로][adds-extend-domain]합니다.
 
 ### <a name="trust"></a>신뢰
 
