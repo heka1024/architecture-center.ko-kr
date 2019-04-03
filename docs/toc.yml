@@ -557,6 +557,16 @@ items:
       href: service-fabric/migrate-from-cloud-services.md
     - name: Service Fabric 애플리케이션 리팩터링
       href: service-fabric/refactor-migrated-app.md
+  - name: Azure Databricks 모니터링
+    items:
+    - name: 개요
+      href: databricks-monitoring/index.md
+    - name: Databricks를 구성하여 Azure Monitor에 메트릭 보내기
+      href: databricks-monitoring/configure-cluster.md
+    - name: Azure Monitor에 Databricks 애플리케이션 로그 보내기
+      href: databricks-monitoring/application-logs.md
+    - name: 대시보드를 사용하여 Databricks 메트릭을 시각화
+      href: databricks-monitoring/dashboards.md
 - name: 디자인 검토 프레임워크
   items:
   - name: 복원력을 위한 디자인
@@ -851,9 +861,9 @@ items:
           href: cloud-adoption/decision-guides/software-defined-network/hub-spoke.md
       - name: 로그 및 보고
         href: cloud-adoption/decision-guides/log-and-report/overview.md
-ms.openlocfilehash: 06737190911118bab802d8141d959b04f6589f0a
-ms.sourcegitcommit: ea97ac004c38c6b456794c1a8eef29f8d2b77d50
+ms.openlocfilehash: 861170224f9575dc5e45d993678bda482b0ed944
+ms.sourcegitcommit: 9854bd27fb5cf92041bbfb743d43045cd3552a69
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58489218"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58503250"

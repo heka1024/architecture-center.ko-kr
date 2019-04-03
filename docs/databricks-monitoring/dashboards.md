@@ -3,18 +3,20 @@ title: 대시보드를 사용 하 여 Azure Databricks 메트릭을 시각화합
 description: Azure Databricks에서 성능을 모니터링 하려면 Grafana 대시보드를 배포 하는 방법
 author: petertaylor9999
 ms.date: 03/26/2019
-ms.openlocfilehash: dbc04b00a781dd20c3224b5a031a8d98ddadce94
-ms.sourcegitcommit: 9854bd27fb5cf92041bbfb743d43045cd3552a69
+ms.openlocfilehash: 36fcd93f6ca757e8e750d0fcbbdf0311c08560b0
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58503444"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887831"
 ---
 # <a name="use-dashboards-to-visualize-azure-databricks-metrics"></a>대시보드를 사용 하 여 Azure Databricks 메트릭을 시각화합니다
 
+이 문서에서는 성능 문제에 대 한 Azure Databricks 작업을 모니터링 하려면 Grafana 대시보드를 설정 하는 방법을 보여 줍니다.
+
 [Azure Databricks](/azure/azure-databricks/) 는 빠르고 강력 하 고 공동 작업 [Apache Spark](https://spark.apache.org/)– 쉽게 빠르게 개발 및 빅 데이터 분석 및 AI (인공 지능) 솔루션을 배포 하는 분석 서비스를 기반으로 합니다. 모니터링은 프로덕션 환경에서 Azure Databricks 워크 로드 운영의 중요 한 구성 요소입니다. 분석을 위해 작업 영역으로 메트릭을 수집 하려면 첫 번째 단계가입니다. Azure에서 로그 데이터를 관리 하기 위한 최상의 솔루션은 [Azure Monitor](/azure/azure-monitor/)합니다. Azure Databricks에서 Azure monitor에 보내는 로그 데이터를 고유 하 게 지원 하지 않습니다 하지만 [이 기능에 대 한 라이브러리](https://github.com/mspnp/spark-monitoring) 에서 사용할 수 있습니다 [Github](https://github.com)합니다.
 
-이 라이브러리는 스트리밍 이벤트 메트릭을 쿼리 하는 Apache Spark 구조 뿐만 아니라 Azure Databricks 서비스 메트릭 로깅을 사용 하도록 설정 합니다. Azure Databricks 클러스터에이 라이브러리를 성공적으로 배포한 후 집합이 더 이상 배포할 수 있습니다 [Azure Monitor](/azure/azure-monitor/) 하거나 [Grafana](https://granfana.com) 프로덕션의 일부로 배포할 수 있는 대시보드 환경입니다. 이 문서에서는 일반적인 유형의 성능 문제 및 이러한 대시보드를 사용 하 여 식별 하는 방법을 설명 합니다.
+이 라이브러리는 스트리밍 이벤트 메트릭을 쿼리 하는 Apache Spark 구조 뿐만 아니라 Azure Databricks 서비스 메트릭 로깅을 사용 하도록 설정 합니다. Azure Databricks 클러스터에이 라이브러리를 성공적으로 배포한 후 집합이 더 이상 배포할 수 있습니다 [Grafana](https://granfana.com) 프로덕션 환경의 일부로 배포할 수 있는 대시보드.
 
 ![대시보드의 스크린샷](./_images/dashboard-screenshot.png)
 
@@ -188,6 +190,11 @@ Azure Log Analytics 및 Grafana 대시보드에 시계열 시각화 집합이 �
 ### <a name="shuffle-metrics"></a>순서 섞기 메트릭
 
 최종 집합 데이터 shuffle 구조적된 스트리밍 쿼리를 사용 하 여 모든 실행 기에서 관련 된 메트릭을 시각화 표시입니다. 여기에 읽기, 쓴 바이트 셔플, 파일 시스템 사용 되는 쿼리에서 메모리 및 디스크 사용량의 순서 섞기 바이트 셔플 포함 됩니다.
+
+## <a name="next-steps"></a>다음 단계
+
+> [!div class="nextstepaction"]
+> [성능 병목 현상 문제 해결](./performance-troubleshooting.md)
 
 <!-- links -->
 
