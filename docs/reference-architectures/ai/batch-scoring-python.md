@@ -7,14 +7,14 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai, AI
-ms.openlocfilehash: 81dc353735eaa6573c72d9e588c949fe96a329ef
-ms.sourcegitcommit: eee3a35dd5a5a2f0dc117fa1c30f16d6db213ba2
-ms.translationtype: HT
+ms.openlocfilehash: b7607984bcf2c4bd046421aeb6e9d52dd8e7c18e
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55782016"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887746"
 ---
-# <a name="batch-scoring-of-python-models-on-azure"></a>Azure에서 Python 모델 일괄 채점
+# <a name="batch-scoring-of-python-machine-learning-models-on-azure"></a>Azure에서 Python 기계 학습 모델 점수 매기기 배치
 
 이 참조 아키텍처에서는 Azure Machine Learning Service를 사용하여 정기적으로 여러 모델을 병렬로 일괄 채점하기 위한 확장 가능한 솔루션을 빌드하는 방법을 보여줍니다. 솔루션은 템플릿으로 사용할 수 있으며 여러 문제에 맞게 일반화할 수 있습니다.
 
@@ -49,9 +49,9 @@ ms.locfileid: "55782016"
 
 ## <a name="performance-considerations"></a>성능 고려 사항
 
-표준 Python 모델의 경우 일반적으로 워크로드를 처리할 CPU가 충분하다고 여겨집니다. 이 아키텍처에서는 CPU를 사용합니다. 하지만 [딥 러닝 워크로드][deep]의 경우, GPU는 일반적으로 CPU를 훨씬 더 능가하는 성능을 발휘하며, 이러한 성능을 얻기 위해서는 크기 조정 가능 CPU 클러스터가 더 많이 필요합니다.
+표준 Python 모델의 경우 일반적으로 워크로드를 처리할 CPU가 충분하다고 여겨집니다. 이 아키텍처에서는 CPU를 사용합니다. 그러나 [딥 러닝 워크 로드][deep]를 많은 양만큼 Gpu 일반적으로 보다 성능이 뛰어난 Cpu &mdash; Cpu의 많은 클러스터를 비교할 수 있는 성능을 얻기 위해 일반적으로 필요 합니다.
 
-### <a name="parallelizing-across-vms-vs-cores"></a>VM 및 코어에서의 병렬 처리
+### <a name="parallelizing-across-vms-versus-cores"></a>코어와 Vm에서 병렬 처리
 
 일괄 처리 모드로 여러 모델의 채점 프로세스를 실행할 때는 VM 전체에서 작업을 병렬 처리해야 합니다. 두 가지 방법이 가능합니다.
 
@@ -87,7 +87,7 @@ ms.locfileid: "55782016"
 [amls]: /azure/machine-learning/service/overview-what-is-azure-ml
 [automatic-scaling]: /azure/batch/batch-automatic-scaling
 [azure-files]: /azure/storage/files/storage-files-introduction
-[cli]: https://docs.microsoft.com/en-us/cli/azure
+[cli]: /cli/azure
 [create-resources]: https://github.com/Microsoft/AMLBatchScoringPipeline/blob/master/01_create_resources.ipynb
 [deep]: /azure/architecture/reference-architectures/ai/batch-scoring-deep-learning
 [event-hubs]: /azure/event-hubs/event-hubs-geo-dr
@@ -95,10 +95,10 @@ ms.locfileid: "55782016"
 [github]: https://github.com/Microsoft/AMLBatchScoringPipeline
 [one-class-svm]: http://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html
 [portal]: https://portal.azure.com
-[ml-workspace]: https://docs.microsoft.com/en-us/azure/machine-learning/studio/create-workspace
+[ml-workspace]: /azure/machine-learning/studio/create-workspace
 [python-script]: https://github.com/Azure/BatchAIAnomalyDetection/blob/master/batchai/predict.py
 [pyscript]: https://github.com/Microsoft/AMLBatchScoringPipeline/blob/master/scripts/predict.py
 [storage]: /azure/storage/blobs/storage-blobs-overview
 [stream-analytics]: /azure/stream-analytics/
-[sql-database]: https://docs.microsoft.com/en-us/azure/sql-database/
-[app-insights]: https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview
+[sql-database]: /azure/sql-database/
+[app-insights]: /azure/application-insights/app-insights-overview
