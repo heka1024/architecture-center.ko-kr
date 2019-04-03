@@ -7,14 +7,14 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 1b6f10edf098ed8d9fa14c16de113fc765372835
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: cba8d272ddbdbf2c2da94f68b288e9fb79be7de2
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58231411"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887814"
 ---
-# <a name="batch-scoring-of-spark-models-on-azure-databricks"></a>Azure Databricks에서 Spark 모델의 일괄 처리 점수 매기기
+# <a name="batch-scoring-of-spark-machine-learning-models-on-azure-databricks"></a>Azure Databricks에서 Spark 기계 학습 모델 점수 매기기 배치
 
 이 참조 아키텍처에는 Azure용으로 최적화된 Apache Spark 기반 분석 플랫폼인 Azure Databricks를 사용하여 일정에 따라 Apache Spark 분류 모델의 일괄 처리 점수 매기기를 수행하는 확장 가능한 솔루션을 빌드하는 방법을 소개합니다. 이 솔루션은 다른 시나리오에도 일반적으로 사용할 수 있는 템플릿으로 사용 가능합니다.
 

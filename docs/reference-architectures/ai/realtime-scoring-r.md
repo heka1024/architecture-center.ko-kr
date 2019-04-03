@@ -7,14 +7,14 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 00bea3cae0c3d2f0fea2babd7b0157382cf9890a
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 5f3cc62c81c9ef9e5c3c27b1d66badd3e481c228
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248688"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887848"
 ---
-# <a name="real-time-scoring-of-r-machine-learning-models"></a>R 기계 학습 모델의 실시간 채점
+# <a name="real-time-scoring-of-r-machine-learning-models-on-azure"></a>Azure 기반 R 기계 학습 모델의 실시간 채점
 
 이 참조 아키텍처는 AKS(Azure Kubernetes Service)에서 실행되는 Microsoft Machine Learning Server를 사용하여 R에서 실시간(동기) 예측 서비스를 구현하는 방법을 보여줍니다. 이 아키텍처는 실시간 서비스로 배포할 목적으로 R에서 빌드한 예측 모델에 일반적으로 사용할 수 있도록 제작되었습니다. **[이 솔루션을 배포하세요][github]**.
 

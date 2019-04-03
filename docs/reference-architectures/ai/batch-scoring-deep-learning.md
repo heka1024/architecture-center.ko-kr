@@ -8,14 +8,14 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 85d04f179b988fd5b00b361149f2170d13608e6d
-ms.sourcegitcommit: 700a4f6ce61b1ebe68e227fc57443e49282e35aa
-ms.translationtype: HT
+ms.openlocfilehash: a1c0701185c85f8e7bcbc183b32c4834529fc524
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55887389"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887865"
 ---
-# <a name="batch-scoring-on-azure-for-deep-learning-models"></a>Azure의 Deep Learning 모델 일괄 채점
+# <a name="batch-scoring-of-deep-learning-models-on-azure"></a>Azure에서 심층 학습 모델 점수 매기기 배치
 
 이 참조 아키텍처는 Azure Machine Learning를 사용하여 동영상에 신경망 스타일 전송을 적용하는 방법을 보여줍니다. *스타일 전송*은 기존 이미지를 다른 이미지의 스타일로 구성하는 Deep Learning 기술입니다. 이 아키텍처는 Deep Learning에 일괄 채점을 사용하는 모든 시나리오에 대해 일반화할 수 있습니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
 
@@ -23,9 +23,13 @@ ms.locfileid: "55887389"
 
 **시나리오**: 미디어 조직에는 변경하려는 스타일이 특정 그림처럼 보이는 동영상이 있습니다. 조직은 시기적절하게 자동화된 방식으로 모든 동영상 프레임에 이 스타일을 적용할 수 있기 바랍니다. 신경망 스타일 전송 알고리즘에 대한 자세한 내용은 [나선형 신경망을 사용한 이미지 스타일 전송][image-style-transfer](PDF)을 참조하세요.
 
+<!-- markdownlint-disable MD033 -->
+
 | 스타일 이미지: | 입력/콘텐츠 동영상: | 출력 동영상: |
 |--------|--------|---------|
 | <img src="https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/style_image.jpg" width="300"> | [<img src="https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/input_video_image_0.jpg" width="300" height="300">](https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/input_video.mp4 "입력 동영상") *동영상을 보려면 클릭* | [<img src="https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/output_video_image_0.jpg" width="300" height="300">](https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/output_video.mp4 "출력 동영상") *동영상을 보려면 클릭* |
+
+<!-- markdownlint-enable MD033 -->
 
 이 참조 아키텍처는 Azure Storage의 새 미디어 존재로 인해 트리거되는 워크로드용으로 설계되었습니다.
 
@@ -42,7 +46,7 @@ ms.locfileid: "55887389"
 
 ### <a name="compute"></a>컴퓨팅
 
-**[Azure Machine Learning Service][amls]** 는 Azure Machine Learning 파이프라인을 사용하여 재현 가능하며 관리가 쉬운 계산 시퀀스를 만듭니다. 또한 기계 학습 모델을 학습, 배포 및 채점하기 위해 [Azure Machine Learning 컴퓨팅][aml-compute]이라는 관리형 컴퓨팅 대상(파이프라인 계산에서 실행할 수 있음)을 제공합니다. 
+**[Azure Machine Learning Service][amls]** 는 Azure Machine Learning 파이프라인을 사용하여 재현 가능하며 관리가 쉬운 계산 시퀀스를 만듭니다. 또한 기계 학습 모델을 학습, 배포 및 채점하기 위해 [Azure Machine Learning 컴퓨팅][aml-compute]이라는 관리형 컴퓨팅 대상(파이프라인 계산에서 실행할 수 있음)을 제공합니다.
 
 ### <a name="storage"></a>Storage
 
@@ -64,21 +68,21 @@ ms.locfileid: "55887389"
 
 ## <a name="performance-considerations"></a>성능 고려 사항
 
-### <a name="gpu-vs-cpu"></a>GPU 및 CPU
+### <a name="gpu-versus-cpu"></a>CPU와 GPU
 
 Deep Learning 워크로드의 경우, GPU는 CPU를 훨씬 더 능가하는 성능을 발휘하며, 이러한 성능을 얻기 위해서는 크기 조정 가능 CPU 클러스터가 더 많이 필요합니다. 이 아키텍처에서 CPU만 사용할 수도 있지만, GPU가 훨씬 더 나은 비용/성능 프로필을 제공합니다. GPU 최적화 VM의 최신 [NCv3 시리즈]vm-sizes-gpu를 사용하는 것이 좋습니다.
 
 기본적으로 GPU는 일부 지역에서 사용할 수 없습니다. GPU가 지원되는 지역을 선택해야 합니다. 또한 구독에는 GPU 최적화 VM에 대한 코어가 기본적으로 0으로 할당되어 있습니다. 지원 요청을 열어 이 할당량을 높일 수 있습니다. 구독에 워크로드를 실행할 충분한 할당량이 있는지 확인하세요.
 
-### <a name="parallelizing-across-vms-vs-cores"></a>VM 및 코어에서의 병렬 처리
+### <a name="parallelizing-across-vms-versus-cores"></a>코어와 Vm에서 병렬 처리
 
 스타일 전송 프로세스를 일괄 작업으로 실행할 때 주로 GPU에서 실행되는 작업은 VM에서 병렬 처리되어야 합니다. 두 가지 방법이 가능합니다. 즉, 단일 GPU가 있는 VM을 사용하는 더 큰 클러스터를 만들거나 많은 GPU가 있는 VM을 사용하는 좀 더 작은 클러스터를 만들 수 있습니다.
 
 이 워크로드에서 이러한 두 옵션은 필적할만한 성능을 제공합니다. VM당 더 많은 GPU가 있는 더 적은 수의 VM을 사용하면 데이터 이동을 줄일 수 있습니다. 그러나 이 워크로드의 작업당 데이터 볼륨은 그리 크지 않으므로 Blob Storage에 따라 크게 제한되는 것이 확인되지 않습니다.
 
-### <a name="mpi-step"></a>MPI 단계 
+### <a name="mpi-step"></a>MPI 단계
 
-Azure Machine Learning에서 파이프라인을 만들 때 병렬 계산을 수행하는 데 사용된 단계 중 하나가 MPI 단계입니다. MPI 단계는 사용 가능한 노드 간에 데이터를 균등하게 분할하는 데 도움이 됩니다. MPI 단계는 요청된 모든 노드가 준비될 때까지 실행되지 않습니다. 한 개 노드가 실패하거나 선취되면(우선 순위가 낮은 가상 머신인 경우), MPI 단계를 다시 실행해야 합니다. 
+Azure Machine Learning에서 파이프라인을 만들 때 병렬 계산을 수행하는 데 사용된 단계 중 하나가 MPI 단계입니다. MPI 단계는 사용 가능한 노드 간에 데이터를 균등하게 분할하는 데 도움이 됩니다. MPI 단계는 요청된 모든 노드가 준비될 때까지 실행되지 않습니다. 한 개 노드가 실패하거나 선취되면(우선 순위가 낮은 가상 머신인 경우), MPI 단계를 다시 실행해야 합니다.
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
@@ -94,7 +98,7 @@ Azure Machine Learning에서 파이프라인을 만들 때 병렬 계산을 수�
 
 ### <a name="securing-your-computation-in-a-virtual-network"></a>가상 네트워크의 계산 보호
 
-Machine Learning 컴퓨팅 클러스터를 배포할 때 [가상 네트워크][virtual-network]의 서브넷 내에서 프로비저닝되도록 클러스터를 구성할 수 있습니다. 이렇게 하면 클러스터의 컴퓨팅 노드가 다른 가상 머신과 안전하게 통신할 수 있습니다. 
+Machine Learning 컴퓨팅 클러스터를 배포할 때 [가상 네트워크][virtual-network]의 서브넷 내에서 프로비저닝되도록 클러스터를 구성할 수 있습니다. 이렇게 하면 클러스터의 컴퓨팅 노드가 다른 가상 머신과 안전하게 통신할 수 있습니다.
 
 ### <a name="protecting-against-malicious-activity"></a>악의적인 활동으로부터 보호
 
@@ -136,7 +140,6 @@ Machine Learning 컴퓨팅 클러스터 크기는 큐의 작업에 따라 자동
 
 > [!NOTE]
 > 또한 Azure Kubernetes Service를 사용하여 딥 러닝 모델을 위한 일괄 채점 아키텍처를 배포할 수 있습니다. [Github 리포지토리][deployment2]에 설명된 단계를 따릅니다.
-
 
 <!-- links -->
 
