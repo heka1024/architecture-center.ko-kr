@@ -1,14 +1,19 @@
 ---
 title: Azure Data Architecture 가이드
-description: null
+description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
 layout: LandingPage
 ms.topic: landing-page
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
+ms.openlocfilehash: 5fb74c6323f8dc571d827eb9a4c65a6c87d0ae36
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344430"
 ---
-
 # <a name="azure-data-architecture-guide"></a>Azure Data Architecture 가이드
 
 이 가이드에서는 Microsoft Azure에서 데이터 중심 솔루션을 디자인하는 구조적 접근 방식을 제시합니다. 이 가이드는 고객의 참여를 통해 얻은 사례를 기반으로 합니다.

@@ -8,8 +8,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: f1ab728d68747856fb2586804d58d45c4ea4fcc1
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344498"
 ---
-
 # <a name="busy-front-end-antipattern"></a>붐비는 프런트 엔드 안태패턴
 
 다수의 백그라운드 스레드에서 비동기 작업을 수행하면 리소스의 다른 동시 포그라운드 작업에 결핍이 발생하여 응답 시간이 허용할 수 없는 수준으로 감소됩니다.

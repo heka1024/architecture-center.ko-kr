@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
-ms.openlocfilehash: 7fd0e1bd42266b5e5718be4519352d99b58c0584
-ms.sourcegitcommit: 644c2692a80e89648a80ea249fd17a3b17dc0818
+ms.openlocfilehash: 4f33a3bef236ce157955f6348e7befea02a8ce80
+ms.sourcegitcommit: 548374a0133f3caed3934fda6a380c76e6eaecea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55987158"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58420076"
 ---
 # <a name="designing-resilient-applications-for-azure"></a>Azure용 복원 애플리케이션 디자인
 
@@ -155,8 +155,8 @@ Azure SQL Database에 쓰는 App Service 웹앱을 고려해 보세요. 이 문�
 
 예를 들어 단일 지역 SLA가 99.95%이면,
 
-- 두 지역의 결합 SLA는 (1 &minus; (0.9995 ^ 2)) = 99.999975%
-- 네 지역의 결합 SLA는 (1 &minus; (0.9995 ^ 4)) = 99.999999%
+- 두 Azure 지역의 결합 SLA는 (1 &minus; (1 &minus; 0.9995) ^ 2) = 99.999975%
+- 네 Azure 지역의 결합 SLA는 (1 &minus; (1 &minus; 0.9995) ^ 4) = 99.999999%
 
 [Traffic Manager SLA][tm-sla]도 고려해야 합니다. 이 문서가 작성된 시점의 Traffic Manager SLA는 99.99%입니다.
 
@@ -228,7 +228,7 @@ Azure에는 개별 VM에서 전체 영역에 이르는 모든 오류 수준에�
 
 ![재시도 횟수의 다이어그램](./images/retry.png)
 
-**인스턴스 간에 부하 분산**. 확장성을 위해 클라우드 애플리케이션은 인스턴스를 추가하여 규모 확장할 수 있어야 합니다. 이 방법은 회전 대상에서 비정상 인스턴스를 제거할 수 있으므로 복원력도 향상됩니다. 예를 들면 다음과 같습니다.
+**인스턴스 간에 부하 분산**. 확장성을 위해 클라우드 애플리케이션은 인스턴스를 추가하여 규모 확장할 수 있어야 합니다. 이 방법은 회전 대상에서 비정상 인스턴스를 제거할 수 있으므로 복원력도 향상됩니다. 예: 
 
 - 부하 분산 장치 뒤에 둘 이상의 VM을 배치합니다. 부하 분산 장치는 모든 VM에 트래픽을 분산합니다. [부하가 분산된 VM을 실행하여 확장성 및 가용성 확보][ra-multi-vm]를 참조하세요.
 - Azure App Service 앱을 여러 인스턴스로 규모 확장합니다. App Service는 자동으로 인스턴스 간에 부하를 분산합니다. [기본 웹 애플리케이션][ra-basic-web]을 참조하세요.
@@ -240,7 +240,7 @@ Azure에는 개별 VM에서 전체 영역에 이르는 모든 오류 수준에�
 
 [Azure Site Recovery][site-recovery]를 사용하여 Azure 지역 간에 Azure Virtual Machines를 복제할 수 있습니다. Site Recovery는 지속적으로 대상 지역에 데이터를 복제합니다. 기본 사이트에서 중단이 발생하면 보조 위치로 장애 조치(failover)합니다.
 
-**정상적으로 성능 저하**. 서비스에 오류가 발생하고 장애 조치(failover) 경로가 없는 경우 애플리케이션이 정상적으로 성능을 내리고 계속해서 허용 가능한 수준의 사용자 환경을 제공할 수 있습니다. 예를 들면 다음과 같습니다.
+**정상적으로 성능 저하**. 서비스에 오류가 발생하고 장애 조치(failover) 경로가 없는 경우 애플리케이션이 정상적으로 성능을 내리고 계속해서 허용 가능한 수준의 사용자 환경을 제공할 수 있습니다. 예: 
 
 - 나중에 처리하도록 작업 항목을 큐에 배치합니다.
 - 예상 값을 반환합니다.
@@ -305,9 +305,9 @@ Azure에는 개별 VM에서 전체 영역에 이르는 모든 오류 수준에�
 
 중요한 점은, 수동 배포는 오류가 발생하기 쉽다는 것입니다. 따라서 요청이 있을 때 실행할 수 있고 오류가 발생하면 다시 실행할 수 있는 자동화된 멱등원(idempotent) 프로세스를 사용하는 것이 좋습니다.
 
-* Azure 리소스 프로비전을 자동화하려면 [Terraform][terraform], [Ansible][ansible], [Chef][chef], [Puppet][puppet], [PowerShell][powershell], [CLI][cli] 또는 [Azure Resource Manager 템플릿][template-deployment]을 사용하면 됩니다.
-* [Azure Automation DSC(Desired State Configuration)][dsc]를 사용하여 VM을 구성하세요. Linux VM의 경우 [Cloud-init][cloud-init]를 사용할 수 있습니다.
-* [Azure DevOps Services][azure-devops-services]나 [Jenkins][jenkins]를 사용하여 애플리케이션 배포를 자동화할 수 있습니다.
+- Azure 리소스 프로비전을 자동화하려면 [Terraform][terraform], [Ansible][ansible], [Chef][chef], [Puppet][puppet], [PowerShell][powershell], [CLI][cli] 또는 [Azure Resource Manager 템플릿][template-deployment]을 사용하면 됩니다.
+- [Azure Automation DSC(Desired State Configuration)][dsc]를 사용하여 VM을 구성하세요. Linux VM의 경우 [Cloud-init][cloud-init]를 사용할 수 있습니다.
+- [Azure DevOps Services][azure-devops-services]나 [Jenkins][jenkins]를 사용하여 애플리케이션 배포를 자동화할 수 있습니다.
 
 복원력 있는 배포와 관련된 두 가지 개념은 *코드로써의 인프라* 및 *변경이 불가능한 인프라*입니다.
 
@@ -322,18 +322,19 @@ Azure에는 개별 VM에서 전체 영역에 이르는 모든 오류 수준에�
 어떤 방법을 사용하든, 새 버전이 작동하지 않는 경우 마지막으로 알려진 정상 배포로 롤백할 수 있습니다. 또한 기타 종속 서비스에 대한 변경 내용 및 데이터베이스 변경 내용을 롤백하는 전략을 마련해야 합니다. 오류가 발생하면 어떤 버전 때문에 오류가 발생했는지 애플리케이션 로그를 보고 알 수 있어야 합니다.
 
 ## <a name="monitor-to-detect-failures"></a>오류를 감지하기 위한 모니터링
-모니터링은 복원력에 매우 중요합니다. 오류가 발생하면 오류가 있다는 사실을 알 수 있어야 하고 오류 원인을 파악할 수 있어야 합니다. 
 
-대규모 분산 시스템을 모니터링하는 것은 상당한 과제입니다. 수십 개의 VM&mdash;에서 실행되는 애플리케이션이 있다고 생각해 봅시다. 각 VM에 한 번에 하나씩 로그인하여 로그 파일을 살펴보고 문제를 해결하는 것은 현실적이지 않습니다. 또한 VM 인스턴스 수는 대개 정적이지 않습니다. 애플리케이션 규모가 감축 또는 확장되면 VM이 추가 또는 제거되며, 인스턴스가 실패하여 다시 프로비저닝해야 하는 경우가 가끔 있습니다. 또한 일반적인 클라우드 애플리케이션은 여러 데이터 저장소(Azure 스토리지, SQL Database, Cosmos DB, Redis 캐시)를 사용할 수 있으며, 단일 사용자 작업이 여러 하위 시스템에 걸쳐 이어질 수 있습니다. 
+모니터링은 복원력에 매우 중요합니다. 오류가 발생하면 오류가 있다는 사실을 알 수 있어야 하고 오류 원인을 파악할 수 있어야 합니다.
+
+대규모 분산 시스템을 모니터링하는 것은 상당한 과제입니다. 수십 개의 VM&mdash;에서 실행되는 애플리케이션이 있다고 생각해 봅시다. 각 VM에 한 번에 하나씩 로그인하여 로그 파일을 살펴보고 문제를 해결하는 것은 현실적이지 않습니다. 또한 VM 인스턴스 수는 대개 정적이지 않습니다. 애플리케이션 규모가 감축 또는 확장되면 VM이 추가 또는 제거되며, 인스턴스가 실패하여 다시 프로비저닝해야 하는 경우가 가끔 있습니다. 또한 일반적인 클라우드 애플리케이션은 여러 데이터 저장소(Azure 스토리지, SQL Database, Cosmos DB, Redis 캐시)를 사용할 수 있으며, 단일 사용자 작업이 여러 하위 시스템에 걸쳐 이어질 수 있습니다.
 
 모니터링 프로세스는 다수의 개별 단계로 구성된 파이프라인이라고 생각하면 됩니다.
 
 ![복합 SLA](./images/monitoring.png)
 
-* **계측**. 모니터링을 위한 원시 데이터는 [애플리케이션 로그](/azure/application-insights/app-insights-overview?toc=/azure/azure-monitor/toc.json), [운영 체제 성능 메트릭](/azure/azure-monitor/platform/agents-overview), [Azure 리소스](/azure/monitoring-and-diagnostics/monitoring-supported-metrics?toc=/azure/azure-monitor/toc.json), [Azure 구독](/azure/service-health/service-health-overview) 및 [Azure 테넌트](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)를 비롯한 다양한 출처에서 가져옵니다. 대부분의 Azure 서비스는 구성을 통해 문제를 분석하여 원인을 확인할 수 있는 [메트릭](/azure/azure-monitor/platform/data-collection)을 노출합니다.
-* **수집 및 저장**. 원시 계측 데이터는 다양한 위치에 다양한 형식으로 저장할 수 있습니다(예: 애플리케이션 추적 로그, IIS 로그, 성능 카운터). 이렇게 서로 다른 원본은 수집되고 통합되어 Application Insights, Azure Monitor 메트릭, Service Health, 스토리지 계정 및 Log Analytics와 같은 안정적인 데이터 저장소에 저장됩니다.
-* **분석 및 진단**. 데이터가 서로 다른 데이터 저장소에 통합되면, 분석을 통해 문제를 해결하고 애플리케이션 상태에 대한 전체 보기를 제공할 수 있습니다. 일반적으로 [Kusto 쿼리](/azure/log-analytics/log-analytics-queries)를 사용하여 Application Insights와 Log Analytics에서 데이터를 검색할 수 있습니다. Azure Advisor는 [복원력](/azure/advisor/advisor-high-availability-recommendations)과 [최적화](/azure/advisor/advisor-performance-recommendations)에 중점을 둔 권장 사항을 제공합니다. 
-* **시각화 및 경고**. 이 단계에서는 운영자가 문제 또는 추세를 신속하게 파악할 수 있는 방식으로 원격 분석 데이터가 제공됩니다. 이러한 예에는 대시보드나 이메일 경고가 있습니다. [Azure 대시보드](/azure/azure-portal/azure-portal-dashboards)를 사용하면 Application Insights, Log Analytics, Azure Monitor 메트릭 및 Service Health에서 발생한 모니터링 그래프의 단일 창 보기를 만들 수 있습니다. [Azure Monitor 경고](/azure/monitoring-and-diagnostics/monitoring-overview-alerts?toc=/azure/azure-monitor/toc.json)를 통해 서비스 상태 및 리소스 상태에 대한 경고를 만들 수 있습니다.
+- **계측**. 모니터링을 위한 원시 데이터는 [애플리케이션 로그](/azure/application-insights/app-insights-overview?toc=/azure/azure-monitor/toc.json), [운영 체제 성능 메트릭](/azure/azure-monitor/platform/agents-overview), [Azure 리소스](/azure/monitoring-and-diagnostics/monitoring-supported-metrics?toc=/azure/azure-monitor/toc.json), [Azure 구독](/azure/service-health/service-health-overview) 및 [Azure 테넌트](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)를 비롯한 다양한 출처에서 가져옵니다. 대부분의 Azure 서비스는 구성을 통해 문제를 분석하여 원인을 확인할 수 있는 [메트릭](/azure/azure-monitor/platform/data-collection)을 노출합니다.
+- **수집 및 저장**. 원시 계측 데이터는 다양한 위치에 다양한 형식으로 저장할 수 있습니다(예: 애플리케이션 추적 로그, IIS 로그, 성능 카운터). 이렇게 서로 다른 원본은 수집되고 통합되어 Application Insights, Azure Monitor 메트릭, Service Health, 스토리지 계정 및 Log Analytics와 같은 안정적인 데이터 저장소에 저장됩니다.
+- **분석 및 진단**. 데이터가 서로 다른 데이터 저장소에 통합되면, 분석을 통해 문제를 해결하고 애플리케이션 상태에 대한 전체 보기를 제공할 수 있습니다. 일반적으로 [Kusto 쿼리](/azure/log-analytics/log-analytics-queries)를 사용하여 Application Insights와 Log Analytics에서 데이터를 검색할 수 있습니다. Azure Advisor는 [복원력](/azure/advisor/advisor-high-availability-recommendations)과 [최적화](/azure/advisor/advisor-performance-recommendations)에 중점을 둔 권장 사항을 제공합니다.
+- **시각화 및 경고**. 이 단계에서는 운영자가 문제 또는 추세를 신속하게 파악할 수 있는 방식으로 원격 분석 데이터가 제공됩니다. 이러한 예에는 대시보드나 이메일 경고가 있습니다. [Azure 대시보드](/azure/azure-portal/azure-portal-dashboards)를 사용하면 Application Insights, Log Analytics, Azure Monitor 메트릭 및 Service Health에서 발생한 모니터링 그래프의 단일 창 보기를 만들 수 있습니다. [Azure Monitor 경고](/azure/monitoring-and-diagnostics/monitoring-overview-alerts?toc=/azure/azure-monitor/toc.json)를 통해 서비스 상태 및 리소스 상태에 대한 경고를 만들 수 있습니다.
 
 모니터링은 오류 감지와 다릅니다. 예를 들어 애플리케이션이 임시 오류 및 다시 시도를 감지했지만, 결과적으로 가동 중지 없이 넘어갈 수 있습니다. 하지만 그렇더라도 오류 비율을 모니터링하여 애플리케이션의 전체적인 상태를 확인할 수 있도록 애플리케이션에서 다시 시도 작업을 로깅해야 합니다.
 
@@ -348,17 +349,19 @@ Azure에는 개별 VM에서 전체 영역에 이르는 모든 오류 수준에�
 모니터링 및 진단에 대한 자세한 내용은 [모니터링 및 진단 지침][monitoring-guidance]을 참조하세요.
 
 ## <a name="respond-to-failures"></a>오류에 대한 대응
+
 이전 섹션에서는 고가용성을 위해 중요한 자동 복구 전략에 집중했습니다. 그러나 경우에 따라 수동 개입이 필요할 때도 있습니다.
 
-* **경고**. 애플리케이션을 모니터링하여 사전 개입이 필요할 수도 있는 경고 기호를 확인합니다. 예를 들어 SQL Database 또는 Cosmos DB가 지속적으로 애플리케이션을 제한하는 것을 확인하면 데이터베이스 용량을 높이거나 쿼리를 최적화해야 할 수도 있습니다. 이 예제에서는 애플리케이션이 제한 오류를 투명하게 처리할 수도 있지만 후속 조치를 취할 수 있도록 원격 분석에서 계속 경고를 보내야 합니다. Azure 리소스 메트릭 및 진단 로그에 서비스 한도 및 할당량 임계값에 대한 경고를 구성하는 것이 좋습니다. 메트릭에 대한 경고를 설정하는 것이 좋습니다. 대기 시간 대비 진단 로그가 적기 때문입니다. 또한 Azure는 [Resource Health](https://docs.microsoft.com/en-us/azure/service-health/resource-health-checks-resource-types)를 통해 기본 제공되는 상태를 제공할 수 있으며, 이것은 Azure 서비스의 제한을 진단하는 데 도움이 됩니다.    
-* **장애 조치(Failover)**. 애플리케이션 재해 복구 전략을 구성합니다. 적절한 전략은 SLA에 따라 달라집니다. 많은 경우 활성-수동 구현으로 충분합니다. 자세한 내용은 [재해 복구를 위한 배포 토폴로지](./disaster-recovery-azure-applications.md#deployment-topologies-for-disaster-recovery)를 참조하세요. 대부분의 Azure 서비스는 수동 또는 자동 장애 조치(failover)를 허용합니다. 예를 들어 IaaS 애플리케이션은 웹 계층과 논리 계층에 [Azure Site Recovery](/azure/site-recovery/azure-to-azure-architecture)를 사용하고 데이터베이스 계층에는 [SQL AlwaysOn 가용성 그룹](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr)을 사용합니다. [Traffic Manager](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview)는 여러 지역에 자동화된 장애 조치(failover)를 제공합니다.
-* **운영 준비 테스트**. 보조 지역에 대한 장애 조치(failover) 및 기본 지역에 대한 장애 복구(failback)를 위해 운영 준비 테스트를 수행합니다. 많은 Azure 서비스에서 재해 복구 훈련을 위해 수동 장애 조치(failover)나 테스트 장애 조치를 지원합니다. 또는 서비스를 종료하거나 제거하여 가동 중단을 시뮬레이트할 수 있습니다.
-* **데이터 일관성 확인**. 데이터 저장소에 오류가 발생한 후 데이터를 다시 사용할 수 있게 되었을 때, 특히 데이터가 복제된 경우 데이터 불일치가 있을 수 있습니다. 지역 간 복제를 제공하는 Azure 서비스의 경우 RTO 및 RPO를 살펴보고 장애 발생 시 예상되는 데이터 손실을 파악합니다. Azure 서비스에 대한 SLA를 검토하여, 지역 간 장애 조치가 수동으로 시작될 수 있는지 아니면 Microsoft에서 시작되는지 이해해야 합니다. 일부 서비스는 장애 조치를 수행 할 시점을 Microsoft가 결정합니다. Microsoft는 기본 지역에 데이터의 복구 우선 순위를 지정할 수 있으며 기본 지역의 데이터를 복구할 수 없는 것으로 간주되는 경우에만 보조 지역으로 장애 조치(failover)합니다. 예를 들어 [지역 중복 스토리지](/azure/storage/common/storage-redundancy-grs)와 [Key Vault](/azure/key-vault/key-vault-disaster-recovery-guidance)는 이 모델을 따릅니다.
-* **백업에서 복원**. 일부 시나리오에서는, 백업에서 복원하는 것이 같은 지역 내에서만 가능합니다. [Azure VM 백업](/azure/backup/backup-azure-vms-first-look-arm)이 이런 경우입니다. 다른 Azure 서비스는 [Redis Cache 지리적 복제본](/azure/redis-cache/cache-how-to-geo-replication)과 같은 지리적으로 복제된 백업을 제공합니다. 백업의 목적은 데이터가 실수로 삭제되거나 손상되지 않도록 보호하고, 애플리케이션을 작동 가능한 이전 버전으로 복원하는 것입니다. 따라서 백업이 재해 복구 솔루션의 역할을 할 수도 있지만 그 반대의 경우가 항상 참은 아닙니다. 데이터가 실수로 삭제되거나 손상되는 것을 재해 복구가 보호하지는 않습니다.  
+- **경고**. 애플리케이션을 모니터링하여 사전 개입이 필요할 수도 있는 경고 기호를 확인합니다. 예를 들어 SQL Database 또는 Cosmos DB가 지속적으로 애플리케이션을 제한하는 것을 확인하면 데이터베이스 용량을 높이거나 쿼리를 최적화해야 할 수도 있습니다. 이 예제에서는 애플리케이션이 제한 오류를 투명하게 처리할 수도 있지만 후속 조치를 취할 수 있도록 원격 분석에서 계속 경고를 보내야 합니다. Azure 리소스 메트릭 및 진단 로그에 서비스 한도 및 할당량 임계값에 대한 경고를 구성하는 것이 좋습니다. 메트릭에 대한 경고를 설정하는 것이 좋습니다. 대기 시간 대비 진단 로그가 적기 때문입니다. 또한 Azure는 [Resource Health](/azure/service-health/resource-health-checks-resource-types)를 통해 기본 제공되는 상태를 제공할 수 있으며, 이것은 Azure 서비스의 제한을 진단하는 데 도움이 됩니다.
+- **장애 조치(Failover)**. 애플리케이션 재해 복구 전략을 구성합니다. 적절한 전략은 SLA에 따라 달라집니다. 대부분의 경우 액티브-패시브 구현으로 충분합니다. 자세한 내용은 [재해 복구를 위한 배포 토폴로지](./disaster-recovery-azure-applications.md#deployment-topologies-for-disaster-recovery)를 참조하세요. 대부분의 Azure 서비스는 수동 또는 자동 장애 조치(failover)를 허용합니다. 예를 들어 IaaS 애플리케이션은 웹 계층과 논리 계층에 [Azure Site Recovery](/azure/site-recovery/azure-to-azure-architecture)를 사용하고 데이터베이스 계층에는 [SQL AlwaysOn 가용성 그룹](/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr)을 사용합니다. [Traffic Manager](/azure/traffic-manager/traffic-manager-overview)는 여러 지역에 자동화된 장애 조치(failover)를 제공합니다.
+- **운영 준비 테스트**. 보조 지역에 대한 장애 조치(failover) 및 기본 지역에 대한 장애 복구(failback)를 위해 운영 준비 테스트를 수행합니다. 많은 Azure 서비스에서 재해 복구 훈련을 위해 수동 장애 조치(failover)나 테스트 장애 조치를 지원합니다. 또는 서비스를 종료하거나 제거하여 가동 중단을 시뮬레이션할 수 있습니다.
+- **데이터 일관성 확인**. 데이터 저장소에 오류가 발생한 후 데이터를 다시 사용할 수 있게 되었을 때, 특히 데이터가 복제된 경우 데이터 불일치가 있을 수 있습니다. 지역 간 복제를 제공하는 Azure 서비스의 경우 RTO 및 RPO를 살펴보고 장애 발생 시 예상되는 데이터 손실을 파악합니다. Azure 서비스에 대한 SLA를 검토하여, 지역 간 장애 조치가 수동으로 시작될 수 있는지 아니면 Microsoft에서 시작되는지 이해해야 합니다. 일부 서비스는 장애 조치를 수행 할 시점을 Microsoft가 결정합니다. Microsoft는 기본 지역에 데이터의 복구 우선 순위를 지정할 수 있으며 기본 지역의 데이터를 복구할 수 없는 것으로 간주되는 경우에만 보조 지역으로 장애 조치(failover)합니다. 예를 들어 [지역 중복 스토리지](/azure/storage/common/storage-redundancy-grs)와 [Key Vault](/azure/key-vault/key-vault-disaster-recovery-guidance)는 이 모델을 따릅니다.
+- **백업에서 복원**. 일부 시나리오에서는, 백업에서 복원하는 것이 같은 지역 내에서만 가능합니다. [Azure VM 백업](/azure/backup/backup-azure-vms-first-look-arm)이 이런 경우입니다. 다른 Azure 서비스는 [Redis Cache 지리적 복제본](/azure/redis-cache/cache-how-to-geo-replication)과 같은 지리적으로 복제된 백업을 제공합니다. 백업의 목적은 데이터가 실수로 삭제되거나 손상되지 않도록 보호하고, 애플리케이션을 작동 가능한 이전 버전으로 복원하는 것입니다. 따라서 백업이 재해 복구 솔루션의 역할을 할 수도 있지만 그 반대의 경우가 항상 참은 아닙니다. 데이터가 실수로 삭제되거나 손상되는 것을 재해 복구가 보호하지는 않습니다.  
 
 재해 복구 계획을 문서화 및 테스트합니다. 애플리케이션 오류가 비즈니스에 미치는 영향을 평가합니다. 프로세스를 최대한 자동화하고 수동 장애 조치(failover), 백업에서 데이터 복원 등의 수동 단계를 문서화합니다. 재해 복구 프로세스를 주기적으로 테스트하여 유효성을 검사하고 계획을 개선합니다. 애플리케이션에 사용되는 Azure 서비스에 대한 경고를 설정합니다.
 
 ## <a name="summary"></a>요약
+
 이 문서에서는 전체적인 관점에서 복원력을 살펴보고, 클라우드의 고유한 과제 중 일부를 강조했습니다. 그 중에는 분산, 상용 하드웨어 사용, 일시적 네트워크 오류라는 클라우드 컴퓨팅의 특성도 포함되어 있습니다.
 
 다음은 이 문서에서 기억해야 할 핵심 내용입니다.

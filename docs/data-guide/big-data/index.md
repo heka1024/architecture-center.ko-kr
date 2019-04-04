@@ -1,13 +1,18 @@
 ---
 title: 빅 데이터 아키텍처
-description: null
+description: ''
 author: zoinerTejada
 ms.date: 02/12/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
+ms.openlocfilehash: 269a4c2b8fd0c186e1b44b6c0cfdcbfa4d37b57c
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58346164"
 ---
-
 # <a name="big-data-architectures"></a>빅 데이터 아키텍처
 
 빅 데이터 아키텍처는 기존의 데이터베이스 시스템에 비해 너무 크거나 복잡한 데이터의 수집, 처리 및 분석을 수행하도록 디자인되었습니다. 조직이 빅 데이터 영역으로 전환하게 되는 시점은 사용자의 역량과 사용하는 도구에 따라 다릅니다. 수백 기가바이트의 데이터일 수도 있고, 수백 테라바이트의 데이터일 수도 있습니다. 빅 데이터 집합으로 작업하기 위한 도구가 발전하면서 빅 데이터의 의미도 달라지고 있습니다. 이 용어는 엄격히 데이터 크기만을 고려하지 않고, 고급 분석을 통해 데이터 집합에서 추출할 수 있는 가치와 점점 더 밀접한 관련을 갖습니다. 데이터 크기만 고려한다면 빅 데이터는 훨씬 더 큰 데이터일 것입니다.

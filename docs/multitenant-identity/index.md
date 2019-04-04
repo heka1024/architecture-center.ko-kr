@@ -1,20 +1,25 @@
 ---
 title: 다중 테넌트 애플리케이션에 대한 ID 관리
-description: '다중 테넌트 앱에서 인증, 권한 부여 및 ID 관리에 대한 모범 사례입니다.'
+description: 다중 테넌트 앱에서 인증, 권한 부여 및 ID 관리에 대한 모범 사례입니다.
 author: MikeWasson
 ms.date: 07/21/2017
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
+ms.openlocfilehash: be906106fb12c381d57ad40ae22e748dcff9722f
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58346079"
 ---
-
 # <a name="manage-identity-in-multitenant-applications"></a>다중 테넌트 애플리케이션의 ID 관리
 
 이 문서 시리즈에서는 인증 및 ID 관리에 Azure AD를 사용할 때 다중 테넌트 지원에 대한 모범 사례를 설명합니다.
 
 [![GitHub](../_images/github.png) 샘플 코드][sample-application]
 
-다중 테넌트 애플리케이션을 빌드할 때 첫 번째 과제 중 하나는 이제 모든 사용자가 테넌트에 속하므로 사용자 ID를 관리하는 것입니다. 예를 들면 다음과 같습니다.
+다중 테넌트 애플리케이션을 빌드할 때 첫 번째 과제 중 하나는 이제 모든 사용자가 테넌트에 속하므로 사용자 ID를 관리하는 것입니다. 예: 
 
 - 사용자가 조직 자격 증명으로 로그인합니다.
 - 사용자는 조직의 데이터에는 액세스할 수 있지만 다른 테넌트에 속한 데이터에는 액세스하지 못합니다.
@@ -69,7 +74,7 @@ Azure AD(Azure Active Directory)에는 이러한 모든 시나리오를 지원�
 
 다중 테넌트 응용 프로그램에서는 테넌트의 컨텍스트에서 사용자를 고려해야 합니다.
 
-### <a name="authentication"></a>인증
+### <a name="authentication"></a>Authentication
 
 - 사용자는 조직 자격 증명으로 응용 프로그램에 로그인합니다. 응용 프로그램의 새 사용자 프로필을 만들 필요가 없습니다.
 - 동일한 조직 내의 사용자는 동일한 테넌트에 속합니다.
@@ -85,9 +90,7 @@ Azure AD(Azure Active Directory)에는 이러한 모든 시나리오를 지원�
 이 지침에서는 특별히 ID 관리에 Azure AD를 사용하는 방법을 알아봅니다.
 
 - 고객이 자신의 사용자 프로필을 Azure AD(Office365 및 Dynamics CRM 테넌트 포함)에 저장한 것으로 가정합니다.
-- 온-프레미스 AD(Active Directory)를 사용하는 고객은 [Azure AD Connect](/azure/active-directory/hybrid/whatis-hybrid-identity)를 사용하여 온-프레미스 AD를 Azure AD와 동기화할 수 있습니다.
-
-온-프레미스 AD를 사용하는 고객이 회사 IT 정책 또는 다른 이유로 Azure AD Connect를 사용할 수 없는 경우 SaaS 공급자는 AD FS(Active Directory Federation Services)를 통해 고객의 AD와 페더레이션할 수 있습니다. 이 옵션은 [고객의 AD FS와 페더레이션](adfs.md)에 설명되어 있습니다.
+- 온-프레미스 Active Directory를 사용하는 고객은 [Azure AD Connect](/azure/active-directory/hybrid/whatis-hybrid-identity)를 사용하여 온-프레미스 Active Directory를 Azure AD와 동기화할 수 있습니다. 온-프레미스 Active Directory를 사용하는 고객이 회사 IT 정책 또는 다른 이유로 Azure AD Connect를 사용할 수 없는 경우 SaaS 공급자는 AD FS(Active Directory Federation Services)를 통해 고객의 디렉터리와 페더레이션할 수 있습니다. 이 옵션은 [고객의 AD FS와 페더레이션](adfs.md)에 설명되어 있습니다.
 
 이 지침에서는 데이터 분할, 테넌트별 구성 등 다중 테넌트 지원의 다른 측면을 고려하지 않습니다.
 

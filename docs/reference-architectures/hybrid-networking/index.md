@@ -8,8 +8,13 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: networking
+ms.openlocfilehash: 6172866b08197b0ca1cd3aabb3c14c01b4f06f9c
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58343444"
 ---
-
 # <a name="choose-a-solution-for-connecting-an-on-premises-network-to-azure"></a>온-프레미스 네트워크를 Azure에 연결하기 위한 솔루션 선택
 
 이 문서에서는 온-프레미스 네트워크를 Azure VNet(Virtual Network)에 연결하는 옵션을 비교합니다. 각 옵션에서 자세한 참조 아키텍처를 사용할 수 있습니다.

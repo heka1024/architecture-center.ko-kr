@@ -7,8 +7,13 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
+ms.openlocfilehash: 15e9aa16c0e2cfccecbfb84d217c275cc99a66fd
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344413"
 ---
-
 # <a name="designing-a-microservices-architecture"></a>마이크로서비스 아키텍처 디자인
 
 마이크로 서비스는 복원력이 있고, 확장성이 뛰어나며, 독립적으로 배포할 수 있고, 신속하게 진화할 수 있는 클라우드 애플리케이션을 구축하는 데 널리 사용되는 아키텍처 스타일이 되었습니다. 하지만, 마이크로 서비스가 단순히 업계 유행어로만 남지 않으려면 애플리케이션을 설계하고 구축하는 데 있어 다른 접근 방식이 필요합니다.

@@ -7,8 +7,13 @@ ms.topic: landing-page
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.date: 08/30/2018
+ms.openlocfilehash: 6895ffc9c73dac29c27e7d8df68550c94f68b10a
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58346538"
 ---
-
 # <a name="architecture-styles"></a>아키텍처 스타일
 
 아키텍처 스타일이란 특정한 특성을 공유하는 아키텍처의 집합입니다. 예를 들어, 일반적인 아키텍처 스타일로 [N 계층][n-tier]이 있습니다. 최근에는 [마이크로 서비스 아키텍처][microservices]가 각광을 받기 시작했습니다. 아키텍처 스타일이 특정 기술의 사용을 필요로 하는 것은 아니지만, 특정 아키텍처에 일부 기술이 적절히 적용될 수 있습니다. 예를 들어 컨테이너는 기본적으로 마이크로 서비스와 잘 어울립니다.

@@ -5,11 +5,11 @@ titleSuffix: Azure Reference Architectures
 author: MikeWasson
 ms.date: 01/09/2019
 ms.openlocfilehash: 5a4b104044f3e64ffdce98e3952201d397d41f33
-ms.sourcegitcommit: 700a4f6ce61b1ebe68e227fc57443e49282e35aa
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55887355"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344583"
 ---
 # <a name="azure-iot-reference-architecture"></a>Azure IoT 참조 아키텍처
 
@@ -95,7 +95,7 @@ IoT Hub는 디바이스 ID에 따라 디바이스 메시지를 자동으로 분�
 
 디바이스 디자인이 전체 시스템의 보안 무결성 및 신뢰성을 보장할 수 있기 위해 실제 조작 시도로부터 방어하는 기능을 통합하는 것이 좋습니다.
 
-예를 들면 다음과 같습니다.
+예: 
 
 - 보안 스토리지를 제공하고 TPM(신뢰할 수 있는 플랫폼 모듈) 통합과 같은 암호화 키 자료를 사용하는 마이크로 컨트롤러/마이크로 프로세서 또는 보조 하드웨어를 선택합니다.
 - 부팅 로더 및 소프트웨어 로드를 보호하고 TPM에 고정합니다.
