@@ -3,14 +3,14 @@ title: Azure Monitor를 사용하여 Azure Databricks 모니터링
 description: Azure Log Analytics에서 Azure Databricks의 모니터링을 사용하도록 설정하기 위한 Scala 라이브러리
 author: petertaylor9999
 ms.date: 03/26/2019
-ms.openlocfilehash: 6d3d17b2e49919aea7bb08f59e19032c1c8bdafd
-ms.sourcegitcommit: 9854bd27fb5cf92041bbfb743d43045cd3552a69
+ms.openlocfilehash: 4544d3abc3264ec459a80ac1a61a912e6d30d6b2
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58503274"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887695"
 ---
-# <a name="monitoring-azure-databricks-with-azure-monitor"></a>Azure Monitor를 사용하여 Azure Databricks 모니터링
+# <a name="monitoring-azure-databricks"></a>Azure Databricks 모니터링
 
 [Azure Databricks](/azure/azure-databricks/)는 빠르고, 강력한 [Apache Spark](https://spark.apache.org/) 기반 분석 서비스로, 빅 데이터 분석 및 AI(인공 지능) 솔루션을 빠르게 개발하고 배포하는 데 도움이 됩니다. 많은 사용자가 Azure Databricks 솔루션에서 Notebook의 단순성을 활용합니다. Azure Databricks는 더 강력한 컴퓨팅 옵션이 필요한 사용자를 위해 사용자 지정 애플리케이션 코드의 분산된 실행을 지원합니다.
 
