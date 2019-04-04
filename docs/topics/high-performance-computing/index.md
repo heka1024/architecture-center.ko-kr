@@ -3,6 +3,12 @@ title: Azure의 HPC(고성능 컴퓨팅)
 description: Azure에서 실행되는 HPC 워크로드를 빌드하는 방법에 대한 가이드
 author: adamboeglin
 ms.date: 2/4/2019
+ms.openlocfilehash: 5263dd3a06e5244bf804df4be6ec57d789574f76
+ms.sourcegitcommit: ea97ac004c38c6b456794c1a8eef29f8d2b77d50
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58489201"
 ---
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD026 -->

@@ -8,8 +8,13 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
+ms.openlocfilehash: 8aab710ef6ffde493b80810750d2c0bc299ffaa6
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344260"
 ---
-
 # <a name="ten-design-principles-for-azure-applications"></a><span data-ttu-id="7b383-103">Azure 애플리케이션을 위한 10가지 설계 원칙</span><span class="sxs-lookup"><span data-stu-id="7b383-103">Ten design principles for Azure applications</span></span>
 
 <span data-ttu-id="7b383-104">애플리케이션의 확장성, 복원력 및 관리성을 높이려면 다음과 같은 디자인 원칙을 따르십시오.</span><span class="sxs-lookup"><span data-stu-id="7b383-104">Follow these design principles to make your application more scalable, resilient, and manageable.</span></span>

@@ -8,8 +8,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: b21ef5f772eb4e2572833ab15085651ac3766a5e
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344328"
 ---
-
 # <a name="chatty-io-antipattern"></a><span data-ttu-id="26e8a-103">번잡한 I/O 안티패턴</span><span class="sxs-lookup"><span data-stu-id="26e8a-103">Chatty I/O antipattern</span></span>
 
 <span data-ttu-id="26e8a-104">수많은 I/O 요청의 누적 효과는 성능 및 응답성에 상당한 영향을 미칠 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26e8a-104">The cumulative effect of a large number of I/O requests can have a significant impact on performance and responsiveness.</span></span>

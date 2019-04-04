@@ -6,9 +6,14 @@ ms.date: 07/02/2018
 ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.custom: 'seodec18, identity'
+ms.custom: seodec18, identity
+ms.openlocfilehash: 706cb63a65ce521e72ebc41a997dc900afacaab9
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58343971"
 ---
-
 # <a name="choose-a-solution-for-integrating-on-premises-active-directory-with-azure"></a><span data-ttu-id="88cb8-103">온-프레미스 Active Directory를 Azure와 통합하기 위한 솔루션 선택</span><span class="sxs-lookup"><span data-stu-id="88cb8-103">Choose a solution for integrating on-premises Active Directory with Azure</span></span>
 
 <span data-ttu-id="88cb8-104">이 문서에서는 온-프레미스 AD(Active Directory) 환경을 Azure 네트워크와 통합하는 옵션을 비교합니다.</span><span class="sxs-lookup"><span data-stu-id="88cb8-104">This article compares options for integrating your on-premises Active Directory (AD) environment with an Azure network.</span></span> <span data-ttu-id="88cb8-105">각 옵션에서 자세한 참조 아키텍처를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="88cb8-105">For each option, a more detailed reference architecture is available.</span></span>

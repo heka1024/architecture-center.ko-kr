@@ -8,8 +8,13 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
+ms.openlocfilehash: 0cce207dedd0eb42e29a152b3bb84acc2dca323a
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344991"
 ---
-
 # <a name="run-a-highly-available-sharepoint-server-2016-farm-in-azure"></a><span data-ttu-id="ddb76-103">Azure에서 고가용성 SharePoint Server 2016 팜 실행</span><span class="sxs-lookup"><span data-stu-id="ddb76-103">Run a highly available SharePoint Server 2016 farm in Azure</span></span>
 
 <span data-ttu-id="ddb76-104">이 참조 아키텍처에서는 MinRole 토폴로지 및 SQL Server Always On 가용성 그룹을 사용하여 Azure에 고가용성 SharePoint Server 2016 팜을 배포하는 검증된 사례를 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="ddb76-104">This reference architecture shows proven practices for deploying a highly available SharePoint Server 2016 farm on Azure, using MinRole topology and SQL Server Always On availability groups.</span></span> <span data-ttu-id="ddb76-105">SharePoint 팜은 인터넷 연결 엔드포인트 또는 실체가 없는 안전한 가상 네트워크에 배포됩니다.</span><span class="sxs-lookup"><span data-stu-id="ddb76-105">The SharePoint farm is deployed in a secured virtual network with no Internet-facing endpoint or presence.</span></span> <span data-ttu-id="ddb76-106">[**이 솔루션을 배포합니다**](#deploy-the-solution).</span><span class="sxs-lookup"><span data-stu-id="ddb76-106">[**Deploy this solution**](#deploy-the-solution).</span></span>

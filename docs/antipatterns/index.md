@@ -8,8 +8,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: 212930368942728fc0be0c9b2af1a90293906b39
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344838"
 ---
-
 # <a name="performance-antipatterns-for-cloud-applications"></a><span data-ttu-id="5940a-103">클라우드 애플리케이션에 대한 성능 안티패턴</span><span class="sxs-lookup"><span data-stu-id="5940a-103">Performance antipatterns for cloud applications</span></span>
 
 <span data-ttu-id="5940a-104">*성능 안티패턴*은 애플리케이션이 압력을 받고 있을 때 확장성 문제를 일으킬 가능성이 있는 일반적인 사례입니다.</span><span class="sxs-lookup"><span data-stu-id="5940a-104">A *performance antipattern* is a common practice that is likely to cause scalability problems when an application is under pressure.</span></span>

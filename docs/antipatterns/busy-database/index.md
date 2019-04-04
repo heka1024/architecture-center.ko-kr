@@ -8,8 +8,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: 7d3fe47407eff7168dfd227a1dd1bd5917c7d431
+ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58344855"
 ---
-
 # <a name="busy-database-antipattern"></a><span data-ttu-id="10152-103">사용량이 많은 데이터베이스 안티패턴</span><span class="sxs-lookup"><span data-stu-id="10152-103">Busy Database antipattern</span></span>
 
 <span data-ttu-id="10152-104">처리를 데이터베이스 서버로 오프로드하면 데이터 저장 및 검색 요청에 응답하는 대신 코드를 실행하는 데 상당한 시간이 소요될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="10152-104">Offloading processing to a database server can cause it to spend a significant proportion of time running code, rather than responding to requests to store and retrieve data.</span></span>
