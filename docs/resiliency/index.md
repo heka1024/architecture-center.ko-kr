@@ -7,8 +7,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
+ms.openlocfilehash: 7fd0e1bd42266b5e5718be4519352d99b58c0584
+ms.sourcegitcommit: 644c2692a80e89648a80ea249fd17a3b17dc0818
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55987158"
 ---
-
 # <a name="designing-resilient-applications-for-azure"></a><span data-ttu-id="057fb-103">Azure용 복원 애플리케이션 디자인</span><span class="sxs-lookup"><span data-stu-id="057fb-103">Designing resilient applications for Azure</span></span>
 
 <span data-ttu-id="057fb-104">분산 시스템에서는 오류가 발생하기 마련입니다.</span><span class="sxs-lookup"><span data-stu-id="057fb-104">In a distributed system, failures will happen.</span></span> <span data-ttu-id="057fb-105">하드웨어 고장이 발생할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="057fb-105">Hardware can fail.</span></span> <span data-ttu-id="057fb-106">일시적인 네트워크 오류가 발생할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="057fb-106">The network can have transient failures.</span></span> <span data-ttu-id="057fb-107">매우 드물게 서비스 또는 지역 전체가 중단될 수도 있지만 그렇다 하더라도 계획된 중단이어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="057fb-107">Rarely, an entire service or region may experience a disruption, but even those must be planned for.</span></span>

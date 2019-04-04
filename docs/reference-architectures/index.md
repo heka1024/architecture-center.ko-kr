@@ -3,13 +3,13 @@ title: Azure 참조 아키텍처
 description: Azure의 일반 워크로드에 대한 참조 아키텍처 및 구현 지침입니다.
 layout: LandingPage
 ms.topic: landing-page
-ms.date: 04/02/2019
-ms.openlocfilehash: 7c307c40a710fff7ff07e24570052411b7edd8bf
-ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.date: 02/07/2019
+ms.openlocfilehash: 44111f5f10997c7aba38414b518245c5791d1cd0
+ms.sourcegitcommit: a68f248402c598f9d25bc1dc62f27a6a934ff001
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58887763"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55903234"
 ---
 <!-- This file is generated! -->
 <!-- See the templates in ./build/reference-architectures  -->
@@ -66,26 +66,6 @@ ms.locfileid: "58887763"
         </div>
     </a>
 </li>
-<!-- Training of Python scikit-learn models -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./ai/training-python-models.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/python-powered-h.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Python scikit-learn 모델 학습</h3>
-                        <p>scikit-learn Python 모델의 하이퍼 매개 변수 튜닝에 대한 권장 사례를 소개합니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
 <!-- Batch scoring of Python models -->
 <li style="display: flex; flex-direction: column;">
     <a href="./ai/batch-scoring-python.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
@@ -99,7 +79,27 @@ ms.locfileid: "58887763"
                     </div>
                     <div class="cardText">
                         <h3>Python 모델의 일괄 처리 채점</h3>
-                        <p>Azure Machine Learning을 사용하여 일정에 따라 여러 Python 모델을 일괄 처리로 채점합니다.</p>
+                        <p>Azure Batch AI를 사용하여 일정에 따라 여러 Python 모델을 일괄 처리로 채점합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Batch scoring of Spark models on Azure Databricks -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/batch-scoring-databricks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/databricks.png" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Databricks에서 Spark 모델의 일괄 처리 점수 매기기</h3>
+                        <p>Azure Databricks를 사용하여 Apache Spark 분류 모델의 일괄 처리 점수 매기기를 위해 확장 가능한 솔루션을 빌드합니다.</p>
                     </div>
                 </div>
             </div>
@@ -126,26 +126,6 @@ ms.locfileid: "58887763"
         </div>
     </a>
 </li>
-<!-- Batch scoring of R machine learning models -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./ai/batch-scoring-R-models.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/logo-r.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>R 기계 학습 모델의 일괄 처리 채점</h3>
-                        <p>Azure Batch를 사용하여 R 모델의 일괄 처리 채점을 수행합니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
 <!-- Real-time scoring of R machine learning models -->
 <li style="display: flex; flex-direction: column;">
     <a href="./ai/realtime-scoring-r.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
@@ -158,28 +138,8 @@ ms.locfileid: "58887763"
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>R 기계 학습 모델의 실시간 채점</h3>
+                        <h3>R 기계 학습 모델의 실시간 점수 매기기</h3>
                         <p>AKS(Azure Kubernetes Service)에서 실행되는 Microsoft Machine Learning Server를 사용하여 R에서 실시간 예측 서비스를 구현합니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<!-- Batch scoring of Spark models on Azure Databricks -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./ai/batch-scoring-databricks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/databricks.png" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Databricks에서 Spark 모델의 일괄 처리 점수 매기기</h3>
-                        <p>Azure Databricks를 사용하여 Apache Spark 분류 모델의 일괄 처리 점수 매기기를 위해 확장 가능한 솔루션을 빌드합니다.</p>
                     </div>
                 </div>
             </div>
@@ -354,27 +314,7 @@ ms.locfileid: "58887763"
                     </div>
                     <div class="cardText">
                         <h3>AKS(Azure Kubernetes Service)에서 마이크로 서비스</h3>
-                        <p>AKS에 마이크로서비스를 배포할 때 권장하는 아키텍처입니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<!-- Microservices architecture on Azure Service Fabric -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./microservices/service-fabric.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/sf.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Service Fabric의 마이크로서비스 아키텍처</h3>
-                        <p>Service Fabric의 마이크로서비스에 권장하는 아키텍처입니다.</p>
+                        <p>AKS에서 마이크로 서비스 아키텍처를 배포하기 위한 아키텍처를 권장합니다.</p>
                     </div>
                 </div>
             </div>
