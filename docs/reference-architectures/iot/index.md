@@ -4,8 +4,13 @@ description: PaaS(platform-as-a-service) 구성 요소를 사용하는 Azure에�
 titleSuffix: Azure Reference Architectures
 author: MikeWasson
 ms.date: 01/09/2019
+ms.openlocfilehash: 5a4b104044f3e64ffdce98e3952201d397d41f33
+ms.sourcegitcommit: 700a4f6ce61b1ebe68e227fc57443e49282e35aa
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55887355"
 ---
-
 # <a name="azure-iot-reference-architecture"></a>Azure IoT 참조 아키텍처
 
 이 참조 아키텍처에서는 PaaS(platform-as-a-service) 구성 요소를 사용하는 Azure에서 IoT 애플리케이션에 대한 권장 아키텍처를 보여줍니다.

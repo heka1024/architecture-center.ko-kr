@@ -1,16 +1,21 @@
 ---
 title: AWS 전문가를 위한 Azure
 titleSuffix: Azure Architecture Center
-description: 'Microsoft Azure 계정, 플랫폼 및 서비스의 기본 사항에 대해 알아봅니다. 또한 AWS 및 Azure 플랫폼 간의 주요 유사점과 차이점에 대해 알아봅니다. Azure에서 AWS 환경을 활용합니다.'
-keywords: 'AWS 전문가, Azure 비교, AWS 비교, azure와 aws의 차이점, azure 및 aws'
+description: Microsoft Azure 계정, 플랫폼 및 서비스의 기본 사항에 대해 알아봅니다. 또한 AWS 및 Azure 플랫폼 간의 주요 유사점과 차이점에 대해 알아봅니다. Azure에서 AWS 환경을 활용합니다.
+keywords: AWS 전문가, Azure 비교, AWS 비교, azure와 aws의 차이점, azure 및 aws
 author: lbrader
 ms.date: 09/19/2018
 ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
+ms.openlocfilehash: c61758494435f61814953ab5ba48d8fed1e709ab
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897595"
 ---
-
 # <a name="azure-for-aws-professionals"></a>AWS 전문가를 위한 Azure
 
 이 문서는 AWS(Amazon Web Services) 전문가가 Microsoft Azure 계정, 플랫폼 및 서비스의 기본 사항을 이해하는 데 도움을 줍니다. 또한 AWS 및 Azure 플랫폼 간의 주요 유사점과 차이점에 대해 다룹니다.
@@ -295,9 +300,9 @@ Azure는 [ExpressRoute](https://azure.microsoft.com/documentation/services/expre
 
 Azure의 AWS RDS(관계형 데이터베이스 서비스)에 해당하는 몇 가지 다른 관계형 데이터베이스 서비스를 제공합니다.
 
-- [SQL Database](/azure/sql-database/sql-database-technical-overview)
-- [Azure Database for MySQL](/azure/mysql/overview)
-- [Azure Database for PostgreSQL](/azure/postgresql/overview)
+- [SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)
+- [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview)
+- [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview)
 
 [SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/), [Oracle](https://azure.microsoft.com/campaigns/oracle/) 및 [MySQL](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-classic-mysql-2008r2/) 같은 다른 데이터베이스 엔진은 Azure VM 인스턴스를 사용하여 배포할 수 있습니다.
 

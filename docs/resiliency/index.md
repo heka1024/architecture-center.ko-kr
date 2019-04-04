@@ -7,8 +7,13 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
+ms.openlocfilehash: 7fd0e1bd42266b5e5718be4519352d99b58c0584
+ms.sourcegitcommit: 644c2692a80e89648a80ea249fd17a3b17dc0818
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55987158"
 ---
-
 # <a name="designing-resilient-applications-for-azure"></a>Azure용 복원 애플리케이션 디자인
 
 분산 시스템에서는 오류가 발생하기 마련입니다. 하드웨어 고장이 발생할 수 있습니다. 일시적인 네트워크 오류가 발생할 수 있습니다. 매우 드물게 서비스 또는 지역 전체가 중단될 수도 있지만 그렇다 하더라도 계획된 중단이어야 합니다.
