@@ -279,20 +279,26 @@ items:
     href: reference-architectures/index.md
   - name: AI
     items:
-    - name: 딥 러닝 모델의 분산 학습
-      href: reference-architectures/ai/training-deep-learning.md
-    - name: Python scikit-learn 모델 학습
-      href: reference-architectures/ai/training-python-models.md
-    - name: 딥 러닝 모델의 일괄 채점
-      href: reference-architectures/ai/batch-scoring-deep-learning.md
-    - name: Python 모델의 일괄 처리 채점
-      href: reference-architectures/ai/batch-scoring-python.md
+    - name: 딥 러닝 모델 및 Python 모델 학습 및 채점
+      items:
+      - name: 딥 러닝 모델의 분산 학습
+        href: reference-architectures/ai/training-deep-learning.md
+      - name: 딥 러닝 모델의 일괄 채점
+        href: reference-architectures/ai/batch-scoring-deep-learning.md
+      - name: Python scikit-learn 모델 학습
+        href: reference-architectures/ai/training-python-models.md
+      - name: Python 모델의 일괄 처리 채점
+        href: reference-architectures/ai/batch-scoring-python.md
+      - name: Python 및 딥 러닝 모델의 실시간 채점
+        href: reference-architectures/ai/realtime-scoring-python.md
+    - name: R 모델 채점
+      items:
+      - name: R 모델의 일괄 처리 채점
+        href: reference-architectures/ai/batch-scoring-R-models.md
+      - name: R 모델의 실시간 채점
+        href: reference-architectures/ai/realtime-scoring-r.md
     - name: Azure Databricks에서 Spark 모델의 일괄 처리 점수 매기기
       href: reference-architectures/ai/batch-scoring-databricks.md
-    - name: Python 및 딥 러닝 모델의 실시간 채점
-      href: reference-architectures/ai/realtime-scoring-python.md
-    - name: R 기계 학습 모델의 실시간 채점
-      href: reference-architectures/ai/realtime-scoring-r.md
     - name: 대화형 봇
       href: reference-architectures/ai/conversational-bot.md
     - name: 실시간 추천 API
@@ -497,6 +503,8 @@ items:
           href: data-guide/technology-choices/natural-language-processing.md
         - name: 파이프라인 오케스트레이션
           href: data-guide/technology-choices/pipeline-orchestration-data-movement.md
+        - name: Azure에 대한 R 개발자 가이드
+          href: data-guide/technology-choices/r-developers-guide.md
         - name: 실시간 메시지 수집
           href: data-guide/technology-choices/real-time-ingestion.md
         - name: 검색 데이터 저장소
@@ -567,6 +575,8 @@ items:
       href: databricks-monitoring/application-logs.md
     - name: 대시보드를 사용하여 Databricks 메트릭을 시각화
       href: databricks-monitoring/dashboards.md
+    - name: 성능 병목 현상 문제 해결
+      href: databricks-monitoring/performance-troubleshooting.md
 - name: 디자인 검토 프레임워크
   items:
   - name: 복원력을 위한 디자인
@@ -861,9 +871,9 @@ items:
           href: cloud-adoption/decision-guides/software-defined-network/hub-spoke.md
       - name: 로그 및 보고
         href: cloud-adoption/decision-guides/log-and-report/overview.md
-ms.openlocfilehash: 861170224f9575dc5e45d993678bda482b0ed944
-ms.sourcegitcommit: 9854bd27fb5cf92041bbfb743d43045cd3552a69
+ms.openlocfilehash: 953c7cbdee185a88d8470199fb4ba92244adaa84
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58503250"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887780"

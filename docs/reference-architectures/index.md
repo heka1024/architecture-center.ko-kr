@@ -3,7 +3,13 @@ title: Azure 참조 아키텍처
 description: Azure의 일반 워크로드에 대한 참조 아키텍처 및 구현 지침입니다.
 layout: LandingPage
 ms.topic: landing-page
-ms.date: 03/07/2019
+ms.date: 04/02/2019
+ms.openlocfilehash: 7c307c40a710fff7ff07e24570052411b7edd8bf
+ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887763"
 ---
 <!-- This file is generated! -->
 <!-- See the templates in ./build/reference-architectures  -->
@@ -40,26 +46,6 @@ ms.date: 03/07/2019
         </div>
     </a>
 </li>
-<!-- Training of Python scikit-learn models -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./ai/training-python-models.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/python-powered-h.svg" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Python scikit-learn 모델 학습</h3>
-                        <p>scikit-learn Python 모델의 하이퍼 매개 변수 튜닝에 대한 권장 사례를 소개합니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
 <!-- Batch scoring for deep learning models -->
 <li style="display: flex; flex-direction: column;">
     <a href="./ai/batch-scoring-deep-learning.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
@@ -74,6 +60,26 @@ ms.date: 03/07/2019
                     <div class="cardText">
                         <h3>심층 학습 모델에 대한 Batch 평가</h3>
                         <p>비디오에 신경 스타일 전송을 적용하는 일괄 작업 실행을 자동화합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Training of Python scikit-learn models -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/training-python-models.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/python-powered-h.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Python scikit-learn 모델 학습</h3>
+                        <p>scikit-learn Python 모델의 하이퍼 매개 변수 튜닝에 대한 권장 사례를 소개합니다.</p>
                     </div>
                 </div>
             </div>
@@ -100,26 +106,6 @@ ms.date: 03/07/2019
         </div>
     </a>
 </li>
-<!-- Batch scoring of Spark models on Azure Databricks -->
-<li style="display: flex; flex-direction: column;">
-    <a href="./ai/batch-scoring-databricks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="../_images/icons/databricks.png" height="140px" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure Databricks에서 Spark 모델의 일괄 처리 점수 매기기</h3>
-                        <p>Azure Databricks를 사용하여 Apache Spark 분류 모델의 일괄 처리 점수 매기기를 위해 확장 가능한 솔루션을 빌드합니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
 <!-- Real-time scoring of Python and deep learning models -->
 <li style="display: flex; flex-direction: column;">
     <a href="./ai/realtime-scoring-python.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
@@ -140,6 +126,26 @@ ms.date: 03/07/2019
         </div>
     </a>
 </li>
+<!-- Batch scoring of R machine learning models -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/batch-scoring-R-models.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/logo-r.svg" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>R 기계 학습 모델의 일괄 처리 채점</h3>
+                        <p>Azure Batch를 사용하여 R 모델의 일괄 처리 채점을 수행합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
 <!-- Real-time scoring of R machine learning models -->
 <li style="display: flex; flex-direction: column;">
     <a href="./ai/realtime-scoring-r.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
@@ -152,8 +158,28 @@ ms.date: 03/07/2019
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>R 기계 학습 모델의 실시간 점수 매기기</h3>
+                        <h3>R 기계 학습 모델의 실시간 채점</h3>
                         <p>AKS(Azure Kubernetes Service)에서 실행되는 Microsoft Machine Learning Server를 사용하여 R에서 실시간 예측 서비스를 구현합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</li>
+<!-- Batch scoring of Spark models on Azure Databricks -->
+<li style="display: flex; flex-direction: column;">
+    <a href="./ai/batch-scoring-databricks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
+        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
+            <div class="cardPadding" style="display: flex;">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="../_images/icons/databricks.png" height="140px" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Azure Databricks에서 Spark 모델의 일괄 처리 점수 매기기</h3>
+                        <p>Azure Databricks를 사용하여 Apache Spark 분류 모델의 일괄 처리 점수 매기기를 위해 확장 가능한 솔루션을 빌드합니다.</p>
                     </div>
                 </div>
             </div>
