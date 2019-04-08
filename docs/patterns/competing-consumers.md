@@ -10,11 +10,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: ea3f48971a78f59ad6575b055278aab449fa26a1
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244474"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485233"
 ---
 # <a name="competing-consumers-pattern"></a>경쟁 소비자 패턴
 
@@ -177,7 +177,7 @@ private void OptionsOnExceptionReceived(object sender,
 }
 ```
 
-Azure에서 사용할 수 있는 것과 같은 자동 크기 조정 기능은 큐 길이가 변동될 때 역할 인스턴스를 시작하고 중지하는 데 사용할 수 있습니다. 자세한 내용은 [자동 크기 조정 지침](https://msdn.microsoft.com/library/dn589774.aspx)을 참조하세요. 또한 역할 인스턴스와 작업자 프로세스 사이에 일대일 대응 관계를 유지할 필요가 없습니다(하나의 역할 인스턴스는 여러 작업자 프로세스를 구현할 수 있음). 자세한 내용은 [계산 리소스 통합 패턴](./compute-resource-consolidation.md)을 참조하세요.
+Azure에서 사용할 수 있는 것과 같은 자동 크기 조정 기능은 큐 길이가 변동될 때 역할 인스턴스를 시작하고 중지하는 데 사용할 수 있습니다. 자세한 내용은 [자동 크기 조정 지침](https://msdn.microsoft.com/library/dn589774.aspx)을 참조하세요. 또한 역할 인스턴스와 작업자 프로세스 사이에 일대일 대응 관계를 유지할 필요가 없습니다(하나의 역할 인스턴스는 여러 작업자 프로세스를 구현할 수 있음). 자세한 내용은 [Compute 리소스 통합 패턴](./compute-resource-consolidation.md)을 참조하세요.
 
 ## <a name="related-patterns-and-guidance"></a>관련 패턴 및 지침
 

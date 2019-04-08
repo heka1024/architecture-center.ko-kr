@@ -6,12 +6,12 @@ ms.date: 04/11/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: 66f1431f45a0c9accf3a8227fa8cbb5966568372
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: e2b89fa51abdb7be6124ded6e64889b5b54854a4
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248014"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487902"
 ---
 # <a name="migrate-an-azure-cloud-services-application-to-azure-service-fabric"></a>Azure Service Fabric으로 Azure Cloud Services 애플리케이션 마이그레이션 
 
@@ -225,7 +225,7 @@ Service Fabric 애플리케이션에는 다음과 같은 구성 파일이 들어
 
 ![](./images/tailspin-cluster.png)
 
-Service Fabric 클러스터가 [VM 확장 집합][vm-scale-sets]에 배포되었습니다. 크기 집합은 동일한 VM 집합을 배포하고 관리하는 데 사용할 수 있는 Azure Compute 리소스입니다. 
+Service Fabric 클러스터가 [VM 확장 집합][vm-scale-sets]에 배포되었습니다. 크기 집합은 동일한 VM 세트를 배포하고 관리하는 데 사용할 수 있는 Azure Compute 리소스입니다. 
 
 앞서 언급했듯이 보안상의 이유로 Kestrel 웹 서버에는 역방향 프록시가 필요합니다. 이 다이어그램에는 다양한 계층 7 부하 분산 기능을 제공하는 Azure 서비스인 [Azure Application Gateway][application-gateway]가 나와 있습니다. 이 게이트웨이는 역방향 프록시 서비스 역할을 하며 클라이언트 연결을 종료하고 백 엔드 엔드포인트로 요청을 전달합니다. nginx와 같은 다양한 역방향 프록시 솔루션을 사용할 수도 있습니다.  
 
@@ -309,7 +309,7 @@ Azure에 배포할 때 각 노드 형식이 별도 VM 확장 집합에 배포됩
 [cloud-service-autoscale]: /azure/cloud-services/cloud-services-how-to-scale-portal
 [cloud-service-config]: /azure/cloud-services/cloud-services-model-and-package
 [cloud-service-endpoints]: /azure/cloud-services/cloud-services-enable-communication-role-instances#worker-roles-vs-web-roles
-[kestrel]: /aspnet/core/fundamentals/servers/kestrel
+[kestrel]: https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel
 [lb-probes]: /azure/load-balancer/load-balancer-custom-probe-overview
 [owin]: https://www.asp.net/aspnet/overview/owin-and-katana
 [refactor-surveys]: refactor-migrated-app.md

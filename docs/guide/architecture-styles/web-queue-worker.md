@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
 ms.openlocfilehash: b471d270af09df7ffd58dfdd49e7d03d05bfe582
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244594"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54488123"
 ---
 # <a name="web-queue-worker-architecture-style"></a>웹 큐 작업자 아키텍처 스타일
 
@@ -35,7 +35,7 @@ ms.locfileid: "58244594"
 
 ## <a name="when-to-use-this-architecture"></a>이 아키텍처를 사용하는 경우
 
-일반적으로 웹 큐 작업자 아키텍처는 관리되는 계산 서비스(Azure App Service 또는 Azure Cloud Services)를 사용하여 구현됩니다.
+일반적으로 웹 큐 작업자 아키텍처는 관리되는 컴퓨팅 서비스(Azure App Service 또는 Azure Cloud Services)를 사용하여 구현됩니다.
 
 다음과 같은 경우 이 아키텍처 스타일을 고려합니다.
 

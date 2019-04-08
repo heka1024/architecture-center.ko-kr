@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 89434c0ce72b9f061e4b092354b1dcbaf683b7c6
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: c61758494435f61814953ab5ba48d8fed1e709ab
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58346317"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897595"
 ---
 # <a name="azure-for-aws-professionals"></a>AWS 전문가를 위한 Azure
 
@@ -30,7 +30,7 @@ Azure와 AWS는 시간에 관계없이 각 기능을 독립적으로 개발했�
 
 ## <a name="overview"></a>개요
 
-AWS와 마찬가지로, Microsoft Azure는 핵심 계산, 저장소, 데이터베이스 및 네트워킹 서비스 집합을 중심으로 빌드됩니다. 두 플랫폼이 제공하는 제품과 서비스의 기본적인 사항은 동일한 경우가 많습니다. AWS와 Azure 모두 Windows 또는 Linux 호스트를 기반으로 고가용성 솔루션을 빌드할 수 있습니다. 따라서 Linux 및 OSS 기술을 사용하여 개발하는 데 익숙한 분들은 어느 플랫폼으로도 작업을 수행할 수 있습니다.
+AWS와 마찬가지로, Microsoft Azure는 핵심 계산, 스토리지, 데이터베이스 및 네트워킹 서비스 세트를 중심으로 빌드됩니다. 두 플랫폼이 제공하는 제품과 서비스의 기본적인 사항은 동일한 경우가 많습니다. AWS와 Azure 모두 Windows 또는 Linux 호스트를 기반으로 고가용성 솔루션을 빌드할 수 있습니다. 따라서 Linux 및 OSS 기술을 사용하여 개발하는 데 익숙한 분들은 어느 플랫폼으로도 작업을 수행할 수 있습니다.
 
 두 플랫폼의 기능은 유사하지만, 기능을 제공하는 리소스는 종종 다르게 구성됩니다. 솔루션을 빌드하는 데 필요한 서비스 간에 항상 정확한 일대일 관계가 성립하는 것은 아닙니다. 특정 서비스가 한 플랫폼에만 제공되고 다른 플랫폼에는 제공되지 않는 경우가 있습니다. [Azure 및 AWS 서비스 비교 차트](./services.md)를 참조하세요.
 
@@ -69,7 +69,7 @@ AWS 계정과 마찬가지로, 구독의 기본 서비스 할당량 및 제한�
 
 ## <a name="resource-management"></a>리소스 관리
 
-Azure에서 말하는 "리소스"라는 용어는 AWS와 똑같은 의미로 사용됩니다. 즉, 모든 계산 인스턴스, 저장소 개체, 네트워킹 디바이스 또는 플랫폼 내에서 만들거나 구성할 수 있는 기타 엔터티를 의미합니다.
+Azure에서 말하는 "리소스"라는 용어는 AWS와 똑같은 의미로 사용됩니다. 즉, 모든 컴퓨팅 인스턴스, 스토리지 개체, 네트워킹 디바이스 또는 플랫폼 내에서 만들거나 구성할 수 있는 기타 엔터티를 의미합니다.
 
 Azure 리소스는 두 가지 모델, 즉 [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) 또는 기존 Azure [클래식 배포 모델](/azure/azure-resource-manager/resource-manager-deployment-model) 중 하나를 사용하여 배포 및 관리됩니다. 모든 새 리소스는 Resource Manager 모델을 사용하여 만듭니다.
 
@@ -169,7 +169,7 @@ Azure [지역 중복 저장소](/azure/storage/common/storage-redundancy-grs)는
 
 다음 단원에서는 AWS 및 Azure 플랫폼에서 자주 사용되는 기능과 서비스가 서로 어떻게 다른지 간략하게 설명합니다.
 
-### <a name="compute-services"></a>Compute 서비스
+### <a name="compute-services"></a>컴퓨팅 서비스
 
 #### <a name="ec2-instances-and-azure-virtual-machines"></a>EC2 인스턴스 및 Azure 가상 머신
 
@@ -209,9 +209,9 @@ Azure의 자동 크기 조정은 다음 두 서비스에서 처리합니다.
 
 [Azure Kubernetes Service](/azure/aks/intro-kubernetes)는 Kubernetes를 통해 관리형 Docker 컨테이너를 지원합니다.
 
-#### <a name="other-compute-services"></a>기타 계산 서비스
+#### <a name="other-compute-services"></a>기타 컴퓨팅 서비스
 
-Azure는 AWS와 약간 차이가 있는 여러 계산 서비스를 제공합니다.
+Azure는 AWS와 약간 차이가 있는 여러 컴퓨팅 서비스를 제공합니다.
 
 - [Azure Batch](/azure/batch/batch-technical-overview)를 사용하면 확장 가능한 가상 머신 컬렉션에서 계산 집약적인 작업을 관리할 수 있습니다.
 
@@ -300,9 +300,9 @@ Azure는 [ExpressRoute](https://azure.microsoft.com/documentation/services/expre
 
 Azure의 AWS RDS(관계형 데이터베이스 서비스)에 해당하는 몇 가지 다른 관계형 데이터베이스 서비스를 제공합니다.
 
-- [SQL Database](/azure/sql-database/sql-database-technical-overview)
-- [Azure Database for MySQL](/azure/mysql/overview)
-- [Azure Database for PostgreSQL](/azure/postgresql/overview)
+- [SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)
+- [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview)
+- [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview)
 
 [SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/), [Oracle](https://azure.microsoft.com/campaigns/oracle/) 및 [MySQL](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-classic-mysql-2008r2/) 같은 다른 데이터베이스 엔진은 Azure VM 인스턴스를 사용하여 배포할 수 있습니다.
 

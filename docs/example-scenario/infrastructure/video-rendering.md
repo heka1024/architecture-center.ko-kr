@@ -10,11 +10,11 @@ ms.subservice: example-scenario
 ms.custom: fasttrack
 social_image_url: /azure/architecture/example-scenario/infrastructure/media/architecture-video-rendering.png
 ms.openlocfilehash: 39b411eacaa1e0f400b59a099e9aa21b1159c921
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58245754"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908458"
 ---
 # <a name="3d-video-rendering-on-azure"></a>Azure의 3D 비디오 렌더링
 
@@ -63,7 +63,7 @@ Azure Batch는 다음 Azure 기술을 기반으로 합니다.
 - 애플리케이션이 메모리에 바인딩되어 실행되고 있나요?
 - 애플리케이션에서 GPU를 사용해야 하나요?
 - 당황스러울 정도의 병렬 작업 유형이거나 긴밀하게 결합된 작업에 대한 Infiniband 연결이 필요한가요?
-- 계산 노드의 저장소에 액세스하려면 빠른 I/O가 필요합니다.
+- 계산 노드의 스토리지에 액세스하려면 빠른 I/O가 필요합니다.
 
 Azure에는 위의 애플리케이션 요구 사항을 모두 처리할 수 있는 광범위한 VM 크기가 있으며, 일부는 HPC에만 관련되지만 가장 작은 크기조차도 효과적인 그리드 구현을 제공하는 데 활용할 수 있습니다.
 

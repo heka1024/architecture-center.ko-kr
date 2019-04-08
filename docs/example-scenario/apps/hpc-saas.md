@@ -10,11 +10,11 @@ ms.subservice: example-scenario
 ms.custom: HPC
 social_image_url: /azure/architecture/example-scenario/apps/media/architecture-hpc-saas.png
 ms.openlocfilehash: bd38bd0042fceeab6efe04d7b6d1477d17ada7f5
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58249638"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908480"
 ---
 # <a name="a-computer-aided-engineering-service-on-azure"></a>Azure의 컴퓨터 지원 엔지니어링 서비스
 
@@ -22,7 +22,7 @@ ms.locfileid: "58249638"
 
 이 예제에서는 엔지니어링 회사 및 제조 기업에 CAE(Computer-Aided Engineering) 애플리케이션을 제공하는 엔지니어링 소프트웨어 공급자를 보여줍니다. CAE 솔루션은 혁신을 가능하게 하고, 개발 시간을 줄이고, 제품의 전체 디자인 수명에서 비용을 절감합니다. 이러한 솔루션은 상당한 계산 리소스를 요구하며 대량의 데이터를 자주 처리합니다. 온-프레미스 HPC 어플라이언스 또는 고성능 워크스테이션은 비용이 많이 들기 때문에 소규모 엔지니어링 회사, 기업가 및 학생이 사용하기에는 부담이 큽니다.
 
-이 회사는 클라우드 기반 HPC 기술이 지원되는 SaaS 플랫폼을 빌드하여 애플리케이션 시장을 확장하기를 원합니다. 고객은 필요한 만큼만 계산 리소스 요금을 지불할 수 있어야 하며, 그렇지 않으면 비용이 매우 많이 드는 대규모 계산 성능을 이용해야 합니다.
+이 회사는 클라우드 기반 HPC 기술이 지원되는 SaaS 플랫폼을 빌드하여 애플리케이션 시장을 확장하기를 원합니다. 고객은 필요한 만큼만 계산 리소스 요금을 지불할 수 있어야 하며, 그렇지 않으면 비용이 매우 많이 드는 대규모 계산 능력을 이용해야 합니다.
 
 이 회사의 목표는 다음과 같습니다.
 
@@ -76,13 +76,13 @@ ms.locfileid: "58249638"
 
 다음 고려 사항은 이 솔루션의 비용 중 상당 부분을 차지합니다.
 
-- Azure 가상 머신 비용은 추가 인스턴스가 프로비전될 때마다 선형으로 증가합니다. 할당 취소된 가상 머신은 저장소 비용만 발생시키고 계산 비용은 발생시키지 않습니다. 이처럼 할당 취소된 머신은 수요가 증가할 때 다시 할당할 수 있습니다.
+- Azure 가상 머신 비용은 추가 인스턴스가 프로비전될 때마다 선형으로 증가합니다. 할당 취소된 가상 머신은 스토리지 비용만 발생시키고 계산 비용은 발생시키지 않습니다. 이처럼 할당 취소된 머신은 수요가 증가할 때 다시 할당할 수 있습니다.
 - Azure Kubernetes Services 비용은 워크로드를 지원하기 위해 선택한 VM 유형에 따라 결정됩니다. 비용은 클러스터의 VM 수에 따라 선형적으로 증가합니다.
 
 ## <a name="next-steps"></a>다음 단계
 
 - [Altair 고객 사례][source-document]를 읽어봅니다. 이 예제 시나리오는 이 고객의 아키텍처 버전을 기반으로 합니다.
-- Azure에 제공되는 다른 [큰 계산 솔루션](https://azure.microsoft.com/solutions/big-compute)을 검토합니다.
+- Azure에 제공되는 다른 [빅 컴퓨팅 솔루션](https://azure.microsoft.com/solutions/big-compute)을 검토합니다.
 
 <!-- links -->
 [architecture]: ./media/architecture-hpc-saas.png

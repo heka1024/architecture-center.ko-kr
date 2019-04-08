@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 76a101b76497ae2b2aacff973175bb0fe4703d9e
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58245874"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482445"
 ---
 # <a name="choosing-a-data-pipeline-orchestration-technology-in-azure"></a>Azure의 데이터 파이프라인 오케스트레이션 기술 선택
 
@@ -25,7 +25,7 @@ Azure에서 다음 서비스 및 도구는 파이프라인 오케스트레이션
 - [HDInsight의 Oozie](/azure/hdinsight/hdinsight-use-oozie-linux-mac)
 - [SSIS(SQL Server Integration Services)](/sql/integration-services/sql-server-integration-services)
 
-이러한 서비스 및 도구는 서로 독립적으로 사용되거나, 함께 사용되어 하이브리드 솔루션을 생성할 수 있습니다. 예를 들어, Azure Data Factory V2의 IR(Integration Runtime)은 기본적으로 관리되는 Azure 계산 환경에서 SSIS 패키지를 실행할 수 있습니다. 이러한 서비스의 경우 일부 기능은 중복되지만 몇 가지 핵심적인 차이점이 있습니다.
+이러한 서비스 및 도구는 서로 독립적으로 사용되거나, 함께 사용되어 하이브리드 솔루션을 생성할 수 있습니다. 예를 들어, Azure Data Factory V2의 IR(Integration Runtime)은 기본적으로 관리되는 Azure 컴퓨팅 환경에서 SSIS 패키지를 실행할 수 있습니다. 이러한 서비스의 경우 일부 기능은 중복되지만 몇 가지 핵심적인 차이점이 있습니다.
 
 ## <a name="key-selection-criteria"></a>주요 선택 조건
 

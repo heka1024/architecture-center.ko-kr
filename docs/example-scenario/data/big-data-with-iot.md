@@ -10,11 +10,11 @@ ms.subservice: example-scenario
 ms.custom: IoT, data-analytics
 social_image_url: /azure/architecture/example-scenario/data/media/architecture-big-data-with-iot.png
 ms.openlocfilehash: bf963c0467acd4ecbb4bdca6272385d7532167f2
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244774"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908462"
 ---
 # <a name="iot-and-data-analytics-in-the-construction-industry"></a>건축 산업에서 IoT 및 데이터 분석
 
@@ -74,7 +74,7 @@ IoT Hub 및 HDInsight 같은 관리되는 Azure 서비스를 사용하여 고객
 - [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)는 Azure에 최적화된 Apache Spark 기반 분석 플랫폼입니다. Azure와 통합되어 원클릭 설정, 능률적인 워크플로, 대화형 공동 작업 영역을 제공합니다.
 - [Data Lake Storage](/azure/storage/data-lake-storage)는 Blob 스토리지를 대체합니다. 이 시나리오에서는 대상 지역에서 Data Lake Storage를 사용할 수 없습니다.
 - [웹앱](/azure/app-service)을 사용하여 건설 결과 데이터를 수집하는 웹 서비스를 호스트할 수도 있습니다.
-- 다양한 기술 옵션을 통해 실시간 메시지 수집, 데이터 저장, 스트림 처리, 분석 데이터 저장, 분석 및 보고를 수행할 수 있습니다. 이러한 옵션, 기능 및 주요 선택 조건에 대한 개요는 Azure 데이터 아키텍처 가이드의 [빅 데이터 아키텍처: 실시간 처리](/azure/architecture/data-guide/technology-choices/real-time-ingestion)를 참조하세요.
+- 다양한 기술 옵션을 통해 실시간 메시지 수집, 데이터 저장, 스트림 처리, 분석 데이터 저장, 분석 및 보고를 수행할 수 있습니다. 이러한 옵션, 기능 및 주요 선택 조건에 대한 개요는 [Azure 데이터 아키텍처 가이드](/azure/architecture/data-guide)의 [빅 데이터 아키텍처: 실시간 처리](/azure/architecture/data-guide/technology-choices/real-time-ingestion)를 참조하세요.
 
 ## <a name="considerations"></a>고려 사항
 
@@ -86,7 +86,7 @@ Azure의 오픈 소스 기술 지원 덕분에 고객이 기존 직원 기술을
 
 다음 고려 사항은 이 솔루션의 비용 중 상당 부분을 차지합니다.
 
-- Azure 가상 머신 비용은 추가 인스턴스가 프로비전될 때마다 선형으로 증가합니다. 할당 취소된 가상 머신은 저장소 비용만 발생시키고 계산 비용은 발생시키지 않습니다. 이처럼 할당 취소된 머신은 수요가 증가할 때 다시 할당할 수 있습니다.
+- Azure 가상 머신 비용은 추가 인스턴스가 프로비전될 때마다 선형으로 증가합니다. 할당 취소된 가상 머신은 스토리지 비용만 발생시키고 계산 비용은 발생시키지 않습니다. 이처럼 할당 취소된 머신은 수요가 증가할 때 다시 할당할 수 있습니다.
 - [IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub) 비용은 프로비전된 IoT 단위 수와 선택한 서비스 계층에 따라 달라지며, 이에 따라 단위당 허용되는 일별 메시지 수가 결정됩니다.
 - [Stream Analytics](https://azure.microsoft.com/pricing/details/stream-analytics)는 데이터를 서비스로 처리하는 데 필요한 스트리밍 단위의 개수로 가격이 결정됩니다.
 

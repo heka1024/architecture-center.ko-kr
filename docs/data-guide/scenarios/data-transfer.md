@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: c58d06813e3a500c6bb1b6c7889e65f401be6c33
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244894"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484536"
 ---
 # <a name="transferring-data-to-and-from-azure"></a>Azure에서의 데이터 전송
 
@@ -63,7 +63,7 @@ Azure에 물리적 방식으로 데이터를 전송하는 두 가지 옵션은 �
 
 ## <a name="data-pipeline"></a>데이터 파이프라인
 
-**Azure Data Factory**. [Azure Data Factory](/azure/data-factory/)는 다양한 Azure 서비스, 온-프레미스 또는 두 환경의 조합 간에 정기적으로 파일을 전송하는 데 가장 적합한 관리되는 서비스입니다. Azure Data Factory를 사용하여 서로 다른 데이터 저장소의 데이터를 수집하는 데이터 기반 워크플로(파이프라인이라고 함)를 만들고 예약할 수 있습니다. Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics 및 Azure Machine Learning과 같은 계산 서비스를 사용하여 데이터를 처리하고 변환할 수 있습니다. 데이터 이동 및 데이터 변환을 [조정](../technology-choices/pipeline-orchestration-data-movement.md)하고 자동화하기 위한 데이터 기반 워크플로를 만듭니다.
+**Azure Data Factory**. [Azure Data Factory](/azure/data-factory/)는 다양한 Azure 서비스, 온-프레미스 또는 두 환경의 조합 간에 정기적으로 파일을 전송하는 데 가장 적합한 관리되는 서비스입니다. Azure Data Factory를 사용하여 서로 다른 데이터 저장소의 데이터를 수집하는 데이터 기반 워크플로(파이프라인이라고 함)를 만들고 예약할 수 있습니다. Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics 및 Azure Machine Learning과 같은 컴퓨팅 서비스를 사용하여 데이터를 처리하고 변환할 수 있습니다. 데이터 이동 및 데이터 변환을 [조정](../technology-choices/pipeline-orchestration-data-movement.md)하고 자동화하기 위한 데이터 기반 워크플로를 만듭니다.
 
 ## <a name="key-selection-criteria"></a>주요 선택 조건
 

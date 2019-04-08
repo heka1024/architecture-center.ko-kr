@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: checklist
 ms.openlocfilehash: 2e0c337cb0a5f343ae3dd94ae209d01f063cab35
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244154"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483593"
 ---
 # <a name="availability-checklist"></a>가용성 검사 목록
 
@@ -21,7 +21,7 @@ ms.locfileid: "58244154"
 
 ## <a name="application-design"></a>애플리케이션 설계
 
-**모든 단일 지점 장애를 방지합니다.**  모든 구성 요소, 서비스, 리소스 및 계산 인스턴스는 여러 인스턴스로 배포하여 단일 실패 지점이 가용성에 영향을 주지 않도록 해야 합니다. 여기에 인증 메커니즘을 포함합니다. 여러 인스턴스를 사용한 구성이 가능하도록 애플리케이션을 설계하고 플랫폼이 자동으로 이를 수행하지 않는 곳에서 자동으로 오류를 검색하며 실패하지 않은 인스턴스에 요청을 리디렉션합니다.
+**모든 단일 지점 장애를 방지합니다.** 모든 구성 요소, 서비스, 리소스 및 컴퓨팅 인스턴스는 여러 인스턴스로 배포하여 단일 실패 지점이 가용성에 영향을 주지 않도록 해야 합니다. 여기에 인증 메커니즘을 포함합니다. 여러 인스턴스를 사용한 구성이 가능하도록 애플리케이션을 설계하고 플랫폼이 자동으로 이를 수행하지 않는 곳에서 자동으로 오류를 검색하며 실패하지 않은 인스턴스에 요청을 리디렉션합니다.
 
 **서비스 수준 목적별로 워크로드를 분해합니다.**  서비스가 중요하고 덜 중요한 워크로드로 구성되면 다르게 관리하도록 하고 해당 가용성 요구 사항에 맞게 서비스 기능 및 인스턴스 수를 지정합니다.
 

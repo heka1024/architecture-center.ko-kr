@@ -10,11 +10,11 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: c0d507a1826716f6d4f2bab9a894be2fe941f3a3
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58243554"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54480745"
 ---
 # <a name="valet-key-pattern"></a>발레 키 패턴
 
@@ -86,7 +86,7 @@ ms.locfileid: "58243554"
 
 - 클라이언트가 규칙적으로 데이터를 업로드하거나 다운로드할 때, 특히 대용량이거나 작업이 큰 파일을 포함할 때
 
-- 호스팅 제한이나 비용 고려 때문에 애플리케이션이 사용 가능한 계산 리소스를 제한할 때. 이 시나리오에서, 이 패턴은 훨씬 더 유용한데, 데이터의 업로드나 다운로드가 동시에 많은 경우, 데이터 전송으로 생기는 애플리케이션의 부담을 덜어주기 때문입니다.
+- 호스팅 제한이나 비용 고려 때문에 애플리케이션에 사용 가능한 계산 리소스가 제한된 경우 이 시나리오에서, 이 패턴은 훨씬 더 유용한데, 데이터의 업로드나 다운로드가 동시에 많은 경우, 데이터 전송으로 생기는 애플리케이션의 부담을 덜어주기 때문입니다.
 
 - 데이터가 원격 데이터 저장소나 다른 데이터센터에 저장될 때. 애플리케이션이 게이트키퍼 역할을 해야 할 경우, 데이터센터 또는 클라이언트와 애플리케이션 간, 그 다음 애플리케이션과 데이터 저장소 간의 공용 또는 개인 네트워크에서 데이터를 전송하는 추가 대역에 대한 요금이 발생할 수 있습니다.
 
@@ -166,7 +166,7 @@ public class ValuesController : ApiController
 
 - 이 패턴의 사용을 보여주는 예제는 [GitHub](https://github.com/mspnp/cloud-design-patterns/tree/master/valet-key)에서 확인할 수 있습니다.
 - [게이트키퍼 패턴](./gatekeeper.md) 이 패턴은 클라이언트와 애플리케이션 또는 서비스 간 브로커 역할을 하는 전용 호스트 인스턴스를 사용하여 애플리케이션 및 서비스를 보호하는 데 발레 키 패턴과 함께 사용될 수 있습니다. 게이트키퍼는 요청의 유효성을 검사하고 삭제하고, 클라이언트와 애플리케이션 간에 요청 및 데이터를 전달합니다. 보안의 추가적인 계층을 제공하고 공격에 노출되는 시스템 부분을 줄일 수 있습니다.
-- [정적 콘텐츠 호스팅 패턴](./static-content-hosting.md). 정적 리소스를 클라이언트에 직접 전달할 수 있는 클라우드 기반 저장소 서비스에 배포하여 비용이 많이 드는 계산 인스턴스에 대한 요구를 줄이는 방법을 설명합니다. 리소스를 공개적으로 사용하려는 경우가 아니면 발레 키 패턴을 사용하여 보안을 유지할 수 있습니다.
+- [정적 콘텐츠 호스팅 패턴](./static-content-hosting.md). 정적 리소스를 클라이언트에 직접 전달할 수 있는 클라우드 기반 스토리지 서비스에 배포하여 비용이 많이 드는 컴퓨팅 인스턴스에 대한 요구를 줄이는 방법을 설명합니다. 리소스를 공개적으로 사용하려는 경우가 아니면 발레 키 패턴을 사용하여 보안을 유지할 수 있습니다.
 - [테이블 SAS(공유 액세스 서명), 큐 SAS 및 Blob SAS 업데이트 소개](https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas/)
 - [공유 액세스 서명 사용](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 - [Service Bus를 사용한 공유 액세스 서명 인증](/azure/service-bus-messaging/service-bus-sas)

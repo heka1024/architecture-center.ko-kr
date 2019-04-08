@@ -1,5 +1,5 @@
 ---
-title: 계산 리소스 통합 패턴
+title: Compute 리소스 통합 패턴
 titleSuffix: Cloud Design Patterns
 description: 여러 작업을 단일 계산 단위로 통합합니다.
 keywords: 디자인 패턴
@@ -10,13 +10,13 @@ ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ms.openlocfilehash: 4cd9b7f02ba3b2a9766a2493353da6b6488ba8a2
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244464"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485344"
 ---
-# <a name="compute-resource-consolidation-pattern"></a>계산 리소스 통합 패턴
+# <a name="compute-resource-consolidation-pattern"></a>Compute 리소스 통합 패턴
 
 [!INCLUDE [header](../_includes/header.md)]
 
@@ -74,7 +74,7 @@ Azure에서 이 문제는 자체 가상 환경에서 실행되는 Cloud Service,
 
 **안정적인 논리 아키텍처**. 작업의 코드를 각각 디자인하고 구현하여 작업을 실행하는 물리적 환경이 변하더라도 작업을 변경할 필요가 없도록 조치합니다.
 
-**기타 전략**. 여러 작업의 동시 실행에 관련된 비용을 줄이는 유일한 방법인 계산 리소스 통합이 효과적인 접근 방식으로 유지되려면 신중한 계획 수립과 모니터링이 필요합니다. 작업의 특성 및 작업을 실행하는 사용자가 있는 장소에 따라 다른 전략이 더 적절할 수 있습니다. 예를 들어 [계산 분할 지침](https://msdn.microsoft.com/library/dn589773.aspx)에서 설명하는 워크로드의 기능적 분해가 더 나은 옵션일 수 있습니다.
+**기타 전략**. 계산 리소스를 통합하는 것은 여러 작업을 동시에 실행하는 것과 관련된 비용을 줄이는 한가지 방법일 뿐입니다. 신중한 계획 수립과 모니터링이 필요합니다. 작업의 특성 및 작업을 실행하는 사용자가 있는 장소에 따라 다른 전략이 더 적절할 수 있습니다. 예를 들어 [계산 분할 지침](https://msdn.microsoft.com/library/dn589773.aspx)에서 설명하는 워크로드의 기능적 분해가 더 나은 옵션일 수 있습니다.
 
 ## <a name="when-to-use-this-pattern"></a>이 패턴을 사용해야 하는 경우
 

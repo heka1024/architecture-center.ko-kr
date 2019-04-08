@@ -7,11 +7,11 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.openlocfilehash: 6679ff620ca9e64036c02fce38608de38c57df93
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58246364"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54482176"
 ---
 # <a name="data-warehousing-and-data-marts"></a>데이터 웨어하우징 및 데이터 마트
 
@@ -98,7 +98,7 @@ MPP 시스템은 계산 노드(자체 CUP, 메모리 및 I/O 하위 시스템 �
 
 - 매우 큰 데이터 집합 또는 매우 복잡하고 오래 실행되는 쿼리로 작업하고 있나요? 그렇다면 MPP 옵션을 고려합니다.
 
-- 큰 데이터 집합의 경우 데이터 원본이 구조적인가요 아니면 반구조적인가요? 구조화되지 않은 데이터는 HDInsight의 Spark, Azure Databricks, HDInsight의 Hive LLAP 또는 Azure Data Lake Analytics와 같은 빅 데이터 환경에서 처리해야 할 수 있습니다. 이러한 모든 환경은 ELT(추출, 로드, 변환) 및 ETL(추출, 변환, 로드) 엔진으로 사용할 수 있습니다. 처리된 데이터를 구조화된 데이터로 출력하여 SQL Data Warehouse 또는 다른 옵션 중 하나로 보다 쉽게 로드할 수 있습니다. 구조화된 데이터의 경우, SQL Data Warehouse는 아주 높은 성능을 요구하는 계산 집약적 워크로드를 위해 “계산에 최적화”라고 지칭하는 성능 계층을 갖습니다.
+- 큰 데이터 집합의 경우 데이터 원본이 구조적인가요 아니면 반구조적인가요? 구조화되지 않은 데이터는 HDInsight의 Spark, Azure Databricks, HDInsight의 Hive LLAP 또는 Azure Data Lake Analytics와 같은 빅 데이터 환경에서 처리해야 할 수 있습니다. 이러한 모든 환경은 ELT(추출, 로드, 변환) 및 ETL(추출, 변환, 로드) 엔진으로 사용할 수 있습니다. 처리된 데이터를 구조화된 데이터로 출력하여 SQL Data Warehouse 또는 다른 옵션 중 하나로 보다 쉽게 로드할 수 있습니다. 구조화된 데이터의 경우, SQL Data Warehouse는 아주 높은 성능을 요구하는 계산 집약적 워크로드를 위해 [컴퓨팅 최적화]라고 지칭하는 성능 계층을 갖습니다.
 
 - 현재, 운영 데이터에서 기록 데이터를 분리하려고 하나요? 그렇다면 [오케스트레이션](../technology-choices/pipeline-orchestration-data-movement.md)이 필요한 옵션 중 하나를 선택합니다. 이것은 과도한 읽기 액세스에 최적화된 독립 실행형 웨어하우스로, 별도의 기록 데이터 저장소로 가장 적합합니다.
 
@@ -170,7 +170,7 @@ MPP 시스템은 계산 노드(자체 CUP, 메모리 및 I/O 하위 시스템 �
 
 |                         |           Azure SQL Database            |  가상 컴퓨터의 SQL Server  | SQL Data Warehouse |   HDInsight의 Apache Hive    |    HDInsight의 Hive LLAP     |
 |-------------------------|-----------------------------------------|-----------------------------------|--------------------|-------------------------------|-------------------------------|
-|     Authentication      | SQL/Azure AD(Azure Active Directory) | SQL / Azure AD / Active Directory |   SQL / Azure AD   | 로컬/Azure AD <sup>1</sup> | 로컬/Azure AD <sup>1</sup> |
+|     인증      | SQL/Azure AD(Azure Active Directory) | SQL / Azure AD / Active Directory |   SQL / Azure AD   | 로컬/Azure AD <sup>1</sup> | 로컬/Azure AD <sup>1</sup> |
 |      권한 부여      |                   예                   |                예                |        예         |              예              |       예 <sup>1</sup>        |
 |        감사         |                   예                   |                예                |        예         |              예              |       예 <sup>1</sup>        |
 | 휴지 상태의 암호화 |            예 <sup>2</sup>             |         예 <sup>2</sup>          |  예 <sup>2</sup>  |       예 <sup>2</sup>        |       예 <sup>1</sup>        |

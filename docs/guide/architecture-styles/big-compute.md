@@ -1,5 +1,5 @@
 ---
-title: 큰 계산 아키텍처 스타일
+title: 빅 컴퓨팅 아키텍처 스타일
 titleSuffix: Azure Application Architecture Guide
 description: Azure에서 큰 컴퓨팅 아키텍처의 이점, 과제 및 모범 사례를 설명합니다.
 author: MikeWasson
@@ -9,19 +9,19 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19, HPC
 ms.openlocfilehash: 56bd2ce010b56880e769ada4c6397391a73bbd1e
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244624"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54485760"
 ---
-# <a name="big-compute-architecture-style"></a>큰 계산 아키텍처 스타일
+# <a name="big-compute-architecture-style"></a>빅 컴퓨팅 아키텍처 스타일
 
 *큰 계산*이라는 용어는 수백 또는 수천 개의 번호 매기기 등 코어 수를 많이 요구하는 대규모 워크로드를 설명합니다. 시나리오에는 이미지 렌더링, 유체 역학, 재무 위험 모델링, 석유 탐색, 약 디자인 및 스트레스 분석 엔지니어링이 포함됩니다.
 
 ![큰 컴퓨팅 아키텍처 스타일의 논리 다이어그램](./images/big-compute-logical.png)
 
-큰 계산 애플리케이션의 몇 가지 일반적인 특성은 다음과 같습니다.
+빅 컴퓨팅 애플리케이션의 몇 가지 일반적인 특성은 다음과 같습니다.
 
 - 작업은 동시에 여러 코어에서 실행될 수 있는 개별 작업으로 분할될 수 있습니다.
 - 각 작업은 한정됩니다. 일부 입력을 사용하고, 일부 처리를 수행하고, 출력을 생성합니다. 전체 애플리케이션은 제한된 양의 시간(몇 분, 몇 일) 동안 실행됩니다. 일반적인 패턴에서는 갑자기 많은 수의 코어를 프로비전하고 애플리케이션이 완료되면 0으로 스핀 다운합니다.
@@ -51,7 +51,7 @@ ms.locfileid: "58244624"
 - 적절하게 수천 개의 코어 프로비전
 - 밀접하게 연결된 작업의 경우 더 많은 코어를 추가하면 반환을 줄일 수 있습니다. 최적의 코어 수를 찾기 위해 실험이 필요할 수 있습니다.
 
-## <a name="big-compute-using-azure-batch"></a>Azure Batch를 사용하는 큰 계산
+## <a name="big-compute-using-azure-batch"></a>Azure Batch를 사용하는 빅 컴퓨팅
 
 [Azure Batch][batch]는 대규모 HPC(고성능 컴퓨팅) 애플리케이션을 실행하기 위한 관리 서비스입니다.
 
@@ -59,7 +59,7 @@ Azure Batch를 사용하여 VM 풀을 구성하고, 애플리케이션 및 데�
 
 ![Azure Batch를 사용한 큰 컴퓨팅의 다이어그램](./images/big-compute-batch.png)
 
-## <a name="big-compute-running-on-virtual-machines"></a>Virtual Machines에서 실행되는 큰 계산
+## <a name="big-compute-running-on-virtual-machines"></a>Virtual Machines에서 실행되는 빅 컴퓨팅
 
 [Microsoft HPC Pack][hpc-pack]을 사용하여 VM의 클러스터를 관리하고 HPC 작업을 예약하고 모니터링할 수 있습니다. 이 접근 방식으로 VM 및 네트워크 인프라를 프로비전하고 관리해야 합니다. 기존 HPC 워크로드가 있고 그 중 일부 또는 모두를 Azure로 이동하려면 이 방법을 고려하세요. 전체 HPC 클러스터를 Azure로 이동하거나 HPC 클러스터 온-프레미스를 유지하면서 버스트 용량에 Azure를 사용할 수 있습니다. 자세한 내용은 [대규모 컴퓨팅 워크로드를 위한 Batch 및 HPC 솔루션][batch-hpc-solutions]을 참조하세요.
 

@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
 ms.openlocfilehash: 32ea1e7dc732c819783ad2fc06dbcffd75685d23
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58243084"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54483737"
 ---
 # <a name="design-to-scale-out"></a>규모 확장을 위한 디자인
 
@@ -31,7 +31,7 @@ ms.locfileid: "58243084"
 
 **리소스를 많이 사용하는 태스크 오프로드.** 사용자 요청을 처리하는 프런트 엔드의 부하를 최소화하기 위해 가능한 경우 많은 CPU 또는 I/O 리소스가 필요한 태스크를 [백그라운드 작업][background-jobs]으로 이동해야 합니다.
 
-**기본 제공 자동 크기 조정 기능 사용**. 기본적으로 자동 크기 조정을 지원하는 Azure 계산 서비스가 많습니다. 애플리케이션의 워크로드가 예측 가능하고 정기적인 경우 일정에 따라 확장합니다. 예를 들어 업무 시간 중에 확장합니다. 워크로드가 예측 불가능한 경우 CPU 또는 요청 큐 길이와 같은 성능 지표를 사용하여 자동 크기 조정을 트리거합니다. 자동 크기 조정 모범 사례는 [자동 크기 조정][autoscaling]을 참조하세요.
+**기본 제공 자동 크기 조정 기능 사용**. 기본적으로 자동 크기 조정을 지원하는 Azure 컴퓨팅 서비스가 많습니다. 애플리케이션의 워크로드가 예측 가능하고 정기적인 경우 일정에 따라 확장합니다. 예를 들어 업무 시간 중에 확장합니다. 워크로드가 예측 불가능한 경우 CPU 또는 요청 큐 길이와 같은 성능 지표를 사용하여 자동 크기 조정을 트리거합니다. 자동 크기 조정 모범 사례는 [자동 크기 조정][autoscaling]을 참조하세요.
 
 **중요 워크로드에 대해 적극적인 자동 크기 조정 고려**. 중요 워크로드의 경우 수요를 미리 예측하려고 합니다. 부하가 높은 경우 새 인스턴스를 빠르게 추가하여 추가 트래픽을 처리한 다음 점차 다시 축소하는 것이 좋습니다.
 

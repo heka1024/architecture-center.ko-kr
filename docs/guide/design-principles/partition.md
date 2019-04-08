@@ -9,11 +9,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
 ms.openlocfilehash: 76590d2a0c16df9d599e7d4a856a84b5e3bdcec8
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58241784"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54486015"
 ---
 # <a name="partition-around-limits"></a>한도에 맞춘 분할
 
@@ -41,7 +41,7 @@ ms.locfileid: "58241784"
 
 ## <a name="recommendations"></a>권장 사항
 
-**애플리케이션의 다른 부분 분할** 데이터베이는 분할에 적합한 후보임에 분명하지만, 저장소, 캐시, 큐 및 계산 인스턴스의 분할도 고려할 수 있습니다.
+**애플리케이션의 다른 부분 분할** 데이터베이는 분할에 적합한 후보임에 분명하지만, 스토리지, 캐시, 큐 및 컴퓨팅 인스턴스의 분할도 고려할 수 있습니다.
 
 **핫 스폿을 방지하도록 파티션 키 디자인** 데이터베이스를 분할해도, 하나의 분할된 데이터베이스가 요청의 대부분을 가져가므로 문제가 해결되지 않습니다. 이상적인 목표는 부하가 모든 파티션에 골고루 분산되는 것입니다. 예를 들어, 일부 문자가 좀 더 자주 사용되므로 고객 이름의 첫 문자가 아닌 고객 ID별로 해시를 수행합니다. 메시지 큐를 분할할 때도 같은 원칙이 적용됩니다. 큐 집합에서 메시지를 균등하게 분산하는 파티션 키를 선택합니다. 자세한 내용은 [분할][sharding]을 참조하세요.
 

@@ -10,15 +10,15 @@ ms.subservice: example-scenario
 ms.custom: fasttrack
 social_image_url: /azure/architecture/example-scenario/infrastructure/media/architecture-hpc-cfd.png
 ms.openlocfilehash: 6972b701a608351104c23459bc2c38029a5c8d3d
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58249588"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54908429"
 ---
 # <a name="running-computational-fluid-dynamics-cfd-simulations-on-azure"></a>Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션 실행
 
-CFD(계산 유체 역학) 시뮬레이션에는 특수 하드웨어와 함께 상당한 계산 시간이 필요합니다. 클러스터 사용량이 증가하면 시뮬레이션 시간 및 전반적인 그리드 사용량이 증가하여 예비 용량 및 긴 큐 시간 문제로 이어집니다. 물리적 하드웨어를 추가하는 방법은 비용이 많이 들고, 기업에서 발생하는 최대 사용량과 일치하지 않을 수 있습니다. Azure를 활용하면 자본 지출 없이 이러한 문제를 대부분 해결할 수 있습니다.
+CFD(계산 유체 역학) 시뮬레이션에는 특수 하드웨어와 함께 상당한 컴퓨팅 시간이 필요합니다. 클러스터 사용량이 증가하면 시뮬레이션 시간 및 전반적인 그리드 사용량이 증가하여 예비 용량 및 긴 큐 시간 문제로 이어집니다. 물리적 하드웨어를 추가하는 방법은 비용이 많이 들고, 기업에서 발생하는 최대 사용량과 일치하지 않을 수 있습니다. Azure를 활용하면 자본 지출 없이 이러한 문제를 대부분 해결할 수 있습니다.
 
 Azure는 GPU 및 CPU 가상 머신에서 CFD 작업을 실행하는 데 필요한 하드웨어를 제공합니다. RDMA(Remote Direct Memory Access)가 설정된 VM 크기는 짧은 대기 시간으로 MPI(메시지 전달 인터페이스) 통신이 가능한 FDR InfiniBand 기반 네트워킹을 제공합니다. Avere vFXT와 결합하면 엔터프라이즈 규모의 클러스터링 파일 시스템을 제공하므로 고객이 Azure에서 읽기 작업에 최대 처리량을 투입할 수 있습니다.
 
@@ -98,7 +98,7 @@ Avere vFXT 설치를 설정하고 구성하려면 [Avere 설치 및 구성 가�
 
 ## <a name="pricing"></a>가격
 
-CycleCloud 서버를 사용하여 HPC 구현을 실행하는 비용은 여러 가지 요인에 따라 달라집니다. 예를 들어 CycleCloud는 사용된 계산 시간에 따라 요금이 청구되며, 마스터 및 CycleCloud 서버는 일반적으로 일관적으로 할당 및 실행됩니다. 실행 노드를 실행하는 비용은 실행 시간 및 사용하는 크기에 따라 달라집니다. 또한 저장소 및 네트워킹에 대한 일반 Azure 요금이 적용됩니다.
+CycleCloud 서버를 사용하여 HPC 구현을 실행하는 비용은 여러 가지 요인에 따라 달라집니다. 예를 들어 CycleCloud는 사용된 컴퓨팅 시간에 따라 요금이 청구되며, 마스터 및 CycleCloud 서버는 일반적으로 일관적으로 할당 및 실행됩니다. 실행 노드를 실행하는 비용은 실행 시간 및 사용하는 크기에 따라 달라집니다. 또한 저장소 및 네트워킹에 대한 일반 Azure 요금이 적용됩니다.
 
 이 시나리오는 CFD 애플리케이션을 Azure에서 실행하는 방법을 보여주며, 이렇게 하려면 특정 VM 크기에서만 사용할 수 있는 RDMA 기능이 머신에 필요합니다. 다음은 확장 집합을 1개월 동안 하루에 8시간 연속으로 할당하고 데이터 1TB를 송신할 때 발생할 수 있는 비용 예제입니다. Azure CycleCloud 서버 및 Avere vFXT for Azure 설치에 대한 가격 책정도 포함되어 있습니다.
 

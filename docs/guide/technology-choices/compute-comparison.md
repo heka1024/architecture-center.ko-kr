@@ -1,7 +1,7 @@
 ---
-title: Azure 계산 서비스를 선택하기 위한 조건
+title: Azure 컴퓨팅 서비스를 선택하기 위한 조건
 titleSuffix: Azure Application Architecture Guide
-description: 여러 축에서 Azure 계산 서비스를 비교합니다.
+description: 여러 축에서 Azure 컴퓨팅 서비스를 비교합니다.
 author: MikeWasson
 ms.date: 08/08/2018
 ms.topic: guide
@@ -9,15 +9,15 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
 ms.openlocfilehash: 2b6b9b941bf7a3c0136b71ecb65bfe4b4a59e07b
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58245604"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484859"
 ---
-# <a name="criteria-for-choosing-an-azure-compute-service"></a>Azure 계산 서비스를 선택하기 위한 조건
+# <a name="criteria-for-choosing-an-azure-compute-service"></a>Azure 컴퓨팅 서비스를 선택하기 위한 조건
 
-*계산*이라는 용어는 애플리케이션이 실행되는 계산 리소스의 호스팅 모델을 말합니다. 아래 표에서는 다양한 축에 걸쳐 Azure 계산 서비스를 비교합니다. 애플리케이션에 사용할 계산 옵션을 선택할 때 아래 표를 참조하세요.
+*계산*이라는 용어는 애플리케이션이 실행되는 계산 리소스의 호스팅 모델을 말합니다. 아래 표에서는 다양한 축에 걸쳐 Azure 컴퓨팅 서비스를 비교합니다. 애플리케이션에 사용할 계산 옵션을 선택할 때 아래 표를 참조하세요.
 
 ## <a name="hosting-model"></a>호스팅 모델
 

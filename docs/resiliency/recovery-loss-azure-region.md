@@ -8,11 +8,11 @@ ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
 ms.openlocfilehash: 7f207bbc0bb0128126f9b828dc100d43553cb100
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58242714"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54487987"
 ---
 [!INCLUDE [header](../_includes/header.md)]
 
@@ -26,7 +26,7 @@ Azure는 물리적 및 논리적으로 지역이라는 단위로 구분됩니다
 
 ### <a name="resource-management"></a>리소스 관리
 
-각 대상 지역에 별도 클라우드 서비스를 만들고 각 클라우드 서비스에 배포 패키지를 게시하여 지역에 걸쳐 계산 인스턴스를 배포할 수 있습니다. 그러나 다른 지역의 클라우드 서비스에 트래픽을 분산시키면 애플리케이션 개발자 또는 트래픽 관리 서비스에서 구현해야 합니다.
+각 대상 지역에 별도 클라우드 서비스를 만들고 각 클라우드 서비스에 배포 패키지를 게시하여 지역에 걸쳐 컴퓨팅 인스턴스를 배포할 수 있습니다. 그러나 다른 지역의 클라우드 서비스에 트래픽을 분산시키면 애플리케이션 개발자 또는 트래픽 관리 서비스에서 구현해야 합니다.
 
 재해 복구의 사전에 배포할 예비 역할 인스턴스의 수를 결정하는 것은 용량 계획의 중요한 측면입니다. 대규모 보조 배포를 통해 필요할 때 용량을 사용할 수 있는지 확인할 수 있지만 사실상 비용은 두 배가 됩니다. 일반적인 패턴은 중요 서비스를 실행할 만큼의 크기인 소규모 보조 배포입니다. 소규모 보조 배포는 예약 용량에 대해 보조 환경의 구성을 테스트하는 좋은 방법입니다.
 
@@ -51,7 +51,7 @@ Azure는 물리적 및 논리적으로 지역이라는 단위로 구분됩니다
 
 ## <a name="virtual-machines"></a>가상 머신
 
-IaaS(infrastructure as a service) VM(가상 머신)의 복구는 여러 가지 면에서 PaaS(platform as a service) 계산 복구와 비슷합니다. 그러나 IaaS VM은 VM 및 VM 디스크 모두로 구성된다는 중요한 차이점이 있습니다.
+IaaS(infrastructure as a service) VM(가상 머신)의 복구는 여러 가지 면에서 PaaS(platform as a service) 컴퓨팅 복구와 비슷합니다. 그러나 IaaS VM은 VM 및 VM 디스크 모두로 구성된다는 중요한 차이점이 있습니다.
 
 - **Azure Backup을 사용하여 지역 백업에 일관된 애플리케이션을 만듭니다**.
   [Azure Backup](https://azure.microsoft.com/services/backup/) 을 사용하면 고객이 여러 VM 디스크에 일관된 애플리케이션을 만들고 지역에 백업을 복제하도록 지원할 수 있습니다. 생성 시 백업 자격 증명 모음을 지역에 복제하도록 선택하여 수행할 수 있습니다. 백업 자격 증명 모음의 복제를 생성 시 구성해야 합니다. 나중에 설정할 수 없습니다. 지역이 손실된 경우 Microsoft는 고객이 사용할 수 있는 백업을 만듭니다. 고객은 해당 구성된 복원 지점 중 하나를 복원할 수 있습니다.
@@ -82,7 +82,7 @@ GRS 및 RA-GRS 스토리지에 대한 자세한 내용은 [Azure Storage 복제]
 
 ### <a name="determining-if-a-geo-failover-has-occurred"></a>지역 장애 조치가 발생했는지 여부를 결정합니다.
 
-지역 장애 조치가 발생하는 경우 [Azure 서비스 상태 대시보드](https://azure.microsoft.com/status/)에 게시됩니다. 하지만 애플리케이션은 해당 저장소 계정에 대한 지리적 지역을 모니터링하여 이를 감지하는 자동화된 방법을 구현할 수 있습니다. 해당 저장소로 이동하는 지역에서 계산 리소스의 정품 인증과 같은 다른 복구 작업을 트리거하는 데 사용될 수 있습니다. [Storage 계정 속성 가져오기](https://msdn.microsoft.com/library/ee460802.aspx)를 사용하여 Service Management API에서 이를 쿼리할 수 있습니다. 관련 속성은 다음과 같습니다.
+지역 장애 조치가 발생하는 경우 [Azure 서비스 상태 대시보드](https://azure.microsoft.com/status/)에 게시됩니다. 하지만 애플리케이션은 해당 저장소 계정에 대한 지리적 지역을 모니터링하여 이를 감지하는 자동화된 방법을 구현할 수 있습니다. 해당 스토리지로 이동하는 지역에서 계산 리소스의 정품 인증과 같은 다른 복구 작업을 트리거하는 데 사용될 수 있습니다. [Storage 계정 속성 가져오기](https://msdn.microsoft.com/library/ee460802.aspx)를 사용하여 Service Management API에서 이를 쿼리할 수 있습니다. 관련 속성은 다음과 같습니다.
 
     <GeoPrimaryRegion>primary-region</GeoPrimaryRegion>
     <StatusOfPrimary>[Available|Unavailable]</StatusOfPrimary>
