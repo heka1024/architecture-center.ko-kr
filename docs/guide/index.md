@@ -5,11 +5,11 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.date: 08/30/2018
 ms.openlocfilehash: 651f59344e7785a8a23e7b56dd67b4c4a3044741
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58343733"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54484383"
 ---
 # <a name="azure-application-architecture-guide"></a>Azure 애플리케이션 아키텍처 가이드
 
@@ -69,7 +69,7 @@ Azure 애플리케이션 아키텍처 가이드는 아키텍처와 디자인에�
 
 ### <a name="technology-choices"></a>기술 선택
 
-2가지 기술에 대한 선택은 전체 아키텍처에 영향을 미치기 때문에 초기에 결정해야 합니다. 계산 서비스 및 데이터 저장소 선택이 여기에 해당됩니다. *계산*은 애플리케이션이 실행되는 계산 리소스의 호스팅 모델을 말합니다. *데이터 저장소*는 데이터베이스뿐만 아니라 메시지 큐, 캐시, 로그 및 애플리케이션이 저장소에 유지할 수 있는 모든 것을 포함합니다.
+2가지 기술에 대한 선택은 전체 아키텍처에 영향을 미치기 때문에 초기에 결정해야 합니다. 컴퓨팅 서비스 및 데이터 저장소 선택이 여기에 해당됩니다. *계산*은 애플리케이션이 실행되는 계산 리소스의 호스팅 모델을 말합니다. *데이터 저장소*는 데이터베이스뿐만 아니라 메시지 큐, 캐시, 로그 및 애플리케이션이 저장소에 유지할 수 있는 모든 것을 포함합니다.
 
 자세한 정보:
 

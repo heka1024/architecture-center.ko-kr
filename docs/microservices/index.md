@@ -1,192 +1,102 @@
 ---
-title: Azure에서 마이크로 서비스 구축
-description: Azure에서 마이크로서비스 아키텍처 디자인, 빌드 및 운영
-ms.date: 03/07/2019
-layout: LandingPage
-ms.topic: landing-page
-ms.openlocfilehash: e74d6f6098eb68c8bbd737cf3a047ce5de04327d
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+title: Kubernetes로 Azure에서 마이크로 서비스 설계, 구축 및 운영
+description: Azure에서 마이크로서비스 디자인, 빌드 및 운영
+author: MikeWasson
+ms.date: 10/23/2018
+ms.topic: guide
+ms.service: architecture-center
+ms.subservice: reference-architecture
+ms.custom: microservices
+ms.openlocfilehash: 90a6550264e5afd1fc2eda79eeff6557dc7c4163
+ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58346147"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55897731"
 ---
-# <a name="building-microservices-on-azure"></a>Azure에서 마이크로 서비스 구축
+# <a name="designing-building-and-operating-microservices-on-azure"></a><span data-ttu-id="d62ce-103">Azure에서 마이크로 서비스 설계, 구축 및 운영</span><span class="sxs-lookup"><span data-stu-id="d62ce-103">Designing, building, and operating microservices on Azure</span></span>
 
-<!-- markdownlint-disable MD033 -->
+![드론 배달 서비스의 다이어그램](./images/drone.svg)
 
-<img src="../_images/microservices.svg" style="float:left; margin-top:8px; margin-right:8px; max-width: 80px; max-height: 80px;"/>
+<span data-ttu-id="d62ce-105">마이크로 서비스는 복원력이 있고, 확장성이 뛰어나며, 독립적으로 배포할 수 있고, 신속하게 진화할 수 있는 클라우드 애플리케이션을 구축하는 데 널리 사용되는 아키텍처 스타일이 되었습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-105">Microservices have become a popular architectural style for building cloud applications that are resilient, highly scalable, independently deployable, and able to evolve quickly.</span></span> <span data-ttu-id="d62ce-106">하지만, 마이크로 서비스가 단순히 업계 유행어로만 남지 않으려면 애플리케이션을 설계하고 구축하는 데 있어 다른 접근 방식이 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-106">To be more than just a buzzword, however, microservices require a different approach to designing and building applications.</span></span>
 
-마이크로서비스는 복원력 있고 확장성이 뛰어나고 독립적으로 배포할 수 있고 신속하게 진화할 수 있는 애플리케이션을 빌드하는 데 널리 사용되는 아키텍처 스타일입니다. 하지만 성공적인 마이크로서비스 아키텍처를 만들려면 애플리케이션을 설계하고 구축하는 다른 방법이 필요합니다.
+<span data-ttu-id="d62ce-107">이어지는 본 문서에서는 Azure에서 마이크로 서비스 아키텍처를 구축하고 실행하는 방법을 살펴봅니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-107">In this set of articles, we explore how to build and run a microservices architecture on Azure.</span></span> <span data-ttu-id="d62ce-108">다룰 주제는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-108">Topics include:</span></span>
 
-<ul  class="panelContent cardsZ">
-<li style="display: flex; flex-direction: column;">
-    <a href="./introduction.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>마이크로서비스란?</h3>
-                        <p>마이크로서비스는 다른 아키텍처와 어떤 차이가 있으며 언제 사용하나요?</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="../guide/architecture-styles/microservices.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>마이크로 서비스 아키텍처 스타일</h3>
-                        <p>마이크로서비스 아키텍처 스타일에 대한 개략적인 개요</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-</ul>
+- <span data-ttu-id="d62ce-109">DDD(도메인 기반 디자인)를 사용하여 마이크로 서비스 아키텍처 디자인</span><span class="sxs-lookup"><span data-stu-id="d62ce-109">Using Domain Driven Design (DDD) to design a microservices architecture.</span></span>
+- <span data-ttu-id="d62ce-110">계산, 스토리지, 메시징 및 기타 디자인 요소에 적합한 Azure 기술 선택.</span><span class="sxs-lookup"><span data-stu-id="d62ce-110">Choosing the right Azure technologies for compute, storage, messaging, and other elements of the design.</span></span>
+- <span data-ttu-id="d62ce-111">마이크로 디자인 패턴 이해</span><span class="sxs-lookup"><span data-stu-id="d62ce-111">Understanding microservices design patterns.</span></span>
+- <span data-ttu-id="d62ce-112">복원력, 확장성 및 성능을 위한 디자인</span><span class="sxs-lookup"><span data-stu-id="d62ce-112">Designing for resiliency, scalability, and performance.</span></span>
+- <span data-ttu-id="d62ce-113">CI/CD 파이프라인 구축</span><span class="sxs-lookup"><span data-stu-id="d62ce-113">Building a CI/CD pipeline.</span></span>
 
-## <a name="examples-of-microservices-architectures"></a>마이크로서비스 아키텍처 예제
+<span data-ttu-id="d62ce-114">전체적으로 설명의 초점은 엔드투엔드 시나리오에 두고 있으며, 구체적으로 드론을 통해 패키지를 픽업하고 배송하는 일정을 고객이 설정할 수 있는 드론 배달 서비스를 살펴봅니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-114">Throughout, we focus on an end-to-end scenario: A drone delivery service that lets customers schedule packages to be picked up and delivered via drone.</span></span> <span data-ttu-id="d62ce-115">참조 구현을 위한 코드는 GitHub에서 찾을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-115">You can find the code for our reference implementation on GitHub</span></span>
 
-<ul  class="panelContent cardsZ">
-<li style="display: flex; flex-direction: column;">
-    <a href="../example-scenario/infrastructure/service-fabric-microservices.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Service Fabric을 사용하여 모놀리식 애플리케이션 분해</h3>
-                        <p>ASP.NET 웹 사이트를 마이크로서비스로 분해하는 반복 접근 방식입니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="../example-scenario/data/ecommerce-order-processing.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Azure의 확장성 있는 주문 처리</h3>
-                        <p>마이크로서비스를 통해 구현된 함수형 프로그래밍 모델을 사용하여 주문을 처리합니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-</ul>
+<span data-ttu-id="d62ce-116">[![GitHub](../_images/github.png) 참조 구현][drone-ri]</span><span class="sxs-lookup"><span data-stu-id="d62ce-116">[![GitHub](../_images/github.png) Reference implementation][drone-ri]</span></span>
 
-## <a name="build-a-microservices-application"></a>마이크로서비스 애플리케이션 빌드
+<span data-ttu-id="d62ce-117">먼저 기본부터 시작하겠습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-117">But first, let's start with fundamentals.</span></span> <span data-ttu-id="d62ce-118">마이크로 서비스란 무엇이며, 마이크로 서비스 아키텍처를 채택하는 경우 이점은 무엇일까요?</span><span class="sxs-lookup"><span data-stu-id="d62ce-118">What are microservices, and what are the advantages of adopting a microservices architecture?</span></span>
 
-<ul  class="panelContent cardsZ">
-<li style="display: flex; flex-direction: column;">
-    <a href="./model/domain-analysis.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>도메인 분석을 사용하여 마이크로서비스 모델링</h3>
-                        <p>도메인 분석을 사용하여 마이크로서비스 경계를 정의하면 마이크로서비스를 디자인할 때 자주 하는 실수를 피할 수 있습니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="../reference-architectures/microservices/aks.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>AKS(Azure Kubernetes Service)의 참조 아키텍처</h3>
-                        <p>이 참조 아키텍처는 대부분의 배포에서 시작점으로 사용할 수 있는 기본 AKS 구성을 보여줍니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="../reference-architectures/microservices/service-fabric.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Azure Service Fabric의 참조 아키텍처</h3>
-                        <p>이 참조 아키텍처는 대부분의 배포에서 시작점으로 사용할 수 있는 권장 구성을 보여줍니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./design/index.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>마이크로서비스 아키텍처 디자인</h3>
-                        <p>다음 문서에서는 AKS(Azure Kubernetes Service)를 사용하는 참조 구현을 기반으로 마이크로서비스 애플리케이션을 빌드하는 방법을 자세히 살펴봅니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./design/patterns.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>디자인 패턴</h3>
-                        <p>유용한 마이크로서비스 디자인 패턴입니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-</ul>
+<!-- markdownlint-disable MD026 -->
 
-## <a name="operate-microservices-in-production"></a>프로덕션 환경에서 마이크로서비스 작동
+## <a name="why-build-microservices"></a><span data-ttu-id="d62ce-119">마이크로 서비스를 구축하는 이유</span><span class="sxs-lookup"><span data-stu-id="d62ce-119">Why build microservices?</span></span>
 
-<ul  class="panelContent cardsZ">
-<li style="display: flex; flex-direction: column;">
-    <a href="./logging-monitoring.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>로깅 및 모니터링</h3>
-                        <p>마이크로서비스 아키텍처의 분산 특성 때문에 로깅 및 모니터링이 특히 중요합니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-<li style="display: flex; flex-direction: column;">
-    <a href="./ci-cd.md" style="display: flex; flex-direction: column; flex: 1 0 auto;">
-        <div class="cardSize" style="flex: 1 0 auto; display: flex;">
-            <div class="cardPadding" style="display: flex;">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>지속적인 통합 및 배포</h3>
-                        <p>CI/CD(지속적인 통합 및 지속적인 업데이트)는 성공적인 마이크로서비스 구현을 위한 핵심 요소입니다.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</li>
-</ul>
+<!-- markdownlint-enable MD026 -->
+
+<span data-ttu-id="d62ce-120">마이크로 서비스 아키텍처에서 애플리케이션은 작은 독립 서비스로 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-120">In a microservices architecture, the application is composed of small, independent services.</span></span> <span data-ttu-id="d62ce-121">다음은 마이크로 서비스를 정의하는 일부 특징입니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-121">Here are some of the defining characteristics of microservices:</span></span>
+
+- <span data-ttu-id="d62ce-122">각 마이크로 서비스는 단일 비즈니스 기능을 구현합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-122">Each microservice implements a single business capability.</span></span>
+- <span data-ttu-id="d62ce-123">마이크로 서비스는 소규모 개발자 팀이 작성하고 유지 관리할 수 있을 만큼 작습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-123">A microservice is small enough that a single small team of developers can write and maintain it.</span></span>
+- <span data-ttu-id="d62ce-124">마이크로 서비스는 별도의 프로세스로 실행되며 잘 정의된 API 또는 메시징 패턴을 통해 통신합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-124">Microservices run in separate processes, communicating through well-defined APIs or messaging patterns.</span></span>
+- <span data-ttu-id="d62ce-125">마이크로 서비스는 데이터 저장소 또는 데이터 스키마를 공유하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-125">Microservices do not share data stores or data schemas.</span></span> <span data-ttu-id="d62ce-126">각 마이크로 서비스는 자체 데이터를 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-126">Each microservice is responsible for managing its own data.</span></span>
+- <span data-ttu-id="d62ce-127">마이크로 서비스는 별도의 코드베이스를 가지고 있으며 소스 코드를 공유하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-127">Microservices have separate code bases, and do not share source code.</span></span> <span data-ttu-id="d62ce-128">하지만 공용 유틸리티 라이브러리를 사용할 수는 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-128">They may use common utility libraries, however.</span></span>
+- <span data-ttu-id="d62ce-129">각 마이크로 서비스는 다른 서비스와 독립적으로 배포 및 업데이트할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-129">Each microservice can be deployed and updated independently of other services.</span></span>
+
+<span data-ttu-id="d62ce-130">제대로 수행하면 마이크로 서비스는 여러 가지 유용한 이점을 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-130">Done correctly, microservices can provide a number of useful benefits:</span></span>
+
+- <span data-ttu-id="d62ce-131">**민첩성.**</span><span class="sxs-lookup"><span data-stu-id="d62ce-131">**Agility.**</span></span> <span data-ttu-id="d62ce-132">마이크로 서비스는 독립적으로 배포되기 때문에 버그 수정 및 기능 릴리스를 관리하기가 더 쉽습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-132">Because microservices are deployed independently, it's easier to manage bug fixes and feature releases.</span></span> <span data-ttu-id="d62ce-133">전체 애플리케이션을 다시 배포하지 않고 서비스를 업데이트할 수 있고, 문제가 발생하면 업데이트를 롤백할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-133">You can update a service without redeploying the entire application, and roll back an update if something goes wrong.</span></span> <span data-ttu-id="d62ce-134">대부분의 기존 애플리케이션에서는 애플리케이션의 한 부분에서 버그가 발견되면 전체 릴리스 프로세스가 차단되고, 그 결과 버그 수정이 통합, 테스트 및 게시될 때까지 새로운 기능이 보류될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-134">In many traditional applications, if a bug is found in one part of the application, it can block the entire release process; as a result, new features may be held up waiting for a bug fix to be integrated, tested, and published.</span></span>
+
+- <span data-ttu-id="d62ce-135">**소규모 코드, 소규모 팀.**</span><span class="sxs-lookup"><span data-stu-id="d62ce-135">**Small code, small teams.**</span></span> <span data-ttu-id="d62ce-136">마이크로 서비스는 규모가 작아서 한 기능 팀에서 충분히 구축, 테스트 및 배포할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-136">A microservice should be small enough that a single feature team can build, test, and deploy it.</span></span> <span data-ttu-id="d62ce-137">소규모 코드베이스는 이해하기 쉽습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-137">Small code bases are easier to understand.</span></span> <span data-ttu-id="d62ce-138">대규모 모놀리식 애플리케이션의 경우 시간이 경과하면서 코드 종속성이 얽히는 경향이 있기 때문에 새로운 기능을 추가하려면 많은 부분에서 코드를 수정해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-138">In a large monolithic application, there is a tendency over time for code dependencies to become tangled, so that adding a new feature requires touching code in a lot of places.</span></span> <span data-ttu-id="d62ce-139">마이크로 서비스 아키텍처는 코드나 데이터 저장소를 공유하지 않으므로 종속성이 최소화되며 그 결과 새로운 기능을 추가하기 쉽습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-139">By not sharing code or data stores, a microservices architecture minimizes dependencies, and that makes it easier to add new features.</span></span> <span data-ttu-id="d62ce-140">팀 규모가 작으면 민첩성 또한 높아집니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-140">Small team sizes also promote greater agility.</span></span> <span data-ttu-id="d62ce-141">"피자 두 판의 법칙(two-pizza rule)"에 따르면 이상적인 팀의 규모는 피자 두 판으로 한 끼를 때울 수 있을 만큼 작은 것입니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-141">The "two-pizza rule" says that a team should be small enough that two pizzas can feed the team.</span></span> <span data-ttu-id="d62ce-142">물론 이것이 정확한 기준은 아니며 팀원의 식욕에 따라 달라질 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-142">Obviously that's not an exact metric and depends on team appetites!</span></span> <span data-ttu-id="d62ce-143">하지만 요점은 대규모 그룹일수록 커뮤니케이션의 속도가 느리고, 관리 오버헤드가 증가하며, 민첩성이 감소되기 때문에 생산성이 떨어지는 경향이 있다는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-143">But the point is that large groups tend be less productive, because communication is slower, management overhead goes up, and agility diminishes.</span></span>
+
+- <span data-ttu-id="d62ce-144">**기술의 혼합**.</span><span class="sxs-lookup"><span data-stu-id="d62ce-144">**Mix of technologies**.</span></span> <span data-ttu-id="d62ce-145">팀은 혼합된 기술 스택을 적절히 사용하여 서비스에 가장 적합한 기술을 선택할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-145">Teams can pick the technology that best fits their service, using a mix of technology stacks as appropriate.</span></span>
+
+- <span data-ttu-id="d62ce-146">**복원력**.</span><span class="sxs-lookup"><span data-stu-id="d62ce-146">**Resiliency**.</span></span> <span data-ttu-id="d62ce-147">개별 마이크로 서비스를 사용할 수 없게 되더라도, 업스트림 마이크로 서비스가 장애를 제대로 처리하도록 설계되어 있는 한(예: 회로 단락 구현) 전체 애플리케이션이 중단되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-147">If an individual microservice becomes unavailable, it won't disrupt the entire application, as long as any upstream microservices are designed to handle faults correctly (for example, by implementing circuit breaking).</span></span>
+
+- <span data-ttu-id="d62ce-148">**확장성**.</span><span class="sxs-lookup"><span data-stu-id="d62ce-148">**Scalability**.</span></span> <span data-ttu-id="d62ce-149">마이크로 서비스 아키텍처를 사용하면 각 마이크로 서비스를 다른 서비스와 독립적으로 확장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-149">A microservices architecture allows each microservice to be scaled independently of the others.</span></span> <span data-ttu-id="d62ce-150">때문에 전체 애플리케이션 규모를 확장하지 않고도 리소스가 더 많이 필요한 하위 시스템의 규모를 확장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-150">That lets you scale out subsystems that require more resources, without scaling out the entire application.</span></span> <span data-ttu-id="d62ce-151">컨테이너 내부에 서비스를 배포하면 단일 호스트에 마이크로 서비스를 보다 높은 밀도로 패킹할 수 있기 때문에 리소스를 보다 효율적으로 활용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-151">If you deploy services inside containers, you can also pack a higher density of microservices onto a single host, which allows for more efficient utilization of resources.</span></span>
+
+- <span data-ttu-id="d62ce-152">**데이터 격리**.</span><span class="sxs-lookup"><span data-stu-id="d62ce-152">**Data isolation**.</span></span> <span data-ttu-id="d62ce-153">단일 마이크로 서비스만 영향을 받기 때문에 스키마 업데이트를 수행하는 것이 훨씬 쉽습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-153">It is much easier to perform schema updates, because only a single microservice is affected.</span></span> <span data-ttu-id="d62ce-154">모놀리식 애플리케이션에서는 스키마 업데이트가 매우 어려울 수 있습니다. 애플리케이션의 다양한 부분이 모두 동일한 데이터에 영향을 미칠 수 있어서 스키마를 변경하는 것이 위험하기 때문입니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-154">In a monolithic application, schema updates can become very challenging, because different parts of the application may all touch the same data, making any alterations to the schema risky.</span></span>
+
+## <a name="no-free-lunch"></a><span data-ttu-id="d62ce-155">난점</span><span class="sxs-lookup"><span data-stu-id="d62ce-155">No free lunch</span></span>
+
+<span data-ttu-id="d62ce-156">장점들이 있는 만큼 난점 또한 존재합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-156">These benefits don't come for free.</span></span> <span data-ttu-id="d62ce-157">본 문서 시리즈에서는 복원력, 확장성 및 관리성이 뛰어난 마이크로 서비스를 구축하는 데 따르는 몇 가지 난제를 해결하는 것을 목표로 합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-157">This series of articles is designed to address some of the challenges of building microservices that are resilient, scalable, and manageable.</span></span>
+
+- <span data-ttu-id="d62ce-158">**서비스 경계**.</span><span class="sxs-lookup"><span data-stu-id="d62ce-158">**Service boundaries**.</span></span> <span data-ttu-id="d62ce-159">마이크로 서비스를 구축할 때는 서비스 간의 경계를 어디에 둘 지 신중하게 생각해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-159">When you build microservices, you need to think carefully about where to draw the boundaries between services.</span></span> <span data-ttu-id="d62ce-160">일단 서비스를 구축하고 프로덕션 환경에 배포하고 나면 해당 경계를 넘어 리팩터링하기가 어려울 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-160">Once services are built and deployed in production, it can be hard to refactor across those boundaries.</span></span> <span data-ttu-id="d62ce-161">적절한 서비스 경계를 선택하는 것은 마이크로 서비스 아키텍처를 설계할 때 가장 어려운 과제 중 하나입니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-161">Choosing the right service boundaries is one of the biggest challenges when designing a microservices architecture.</span></span> <span data-ttu-id="d62ce-162">각 서비스의 규모는 얼마나 커야 할까요?</span><span class="sxs-lookup"><span data-stu-id="d62ce-162">How big should each service be?</span></span> <span data-ttu-id="d62ce-163">기능을 여러 서비스에 팩터링해야 하는 경우는 언제이고 동일한 서비스 내에 유지해야 하는 경우는 언제인가요?</span><span class="sxs-lookup"><span data-stu-id="d62ce-163">When should functionality be factored across several services, and when should it be kept inside the same service?</span></span> <span data-ttu-id="d62ce-164">이 가이드에서는 도메인 기반 디자인을 사용하여 서비스 경계를 찾는 방식을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-164">In this guide, we describe an approach that uses domain-driven design to find service boundaries.</span></span> <span data-ttu-id="d62ce-165">[도메인 분석](./domain-analysis.md)을 시작하여 바인딩된 컨텍스트를 찾은 다음, 기능적 요구 사항 및 비기능적 요구 사항을 기반으로 [전술적인 DDD 패턴](./microservice-boundaries.md)을 적용합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-165">It starts with [Domain analysis](./domain-analysis.md) to find the bounded contexts, then applies a set of [tactical DDD patterns](./microservice-boundaries.md) based on functional and non-functional requirements.</span></span>
+
+- <span data-ttu-id="d62ce-166">**데이터 일관성 및 무결성**.</span><span class="sxs-lookup"><span data-stu-id="d62ce-166">**Data consistency and integrity**.</span></span> <span data-ttu-id="d62ce-167">마이크로 서비스의 기본 원리는 각 서비스가 자체 데이터를 관리하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-167">A basic principle of microservices is that each service manages its own data.</span></span> <span data-ttu-id="d62ce-168">이렇게 하면 서비스는 분리되지만 데이터 무결성이나 중복성과 관련된 어려움이 있을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-168">This keeps services decoupled, but can lead to challenges with data integrity or redundancy.</span></span> <span data-ttu-id="d62ce-169">[데이터 고려 사항](./data-considerations.md)에서 이러한 문제 중 일부를 살펴볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-169">We explore some of these issues in the [Data considerations](./data-considerations.md).</span></span>
+
+- <span data-ttu-id="d62ce-170">**네트워크 정체 및 대기 시간**.</span><span class="sxs-lookup"><span data-stu-id="d62ce-170">**Network congestion and latency**.</span></span> <span data-ttu-id="d62ce-171">다수의 작고 세분화된 서비스를 사용하면 서비스 간 통신이 많아지고 종단 간 대기 시간이 길어집니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-171">The use of many small, granular services can result in more interservice communication and longer end-to-end latency.</span></span> <span data-ttu-id="d62ce-172">[서비스 간 통신](./interservice-communication.md) 챕터에서는 이러한 서비스 간 메시징과 관련한 고려 사항을 설명합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-172">The chapter [Interservice communication](./interservice-communication.md) describes considerations for messaging between services.</span></span> <span data-ttu-id="d62ce-173">마이크로 서비스 아키텍처에는 동기식 통신 및 비동기식 통신이 모두 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-173">Both synchronous and asynchronous communication have a place in microservices architectures.</span></span> <span data-ttu-id="d62ce-174">서비스가 느슨하게 결합된 채로 유지되고 독립적으로 배포 및 업데이트되도록 하려면 적절한 [API 디자인](./api-design.md)을 구축하는 것이 중요합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-174">Good [API design](./api-design.md) is important so that services remain loosely coupled, and can be independently deployed and updated.</span></span>
+
+- <span data-ttu-id="d62ce-175">**복잡성**.</span><span class="sxs-lookup"><span data-stu-id="d62ce-175">**Complexity**.</span></span> <span data-ttu-id="d62ce-176">마이크로 서비스 애플리케이션에는 이동성 구성 요소가 더 많습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-176">A microservices application has more moving parts.</span></span> <span data-ttu-id="d62ce-177">각 서비스는 단순할 수 있지만 서비스가 전체적으로 함께 작동해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-177">Each service may be simple, but the services have to work together as a whole.</span></span> <span data-ttu-id="d62ce-178">단일 사용자 작업에는 여러 서비스가 관련되어 있을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-178">A single user operation may involve multiple services.</span></span> <span data-ttu-id="d62ce-179">[수집 및 워크플로](./ingestion-workflow.md) 챕터에서는 높은 처리량으로 요청을 수집하고, 워크플로를 조정하고, 오류를 처리하는 것과 관련된 몇 가지 문제를 살펴볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-179">In the chapter [Ingestion and workflow](./ingestion-workflow.md), we examine some of the issues around ingesting requests at high throughput, coordinating a workflow, and handling failures.</span></span>
+
+- <span data-ttu-id="d62ce-180">**클라이언트와 애플리케이션 간 통신.**</span><span class="sxs-lookup"><span data-stu-id="d62ce-180">**Communication between clients and the application.**</span></span>  <span data-ttu-id="d62ce-181">애플리케이션을 다수의 소규모 서비스로 분해하는 경우 클라이언트는 해당 서비스와 어떻게 통신하나요?</span><span class="sxs-lookup"><span data-stu-id="d62ce-181">When you decompose an application into many small services, how should clients communicate with those services?</span></span> <span data-ttu-id="d62ce-182">클라이언트가 각각의 개별 서비스를 직접 호출해야 하나요? 아니면 [API 게이트웨이](./gateway.md)를 통해 요청을 라우팅해야 하나요?</span><span class="sxs-lookup"><span data-stu-id="d62ce-182">Should a client call each individual service directly, or route requests through an [API Gateway](./gateway.md)?</span></span>
+
+- <span data-ttu-id="d62ce-183">**모니터링**.</span><span class="sxs-lookup"><span data-stu-id="d62ce-183">**Monitoring**.</span></span> <span data-ttu-id="d62ce-184">분산된 애플리케이션을 모니터링하려면 여러 서비스의 원격 분석 데이터를 상호 연관시켜야 하기 때문에 모놀리식 애플리케이션을 모니터링하는 것보다 훨씬 어려울 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-184">Monitoring a distributed application can be a lot harder than a monolithic application, because you must correlate telemetry from multiple services.</span></span> <span data-ttu-id="d62ce-185">[로깅 및 모니터링](./logging-monitoring.md) 챕터에서는 이러한 우려 사항을 살펴봅니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-185">The chapter [Logging and monitoring](./logging-monitoring.md) addresses these concerns.</span></span>
+
+- <span data-ttu-id="d62ce-186">**지속적인 통합 및 업데이트(CI/CD)**.</span><span class="sxs-lookup"><span data-stu-id="d62ce-186">**Continuous integration and delivery (CI/CD)**.</span></span> <span data-ttu-id="d62ce-187">마이크로 서비스의 주요 목표 중 하나는 민첩성입니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-187">One of the main goals of microservices is agility.</span></span> <span data-ttu-id="d62ce-188">이를 위해서는 테스트 및 프로덕션 환경에 개별 서비스를 빠르고 안정적으로 배포할 수 있도록 자동화된 강력한 [CI/CD](./ci-cd.md)가 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-188">To achieve this, you must have automated and robust [CI/CD](./ci-cd.md), so that you can quickly and reliably deploy individual services into test and production environments.</span></span>
+
+## <a name="the-drone-delivery-application"></a><span data-ttu-id="d62ce-189">드론 배달 애플리케이션</span><span class="sxs-lookup"><span data-stu-id="d62ce-189">The Drone Delivery application</span></span>
+
+<span data-ttu-id="d62ce-190">이러한 문제를 살펴보고 마이크로 서비스 아키텍처에 대한 일부 모범 사례를 설명하기 위해 '드론 배달 애플리케이션'이라는 참조 구현을 만들었습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-190">To explore these issues, and to illustrate some of the best practices for a microservices architecture, we created a reference implementation that we call the Drone Delivery application.</span></span> <span data-ttu-id="d62ce-191">참조 구현은 [GitHub][drone-ri]에서 찾을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-191">You can find the reference implementation on [GitHub][drone-ri].</span></span>
+
+<span data-ttu-id="d62ce-192">Fabrikam, Inc.라는 회사가 드론 배달 서비스를 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-192">Fabrikam, Inc. is starting a drone delivery service.</span></span> <span data-ttu-id="d62ce-193">이 회사는 다수의 드론 항공기를 관리합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-193">The company manages a fleet of drone aircraft.</span></span> <span data-ttu-id="d62ce-194">기업은 서비스에 등록하고 사용자는 배달을 위해 드론이 상품을 픽업하도록 요청할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-194">Businesses register with the service, and users can request a drone to pick up goods for delivery.</span></span> <span data-ttu-id="d62ce-195">사용자가 픽업을 예약하면 백 엔드 시스템이 드론을 할당하고 사용자에게 예상 배달 시간을 알립니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-195">When a customer schedules a pickup, a backend system assigns a drone and notifies the user with an estimated delivery time.</span></span> <span data-ttu-id="d62ce-196">배달이 진행되는 동안 지속적으로 업데이트되는 ETA를 통해 고객은 드론의 위치를 추적할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-196">While the delivery is in progress, the customer can track the location of the drone, with a continuously updated ETA.</span></span>
+
+<span data-ttu-id="d62ce-197">이 시나리오에는 상당히 복잡한 도메인이 포함됩니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-197">This scenario involves a fairly complicated domain.</span></span> <span data-ttu-id="d62ce-198">비즈니스 우려 사항으로는 드론 예약, 패키지 추적, 사용자 계정 관리, 기록 데이터 저장 및 분석 등이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-198">Some of the business concerns include scheduling drones, tracking packages, managing user accounts, and storing and analyzing historical data.</span></span> <span data-ttu-id="d62ce-199">또한 Fabrikam은 빠르게 시장에 진입 및 반복하며 새로운 기능을 추가하고자 합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-199">Moreover, Fabrikam wants to get to market quickly and then iterate quickly, adding new functionality and capabilities.</span></span> <span data-ttu-id="d62ce-200">애플리케이션은 SLO(서비스 수준 목표)가 높은 클라우드 규모에서 작동해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-200">The application needs to operate at cloud scale, with a high service level objective (SLO).</span></span> <span data-ttu-id="d62ce-201">또한 시스템의 각 부분에서 데이터 저장소 및 쿼리에 대한 요구 사항이 완전히 달라야 합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-201">Fabrikam also expects that different parts of the system will have very different requirements for data storage and querying.</span></span> <span data-ttu-id="d62ce-202">이러한 모든 사항을 고려한 끝에 Fabrikam은 드론 배달 애플리케이션에 마이크로 서비스 아키텍처를 사용하기로 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-202">All of these considerations lead Fabrikam to choose a microservices architecture for the Drone Delivery application.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="d62ce-203">마이크로 서비스 아키텍처와 다른 아키텍처 스타일 중에서 선택을 해야 하는 경우 도움이 필요하면 [Azure 애플리케이션 아키텍처 가이드](../guide/index.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="d62ce-203">For help in choosing between a microservices architecture and other architectural styles, see the [Azure Application Architecture Guide](../guide/index.md).</span></span>
+
+<span data-ttu-id="d62ce-204">제공된 참조 구현에는 [AKS(Azure Kubernetes Service)](/azure/aks/)와 Kubernetes가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-204">Our reference implementation uses Kubernetes with [Azure Kubernetes Service](/azure/aks/) (AKS).</span></span> <span data-ttu-id="d62ce-205">단, [Azure Service Fabric](/azure/service-fabric/)을 비롯한 모든 컨테이너 오케스트레이터에는 높은 수준의 아키텍처 결정과 도전 과제가 많이 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="d62ce-205">However, many of the high-level architectural decisions and challenges will apply to any container orchestrator, including [Azure Service Fabric](/azure/service-fabric/).</span></span>
+
+> [!div class="nextstepaction"]
+> [<span data-ttu-id="d62ce-206">도메인 분석</span><span class="sxs-lookup"><span data-stu-id="d62ce-206">Domain analysis</span></span>](./domain-analysis.md)
+
+<!-- links -->
+
+[drone-ri]: https://github.com/mspnp/microservices-reference-implementation
