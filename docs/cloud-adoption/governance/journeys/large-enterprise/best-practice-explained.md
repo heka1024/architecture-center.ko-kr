@@ -1,18 +1,18 @@
 ---
-title: 'CAF: 대기업 – 거버넌스 MVP에 대한 추가 기술 세부 정보'
+title: 'CAF: 대규모 엔터프라이즈 – 모범 사례 설명'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
 ms.date: 02/11/2019
-description: 대기업 – 거버넌스 MVP에 대한 추가 기술 세부 정보
+description: 대규모 엔터프라이즈 – 모범 사례 설명
 author: BrianBlanchard
-ms.openlocfilehash: 50b0ae1ebb386d2f0b693a347d599ff29680a9cb
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
-ms.translationtype: HT
+ms.openlocfilehash: 2d52797f1c3541fab1c97d97d0438210d2e66f79
+ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901743"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068993"
 ---
 # <a name="large-enterprise-best-practice-explained"></a>대기업: 설명된 모범 사례
 
@@ -20,7 +20,7 @@ ms.locfileid: "55901743"
 
 이 문서에서는 거버넌스 MVP를 만드는 데 필요한 개략적인 전략을 설명합니다. 거버넌스 MVP의 핵심은 [배포 가속](../../deployment-acceleration/overview.md) 분야에 있습니다. 이 단계에서 적용되는 도구 및 패턴은 향후 거버넌스의 확장에 필요한 점층적 개선을 가능하게 할 것입니다.
 
-## <a name="governance-mvp-cloud-adoption-foundation"></a>거버넌스 MVP(클라우드 채택 기반)
+## <a name="governance-mvp-cloud-adoption-foundation"></a>거버넌스 MVP(클라우드 도입 기반)
 
 몇 가지 간단한 원칙과 클라우드 기반 거버넌스 도구를 통해 거버넌스 및 기업 정책의 빠른 도입이 가능해집니다. 이것이 모든 거버넌스 프로세스에서 접근할 세 가지 거버넌스 분야 중 첫 번째입니다. 이 문서에서는 각 분야를 자세히 설명합니다.
 
@@ -38,7 +38,7 @@ ms.locfileid: "55901743"
 
 1. 핵심 종속성에 관한 결정을 요청합니다. ID, 네트워크 및 암호화가 핵심 종속성에 해당합니다.
 2. 회사 정책 적용 중에 사용할 패턴을 결정합니다.
-3. 리소스 일관성, 리소스 태그, 로깅 및 보고 분야에 대한 적절한 거버넌스 패턴을 결정합니다.
+3. 리소스에 일관성, 리소스 태그 및 로깅 및 보고 분야에 대 한 적절 한 거 버 넌 스 패턴을 결정 합니다.
 4. 종속 결정 및 거버넌스 결정을 적용하기 위해 선택한 정책 적용 패턴에 맞는 거버넌스 도구를 구현합니다.
 
 [!INCLUDE [implementation-process](../../../../../includes/cloud-adoption/governance/implementation-process.md)]
@@ -90,9 +90,9 @@ Azure 구독에 **혼합** 패턴을 선택했습니다.
 
 **엔지니어 교육**: 클라우드 거버넌스 팀은 격월로 교육 세션을 제공하고, 엔지니어를 대상으로 2개의 비디오를 제작했습니다. 두 가지 리소스 모두 엔지니어들이 거버넌스 문화와 배포 수행 방법을 빠르게 숙지하게 돕습니다. 팀은 프로덕션 및 비프로덕션 배포 간의 차이점을 보여 주는 교육 자산을 추가하여 엔지니어들이 새 정책이 채택에 미치는 영향을 이해할 수 있게 합니다. 이를 통해 엄격한 적용 규정 없이도 일관된 배포를 진행할 수 있습니다.
 
-**배포 계획**: 보호되는 데이터를 포함하는 자산을 배포하기 전에, 클라우드 거버넌스 팀은 배포 스크립트를 검토하여 거버넌스와 잘 맞는지 검사합니다. 이전에 배포가 승인된 기존 팀이 있다면 프로그래밍 방식 도구를 사용하여 감사합니다.
+**배포 계획**: 보호 된 데이터를 포함 하는 모든 자산을 배포 하기 전에 클라우드 거 버 넌 스 팀이 거 버 넌 스 맞춤의 유효성을 검사 하는 배포 스크립트를 검토할 책임이 됩니다. 이전에 배포가 승인된 기존 팀이 있다면 프로그래밍 방식 도구를 사용하여 감사합니다.
 
-**월별 감사 및 보고**: 매월, 클라우드 거버넌스 팀은 모든 클라우드 배포를 감사하여 정책에 잘 맞는지 지속적으로 검증합니다. 차이점이 발견되면 문서로 정리한 후 클라우드 채택 팀과 공유합니다. 비즈니스 중단이나 데이터 누수 위험이 없는 경우 정책이 자동으로 적용됩니다. 감사가 끝나면 클라우드 거버넌스 팀은 클라우드 전략 팀과 각 클라우드 채택 팀에 대한 보고서를 정리하여 전반적인 정책 준수 상황을 전달합니다. 또한 이 보고서는 감사 및 법적 목적으로 저장됩니다.
+**월별 감사 및 보고**: 매월, 클라우드 거버넌스 팀은 모든 클라우드 배포를 감사하여 정책에 잘 맞는지 지속적으로 검증합니다. 차이점이 발견되면 문서로 정리한 후 클라우드 채택 팀과 공유합니다. 비즈니스 중단이나 데이터 누수 위험이 없는 경우 정책이 자동으로 적용됩니다. 감사가 끝나면 클라우드 거버넌스 팀은 클라우드 전략 팀과 각 클라우드 도입 팀에 대한 보고서를 정리하여 전반적인 정책 준수 상황을 전달합니다. 또한 이 보고서는 감사 및 법적 목적으로 저장됩니다.
 
 **분기별 정책 검토**: 분기마다 클라우드 거버넌스 팀과 클라우드 전략 팀은 감사 결과를 검토하고 회사 정책 변경을 제안합니다. 이러한 제안 사항의 대부분은 사용 패턴의 지속적인 개선과 관찰을 통해 얻어집니다. 승인된 정책 변경 내용은 후속 감사 주기 동안 거버넌스 도구에 통합됩니다.
 
@@ -101,7 +101,7 @@ Azure 구독에 **혼합** 패턴을 선택했습니다.
 이 거버넌스 과정에서 선택한 패턴이 읽는 사람의 요구와 맞지 않으면 각 패턴의 대체 패턴을 사용할 수 있습니다.
 
 - [암호화 패턴](../../../decision-guides/encryption/overview.md)
-- [ID 패턴](../../../decision-guides/identity/overview.md)
+- [Identity 패턴](../../../decision-guides/identity/overview.md)
 - [로깅 및 보고 패턴](../../../decision-guides/log-and-report/overview.md)
 - [정책 적용 패턴](../../../decision-guides/policy-enforcement/overview.md)
 - [리소스 일관성 패턴](../../../decision-guides/resource-consistency/overview.md)

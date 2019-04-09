@@ -8,12 +8,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: f7c19501b9f28db3892285b5f35a33f02edd87ab
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 3fd3badd66edbe561bea88576bb80d9fc3e0bb79
+ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58242334"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068925"
 ---
 # <a name="criteria-for-choosing-a-data-store"></a>데이터 저장소를 선택하는 기준
 
@@ -61,7 +61,7 @@ Azure는 다양한 유형의 데이터 저장소 솔루션을 지원합니다. �
 
 - **지역 가용성**. 관리되는 서비스의 경우, 모든 Azure 지역에서 서비스를 사용할 수 있나요? 솔루션이 특정 Azure 지역에서 호스팅되어야 하나요?
 
-- **이식성**. 온-프레미스, 외부 데이터 센터 또는 기타 클라우드 호스팅 환경으로 데이터를 마이그레이션해야 하나요?
+- **이식성**. 데이터가 온-프레미스, 외부 데이터 센터 또는 다른 클라우드 호스팅 환경에 마이그레이션할 수 해야 하나요?
 
 - **라이선스**. 독점적 라이선스 유형과 OSS 라이선스 유형 중 어느 것을 선호하나요? 사용 가능한 라이선스 유형에 대한 그 밖의 외부 제한 사항이 존재하나요?
 

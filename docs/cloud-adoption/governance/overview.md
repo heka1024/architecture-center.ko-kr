@@ -1,16 +1,19 @@
 ---
-title: 'CAF: 클라우드 거버넌스'
-description: 클라우드 거버넌스 콘텐츠 소개
+title: 'CAF: Azure에 대 한 Microsoft 카페에서 거 버 넌 스'
+ms.service: architecture-center
+ms.subservice: enterprise-cloud-adoption
+ms.custom: governance
+ms.date: 02/11/2019
+description: Azure에 대 한 Microsoft 카페에서 거 버 넌 스
 author: BrianBlanchard
-ms.date: 2/11/2019
-ms.openlocfilehash: 8a9701677eec913788ca72f86444a3600e170d07
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
-ms.translationtype: HT
+ms.openlocfilehash: ce407de0daa590e767382346692c80e0a113bb3c
+ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897374"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068840"
 ---
-# <a name="cloud-governance-in-the-microsoft-caf-for-azure"></a>Azure에 대한 Microsoft CAF에서 클라우드 거버넌스
+# <a name="governance-in-the-microsoft-caf-for-azure"></a>Azure에 대 한 Microsoft 카페에서 거 버 넌 스
 
 클라우드는 비즈니스를 지원하는 기술과 관련하여 새로운 패러다임을 제시합니다. 이러한 새로운 패러다임으로 기술이 도입되어 관리되고 통제되는 방식이 변화되고 있습니다. 무인 프로세스에서 실행되는 한 줄의 코드로 전체 데이터 센터를 제거하고 다시 만들 수 있다면 기존의 방식을 재고해야 합니다. 거버넌스에서도 마찬가지입니다.
 
@@ -29,17 +32,17 @@ CAF의 콘텐츠는 기업의 비즈니스, 기술 및 문화에 영향을 줍�
 
 클라우드 설계자는 이러한 대상을 하나로 모으기 위한 협력자와 선구자 역할을 합니다. 이 가이드 모음 내용은 클라우드 설계자가 적절한 대상과 합리적인 대화를 쉽게 수행할 수 있도록 하여 필요한 의사 결정을 내릴 수 있도록 돕기 위한 것입니다. 클라우드 기반의 비즈니스 변환은 비즈니스 및 IT 전반의 의사 결정을 지원하는 클라우드 설계자의 역할에 따라 좌우됩니다.
 
-**이 섹션의 클라우드 설계자 전문성:** CAF의 각 섹션은 클라우드 설계자 역할의 다양한 전문성 또는 변형을 나타냅니다. CAF의 이 섹션은 기술 위험을 완화하거나 해결하려는 열정을 가진 클라우드 설계자를 위해 작성되었습니다. 많은 클라우드 공급자가 이러한 전문가를 클라우드 보유자라고 하지만 여기서는 클라우드 보호자 또는 클라우드 거버넌스 팀으로 총칭합니다. 각각의 실행 가능한 고객 경험에서 이 문서는 클라우드 거버넌스 팀의 구성과 역할이 시간이 지남에 따라 어떻게 변할 수 있는지를 보여 줍니다.
+**이 섹션의 클라우드 설계자 전문성:** CAF의 각 섹션은 클라우드 설계자 역할의 다양한 전문성 또는 변형을 나타냅니다. 카페의이 섹션에서는 기술 위험을 줄이거나 완화에 대 한 열정을 사용 하 여 클라우드 설계자를 위한 것입니다. 많은 클라우드 공급자가 이러한 전문가를 클라우드 보유자라고 하지만 여기서는 클라우드 보호자 또는 클라우드 거버넌스 팀으로 총칭합니다. 각각의 실행 가능한 고객 경험에서 이 문서는 클라우드 거버넌스 팀의 구성과 역할이 시간이 지남에 따라 어떻게 변할 수 있는지를 보여 줍니다.
 
 ## <a name="using-this-guide"></a>이 가이드 사용
 
 이 가이드를 처음부터 끝까지 따라 하려는 독자에게는 이 내용이 클라우드 구현과 동시에 견고한 클라우드 거버넌스 전략을 개발하는 데 도움이 될 것입니다. 이 지침은 해당 이론 및 그러한 전략의 구현을 안내해 줍니다.
 
-이론에 대한 집중 학습과 Azure 구현을 빨리 시작하려면 [실행 가능한 거버넌스 경험 개요](./journeys/overview.md)를 시작하세요. 이 가이드를 통해 독자는 클라우드 도입 작업과 동시에 해당 거버넌스 요구 사항을 작게 시작하여 전개해 나갈 수 있습니다.
+에 대 한 이론 및 Azure 구현에 대 한 빠른 액세스에 대 한 충돌 과정을 시작 합니다 [실행 가능한 거 버 넌 스 경험 개요](./journeys/overview.md)합니다. 이 가이드를 통해 독자는 클라우드 도입 작업과 동시에 해당 거버넌스 요구 사항을 작게 시작하여 전개해 나갈 수 있습니다.
 
 ## <a name="next-steps"></a>다음 단계
 
-실행 가능한 거버넌스 경험을 살펴보세요.
+실행 가능한 거 버 넌 스 경험을 검토 합니다.
 
 > [!div class="nextstepaction"]
-> [실행 가능한 거버넌스 경험](./journeys/overview.md)
+> [실행 가능한 거 버 넌 스 경험](./journeys/overview.md)

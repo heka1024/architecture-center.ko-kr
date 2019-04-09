@@ -7,18 +7,20 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: c8ce4c77666ab7b9c55e6f144d514fadc6b6ad73
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 535c53faa810f74299e715a204e427c8919ce360
+ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58246084"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59069027"
 ---
 # <a name="microservices-architecture-on-azure-kubernetes-service-aks"></a>AKS(Azure Kubernetes Service)의 마이크로 서비스 아키텍처
 
-이 참조 아키텍처는 AKS(Azure Kubernetes Service)에 배포된 마이크로 서비스 애플리케이션을 보여줍니다. 대부분의 배포에서 시작점으로 사용할 수 있는 기본 AKS 구성을 보여줍니다. 고급 네트워킹 옵션을 비롯한 고급 옵션은 별도의 참조 아키텍처에서 다룰 것입니다.
+이 참조 아키텍처는 AKS(Azure Kubernetes Service)에 배포된 마이크로 서비스 애플리케이션을 보여줍니다. 대부분의 배포에 대 한 시작 지점을 수 있는 기본 AKS 구성을 설명 합니다. 이 문서에서는 Kubernetes에 대한 기본 지식을 다룹니다. 이 문서는 AKS에서 마이크로 서비스 아키텍처를 실행하기 위한 인프라 및 DevOps 고려 사항에 중점을 둡니다. 마이크로 서비스를 디자인 하는 방법에 대 한 지침을 참조 하세요 [Azure에서 마이크로 서비스 구축](../../microservices/index.md)합니다.
 
-이 문서에서는 Kubernetes에 대한 기본 지식을 다룹니다. 이 문서는 AKS에서 마이크로 서비스 아키텍처를 실행하기 위한 인프라 및 DevOps 고려 사항에 중점을 둡니다. DDD(도메인 중심 디자인) 관점에서 마이크로 서비스를 디자인하는 방법에 대한 지침은 [Azure에서 마이크로 서비스 설계, 빌드 및 운영](/azure/architecture/microservices)을 참조하세요.
+![GitHub 로고](../../_images/github.png) 에서 사용할 수는이 아키텍처의 참조 구현을 [GitHub](https://github.com/mspnp/microservices-reference-implementation)합니다.
+
+
 
 ![AKS 참조 아키텍처](./_images/aks.png)
 
@@ -346,7 +348,7 @@ trigger:
 > [!NOTE]
 > Azure Repos에서 분기를 보호하는 [정책](/azure/devops/repos/git/branch-policies)을 정의할 수 있습니다. 예를 들어 마스터에 병합하려면 정책에 승인자의 서명과 성공적인 CI 빌드가 필요할 수 있습니다.
 
-어느 시점이 되면 팀은 새 버전의 Delivery Service를 배포할 수 있습니다. 이를 위해 릴리스 관리자는 `release/<microservice name>/<semver>`와 같은 명명 패턴을 사용하여 마스터에서 분기를 만듭니다. 예: `release/delivery/v1.0.2`
+어느 시점이 되면 팀은 새 버전의 Delivery Service를 배포할 수 있습니다. 이를 위해 릴리스 관리자는 `release/<microservice name>/<semver>`와 같은 명명 패턴을 사용하여 마스터에서 분기를 만듭니다. 예: `release/delivery/v1.0.2`.
 이는 이전의 모든 단계와 다음 작업을 실행하는 완전한 CI 빌드를 트리거합니다.
 
 1. Azure Container Registry로 Docker 이미지를 푸시합니다. 분기 이름에서 가져온 버전 번호로 이미지에 태그가 지정됩니다.

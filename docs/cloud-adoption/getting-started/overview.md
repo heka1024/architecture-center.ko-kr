@@ -4,15 +4,14 @@ titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
-description: Azure 클라우드 기술을 도입하는 엔터프라이즈 디지털 변환의 첫 번째 단계를 간략하게 설명합니다.
-author: petertaylor9999
-ms.date: 2/11/2019
-ms.openlocfilehash: bfa325ded8c39915ad4d495b4309b700abd71cc2
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
-ms.translationtype: HT
+description: Azure 클라우드 기술을 채택 하는 엔터프라이즈의 디지털 변환의 첫 번째 단계에 간략하게 설명 합니다.
+ms.date: 02/11/2019
+ms.openlocfilehash: 29b02964b5f1cd09857a51c17cf94d6c64e05e88
+ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55898360"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068959"
 ---
 # <a name="getting-started-with-the-cloud-adoption-framework"></a>Cloud Adoption Framework 시작
 
@@ -59,7 +58,7 @@ ms.locfileid: "55898360"
 
 ## <a name="step-3-identify-gaps-in-business-strategy"></a>3단계: 비즈니스 전략의 차이 식별
 
-다음 단계는 클라우드 전략 팀이 디지털 변환 솔루션을 필요로 하는 비즈니스 문제를 열거하는 경우입니다. 예를 들어 기업에는 교체해야 하는 수명 종료 하드웨어를 포함한 기존 온-프레미스 데이터 센터가 있을 수 있습니다. 또 다른 예로 기업이 새로운 기능 및 서비스에 대한 출시 시간에 문제가 발생할 수 있고 경쟁에서 뒤쳐질 수 있습니다. 이러한 간격은 기업 디지털 변환의 *목표*를 나타냅니다.
+다음 단계는 클라우드 전략 팀이 디지털 변환 솔루션을 필요로 하는 비즈니스 문제를 열거하는 경우입니다. 예를 들어, 엔터프라이즈 수명 종료 하드웨어를 교체 해야 하는 기존 온-프레미스 데이터 센터가 있을 수 있습니다. 또 다른 예로 기업이 새로운 기능 및 서비스에 대한 출시 시간에 문제가 발생할 수 있고 경쟁에서 뒤쳐질 수 있습니다. 이러한 간격은 기업 디지털 변환의 *목표*를 나타냅니다.
 
 비즈니스 전략의 차이는 다음 범주로 분류할 수 있습니다.
 
@@ -108,7 +107,7 @@ IT 직원 멤버는 클라우드 솔루션 지원을 위해 다양한 기술이 
 디지털 변환 중에 각 팀에서는 직원의 고민이 발생하는 대로 캡처해야 합니다. 고민을 캡처할 때 다음을 식별합니다.
 
 * 고민 형식 예를 들어 작업자가 디지털 변환을 수반하는 직무의 변경에 대한 반발이 있을 수 있습니다.
-* 고민이 해결되지 않는 경우 영향 예를 들어 디지털 변환에 대한 반발로 인해 작업자가 필요한 변경 내용을 느리게 실행하는 결과가 발생할 수 있습니다.
+* 문제를 보고 되지 않은 경우의 효과입니다. 예를 들어 디지털 변환에 대한 반발로 인해 작업자가 필요한 변경 내용을 느리게 실행하는 결과가 발생할 수 있습니다.
 * 고민을 해결하기 위해 필요한 영역 예를 들어 IT 부서의 작업자가 새로운 기술을 획득하는 데 주저하는 경우 이 고민을 해결하기 위해 IT 관련자 영역이 가장 필요합니다. 영역을 식별하면 일부 고민을 명확하게 할 수 있으며 이러한 경우에 경영진으로 진급해야 할 수 있습니다.
 
 ### <a name="identify-gaps"></a>간격 식별
@@ -134,4 +133,4 @@ IT 직원 멤버는 클라우드 솔루션 지원을 위해 다양한 기술이 
 디지털 변환은 반복 프로세스이며 각 반복에 참여하는 팀이 보다 효율적입니다.
 
 > [!div class="nextstepaction"]
-> [Azure의 작동 방식 이해](what-is-azure.md)
+> [Azure의 작동 방식을 이해합니다](what-is-azure.md)

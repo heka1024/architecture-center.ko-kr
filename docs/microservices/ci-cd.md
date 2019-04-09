@@ -7,16 +7,16 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: 026d22bb9cfdcb69b1a12294410af748e7af5c39
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: 1a927beb23a2e45b509b2648a6bccce4c2ad242d
+ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54480796"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068976"
 ---
 # <a name="designing-microservices-continuous-integration"></a>마이크로서비스 디자인: 연속 통합
 
-지속적인 통합 및 지속적인 업데이트(CI/CD)는 마이크로 서비스의 성공 실현을 위한 중요한 요구 사항입니다. 좋은 CI/CD 프로세스 없이 마이크로 서비스가 약속하는 민첩성을 얻지 못합니다. 마이크로 서비스에 대한 일부 CI/CD 문제는 여러 코드 베이스 및 다양한 서비스에 대한 형식이 다른 빌드 환경에서 발생합니다. 이 챕터는 문제를 설명하고 문제에 대한 몇 가지 방법을 제시합니다.
+지속적인 통합 및 지속적인 업데이트(CI/CD)는 마이크로 서비스의 성공 실현을 위한 중요한 요구 사항입니다. 좋은 CI/CD 프로세스 없이 마이크로 서비스가 약속하는 민첩성을 얻지 못합니다. 마이크로 서비스에 대한 일부 CI/CD 문제는 여러 코드 베이스 및 다양한 서비스에 대한 형식이 다른 빌드 환경에서 발생합니다. 이 문서는 문제를 설명 하 고 문제에 몇 가지 접근 방식을 권장 합니다.
 
 ![마이크로서비스에 대한 CI/CD의 다이어그램](./images/ci-cd.png)
 
@@ -123,4 +123,4 @@ Kubernetes에서는 청록색 배포를 수행하기 위해 별도 클러스터�
 
 마이크로 서비스는 이 변경 상황에 대한 응답입니다. 모놀리식 애플리케이션을 느슨하게 결합된 서비스의 그룹으로 분해하여 각 서비스의 릴리스 주기를 제어하고 가동 중지 시간 또는 주요 변경 내용 없이 빈번한 업데이트를 활성화할 수 있습니다. 마이크로 서비스는 또한 확장성, 실패 격리 및 복원력에도 도움이 됩니다. 한편, 클라우드 플랫폼은 계산 리소스의 자동화된 프로비전, 서비스로서의 컨테이너 오케스트레이터 및 이벤트 기반 서버리스 환경으로 마이크로 서비스를 쉽게 빌드하고 실행할 수 있도록 합니다.
 
-하지만 앞서 설명한 것처럼 마이크로 서비스 아키텍처는 많은 과제가 되기도 합니다. 성공하려면 견고한 디자인에서 시작해야 합니다. 도메인 분석, 기술 선택, 데이터 모델링, API 디자인 및 성숙한 DevOps 문화 구축에 신중해야 합니다. 이 가이드 및 함께 제공되는 [참조 구현](https://github.com/mspnp/microservices-reference-implementation)이 여정을 밝히는 데 도움이 됐기를 바랍니다.
+하지만 앞서 설명한 것처럼 마이크로 서비스 아키텍처는 많은 과제가 되기도 합니다. 성공하려면 견고한 디자인에서 시작해야 합니다. 도메인 분석, 기술 선택, 데이터 모델링, API 디자인 및 성숙한 DevOps 문화 구축에 신중해야 합니다. 이 가이드 및 함께 제공되는 [참조 구현](https://github.com/mspnp/microservices-reference-implementation/tree/v0.1.0-orig)이 여정을 밝히는 데 도움이 됐기를 바랍니다.
