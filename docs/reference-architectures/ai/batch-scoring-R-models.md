@@ -50,7 +50,7 @@ ms.locfileid: "58888065"
 
 [Azure Blob Storage] [ blob] 입력된 데이터, 미리 학습 된 기계 학습 모델 및 예측된 결과 저장 하는 데 사용 됩니다. 이 작업에 필요한 성능에 대 한 매우 비용 효율적인 저장소를 제공 합니다.
 
-[Azure Container Instances] [ aci] 주문형 서버 리스 계산을 제공 합니다. 이 경우 예측을 생성 하는 일괄 처리 작업을 트리거하는 일정에 따라 컨테이너 인스턴스 배포 됩니다. 일괄 처리 작업을 사용 하 여 R 스크립트에서 트리거되는지 합니다 [doAzureParallel] [ doAzureParallel] 패키지 있습니다. 작업이 완료 되 면 자동으로 컨테이너 인스턴스를 종료 합니다.
+[Azure Container Instances] [ aci] 주문형 서버 리스 계산을 제공 합니다. 이 경우 예측을 생성 하는 일괄 처리 작업을 트리거하는 일정에 따라 컨테이너 인스턴스 배포 됩니다. 일괄 처리 작업을 사용 하 여 R 스크립트에서 트리거되는지 합니다 [doAzureParallel][doAzureParallel] 패키지 있습니다. 작업이 완료 되 면 자동으로 컨테이너 인스턴스를 종료 합니다.
 
 [Azure Logic Apps] [ logic-apps] 일정에 따라 container instances를 배포 하 여 전체 워크플로 트리거합니다. Logic Apps에서 Azure Container Instances 커넥터를 다양 한 트리거 이벤트 시 배포할 인스턴스 수 있습니다.
 
@@ -86,13 +86,13 @@ Azure Container Instances는 scheduler 컨테이너를 실행 하는 서버 리�
 
 DoAzureParallel 패키지는 자동으로 Azure Batch에서 제출 된 모든 작업에 대 한 모든 stdout/stderr 로그를 수집 합니다. 설치 프로그램에서 만든 저장소 계정에서 찾을 수 있습니다. 해당 명령을 보려면 사용 하 여 저장소 탐색 도구와 같은 [Azure Storage 탐색기] [ storage-explorer] 또는 Azure portal.
 
-개발 하는 동안 일괄 처리 작업을 신속 하 게 디버깅을 사용 하 여 로컬 R 세션에서 로그를 인쇄 합니다 [getJobFiles] [ getJobFiles] doAzureParallel의 함수입니다.
+개발 하는 동안 일괄 처리 작업을 신속 하 게 디버깅을 사용 하 여 로컬 R 세션에서 로그를 인쇄 합니다 [getJobFiles][getJobFiles] doAzureParallel의 함수입니다.
 
 ## <a name="cost-considerations"></a>비용 고려 사항
 
 이 참조 아키텍처에 사용 되는 계산 리소스가 가장 비용이 높은 구성 요소입니다. 이 시나리오에 대 한 고정 된 크기의 클러스터에 작업이 트리거되고 다음 종료 작업이 완료 될 때마다 만들어집니다. 클러스터 노드 시작, 실행 또는 종료 하는 동안에 비용이 발생 합니다. 이 방법은 있는 예측을 생성 하는 데 필요한 계산 리소스를 일정 하 게 유지 비교적 작업에서 작업 하는 시나리오에 적합 합니다.
 
-여기서 작업을 완료 하는 데 필요한 계산의 크기는 미리 알 수 없는 시나리오에서 자동 크기 조정을 사용 하는 것이 적합할 수 있습니다. 이 방법을 사용 하 여 클러스터의 크기는 확장 또는 축소할 작업의 크기에 따라 합니다. Azure Batch에서는 자동 크기 조정 공식 사용 하 여 클러스터를 정의할 때 설정할 수 있는 범위를 지원 합니다 [doAzureParallel] [ doAzureParallel] API.
+여기서 작업을 완료 하는 데 필요한 계산의 크기는 미리 알 수 없는 시나리오에서 자동 크기 조정을 사용 하는 것이 적합할 수 있습니다. 이 방법을 사용 하 여 클러스터의 크기는 확장 또는 축소할 작업의 크기에 따라 합니다. Azure Batch에서는 자동 크기 조정 공식 사용 하 여 클러스터를 정의할 때 설정할 수 있는 범위를 지원 합니다 [doAzureParallel][doAzureParallel] API.
 
 일부 시나리오에서는 작업 간의 시간 너무 짧을 수 종료 하 고 클러스터를 시작 합니다. 이러한 경우에 해당 하는 경우 작업 간에 실행 하는 클러스터를 유지 합니다.
 
@@ -100,7 +100,7 @@ Azure Batch 및 doAzureParallel 우선 순위가 낮은 Vm 사용을 지원 합�
 
 ## <a name="deployment"></a>배포
 
-이 참조 아키텍처를 배포 하려면에 설명 된 단계를 수행 합니다 [GitHub] [ github] 리포지토리.
+이 참조 아키텍처를 배포 하려면에 설명 된 단계를 수행 합니다 [GitHub][github] 리포지토리.
 
 
 [0]: ./_images/batch-scoring-r-models.png
