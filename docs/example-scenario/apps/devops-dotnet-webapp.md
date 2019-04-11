@@ -9,12 +9,12 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack, seodec18
 social_image_url: /azure/architecture/example-scenario/apps/media/architecture-devops-dotnet-webapp.svg
-ms.openlocfilehash: 0d6ac13fb357657a2ec5e6284abadb46d6926907
-ms.sourcegitcommit: 3b15d65e7c35a19506e562c444343f8467b6a073
-ms.translationtype: HT
+ms.openlocfilehash: f999b2ffdf234161f668887d5b2327ecf50f0e55
+ms.sourcegitcommit: bb75a25bd589a761c79e39f2ccdec4acc7d71d60
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54908497"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59480136"
 ---
 # <a name="design-a-cicd-pipeline-using-azure-devops"></a>Azure DevOps를 사용하여 CI/CD 파이프라인 설계
 
@@ -93,11 +93,11 @@ Azure Web Apps에 호스팅하는 대안은 다음과 같습니다.
 
 ### <a name="walk-through"></a>연습
 
-[Azure DevOps 프로젝트](/azure/devops-project/azure-devops-project-github)는 고객을 대신하여 App Service 계획, App Service 및 App Insights 리소스를 배포하고, 고객을 대신하여 Azure DevOps 프로젝트를 구성합니다.
+[Azure DevOps Projects](/azure/devops-project/azure-devops-project-github) 는 App Service 계획, App Service 및 App Insights 리소스를 배포할 뿐만 아니라 Azure 파이프라인 파이프라인을 구성 합니다.
 
-Azure DevOps 프로젝트를 개발하고 빌드가 완료되면 관련 코드 변경 사항, 작업 항목 및 테스트 결과를 검토합니다. 코드에 실행할 테스트가 포함되어 있지 않으므로 테스트 결과가 표시되지 않습니다.
+Azure DevOps Projects를 사용 하 여 파이프라인을 구성 했습니다. 빌드가 완료 되 고 연결 된 검토 코드 변경 내용 작업 항목 및 테스트 결과입니다. 코드에 실행할 테스트가 포함되어 있지 않으므로 테스트 결과가 표시되지 않습니다.
 
-이 프로젝트는 릴리스 파이프라인 및 지속적인 배포 트리거를 만들고, 개발 환경에 애플리케이션을 배포합니다. 지속적인 배포 프로세스의 일부로 릴리스가 여러 환경에 걸쳐 있음을 알 수 있습니다. 릴리스가 두 인프라를 모두 아우르고(코드로써의 인프라 같은 기술을 사용하여), 구성 후 작업과 함께 필요한 애플리케이션 패키지를 배포할 수 있습니다.
+파이프라인은 릴리스 정 및 개발 환경에 응용 프로그램을 배포 하는 연속 배포 트리거를 만듭니다. 지속적인 배포 프로세스의 일부로 릴리스가 여러 환경에 걸쳐 있음을 알 수 있습니다. 릴리스가 두 인프라를 모두 아우르고(코드로써의 인프라 같은 기술을 사용하여), 구성 후 작업과 함께 필요한 애플리케이션 패키지를 배포할 수 있습니다.
 
 ## <a name="pricing"></a>가격
 
@@ -114,8 +114,8 @@ Azure DevOps는 사용자당 월별 요금이 청구됩니다. 추가 테스트 
 - [DevOps란?][devops-whatis]
 - [Microsoft의 DevOps - Azure DevOps 사용 방법][devops-microsoft]
 - [단계별 자습서: Azure DevOps를 사용한 DevOps][devops-with-vsts]
-- [Devops 검사 목록][devops-checklist]
-- [Azure DevOps 프로젝트를 사용하여 .NET용 CI/CD 파이프라인 만들기][devops-project-create]
+- [DevOps 검사 목록][devops-checklist]
+- [Azure DevOps Projects를 통해.NET 용 CI/CD 파이프라인 만들기][devops-project-create]
 
 <!-- links -->
 
