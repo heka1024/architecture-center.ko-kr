@@ -7,20 +7,18 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: 535c53faa810f74299e715a204e427c8919ce360
-ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.openlocfilehash: 3e93a036bdb7cdf9f4e49ae81887063624372a6b
+ms.sourcegitcommit: d58e6b2b891c9c99e951c59f15fce71addcb96b1
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59069027"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59533127"
 ---
 # <a name="microservices-architecture-on-azure-kubernetes-service-aks"></a>AKS(Azure Kubernetes Service)의 마이크로 서비스 아키텍처
 
 이 참조 아키텍처는 AKS(Azure Kubernetes Service)에 배포된 마이크로 서비스 애플리케이션을 보여줍니다. 대부분의 배포에 대 한 시작 지점을 수 있는 기본 AKS 구성을 설명 합니다. 이 문서에서는 Kubernetes에 대한 기본 지식을 다룹니다. 이 문서는 AKS에서 마이크로 서비스 아키텍처를 실행하기 위한 인프라 및 DevOps 고려 사항에 중점을 둡니다. 마이크로 서비스를 디자인 하는 방법에 대 한 지침을 참조 하세요 [Azure에서 마이크로 서비스 구축](../../microservices/index.md)합니다.
 
-![GitHub 로고](../../_images/github.png) 에서 사용할 수는이 아키텍처의 참조 구현을 [GitHub](https://github.com/mspnp/microservices-reference-implementation)합니다.
-
-
+![GitHub 로고](../../_images/github.png) 에서 사용할 수는이 아키텍처의 참조 구현을 [GitHub][ri]합니다.
 
 ![AKS 참조 아키텍처](./_images/aks.png)
 
@@ -202,7 +200,7 @@ AKS는 이러한 두 가지 RBAC 메커니즘을 통합합니다. AKS 클러스�
 
 - "Azure Kubernetes 서비스 클러스터 관리자 역할"은 클러스터 관리자 자격 증명을 다운로드하는 권한을 갖고 있습니다. 클러스터 관리자에게만 이 역할을 할당해야 합니다.
 
-- "Azure Kubernetes 서비스 클러스터 사용자 역할"은 클러스터 사용자 자격 증명을 다운로드하는 권한을 갖고 있습니다. 관리자가 아닌 사용자에게 이 역할을 할당할 수 있습니다. 이 역할은 클러스터 내부의 Kubernetes 리소스에 대한 특정 권한을 제공하지 않고, 사용자가 API 서버에 연결하는 것만 허용합니다. 
+- "Azure Kubernetes 서비스 클러스터 사용자 역할"은 클러스터 사용자 자격 증명을 다운로드하는 권한을 갖고 있습니다. 관리자가 아닌 사용자에게 이 역할을 할당할 수 있습니다. 이 역할은 클러스터 내부의 Kubernetes 리소스에 대한 특정 권한을 제공하지 않고, 사용자가 API 서버에 연결하는 것만 허용합니다.
 
 RBAC 정책을 정의할 때(Kubernetes 및 Azure 둘 다) 조직의 역할에 대해 고민해야 합니다.
 
@@ -259,109 +257,18 @@ Azure Container Registry의 기능인 ACR 작업을 사용하여 패치를 자�
 마이크로 서비스 아키텍처에 대한 강력한 CI/CD 프로세스의 목표는 다음과 같습니다.
 
 - 각 팀은 다른 팀에 영향을 주거나 방해하지 않고 독립적으로 소유한 서비스를 빌드하여 배포할 수 있습니다.
-
 - 새 버전의 서비스를 프로덕션 환경에 배포하기 전에 개발/테스트/QA 환경에 배포하여 유효성을 검사합니다. 각 단계에서 품질 게이트를 적용합니다.
-
-- 새 버전의 서비스를 이전 버전과 함께 배포할 수 있습니다.
-
+- 서비스의 새 버전은 이전 버전과 함께 배포할 수 있습니다.
 - 충분한 액세스 제어 정책을 적용합니다.
+- 컨테이너 화 된 워크 로드의 경우 프로덕션에 배포 된 컨테이너 이미지를 신뢰할 수 있습니다.
 
-- 프로덕션 환경에 배포된 컨테이너 이미지를 신뢰할 수 있습니다.
+문제에 대 한 자세한 내용은 참조 하세요 [마이크로 서비스 아키텍처의 CI/CD](../../microservices/ci-cd.md)합니다.
 
-### <a name="isolation-of-environments"></a>환경 격리
+특정 권장 사항 및 모범 사례 [Kubernetes에서 마이크로 서비스에 대 한 CI/CD](../../microservices/ci-cd-kubernetes.md)합니다.
 
-고객은 개발, 스모크 테스트, 통합 테스트, 부하 테스트 및 프로덕션 환경을 비롯한 여러 환경에 서비스를 배포할 것입니다. 이러한 환경에는 일정 수준의 격리가 필요합니다. Kubernetes에서는 물리적 격리와 논리적 격리 중에서 선택할 수 있습니다. 물리적 격리는 별도의 클러스터에 배포하는 것을 의미합니다. 논리적 격리는 앞에서 설명한 것처럼 네임스페이스와 정책을 사용합니다.
+## <a name="deploy-the-solution"></a>솔루션 배포
 
-개발/테스트 환경에 사용할 별도의 클러스터와 함께 전용 프로덕션 클러스터를 만드는 방법을 권장합니다. 논리적 격리를 사용하여 개발/테스트 클러스터 내에서 별도의 환경을 격리하세요. 개발/테스트 클러스터에 배포된 서비스는 비즈니스 데이터를 보관하는 데이터 저장소에 절대로 액세스하면 안 됩니다. 
+이 아키텍처에 대 한 참조 구현을 배포 하려면의 단계를 수행 합니다 [GitHub 리포지토리][ri-deploy]합니다.
 
-### <a name="helm"></a>Helm
-
-Helm을 사용하여 서비스를 빌드하고 배포하는 방안을 고려해 보세요. 다음은 CI/CD를 도와주는 Helm의 기능입니다.
-
-- 특정 마이크로 서비스의 모든 Kubernetes 개체를 단일 Helm 차트에 구성.
-- 차트를 일련의 kubectl 명령이 아닌 단일 helm 명령으로 배포.
-- 이전 버전으로 롤백하는 기능과 함께 의미 체계 버전 관리를 사용하여 업데이트 및 수정 버전 추적.
-- 템플릿을 사용하여 여러 파일에서 레이블, 선택기 등의 정보가 중복되지 않도록 방지.
-- 차트 간 종속성 관리.
-- Azure Container Registry 같은 Helm 리포지토리에 차트를 게시하고 빌드 파이프라인과 통합.
-
-Container Registry를 Helm 리포지토리로 사용하는 방법에 대한 자세한 내용은 [애플리케이션 차트용 Helm 리포지토리로 Azure Container Registry 사용](/azure/container-registry/container-registry-helm-repos)을 참조하세요.
-
-### <a name="cicd-workflow"></a>CI/CD 워크플로
-
-CI/CD 워크플로를 만들기 전에 코드 베이스가 구조화되고 관리되는 방법을 알아야 합니다.
-
-- 팀이 별도의 리포지토리에서 작업합니까, 아니면 단일 리포지토리에서 작업합니까?
-- 분기 전략은 무엇입니까?
-- 프로덕션 환경에 코드를 푸시할 수 있는 사람은 누구입니까? 릴리스 관리자 역할이 있습니까?
-
-단일 리포지토리 접근법이 지지를 받고 있지만 두 방식에는 모두 장단점이 있습니다.
-
-| &nbsp; | 단일 리포지토리 | 다중 리포지토리 |
-|--------|----------|----------------|
-| **장점** | 코드 공유<br/>코드 및 도구 표준화 용이<br/>코드 리팩터링 용이<br/>검색 기능 - 코드의 단일 보기<br/> | 팀별로 명확한 소유권<br/>잠재적으로 더 적은 병합 충돌<br/>마이크로 서비스를 강제로 분리하는 데 유용 |
-| **과제** | 공유 코드에 대한 변경 사항이 여러 마이크로 서비스에 영향을 줄 수 있음<br/>병합 충돌 가능성 증가<br/>대규모 코드 베이스에 맞게 도구를 확장해야 함<br/>Access Control<br/>더 복잡한 배포 프로세스 | 코드를 공유하기가 더 어려움<br/>코딩 표준을 적용하기가 더 어려움<br/>종속성 관리<br/>분산된 코드 베이스, 검색 기능 저하<br/>공유 인프라 결여
-
-이 섹션에서는 다음과 같은 가정에 따라 가능한 CI/CD 워크플로를 제공합니다.
-
-- 코드 리포지토리는 마이크로 서비스별로 정리된 폴더를 사용하는 단일 리포지토리입니다.
-- 팀의 분기 전략이 [트렁크 기반 개발](https://trunkbaseddevelopment.com/)을 기반으로 합니다.
-- 팀이 [Azure Pipelines](/azure/devops/pipelines)를 사용하여 CI/CD 프로세스를 실행합니다.
-- 팀이 Azure Container Registry에서 [네임스페이스](/azure/container-registry/container-registry-best-practices#repository-namespaces)를 사용하여 아직 테스트 중인 이미지에서 프로덕션용으로 승인된 이미지를 분리합니다.
-
-이 예에서는 개발자가 Delivery Service라는 마이크로 서비스를 작업합니다. (이 이름은 [여기](../../microservices/design/index.md#scenario)에 설명된 참조 구현에서 따온 것입니다.) 개발자는 새 기능을 개발할 때 기능 분기에 코드를 체크 인합니다.
-
-![CI/CD 워크플로](./_images/aks-cicd-1.png)
-
-이 분기에 대한 커밋을 푸시하면 마이크로 서비스에 대한 CI 빌드가 트리거됩니다. 관례상 기능 분기는 `feature/*`로 명명합니다. [빌드 정의 파일](/azure/devops/pipelines/yaml-schema)에는 분기 이름과 원본 경로로 필터링되는 트리거가 포함되어 있습니다. 각 팀은 이러한 접근법을 사용하여 자체 빌드 파이프라인을 구축할 수 있습니다.
-
-```yaml
-trigger:
-  batch: true
-  branches:
-    include:
-    - master
-    - feature/*
-
-    exclude:
-    - feature/experimental/*
-
-  paths:
-     include:
-     - /src/shipping/delivery/
-```
-
-워크플로의 이 시점에서 CI 빌드는 최소한의 코드 확인을 실행합니다.
-
-1. 코드 빌드
-1. 단위 테스트 실행
-
-개발자가 신속한 피드백을 얻을 수 있도록 빌드 시간을 짧게 유지하자는 것입니다. 기능을 마스터에 병합할 준비가 되면 개발자는 PR을 엽니다. 그러면 일부 추가 검사를 수행하는 다른 CI 빌드가 트리거됩니다.
-
-1. 코드 빌드
-1. 단위 테스트 실행
-1. 런타임 컨테이너 이미지 빌드
-1. 이미지에 대한 취약성 검사 실행
-
-![CI/CD 워크플로](./_images/aks-cicd-2.png)
-
-> [!NOTE]
-> Azure Repos에서 분기를 보호하는 [정책](/azure/devops/repos/git/branch-policies)을 정의할 수 있습니다. 예를 들어 마스터에 병합하려면 정책에 승인자의 서명과 성공적인 CI 빌드가 필요할 수 있습니다.
-
-어느 시점이 되면 팀은 새 버전의 Delivery Service를 배포할 수 있습니다. 이를 위해 릴리스 관리자는 `release/<microservice name>/<semver>`와 같은 명명 패턴을 사용하여 마스터에서 분기를 만듭니다. 예: `release/delivery/v1.0.2`.
-이는 이전의 모든 단계와 다음 작업을 실행하는 완전한 CI 빌드를 트리거합니다.
-
-1. Azure Container Registry로 Docker 이미지를 푸시합니다. 분기 이름에서 가져온 버전 번호로 이미지에 태그가 지정됩니다.
-2. `helm package`를 실행하여 Helm 차트 패키징
-3. `az acr helm push`를 실행하여 Container Registry에 Helm 패키지를 푸시합니다.
-
-이 빌드가 성공할 경우 Azure Pipelines [릴리스 파이프라인](/azure/devops/pipelines/release/what-is-release-management)을 사용하여 배포 프로세스가 트리거됩니다. 이 파이프라인
-
-1. `helm upgrade`를 실행하여 QA 환경에 Helm 차트를 배포합니다.
-1. 승인자가 서명한 후 패키지가 프로덕션 단계로 이동합니다. [승인을 통해 릴리스 배포 제어](/azure/devops/pipelines/release/approvals/approvals)를 참조하세요.
-1. Azure Container Registry에서 프로덕션 네임스페이스용 Docker 이미지에 다시 태그를 지정합니다. 예를 들어 현재 태그가 `myrepo.azurecr.io/delivery:v1.0.2`라면 프로덕션 태그는 `myrepo.azurecr.io/prod/delivery:v1.0.2`입니다.
-1. `helm upgrade`를 실행하여 프로덕션 환경에 Helm 차트를 배포합니다.
-
-![CI/CD 워크플로](./_images/aks-cicd-3.png)
-
-팀이 빠른 개발속도로 배포할 수 있도록 단일 리포지토리에서도 이러한 작업의 범위를 개별 마이크로 서비스로 지정할 수 있다는 사실을 기억하는 것이 중요합니다. 이 프로세스에는 몇 가지 수동 단계가 있습니다. PR 승인, 릴리스 분기 만들기, 프로덕션 클러스터에 배포 승인. 이러한 단계는 정책에 따라 수동으로 실행합니다. 조직에서 선호하는 경우 이러한 단계를 완전히 자동화할 수 있습니다.
+[ri]: https://github.com/mspnp/microservices-reference-implementation
+[ri-deploy]: https://github.com/mspnp/microservices-reference-implementation/blob/master/deployment.md
