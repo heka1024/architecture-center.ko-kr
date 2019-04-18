@@ -6,18 +6,19 @@ layout: LandingPage
 ms.topic: landing-page
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
-ms.openlocfilehash: 57f28808d3c49c74bc010133c670a186206a4466
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: f49640f4a994bf1cdca8029260fc95a5da323ff2
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58344532"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640620"
 ---
 # <a name="azure-virtual-datacenter-and-the-enterprise-control-plane"></a>Azure Virtual Datacenter 및 Enterprise Control Plane
 
 Azure Virtual Datacenter는 기존 보안 및 네트워킹 정책을 적용하는 동시에 Azure 클라우드 플랫폼의 기능을 최대한 활용하는 방법입니다. 엔터프라이즈 워크로드를 클라우드에 배포할 때 IT 조직과 비즈니스 단위는 규제와 개발자 유연성 간에 적절한 균형을 이루어야 합니다. Azure Virtual Datacenter는 규제를 강조하면서 이러한 균형을 이루는 모델을 제공합니다.
- 
+
 ## <a name="resources"></a>리소스
+
 <table>
 <tr>
     <td style="width: 64px; vertical-align: middle;"><a href="https://aka.ms/VDC/Concepts"><img src="../_images/virtual-datacenter.svg" alt="Virtual Datacenter eBook" /></a></td>
@@ -58,6 +59,5 @@ Azure Virtual Datacenter는 기존 보안 및 네트워킹 정책을 적용하�
 이러한 네 가지 구성 요소를 통해 Azure Virtual Datacenter는 ID, 암호화, 소프트웨어 정의 네트워킹 및 규정 준수(로그 및 보고 포함)를 수행할 수 있습니다.
 
 Azure Virtual Datacenter 모델에서 격리 정책을 적용하고, 사용자가 아는 물리적 데이터 센터와 더 비슷하게 클라우드를 만들고, 사용자에게 필요한 보안 및 신뢰 수준을 달성할 수 있습니다. 엔터프라이즈 IT 팀이 인정하는 소프트웨어 정의 네트워킹, 암호화, ID 관리 및 Azure 플랫폼의 기본 준수 표준 및 인증의 네 가지 구성 요소를 통해 가능합니다. 이러한 네 가지 구성 요소는 가상 데이터 센터를 기존 인프라 투자의 신뢰할 수 있는 확장으로 만드는 데 핵심입니다.
-
 
 <a href="https://aka.ms/VDC/eBook">Azure Virtual Datacenter 개념</a> 전자책을 이어서 읽어보세요.

@@ -1,5 +1,5 @@
 
-## <a name="ai-scenarios"></a><span data-ttu-id="6c3c2-101">AI 시나리오</span><span class="sxs-lookup"><span data-stu-id="6c3c2-101">AI Scenarios</span></span>
+## <a name="ai-scenarios"></a><span data-ttu-id="49005-101">AI 시나리오</span><span class="sxs-lookup"><span data-stu-id="49005-101">AI Scenarios</span></span>
 
 <ul  class="panelContent cardsG">
 <li style="display: flex; flex-direction: column;">
@@ -13,8 +13,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-102">호텔 예약을 위한 대화형 챗봇</span><span class="sxs-lookup"><span data-stu-id="6c3c2-102">Conversational chatbot for hotel reservations</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-103">Azure Bot Service를 사용하여 상거래 애플리케이션에 대해 대화형 챗봇을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-103">Build a conversational chatbot for commerce applications with Azure Bot Service.</span></span></p>
+                        <h3><span data-ttu-id="49005-102">호텔 예약을 위한 대화형 챗봇</span><span class="sxs-lookup"><span data-stu-id="49005-102">Conversational chatbot for hotel reservations</span></span></h3>
+                        <p><span data-ttu-id="49005-103">Azure Bot Service를 사용하여 상거래 애플리케이션에 대해 대화형 챗봇을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-103">Build a conversational chatbot for commerce applications with Azure Bot Service.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -32,8 +32,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-104">보험 청구에 대한 이미지 분류</span><span class="sxs-lookup"><span data-stu-id="6c3c2-104">Image classification for insurance claims</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-105">Azure 애플리케이션에 이미지 처리를 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-105">Build image processing into your Azure applications.</span></span></p>
+                        <h3><span data-ttu-id="49005-104">보험 청구에 대한 이미지 분류</span><span class="sxs-lookup"><span data-stu-id="49005-104">Image classification for insurance claims</span></span></h3>
+                        <p><span data-ttu-id="49005-105">Azure 애플리케이션에 이미지 처리를 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-105">Build image processing into your Azure applications.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -51,8 +51,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-106">Azure에서 동영상 추천</span><span class="sxs-lookup"><span data-stu-id="6c3c2-106">Movie recommendations on Azure</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-107">기계 학습을 사용하여 영화, 제품 및 기타 추천 사항을 자동화하고, 기계 학습과 Azure DSVM(Data Science Virtual Machine)을 사용하여 Azure에서 모델을 학습합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-107">Use machine learning to automate movie, product, and other recommendations using machine learning and an Azure Data Science Virtual Machine (DSVM) to train a model on Azure.</span></span></p>
+                        <h3><span data-ttu-id="49005-106">Azure에서 동영상 추천</span><span class="sxs-lookup"><span data-stu-id="49005-106">Movie recommendations on Azure</span></span></h3>
+                        <p><span data-ttu-id="49005-107">기계 학습을 사용하여 영화, 제품 및 기타 추천 사항을 자동화하고, 기계 학습과 Azure DSVM(Data Science Virtual Machine)을 사용하여 Azure에서 모델을 학습합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-107">Use machine learning to automate movie, product, and other recommendations using machine learning and an Azure Data Science Virtual Machine (DSVM) to train a model on Azure.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -61,8 +61,7 @@
 </li>
 </ul>
 
-
-## <a name="application-scenarios"></a><span data-ttu-id="6c3c2-108">애플리케이션 시나리오</span><span class="sxs-lookup"><span data-stu-id="6c3c2-108">Application Scenarios</span></span>
+## <a name="application-scenarios"></a><span data-ttu-id="49005-108">애플리케이션 시나리오</span><span class="sxs-lookup"><span data-stu-id="49005-108">Application Scenarios</span></span>
 
 <ul  class="panelContent cardsG">
 <li style="display: flex; flex-direction: column;">
@@ -76,8 +75,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-109">API 기반 아키텍처로 웹앱 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="6c3c2-109">Migrating a web app to an API-based architecture</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-110">Azure API Management를 사용하여 레거시 웹 애플리케이션을 현대화합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-110">Use Azure API Management to modernize a legacy web application.</span></span></p>
+                        <h3><span data-ttu-id="49005-109">API 기반 아키텍처로 웹앱 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="49005-109">Migrating a web app to an API-based architecture</span></span></h3>
+                        <p><span data-ttu-id="49005-110">Azure API Management를 사용하여 레거시 웹 애플리케이션을 현대화합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-110">Use Azure API Management to modernize a legacy web application.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -95,8 +94,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-111">은행 간에 분산 트러스트</span><span class="sxs-lookup"><span data-stu-id="6c3c2-111">Decentralized trust between banks</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-112">중앙 집중식 데이터베이스로 재분류하지 않고 통신 및 정보 공유에 대해 신뢰할 수 있는 환경을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-112">Establish a trusted environment for communication and information sharing without resorting to a centralized database.</span></span></p>
+                        <h3><span data-ttu-id="49005-111">은행 간에 분산 트러스트</span><span class="sxs-lookup"><span data-stu-id="49005-111">Decentralized trust between banks</span></span></h3>
+                        <p><span data-ttu-id="49005-112">중앙 집중식 데이터베이스로 재분류하지 않고 통신 및 정보 공유에 대해 신뢰할 수 있는 환경을 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-112">Establish a trusted environment for communication and information sharing without resorting to a centralized database.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -114,8 +113,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-113">Azure DevOps를 사용하여 CI/CD 파이프라인 설계</span><span class="sxs-lookup"><span data-stu-id="6c3c2-113">Design a CI/CD pipeline using Azure DevOps</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-114">Azure DevOps를 사용하여 Azure Web Apps에 .NET 앱을 빌드하고 릴리스합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-114">Build and release a .NET app to Azure Web Apps using Azure DevOps.</span></span></p>
+                        <h3><span data-ttu-id="49005-113">Azure DevOps를 사용하여 CI/CD 파이프라인 설계</span><span class="sxs-lookup"><span data-stu-id="49005-113">Design a CI/CD pipeline using Azure DevOps</span></span></h3>
+                        <p><span data-ttu-id="49005-114">Azure DevOps를 사용하여 Azure Web Apps에 .NET 앱을 빌드하고 릴리스합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-114">Build and release a .NET app to Azure Web Apps using Azure DevOps.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -133,8 +132,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-115">컨테이너 기반 작업에 대한 CI/CD 파이프라인</span><span class="sxs-lookup"><span data-stu-id="6c3c2-115">CI/CD pipeline for container-based workloads</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-116">Jenkins, Azure Container Registry, Azure Kubernetes Service, Cosmos DB 및 Grafana를 사용하여 Node.js 웹앱에 대한 DevOps 파이프라인을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-116">Build a DevOps pipeline for a Node.js web app with Jenkins, Azure Container Registry, Azure Kubernetes Service, Cosmos DB, and Grafana.</span></span></p>
+                        <h3><span data-ttu-id="49005-115">컨테이너 기반 작업에 대한 CI/CD 파이프라인</span><span class="sxs-lookup"><span data-stu-id="49005-115">CI/CD pipeline for container-based workloads</span></span></h3>
+                        <p><span data-ttu-id="49005-116">Jenkins, Azure Container Registry, Azure Kubernetes Service, Cosmos DB 및 Grafana를 사용하여 Node.js 웹앱에 대한 DevOps 파이프라인을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-116">Build a DevOps pipeline for a Node.js web app with Jenkins, Azure Container Registry, Azure Kubernetes Service, Cosmos DB, and Grafana.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -152,8 +151,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-117">전자상거래 프런트 엔드</span><span class="sxs-lookup"><span data-stu-id="6c3c2-117">E-commerce front end</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-118">Azure에서 전자상거래 사이트를 호스트합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-118">Host an e-commerce site on Azure.</span></span></p>
+                        <h3><span data-ttu-id="49005-117">전자상거래 프런트 엔드</span><span class="sxs-lookup"><span data-stu-id="49005-117">E-commerce front end</span></span></h3>
+                        <p><span data-ttu-id="49005-118">Azure에서 전자상거래 사이트를 호스트합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-118">Host an e-commerce site on Azure.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -171,8 +170,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-119">전자상거래에 대한 지능형 제품 검색 엔진</span><span class="sxs-lookup"><span data-stu-id="6c3c2-119">Intelligent product search engine for e-commerce</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-120">전자상거래 애플리케이션에서 세계적 수준의 검색 환경을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-120">Provide a world-class search experience in an e-commerce application.</span></span></p>
+                        <h3><span data-ttu-id="49005-119">전자상거래에 대한 지능형 제품 검색 엔진</span><span class="sxs-lookup"><span data-stu-id="49005-119">Intelligent product search engine for e-commerce</span></span></h3>
+                        <p><span data-ttu-id="49005-120">전자상거래 애플리케이션에서 세계적 수준의 검색 환경을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-120">Provide a world-class search experience in an e-commerce application.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -190,8 +189,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-121">컴퓨터 지원 엔지니어링 서비스</span><span class="sxs-lookup"><span data-stu-id="6c3c2-121">A computer-aided engineering service</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-122">Azure에서 CAE(컴퓨터 지원 엔지니어링)에 대한 SaaS(Software-as-a-Service) 플랫폼을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-122">Provide a software-as-a-service (SaaS) platform for computer-aided engineering (CAE) on Azure.</span></span></p>
+                        <h3><span data-ttu-id="49005-121">컴퓨터 지원 엔지니어링 서비스</span><span class="sxs-lookup"><span data-stu-id="49005-121">A computer-aided engineering service</span></span></h3>
+                        <p><span data-ttu-id="49005-122">Azure에서 CAE(컴퓨터 지원 엔지니어링)에 대한 SaaS(Software-as-a-Service) 플랫폼을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-122">Provide a software-as-a-service (SaaS) platform for computer-aided engineering (CAE) on Azure.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -209,8 +208,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-123">SAP 워크로드에 대한 개발/테스트 환경</span><span class="sxs-lookup"><span data-stu-id="6c3c2-123">Dev/test environments for SAP workloads</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-124">SAP 워크로드에 대한 개발/테스트 환경을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-124">Build a dev/test environment for SAP workloads.</span></span></p>
+                        <h3><span data-ttu-id="49005-123">SAP 워크로드에 대한 개발/테스트 환경</span><span class="sxs-lookup"><span data-stu-id="49005-123">Dev/test environments for SAP workloads</span></span></h3>
+                        <p><span data-ttu-id="49005-124">SAP 워크로드에 대한 개발/테스트 환경을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-124">Build a dev/test environment for SAP workloads.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -228,8 +227,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-125">Oracle 데이터베이스를 사용하여 SAP 프로덕션 워크로드 실행</span><span class="sxs-lookup"><span data-stu-id="6c3c2-125">Running SAP production workloads using an Oracle database</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-126">Oracle 데이터베이스를 사용하여 Azure에서 SAP 프로덕션 배포를 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-126">Run an SAP production deployment in Azure using an Oracle database.</span></span></p>
+                        <h3><span data-ttu-id="49005-125">Oracle 데이터베이스를 사용하여 SAP 프로덕션 워크로드 실행</span><span class="sxs-lookup"><span data-stu-id="49005-125">Running SAP production workloads using an Oracle database</span></span></h3>
+                        <p><span data-ttu-id="49005-126">Oracle 데이터베이스를 사용하여 Azure에서 SAP 프로덕션 배포를 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-126">Run an SAP production deployment in Azure using an Oracle database.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -238,8 +237,7 @@
 </li>
 </ul>
 
-
-## <a name="data-scenarios"></a><span data-ttu-id="6c3c2-127">데이터 시나리오</span><span class="sxs-lookup"><span data-stu-id="6c3c2-127">Data Scenarios</span></span>
+## <a name="data-scenarios"></a><span data-ttu-id="49005-127">데이터 시나리오</span><span class="sxs-lookup"><span data-stu-id="49005-127">Data Scenarios</span></span>
 
 <ul  class="panelContent cardsG">
 <li style="display: flex; flex-direction: column;">
@@ -253,8 +251,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-128">건축 산업에서 IoT 및 데이터 분석</span><span class="sxs-lookup"><span data-stu-id="6c3c2-128">IoT and data analytics in the construction industry</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-129">IoT 디바이스 및 데이터 분석을 사용하여 건축 프로젝트의 포괄적인 관리 및 작업을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-129">Use IoT devices and data analytics to provide comprehensive management and operation of construction projects.</span></span></p>
+                        <h3><span data-ttu-id="49005-128">건축 산업에서 IoT 및 데이터 분석</span><span class="sxs-lookup"><span data-stu-id="49005-128">IoT and data analytics in the construction industry</span></span></h3>
+                        <p><span data-ttu-id="49005-129">IoT 디바이스 및 데이터 분석을 사용하여 건축 프로젝트의 포괄적인 관리 및 작업을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-129">Use IoT devices and data analytics to provide comprehensive management and operation of construction projects.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -272,8 +270,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-130">영업 및 마케팅에 대한 데이터 웨어하우징 및 분석</span><span class="sxs-lookup"><span data-stu-id="6c3c2-130">Data warehousing and analytics for sales and marketing</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-131">여러 원본의 데이터를 통합하고 데이터 분석을 최적화합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-131">Consolidate data from multiple sources and optimize data analytics.</span></span></p>
+                        <h3><span data-ttu-id="49005-130">영업 및 마케팅에 대한 데이터 웨어하우징 및 분석</span><span class="sxs-lookup"><span data-stu-id="49005-130">Data warehousing and analytics for sales and marketing</span></span></h3>
+                        <p><span data-ttu-id="49005-131">여러 원본의 데이터를 통합하고 데이터 분석을 최적화합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-131">Consolidate data from multiple sources and optimize data analytics.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -291,8 +289,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-132">확장성 있는 주문 처리</span><span class="sxs-lookup"><span data-stu-id="6c3c2-132">Scalable order processing</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-133">Azure Cosmos DB를 사용하여 확장성이 높은 주문 처리 파이프라인을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-133">Build a highly scalable order processing pipeline using Azure Cosmos DB.</span></span></p>
+                        <h3><span data-ttu-id="49005-132">확장성 있는 주문 처리</span><span class="sxs-lookup"><span data-stu-id="49005-132">Scalable order processing</span></span></h3>
+                        <p><span data-ttu-id="49005-133">Azure Cosmos DB를 사용하여 확장성이 높은 주문 처리 파이프라인을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-133">Build a highly scalable order processing pipeline using Azure Cosmos DB.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -310,8 +308,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-134">실시간 사기 감지</span><span class="sxs-lookup"><span data-stu-id="6c3c2-134">Real-time fraud detection</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-135">Azure Event Hubs 및 Stream Analytics를 사용하여 부정 행위를 실시간으로 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-135">Detect fraudulent activity in real-time using Azure Event Hubs and Stream Analytics.</span></span></p>
+                        <h3><span data-ttu-id="49005-134">실시간 사기 감지</span><span class="sxs-lookup"><span data-stu-id="49005-134">Real-time fraud detection</span></span></h3>
+                        <p><span data-ttu-id="49005-135">Azure Event Hubs 및 Stream Analytics를 사용하여 부정 행위를 실시간으로 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-135">Detect fraudulent activity in real-time using Azure Event Hubs and Stream Analytics.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -329,8 +327,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-136">기존 온-프레미스 SSIS와 Azure Data Factory를 사용한 하이브리드 ETL</span><span class="sxs-lookup"><span data-stu-id="6c3c2-136">Hybrid ETL with existing on-premises SSIS and Azure Data Factory</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-137">기존 온-프레미스 SSIS(SQL Server Integration Services) 배포와 Azure Data Factory를 사용한 하이브리드 ETL</span><span class="sxs-lookup"><span data-stu-id="6c3c2-137">Hybrid ETL with existing on-premises SQL Server Integration Services (SSIS) deployments and Azure Data Factory.</span></span></p>
+                        <h3><span data-ttu-id="49005-136">기존 온-프레미스 SSIS와 Azure Data Factory를 사용한 하이브리드 ETL</span><span class="sxs-lookup"><span data-stu-id="49005-136">Hybrid ETL with existing on-premises SSIS and Azure Data Factory</span></span></h3>
+                        <p><span data-ttu-id="49005-137">기존 온-프레미스 SSIS(SQL Server Integration Services) 배포와 Azure Data Factory를 사용한 하이브리드 ETL</span><span class="sxs-lookup"><span data-stu-id="49005-137">Hybrid ETL with existing on-premises SQL Server Integration Services (SSIS) deployments and Azure Data Factory.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -348,8 +346,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-138">실시간 자동차 IoT 데이터의 수집 및 처리</span><span class="sxs-lookup"><span data-stu-id="6c3c2-138">Ingestion and processing of real-time automotive IoT data</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-139">IoT를 사용하여 실시간 차량 데이터를 수집하고 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-139">Ingest and process real-time vehicle data using IoT.</span></span></p>
+                        <h3><span data-ttu-id="49005-138">실시간 자동차 IoT 데이터의 수집 및 처리</span><span class="sxs-lookup"><span data-stu-id="49005-138">Ingestion and processing of real-time automotive IoT data</span></span></h3>
+                        <p><span data-ttu-id="49005-139">IoT를 사용하여 실시간 차량 데이터를 수집하고 처리합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-139">Ingest and process real-time vehicle data using IoT.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -358,8 +356,7 @@
 </li>
 </ul>
 
-
-## <a name="infrastructure-scenarios"></a><span data-ttu-id="6c3c2-140">인프라 시나리오</span><span class="sxs-lookup"><span data-stu-id="6c3c2-140">Infrastructure Scenarios</span></span>
+## <a name="infrastructure-scenarios"></a><span data-ttu-id="49005-140">인프라 시나리오</span><span class="sxs-lookup"><span data-stu-id="49005-140">Infrastructure Scenarios</span></span>
 
 <ul  class="panelContent cardsG">
 <li style="display: flex; flex-direction: column;">
@@ -373,8 +370,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-141">CFD 시뮬레이션 실행</span><span class="sxs-lookup"><span data-stu-id="6c3c2-141">Running CFD simulations</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-142">Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-142">Execute computational fluid dynamics (CFD) simulations on Azure.</span></span></p>
+                        <h3><span data-ttu-id="49005-141">CFD 시뮬레이션 실행</span><span class="sxs-lookup"><span data-stu-id="49005-141">Running CFD simulations</span></span></h3>
+                        <p><span data-ttu-id="49005-142">Azure에서 CFD(컴퓨팅 유체 역학) 시뮬레이션을 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-142">Execute computational fluid dynamics (CFD) simulations on Azure.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -392,8 +389,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-143">Azure에서 디지털 이미지 기반 모델링 가속화</span><span class="sxs-lookup"><span data-stu-id="6c3c2-143">Accelerate digital image-based modeling on Azure</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-144">Avere 및 Agisoft PhotoScan을 사용하여 Azure에서 디지털 이미지 기반 모델링 가속화</span><span class="sxs-lookup"><span data-stu-id="6c3c2-144">Accelerate digital image-based modeling on Azure using Avere and Agisoft PhotoScan</span></span></p>
+                        <h3><span data-ttu-id="49005-143">Azure에서 디지털 이미지 기반 모델링 가속화</span><span class="sxs-lookup"><span data-stu-id="49005-143">Accelerate digital image-based modeling on Azure</span></span></h3>
+                        <p><span data-ttu-id="49005-144">Avere 및 Agisoft PhotoScan을 사용하여 Azure에서 디지털 이미지 기반 모델링 가속화</span><span class="sxs-lookup"><span data-stu-id="49005-144">Accelerate digital image-based modeling on Azure using Avere and Agisoft PhotoScan</span></span></p>
                     </div>
                 </div>
             </div>
@@ -411,8 +408,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-145">Citrix를 사용한 Linux 가상 데스크톱</span><span class="sxs-lookup"><span data-stu-id="6c3c2-145">Linux virtual desktops with Citrix</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-146">Azure에서 Citrix를 사용하여 Linux 데스크톱에 대해 VDI 환경을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-146">Build a VDI environment for Linux Desktops using Citrix on Azure.</span></span></p>
+                        <h3><span data-ttu-id="49005-145">Citrix를 사용한 Linux 가상 데스크톱</span><span class="sxs-lookup"><span data-stu-id="49005-145">Linux virtual desktops with Citrix</span></span></h3>
+                        <p><span data-ttu-id="49005-146">Azure에서 Citrix를 사용하여 Linux 데스크톱에 대해 VDI 환경을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-146">Build a VDI environment for Linux Desktops using Citrix on Azure.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -430,8 +427,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-147">HA/DR용으로 빌드된 다중 계층 웹 애플리케이션</span><span class="sxs-lookup"><span data-stu-id="6c3c2-147">Multi-tier web application built for HA/DR</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-148">Azure Virtual Machines, 가용성 집합, 가용성 영역, Azure Site Recovery 및 Azure Traffic Manager를 사용하여 Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-148">Create a multitier web application built for high availability and disaster recovery on Azure using Azure virtual machines, availability sets, availability zones, Azure Site Recovery, and Azure Traffic Manager.</span></span></p>
+                        <h3><span data-ttu-id="49005-147">HA/DR용으로 빌드된 다중 계층 웹 애플리케이션</span><span class="sxs-lookup"><span data-stu-id="49005-147">Multi-tier web application built for HA/DR</span></span></h3>
+                        <p><span data-ttu-id="49005-148">Azure Virtual Machines, 가용성 집합, 가용성 영역, Azure Site Recovery 및 Azure Traffic Manager를 사용하여 Azure의 고가용성 및 재해 복구를 위한 다중 계층 웹 애플리케이션을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="49005-148">Create a multitier web application built for high availability and disaster recovery on Azure using Azure virtual machines, availability sets, availability zones, Azure Site Recovery, and Azure Traffic Manager.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -449,8 +446,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-149">Windows VM으로 안전한 웹앱 빌드</span><span class="sxs-lookup"><span data-stu-id="6c3c2-149">Building secure web apps with Windows VMs</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-150">확장 집합, Application Gateway 및 부하 분산 장치를 사용하여 Azure의 Windows Server에서 안전한 다중 계층 웹 애플리케이션을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-150">Build a secure, multi-tier web application with Windows Server on Azure using scale sets, Application Gateway, and load balancers.</span></span></p>
+                        <h3><span data-ttu-id="49005-149">Windows VM으로 안전한 웹앱 빌드</span><span class="sxs-lookup"><span data-stu-id="49005-149">Building secure web apps with Windows VMs</span></span></h3>
+                        <p><span data-ttu-id="49005-150">확장 집합, Application Gateway 및 부하 분산 장치를 사용하여 Azure의 Windows Server에서 안전한 다중 계층 웹 애플리케이션을 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-150">Build a secure, multi-tier web application with Windows Server on Azure using scale sets, Application Gateway, and load balancers.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -468,8 +465,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-151">Service Fabric을 사용하여 애플리케이션 분해</span><span class="sxs-lookup"><span data-stu-id="6c3c2-151">Using Service Fabric to decompose applications</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-152">대규모 모놀리식 애플리케이션을 마이크로 서비스로 분해합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-152">Decompose a large monolithic application into microservices.</span></span></p>
+                        <h3><span data-ttu-id="49005-151">Service Fabric을 사용하여 애플리케이션 분해</span><span class="sxs-lookup"><span data-stu-id="49005-151">Using Service Fabric to decompose applications</span></span></h3>
+                        <p><span data-ttu-id="49005-152">대규모 모놀리식 애플리케이션을 마이크로 서비스로 분해합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-152">Decompose a large monolithic application into microservices.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -487,8 +484,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-153">3D 비디오 렌더링</span><span class="sxs-lookup"><span data-stu-id="6c3c2-153">3D video rendering</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-154">Azure Batch 서비스를 사용하여 Azure에서 원시 HPC 워크로드를 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-154">Run native HPC workloads in Azure using the Azure Batch service.</span></span></p>
+                        <h3><span data-ttu-id="49005-153">3D 비디오 렌더링</span><span class="sxs-lookup"><span data-stu-id="49005-153">3D video rendering</span></span></h3>
+                        <p><span data-ttu-id="49005-154">Azure Batch 서비스를 사용하여 Azure에서 원시 HPC 워크로드를 실행합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-154">Run native HPC workloads in Azure using the Azure Batch service.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -506,8 +503,8 @@
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3><span data-ttu-id="6c3c2-155">확장성이 높고 안전한 WordPress 웹 사이트</span><span class="sxs-lookup"><span data-stu-id="6c3c2-155">Highly scalable and secure WordPress websites</span></span></h3>
-                        <p><span data-ttu-id="6c3c2-156">미디어 이벤트에 대해 확장성이 높고 안전한 WordPress 웹 사이트를 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="6c3c2-156">Build a highly scalable and secure WordPress website for media events.</span></span></p>
+                        <h3><span data-ttu-id="49005-155">확장성이 높고 안전한 WordPress 웹 사이트</span><span class="sxs-lookup"><span data-stu-id="49005-155">Highly scalable and secure WordPress websites</span></span></h3>
+                        <p><span data-ttu-id="49005-156">미디어 이벤트에 대해 확장성이 높고 안전한 WordPress 웹 사이트를 빌드합니다.</span><span class="sxs-lookup"><span data-stu-id="49005-156">Build a highly scalable and secure WordPress website for media events.</span></span></p>
                     </div>
                 </div>
             </div>
@@ -515,4 +512,3 @@
     </a>
 </li>
 </ul>
-
