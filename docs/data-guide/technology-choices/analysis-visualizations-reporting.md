@@ -7,12 +7,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: data-analytics
-ms.openlocfilehash: 72b889e2fe0d862ab1ff280cea76c2880b0fadc4
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: bfdfeefe36dd44478f407008e2f9f3749f7a70d6
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58245954"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639755"
 ---
 # <a name="choosing-a-data-analytics-technology-in-azure"></a>Azure에서 데이터 분석 기술 선택
 
@@ -73,7 +73,7 @@ HDInsight 클러스터에서 실행되며 클러스터의 기본 저장소 계�
 
 - 다양한 데이터 원본에 연결하여 도메인 전체에 분산되어 있는 데이터에 대한 보고서를 만들 수 있는 중앙 위치를 제공해야 하나요? 그렇다면 수백 개의 데이터 원본에 연결할 수 있는 옵션을 선택합니다.
 
-- 외부 웹 사이트 또는 애플리케이션에 동적 시각화를 포함하려고 하나요? 그렇다면 포함 기능을 제공하는 옵션을 선택합니다.
+- 외부 웹 사이트 또는 응용 프로그램에 동적 시각화를 포함 하 시겠습니까? 그렇다면 포함 기능을 제공하는 옵션을 선택합니다.
 
 - 오프라인 상태에서 시각화 및 보고서를 디자인하려고 하나요? 그렇다면 오프라인 기능이 있는 옵션을 선택합니다.
 
@@ -89,13 +89,13 @@ HDInsight 클러스터에서 실행되며 클러스터의 기본 저장소 계�
 
 | | Power BI | Jupyter 노트북 | Zeppelin 노트 | Microsoft Azure 노트 |
 | --- | --- | --- | --- | --- |
-| 고급 처리를 위해 빅 데이터 클러스터에 연결 | 예 | 예 | 예 | 아니요 |
+| 고급 처리를 위해 빅 데이터 클러스터에 연결 | 예 | 예 | 예 | 아닙니다. |
 | 관리되는 서비스 | 예 | 예 <sup>1</sup> | 예 <sup>1</sup> | 예 |
-| 수백 개의 데이터 원본에 연결 | 예 | 아니요 | 아니요 | 아니요 |
-| 오프라인 기능 | 예 <sup>2</sup> | 아니요 | 아니요 | 아니요 |
-| 포함 기능 | 예 | 아니요 | 아니요 | 아니요 |
-| 자동 데이터 새로 고침 | 예 | 아니요 | 아니요 | 아니요 |
-| 다양한 오픈 소스 패키지에 액세스 | 아니요 | 예 <sup>3</sup> | 예 <sup>3</sup> | 예 <sup>4</sup> |
+| 수백 개의 데이터 원본에 연결 | 예 | 아니오 | 아니요 | 아닙니다. |
+| 오프라인 기능 | 예 <sup>2</sup> | 아닙니다. | 아니요 | 아닙니다. |
+| 포함 기능 | 예 | 아니오 | 아니요 | 아닙니다. |
+| 자동 데이터 새로 고침 | 예 | 아니오 | 아니요 | 아닙니다. |
+| 다양한 오픈 소스 패키지에 액세스 | 아닙니다. | 예 <sup>3</sup> | 예 <sup>3</sup> | 예 <sup>4</sup> |
 | 데이터 변환/정리 옵션 | [파워 쿼리](https://powerbi.microsoft.com/blog/getting-started-with-power-query-part-i/), R | 40개 언어(Python, R, Julia 및 Scala 포함) | 20개 이상의 인터프리터(Python, JDBC 및 R 포함) | Python, F#, R |
 | 가격 | 무료 Power BI Desktop(제작)에 대해서는 호스팅 옵션에 대한 [가격 책정](https://powerbi.microsoft.com/pricing/)을 참조하세요. | 무료 | 무료 | 무료 |
 | 다중 사용자 공동 작업 | [예](/power-bi/service-how-to-collaborate-distribute-dashboards-reports) | 예(공유를 통해 또는 [JupyterHub](https://github.com/jupyterhub/jupyterhub)와 같은 다중 사용자 서버를 사용하여) | 예 | 예(공유를 통해) |

@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, serverless
-ms.openlocfilehash: 60af3df5bbb75d97d6ba797874c8b37319b2fad5
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: edf569b82a0a632e6ca048fee12c1dc61c039cd9
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487392"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640807"
 ---
 # <a name="serverless-web-application-on-azure"></a>Azure의 서버리스 웹 애플리케이션
 
@@ -40,12 +40,9 @@ Functions는 HTTP 요청 또는 큐에 도착하는 메시지와 같은 외부 �
 
 **Blob Storage** HTML, CSS 및 JavaScript 파일과 같은 정적 웹 콘텐츠는 Azure Blob Storage에 저장되며, [정적 웹 사이트 호스팅][static-hosting]을 사용하여 클라이언트에 제공됩니다. 모든 동적 상호 작용은 백 엔드 API를 호출하는 JavaScript 코드를 통해 수행됩니다. 웹 페이지를 렌더링하는 서버 쪽 코드는 없습니다. 정적 웹 사이트 호스팅은 인덱스 문서 및 404 사용자 지정 오류 페이지를 지원합니다.
 
-> [!NOTE]
-> 정적 웹 사이트 호스팅은 현재 [미리 보기][static-hosting-preview]로 있습니다.
-
 **CDN**. HTTPS 엔드포인트를 제공할 뿐만 아니라 대기 시간을 줄이고 콘텐츠를 빠르게 전송하기 위해 콘텐츠를 캐시하려면 [Azure CDN(Content Delivery Network)][cdn]을 사용합니다.
 
-**함수 앱**. [Azure Functions][functions]는 서버리스 계산 옵션입니다. 트리거를 통해 코드("함수")가 호출되는 이벤트 구동 모델을 사용합니다. 이 아키텍처에서 함수는 클라이언트에서 HTTP를 요청할 때 호출됩니다. 요청은 항상 아래에 설명된 API 게이트웨이를 통해 라우팅됩니다.
+**Function App**. [Azure Functions][functions]는 서버리스 계산 옵션입니다. 트리거를 통해 코드("함수")가 호출되는 이벤트 구동 모델을 사용합니다. 이 아키텍처에서 함수는 클라이언트에서 HTTP를 요청할 때 호출됩니다. 요청은 항상 아래에 설명된 API 게이트웨이를 통해 라우팅됩니다.
 
 **API Management**. [API Management][apim]는 HTTP 함수 앞에 있는 API 게이트웨이를 제공합니다. API Management를 사용하여 클라이언트 애플리케이션에서 사용하는 API를 게시하고 관리할 수 있습니다. 게이트웨이를 사용하면 프런트 엔드 애플리케이션을 백 엔드 API에서 분리할 수 있습니다. 예를 들어 API Management는 URL을 다시 쓰거나, 백 엔드에 도달하기 전에 요청을 변환하거나, 요청 또는 응답 헤더를 설정하는 등의 작업을 수행할 수 있습니다.
 
@@ -71,7 +68,7 @@ API Management에서 제공하는 기능 중 일부만 필요한 경우 다른 �
 
 ### <a name="function-app-plans"></a>Function App 계획
 
-Azure Functions는 두 가지 호스팅 모델을 지원합니다. **사용 계획**을 사용하면 코드가 실행될 때 계산 성능이 자동으로 할당됩니다.  **App Service** 계획을 사용하면 코드에 일단의 VM이 할당됩니다. App Service 계획은 VM의 수와 크기를 정의합니다.
+Azure Functions는 두 가지 호스팅 모델을 지원합니다. **사용 계획**을 사용하면 코드가 실행될 때 계산 능력이 자동으로 할당됩니다.  **App Service** 계획을 사용하면 코드에 일단의 VM이 할당됩니다. App Service 계획은 VM의 수와 크기를 정의합니다.
 
 위에서 설명한 정의에 따라 App Service 계획은 엄격히 *서버리스*가 아닙니다. 프로그래밍 모델은 동일하지만, 동일한 함수 코드가 사용 계획과 App Service 계획 모두에서 실행될 수 있습니다.
 
@@ -135,9 +132,9 @@ public static Task<IActionResult> Run(
 
 ## <a name="security-considerations"></a>보안 고려 사항
 
-### <a name="authentication"></a>인증
+### <a name="authentication"></a>Authentication
 
-참조 구현의 `GetStatus` API는 Azure AD를 사용하여 요청을 인증합니다. Azure AD는 OAuth 2 프로토콜에 기반한 인증 프로토콜인 Open ID Connect 프로토콜을 지원합니다.
+참조 구현의 `GetStatus` API는 Azure AD를 사용하여 요청을 인증합니다. Azure AD는 인증 프로토콜 OAuth 2 프로토콜을 기반으로 하는 OpenID Connect 프로토콜을 지원 합니다.
 
 이 아키텍처에서 클라이언트 애플리케이션은 브라우저에서 실행되는 SPA(단일 페이지 애플리케이션)입니다. 이 유형의 클라이언트 애플리케이션은 클라이언트 비밀 또는 권한 부여 코드를 숨길 수 없으므로 암시적 허용 흐름이 적절합니다. [어떤 OAuth 2.0 흐름을 사용해야 합니까?][oauth-flow]를 참조하세요. 전체 흐름은 다음과 같습니다.
 
@@ -329,7 +326,7 @@ API 변경을 차단하지 않는 업데이트의 경우 동일한 Function App�
 [functions-zip-deploy]: /azure/azure-functions/deployment-zip-push
 [graph]: https://developer.microsoft.com/graph/docs/concepts/overview
 [key-vault-web-app]: /azure/key-vault/tutorial-web-application-keyvault
-[microservices-domain-analysis]: ../../microservices/domain-analysis.md
+[microservices-domain-analysis]: ../../microservices/model/domain-analysis.md
 [monitor]: /azure/azure-monitor/overview
 [oauth-flow]: https://auth0.com/docs/api-auth/which-oauth-flow-to-use
 [partition-key]: /azure/cosmos-db/partition-data

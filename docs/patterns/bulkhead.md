@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 4ad221ae5e9bd51c6d304ba33b884f71c5081b16
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 2b881a6565693642b54d2cabe877853e15282b05
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244494"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640008"
 ---
 # <a name="bulkhead-pattern"></a>격벽 패턴
 
@@ -98,7 +98,7 @@ spec:
 
 ## <a name="related-guidance"></a>관련 지침
 
-- [Azure용 복원 애플리케이션 디자인](../resiliency/index.md)
+- [신뢰할 수 있는 Azure 응용 프로그램 디자인](../reliability/index.md)
 - [회로 차단기 패턴](./circuit-breaker.md)
 - [재시도 패턴](./retry.md)
 - [제한 패턴](./throttling.md)

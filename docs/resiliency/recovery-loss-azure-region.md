@@ -7,16 +7,14 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
-ms.openlocfilehash: 7f207bbc0bb0128126f9b828dc100d43553cb100
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: b58e8fa1cc4955f90e7171e17aaa70ac0cfb7b71
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487987"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640569"
 ---
-[!INCLUDE [header](../_includes/header.md)]
-
-# <a name="azure-resiliency-technical-guidance-recovery-from-a-region-wide-service-disruption"></a>Azure 복원력 기술 지침: 지역 전체의 서비스 중단으로부터 복구
+# <a name="recover-from-a-region-wide-service-disruption"></a>지역 전체의 서비스 중단 으로부터 복구
 
 Azure는 물리적 및 논리적으로 지역이라는 단위로 구분됩니다. 지역은 가까운 위치에 있는 하나 이상의 데이터로 구성됩니다.
 
@@ -121,7 +119,7 @@ Azure Virtual Machines에서 실행 중에 SQL Server 2012(또는 이상)에 대
 
 ### <a name="service-bus"></a>Service Bus
 
-Azure Service Bus는 Azure 지역에 확장되지 않은 고유한 네임스페이스를 사용합니다. 따라서 첫 번째 요구 사항은 대체 지역에서 필요한 서비스 버스 네임스페이스를 설치하는 것입니다. 그러나 대기 중인 메시지의 지속성에 대한 고려 사항도 있습니다. Azure 지역에 메시지를 복제하기 위한 몇 가지 전략이 있습니다. 이러한 복제 전략 및 다른 재해 복구 전략에 대한 세부 정보는 [Service Bus 중단 및 재해로부터 애플리케이션을 격리하는 모범 사례](/azure/service-bus-messaging/service-bus-outages-disasters/)를 참조하세요. 다른 가용성 고려 사항은 [Service Bus(가용성)](recovery-local-failures.md#other-azure-platform-services)을 참조하세요.
+Azure Service Bus는 Azure 지역에 확장되지 않은 고유한 네임스페이스를 사용합니다. 따라서 첫 번째 요구 사항은 대체 지역에서 필요한 서비스 버스 네임스페이스를 설치하는 것입니다. 그러나 대기 중인 메시지의 지속성에 대한 고려 사항도 있습니다. Azure 지역에 메시지를 복제하기 위한 몇 가지 전략이 있습니다. 이러한 복제 전략 및 다른 재해 복구 전략에 대한 세부 정보는 [Service Bus 중단 및 재해로부터 애플리케이션을 격리하는 모범 사례](/azure/service-bus-messaging/service-bus-outages-disasters/)를 참조하세요.
 
 ### <a name="app-service"></a>App Service
 
@@ -129,7 +127,7 @@ Web Apps 또는 Mobile Apps와 같은 Azure App Service 애플리케이션을 �
 
 ### <a name="hdinsight"></a>HDInsight
 
-HDInsight와 연결된 데이터는 기본적으로 Azure Blob Storage에 저장됩니다. HDInsight은 MapReduce 작업을 처리하는 Hadoop 클러스터가 분석 중인 데이터를 포함하는 저장소 계정과 동일한 지역에 배치되도록 해야 합니다. Azure Storage에 사용할 수 있는 지역에서 복제 기능이 제공되면 어떤 이유로든 주 지역을 사용할 수 없는 경우 데이터를 복제하는 보조 지역의 데이터에 액세스할 수 있습니다. 데이터가 복제되고 처리를 계속하는 지역에 새로운 Hadoop 클러스터를 만들 수 있습니다. 다른 가용성 고려 사항은 [HDInsight(가용성)](recovery-local-failures.md#other-azure-platform-services)을 참조하세요.
+HDInsight와 연결된 데이터는 기본적으로 Azure Blob Storage에 저장됩니다. HDInsight은 MapReduce 작업을 처리하는 Hadoop 클러스터가 분석 중인 데이터를 포함하는 저장소 계정과 동일한 지역에 배치되도록 해야 합니다. Azure Storage에 사용할 수 있는 지역에서 복제 기능이 제공되면 어떤 이유로든 주 지역을 사용할 수 없는 경우 데이터를 복제하는 보조 지역의 데이터에 액세스할 수 있습니다. 데이터가 복제되고 처리를 계속하는 지역에 새로운 Hadoop 클러스터를 만들 수 있습니다.
 
 ### <a name="sql-reporting"></a>SQL Reporting
 

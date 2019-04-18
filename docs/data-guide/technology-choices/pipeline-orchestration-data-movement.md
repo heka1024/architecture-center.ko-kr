@@ -6,12 +6,12 @@ ms.date: 02/12/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
-ms.openlocfilehash: 76a101b76497ae2b2aacff973175bb0fe4703d9e
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: 31f052cc22f039540c89759c55028c368be1d238
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482445"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640790"
 ---
 # <a name="choosing-a-data-pipeline-orchestration-technology-in-azure"></a>Azure의 데이터 파이프라인 오케스트레이션 기술 선택
 
@@ -59,20 +59,19 @@ Azure에서 다음 서비스 및 도구는 파이프라인 오케스트레이션
 | --- | --- | --- | --- |
 | 데이터 복사 | 예 | 예 | 예 |
 | 사용자 지정 변환 | 예 | 예 | 예(MapReduce, Pig 및 Hive 작업) |
-| Azure Machine Learning 점수 매기기 | 예 | 예(스크립팅 사용) | 아니요 |
-| 요청 시 HDInsight | 예 | 아니요 | 아니요 |
-| Azure Batch | 예 | 아니요 | 아니요 |
+| Azure Machine Learning 점수 매기기 | 예 | 예(스크립팅 사용) | 아닙니다. |
+| 요청 시 HDInsight | 예 | 아니오 | 아닙니다. |
+| Azure Batch | 예 | 아니오 | 아닙니다. |
 | Pig, Hive, MapReduce | 예 | no | 예 |
-| Spark | 예 | 아니요 | 아니요 |
-| SSIS 패키지 실행 | 예 | 예 | 아니요 |
+| Spark | 예 | 아니오 | 아닙니다. |
+| SSIS 패키지 실행 | 예 | 예 | 아닙니다. |
 | 흐름 제어 | 예 | 예 | 예 |
-| 온-프레미스 데이터 액세스 | 예 | 예 | 아니요 |
+| 온-프레미스 데이터 액세스 | 예 | 예 | 아닙니다. |
 
 ### <a name="scalability-capabilities"></a>확장성 기능
 
 | | Azure 데이터 팩터리 | SQL Server 통합 서비스(SSIS) | HDInsight의 Oozie
 | --- | --- | --- | --- |
-| 강화 | 예 | 아니요 | 아니요 |
-| 확장 | 예 | 아니요 | 예(클러스터에 작업자 노드 추가) |
+| 강화 | 예 | 아니오 | 아닙니다. |
+| 확장 | 예 | 아닙니다. | 예(클러스터에 작업자 노드 추가) |
 | 빅 데이터에 최적화 | 예 | no | 예 |
-

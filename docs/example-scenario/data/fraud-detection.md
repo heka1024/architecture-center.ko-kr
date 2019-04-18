@@ -8,12 +8,12 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 social_image_url: /azure/architecture/example-scenario/data/media/architecture-fraud-detection.png
-ms.openlocfilehash: b10838635cb592eb93d35ce745832c55a6daae8b
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: fc2222874b807a53b5e575973aa6dd4eca63fa3b
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58245794"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640053"
 ---
 # <a name="real-time-fraud-detection-on-azure"></a>Azure에서 실시간 부정 행위 감지
 
@@ -62,8 +62,6 @@ Event Hubs 및 Stream Analytics와 같이 완전하게 관리되는 Azure 서비
 
 Azure Monitor는 다양한 Azure 서비스를 모니터링하기 위한 통합된 사용자 인터페이스를 제공합니다. 자세한 내용은 [Microsoft Azure에서 모니터링](/azure/monitoring-and-diagnostics/monitoring-overview)을 참조하세요. Event Hubs 및 Stream Analytics는 모두 Azure Monitor와 통합됩니다.
 
-다른 가용성 고려 사항에 대해서는 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
-
 ### <a name="scalability"></a>확장성
 
 이 시나리오의 구성 요소는 하이퍼스케일 수집 및 대규모 병렬 실시간 분석을 위해 설계되었습니다. Azure Event Hubs는 확장성이 뛰어나고, 대기 시간이 짧고 초당 수백만 개의 이벤트를 받고 처리할 수 있습니다. Event Hubs는 사용량 요구 사항에 맞게 처리량 단위 수를 [자동으로 확장](/azure/event-hubs/event-hubs-auto-inflate)할 수 있습니다. Azure Stream Analytics는 많은 원본에서 대량의 스트리밍 데이터를 분석할 수 있습니다. 스트리밍 작업을 실행하기 위해 할당된 [스트리밍 단위](/azure/stream-analytics/stream-analytics-streaming-unit-consumption)의 수를 늘려 Stream Analytics를 확장할 수 있습니다.
@@ -78,7 +76,7 @@ Azure Event Hubs는 SAS(공유 액세스 서명) 토큰과 이벤트 게시자�
 
 ### <a name="resiliency"></a>복원력
 
-복원력 있는 솔루션 설계에 대한 일반적인 지침은 [복원력 있는 Azure 애플리케이션 디자인][resiliency]을 참조하세요.
+복원 력 있는 솔루션 디자인에 대 한 일반적인 지침을 참조 하세요 [신뢰할 수 있는 Azure 응용 프로그램 디자인](../../reliability/index.md)합니다.
 
 ## <a name="deploy-the-scenario"></a>시나리오 배포
 
@@ -111,7 +109,5 @@ Azure Event Hubs는 SAS(공유 액세스 서명) 토큰과 이벤트 게시자�
 [docs-r-server-sample-solutions]: /machine-learning-server/r/sample-solutions
 [r-server-fraud-detection]: https://microsoft.github.io/r-server-fraud-detection/
 [technet-fraud-detection]: https://blogs.technet.microsoft.com/machinelearning/2017/06/28/using-azure-data-lake-and-r-for-fraud-detection/
-[availability]: /azure/architecture/checklist/availability
 [scalability]: /azure/architecture/checklist/scalability
-[resiliency]: ../../resiliency/index.md
 [security]: /azure/security/

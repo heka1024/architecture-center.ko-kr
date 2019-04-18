@@ -1,17 +1,17 @@
 ---
 title: 조건부로 Azure Resource Manager 템플릿의 리소스 배포
-description: 조건부로 매개 변수의 값에 종속되는 리소스를 배포하도록 Azure Resource Manager 템플릿의 기능을 확장하는 방법을 설명합니다.
+description: 조건부로 매개 변수의 값에 따라 리소스를 배포 하려면 Azure Resource Manager 템플릿의 기능을 확장 하는 방법을 설명 합니다.
 author: petertay
 ms.date: 10/30/2018
 ms.topic: article
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: f3d22c6437cdabcd93a781ecf7c99db5a570d7cf
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 437490b2998cfbcde4df13570831e34a776e7afe
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58243804"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640212"
 ---
 # <a name="conditionally-deploy-a-resource-in-an-azure-resource-manager-template"></a>조건부로 Azure Resource Manager 템플릿의 리소스 배포
 

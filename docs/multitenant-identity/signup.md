@@ -9,12 +9,12 @@ ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: claims
 pnp.series.next: app-roles
-ms.openlocfilehash: a1ec441b731ba7f2166f9115452b052ec944444f
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: eb4e65b20ec3339b633b65d2adad768e98d1bdbb
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58245044"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640603"
 ---
 # <a name="tenant-sign-up-and-onboarding"></a>테넌트 등록 및 온보딩
 
@@ -63,7 +63,7 @@ Azure AD를 인증하려면 애플리케이션은 사용자의 디렉터리에 �
 
 이러한 단추는 `AccountController` 클래스에서 작업을 호출합니다.
 
-`SignIn` 작업은 OpenID Connect 미들웨어를 인증 엔드포인트로 리디렉션할 수 있게 하는 **ChallegeResult**를 반환합니다. 이는 ASP.NET Core에서 인증을 트리거하는 기본 방법입니다.
+`SignIn` 작업 반환을 **ChallengeResult**, OpenID Connect 미들웨어는 인증 끝점으로 리디렉션을 발생 합니다. 이는 ASP.NET Core에서 인증을 트리거하는 기본 방법입니다.
 
 ```csharp
 [AllowAnonymous]
@@ -259,7 +259,7 @@ private async Task<Tenant> SignUpTenantAsync(BaseControlContext context, TenantM
 다음은 설문 조사 애플리케이션에서 전체 등록 흐름에 대한 요약입니다.
 
 1. 사용자는 **등록** 단추를 클릭합니다.
-2. `AccountController.SignUp` 작업은 challege 결과를 반환합니다.  인증 상태는 "등록" 값을 포함합니다.
+2. `AccountController.SignUp` 작업 시도 결과 반환 합니다.  인증 상태는 "등록" 값을 포함합니다.
 3. `RedirectToAuthenticationEndpoint` 이벤트에서 `admin_consent` 프롬프트를 추가합니다.
 4. OpenID Connect 미들웨어는 Azure AD로 리디렉션하고 사용자는 인증합니다.
 5. `AuthenticationValidated` 이벤트에서 “등록" 상태를 찾습니다.

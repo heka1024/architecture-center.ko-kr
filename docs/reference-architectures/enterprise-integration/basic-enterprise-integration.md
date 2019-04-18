@@ -10,12 +10,12 @@ ms.date: 12/03/2018
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: integration-services
-ms.openlocfilehash: 76e422ead7e53c582a9d64ab1da643c3990749d6
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 16fce3a85cbc0a94dd93277d942fae51ae0e4c04
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58242964"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640841"
 ---
 # <a name="basic-enterprise-integration-on-azure"></a>Azure에서 기본 엔터프라이즈 통합
 
@@ -151,7 +151,7 @@ API Management와 Logic Apps 둘 다 [Azure Monitor][monitor]를 사용하여 �
 
 또한 각 서비스에는 다음 옵션이 있습니다.
 
-- 보다 심층적인 분석 및 대시보드 구성이 가능하도록, Logic Apps 로그를 [Azure Log Analytics][logic-apps-log-analytics]로 보낼 수 있습니다.
+- 보다 심층적인 분석 및 대시보드를 위해 Logic Apps 로그를 [Azure Log Analytics][logic-apps-log-analytics]로 보냅니다.
 
 - DevOps 모니터링이 가능하도록, API Management에 대해 Azure Application Insights를 구성할 수 있습니다.
 
@@ -222,4 +222,4 @@ Logic Apps는 [서버리스](/azure/logic-apps/logic-apps-serverless-overview) �
 [logic-apps-sla]: https://azure.microsoft.com/support/legal/sla/logic-apps
 [monitor]: /azure/azure-monitor/overview
 [rbac]: /azure/role-based-access-control/overview
-[rto]: ../../resiliency/index.md#rto-and-rpo
+[rto]: ../../reliability/requirements.md#recovery-metrics

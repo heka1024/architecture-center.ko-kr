@@ -8,12 +8,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: 76870f58fc957f6d82f6dc176d1c538c795a7d20
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: d6eed98c6e224956942c45b52621ec02832be015
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486236"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639771"
 ---
 # <a name="pillars-of-software-quality"></a>소프트웨어 품질 핵심 요소
 
@@ -76,8 +76,6 @@ Azure에서 Service Level Agreement(서비스 수준 약정)는 작동 시간 �
 
 애플리케이션은 종종 여러 서비스를 사용합니다. 일반적으로 서비스에 가동 중지 시간이 있을 확률은 독립적입니다. 예를 들어 애플리케이션은 각각 99.9% SLA를 가진 두 개의 서비스에 따라 달라집니다. 두 서비스의 복합 SLA는 99.9% &times; 99.9% &asymp; 99.8% 또는 각각의 서비스 자체보다 약간 짧습니다.
 
-[가용성 검사 목록][availability-checklist]을 사용하여 가용성 관점에서 디자인을 검토합니다.
-
 ### <a name="availability-guidance"></a>가용성 지침
 
 - [가용성을 위한 디자인 패턴][availability-patterns]
@@ -104,11 +102,9 @@ Azure에서 Service Level Agreement(서비스 수준 약정)는 작동 시간 �
 
 복원력 있는 애플리케이션을 디자인할 경우 가용성 요구 사항을 이해해야 합니다. 허용되는 가동 중지 시간이 얼마나 됩니까? 이것은 비용 함수의 일종입니다. 가동 중지로 인한 잠재적 비용이 얼마나 발생할까요? 고가용성 애플리케이션을 만들려면 얼마를 투자해야 할까요?
 
-[복원력 검사 목록][resiliency-checklist]을 사용하여 복원력 관점에서 디자인을 검토합니다.
-
 ### <a name="resiliency-guidance"></a>복원력 지침
 
-- [Azure용 복원 애플리케이션 디자인][resiliency]
+- [신뢰할 수 있는 Azure 응용 프로그램 디자인][resiliency]
 - [복원력을 위한 디자인 패턴][resiliency-patterns]
 - 모범 사례: [일시적인 오류 처리][transient-fault-handling], [특정 서비스에 대한 다시 시도 지침][retry-service-specific]
 
@@ -173,7 +169,7 @@ Key Vault를 사용하여 암호화 키 및 암호를 보호합니다. Key Vault
 
 [dr-guidance]: ../resiliency/disaster-recovery-azure-applications.md
 [identity-ref-arch]: ../reference-architectures/identity/index.md
-[resiliency]: ../resiliency/index.md
+[resiliency]: ../reliability/index.md
 
 [ad-subscriptions]: /azure/active-directory/active-directory-how-subscriptions-associated-directory
 [data-warehouse-encryption]: /azure/data-lake-store/data-lake-store-security-overview#data-protection
@@ -205,7 +201,5 @@ Key Vault를 사용하여 암호화 키 및 암호를 보호합니다. Key Vault
 [transient-fault-handling]: ../best-practices/transient-faults.md
 
 <!-- checklist -->
-[availability-checklist]: ../checklist/availability.md
 [devops-checklist]: ../checklist/dev-ops.md
-[resiliency-checklist]: ../checklist/resiliency.md
 [scalability-checklist]: ../checklist/scalability.md

@@ -9,12 +9,12 @@ ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: tailspin
 pnp.series.next: claims
-ms.openlocfilehash: b4a833a18b44e40f544449a222fb082d71e4268d
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: a35342c0e40290332a349577260de316b5e7d503
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481646"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640434"
 ---
 # <a name="authenticate-using-azure-ad-and-openid-connect"></a>Azure AD 및 OpenID Connect를 사용하여 인증
 
@@ -40,7 +40,7 @@ OpenID Connect를 사용하도록 설정하려면 SaaS 공급자는 애플리케
 
 Surveys 애플리케이션 관련 단계는 [Run the Surveys application](./run-the-app.md)(Surveys 애플리케이션 실행)을 참조하세요. 다음 사항에 유의하세요.
 
-- 다중 테넌트 애플리케이션의 경우 다중 테넌트 옵션을 명시적으로 구성해야 합니다. 이렇게 하면 다른 조직이 애플리케이션에 액세스할 수 있습니다.
+- 다중 테넌트 애플리케이션의 경우 다중 테넌트 옵션을 명시적으로 구성해야 합니다. 이렇게 하면 다른 조직이 응용 프로그램에 액세스할 수 있습니다.
 
 - 회신 URL은 Azure AD에서 OAuth 2.0 응답을 보내는 URL입니다. ASP.NET Core를 사용할 경우 이 URL은 인증 미들웨어에서 구성하는 경로와 일치해야 합니다(다음 섹션 참조).
 
@@ -157,7 +157,7 @@ ASP.NET의 OpenID Connect 미들웨어는 대부분의 프로토콜 정보를 �
 
 이러한 이벤트에 대한 콜백을 제공하려면 미들웨어에서 **Events** 옵션을 설정합니다. 이벤트 처리기를 선언하는 방법에는 두 가지가 있습니다. 람다에 인라인으로 포함하거나 **OpenIdConnectEvents**에서 파생된 클래스입니다. 이벤트 콜백에 많은 논리가 있는 경우 두 번째 방법을 사용하는 것이 좋은데, 시작 클래스를 복잡하게 만들지 않기 때문입니다. 여기의 참조 구현에서는 이 방법을 사용합니다.
 
-### <a name="openid-connect-endpoints"></a>OpenID Connect 엔드포인트트
+### <a name="openid-connect-endpoints"></a>OpenID Connect 끝점
 
 Azure AD는 [OpenID Connect 검색](https://openid.net/specs/openid-connect-discovery-1_0.html)을 지원하는데, 여기에서 IDP(ID 공급자)는 [잘 알려진 엔드포인트](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig)에서 JSON 메타데이터 문서를 반환합니다. 메타데이터 문서에는 다음과 같은 정보가 들어 있습니다.
 
@@ -167,7 +167,7 @@ Azure AD는 [OpenID Connect 검색](https://openid.net/specs/openid-connect-disc
 
 기본적으로 OIDC 미들웨어는 이 메타데이터를 가져오는 방법을 알고 있습니다. 미들웨어에서 **Authority** 옵션을 설정하면 미들웨어는 메타데이터에 대한 URL을 구성합니다. (**MetadataAddress** 옵션을 설정하여 메타데이터 URL을 재정의할 수 있습니다.)
 
-### <a name="openid-connect-flows"></a>OpenID connect 흐름
+### <a name="openid-connect-flows"></a>OpenID Connect 흐름
 
 기본적으로 OIDC 미들웨어는 폼 게시 응답 모드로 하이브리드 흐름을 사용합니다.
 

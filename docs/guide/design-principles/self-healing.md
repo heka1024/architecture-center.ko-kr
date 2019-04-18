@@ -8,12 +8,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: 5e5af0be41fa892e490d556ef4286d5367144fd9
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 84bc6e5c8d78517e3dc1dc0ee8d250346a33ce43
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58249508"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641198"
 ---
 # <a name="design-for-self-healing"></a>자체 복구를 위한 디자인
 
@@ -59,7 +59,7 @@ ms.locfileid: "58249508"
 
 **비정상 상황 엔지니어링 사용**. 비정상 상황 엔지니어링은 실패 또는 비정상 상황을 무작위로 프로덕션 인스턴스에 주입하여 오류 주입의 개념을 확장합니다.
 
-애플리케이션 자동 복구를 위한 구조화된 접근 방식은 [Azure용 복원 애플리케이션 디자인][resiliency-overview]을 참조하세요.
+구조화 된 접근 방식은 응용 프로그램에 대 한 자동 복구를 참조 하세요 [Azure 용 신뢰할 수 있는 응용 프로그램 디자인][resiliency-overview]합니다.
 
 <!-- links -->
 
@@ -67,7 +67,7 @@ ms.locfileid: "58249508"
 [compensating-transactions]: ../../patterns/compensating-transaction.md
 [leader-election]: ../../patterns/leader-election.md
 [load-level]: ../../patterns/queue-based-load-leveling.md
-[resiliency-overview]: ../../resiliency/index.md
+[resiliency-overview]: ../../reliability/index.md
 [retry]: ../../patterns/retry.md
 [throttle]: ../../patterns/throttling.md
 [transient-fault-handling]: ../../best-practices/transient-faults.md

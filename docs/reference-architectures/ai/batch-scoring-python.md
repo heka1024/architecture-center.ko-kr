@@ -7,12 +7,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai, AI
-ms.openlocfilehash: b7607984bcf2c4bd046421aeb6e9d52dd8e7c18e
-ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.openlocfilehash: 9341b9e4c17025e9623902a6202076c352b237b9
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58887746"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640552"
 ---
 # <a name="batch-scoring-of-python-machine-learning-models-on-azure"></a>Azure에서 Python 기계 학습 모델 점수 매기기 배치
 
@@ -25,11 +25,12 @@ ms.locfileid: "58887746"
 **시나리오**: 이 솔루션은 각 디바이스가 센서 판독값을 지속적으로 전송하는 IoT 환경에서 여러 디바이스의 작동을 모니터링합니다. 각 디바이스는 사전 정의된 시간 간격 동안 집계된 일련의 측정값이 변칙에 해당하는지 여부를 예측하는 데 사용되어야 하는 사전 학습된 변칙 검색 모델과 관련이 있는 것으로 간주됩니다. 실제 시나리오에서 이는 학습 또는 실시간 채점에 사용되기 전에 필터링되고 집계되어야 하는 센서 판독값 스트림이 될 수 있습니다. 이 솔루션은 채점 작업 실행 시 간소화를 위해 동일한 데이터 파일을 사용합니다.
 
 이 참조 아키텍처는 정기적으로 트리거되는 워크로드용으로 설계되었습니다. 처리에는 다음 단계가 포함됩니다.
-1.  Azure Event Hubs로 수집을 위한 센서 판독값을 전송합니다.
-2.  스트림 처리를 수행하고 원시 데이터를 저장합니다.
-3.  작업을 시작할 준비가 된 Machine Learning 클러스터에 데이터를 전송합니다. 클러스터의 각 노드는 특정 센서에 대한 점수 매기기 작업을 실행합니다. 
-4.  Machine Learning Python 스크립트를 사용하여 병렬로 점수 매기기 작업을 실행하는 점수 매기기 파이프라인을 실행합니다. 파이프라인은 미리 정의된 기간에 실행되도록 생성, 게시 및 예약됩니다.
-5.  예측을 생성하고 나중에 사용할 수 있도록 Blob Storage에 저장합니다.
+
+1. Azure Event Hubs로 수집을 위한 센서 판독값을 전송합니다.
+2. 스트림 처리를 수행하고 원시 데이터를 저장합니다.
+3. 작업을 시작할 준비가 된 Machine Learning 클러스터에 데이터를 전송합니다. 클러스터의 각 노드는 특정 센서에 대한 점수 매기기 작업을 실행합니다. 
+4. Machine Learning Python 스크립트를 사용하여 병렬로 점수 매기기 작업을 실행하는 점수 매기기 파이프라인을 실행합니다. 파이프라인은 미리 정의된 기간에 실행되도록 생성, 게시 및 예약됩니다.
+5. 예측을 생성하고 나중에 사용할 수 있도록 Blob Storage에 저장합니다.
 
 ## <a name="architecture"></a>아키텍처
 
@@ -66,7 +67,7 @@ ms.locfileid: "58887746"
 ## <a name="management-considerations"></a>관리 고려 사항
 
 - **작업 모니터링**. 실행 중인 작업의 진행률을 모니터링하는 것이 중요하지만 활성 노드의 클러스터 전체를 모니터링하기는 어려울 수 있습니다. 클러스터의 노드 상태를 검사하려면 [Azure Portal][portal]을 사용하여 [기계 학습 작업 영역][ml-workspace]을 관리합니다. 노드가 비활성 상태이거나 작업이 실패한 경우 오류 로그가 Blob Storage에 저장되며 파이프라인 섹션에서도 액세스할 수 있습니다. 모니터링을 추가로 보완하려면 [Application Insights][app-insights]에 로그를 연결하거나 클러스터 및 해당 작업의 상태를 폴링하기 위한 별도의 프로세스를 실행합니다.
--   **로깅** Machine Learning Service는 모든 stdout/stderr을 관련 Azure Storage 계정에 기록합니다. 로그 파일을 손쉽게 보려면 [Azure Storage 탐색기][explorer]와 같은 스토리지 탐색 도구를 사용합니다.
+- **로깅** Machine Learning Service는 모든 stdout/stderr을 관련 Azure Storage 계정에 기록합니다. 로그 파일을 손쉽게 보려면 [Azure Storage 탐색기][explorer]와 같은 스토리지 탐색 도구를 사용합니다.
 
 ## <a name="cost-considerations"></a>비용 고려 사항
 
@@ -75,7 +76,6 @@ ms.locfileid: "58887746"
 즉각적인 처리가 필요하지 않은 작업의 경우, 기본 상태(최소)가 0 노드의 클러스터가 되도록 자동 크기 조정 수식을 구성합니다. 이 구성을 사용하면 클러스터는 0개 노드로 시작하고 큐에서 작업을 감지할 때만 규모가 확장됩니다. 일괄 채점 프로세스가 하루에 몇 번 또는 그 이하로만 발생할 경우 이 설정을 통해 비용을 크게 절감할 수 있습니다.
 
 자동 크기 조정은 서로 너무 가깝게 위치하는 일괄 처리 작업에는 적절하지 않을 수 있습니다. 클러스터가 스핀 업 및 스핀 다운되는 데 걸리는 시간도 비용을 발생할 수 있으므로, 일괄 처리 워크로드가 이전 작업이 종료되고 몇 분 안에 시작될 경우 작업 중간에 클러스터를 계속 실행하도록 하는 것이 좀 더 비용 효율적일 수 있습니다. 이는 채점 프로세스가 매우 자주(예: 매 시간) 실행되도록 예약되었는지, 아니면 가끔(예: 매달) 실행되도록 예약되었는지에 따라 달라집니다.
-
 
 ## <a name="deployment"></a>배포
 

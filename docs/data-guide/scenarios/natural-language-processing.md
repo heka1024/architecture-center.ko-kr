@@ -6,12 +6,12 @@ ms.date: 02/12/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
-ms.openlocfilehash: 281a2e9995d1d04aa9688e811e0d4ff8088fe30b
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: fdad7e9241ddd9c11c18e31a1fd2da5a163d05ac
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58249708"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640518"
 ---
 # <a name="natural-language-processing"></a>자연어 처리
 
@@ -24,7 +24,7 @@ NLP(자연어 처리)는 감성 분석, 토픽 감지, 언어 감지, 핵심 구
 NLP는 문서에 중요 또는 스팸으로 레이블을 지정하는 것과 같이 문서를 분류하는 데 사용될 수 있습니다. NLP의 출력은 후속 처리 또는 검색에 사용될 수 있습니다. NLP의 다른 용도는 문서의 엔터티를 식별하여 텍스트를 요약하는 것입니다. 이러한 엔터티는 문서에 키워드를 태그로 지정하는 데도 사용할 수 있습니다. 이렇게 하면 콘텐츠에 따라 검색을 수행할 수 있습니다. 엔터티를 토픽과 결합하고, 각 문서의 중요 토픽을 설명하는 요약을 함께 표시할 수 있습니다. 감지된 토픽은 탐색을 위해 문서를 분류하거나, 선택한 토픽에 대해 관련 문서를 열거하는 데 사용될 수 있습니다. NLP의 또 다른 용도는 텍스트의 감정 점수를 매겨서 문서가 긍정적인 어조인지 부정적인 어조인지 평가하는 것입니다. 이러한 방식에서는 다음과 같은 자연어 처리의 많은 기술이 사용됩니다.
 
 - **토크나이저**. 텍스트를 단어 또는 구로 분할합니다.
-- **형태소 분석 및 기본형 분석**. 다른 형태가 같은 의미의 정식 단어에 매핑되도록 단어 정규화. 예: "running" 및 "ran"은 "run"에 매핑됩니다.
+- **형태소 분석 및 기본형 분석**. 다른 형식이 동일한 의미의 정식 단어를 매핑할 수 있도록 단어를 정규화 합니다. 예: "running" 및 "ran"은 "run"에 매핑됩니다.
 - **엔터티 추출**. 텍스트에서 주체 식별
 - **품사 감지**. 텍스트를 동사, 명사, 분사, 동사구 등으로 식별
 - **문장 경계 감지**. 텍스트 구 내에서 완전한 문장 감지

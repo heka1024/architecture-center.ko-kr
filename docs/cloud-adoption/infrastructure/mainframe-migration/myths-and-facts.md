@@ -3,12 +3,12 @@ title: '메인프레임 마이그레이션: 허구 및 팩트'
 description: 애플리케이션을 메인프레임 환경에서 Azure로 마이그레이션합니다. Azure는 현재 메인프레임에서 실행되는 시스템에 대한 검증되고 가용성 및 확장성이 뛰어난 인프라입니다.
 author: njray
 ms.date: 12/27/2018
-ms.openlocfilehash: bcad01ec044d2d802b055e328a9496aae7b33311
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: e56f5b1b7e502ac727b28e583105bdee1c9cecd8
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58241544"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640331"
 ---
 # <a name="mainframe-myths-and-facts"></a>메인프레임 허구 및 팩트
 
@@ -32,7 +32,7 @@ ms.locfileid: "58241544"
 
 ## <a name="myth-the-cloud-cannot-accommodate-mission-critical-applications-for-large-companies-such-as-financial-institutions"></a>허구: 클라우드는 금융 기관과 같은 대규모 회사의 중요 업무용 애플리케이션을 수용할 수 없음
 
-클라우드 솔루션이 부족한 일부 격리된 인스턴스가 있을 수 있지만, 이는 일반적으로 애플리케이션 알고리즘을 배포할 수 없기 때문입니다. 이러한 몇 가지 예제는 규칙이 아닌 예외입니다.
+클라우드 솔루션 미달 격리 된 경우도 있을 수 있지만 되므로 일반적으로 응용 프로그램 알고리즘을 배포할 수 없습니다. 이러한 몇 가지 예제는 규칙이 아닌 예외입니다.
 
 ## <a name="summary"></a>요약
 

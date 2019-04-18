@@ -7,18 +7,21 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: microservices
-ms.openlocfilehash: aa5c2b4357ed53da9bebf4795fcbefb89afe0c78
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: a36d2b4c7bfd2b26d5e1de44ddd8005fbce4bdd2
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54482581"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640858"
 ---
 # <a name="designing-microservices-ingestion-and-workflow"></a>마이크로서비스 디자인: 수집 및 워크플로
 
 마이크로 서비스에는 단일 트랜잭션을 위한 워크플로가 여러 서비스에 걸쳐있는 있는 경우가 있습니다. 워크플로에는 신뢰성이 필요합니다. 트랜잭션을 손실하거나 부분적으로 완료된 상태로 남겨 둘 수 없습니다. 들어오는 요청의 수집 속도를 제어하는 것도 중요합니다. 서로 통신하는 소규모 서비스가 많은 경우 들어오는 요청이 폭증하면 서비스 간 통신이 압도될 수 있습니다.
 
 ![수집 워크플로의 다이어그램](./images/ingestion-workflow.png)
+
+> [!NOTE]
+> 이 문서는 마이크로 서비스 참조 구현을 호출을 기준 합니다 [드 론 배달 응용 프로그램](./design/index.md)합니다.
 
 ## <a name="the-drone-delivery-workflow"></a>드론 배달 워크플로
 
@@ -83,7 +86,7 @@ Event Hubs는 경쟁 소비자에 맞게 설계되지 않았습니다. 여러 �
 > [!NOTE]
 > 프로세서 호스트는 스레드를 차단하는 의미로 *대기*하지 않습니다. `ProcessEventsAsync` 메서드가 비동기식이기 때문에 프로세서 호스트는 메서드가 완료되는 동안 다른 작업을 수행할 수 있습니다. 하지만 메서드가 반환될 때 까지 해당 파티션에 대해 다른 일괄 처리 메시지를 전달하지 않습니다.
 
-드론 애플리케이션에서 일괄 처리 메시지는 병렬로 처리될 수 있습니다. 하지만 전체 일괄 처리가 완료되기까지 대기하면 병목 현상이 여전히 발생할 수 있습니다. 처리 속도는 일괄 처리 내에서 가장 느린 메시지 만큼만 빠를 수 있습니다. 응답 시간이 변하면 "꼬리가 길어질 수” 있으며 느린 응답으로 인해 전체 시스템이 느려질 수 있습니다. 성능 테스트에 따르면 이러한 방법을 사용하여 목표 처리량을 달성하지 못한 것으로 나타났습니다. 그렇다고 이벤트 프로세서 호스트를 사용하지 말아야 한다는 것을 의미하지는 *않습니다*. 하지만 처리량을 높이려면 `ProcesssEventsAsync` 메서드 내에서 오래 실행되는 작업을 수행하지 마십시오. 각각의 일괄 처리를 신속하게 처리하십시오.
+드론 애플리케이션에서 일괄 처리 메시지는 병렬로 처리될 수 있습니다. 하지만 전체 일괄 처리가 완료되기까지 대기하면 병목 현상이 여전히 발생할 수 있습니다. 처리 속도는 일괄 처리 내에서 가장 느린 메시지 만큼만 빠를 수 있습니다. 응답 시간이 변하면 "꼬리가 길어질 수” 있으며 느린 응답으로 인해 전체 시스템이 느려질 수 있습니다. 성능 테스트에 따르면 이러한 방법을 사용하여 목표 처리량을 달성하지 못한 것으로 나타났습니다. 그렇다고 이벤트 프로세서 호스트를 사용하지 말아야 한다는 것을 의미하지는 *않습니다*. 하지만 처리량을 높이려면 `ProcessEventsAsync` 메서드 내에서 오래 실행되는 작업을 수행하지 마십시오. 각각의 일괄 처리를 신속하게 처리하십시오.
 
 ### <a name="iothub-react"></a>IotHub React
 
@@ -176,7 +179,7 @@ Scheduler 서비스를 훨씬 더 확장해야 하는 경우 이벤트 허브 �
 
 ![감독자 마이크로서비스를 보여주는 다이어그램](./images/supervisor.png)
 
-## <a name="idempotent-vs-non-idempotent-operations"></a>Idempotent 및 non-idempotent 작업
+## <a name="idempotent-versus-non-idempotent-operations"></a>Idempotent 및 non-idempotent 작업
 
 요청이 손실되지 않으려면 Scheduler 서비스는 모든 메시지가 한 번 이상 처리되도록 보장해야 합니다. Event Hubs는 클라이언트가 검사점을 제대로 설정하면 한 번 이상 배달을 보장합니다.
 
@@ -239,9 +242,6 @@ public async Task<IActionResult> Put([FromBody]Delivery delivery, string id)
 ```
 
 대부분의 요청은 새 엔터티를 생성할 것으로 예상되기 때문에 메서드는 리포지토리 개체에서 낙관적으로 `CreateAsync`를 호출한 다음 리소스를 대신 업데이트하여 중복된 리소스 예외가 있으면 처리합니다.
-
-> [!div class="nextstepaction"]
-> [API 게이트웨이](./gateway.md)
 
 <!-- links -->
 

@@ -1,16 +1,16 @@
 ---
-title: 대시보드를 사용 하 여 Azure Databricks 메트릭을 시각화합니다
+title: 대시보드를 사용하여 Azure Databricks 메트릭 시각화
 description: Azure Databricks에서 성능을 모니터링 하려면 Grafana 대시보드를 배포 하는 방법
 author: petertaylor9999
 ms.date: 03/26/2019
-ms.openlocfilehash: 36fcd93f6ca757e8e750d0fcbbdf0311c08560b0
-ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.openlocfilehash: a84203a9188848e6363a80ac455332e8f6a73cda
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58887831"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640314"
 ---
-# <a name="use-dashboards-to-visualize-azure-databricks-metrics"></a>대시보드를 사용 하 여 Azure Databricks 메트릭을 시각화합니다
+# <a name="use-dashboards-to-visualize-azure-databricks-metrics"></a>대시보드를 사용하여 Azure Databricks 메트릭 시각화
 
 이 문서에서는 성능 문제에 대 한 Azure Databricks 작업을 모니터링 하려면 Grafana 대시보드를 설정 하는 방법을 보여 줍니다.
 
@@ -20,7 +20,7 @@ ms.locfileid: "58887831"
 
 ![대시보드의 스크린샷](./_images/dashboard-screenshot.png)
 
-## <a name="prequisites"></a>필수 조건
+## <a name="prerequisites"></a>필수 조건
 
 복제는 [Github 리포지토리](https://github.com/mspnp/spark-monitoring) 및 [배포 지침에 따라](./configure-cluster.md) 을 빌드하고 Azure Log Analytics 작업 영역에 로그를 보내도록 Azure Databricks 라이브러리에 대 한 Azure Monitor 로깅을 구성 합니다.
 
@@ -81,7 +81,7 @@ Grafana는 오픈 소스 프로젝트 Grafana 플러그 인을 사용 하 여 Az
 
 1. Azure portal에서 VM을 선택 하 고 클릭 **개요**합니다.
 1. 공용 IP 주소를 복사합니다.
-1. 웹 브라우저를 열고 다음 URL로 이동: `http://<IP addresss>:3000`합니다.
+1. 웹 브라우저를 열고 다음 URL로 이동: `http://<IP address>:3000`합니다.
 1. Grafana 로그인 화면에서 입력 **관리자** 사용자 이름 및 이전 단계에서 Grafana 암호 사용에 대 한 합니다.
 1. 로그인 선택 **구성** (기어 아이콘).
 1. 선택 **서버 관리자**합니다.
@@ -153,7 +153,7 @@ Azure Log Analytics 및 Grafana 대시보드에 시계열 시각화 집합이 �
 
 ### <a name="job-latency"></a>작업 대기 시간
 
-이 시각화는 작업의 전반적인 성능에 대 한 대략적인 뷰는 작업에 대 한 실행 대기 시간을 표시 합니다. 시작부터 완료 될 때까지 작업 실행 기간을 표시합니다. 작업 시작 시간을 참고 작업 제출 시간이 빠른 응모 같지는 않습니다. 대기 시간 백분위 수 (10%, 30%, 50%, 90%)로 표시 됩니다. 클러스터 ID 및 응용 프로그램 ID로 인덱싱된 작업 실행
+이 시각화는 작업의 전체 성능에 대략적인 보기 작업에 대 한 실행 대기 시간을 표시 합니다. 시작부터 완료 될 때까지 작업 실행 기간을 표시합니다. 작업 시작 시간을 참고 작업 제출 시간이 빠른 응모 같지는 않습니다. 대기 시간 백분위 수 (10%, 30%, 50%, 90%)로 표시 됩니다. 클러스터 ID 및 응용 프로그램 ID로 인덱싱된 작업 실행
 
 ### <a name="stage-latency"></a>스테이지 대기 시간
 
@@ -177,7 +177,7 @@ Azure Log Analytics 및 Grafana 대시보드에 시계열 시각화 집합이 �
 
 ### <a name="streaming-throughputlatency"></a>스트리밍 처리량/대기 시간
 
-이 visualzation 구조화 된 스트리밍 쿼리와 관련 된 메트릭을 관련이 있습니다. 그래프는 초당 입력된 행의 수 및 처리 된 초당 행 수를 보여 줍니다. 스트리밍 메트릭은 응용 프로그램당도 표시 됩니다. 구조적된 스트리밍 쿼리를 처리할와 시각화 나타냅니다 OnQueryProgress 이벤트가 생성 될 때 이러한 메트릭을 전송 됩니다 (밀리초) 쿼리 일괄 처리를 실행 하는 데 걸린 기간 대기 시간이 스트리밍.
+이 시각화는 구조적된 스트리밍 쿼리를 사용 하 여 관련 메트릭을 관련이 있습니다. 그래프는 초당 입력된 행의 수 및 처리 된 초당 행 수를 보여 줍니다. 스트리밍 메트릭은 응용 프로그램당도 표시 됩니다. 구조적된 스트리밍 쿼리를 처리할와 시각화 나타냅니다 OnQueryProgress 이벤트가 생성 될 때 이러한 메트릭을 전송 됩니다 (밀리초) 쿼리 일괄 처리를 실행 하는 데 걸린 기간 대기 시간이 스트리밍.
 
 ### <a name="resource-consumption-per-executor"></a>실행 기 당 리소스 사용량
 

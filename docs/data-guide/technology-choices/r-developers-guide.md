@@ -9,12 +9,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: jepeach
-ms.openlocfilehash: a14c8ce76f78baa7274f22b939eb28cb025ef87e
-ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.openlocfilehash: 7b263d0f49b3b41c9a25b5842de908d5e507780b
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58888116"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640484"
 ---
 # <a name="r-developers-guide-to-azure"></a>Azure에 대한 R 개발자 가이드
 
@@ -37,7 +37,7 @@ Microsoft은 데이터 과학자에게 최고의 도구인 R 프로그래밍 언
 |[Azure Databricks](#azure-databricks)                            |R 및 다른 언어를 지원하는 공동 작업 Spark 환경               |
 |[Azure Machine Learning Studio](#azure-machine-learning-studio)  |Azure의 기계 학습 실험에서 사용자 지정 R 스크립트 실행                      |
 |[Azure Batch](#azure-batch)                                      |클러스터의 여러 노드 간에 R 코드를 경제적으로 실행하기 위한 다양한 옵션 제공|
-|[Azure Notebooks](#azure-notebooks)                              |무료 클라우드 기반 버전의 Jupyter 노트북                  |
+|[Azure 노트](#azure-notebooks)                              |무료 클라우드 기반 버전의 Jupyter 노트북                  |
 |[Azure SQL Database](#azure-sql-database)                        |SQL Server 데이터베이스 엔진 내에서 R 스크립트 실행                            |
 
 ## <a name="data-science-virtual-machine"></a>데이터 과학 Virtual Machine
@@ -45,7 +45,7 @@ Microsoft은 데이터 과학자에게 최고의 도구인 R 프로그래밍 언
 [DSVM(데이터 과학 Virtual Machine)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview)은 데이터 과학 수행을 위해 특별히 구축된 Microsoft Azure 클라우드 플랫폼의 사용자 지정 VM 이미지입니다. 다음을 비롯한 여러 주요 데이터 과학 도구가 있습니다.
 
 * [Microsoft R Open](https://mran.microsoft.com/open/)
-* [Microsoft Machine Learning 서버](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
+* [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 * [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop)
 * [RStudio Server](https://www.rstudio.com/products/rstudio/#Server)
 
@@ -129,14 +129,13 @@ Azure Notebooks의 무료 서비스 계층은 각 Notebook의 처리량이 메�
 
 Machine Learning Services는 2016년부터 온-프레미스 SQL Server에 포함되었지만 Azure SQL Database에는 비교적 최근에 추가되었습니다.  현재 [제한된 미리 보기](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#azure-sql-database-roadmap) 상태이지만 계속 개선될 예정입니다.
 
-
 ### <a name="next-steps"></a>다음 단계
 
-* [Mrsdeploy를 사용 하 여 Azure에서 R 코드 실행](https://blog.revolutionanalytics.com/2017/03/running-your-r-code-azure.html)
-* [Machine Learning Server 클라우드에서](https://docs.microsoft.com/machine-learning-server/install/machine-learning-server-in-the-cloud)
-* [Machine Learning Server 및 Microsoft R에 대 한 추가 리소스](https://docs.microsoft.com/machine-learning-server/resources-more)
+* [Azure에서 mrsdeploy를 사용하여 R 코드 실행](https://blog.revolutionanalytics.com/2017/03/running-your-r-code-azure.html)
+* [클라우드의 Machine Learning Server](https://docs.microsoft.com/machine-learning-server/install/machine-learning-server-in-the-cloud)
+* [Machine Learning Server 및 Microsoft R을 위한 추가 리소스](https://docs.microsoft.com/machine-learning-server/resources-more)
 * [Azure의 R](https://github.com/yueguoguo/r-on-azure) - Azure에서 R을 사용하는 데 필요한 패키지, 도구 및 사례 연구에 대한 개요
 
 ---
 
-<sub>R 로고는 &copy; The R Foundation 2016 조건으로 사용 되 고는 [Creative Commons Attribution-sharealike 4.0 International 라이선스](https://creativecommons.org/licenses/by-sa/4.0/)합니다.</sub>
+<sub>R 로고는 &copy; 2016 The R Foundation이며, [Creative Commons Attribution-ShareAlike 4.0 International 라이선스](https://creativecommons.org/licenses/by-sa/4.0/)에 따라 사용됩니다.</sub>

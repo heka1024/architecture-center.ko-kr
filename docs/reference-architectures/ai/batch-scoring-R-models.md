@@ -7,12 +7,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: 4fa57168c337b01c8e7d0fc86ba54fee59a7ae47
-ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.openlocfilehash: 72769cf078596f0312a1f4293205dda5a086ef41
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58888065"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639906"
 ---
 # <a name="batch-scoring-of-r-machine-learning-models-on-azure"></a>Azure에서 R 기계 학습 모델 점수 매기기 배치
 
@@ -101,7 +101,6 @@ Azure Batch 및 doAzureParallel 우선 순위가 낮은 Vm 사용을 지원 합�
 ## <a name="deployment"></a>배포
 
 이 참조 아키텍처를 배포 하려면에 설명 된 단계를 수행 합니다 [GitHub][github] 리포지토리.
-
 
 [0]: ./_images/batch-scoring-r-models.png
 [1]: ./_images/sales-forecasts.png

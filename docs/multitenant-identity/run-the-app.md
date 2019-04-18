@@ -6,12 +6,12 @@ ms.date: 07/21/2017
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: bdc2f4da6dd151cf395bee700e6a44e827c1e4f9
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: b22a52b1dfcccc6253ba4ba418ed25523603283a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54481587"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640824"
 ---
 # <a name="run-the-surveys-application"></a>설문 조사 애플리케이션 실행
 
@@ -136,7 +136,7 @@ Tailspin은 설문 조사 애플리케이션을 호스트하는 가상의 회사
 
 20. 검색 상자에서 `Surveys.WebAPI`를 검색합니다.
 
-    ![사용 권한](./images/running-the-app/permissions.png)
+    ![권한](./images/running-the-app/permissions.png)
 
 21. `Surveys.WebAPI`를 선택하고 **선택**을 클릭합니다.
 

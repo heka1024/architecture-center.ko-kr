@@ -9,12 +9,12 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: seodec18, Windows
 social_image_url: /azure/architecture/example-scenario/infrastructure/media/architecture-regulated-multitier-app.png
-ms.openlocfilehash: 440d208b423703fe791dcbe2cad0609fef0e6508
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 2e3bb28abf870a1ce358dd67efeb3f422b983651
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58246224"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639940"
 ---
 # <a name="building-secure-web-applications-with-windows-virtual-machines-on-azure"></a>Azure에서 Windows 가상 머신으로 안전한 웹 애플리케이션 빌드
 
@@ -67,8 +67,6 @@ ms.locfileid: "58246224"
 
 데이터베이스 계층에서는 Always On 가용성 그룹을 사용하도록 구성할 수 있습니다. 이 SQL Server 구성을 사용하면 클러스터 내에서 하나의 주 데이터베이스가 최대 8개의 보조 데이터베이스로 구성됩니다. 주 데이터베이스에 문제가 발생하면 클러스터에서 보조 데이터베이스 중 하나에 장애 조치하여 애플리케이션을 계속 사용할 수 있습니다. 자세한 내용은 [SQL Server에 대한 Always On 가용성 그룹 개요][sqlalwayson-docs]를 참조하세요.
 
-가용성 지침을 더 보려면 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
-
 ### <a name="scalability"></a>확장성
 
 이 시나리오에서는 프론트 엔드 및 백 엔드 구성 요소에 대한 가상 머신 확장 집합을 사용합니다. 확장 집합을 사용하면 프론트 엔드 애플리케이션 계층을 실행하는 VM 인스턴스의 수를 고객 요구 또는 정의된 일정에 따라 자동으로 조정할 수 있습니다. 자세한 내용은 [가상 머신 확장 집합을 사용한 자동 크기 조정 개요][vmssautoscale-docs]를 참조하세요.
@@ -85,7 +83,7 @@ PCI DSS(지불 카드 산업 데이터 보안 표준) 3.2 규정 준수 인프�
 
 이 시나리오에서는 가용성 영역 및 가상 머신 확장 집합을 사용할 뿐만 아니라 Azure Application Gateway 및 부하 분산 장치도 사용합니다. 이러한 두 네트워킹 구성 요소는 연결된 VM 인스턴스에 트래픽을 분산시키고, 트래픽이 정상 VM에만 분산되도록 하는 상태 프로브를 포함합니다. 두 Application Gateway 인스턴스가 활성-수동 구성으로 구성되고, 영역 중복 부하 분산 장치가 사용됩니다. 이 구성을 사용하면 트래픽을 중단시키고 최종 사용자 액세스에 영향을 미칠 수 있는 문제로부터 네트워킹 리소스와 애플리케이션을 탄력적으로 복원할 수 있습니다.
 
-복원력 있는 시나리오 설계에 대한 일반적인 지침은 [Azure용 복원 애플리케이션 디자인][resiliency]을 참조하세요.
+복원 력 있는 솔루션 디자인에 대 한 일반적인 지침을 참조 하세요 [신뢰할 수 있는 Azure 응용 프로그램 디자인](../../reliability/index.md)합니다.
 
 ## <a name="deploy-the-scenario"></a>시나리오 배포
 
@@ -133,12 +131,10 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오에 대한 핵�
 [appgateway-docs]: /azure/application-gateway/overview
 [architecture]: ./media/architecture-regulated-multitier-app.png
 [autoscaling]: /azure/architecture/best-practices/auto-scaling
-[availability]: ../../checklist/availability.md
 [cloudwitness-docs]: /windows-server/failover-clustering/deploy-cloud-witness
 [loadbalancer-docs]: /azure/load-balancer/load-balancer-overview
 [nsg-docs]: /azure/virtual-network/security-overview
 [ntiersql-ra]: /azure/architecture/reference-architectures/n-tier/n-tier-sql-server
-[resiliency]: /azure/architecture/resiliency/
 [security]: /azure/security/
 [scalability]: /azure/architecture/checklist/scalability
 [scaleset-docs]: /azure/virtual-machine-scale-sets/overview

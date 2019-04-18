@@ -9,12 +9,12 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: csa-team
 social_image_url: /azure/architecture/example-scenario/apps/media/architecture-decentralized-trust.png
-ms.openlocfilehash: a3c497f91b3861bf02f05981ee92e578a22a14ca
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 3bc75e59a4d391c74a0e606f9670c88509a3375b
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58246284"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640450"
 ---
 # <a name="decentralized-trust-between-banks-on-azure"></a>Azure의 은행 간에 분산 트러스트
 
@@ -72,8 +72,6 @@ DLT(분산된 원장 기술)를 사용하면 은행 컨소시엄은 보다 효�
 
 [Azure Monitor][monitor]는 가용성을 보장하기 위해 문제에 대한 블록체인 네트워크를 지속적으로 모니터링하는 데 사용됩니다. 이 시나리오에 사용되는 블록체인 솔루션 템플릿이 성공적으로 배포되는 즉시 Azure Monitor 기반의 사용자 지정 모니터링 대시보드에 대한 링크가 전송됩니다. 대시보드는 지난 30분의 하트비트와 기타 유용한 통계를 보고하는 노드를 보여줍니다.
 
-다른 가용성 항목에 대해서는 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
-
 ### <a name="scalability"></a>확장성
 
 블록체인에 대한 일반적인 우려는 미리 정해진 시간 내에 블록체인이 포함할 수 있는 트랜잭션의 수입니다. 이 시나리오에서는 이러한 확장성을 작업 증명보다 잘 관리할 수 있는 인증 증명을 사용합니다. 인증 증명&ndash;기반 네트워크에서는 합의 참가자가 알려져 있고 관리되기 때문에 서로 알고 있는 조직 컨소시엄을 위한 비공개 블록체인에 더 적합합니다. 사용자 지정 대시보드를 통해 평균 블록 시간, 분당 트랜잭션, 계산 리소스 사용량 등의 매개 변수를 간편하게 모니터링할 수 있습니다. 규모 요구 사항에 따라 리소스를 조정할 수 있습니다.
@@ -90,7 +88,7 @@ DLT(분산된 원장 기술)를 사용하면 은행 컨소시엄은 보다 효�
 
 유효성 검사기 노드를 다른 지역에 배포할 수 있으므로 Ethereum PoA 블록체인은 그 자체로 일정 수준의 복원력을 제공할 수 있습니다. Azure는 전 세계의 54개가 넘는 지역에 배포할 수 있는 옵션을 제공합니다. 이 시나리오와 비슷한 블록체인은 협력을 통해 복원력을 높이는 고유하고 신선한 가능성을 제공합니다. 네트워크 복원력은 중앙 집중식 단일 멤버가 아닌 컨소시엄의 모든 멤버를 통해 제공됩니다. 인증 증명&ndash;기반 블록체인을 사용하면 네트워크를 훨씬 계획적이고 의도적으로 복원할 수 있습니다.
 
-복원력 있는 솔루션 설계에 대한 일반적인 지침은 [복원력 있는 Azure 애플리케이션 디자인][resiliency]을 참조하세요.
+복원 력 있는 솔루션 디자인에 대 한 일반적인 지침을 참조 하세요 [신뢰할 수 있는 Azure 응용 프로그램 디자인](../../reliability/index.md)합니다.
 
 ## <a name="pricing"></a>가격
 
@@ -120,8 +118,6 @@ Azure에 Ethereum 인증 증명 솔루션 템플릿을 사용하는 방법에 �
 [deploy]: https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium
 [source]: https://github.com/vitoc/creditscoreblockchain
 [monitor]: /azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor
-[availability]: /azure/architecture/checklist/availability
 [scalability]: /azure/architecture/checklist/scalability
-[resiliency]: ../../resiliency/index.md
 [security]: /azure/security/
 [vault]: https://azure.microsoft.com/services/key-vault/

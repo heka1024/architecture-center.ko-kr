@@ -1,18 +1,18 @@
 ---
-title: 'CAF: 중소기업 - 거버넌스 전략의 기반이 되는 초기 기업 정책'
+title: 'CAF: 소규모 및 중간 enterprise-거 버 넌 스 전략 뒤 초기 회사 정책'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
-ms.date: 2/11/2019
-description: 중소기업 - 거버넌스 전략의 기반이 되는 초기 기업 정책
+ms.date: 02/11/2019
+description: 소규모 및 중간 enterprise-거 버 넌 스 전략 뒤 초기 회사 정책
 author: BrianBlanchard
-ms.openlocfilehash: 4f49d0aae2c6ab5a5c8feba669cbbb904af2773b
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
-ms.translationtype: HT
+ms.openlocfilehash: 2133145c9933ad450ea3cc55ecd68b8a667df783
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901362"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640025"
 ---
 # <a name="small-to-medium-enterprise-initial-corporate-policy-behind-the-governance-strategy"></a>중소기업: 거버넌스 전략의 기반이 되는 초기 기업 정책
 

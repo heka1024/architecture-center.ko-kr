@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: a1c0701185c85f8e7bcbc183b32c4834529fc524
-ms.sourcegitcommit: 1a3cc91530d56731029ea091db1f15d41ac056af
+ms.openlocfilehash: 3459f7895b7b57833da5853a77b2641dc7c85a9e
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58887865"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639719"
 ---
 # <a name="batch-scoring-of-deep-learning-models-on-azure"></a>Azure에서 심층 학습 모델 점수 매기기 배치
 
@@ -120,7 +120,7 @@ Application Insights에 로그를 연결하거나 클러스터 및 해당 작업
 
 ### <a name="logging-with-azure-machine-learning"></a>Azure Machine Learning으로 로깅
 
-Azure Machine Learing은 모든 stdout/stderr을 관련 Blob Storage 계정에 자동으로 기록합니다. 달리 지정하지 않는 한, Azure Machine Learning 작업 영역은 스토리지 계정을 자동으로 프로비저닝하고 로그를 덤프합니다. Storage 탐색기와 같은 스토리지 탐색 도구를 사용하면 로그 파일 탐색을 위한 보다 간편한 환경이 구현됩니다.
+Azure Machine Learning 연결 blob 저장소 계정에 모든 stdout/stderr을 자동으로 로그온 됩니다. 달리 지정하지 않는 한, Azure Machine Learning 작업 영역은 스토리지 계정을 자동으로 프로비저닝하고 로그를 덤프합니다. Storage 탐색기와 같은 스토리지 탐색 도구를 사용하면 로그 파일 탐색을 위한 보다 간편한 환경이 구현됩니다.
 
 ## <a name="cost-considerations"></a>비용 고려 사항
 

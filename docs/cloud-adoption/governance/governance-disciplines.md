@@ -9,12 +9,12 @@ description: CAF 내 거버넌스 콘텐츠에 대한 개요입니다.
 author: BrianBlanchard
 layout: LandingPage
 ms.topic: landing-page
-ms.openlocfilehash: 1721e2ff7b4e7879637a7c09a40a5571b73c9ace
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
-ms.translationtype: HT
+ms.openlocfilehash: ddd7f5e4b7e79ebe2ddf87be7421b6c4691aced1
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901911"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639872"
 ---
 # <a name="the-five-disciplines-of-cloud-governance"></a>클라우드 거버넌스의 5분야
 
@@ -26,7 +26,7 @@ ms.locfileid: "55901911"
         <div class="cardPadding" style="padding-bottom:10px;">
             <div class="card" style="padding-bottom:10px;">
                 <div class="cardText" style="padding-left:0px;">
-비즈니스 프로세스 또는 기술 플랫폼을 변경하면 위험이 발생합니다. 클라우드 거버넌스 팀은 클라우드 보유자라고도 하며, 채택 또는 혁신 노력의 중단을 최소화하면서 이러한 위험을 완화해야 합니다.<br/><br/>CAF 거버넌스 모델은 <a href="#corporate-policy">회사 정책</a> 및 <a href="#disciplines-of-cloud-governance">클라우드 거버넌스 분야</a>를 개발하는 데 집중함으로써 이러한 결정(선택한 클라우드 플랫폼과 관계없이)을 안내합니다. <a href="#actionable-journeys">실행 가능한 설계 가이드</a>에서는 Azure 서비스를 사용하여 이 모델을 시연합니다. 이 문서는 CAF 거버넌스 모델의 5개 분야에 대한 방문 페이지 역할을 합니다.
+비즈니스 프로세스 또는 기술 플랫폼을 변경하면 위험이 발생합니다. 클라우드 거버넌스 팀은 클라우드 보유자라고도 하며, 채택 또는 혁신 노력의 중단을 최소화하면서 이러한 위험을 완화해야 합니다.<br/><br/>회사 정책 개발에 집중 하 여 (선택한 클라우드 플랫폼)에 관계 없이 이러한 결정을 안내 하는 카페 거 버 넌 스 모델 및 <a href="#disciplines-of-cloud-governance">분야의 클라우드 거 버 넌 스</a>합니다. <a href="./journeys/overview.md">실행 가능한 경험</a> Azure 서비스를 사용 하 여이 모델을 보여 줍니다. 이 문서는 CAF 거버넌스 모델의 5개 분야에 대한 방문 페이지 역할을 합니다.
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@ ms.locfileid: "55901911"
                     <div class="cardText" style="padding-left:0px;">
 <img src="../_images/operational-transformation-govern-highres.png" alt="Diagram of the CAF governance model: Corporate policy and governance disciplines">
 <br>
-<i>그림 1. 회사 정책 및 5개 클라우드 거버넌스 분야에 대한 시각적 개체</i>
+<i>그림 1. 회사 정책 및는 5 개 분야의 클라우드 거 버 넌 스 다이어그램</i>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ ms.locfileid: "55901911"
 
 ## <a name="disciplines-of-cloud-governance"></a>클라우드 거버넌스 분야
 
-각 클라우드 공급자에는 정책을 알리고 도구 체인을 조정하는 데 도움이 되는 가이드로 사용되는 일반적인 클라우드 거버넌스 분야가 있습니다. 이러한 분야는 적절한 수준의 자동화 및 클라우드 공급자 전반에 걸친 회사 정책 적용에 관한 결정을 안내합니다.
+각 클라우드 공급자에서 정책 하 고 도구 체인을 정렬 하는 데 가이드로 사용 될 수 있는 일반적인 거 버 넌 스 분야 있습니다. 이러한 분야는 적절한 수준의 자동화 및 클라우드 공급자 전반에 걸친 회사 정책 적용에 관한 결정을 안내합니다.
 
 <!-- markdownlint-disable MD033 -->
 

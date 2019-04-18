@@ -7,10 +7,10 @@ ms.date: 02/11/2019
 description: Azure에 대 한 Microsoft 카페에서 거 버 넌 스
 author: BrianBlanchard
 ms.openlocfilehash: ce407de0daa590e767382346692c80e0a113bb3c
-ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068840"
 ---
 # <a name="governance-in-the-microsoft-caf-for-azure"></a>Azure에 대 한 Microsoft 카페에서 거 버 넌 스
@@ -45,4 +45,4 @@ CAF의 콘텐츠는 기업의 비즈니스, 기술 및 문화에 영향을 줍�
 실행 가능한 거 버 넌 스 경험을 검토 합니다.
 
 > [!div class="nextstepaction"]
-> [실행 가능한 거 버 넌 스 경험](./journeys/overview.md)
+> [실행 가능한 거버넌스 경험](./journeys/overview.md)

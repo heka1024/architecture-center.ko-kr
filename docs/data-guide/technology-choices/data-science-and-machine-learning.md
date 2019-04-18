@@ -6,16 +6,16 @@ ms.date: 03/06/2019
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
-ms.openlocfilehash: 1020e938a04c6a82e6cc831e6620ec17c9a10cc7
-ms.sourcegitcommit: 9854bd27fb5cf92041bbfb743d43045cd3552a69
+ms.openlocfilehash: e4c81add1a97254f427d67584ff7e2a4799f84a9
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58503233"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640909"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Microsoft의 기계 학습 제품이란?
 
-Machine Learning은 컴퓨터에서 기존 데이터를 사용하여 미래 동작, 결과 및 추세를 예측하는 데이터 과학 기술입니다. Machine Learning을 사용하면 컴퓨터에서 명시적으로 프로그래밍하지 않고 학습합니다.
+머신 러닝은 컴퓨터에서 기존 데이터를 사용하여 미래 동작, 결과 및 추세를 예측하는 데이터 과학 기술입니다. 머신 러닝을 사용하면 컴퓨터에서 명시적으로 프로그래밍하지 않고 학습합니다.
 
 기계 학습 솔루션을 반복적으로 작성 된 있고 단계로:
 
@@ -63,7 +63,7 @@ Microsoft는 다양 한 제품 준비, 작성, 배포 및 기계 학습 모델�
 
 학습, 배포 및 Python 및 CLI를 사용 하 여 클라우드 규모의 기계 학습 모델을 관리 하려면 Azure Machine Learning 서비스를 사용 합니다.
 
-[Azure Machine Learning 서비스의 평가판 또는 유료 버전](http://aka.ms/AMLFree)을 사용해 보세요.
+[Azure Machine Learning 서비스의 평가판 또는 유료 버전](https://aka.ms/AMLFree)을 사용해 보세요.
 
 |||
 |-|-|
@@ -186,9 +186,9 @@ Windows 애플리케이션 내에서 학습된 기계 학습 모델을 사용하
 |||
 |-|-|
 |**형식**                   |Windows 장치에 학습 된 모델에 대 한 유추 엔진|
-|**지원 되는 언어**    |C#/ C + +, JavaScript|
+|**지원 되는 언어**    |C#/C++, JavaScript|
 
 ## <a name="next-steps"></a>다음 단계
 
-- Microsoft의 사용 가능한 모든 AI(인공지능) 개발 제품을 알아보려면 [Microsoft AI 플랫폼](https://www.microsoft.com/ai)을 참조
+- Microsoft에서 사용 가능한 모든 AI (인공 지능) 개발 제품을 알아보려면 [Microsoft AI 플랫폼](https://www.microsoft.com/ai)
 - AI 솔루션을 개발하는 방법에 대한 학습은 [Microsoft AI School](https://aischool.microsoft.com/learning-paths)을 참조

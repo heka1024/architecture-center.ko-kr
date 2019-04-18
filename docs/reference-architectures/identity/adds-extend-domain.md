@@ -1,29 +1,29 @@
 ---
-title: AD DS(Active Directory Domain Services)를 Azure로 확장
+title: 온-프레미스 Active Directory 도메인을 Azure로 확장
 titleSuffix: Azure Reference Architectures
-description: 온-프레미스 Active Directory 도메인을 Azure로 확장합니다.
+description: Azure virtual network에서 Active Directory Domain Services (AD DS)를 배포 합니다.
 author: telmosampaio
 ms.date: 05/02/2018
 ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, identity
-ms.openlocfilehash: 67f23ae3676d0fb95ef484fa6dcb7a8bb92e0fa2
-ms.sourcegitcommit: 548374a0133f3caed3934fda6a380c76e6eaecea
+ms.openlocfilehash: c617a0ceba900fc9cd78eff21aadf5c94f6b143b
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58420008"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640348"
 ---
-# <a name="extend-active-directory-domain-services-ad-ds-to-azure"></a>AD DS(Active Directory Domain Services)를 Azure로 확장
+# <a name="extend-your-on-premises-active-directory-domain-to-azure"></a>온-프레미스 Active Directory 도메인을 Azure로 확장
 
-이 참조 아키텍처에서는 Active Directory 환경을 Azure로 확장하여 AD DS(Active Directory Domain Services)를 사용하여 분산 인증 서비스를 제공하는 방법을 설명합니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
+이 아키텍처는 분산된 인증 서비스를 제공 하는 Azure에 온-프레미스 Active Directory 도메인을 확장 하는 방법을 보여 줍니다. [**이 솔루션을 배포합니다**](#deploy-the-solution).
 
 ![Active Directory로 하이브리드 네트워크 아키텍처 보안](./images/adds-extend-domain.png)
 
 *이 아키텍처의 [Visio 파일][visio-download]을 다운로드합니다.*
 
-AD DS는 보안 도메인에 포함된 사용자, 컴퓨터, 애플리케이션 및 기타 ID를 인증하는 데 사용됩니다. AD DS는 온-프레미스에서 호스팅할 수 있지만, 애플리케이션의 일부는 온-프레미스에 호스팅되어 있고 일부는 Azure에 호스팅되어 있는 경우에는 이 기능을 Azure에 복제하는 것이 효율적일 수 있습니다. 이렇게 하면 클라우드에서 온-프레미스에서 실행 중인 AD DS로 인증 및 로컬 인증 요청을 돌려보낼 때 발생하는 대기 시간을 줄일 수 있습니다.
+응용 프로그램이 부분적으로 호스팅되는 경우 온-프레미스를 Azure에서 부분적으로 보다 효율적인 Active Directory Domain Services (AD DS)에서 Azure에 복제할 수 있습니다. 이 클라우드에서 온-프레미스를 실행 하는 AD DS에 다시 인증 요청을 전송 하 여 발생 한 대기 시간을 줄일 수 있습니다.
 
 이 아키텍처는 일반적으로 온-프레미스 네트워크와 Azure 가상 네트워크가 VPN 또는 ExpressRoute 연결을 통해 연결된 경우에 사용됩니다. 이 아키텍처는 양방향 복제도 지원합니다. 즉, 온-프레미스나 클라우드 중 한 곳에서 변경을 수행해도 온-프레미스와 클라우드의 데이터가 동일하게 유지됩니다. 일반적으로 이 아키텍처는 온-프레미스와 Azure 사이에 기능이 분산된 하이브리드 애플리케이션 및 Active Directory를 사용하여 인증을 수행하는 애플리케이션과 서비스에 사용됩니다.
 

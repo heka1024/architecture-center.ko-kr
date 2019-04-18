@@ -6,12 +6,12 @@ ms.date: 04/11/2018
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
-ms.openlocfilehash: e2b89fa51abdb7be6124ded6e64889b5b54854a4
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: a1fc28737b194fe69e2ae094bd996d97363eb29c
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54487902"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641113"
 ---
 # <a name="migrate-an-azure-cloud-services-application-to-azure-service-fabric"></a>Azure Service Fabric으로 Azure Cloud Services 애플리케이션 마이그레이션 
 
@@ -26,7 +26,6 @@ ms.locfileid: "54487902"
 - [Azure Service Fabric의 개요][sf-overview]
 - [애플리케이션 구축에 마이크로 서비스 접근 방식이 필요한 이유][sf-why-microservices]
 
-
 ## <a name="about-the-surveys-application"></a>설문 조사 애플리케이션에 대한 정보
 
 2012년에 패턴 및 연습 그룹은 [클라우드에 대한 다중 테넌트 애플리케이션 개발][tailspin-book]이란 책을 위해 설문 조사라는 애플리케이션을 만들었습니다. 책은 설문 조사 애플리케이션을 디자인하고 구현하는 Tailspin이라는 가상의 회사를 설명합니다.
@@ -35,8 +34,8 @@ ms.locfileid: "54487902"
 
 이제 Tailspin은 Azure에서 실행되는 Service Fabric를 사용하여 설문 조사 애플리케이션을 마이크로 서비스 아키텍처로 이동하고자 합니다. 애플리케이션은 이미 Cloud Services 애플리케이션으로 배포했으므로 Tailspin은 다중 단계 접근 방식을 채택합니다.
 
-1.  애플리케이션에 대한 변경을 최소화하면서 클라우드 서비스를 Service Fabric에 포팅합니다.
-2.  마이크로 서비스 아키텍처로 이동하여 애플리케이션을 Service Fabric에 최적화합니다.
+1. 애플리케이션에 대한 변경을 최소화하면서 클라우드 서비스를 Service Fabric에 포팅합니다.
+2. 마이크로 서비스 아키텍처로 이동하여 애플리케이션을 Service Fabric에 최적화합니다.
 
 이 문서에서는 첫 번째 단계를 설명합니다. 이후 문서에서는 두 번째 단계를 설명합니다. 실제 프로젝트에서는 두 단계가 겹칠 가능성이 높습니다. Service Fabric에 포팅하는 동안 마이크로 서비스로 애플리케이션을 재설계할 수도 있습니다. 나중에 성긴(coarse-grained) 서비스를 더 작은 서비스로 나누면서 아키텍처를 추가로 구체화할 수도 있습니다.  
 
@@ -87,7 +86,6 @@ Service Fabric은 분산된 클라우드 애플리케이션을 빌드하기 위�
 | 자동 확장 | [기본 제공 서비스][cloud-service-autoscale] | 자동 규모 확장에 대한 VM Scale Sets |
 | 디버그 | 로컬 에뮬레이터 | 로컬 클러스터 |
 
-
 \* 상태 저장 서비스는 [신뢰할 수 있는 컬렉션][sf-reliable-collections]을 사용하여 복제본 간에 상태를 저장하므로 모든 읽기는 클러스터의 노드에 대해 로컬입니다. 쓰기는 안정성을 위해 노드에 걸쳐 복제됩니다. 상태 비저장 서비스는 데이터베이스 또는 다른 외부 저장소를 사용하는 외부 상태를 가질 수 있습니다.
 
 ** 작업자 역할은 OWIN을 사용하여 ASP.NET Web API를 자체 호스트팅할 수 있습니다.
@@ -123,7 +121,6 @@ Cloud Services 외에도 설문 조사 애플리케이션은 다음과 같은 �
 ![](./images/tailspin02.png)
 
 의도적으로, 이 아키텍처는 원래 애플리케이션과 매우 비슷합니다. 단, 다이어그램에는 몇 가지 중요한 차이점이 숨겨져 있습니다. 이 문서의 나머지 부분에서는 이러한 차이점에 대해 살펴보겠습니다. 
-
 
 ## <a name="converting-the-cloud-service-roles-to-services"></a>클라우드 서비스 역할을 서비스로 변환
 
@@ -216,7 +213,6 @@ Service Fabric 애플리케이션에는 다음과 같은 구성 파일이 들어
 2. 애플리케이션 매니페스트에서 설정에 대한 재정의를 정의합니다.
 3. 환경 관련 설정을 애플리케이션 매개 변수 파일에 배치합니다.
 
-
 ## <a name="deploying-the-application"></a>애플리케이션 배포
 
 반면 Azure Cloud Services는 관리되는 서비스이며, Service Fabric은 런타임입니다. Azure 또는 온-프레미스를 포함한 다양한 환경에서 Service Fabric 클러스터를 만들 수 있습니다. 이 문서에서는 Azure에 배포하는 것에 초점을 맞춥니다. 
@@ -265,8 +261,8 @@ Service Fabric 클러스터가 [VM 확장 집합][vm-scale-sets]에 배포되었
 
 이 방법을 구현하려면 다음을 수행합니다.
 
-1.  클러스터를 만들 때 두 개 이상의 노드 형식을 정의합니다. 
-2.  각 서비스에 대해 [배치 제약 조건][sf-placement-constraints]을 사용하여 서비스를 노드 형식에 할당합니다.
+1. 클러스터를 만들 때 두 개 이상의 노드 형식을 정의합니다. 
+2. 각 서비스에 대해 [배치 제약 조건][sf-placement-constraints]을 사용하여 서비스를 노드 형식에 할당합니다.
 
 Azure에 배포할 때 각 노드 형식이 별도 VM 확장 집합에 배포됩니다. Service Fabric 클러스터는 모든 노드 형식에 걸쳐 있습니다. 자세한 내용은 [Service Fabric 노드 형식과 Virtual Machine Scale Sets 간의 관계][sf-node-types]를 참조하세요.
 
@@ -280,8 +276,7 @@ Azure에 배포할 때 각 노드 형식이 별도 VM 확장 집합에 배포됩
 
 클러스터에 VM을 추가하여 애플리케이션을 확장할 수 있습니다. VM 확장 집합은 성능 카운터에 따라 자동 크기 조정 규칙을 사용하는 자동 크기 조정을 지원합니다. 자세한 내용은 [자동 크기 조정 규칙을 사용하여 Service Fabric 클러스터 크기 조정][sf-auto-scale]을 참조하세요.
 
-클러스터를 실행하는 동안 중앙 위치에서 모든 노드의 로그를 수집해야 합니다. 자세한 내용은 [Azure 진단을 사용하여 로그 수집][sf-logs]을 참조하세요.   
-
+클러스터를 실행하는 동안 중앙 위치에서 모든 노드의 로그를 수집해야 합니다. 자세한 내용은 [Azure Diagnostics를 사용하여 로그 수집][sf-logs]을 참조하세요.   
 
 ## <a name="conclusion"></a>결론
 
@@ -309,7 +304,7 @@ Azure에 배포할 때 각 노드 형식이 별도 VM 확장 집합에 배포됩
 [cloud-service-autoscale]: /azure/cloud-services/cloud-services-how-to-scale-portal
 [cloud-service-config]: /azure/cloud-services/cloud-services-model-and-package
 [cloud-service-endpoints]: /azure/cloud-services/cloud-services-enable-communication-role-instances#worker-roles-vs-web-roles
-[kestrel]: https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel
+[kestrel]: /aspnet/core/fundamentals/servers/kestrel
 [lb-probes]: /azure/load-balancer/load-balancer-custom-probe-overview
 [owin]: https://www.asp.net/aspnet/overview/owin-and-katana
 [refactor-surveys]: refactor-migrated-app.md

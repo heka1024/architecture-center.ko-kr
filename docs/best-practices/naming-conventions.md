@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: ed1811495e81965fa514ab66dcfa49d00d2a59f2
-ms.sourcegitcommit: bb75a25bd589a761c79e39f2ccdec4acc7d71d60
+ms.openlocfilehash: e67da8043beed01c99f36da689dfd0553e012535
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59480102"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640399"
 ---
 # <a name="naming-conventions-for-azure-resources"></a>Azure 리소스에 대한 명명 규칙
 
@@ -101,7 +101,7 @@ Azure의 각 리소스 또는 서비스 유형은 명명 제한 및 범위 집�
 
 | 엔터티 | 범위 | 길이 | 대/소문자 구분 | 사용할 수 있는 문자 | 제안된 패턴 | 예 |
 | --- | --- | --- | --- | --- | --- | --- |
-|Storage 계정 이름(데이터) |전역 |3-24 |소문자 |영숫자 |`<globally unique name><number>` (저장소 계정 명명에 대 한 고유 guid를 계산 하는 함수 사용) |`profxdata001` |
+|Storage 계정 이름(데이터) |전역 |3-24 |소문자 |영숫자 |`<globally unique name><number>`(저장소 계정 명명을 위한 고유 GUID를 계산하는 함수 사용) |`profxdata001` |
 |Storage 계정 이름(디스크) |전역 |3-24 |소문자 |영숫자 |`<vm name without hyphens>st<number>` |`profxsql001st0` |
 | 컨테이너 이름 |Storage 계정 |3-63 |소문자 |영숫자 및 하이픈 |`<context>` |`logs` |
 |Blob 이름 | 컨테이너 |1-1024 |대/소문자 구분 |모든 URL 문자 |`<variable based on blob usage>` |`<variable based on blob usage>` |
@@ -135,7 +135,7 @@ Azure의 각 리소스 또는 서비스 유형은 명명 제한 및 범위 집�
 
 | 엔터티 | 범위 | 길이 | 대/소문자 구분 | 사용할 수 있는 문자 | 제안된 패턴 | 예 |
 | --- | --- | --- | --- | --- | --- | --- |
-|Service Bus 네임스페이스 | 전역 |6-50 |대/소문자 구분하지 않음 | 영숫자, 하이픈, leter;로 시작 해야 합니다 참조 [여기](/rest/api/servicebus/create-namespace) 세부 정보에 대 한 합니다. |`<service short name>-bus` |`app1-bus` |
+|Service Bus 네임스페이스 | 전역 |6-50 |대/소문자 구분하지 않음 | 영숫자, 하이픈, 문자로 시작 해야 합니다 참조 [여기](/rest/api/servicebus/create-namespace) 세부 정보에 대 한 합니다. |`<service short name>-bus` |`app1-bus` |
 
 ## <a name="organize-resources-with-tags"></a>태그로 리소스 정리
 
@@ -192,8 +192,8 @@ Azure Storage 계정에서 Blob 데이터에 액세스할 수 있도록 사용�
 
 Blob, 컨테이너 및 테이블 명명에 대한 자세한 내용은 다음 목록을 참조하세요.
 
-- [이름 지정 및 컨테이너, Blob 및 메타 데이터 참조](https://msdn.microsoft.com/library/dd135715.aspx)
-- [큐 및 메타 데이터 이름 지정](https://msdn.microsoft.com/library/dd179349.aspx)
+- [컨테이너, BLOB, 메타데이터 이름 명명 및 참조](https://msdn.microsoft.com/library/dd135715.aspx)
+- [큐 및 메타데이터 명명](https://msdn.microsoft.com/library/dd179349.aspx)
 - [테이블 명명](https://msdn.microsoft.com/library/azure/dd179338.aspx)
 
 Blob 이름은 문자 조합을 포함할 수 있지만 예약된 URL 문자는 적절히 이스케이프되어야 합니다. 마침표(.), 슬래시(/) 또는 시퀀스 또는 둘의 조합으로 끝나는 Blob 이름은 피합니다. 규칙에 따라 슬래시는 *가상* 디렉터리 구분 문자입니다. Blob 이름에 백슬래시(\\)를 사용하지 않습니다. 클라이언트 API는 이를 허용할 수도 있지만 이 경우 제대로 해시하지 않고 서명이 일치하지 않게 됩니다.
@@ -202,4 +202,3 @@ Blob 이름은 문자 조합을 포함할 수 있지만 예약된 URL 문자는 
 
 > [!TIP]
 > 새 서비스 또는 애플리케이션의 개발을 시작하기 전에 모든 저장소 계정 및 유형에 대한 명명 규칙을 설정하는 것이 좋습니다.
-

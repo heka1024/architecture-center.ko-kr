@@ -7,16 +7,16 @@ ms.date: 12/07/2018
 ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
-ms.openlocfilehash: 9b931337f7f0e5dc58f83701271c7d3491af5bfd
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: f3d15d65aeab41977e6d30b8141baaa956da29d3
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248748"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640773"
 ---
 # <a name="publisher-subscriber-pattern"></a>게시자-구독자 패턴
 
-애플리케이선이 발신자를 수신자에게 연결하지 않고 여러 관심있는 소비자에게 이벤트를 비동기식으로 알릴 수 있습니다.
+발신자는 수신자에 게 결합 하지 않고 비동기적으로 이벤트를 관심 있는 여러 소비자에 게 발표할 응용 프로그램을 사용 합니다.
 
 **또 다른 명칭**: 게시/구독 메시지
 
@@ -88,7 +88,7 @@ ms.locfileid: "58248748"
 
 - **반복 메시지.** 같은 메시지를 여러 번 보낼 수 있습니다. 예를 들어 발신자가 메시지를 게시한 후 실패할 수 있습니다. 그 후 발신자의 새 인스턴스가 시작되어 메시지를 반복할 수 있습니다. 메시지 인프라는 메시지를 최대 1회(at-most-once) 제공할 수 있도록 메시지 ID를 기반으로 중복 메시지 감지 및 제거(중복 제거라고도 함)를 구현해야 합니다.
 
-- **메시지 만료.** 메시지 수명이 제한되어 있을 수 있습니다. 이 기간 내에 처리되지 않는 메시지는 더 이상 관련이 없으므로 삭제해야 합니다. 발신자는 메시지의 데이터 중 일부로 만료 시간을 지정할 수 있습니다. 수신자는 이 정보를 검사한 후 메시지와 연결된 비즈니스 논리를 수행할 것인지 결정할 수 있습니다.
+- **메시지 만료.** 메시지 수명이 제한되어 있을 수 있습니다. 이 기간 내에 처리되지 않는 메시지는 더 이상 관련이 없으므로 삭제해야 합니다. 발신자는 메시지에 있는 데이터의 일부로 만료 시간을 지정할 수 있습니다. 수신자는 이 정보를 검사한 후 메시지와 연결된 비즈니스 논리를 수행할 것인지 결정할 수 있습니다.
 
 - **메시지 예약.** 메시지에 일시적으로 엠바고가 내려져 특정 날짜 및 시간까지 처리하면 안 되는 경우가 있을 수 있습니다. 이 시간까지는 수신자에게 메시지를 제공하면 안 됩니다.
 
@@ -130,4 +130,4 @@ ms.locfileid: "58248748"
 
 - [관찰자 패턴](https://en.wikipedia.org/wiki/Observer_pattern). 게시-구독 패턴은 비동기 메시지를 통해 관찰자를 주체로부터 분리하여 관찰자 패턴을 기반으로 구현됩니다.
 
-- [메시지 브로커 패턴](https://en.wikipedia.org/wiki/Message_broker). 게시-구독 모델을 지원하는 많은 메시지 하위 시스템은 메시지 브로커를 통해 구현됩니다.
+- [메시지 브로커 패턴](https://en.wikipedia.org/wiki/Message_broker). 많은 메시징 하위 시스템을 지 원하는 게시-구독 모델을 메시지 브로커를 통해 구현 됩니다.

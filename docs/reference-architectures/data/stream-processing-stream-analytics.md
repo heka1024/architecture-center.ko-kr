@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18
-ms.openlocfilehash: af56a010e90fb176b13c1110ad4000dcababe009
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: e891c0fe490f57e0723b1ec133e33e70d2e23554
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58243874"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640416"
 ---
 # <a name="create-a-stream-processing-pipeline-with-azure-stream-analytics"></a>Azure Stream Analytics를 사용하는 스트림 처리 파이프라인 만들기
 
@@ -234,4 +234,3 @@ Event Hubs가 오른쪽 위 패널에 표시된 대로 요청을 제한합니다
 <!-- links -->
 
 [github]: https://github.com/mspnp/azure-stream-analytics-data-pipeline
-

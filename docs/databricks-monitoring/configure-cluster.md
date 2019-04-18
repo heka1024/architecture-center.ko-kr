@@ -1,20 +1,20 @@
 ---
-title: Azure Monitor에 메트릭을 보내도록 Azure Databricks를 구성 합니다.
+title: Azure Databricks를 구성하여 Azure Monitor에 메트릭 보내기
 description: 메트릭의 모니터링 및 Azure Log Analytics에서 데이터의 로깅을 사용할 수 있도록 scala 라이브러리
 author: petertaylor9999
 ms.date: 03/26/2019
-ms.openlocfilehash: af6b6433f87964ac60c179ecf498e54129344126
-ms.sourcegitcommit: 9854bd27fb5cf92041bbfb743d43045cd3552a69
+ms.openlocfilehash: f2fc1fd19da661b74ddf032dd1d5153ce575345c
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58503437"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639889"
 ---
 <!-- markdownlint-disable MD040 -->
 
-# <a name="configure-azure-databricks-to-send-metrics-to-azure-monitor"></a>Azure Monitor에 메트릭을 보내도록 Azure Databricks를 구성 합니다.
+# <a name="configure-azure-databricks-to-send-metrics-to-azure-monitor"></a>Azure Databricks를 구성하여 Azure Monitor에 메트릭 보내기
 
-이 문서에 메트릭을 보내도록 Azure Databricks 클러스터를 구성 하는 방법을 보여 줍니다는 [Log Analytics 작업 영역](/azure/azure-monitor/platform/manage-access)합니다. 사용 된 [Azure Databricks 모니터링 라이브러리](https://github.com/mspnp/spark-monitoring), GitHub에서 사용할 수 있는 합니다. Java, Scala 및 Maven에 대 한 이해가 prerequisistes 사례로 권장 됩니다.
+이 문서에 메트릭을 보내도록 Azure Databricks 클러스터를 구성 하는 방법을 보여 줍니다는 [Log Analytics 작업 영역](/azure/azure-monitor/platform/manage-access)합니다. 사용 된 [Azure Databricks 모니터링 라이브러리](https://github.com/mspnp/spark-monitoring), GitHub에서 사용할 수 있는 합니다. 필수 구성 요소로 Java, Scala 및 Maven의 이해를 사용 하는 것이 좋습니다.
 
 ## <a name="about-the-azure-databricks-monitoring-library"></a>라이브러리를 모니터링 하는 Azure Databricks에 대 한
 

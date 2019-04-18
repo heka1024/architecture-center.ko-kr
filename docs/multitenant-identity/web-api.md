@@ -9,12 +9,12 @@ ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authorize
 pnp.series.next: token-cache
-ms.openlocfilehash: a895276a77c111e660f29397d250373bee53f29e
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: fd0ac254604470ba51ea00537490cfb22b224e80
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54480779"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640178"
 ---
 # <a name="secure-a-backend-web-api"></a>백 엔드 웹 API의 보안 유지
 
@@ -47,7 +47,7 @@ GET /users/{userId}/surveys
 실행할 수 있는 두 가지 주요 방법이 있습니다.
 
 * 위임된 사용자 ID. 웹 애플리케이션은 사용자의 ID로 인증합니다.
-* 애플리케이션 ID. 웹 애플리케이션은 OAuth2 클라이언트 자격 증명 흐름을 사용하여 해당 클라이언트 ID로 인증합니다.
+* 애플리케이션 ID. 웹 응용 프로그램은 OAuth 2 클라이언트 자격 증명 흐름을 사용 하 여 해당 클라이언트 ID를 사용 하 여 인증 합니다.
 
 Tailspin 애플리케이션은 위임된 사용자 ID를 구현합니다. 주요 차이점은 다음과 같습니다.
 
@@ -116,7 +116,7 @@ public override async Task AuthorizationCodeReceived(AuthorizationCodeReceivedCo
 * `authorizationCode`. IDP에서 다시 가져온 인증 코드.
 * `clientId`. 웹 애플리케이션의 클라이언트 ID.
 * `clientSecret`. 웹 애플리케이션의 클라이언트 암호.
-* `redirectUri`. OpenID Connect에 대해 설정한 리디렉션 URI. IDP가 토큰으로 다시 호출하는 위치입니다.
+* `redirectUri`. 리디렉션 URI OpenID Connect에 대 한 설정입니다. IDP가 토큰으로 다시 호출하는 위치입니다.
 * `resourceID`. Azure AD에서 웹 API를 등록할 때 만든 웹 API의 앱 ID URI
 * `tokenCache`. 액세스 토큰을 캐시하는 개체. [토큰 캐싱]을 참조하세요.
 
@@ -230,7 +230,7 @@ public override async Task TokenValidated(TokenValidatedContext context)
 
 권한 부여에 대한 일반적 내용은 [역할 기반 및 리소스 기반 권한 부여][Authorization]를 참조하세요.
 
-JwtBearer 미들웨어는 인증 응답을 처리합니다. 예를 들어 컨트롤러 작업을 인증된 사용자로 제한하려면 **[Authorize]** 특성을 사용하고 **JwtBearerDefaults.AuthenticationScheme**을 인증 체계로 지정합니다.
+JwtBearer 미들웨어는 인증 응답을 처리합니다. 예를 들어 인증 된 사용자에 게 컨트롤러 작업을 제한 하려면 사용 합니다 **[Authorize]** 특성 및 지정 **JwtBearerDefaults.AuthenticationScheme** 을 인증 체계로:
 
 ```csharp
 [Authorize(ActiveAuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]

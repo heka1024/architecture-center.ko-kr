@@ -9,12 +9,12 @@ ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: fasttrack
 social_image_url: /azure/architecture/example-scenario/apps/media/architecture-ecommerce-scenario.png
-ms.openlocfilehash: 989dec6afccbb836b61eb32e39904f43ffff65ac
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: b10ffaafb6479fef89e6691a686c018ac6ce5632
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244014"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640756"
 ---
 # <a name="an-e-commerce-front-end-on-azure"></a>Azure의 전자상거래 프런트 엔드
 
@@ -103,7 +103,7 @@ ms.locfileid: "58244014"
 - 애플리케이션의 일부를 사용할 수 없는 경우 [회로 차단기 패턴][circuit-breaker]을 활용하여 정상적인 오류 처리를 제공하는 것이 좋습니다.
 - [일반적인 복원력 디자인 패턴][design-patterns-resiliency]을 검토하고, 적절할 경우 이를 구현하는 것이 좋습니다.
 - Azure 아키텍처 센터에서 [App Service에 대한 다양한 권장 사례][resiliency-app-service]를 찾을 수 있습니다.
-- 데이터 계층에는 활성 [지역 복제][sql-geo-replication], 이미지 및 큐에는 [지역 중복][storage-geo-redudancy] 저장소를 사용하는 것이 좋습니다.
+- 데이터 계층에는 활성 [지역 복제][sql-geo-replication], 이미지 및 큐에는 [지역 중복][storage-geo-redundancy] 저장소를 사용하는 것이 좋습니다.
 - [복원력][resiliency]에 대한 심층적인 논의는 Azure 아키텍처 센터의 관련 문서를 참조하세요.
 
 ## <a name="deploy-the-scenario"></a>시나리오 배포
@@ -162,4 +162,4 @@ ms.locfileid: "58244014"
 [secure-development]: https://www.microsoft.com/SDL/process/design.aspx
 [service-bus]: /azure/service-bus-messaging/
 [sql-geo-replication]: /azure/sql-database/sql-database-geo-replication-overview
-[storage-geo-redudancy]: /azure/storage/common/storage-redundancy-grs
+[storage-geo-redundancy]: /azure/storage/common/storage-redundancy-grs

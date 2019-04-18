@@ -8,10 +8,10 @@ ms.date: 02/11/2019
 description: 대규모 엔터프라이즈 – 모범 사례 설명
 author: BrianBlanchard
 ms.openlocfilehash: 2d52797f1c3541fab1c97d97d0438210d2e66f79
-ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068993"
 ---
 # <a name="large-enterprise-best-practice-explained"></a>대기업: 설명된 모범 사례
@@ -101,7 +101,7 @@ Azure 구독에 **혼합** 패턴을 선택했습니다.
 이 거버넌스 과정에서 선택한 패턴이 읽는 사람의 요구와 맞지 않으면 각 패턴의 대체 패턴을 사용할 수 있습니다.
 
 - [암호화 패턴](../../../decision-guides/encryption/overview.md)
-- [Identity 패턴](../../../decision-guides/identity/overview.md)
+- [ID 패턴](../../../decision-guides/identity/overview.md)
 - [로깅 및 보고 패턴](../../../decision-guides/log-and-report/overview.md)
 - [정책 적용 패턴](../../../decision-guides/policy-enforcement/overview.md)
 - [리소스 일관성 패턴](../../../decision-guides/resource-consistency/overview.md)

@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: b93041d87ec1edde91724f6cf6374cb00b8a4941
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: db97f2983d71f63b12e6e4b2f0070b1989b482c4
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488497"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641028"
 ---
 # <a name="caching"></a>구성
 
@@ -144,7 +144,7 @@ HTTP 연결을 통해 데이터를 제공하는 웹 애플리케이션을 작성
 
 따라서 애플리케이션은 캐시 서비스의 가용성을 검색하여 준비하고 캐시에 액세스할 수 없는 경우 원래 데이터 저장소로 대체해야 합니다. [회로 차단기 패턴](../patterns/circuit-breaker.md)은 시나리오를 처리하는데 유용합니다. [캐시 배제 패턴](../patterns/cache-aside.md)과 같은 전략을 따라 캐시를 제공하는 서비스를 복구할 수 있으며, 원래 데이터 저장소에서 데이터를 읽을 때 서비스를 사용할 수 있게 되면 캐시를 다시 채울 수 있습니다.
 
-그러나 캐시를 일시적으로 사용할 수 없을 때 애플리케이션이 다시 원래 데이터 저장소로 되돌아가는 경우 시스템의 확장성에 영향을 미칠 수 있습니다. 데이터 저장소가 복구 중인 동안 원래 데이터 저장소에 데이터 요청이 너무 많아 시간이 초과되고 연결되지 않을 수 있습니다.
+그러나 시스템 확장성 응용 프로그램 대체 원래 데이터 저장소에 캐시를 일시적으로 사용할 수 없는 경우 달라질 수 있습니다. 데이터 저장소가 복구 중인 동안 원래 데이터 저장소에 데이터 요청이 너무 많아 시간이 초과되고 연결되지 않을 수 있습니다.
 
 모든 애플리케이션 인스턴스가 액세스하는 공유 캐시와 함께 애플리케이션의 각 인스턴스에 로컬, 개인 캐시를 구현하는 것이 좋습니다. 애플리케이션이 항목을 검색하는 경우 먼저 로컬 캐시에서 다음 공유 캐시에서 마지막으로 원래 데이터 저장소에서 확인합니다. 공유 캐시 또는 데이터베이스(공유 캐시를 사용할 수 없는 경우)의 데이터를 사용하여 로컬 캐시를 채울 수 있습니다.
 
@@ -297,7 +297,7 @@ Azure Redis Cache와 세션 상태 제공자를 사용하면 다음을 포함하
 > [!NOTE]
 > Azure 환경 외부에서 실행되는 ASP.NET 애플리케이션과 함께 Azure Redis Cache에 세션 상태 제공자를 사용하지 마세요. Azure 외부에서 캐시에 액세스하는 대기 시간은 데이터를 캐시하는 성능 혜택을 제거할 수 있습니다.
 
-마찬가지로, Azure Redis Cache용 출력 캐시 공급자를 사용하면 ASP.NET 웹 애플리케이션이 생성한 HTTP 응답을 저장할 수 있습니다. Azure Redis Cache와 출력 캐시 공급자를 사용하면 복잡한 HTML 출력을 렌더링하는 애플리케이션의 응답 시간을 향상시킬 수 있습니다. 유사한 응답을 생성하는 애플리케이션 인스턴스는 이 HTML 출력을 새로 생성하기 보다 캐시에서 공유 출력 조각을 사용할 수 있습니다. 자세한 내용은 [Azure Redis Cache에 대한 ASP.NET 출력 캐시 공급자](/azure/redis-cache/cache-aspnet-output-cache-provider/)를 참조하세요.
+마찬가지로, Azure Redis Cache용 출력 캐시 공급자를 사용하면 ASP.NET 웹 애플리케이션이 생성한 HTTP 응답을 저장할 수 있습니다. Azure Redis Cache와 출력 캐시 공급자를 사용하면 복잡한 HTML 출력을 렌더링하는 애플리케이션의 응답 시간을 향상시킬 수 있습니다. 유사한 응답을 생성 하는 응용 프로그램 인스턴스는이 HTML 출력을 새로 생성 하는 것이 아니라 캐시에서 공유 출력 조각을 사용할 수 있습니다. 자세한 내용은 [Azure Redis Cache에 대한 ASP.NET 출력 캐시 공급자](/azure/redis-cache/cache-aspnet-output-cache-provider/)를 참조하세요.
 
 ## <a name="building-a-custom-redis-cache"></a>사용자 지정 Redis 캐시 빌드
 
@@ -651,7 +651,7 @@ SDIFF(차집합), SINTER(교집합) 및 SUNION(합집합) 명령을 사용하여
 
 다음 코드 조각은 신속한 저장 및 관련된 항목의 컬렉션을 검색하는데 집합이 유용할 수 있음을 보여줍니다. 이 코드는 이 문서 앞부분의 Redis Cache 클라이언트 애플리케이션 구현 섹션에 설명된 `BlogPost` 형식을 사용합니다.
 
-`BlogPost` 개체는 ID, 제목, 순위 점수 및 태그의 컬렉션 등 4개의 필드를 포함합니다. 아래 첫 번째 코드 조각에서 `BlogPost` 개체의 C# 목록을 채우기 위해 사용되는 샘플 데이터를 보여 줍니다.
+A `BlogPost` 개체는 4 개의 필드가 &mdash; ID, 제목, 순위 점수 및 태그의 컬렉션입니다. 아래 첫 번째 코드 조각에서 `BlogPost` 개체의 C# 목록을 채우기 위해 사용되는 샘플 데이터를 보여 줍니다.
 
 ```csharp
 List<string[]> tags = new List<string[]>
@@ -700,7 +700,7 @@ foreach (BlogPost post in posts)
     await cache.SetAddAsync(
         redisKey, post.Tags.Select(s => (RedisValue)s).ToArray());
 
-    // Now do the inverse so we can figure how which blog posts have a given tag
+    // Now do the inverse so we can figure out which blog posts have a given tag
     foreach (var tag in post.Tags)
     {
         await cache.SetAddAsync(string.Format(CultureInfo.InvariantCulture,

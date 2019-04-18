@@ -8,12 +8,12 @@ ms.topic: checklist
 ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: checklist
-ms.openlocfilehash: 1a000c811cce57cc9b1fcda84d0eb7e2a1312aca
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: b08884d2a39550b56b4c1b52a418f6607eda00fe
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58243384"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640722"
 ---
 # <a name="devops-checklist"></a>DevOps 검사 목록
 
@@ -99,7 +99,7 @@ DevOps는 개발, 품질 보증 및 IT 운영을 통합된 문화권으로 통�
 
 ## <a name="monitoring"></a>모니터링
 
-**시스템을 관찰할 수 있게 합니다.** 운영 팀은 항상 시스템 또는 서비스의 상태에 대해 명확하게 확인해야 합니다. 상태를 모니터링하도록 외부 상태 엔드포인트를 설정하고 운영 메트릭을 계측하도록 애플리케이션을 코딩했는지 확인합니다. 시스템에서 이벤트를 상호 연결할 수 있도록 공통적이며 일관된 스키마를 사용합니다. [Azure 진단][azure-diagnostics] 및 [Application Insights][app-insights]는 Azure 리소스의 상태를 추적하는 표준 방법입니다. Microsoft [Operation Management Suite][oms]에서는 클라우드 또는 하이브리드 솔루션에 중앙 집중식 모니터링 및 관리 기능을 제공합니다.
+**시스템을 관찰할 수 있게 합니다.** 운영 팀은 항상 시스템 또는 서비스의 상태에 대해 명확하게 확인해야 합니다. 상태를 모니터링하도록 외부 상태 엔드포인트를 설정하고 운영 메트릭을 계측하도록 애플리케이션을 코딩했는지 확인합니다. 시스템에서 이벤트를 상호 연결할 수 있도록 공통적이며 일관된 스키마를 사용합니다. [Azure Diagnostics][azure-diagnostics] 및 [Application Insights][app-insights]는 Azure 리소스의 상태를 추적하는 표준 방법입니다. Microsoft [Operation Management Suite][oms]에서는 클라우드 또는 하이브리드 솔루션에 중앙 집중식 모니터링 및 관리 기능을 제공합니다.
 
 **로그 및 메트릭을 집계하고 상관 관계를 지정합니다**. 제대로 계측된 원격 분석 시스템은 다량의 원시 성능 데이터 및 이벤트 로그를 제공합니다. 운영 담당자가 항상 최신 시스템 상태를 알 수 있도록 원격 분석 및 로그 데이터를 짧은 시간 동안 처리하고 상관 관계를 지정해야 합니다. 가능하면 이벤트가 서로 관련되어 있도록 모든 문제의 일관된 보기를 제공하는 방식으로 데이터를 구성하고 표시합니다.
 
@@ -119,7 +119,7 @@ DevOps는 개발, 품질 보증 및 IT 운영을 통합된 문화권으로 통�
 
 또한 컨테이너는 애플리케이션과 기본 운영 체제 간에 추상화 계층을 만들 수도 있습니다. 그러면 환경 모두에 일관성을 제공합니다. 이 추상화는 컨테이너를 호스트에서 실행되는 다른 프로세스 또는 애플리케이션에서 격리할 수도 있습니다.
 
-**복원력 및 자동 복구를 구현합니다.** 복원력은 오류로부터 복구하는 애플리케이션의 기능입니다. 복원력에 대한 전략에는 일시적 오류를 재시도하고 보조 인스턴스 또는 다른 지역으로 장애 조치하는 것이 포함됩니다. 자세한 내용은 [Azure용 복원 애플리케이션 디자인][resiliency]을 참조하세요. 해당 문제를 즉시 보고하고 가동 중단 또는 기타 시스템 오류를 관리하도록 애플리케이션을 계측할 수 있습니다.
+**복원력 및 자동 복구를 구현합니다.** 복원력은 오류로부터 복구하는 애플리케이션의 기능입니다. 복원력에 대한 전략에는 일시적 오류를 재시도하고 보조 인스턴스 또는 다른 지역으로 장애 조치하는 것이 포함됩니다. 자세한 내용은 [신뢰할 수 있는 Azure 응용 프로그램 디자인](../reliability/index.md) 합니다. 해당 문제를 즉시 보고하고 가동 중단 또는 기타 시스템 오류를 관리하도록 애플리케이션을 계측할 수 있습니다.
 
 **작업 설명서가 있습니다.** 작업 설명서 또는 *Runbook*은 시스템을 유지 관리하는 운영 스태프에게 필요한 프로시저 및 관리 정보를 문서화합니다. 또한 서비스에 대한 오류 또는 기타 중단 시 수행할 수 있는 모든 작업 시나리오 및 완화 계획을 문서화합니다. 개발 프로세스 중에 이 문서를 만들고 나중에 최신 상태로 유지합니다. 이 문서는 유동적으로 정기적으로 검토되고 테스트되고 개선되어야 합니다.
 
@@ -158,7 +158,6 @@ DevOps에 대한 자세한 내용은 Visual Studio 사이트에서 [DevOps란?][
 [feature-toggles]: https://www.martinfowler.com/articles/feature-toggles.html
 [oms]: https://www.microsoft.com/cloud-platform/operations-management-suite
 [rbac]: /azure/active-directory/role-based-access-control-what-is
-[resiliency]: ../resiliency/index.md
 [resource-manager]: /azure/azure-resource-manager/
 [trunk-based]: https://trunkbaseddevelopment.com/
 [what-is-devops]: https://www.visualstudio.com/learn/what-is-devops/

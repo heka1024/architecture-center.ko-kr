@@ -8,12 +8,12 @@ ms.service: architecture-center
 ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: client-assertion
-ms.openlocfilehash: 6aa8d33da0b2fd41fdc037bac28bca9f7ff09907
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 170a88863fef4b97e137d7fb047a9168d6463e01
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58249418"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639957"
 ---
 # <a name="use-azure-key-vault-to-protect-application-secrets"></a>Azure Key Vault를 사용하여 애플리케이션 암호 보호
 
@@ -103,6 +103,7 @@ Surveys 애플리케이션이 등록된 Azure AD 테넌트 내에서 관리자 �
     ```powershell
     .\Setup-KeyVault.ps1 -Subject <<subject>>
     ```
+
     `Subject` 매개 변수의 경우 "surveysapp"과 같은 이름을 임의로 입력합니다. 스크립트는 자체 서명된 인증서를 생성하고 "현재 사용자/개인" 인증서 저장소에 저장합니다. 스크립트의 출력은 JSON 조각입니다. 이 값을 복사합니다.
 
 2. [Azure Portal][azure-portal]에서 포털의 오른쪽 위에 있는 사용자 계정을 선택하여 Surveys 애플리케이션이 등록된 디렉터리로 전환합니다.
@@ -174,6 +175,7 @@ Surveys 애플리케이션이 등록된 Azure AD 테넌트 내에서 관리자 �
     ```powershell
     .\Setup-KeyVault.ps1 -KeyVaultName <<key vault name> -KeyName Redis--Configuration -KeyValue "<<Redis DNS name>>.redis.cache.windows.net,password=<<Redis access key>>,ssl=true"
     ```
+
     여기서,
 
    * 키 자격 증명 모음 이름 = 이전 단계에서 키 자격 증명 모음에 제공한 이름입니다.
@@ -214,6 +216,7 @@ Surveys 애플리케이션이 등록된 Azure AD 테넌트 내에서 관리자 �
     //    config["AzureAd:ClientId"],
     //    config["AzureAd:ClientSecret"]);
     ```
+
 3. Tailspin.Surveys.Web/Startup.cs에서 `ICredentialService`를 등록하는 코드를 찾습니다. `CertificateCredentialService`를 사용하는 줄의 주석 처리를 제거하고 `ClientCredentialService`를 사용하는 줄을 주석으로 처리합니다.
 
     ```csharp

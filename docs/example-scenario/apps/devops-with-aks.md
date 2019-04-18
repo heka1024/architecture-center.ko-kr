@@ -8,12 +8,12 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 social_image_url: /azure/architecture/example-scenario/apps/media/architecture-devops-with-aks.png
-ms.openlocfilehash: 89e50e67b2c933637442f0f01bf83ecc95743691
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 9be4f828c96c4ac321acf9d9719d0ef465fb35cf
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244034"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641181"
 ---
 # <a name="cicd-pipeline-for-container-based-workloads"></a>컨테이너 기반 작업에 대한 CI/CD 파이프라인
 
@@ -70,8 +70,6 @@ Azure Kubernetes Service, Container Registry 및 Cosmos DB와 같은 Azure 서�
 
 Azure Kubernetes Service 클러스터의 일부인 부하 분산 장치는 애플리케이션을 실행하는 하나 이상의 컨테이너(포드)에 애플리케이션 트래픽을 분산시킵니다. Kubernetes에서 컨테이너화된 애플리케이션을 실행하는 이 접근 방식은 고객에게 고가용성 인프라를 제공합니다.
 
-다른 가용성 항목에 대해서는 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
-
 ### <a name="scalability"></a>확장성
 
 Azure Kubernetes Service를 사용하면 애플리케이션의 요구 사항에 맞게 클러스터 노드 수를 크기 조정할 수 있습니다. 애플리케이션이 증가함에 따라 서비스를 실행하는 Kubernetes 노드의 수를 확장할 수 있습니다.
@@ -82,7 +80,7 @@ Azure Kubernetes Service를 사용하면 애플리케이션의 요구 사항에 
 
 ### <a name="security"></a>보안
 
-공격 공간을 최소화하기 위해 이 시나리오에서는 Jenkins VM 인스턴스가 HTTP를 통해 노출되지 않습니다. Jenkins와 상호 작용해야 하는 모든 관리 작업의 경우 로컬 컴퓨터에서 SSH 터널을 사용하여 보안 원격 연결을 만듭니다. Jenkins 및 Grafana VM 인스턴스에는 SSH 공개 키 인증만 허용됩니다. 암호 기반 로그인은 사용할 수 없습니다. 자세한 내용은 [Azure에서 Jenkins 서버 실행](../../reference-architectures/jenkins/index.md)을 참조하세요.
+공격 공간을 최소화하기 위해 이 시나리오에서는 Jenkins VM 인스턴스가 HTTP를 통해 노출되지 않습니다. Jenkins와 상호 작용해야 하는 모든 관리 작업의 경우 로컬 컴퓨터에서 SSH 터널을 사용하여 보안 원격 연결을 만듭니다. Jenkins 및 Grafana VM 인스턴스에는 SSH 공개 키 인증만 허용됩니다. 암호 기반 로그인은 사용할 수 없습니다. 자세한 내용은 [Azure에서 Jenkins 서버 실행](./jenkins.md)을 참조하세요.
 
 자격 증명과 권한을 분리하기 위해 이 시나리오에서는 전용 Azure AD(Active Directory) 서비스 사용자를 사용합니다. 이 서비스 사용자에 대한 자격 증명은 Jenkins에서 보안 자격 증명 개체로 저장되어 스크립트 또는 빌드 파이프라인 내에서 직접 노출되거나 볼 수 없습니다.
 
@@ -92,7 +90,7 @@ Azure Kubernetes Service를 사용하면 애플리케이션의 요구 사항에 
 
 이 시나리오에서는 애플리케이션에 Azure Kubernetes Service를 사용합니다. Kubernetes에는 문제가 있는 경우 컨테이너(포드)를 모니터링하고 다시 시작하는 복원력 있는 구성 요소가 기본적으로 제공됩니다. 여러 Kubernetes 노드를 실행하는 것과 결합하여 애플리케이션에서 사용할 수 없는 노드 또는 노드를 허용할 수 있습니다.
 
-복원력 있는 솔루션 설계에 대한 일반적인 지침은 [복원력 있는 Azure 애플리케이션 디자인][resiliency]을 참조하세요.
+복원 력 있는 솔루션 디자인에 대 한 일반적인 지침을 참조 하세요 [신뢰할 수 있는 Azure 응용 프로그램 디자인](../../reliability/index.md)합니다.
 
 ## <a name="deploy-the-scenario"></a>시나리오 배포
 
@@ -147,7 +145,6 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오를 배포하�
 <!-- links -->
 [architecture]: ./media/architecture-devops-with-aks.png
 [autoscaling]: ../../best-practices/auto-scaling.md
-[availability]: ../../checklist/availability.md
 [docs-aci]: /azure/container-instances/container-instances-overview
 [docs-acr]: /azure/container-registry/container-registry-intro
 [docs-aks]: /azure/aks/intro-kubernetes
@@ -157,7 +154,6 @@ Azure Resource Manager 템플릿을 사용하여 이 시나리오를 배포하�
 [createsp]: /cli/azure/ad/sp#az-ad-sp-create
 [grafana]: https://grafana.com/
 [jenkins]: https://jenkins.io/
-[resiliency]: ../../resiliency/index.md
 [resource-groups]: /azure/azure-resource-manager/resource-group-overview
 [security]: /azure/security/
 [scalability]: ../../checklist/scalability.md

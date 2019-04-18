@@ -1,16 +1,16 @@
 ---
-title: Azure Monitor에서 Azure Databricks 응용 프로그램 로그 보내기
+title: Azure Databricks 애플리케이션 로그를 Azure Monitor에 보내기
 description: Azure Monitor를 Azure Databricks에서 사용자 지정 로그 및 메트릭을 보내는 방법
 author: petertaylor9999
 ms.date: 03/26/2019
-ms.openlocfilehash: 49c631687fb3e3bbd807ffbbb49d9c5f6526bfb4
-ms.sourcegitcommit: 9854bd27fb5cf92041bbfb743d43045cd3552a69
+ms.openlocfilehash: ea67122d7871663e8aaf42b7af0043492f63b6b1
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58503436"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639189"
 ---
-# <a name="send-azure-databricks-application-logs-to-azure-monitor"></a>Azure Monitor에서 Azure Databricks 응용 프로그램 로그 보내기
+# <a name="send-azure-databricks-application-logs-to-azure-monitor"></a>Azure Databricks 애플리케이션 로그를 Azure Monitor에 보내기
 
 이 아티클에서 Azure Databricks에에서 응용 프로그램 로그 및 메트릭을 보내는 방법에는 [Log Analytics 작업 영역](/azure/azure-monitor/platform/manage-access)합니다. 사용 된 [Azure Databricks 모니터링 라이브러리](https://github.com/mspnp/spark-monitoring), GitHub에서 사용할 수 있는 합니다.
 
@@ -92,7 +92,7 @@ Azure Log Analytics를 사용 하 여 Azure Databricks 응용 프로그램 로�
     }
     ```
 
-1. 필요에 따라 코드에서 적절 한 수준에서 Apache Spark 로그 메시지를 추가 합니다. 예를 들어, 사용 하 여는 `logDebug` 디버그 로그 meesage를 전송 하는 방법입니다. 자세한 내용은 [로깅] [ spark-logging] Spark 설명서에서.
+1. 필요에 따라 코드에서 적절 한 수준에서 Apache Spark 로그 메시지를 추가 합니다. 예를 들어 사용을 `logDebug` 디버그 로그 메시지를 보내는 방법. 자세한 내용은 [로깅] [ spark-logging] Spark 설명서에서.
 
     ```Scala
     logTrace("Trace message")
@@ -137,7 +137,7 @@ SparkMetric_CL | where name_s contains "rowcounter" | limit 50
 성능 모니터링에서 프로덕션 Azure Databricks 워크 로드 성능 문제를 해결 하려면이 코드 라이브러리를 함께 제공 되는 대시보드를 배포 합니다.
 
 > [!div class="nextstepaction"]
-> [대시보드를 사용 하 여 Azure Databricks 메트릭을 시각화합니다](./dashboards.md)
+> [대시보드를 사용하여 Azure Databricks 메트릭 시각화](./dashboards.md)
 
 <!-- links -->
 

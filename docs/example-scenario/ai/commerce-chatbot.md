@@ -8,12 +8,12 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 social_image_url: /azure/architecture/example-scenario/ai/media/architecture-commerce-chatbot.png
-ms.openlocfilehash: 48f85e7443bcd6149c8024d20fb50816c1a4df38
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: c4859cb0e43603991e4f8e6a0311a28537f29f1a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58245854"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640263"
 ---
 # <a name="conversational-chatbot-for-hotel-reservations-on-azure"></a>Azure에서 호텔 예약을 위한 대화형 챗봇
 
@@ -65,8 +65,6 @@ Bot Service 및 Language Understanding 또는 Speech API 서비스와 같은 Azu
 
 이 시나리오에서는 Azure SQL Database를 사용하여 고객 예약을 저장합니다. SQL Database에는 영역 중복 데이터베이스, 장애 조치 그룹 및 지역 복제가 포함됩니다. 자세한 내용은 [Azure SQL Database 가용성 기능][sqlavailability-docs]을 참조하세요.
 
-다른 가용성 항목에 대해서는 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
-
 ### <a name="scalability"></a>확장성
 
 이 시나리오에서는 Azure App Service를 사용합니다. App Service를 사용하면 봇을 실행하는 인스턴스의 수를 자동으로 조정할 수 있습니다. 이 기능을 사용하면 웹 애플리케이션과 챗봇에 대한 고객의 요구 사항을 충족할 수 있습니다. 자동 크기 조정에 대한 자세한 내용은 Azure 아키텍처 센터의 [자동 크기 조정 모범 사례][autoscaling]를 참조하세요.
@@ -87,13 +85,13 @@ Azure SQL Database에 저장된 미사용 정보는 TDE(투명한 데이터 암�
 
 이 시나리오에서는 애플리케이션 상태를 모니터링하기 위해 Application Insights를 사용합니다. Application Insights를 사용하면 고객의 경험과 챗봇의 가용성에 영향을 주는 알림을 생성하고 성능 문제에 대응할 수 있습니다. 자세한 내용은 [Application Insights란?][appinsights-docs]을 참조하세요.
 
-복원력 있는 솔루션 설계에 대한 일반적인 지침은 [복원력 있는 Azure 애플리케이션 디자인][resiliency]을 참조하세요.
+다른 복원 력 항목을 참조 하세요 [신뢰할 수 있는 Azure 응용 프로그램 디자인](../../reliability/index.md)합니다.
 
 ## <a name="deploy-the-scenario"></a>시나리오 배포
 
 이 시나리오는 가장 중점을 두는 영역을 탐색할 수 있는 다음 세 가지 구성 요소로 구분됩니다.
 
-- [인프라 구성 요소](#deploy-infrastructure-components). Azure Resource Manager 템플릿을 사용하여 App Service, Web App, Application Insights, Storage 계정, SQL Server 및 데이터베이스의 핵심 인프라 구성 요소를 배포합니다.
+- [인프라 구성 요소](#walk-through). Azure Resource Manager 템플릿을 사용하여 App Service, Web App, Application Insights, Storage 계정, SQL Server 및 데이터베이스의 핵심 인프라 구성 요소를 배포합니다.
 - [Web App 챗봇](#deploy-web-app-chatbot). Azure CLI를 사용하여 Bot Service 및 LUIS(Language Understanding and Intelligent Service) 앱을 통해 봇을 배포합니다.
 - [샘플 C# 챗봇 애플리케이션](#deploy-chatbot-c-application-code). Visual Studio를 사용하여 호텔 예약 C# 애플리케이션 코드 샘플을 검토하고 Azure에서 봇에 배포합니다.
 
@@ -170,7 +168,6 @@ Azure Bot Service에 대한 일련의 단계별 자습서는 설명서의 [자�
 [appservice-docs]: /azure/app-service/
 [architecture]: ./media/architecture-commerce-chatbot.png
 [autoscaling]: ../../best-practices/auto-scaling.md
-[availability]: ../../checklist/availability.md
 [botservice-docs]: /azure/bot-service/
 [cognitive-docs]: /azure/cognitive-services/
 [resiliency]: ../../resiliency/index.md

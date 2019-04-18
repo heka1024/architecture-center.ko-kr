@@ -7,12 +7,12 @@ ms.custom: governance
 description: 사용자가 간단한 워크로드를 배포할 수 있도록 Azure 거버넌스 컨트롤을 구성하기 위한 지침
 author: petertaylor9999
 ms.date: 02/11/2019
-ms.openlocfilehash: 0b6f16ee30ce3af8a533b6e153fbe318252c23e7
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 6bf2f15f706140955df29f7f372068c80ce1ad21
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58246434"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640586"
 ---
 # <a name="governance-design-for-a-simple-workload"></a>단일 워크로드를 위한 거버넌스 디자인
 
@@ -79,7 +79,7 @@ Azure **계정 소유자**는 [RBAC(역할 기반 액세스 제어)](/azure/role
 기본 제공 **소유자** 역할은 구독 범위에서 **워크로드 소유자**에게 모든 사용 권한을 부여합니다.
 
 > [!IMPORTANT]
-> Azure **계정 소유자**는 구독과 연결된 재무 약정을 담당하지만 **워크로드 소유자**에게도 동일한 사용 권한이 있습니다. **계정 소유자**는 **워크로드 소유자**를 신뢰하여 구독 예산 내에 있는 리소스를 배포해야 합니다.
+> Azure **계정 소유자** 구독과 연결 된 약정을 담당 하지만 **워크 로드 소유자** 동일한 권한을 갖습니다. **계정 소유자**는 **워크로드 소유자**를 신뢰하여 구독 예산 내에 있는 리소스를 배포해야 합니다.
 
 높은 수준의 관리 범위는 **리소스 그룹** 수준입니다. 리소스 그룹은 리소스의 논리 컨테이너입니다. 리소스 그룹 수준에서 적용된 작업은 그룹의 모든 리소스에 적용됩니다. 또한 각 사용자에 대한 사용 권한이 해당 범위에서 명시적으로 변경되지 않으면 높은 수준에서 상속됩니다.
 

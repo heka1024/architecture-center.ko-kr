@@ -8,12 +8,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seodec18, identity
-ms.openlocfilehash: 22a2a2042c85e70d0d5a523c9ecf72395a9e774c
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 873b6a86da14e00d0a537f910d10922444cc1ded
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244394"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640739"
 ---
 # <a name="extend-active-directory-federation-services-ad-fs-to-azure"></a>Azure로 AD FS(Active Directory Federation Services) 확장
 
@@ -126,7 +126,7 @@ AD FS 설치 및 모든 파트너 조직의 페더레이션 서버 간에 페더
 
 AD FS는 토큰 변환 및 확대를 지원합니다. Azure Active Directory는 이 기능을 제공하지 않습니다. AD FS를 사용하여 트러스트 관계를 설정할 때 다음을 수행할 수 있습니다.
 
-- 권한 부여 규칙에 대한 클레임 변환을 구성합니다. 예를 들어 비 Microsoft 파트너 조직에서 사용되는 표현에서 조직에서 해당 Active Directory DS가 조직에서 권한을 부여할 수 있는 것으로 그룹 보안을 매핑할 수 있습니다.
+- 권한 부여 규칙에 대한 클레임 변환을 구성합니다. 예를 들어, 조직에서 Active Directory DS 권한을 부여할 수 있는 타사 파트너 조직에서 사용 되는 표현에서 보안 그룹을 매핑할 수 있습니다.
 - 클레임을 한 형식에서 다른 형식으로 변환합니다. 예를 들어 애플리케이션이 SAML 1.1 클레임만을 지원하는 경우 SAML 2.0에서 SAML 1.1로 매핑할 수 있습니다.
 
 ### <a name="ad-fs-monitoring"></a>AD FS 모니터링
@@ -189,7 +189,7 @@ AD FS 서버와 WAP 서버를 자체 방화벽이 있는 별도 서브넷에 배
 
 AD FS 및 WAP 서버에 대한 직접 로그인 액세스를 제한합니다. DevOps 직원만 연결할 수 있어야 합니다. WAP 서버를 도메인에 조인하지 마십시오.
 
-감사를 목적으로 가상 네트워크의 에지를 탐색하는 트래픽의 자세한 정보를 기록하는 네트워크 가상 어플라이언스의 집합을 사용하는 것이 좋습니다.
+감사를 목적으로 가상 네트워크의 에지를 트래버스하는 트래픽의 자세한 정보를 기록하는 네트워크 가상 어플라이언스 세트를 사용하는 것이 좋습니다.
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 

@@ -7,18 +7,18 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
-ms.openlocfilehash: c4bfd6e92fc9c770a03a63355fc922d19ef27b7b
-ms.sourcegitcommit: f4ed242dff8b204cfd8ebebb7778f356a19f5923
-ms.translationtype: HT
+ms.openlocfilehash: c7e7423da11667c90d53247c2c5303a8fbd1a76a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56224167"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640161"
 ---
 # <a name="build-a-real-time-recommendation-api-on-azure"></a>Azure에서 실시간 추천 API 빌드
 
 이 참조 아키텍처에서는 Azure Databricks를 사용하여 추천 모델을 학습시키고 Azure Cosmos DB, Azure Machine Learning, Azure Kubernetes Service(AKS)를 사용하여 API로 배포하는 방법을 보여줍니다. 이 아키텍처는 제품, 동영상, 뉴스 추천 등 대부분의 추천 엔진 시나리오에 맞게 일반화할 수 있습니다.
 
-이 아키텍처에 대한 참조 구현은 [GitHub](https://github.com/Microsoft/Recommenders/blob/master/notebooks/05_operationalize/als_movie_o16n.ipynb)에서 사용할 수 있습니다.
+이 아키텍처에 대한 참조 구현은 [GitHub][als-example]에서 사용할 수 있습니다.
 
 ![학습 동영상 추천을 위한 기계 학습 모델 아키텍처](./_images/recommenders-architecture.png)
 
@@ -92,14 +92,14 @@ Spark 클러스터를 사용하지 않을 때 자주 재학습시키지 않고 �
 
 ## <a name="deploy-the-solution"></a>솔루션 배포
 
-이 아키텍처를 배포하려면 먼저 Azure Databricks 환경을 만들어 데이터를 준비하고 추천 시스템 모델을 학습시키세요.
+이 아키텍처를 배포 하려면 다음을 수행 합니다 **Azure Databricks** 의 지침에는 [설치 문서][setup]합니다. 요약 하자면, 지시 해야합니다.
 
 1. [Azure Databricks 작업 영역][workspace]을 만듭니다.
 
-2. Azure Databricks에 새 클러스터를 만듭니다. 다음과 같은 구성이 필요합니다.
+1. Azure Databricks에서 다음 구성을 사용 하 여 새 클러스터를 만듭니다.
 
     - 클러스터 모드: Standard
-    - Databricks 런타임 버전: 4.1(Apache Spark 2.3.0, Scala 2.11 포함)
+    - Databricks 런타임 버전: 4.3 (Apache Spark 2.3.1, Scala 2.11 포함)
     - Python 버전: 3
     - 드라이버 유형: 표준\_DS3\_v2
     - 작업자 유형: 표준\_DS3\_v2(필요에 따라 최소 및 최대 구성)
@@ -107,30 +107,27 @@ Spark 클러스터를 사용하지 않을 때 자주 재학습시키지 않고 �
     - Spark 구성: (필요 시)
     - 환경 변수: (필요 시)
 
-3. 로컬 컴퓨터에 [Microsoft 추천 시스템][github] 리포지토리를 복제합니다.
+1. 내 개인 액세스 토큰 만들기 합니다 [Azure Databricks 작업 영역][workspace]합니다. Azure Databricks 인증을 참조 하세요 [설명서] [ adbauthentication] 세부 정보에 대 한 합니다.
 
-4. 추천 시스템 폴더 안에 콘텐츠의 압축을 풉니다.
+1. 복제는 [Microsoft 추천] [ github] 리포지토리 environment 스크립트 (예: 로컬 컴퓨터)를 실행할 수 있습니다.
 
-    ```console
-    cd Recommenders
-    zip -r Recommenders.zip
-    ```
+1. 에 따라 합니다 **빠른 설치** 설치 하는 지침 [관련 라이브러리를 설치] [ setup] Azure Databricks에서.
 
-5. 다음과 같이 클러스터에 추천 시스템 라이브러리를 연결합니다.
+1. 에 따라 합니다 **빠른 설치** 설치 하는 지침 [운영 화를 위한 Azure Databricks를 준비][setupo16n]합니다.
 
-    1. 다음 메뉴에서 라이브러리를 가져오는 옵션("jar 또는 egg와 같은 라이브러리를 가져오려면 여기를 클릭")을 사용하고 **여기를 클릭**을 누릅니다.
+1. 가져오기의 [ALS 영화 운영 화 notebook] [ als-example] 작업 영역에 있습니다. Azure Databricks 작업 영역에 로그인 한 후 다음을 수행 합니다.
 
-    2. 첫 번째 드롭다운 메뉴에서 **Python egg 또는 PyPI 업로드** 옵션을 선택합니다.
+    a. 클릭 **홈** 영역의 왼쪽에 있습니다.
 
-    3. **업로드할 라이브러리 egg 여기에 놓기**를 선택하고 방금 전에 만든 Recommenders.zip 파일을 선택합니다.
+    b. 홈 디렉터리에 있는 공백을 마우스 오른쪽 단추로 클릭 합니다. **가져오기**를 선택합니다.
 
-    4. **라이브러리 만들기**를 선택하여 .zip 파일을 업로드하고 작업 영역에서 사용할 수 있게 합니다.
+    다. 선택 **URL**, 텍스트 필드에 다음을 붙여넣습니다. `https://github.com/Microsoft/Recommenders/blob/master/notebooks/05_operationalize/als_movie_o16n.ipynb`
 
-    5. 다음 메뉴에서 클러스터에 라이브러리를 연결합니다.
+    d. **가져오기**를 클릭합니다.
 
-6. 작업 영역에서 [ALS Movie Operationalization 예][als-example]를 가져옵니다.
+1. Azure Databricks에서 노트북을 열고 구성 된 클러스터를 연결 합니다.
 
-7. ALS Movie Operationalization 노트북을 실행하여 특정 사용자를 위한 상위 10개 동영상 추천 항목을 제공하는 추천 API를 만드는 데 필요한 리소스를 만듭니다.
+1. 지정된 된 사용자에 대 한 상위 10 개 영화 추천을 제공 하는 권장 사항 API를 만드는 데 필요한 Azure 리소스를 만드는 notebook을 실행 합니다.
 
 ## <a name="related-architectures"></a>관련 아키텍처
 
@@ -139,9 +136,10 @@ Spark 및 Azure Databricks를 사용하여 예약된 [일괄 처리 점수 매�
 <!-- links -->
 [aci]: /azure/container-instances/container-instances-overview
 [aad]: /azure/active-directory-b2c/active-directory-b2c-overview
+[adbauthentication]: https://docs.azuredatabricks.net/api/latest/authentication.html#generate-a-token
 [aks]: /azure/aks/intro-kubernetes
 [als]: https://spark.apache.org/docs/latest/ml-collaborative-filtering.html
-[als-example]: https://github.com/Microsoft/Recommenders/blob/master/notebooks/04_operationalize/als_movie_o16n.ipynb
+[als-example]: https://github.com/Microsoft/Recommenders/blob/master/notebooks/05_operationalize/als_movie_o16n.ipynb
 [autoscaling]: https://docs.azuredatabricks.net/user-guide/clusters/sizing.html
 [autoscale]: https://docs.azuredatabricks.net/user-guide/clusters/sizing.html#autoscaling
 [availability]: /azure/architecture/checklist/availability
@@ -170,7 +168,8 @@ Spark 및 Azure Databricks를 사용하여 예약된 [일괄 처리 점수 매�
 [resiliency]: /azure/architecture/resiliency/
 [ru]: /azure/cosmos-db/request-units
 [sec-docs]: /azure/security/
-[setup]: https://github.com/Microsoft/Recommenders/blob/master/SETUP.md%60
+[setup]: https://github.com/Microsoft/Recommenders/blob/master/SETUP.md#repository-installation
+[setupo16n]: https://github.com/Microsoft/Recommenders/blob/master/SETUP.md#prepare-azure-databricks-for-operationalization
 [scale]: /azure/aks/tutorial-kubernetes-scale
 [sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/
 [vm-size]: /azure/virtual-machines/virtual-machines-linux-change-vm-size

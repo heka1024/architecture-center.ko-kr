@@ -7,10 +7,10 @@ description: Azure의 내부 작동 방식 설명
 author: petertaylor9999
 ms.date: 02/11/2019
 ms.openlocfilehash: 215e4e4954a2f3e722e3ac865fea19508f6edadd
-ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068823"
 ---
 <!-- markdownlint-disable MD026 -->
@@ -44,7 +44,7 @@ Azure는 Microsoft의 공용 클라우드 플랫폼입니다. Azure는 대규모
 Azure 내부 기능을 이해 했으므로 클라우드 리소스 거 버 넌 스에 알아봅니다.
 
 > [!div class="nextstepaction"]
-> [리소스 거 버 넌 스에 알아봅니다](what-is-governance.md)
+> [리소스 거버넌스 알아보기](what-is-governance.md)
 
 <!-- Links -->
 

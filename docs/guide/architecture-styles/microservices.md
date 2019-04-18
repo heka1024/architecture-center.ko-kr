@@ -8,12 +8,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19, microservices
-ms.openlocfilehash: cc72f61003f4146fd65e501feebda0c0d1d27993
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 87a9dd31b6d935dd11a5a2a2950b6de11f337741
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58245094"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639974"
 ---
 # <a name="microservices-architecture-style"></a>마이크로 서비스 아키텍처 스타일
 
@@ -71,7 +71,7 @@ API 게이트웨이를 사용할 경우의 장점은 다음과 같습니다.
 
 - **집중화된 소규모 팀**. 팀이 한 서비스에 집중할 수 있습니다. 각 서비스의 범위가 작을수록 코드베이스 이해가 더 용이해지며 새로운 팀 구성원이 더 쉽게 이용할 수 있습니다.
 
-- **결함 격리**. 한 서비스가 다운되더라도 전체 애플리케이션 작동은 중단되지 않습니다. 그러나 저절로 복원되는 것은 아닙니다. 복원 모범 사례 및 디자인 패턴을 따라야 합니다. [Azure용 복원 애플리케이션 디자인][resiliency-overview]을 참조하세요.
+- **결함 격리**. 한 서비스가 다운되더라도 전체 애플리케이션 작동은 중단되지 않습니다. 그러나 저절로 복원되는 것은 아닙니다. 복원 모범 사례 및 디자인 패턴을 따라야 합니다. 참조 [신뢰할 수 있는 Azure 응용 프로그램 설계][resiliency-overview]합니다.
 
 - **혼합 기술 스택**. 팀이 해당 서비스에 가장 적합한 기술을 선택할 수 있습니다.
 
@@ -113,7 +113,7 @@ API 게이트웨이를 사용할 경우의 장점은 다음과 같습니다.
 
 - 서비스에 느슨한 결합 및 높은 기능 응집력이 있어야 합니다. 함께 변경될 가능성이 큰 기능은 함께 패키지하고 배포해야 합니다. 개별 서비스에 상주할 경우, 한 서비스가 변경되면 다른 서비스를 업데이트해야 하므로 해당 서비스가 긴밀하게 결합됩니다. 두 서비스 간의 과도한 통신량은 긴밀한 결합과 낮은 응집력의 증상일 수 있습니다.
 
-- 실패를 격리합니다. 복원 전략을 사용하여 한 서비스 내의 실패가 계단식으로 연속되지 않도록 합니다. [복원력 패턴][resiliency-patterns] 및 [복원력 있는 애플리케이션 디자인][resiliency-overview]을 참조하세요.
+- 실패를 격리합니다. 복원 전략을 사용하여 한 서비스 내의 실패가 계단식으로 연속되지 않도록 합니다. 참조 [복원 력 패턴] [ resiliency-patterns] 하 고 [신뢰할 수 있는 응용 프로그램을 디자인][resiliency-overview]합니다.
 
 ## <a name="next-steps"></a>다음 단계
 
@@ -121,5 +121,5 @@ Azure에서 마이크로 서비스 아키텍처를 빌드하는 방법에 대한
 
 <!-- links -->
 
-[resiliency-overview]: ../../resiliency/index.md
+[resiliency-overview]: ../../reliability/index.md
 [resiliency-patterns]: ../../patterns/category/resiliency.md

@@ -7,12 +7,12 @@ ms.topic: reference-architecture
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: azcat
-ms.openlocfilehash: 5219d08fce5cf09b075b6d7adfb73970e007ded4
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 34c21f4b5356dc0acbd5c2c85124300a6ed13c99
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248678"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640501"
 ---
 # <a name="web-application-monitoring-on-azure"></a>Azure에서 웹 애플리케이션 모니터링
 
@@ -78,7 +78,7 @@ Azure Monitor, Application Insights, Log Analytics는 모두 [경고](/azure/mon
 
 Application Insights는 초당 처리할 수 있는 요청 수의 [한도][app-insights-limits]가 있습니다. 요청 한도를 초과하면 메시지 제한이 발생할 수 있습니다. 제한을 방지하기 위해 데이터 속도를 줄이도록 [필터링][message-filtering] 또는 [샘플링][message-sampling]을 구현합니다.
 
-그러나 실행하는 앱의 고가용성에 대한 고려 사항은 개발자의 책임입니다. 예를 들어 확장에 대한 정보는 기본 웹 애플리케이션 참조 아키텍처의 [확장성 고려 사항](#scalability-considerations) 섹션을 참조하세요. 앱을 배포한 후에는 Application Insights를 사용하여 [앱의 가용성을 모니터링][monitor its availability]하는 테스트를 설정할 수 있습니다.
+그러나 실행하는 앱의 고가용성에 대한 고려 사항은 개발자의 책임입니다. 예를 들어 확장에 대한 정보는 기본 웹 애플리케이션 참조 아키텍처의 [확장성 고려 사항](./basic-web-app.md#scalability-considerations) 섹션을 참조하세요. 앱을 배포한 후에는 Application Insights를 사용하여 [앱의 가용성을 모니터링][monitor its availability]하는 테스트를 설정할 수 있습니다.
 
 ### <a name="security"></a>보안
 

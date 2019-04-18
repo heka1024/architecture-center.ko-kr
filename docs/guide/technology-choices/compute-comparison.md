@@ -8,12 +8,12 @@ ms.topic: guide
 ms.service: architecture-center
 ms.subservice: reference-architecture
 ms.custom: seojan19
-ms.openlocfilehash: 2b6b9b941bf7a3c0136b71ecb65bfe4b4a59e07b
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: c4ce7a5da196e0fcf8f85376439e53683432883e
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484859"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640467"
 ---
 # <a name="criteria-for-choosing-an-azure-compute-service"></a>Azure 컴퓨팅 서비스를 선택하기 위한 조건
 
@@ -29,9 +29,9 @@ ms.locfileid: "54484859"
 | 밀도 | 장치 및 시스템 독립성 | 앱 서비스 요금제를 통해 인스턴스당 복수의 앱 지원 | VM당 복수의 서비스 지원 | 서버를 사용하지 않음 <a href="#note1"><sup>1</sup></a> | 노드당 복수의 컨테이너 지원 |전용 인스턴스 없음 | VM당 복수의 앱 지원 |
 | 최소 노드 개수 | 1 <a href="#note2"><sup>2</sup></a>  | 1 | 5 <a href="#note3"><sup>3</sup></a> | 서버를 사용하지 않음 <a href="#note1"><sup>1</sup></a> | 3 <a href="#note3"><sup>3</sup></a> | 전용 노드 없음 | 1 <a href="#note4"><sup>4</sup></a> |
 | 상태 관리 | 상태 비저장/상태 저장 | 상태 비저장 | 상태 비저장/상태 저장 | 상태 비저장 | 상태 비저장/상태 저장 | 상태 비저장 | 상태 비저장 |
-| 웹 호스팅 | 장치 및 시스템 독립성 | 기본 제공 | 장치 및 시스템 독립성 | 해당 없음 | 장치 및 시스템 독립성 | 장치 및 시스템 독립성 | 아니요 |
+| 웹 호스팅 | 장치 및 시스템 독립성 | 기본 제공 | 장치 및 시스템 독립성 | 해당 없음 | 장치 및 시스템 독립성 | 장치 및 시스템 독립성 | 아닙니다. |
 | 전용 VNet에 배포 가능 여부 | 지원됨 | 지원됨 <a href="#note5"><sup>5</sup></a> | 지원됨 | 지원됨 <a href="#note5"><sup>5</sup></a> | [지원됨](/azure/aks/networking-overview) | 지원되지 않음 | 지원됨 |
-| 하이브리드 연결 | 지원됨 | 지원됨 <a href="#note6"><sup>6</sup></a>  | 지원됨 | 지원됨 <a href="#node7"><sup>7</sup></a> | 지원됨 | 지원되지 않음 | 지원됨 |
+| 하이브리드 연결 | 지원됨 | 지원됨 <a href="#note6"><sup>6</sup></a>  | 지원됨 | 지원됨 <a href="#note7"><sup>7</sup></a> | 지원됨 | 지원되지 않음 | 지원됨 |
 
 메모
 
@@ -60,7 +60,7 @@ ms.locfileid: "54484859"
 
 | 조건 | Virtual Machines | App Service | Service Fabric | Azure 기능 | Azure Kubernetes Service | Container Instances | Azure Batch |
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
-| 자동 확장 | VM 확장 집합 | 기본 제공 서비스 | VM 확장 집합 | 기본 제공 서비스 | 지원되지 않음 | 지원되지 않음 | 해당 없음 |
+| 자동 확장 | VM 확장 집합 | 기본 제공 서비스 | VM 확장 집합 | 기본 제공 서비스 | 지원되지 않음 | 지원되지 않음 | N/A |
 | 부하 분산 장치 | Azure Load Balancer | 통합형 | Azure Load Balancer | 통합형 | 통합형 |  기본 제공 지원 없음 | Azure Load Balancer |
 | 규모 한도<a href="#note1c"><sup>1</sup></a> | 플랫폼 이미지: 사용자 지정 이미지 VMSS당 노드 1000개: VMSS당 노드 100개 | 인스턴스 20개, App Service Environment를 갖는 인스턴스 100개 | VMSS당 노드 100개 | 함수 앱당 인스턴스 200개 | 클러스터당 노드 100개(기본 한도) |구독당 20개의 컨테이너 그룹(기본 한도) | 코어 한도 20개(기본 한도) |
 
@@ -81,7 +81,7 @@ ms.locfileid: "54484859"
 |----------|-----------------|-------------|----------------|-----------------|-------------------------|----------------|-------------|
 | SSL | VM에 구성됨 | 지원됨 | 지원됨  | 지원됨 | [수신 컨트롤러](/azure/aks/ingress) | [사이드카](../../patterns/sidecar.md) 컨테이너 사용 | 지원됨 |
 | 비용 | [Windows][cost-windows-vm], [Linux][cost-linux-vm] | [App Service 가격][cost-app-service] | [Service Fabric 가격][cost-service-fabric] | [Azure Functions 가격][cost-functions] | [AKS 가격 책정][cost-acs] | [Container Instances 가격 책정](https://azure.microsoft.com/pricing/details/container-instances/) | [Azure Batch 가격][cost-batch]
-| 적합한 아키텍처 스타일 | [N 계층][n-tier], [큰 계산][big-compute](HPC) | [Web-Queue-Worker][w-q-w], [N-Tier][n-tier] | [마이크로 서비스][microservices], [이벤트 기반 아키텍처][event-driven] | [마이크로 서비스][microservices], [이벤트 기반 아키텍처][event-driven] | [마이크로 서비스][microservices], [이벤트 기반 아키텍처][event-driven] | [마이크로 서비스][microservices], 작업 자동화, 일괄 처리 작업  | [큰 계산][big-compute](HPC) |
+| 적합한 아키텍처 스타일 | [N 계층][n-tier], [빅 컴퓨팅][big-compute](HPC) | [Web-Queue-Worker][w-q-w], [N-Tier][n-tier] | [마이크로 서비스][microservices], [이벤트 기반 아키텍처][event-driven] | [마이크로 서비스][microservices], [이벤트 기반 아키텍처][event-driven] | [마이크로 서비스][microservices], [이벤트 기반 아키텍처][event-driven] | [마이크로 서비스][microservices], 작업 자동화, 일괄 처리 작업  | [빅 컴퓨팅][big-compute](HPC) |
 
 <!-- markdownlint-enable MD033 -->
 

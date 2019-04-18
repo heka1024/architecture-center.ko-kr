@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: c736afced1b0478e8eb1a2694acc4d6a6f0c62fc
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 267d630d97a998c76a75a70191a77f9b74e801ef
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58248728"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641062"
 ---
 # <a name="queue-based-load-leveling-pattern"></a>큐 기반 부하 평준화 패턴
 
@@ -67,8 +67,6 @@ ms.locfileid: "58248728"
 이 문제를 해결하기 위해 큐를 사용하여 애플리케이션 인스턴스와 데이터 저장소 간의 부하를 평준화할 수 있습니다. Azure Functions 앱은 큐에서 메시지를 읽고 데이터 저장소에 대한 읽기/쓰기 요청을 수행합니다. 함수 앱의 애플리케이션 논리는 저장소의 과부하 방지를 위해 데이터 저장소에 요청을 전달하는 속도를 제어할 수 있습니다. (그렇지 않으면 함수 앱은 백 엔드에서 동일한 문제가 다시 제기됩니다.)
 
 ![그림 3 - 큐 및 함수 앱을 사용하여 부하 평준화](./_images/queue-based-load-leveling-function.png)
-
-
 
 ## <a name="related-patterns-and-guidance"></a>관련 패턴 및 지침
 

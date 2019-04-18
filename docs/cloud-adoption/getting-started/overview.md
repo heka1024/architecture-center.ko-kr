@@ -7,10 +7,10 @@ ms.custom: governance
 description: Azure 클라우드 기술을 채택 하는 엔터프라이즈의 디지털 변환의 첫 번째 단계에 간략하게 설명 합니다.
 ms.date: 02/11/2019
 ms.openlocfilehash: 29b02964b5f1cd09857a51c17cf94d6c64e05e88
-ms.sourcegitcommit: 0a8a60d782facc294f7f78ec0e9033e3ee16bf4a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068959"
 ---
 # <a name="getting-started-with-the-cloud-adoption-framework"></a>Cloud Adoption Framework 시작
@@ -66,7 +66,7 @@ ms.locfileid: "59068959"
 |-----|-----|
 |비용 관리|기술에 대한 기업 지불 방식의 간격을 나타냅니다.|
 |거버넌스|비용 초과, 보안 문제 또는 규정 준수 문제를 일으킬 수 있는 부적절한 사용으로부터 해당 자산을 보호하기 위해 기업에서 사용하는 프로세스의 간격을 나타냅니다. |
-|규정 준수|기업이 고유한 내부 프로세스 및 정책뿐만 아니라 외부 법률, 규정 및 표준을 준수하는 방식의 간격을 나타냅니다. |
+|준수|기업이 고유한 내부 프로세스 및 정책뿐만 아니라 외부 법률, 규정 및 표준을 준수하는 방식의 간격을 나타냅니다. |
 |보안|기업이 외부 위협으로부터 해당 기술 및 데이터 자산을 보호하는 방식의 간격을 나타냅니다. |
 |데이터 거버넌스|기업이 데이터, 특히 고객 데이터를 관리하는 방식의 간격을 나타냅니다. 예를 들어 유럽 연합의 새 GDPR(일반 데이터 보호 규정)에는 고객 데이터의 보호를 위한 엄격한 요구 사항이 있으며 여기에는 새 하드웨어 및 소프트웨어가 필요할 수 있습니다.|
 
@@ -133,4 +133,4 @@ IT 직원 멤버는 클라우드 솔루션 지원을 위해 다양한 기술이 
 디지털 변환은 반복 프로세스이며 각 반복에 참여하는 팀이 보다 효율적입니다.
 
 > [!div class="nextstepaction"]
-> [Azure의 작동 방식을 이해합니다](what-is-azure.md)
+> [Azure의 작동 방식 이해](what-is-azure.md)

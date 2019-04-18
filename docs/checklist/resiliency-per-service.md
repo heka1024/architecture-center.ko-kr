@@ -8,16 +8,16 @@ ms.topic: checklist
 ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency, checklist
-ms.openlocfilehash: fbb7501a663c8b5e326b2b601685419c8e5a0806
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: db42bd259bf71ef2ffa3e9efc5e4cd6ba2078e6b
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54486916"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639702"
 ---
 # <a name="resiliency-checklist-for-specific-azure-services"></a>특정 Azure 서비스에 대한 복원력 검사 목록
 
-복원력은 오류를 복구하여 계속 작동하는 시스템 기능이며 [소프트웨어 품질 핵심 요소](../guide/pillars.md) 중 하나입니다. 모든 기술에는 고유한 특정 오류 모드가 있습니다. 이 기능은 애플리케이션을 디자인하고 구현할 때 고려해야 합니다. 이 검사 목록을 사용하여 특정 Azure 서비스에 대한 복원력 고려 사항을 검토합니다. 또한 [일반 복원력 검사 목록](./resiliency.md)을 검토합니다.
+복원 력 오류 로부터 복구 하 고 계속 작동 하는 시스템의 있다는 점입니다. 모든 기술에는 고유한 특정 오류 모드가 있습니다. 이 기능은 애플리케이션을 디자인하고 구현할 때 고려해야 합니다. 이 검사 목록을 사용하여 특정 Azure 서비스에 대한 복원력 고려 사항을 검토합니다. 복원 력 있는 응용 프로그램을 디자인 하는 방법에 대 한 자세한 내용은 참조 하세요. [신뢰할 수 있는 Azure 응용 프로그램을 디자인](../reliability/index.md)합니다.
 
 ## <a name="app-service"></a>App Service
 
@@ -41,7 +41,7 @@ ms.locfileid: "54486916"
 
 **Blob Storage에 기록합니다.** 이렇게 하면 보다 쉽게 데이터를 수집 및 분석할 수 있습니다.
 
-**로그에 대한 별도의 저장소 계정을 만듭니다.** 로그와 애플리케이션 데이터에 동일한 저장소 계정을 사용하지 마세요. 이렇게 하면 로깅이 애플리케이션의 성능을 감소시키는 것을 방지하는 데 도움이 됩니다.
+**로그에 대한 별도의 스토리지 계정을 만듭니다.** 로그와 애플리케이션 데이터에 동일한 스토리지 계정을 사용하지 마세요. 이렇게 하면 로깅이 애플리케이션의 성능을 감소시키는 것을 방지하는 데 도움이 됩니다.
 
 **성능을 모니터링합니다.** [New Relic](https://newrelic.com/) 또는 [Application Insights](/azure/application-insights/app-insights-overview/) 같은 성능 모니터링 서비스를 사용하여 애플리케이션 성능 및 부하를 받을 때의 동작을 모니터링합니다.  성능 모니터링은 애플리케이션에 대한 실시간 통찰력을 제공합니다. 문제를 진단하고 실패의 근본 원인 분석을 수행할 수 있습니다.
 
@@ -143,7 +143,7 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 **각 애플리케이션 계층을 별도의 가용성 집합에 배치합니다.** N 계층 애플리케이션에서 서로 다른 계층의 VM을 동일한 가용성 집합에 배치하지 마세요. 가용성 집합의 VM은 장애 도메인(FD) 및 업데이트 도메인(UD)에 걸쳐 배치됩니다. 그러나 FD와 UD의 중복성 이점을 활용하려면 가용성 집합의 모든 VM이 동일한 클라이언트 요청을 처리할 수 있어야 합니다.
 
-**Azure Site Recovery를 사용하여 VM 복제.** [Site Recovery][site-recovery]를 사용하여 Azure VM을 복제할 때 모든 VM 디스크가 지속적으로 대상 지역에 비동기적으로 복제됩니다. 복구 지점은 몇 분 간격으로 생성됩니다. 이렇게 하면 시간 순으로 RPO(복구 지점 목표)가 제공됩니다. 프로덕션 애플리케이션 또는 진행 중인 복제에 영향을 주지 않고 재해 복구 훈련을 원하는 만큼 수행할 수 있습니다. 자세한 내용은 [Azure로 재해 복구 훈련 실행][site-recovery-test]을 참조하세요.
+**Azure Site Recovery를 사용하여 VM 복제.** [Site Recovery][site-recovery]를 사용하여 Azure VM을 복제할 때 모든 VM 디스크가 지속적으로 대상 지역에 비동기적으로 복제됩니다. 복구 지점은 몇 분 간격으로 생성됩니다. 이렇게 하면 시간 순으로 RPO(복구 지점 목표)가 제공됩니다. 프로덕션 응용 프로그램 또는 진행 중인 복제에 영향을 주지 않고 원하는 횟수 만큼 재해 복구 훈련을 수행할 수 있습니다. 자세한 내용은 [Azure로 재해 복구 훈련 실행][site-recovery-test]을 참조하세요.
 
 **성능 요구 사항을 기반으로 올바른 VM 크기를 선택합니다.** 기존 워크로드를 Azure로 이동할 때 온-프레미스 서버와 가장 근접하게 일치하는 VM 크기부터 사용하기 시작합니다. 그런 다음 CPU, 메모리 및 디스크 IOPS에 따라 실제 워크로드의 성능을 측정하고 필요에 따라 크기를 조정합니다. 이렇게 하면 해당 애플리케이션이 클라우드 환경에서 예상한 대로 작동합니다. 또한 여러 NIC가 필요한 경우 각 크기에 대한 NIC 제한을 알아야 합니다.
 
@@ -155,7 +155,7 @@ Redis Cache를 영구 저장소가 아닌 임시 데이터 캐시로 사용하�
 
 기본 상태 메트릭, 인프라 로그 및 [부팅 진단][boot-diagnostics]을 포함하여 **진단 로그를 사용합니다**. 부팅 진단은 VM이 부팅할 수 없는 상태로 전환되는 경우 부팅 오류를 진단하는 데 도움이 될 수 있습니다. 자세한 내용은 [Azure 진단 로그][diagnostics-logs]를 참조하세요.
 
-**AzureLogCollector 확장을 사용합니다.** (Windows VM만 해당) 이 확장은 운영자가 원격으로 VM에 로그인하지 않고 Azure 플랫폼 로그를 집계하고 Azure 저장소에 업로드합니다. 자세한 내용은 [AzureLogCollector 확장](/azure/virtual-machines/virtual-machines-windows-log-collector-extension/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)을 참조하세요.
+**AzureLogCollector 확장을 사용합니다.** (Windows VM만 해당) 이 확장은 운영자가 원격으로 VM에 로그인하지 않고 Azure 플랫폼 로그를 집계하고 Azure Storage에 업로드합니다. 자세한 내용은 [AzureLogCollector 확장](/azure/virtual-machines/virtual-machines-windows-log-collector-extension/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)을 참조하세요.
 
 ## <a name="virtual-network"></a>Virtual Network
 

@@ -1,18 +1,18 @@
 ---
-title: 'CAF: 대기업 – 다중 클라우드 개선'
+title: 'CAF: 대규모 엔터프라이즈-다중 클라우드 발전'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
 ms.date: 02/11/2019
-description: 대기업 – 다중 클라우드 개선
+description: 대규모 엔터프라이즈-다중 클라우드 발전
 author: BrianBlanchard
-ms.openlocfilehash: 5ef29aa523c04ff93b2d4f983482f94654a4a039
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
-ms.translationtype: HT
+ms.openlocfilehash: 62a2fdd6e340c96494354f4f0cf2f78ab572c251
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901808"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641147"
 ---
 # <a name="large-enterprise-multi-cloud-evolution"></a>대기업: 다중 클라우드 진화
 
@@ -82,7 +82,7 @@ Microsoft는 고객들이 특정 용도로 여러 클라우드를 도입한다�
 
 ## <a name="next-steps"></a>다음 단계
 
-많은 대기업에서 클라우드 거버넌스의 분야가 도입 차단 요소가 될 수 있습니다. 다음 문서에서는 클라우드에서의 장기적 성공을 위해 거버넌스를 팀 스포츠로 고려하여 확인해 봅니다.
+많은 대기업에는 다섯 가지 분야의 클라우드 거 버 넌 스 블 도입 될 수 있습니다. 다음 기술 자료 문서에 클라우드에서 장기적인 성공을 확인 하려면 몇 가지 추가 생각에 거 버 넌 스 팀 스포츠와 같습니다.
 
 > [!div class="nextstepaction"]
 > [거버넌스의 여러 계층](./multiple-layers-of-governance.md)

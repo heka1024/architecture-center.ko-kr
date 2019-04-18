@@ -9,12 +9,12 @@ ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 2b0e46a06f7fe47f281f726f73128db1d7dd1067
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 20a63cdd935f28cc47686238d34d654da2798985
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58243564"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59639600"
 ---
 # <a name="sidecar-pattern"></a>사이드카 패턴
 
@@ -46,7 +46,7 @@ ms.locfileid: "58243564"
 
 - 기본 애플리케이션에 대한 사이드카의 근접도로 인해 둘 간의 통신 시 대기 시간이 길지 않습니다.
 
-- 확장성 메커니즘을 제공하지 않는 애플리케이션의 경우에도 사이드카를 사용하여 기본 애플리케이션과 동일한 호스트 또는 하위 컨테이너에서 자체 프로세스로 연결하여 기능을 확장할 수 있습니다.
+- 확장성 메커니즘을 제공 하지 않는 응용 프로그램에 대해서도 동일한 호스트 또는 하위 기본 응용 프로그램 컨테이너에서 자체 프로세스로 연결 하 여 기능을 확장 하는 사이드카를 사용할 수 있습니다.
 
 사이드카 패턴은 컨테이너와 함께 사용되는 경우가 많으며 사이드카 컨테이너 또는 사이드킥 컨테이너라고도 합니다.
 

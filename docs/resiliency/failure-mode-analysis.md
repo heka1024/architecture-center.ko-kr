@@ -1,28 +1,26 @@
 ---
 title: 실패 모드 분석
-description: Azure에 기반한 클라우드 솔루션에 대한 장애 모드 분석을 수행하기 위한 지침입니다.
+description: Azure를 기반으로 하는 클라우드 솔루션에 대 한 실패 모드 분석을 수행 하기 위한 지침입니다.
 author: MikeWasson
 ms.date: 05/07/2018
 ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-design-principles
 ms.custom: resiliency
-ms.openlocfilehash: 6d0f58161c5b9d5922c21f24b1b1a50bab836bb1
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
-ms.translationtype: HT
+ms.openlocfilehash: 0d89570ca42aa087a9c18148b5a4019b6f348e6b
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54484281"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640977"
 ---
-# <a name="failure-mode-analysis"></a>실패 모드 분석
-
-[!INCLUDE [header](../_includes/header.md)]
+# <a name="failure-mode-analysis-for-azure-applications"></a>Azure 응용 프로그램에 대 한 실패 모드 분석
 
 FMA(장애 모드 분석)는 가능한 장애 지점을 식별하여 시스템에 복원력을 구축하는 프로세스입니다. FMA는 아키텍처 및 디자인 단계의 일부여야 하므로 처음부터 장애 복구를 시스템에 구축할 수 있습니다.
 
 FMA를 수행하는 일반적인 프로세스는 다음과 같습니다.
 
-1. 시스템의 모든 구성 요소를 식별합니다. ID 공급자, 타사 서비스 등과 같은 외부 종속성을 포함합니다.
+1. 시스템의 모든 구성 요소를 식별합니다. Id 공급자, 타사 서비스 등의 외부 종속성을 포함 합니다.
 2. 각 구성 요소마다 발생할 수 있는 잠재적 장애를 식별합니다. 단일 구성 요소에 둘 이상의 장애 모드가 있을 수 있습니다. 예를 들어 영향력 및 가능한 완화 방식이 서로 다르기 때문에 읽기 오류와 쓰기 오류를 별도로 고려해야 합니다.
 3. 전체적인 위험도에 따라 각 장애 모드를 평가합니다. 다음 항목을 고려합니다.
 
@@ -135,7 +133,7 @@ Application_End 로깅은 애플리케이션 도메인 종료(소프트 프로�
 - 데이터 노드가 장애 도메인에 분산되어 있는 랙 인식 배포를 사용합니다.
 - 로컬 쿼럼 일관성을 사용하여 여러 지역에 배포합니다. 일시적이지 않은 장애가 발생하면 다른 지역으로 장애 조치합니다.
 
-**진단**. 애플리케이션 로그 전송 사용
+**진단**. 애플리케이션 로그
 
 ## <a name="cloud-service"></a>클라우드 서비스
 
@@ -201,7 +199,7 @@ Application_End 로깅은 애플리케이션 도메인 종료(소프트 프로�
 
 **진단**. Elasticsearch에 대한 모니터링 도구를 사용하거나 클라이언트 쪽에서 페이로드를 사용하여 모든 오류를 기록할 수 있습니다. [Azure에서 Elasticsearch 실행][elasticsearch-azure]의 '모니터링' 섹션을 참조하세요.
 
-## <a name="queue-storage"></a>Queue Storage
+## <a name="queue-storage"></a>큐 저장소
 
 ### <a name="writing-a-message-to-azure-queue-storage-fails-consistently"></a>Azure Queue 저장소에 메시지를 쓰는 작업이 일관되게 실패합니다.
 
@@ -373,7 +371,7 @@ Application_End 로깅은 애플리케이션 도메인 종료(소프트 프로�
 
 **복구**. 취소 토큰을 사용하여 종료를 검색합니다. Service Fabric에서 취소를 요청하면 가능한 빨리 모든 작업을 끝내고  `RunAsync`을 종료합니다.
 
-**진단**. 애플리케이션 로그 전송 사용
+**진단**. 애플리케이션 로그
 
 ## <a name="storage"></a>Storage
 
@@ -432,7 +430,7 @@ Application_End 로깅은 애플리케이션 도메인 종료(소프트 프로�
 
 ### <a name="operator-accidentally-shuts-down-a-vm"></a>운영자가 실수로 VM을 종료합니다.
 
-**검색**. 해당 없음
+**검색**. N/A
 
 **복구**. `ReadOnly` 수준의 리소스 잠금을 설정합니다. [Azure Resource Manager를 사용하여 리소스 잠그기][rm-locks]를 참조하세요.
 

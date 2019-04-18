@@ -1,18 +1,18 @@
 ---
-title: 'CAF: 대기업 - 대기업 거버넌스의 여러 계층'
+title: 'CAF: 대규모 엔터프라이즈 – 여러 단계의 대기업에 거 버 넌 스'
 titleSuffix: Microsoft Cloud Adoption Framework for Azure
 ms.service: architecture-center
 ms.subservice: enterprise-cloud-adoption
 ms.custom: governance
 ms.date: 02/11/2019
-description: 대기업 - 대기업 거버넌스의 여러 계층
+description: 대규모 엔터프라이즈 – 여러 단계의 대기업에 거 버 넌 스
 author: BrianBlanchard
-ms.openlocfilehash: 42f4159ca0701c6a798f239359509a3e3b246c38
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
-ms.translationtype: HT
+ms.openlocfilehash: 1a90f8007077df0ecefa8ec5d8c0dd6bfca9ccc7
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55901863"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641215"
 ---
 # <a name="multiple-layers-of-governance-in-large-enterprises"></a>대기업 거버넌스의 여러 계층
 
@@ -30,7 +30,7 @@ ms.locfileid: "55901863"
 
 대규모로 이루어진 기업에서는 이 과정 전체에서 설명하는 분야에 중점을 두는 팀이나 직원이 있는 경우가 많습니다. 이 과정에서는 거버넌스를 팀 스포츠로 고려하는 방법을 제시합니다.
 
-많은 대기업에서 클라우드 거버넌스의 분야가도입 차단 요소가 될 수 있습니다. 기업 전체에 대한 ID, 보안, 운영, 배포 및 구성의 클라우드 전문 기술을 개발하는 데는 시간이 소요됩니다. 전체적으로 구현되는 IT 거버넌스 정책과 IT 보안의 경우 몇 달에서 심지어 몇 년까지 혁신이 지연될 수 있습니다. 혁신의 요구와, 기존 리소스 보호에 대한 거버넌스 요구의 균형을 맞추는 것은 정교한 문제입니다.
+많은 대기업에는 다섯 가지 분야의 클라우드 거 버 넌 스 블 도입 될 수 있습니다. 기업 전체에 대한 ID, 보안, 운영, 배포 및 구성의 클라우드 전문 기술을 개발하는 데는 시간이 소요됩니다. 전체적으로 구현되는 IT 거버넌스 정책과 IT 보안의 경우 몇 달에서 심지어 몇 년까지 혁신이 지연될 수 있습니다. 혁신의 요구와, 기존 리소스 보호에 대한 거버넌스 요구의 균형을 맞추는 것은 정교한 문제입니다.
 
 클라우드 본연의 기능은 혁신의 저해 요소는 차단하지만 위험은 증대할 수 있습니다. 이 거버넌스 과정에서는 위험 완화를 위해 회사가 가이드 라인을 마련하는 예제를 살펴보았습니다. 환경 보호를 위해 필요한 각 분야를 처리하기 보다는 클라우드 거버넌스 팀이 위험에 기반한 방식을 주도하여 배포할 대상을 관리하고 다른 팀은 필요한 클라우드 완성도를 구축하는 것입니다. 가장 중요한 것은 각 팀이 클라우드 완성도에 도달하면 거버넌스가 솔루션을 전체적으로 적용하는 것입니다. 각 팀이 완성되고 전체 솔루션에 추가될수록 클라우드 거버넌스 팀은 다음 단계를 시작하여 발전을 위한 추가적인 혁신과 도입을 추구할 수 있습니다.
 
@@ -38,7 +38,7 @@ ms.locfileid: "55901863"
 
 ## <a name="requirements-to-supporting-such-a-team-sport"></a>팀 스포츠와 같은 지원 요구 사항
 
-다계층 거버넌스 모델의 첫 번째 요구 사항은 거버넌스 계층 구조를 이해하는 것입니다. 다음 질문에 답해 보면 일반 거버넌스 계층 구조를 이해하는 데 도움이 될 것입니다.
+다계층 거버넌스 모델의 첫 번째 요구 사항은 거버넌스 계층 구조를 이해하는 것입니다. 다음 질문에 대답 일반 거 버 넌 스 계층 구조를 이해 하는 데 도움이 됩니다.
 
 - 비즈니스 단위 전체에 클라우드 계정(클라우드 서비스 요금 청구)이 할당되는 방식
 - 기업 IT와 각 비즈니스 단위에 거버넌스 책무가 할당되는 방식

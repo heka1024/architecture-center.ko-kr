@@ -8,12 +8,12 @@ ms.topic: best-practice
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 9b6bef0fd803db5b488e93d246642d4e3681a94c
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
-ms.translationtype: HT
+ms.openlocfilehash: dcbfa528a4fdd640b08b42904ceadb7a802b806e
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897765"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640926"
 ---
 # <a name="api-implementation"></a>API 구현
 
@@ -582,7 +582,7 @@ ServicePoint sp = ServicePointManager.FindServicePoint(uri);
 sp.Expect100Continue = false;
 ```
 
-후속으로 생성되는 모든 [ServicePoint]\(/dotnet/api/system.net.servicepoint) 개체에 대해 이 속성의 기본값을 지정하기 위하여 `ServicePointManager` 클래스의 정적 `Expect100Continue` 속성을 설정할 수도 있습니다.
+정적 설정할 수도 있습니다 `Expect100Continue` 의 속성을 `ServicePointManager` 나중에 만들어진 모든에 대해이 속성의 기본값을 지정 하는 클래스 [ServicePoint](/dotnet/api/system.net.servicepoint) 개체입니다.
 
 ### <a name="support-pagination-for-requests-that-may-return-large-numbers-of-objects"></a>다수의 개체를 반환할 수 있는 요청에 대해 페이지 매김을 지원합니다.
 
@@ -708,7 +708,7 @@ Web API의 특성에 따라 제대로 작동하는지를 확인하기 위한 요
 
 - 쿼리 문자열을 테스트합니다. 작업이 선택적인 매개 변수(예: 페이지 매김 요청)를 취할 수 있으면 매개 변수의 다른 조합과 순서를 테스트합니다.
 
-- 비동기 작업이 완료되었는지 확인합니다. Web API가 큰 바이너리 개체를 반환하는 요청에 대해 스트리밍을 지원하는 경우 데이터가 스트리밍되는 동안 클라이언트 요청이 차단되지 않도록 합니다. Web API가 오래 실행되는 데이터 수정 작업에 대해 폴링을 수행하는 경우, 작업이 진행되는 동안 상태를 제대로 보고하는지 확인합니다.
+- 비동기 작업이 완료되었는지 확인합니다. Web API가 큰 바이너리 개체를 반환하는 요청에 대해 스트리밍을 지원하는 경우 데이터가 스트리밍되는 동안 클라이언트 요청이 차단되지 않도록 합니다. 장기 데이터 수정 작업에 대 한 폴링을 수행 하는 웹 API를 경우 작업 상태를 보고 있는지 확인 올바르게 진행 되는 과정이 있습니다.
 
 Web API가 감금 하에서도 만족스럽게 작동하는지 확인하기 위하여 성능 테스트를 생성하고 실행해야 합니다. Visual Studio Ultimate을 사용하여 웹 성능 및 부하 테스트를 빌드할 수 있습니다. 자세한 정보는 [릴리스 전에 애플리케이션에서 성능 테스트 실행](https://msdn.microsoft.com/library/dn250793.aspx)을 참조하세요.
 

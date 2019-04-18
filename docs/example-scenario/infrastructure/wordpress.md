@@ -8,12 +8,12 @@ ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 social_image_url: /azure/architecture/example-scenario/infrastructure/media/secure-scalable-wordpress.png
-ms.openlocfilehash: 6032247dce0d090885bc560d963f1e714d91f69c
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
-ms.translationtype: HT
+ms.openlocfilehash: 4f347f91d5958fb83404856ec5d36d70a7ed0d19
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58244634"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640093"
 ---
 # <a name="highly-scalable-and-secure-wordpress-website"></a>확장성이 높고 안전한 WordPress 웹 사이트
 
@@ -72,15 +72,13 @@ ms.locfileid: "58244634"
 
 이 시나리오의 VM 인스턴스는 여러 지역에 배포되며, WordPress 콘텐츠용 RSYNC와 MariaDB 클러스터용 마스터 슬레이브 복제를 통해 두 지역 간에 데이터가 복제됩니다.
 
-다른 가용성 항목에 대해서는 Azure 아키텍처 센터의 [가용성 검사 목록][availability]을 참조하세요.
-
 ### <a name="scalability"></a>확장성
 
 이 시나리오에서는 각 지역에 있는 두 프런트 엔드 웹 서버 클러스터에 가상 머신 확장 집합을 사용합니다. 확장 집합을 사용하면 프론트 엔드 애플리케이션 계층을 실행하는 VM 인스턴스의 수를 고객 요구 또는 정의된 일정에 따라 자동으로 조정할 수 있습니다. 자세한 내용은 [가상 머신 확장 집합을 사용한 자동 크기 조정 개요][docs-vmss-autoscale]를 참조하세요.
 
 백 엔드는 가용성 집합의 MariaDB 클러스터입니다. 자세한 내용은 [MariaDB 클러스터 자습서][mariadb-tutorial]를 참조하세요.
 
-다른 확장성 항목에 대해서는 Azure 아키텍처 센터의 [확장성 검사 목록][scalability]을 참조하세요.
+다른 확장성 항목 [확장성 검사 목록]을 참조 하세요. [확장성] Azure 아키텍처 센터에서.
 
 ### <a name="security"></a>보안
 
@@ -92,7 +90,7 @@ ms.locfileid: "58244634"
 
 여러 지역, 데이터 복제 및 가상 머신 확장 집합이 결합된 이 시나리오에서는 Azure 부하 분산 장치를 사용합니다. 이러한 네트워킹 구성 요소는 연결된 VM 인스턴스에 트래픽을 분산하고, 트래픽이 정상 VM에만 분산되도록 보장하는 상태 프로브를 포함합니다. 이 모든 네트워킹 구성 요소는 CDN을 통해 프런트에 배치됩니다. 이렇게 하면 트래픽을 중단하고 최종 사용자 액세스에 영향을 미칠 수 있는 문제로부터 네트워킹 리소스와 애플리케이션을 탄력적으로 복원할 수 있습니다.
 
-복원력 있는 시나리오 설계에 대한 일반적인 지침은 [Azure용 복원 애플리케이션 디자인][resiliency]을 참조하세요.
+복원 시나리오를 디자인에 대 한 일반적인 지침을 참조 하세요 [신뢰할 수 있는 Azure 응용 프로그램 디자인](../../reliability/index.md)합니다.
 
 ## <a name="pricing"></a>가격
 
@@ -112,6 +110,4 @@ ms.locfileid: "58244634"
 [docs-nsg]: /azure/virtual-network/security-overview
 [security]: /azure/security/
 [availability]: ../../checklist/availability.md
-[resiliency]: /azure/architecture/resiliency/
-[scalability]: /azure/architecture/checklist/scalability
 [pricing]: https://azure.com/e/a8c4809dab444c1ca4870c489fbb196b
