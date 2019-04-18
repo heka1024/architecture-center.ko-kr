@@ -3,18 +3,18 @@ title: Azure에서 디지털 이미지 기반 모델링 가속화
 titleSuffix: Azure Example Scenarios
 description: Avere 및 Agisoft PhotoScan을 사용하여 Azure에서 디지털 이미지 기반 모델링을 가속화합니다.
 author: adamboeglin
-ms.date: 1/11/2019
+ms.date: 01/11/2019
 ms.topic: example-scenario
 ms.service: architecture-center
 ms.subservice: example-scenario
 ms.custom: cat-team, Linux, HPC
 social_image_url: /azure/architecture/example-scenario/infrastructure/media/architecture-image-modeling.png
-ms.openlocfilehash: 87b43347fb5f4baec0081a67c8b003dccd2fdf0d
-ms.sourcegitcommit: 14226018a058e199523106199be9c07f6a3f8592
-ms.translationtype: HT
+ms.openlocfilehash: 981d9f01ef12f75d9b292196f754f3a0affa791a
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55483014"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640382"
 ---
 # <a name="accelerate-digital-image-based-modeling-on-azure"></a>Azure에서 디지털 이미지 기반 모델링 가속화
 
@@ -50,7 +50,7 @@ ms.locfileid: "55483014"
 - [Avere vFXT](/azure/avere-vfxt/avere-vfxt-overview)는 개체 스토리지와 기존 NAS(Network Attached Storage)를 사용하여 큰 데이터 세트의 스토리지를 최적화하는 파일 캐싱 솔루션입니다.  다음을 포함합니다.
   - Avere 컨트롤러. 이 VM은 Avere vFXT 클러스터를 설치하고 Ubuntu 18.04 LTS를 실행하는 스크립트를 실행합니다. 나중에 이 VM을 사용하여 클러스터 노드를 추가하거나 제거하고 클러스터를 삭제할 수도 있습니다.
   - vFXT 클러스터. Avere OS 5.0.2.1 기반의 Avere vFXT 노드 각각에 대해 하나씩, 3개 이상의 VM이 사용됩니다. 이러한 VM은 Azure Blob 스토리지에 연결된 vFXT 클러스터를 형성합니다.
-- [Microsoft Active Directory 도메인 컨트롤러](/windows/desktop/ad/active-directory-domain-services)를 사용하면 호스트에서 도메인 리소스에 액세스하고 DNS 이름 확인을 제공할 수 있습니다. Avere vFXT는 여러 개의 A 레코드를 추가합니다. 예를 들어 vFXT 클러스터의 각 A 레코드는 각 Avere vFXT 노드의 IP 주소를 가리킵니다. 이 설정에서는 모든 VM이 라운드 로빈 패턴을 사용하여 vFXT 내보내기에 액세스합니다.
+- [Microsoft Active Directory 도메인 컨트롤러](/windows/desktop/ad/active-directory-domain-services)를 사용하면 호스트에서 도메인 리소스에 액세스하고 DNS 이름 확인을 제공할 수 있습니다. Avere vFXT 추가 된 레코드 수가 &mdash; vFXT 클러스터의 각 A 레코드 각 Avere vFXT 노드의 IP 주소를 가리키는 예를 들어 있습니다. 이 설정에서는 모든 VM이 라운드 로빈 패턴을 사용하여 vFXT 내보내기에 액세스합니다.
 - [다른 VM](/azure/virtual-machines/)은 관리자가 스케줄러와 처리 노드에 액세스하는 데 사용하는 점프박스 역할을 합니다. 관리자가 원격 데스크톱 프로토콜을 통해 헤드 노드에 액세스할 수 있게 하려면 Windows 점프박스가 필수적입니다. 두 번째 점프박스는 선택 사항이며 작업자 노드 관리를 위해 Linux를 실행합니다.
 - [NSG](/azure/virtual-network/manage-network-security-group)(네트워크 보안 그룹)는 PIP(공용 IP 주소)에 대한 액세스를 제한하고, 3389 및 22 포트에서 점프박스 서브넷에 연결된 VM에 액세스할 수 있도록 허용합니다.
 - [가상 네트워크 피어링](/azure/virtual-network/virtual-network-peering-overview)은 PhotoScan 가상 네트워크를 Avere 가상 네트워크에 연결합니다.
@@ -71,7 +71,7 @@ ms.locfileid: "55483014"
 배포 고려 사항은 사용되는 애플리케이션과 서비스에 따라 다르지만 다음과 같은 몇 가지 참고 사항이 적용됩니다.
 
 - 고성능 애플리케이션을 구축하는 경우 Azure Premium Storage를 사용하고 [애플리케이션 계층을 최적화](/azure/virtual-machines/windows/premium-storage-performance)합니다. Azure Blob [핫 계층 액세스](/azure/storage/blobs/storage-blob-storage-tiers)를 사용하여 자주 액세스할 수 있도록 스토리지를 최적화합니다.
-- 가용성 및 성능 요구 사항이 충족되는 스토리지 [복제 옵션](/azure/storage/common/storage-redundancy)을 사용합니다. 이 예에서는 고가용성을 위해 LRS(로컬 중복 스토리지)가 있는 Avere vFXT가 기본적으로 구성되어 있습니다. 부하 분산의 경우 이 설정의 모든 VM에서 라운드 로빈 패턴을 사용하여 vFXT 내보내기에 액세스합니다.
+- 저장소를 사용 하 여 [복제 옵션](/azure/storage/common/storage-redundancy) 가용성 및 성능 요구 사항을 충족 하는 합니다. 이 예에서는 고가용성을 위해 LRS(로컬 중복 스토리지)가 있는 Avere vFXT가 기본적으로 구성되어 있습니다. 부하 분산의 경우 이 설정의 모든 VM에서 라운드 로빈 패턴을 사용하여 vFXT 내보내기에 액세스합니다.
 - 백 엔드 스토리지가 Windows 클라이언트와 Linux 클라이언트 모두에서 사용되는 경우 Samba 서버를 사용하여 Windows 노드를 지원합니다. BeeGFS를 기반으로 하는 이 예제 시나리오의 [버전](https://github.com/paulomarquesc/beegfs-template)은 Samba를 사용하여 Windows에서 실행되는 HPC 워크로드(PhotoScan)의 스케줄러 노드를 지원합니다. 부하 분산 장치가 DNS 라운드 로빈에 대한 스마트 대안으로 작동하도록 배포됩니다.
 - [Windows](/azure/virtual-machines/windows/sizes-hpc) 또는 [Linux](/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 워크로드에 가장 적합한 VM 유형을 사용하여 HPC 애플리케이션을 실행합니다.
 - HPC 워크로드를 스토리지 리소스에서 격리하려면 각각 자체의 가상 네트워크에 배포한 다음, 가상 네트워크 [피어링](/azure/virtual-network/virtual-network-peering-overview)을 사용하여 두 네트워크를 연결합니다. 피어링은 서로 다른 가상 네트워크의 리소스 간에 대기 시간이 짧은 고대역폭 연결을 만들고, 사설 IP 주소를 통해서만 Microsoft 백본 인프라를 통해 트래픽을 라우팅합니다.
@@ -91,7 +91,7 @@ ms.locfileid: "55483014"
 
 ## <a name="pricing"></a>가격
 
-이 시나리오를 실행하는 데 드는 비용은 여러 요인에 따라 크게 달라질 수 있습니다.  VM의 수와 크기, 필요한 스토리지 양 및 작업 완료 시간에 따라 비용이 결정됩니다.
+이 시나리오를 실행 하는 비용은 여러 요인에 따라 크게 달라질 수 있습니다.  VM의 수와 크기, 필요한 스토리지 양 및 작업 완료 시간에 따라 비용이 결정됩니다.
 
 다음과 같은 [Azure 가격 계산기](https://azure.com/e/42362ddfd2e245a28a8e78bc609c80f3)의 비용 프로필 샘플은 Avere vFXT 및 PhotoScan에 대한 일반적인 구성을 기반으로 합니다.
 
