@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: f1ab728d68747856fb2586804d58d45c4ea4fcc1
-ms.sourcegitcommit: c053e6edb429299a0ad9b327888d596c48859d4a
+ms.openlocfilehash: 4f94b181bd61b09c2ea79defe1c551402c1dc877
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58344498"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640961"
 ---
 # <a name="busy-front-end-antipattern"></a>붐비는 프런트 엔드 안태패턴
 
@@ -130,7 +130,7 @@ public async Task RunAsync(CancellationToken cancellationToken)
 
 ## <a name="how-to-detect-the-problem"></a>문제를 감지하는 방법
 
-붐비는 프런트 엔드의 증상에는 리소스를 많이 사용하는 작업을 수행할 때 대기 시간이 길어지는 것이 포함됩니다. 응답 시간이 길어지거나 서비스 시간 초과로 인해 장애가 발생하면 최종 사용자가 보고할 가능성이 높습니다. 이러한 장애는 HTTP 500(내부 서버) 오류 또는 HTTP 503(서비스를 사용할 수 없음) 오류를 반환할 수도 있습니다. 웹 서버의 이벤트 로그를 검사하십시오. 오류의 원인과 상황에 대한 자세한 정보가 포함되어 있을 수 있습니다.
+붐비는 프런트 엔드의 증상에는 리소스를 많이 사용하는 작업을 수행할 때 대기 시간이 길어지는 것이 포함됩니다. 응답 시간이 길어지거나 서비스 시간 초과로 인해 장애가 발생하면 최종 사용자가 보고할 가능성이 높습니다. 이러한 장애는 HTTP 500(내부 서버) 오류 또는 HTTP 503(서비스를 사용할 수 없음) 오류를 반환할 수도 있습니다. 웹 서버의 이벤트 로그를 검사하세요. 오류의 원인과 상황에 대한 자세한 정보가 포함되어 있을 수 있습니다.
 
 다음 단계를 수행하면 문제를 식별하는 데 도움이 될 수 있습니다.
 

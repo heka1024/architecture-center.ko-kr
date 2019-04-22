@@ -2,13 +2,15 @@
 
 2. [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)을 설치합니다.
 
-3. [Azure 빌딩 블록](https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks) npm 패키지를 설치합니다.
+3. [Node 및 NPM](https://nodejs.org/en/download/) 설치
+
+4. [Azure 빌딩 블록](https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks) npm 패키지를 설치합니다.
 
    ```bash
    npm install -g @mspnp/azure-building-blocks
    ```
 
-4. 명령 프롬프트, bash 프롬프트 또는 PowerShell 프롬프트에서 다음과 같은 Azure 계정에 로그인합니다.
+5. 명령 프롬프트, bash 프롬프트 또는 PowerShell 프롬프트에서 다음과 같은 Azure 계정에 로그인합니다.
 
    ```bash
    az login

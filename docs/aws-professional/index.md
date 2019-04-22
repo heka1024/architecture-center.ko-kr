@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: c61758494435f61814953ab5ba48d8fed1e709ab
-ms.sourcegitcommit: 273e690c0cfabbc3822089c7d8bc743ef41d2b6e
+ms.openlocfilehash: 6e44953cccf39cc40be775f4043bcf8b1b890dae
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55897595"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641164"
 ---
 # <a name="azure-for-aws-professionals"></a>AWS 전문가를 위한 Azure
 
@@ -157,7 +157,7 @@ Azure [지역 중복 저장소](/azure/storage/common/storage-redundancy-grs)는
 
 - [Azure 애플리케이션의 고가용성](../resiliency/high-availability-azure-applications.md)
 
-- [Azure 애플리케이션에 대한 재해 복구](../resiliency/disaster-recovery-azure-applications.md)
+- [Azure 애플리케이션의 오류 및 재해 복구](../reliability/disaster-recovery.md)
 
 - [Azure에서 Linux 가상 머신에 대한 계획된 유지 관리](/azure/virtual-machines/linux/maintenance-and-updates)
 
@@ -300,9 +300,9 @@ Azure는 [ExpressRoute](https://azure.microsoft.com/documentation/services/expre
 
 Azure의 AWS RDS(관계형 데이터베이스 서비스)에 해당하는 몇 가지 다른 관계형 데이터베이스 서비스를 제공합니다.
 
-- [SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)
-- [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview)
-- [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview)
+- [SQL Database](/azure/sql-database/sql-database-technical-overview)
+- [Azure Database for MySQL](/azure/mysql/overview)
+- [Azure Database for PostgreSQL](/azure/postgresql/overview)
 
 [SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/), [Oracle](https://azure.microsoft.com/campaigns/oracle/) 및 [MySQL](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-classic-mysql-2008r2/) 같은 다른 데이터베이스 엔진은 Azure VM 인스턴스를 사용하여 배포할 수 있습니다.
 

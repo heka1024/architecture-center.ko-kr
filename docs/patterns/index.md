@@ -4,17 +4,17 @@ titleSuffix: Azure Architecture Center
 description: 클라우드에서 안정적이고 확장성 있는 안전한 애플리케이션을 빌드하기 위한 디자인 패턴입니다.
 keywords: Azure
 author: dragon119
-ms.date: 12/10/2018
+ms.date: 03/01/2018
 ms.topic: design-pattern
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ms.custom: seodec18
-ms.openlocfilehash: 1f3a76a104f0157526db3cff338c2b8b08dd573c
-ms.sourcegitcommit: 1b50810208354577b00e89e5c031b774b02736e2
+ms.openlocfilehash: f0cc64c555be092f9efb51e1f769c3668ce281af
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54488259"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59641011"
 ---
 # <a name="cloud-design-patterns"></a>클라우드 디자인 패턴
 
@@ -95,10 +95,11 @@ ms.locfileid: "54488259"
 |                       [격벽](./bulkhead.md)                       |                                                        하나가 고장 나더라도 나머지는 정상적으로 작동하도록 애플리케이션의 요소를 여러 풀에 격리합니다.                                                        |
 |                    [Cache-Aside](./cache-aside.md)                    |                                                                                   필요할 때 데이터를 데이터 저장소에서 캐시로 로드                                                                                    |
 |                [회로 차단기](./circuit-breaker.md)                |                                                     원격 서비스 또는 리소스에 연결할 때 해결하는 데 걸리는 시간이 유동적인 오류를 처리합니다.                                                     |
-|                           [CQRS](./cqrs.md)                           |                                                           별도의 인터페이스를 사용하여 데이터를 업데이트하는 작업과 데이터를 읽는 작업을 분리합니다.                                                            |
+| [클레임 검사](./claim-check.md) | 큰 메시지를 클레임 검사 및 페이로드로 분할하면 메시지 버스의 과부하를 피할 수 있습니다. |
 |       [보정 트랜잭션](./compensating-transaction.md)       |                                                         여러 단계로 나뉘어 있지만 결국에는 일관적인 작업을 정의하는 일련의 단계에서 수행한 작업을 실행 취소합니다.                                                         |
 |            [경쟁 소비자](./competing-consumers.md)            |                                                            여러 동시 소비자가 동일한 메시징 채널에 수신된 메시지를 처리할 수 있게 해 줍니다.                                                             |
 | [계산 리소스 통합](./compute-resource-consolidation.md) |                                                                        여러 작업을 단일 계산 단위로 통합합니다.                                                                        |
+|                           [CQRS](./cqrs.md)                           |                                                           별도의 인터페이스를 사용하여 데이터를 업데이트하는 작업과 데이터를 읽는 작업을 분리합니다.                                                            |
 |                 [이벤트 소싱](./event-sourcing.md)                 |                                                      추가 전용 저장소를 사용하여 도메인의 데이터에 대해 수행된 작업을 설명하는 일련의 이벤트 전체를 기록합니다.                                                      |
 |   [외부 구성 저장소](./external-configuration-store.md)   |                                                           구성 정보를 애플리케이션 배포 패키지에서 중앙 위치로 이동합니다.                                                           |
 |             [페더레이션 ID](./federated-identity.md)             |                                                                                외부 ID 공급자에게 인증을 위임합니다.                                                                                |
@@ -112,7 +113,7 @@ ms.locfileid: "54488259"
 |              [구체화된 뷰](./materialized-view.md)              |                                        데이터가 필요한 쿼리 작업에 대해 이상적으로 포맷되지 않은 경우 하나 이상의 데이터 저장소에 있는 데이터에 대한 미리 채워진 뷰를 생성합니다.                                        |
 |              [파이프 및 필터](./pipes-and-filters.md)              |                                                        복잡한 처리를 수행하는 작업을 재사용 가능한 일련의 별도 요소로 분류합니다.                                                        |
 |                 [우선 순위 큐](./priority-queue.md)                 |                                 우선 순위가 높은 요청을 우선 순위가 낮은 요청보다 먼저 받아서 처리하도록 서비스로 전송된 요청의 우선 순위를 지정합니다.                                  |
-| [게시자/구독자](./publisher-subscriber.md) | 애플리케이선이 발신자를 수신자에게 연결하지 않고 여러 관심있는 소비자에게 이벤트를 비동기식으로 알릴 수 있습니다. |
+| [게시자/구독자](./publisher-subscriber.md) | 애플리케이션이 발신자와 수신자를 연결하지 않고 여러 관심 있는 소비자에게 이벤트를 비동기적으로 알릴 수 있습니다. |
 |      [큐 기반 부하 평준화](./queue-based-load-leveling.md)      |                                               작업 그리고 그 작업이 일시적인 높은 부하를 부드럽게 처리하기 위해 호출하는 서비스 사이에서 버퍼 역할을 하는 큐를 사용합니다.                                               |
 |                          [다시 시도](./retry.md)                          |               이전에 실패한 작업을 투명하게 다시 시도하여 서비스 또는 네트워크 리소스에 연결하려 할 때 애플리케이션을 사용하여 예상된 일시적 오류를 처리합니다.                |
 |     [Scheduler 에이전트 감독자](./scheduler-agent-supervisor.md)     |                                                              서비스 및 기타 원격 리소스의 분산된 집합에서 일련의 작업을 조정합니다.                                                               |
