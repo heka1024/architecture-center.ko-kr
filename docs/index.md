@@ -5,12 +5,12 @@ layout: LandingPage
 ms.topic: landing-page
 ms.date: 09/28/2018
 google-site-verification: b-xRLveOzJ9oSOh37wgRTRB2lMOoFY8HiHf9_0DIawE
-ms.openlocfilehash: e247985aa92e1c2bf3cb4d43514f4d06250f1141
-ms.sourcegitcommit: 548374a0133f3caed3934fda6a380c76e6eaecea
+ms.openlocfilehash: d91e905f2309792cf96fe41fa2fdf56704b95d6e
+ms.sourcegitcommit: 579c39ff4b776704ead17a006bf24cd4cdc65edd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419974"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59640297"
 ---
 # <a name="azure-architecture-center"></a>Azure 아키텍처 센터
 
@@ -162,8 +162,8 @@ ms.locfileid: "58419974"
                             </div>
                         </div>
                         <div class="cardText">
-                            <h3>복원력을 위한 디자인</h3>
-                            <p>Azure용 복원력 있는 애플리케이션을 설계하는 방법을 알아봅니다.</p>
+                            <h3>신뢰할 수 있는 Azure 애플리케이션 디자인</h3>
+                            <p>Azure용 애플리케이션에 내결함성 및 고가용성을 구축하는 방법에 대해 알아보세요.</p>
                         </div>
                     </div>
                 </div>
@@ -204,26 +204,6 @@ ms.locfileid: "58419974"
                         <div class="cardText">
                             <h3>클라우드 디자인 패턴</h3>
                             <p>개발자 및 솔루션 설계자를 위한 디자인 패턴입니다. 각 패턴은 문제, 문제를 해결하는 패턴 및 Azure를 기반으로 하는 예를 설명합니다.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <!-- Checklists -->
-    <li>
-        <a href="/azure/architecture/checklist/">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage">
-                                <img src="_images/checklist.svg" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <h3>디자인 검토 검사 목록</h3>
-                            <p>디자인 프로세스 중 개발자와 솔루션 설계자를 지원하기 위한 검사 목록입니다.</p>
                         </div>
                     </div>
                 </div>
