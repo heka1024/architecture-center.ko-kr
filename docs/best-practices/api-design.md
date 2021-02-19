@@ -216,7 +216,7 @@ JSON 병합 패치는 비교적 간단합니다. 패치 문서는 원래 JSON �
 }
 ```
 
-이렇게 하면 서버에 `price`를 업데이트하고, `color`를 삭제하고, `size` &mdash; `name`을 추가하라는 지시가 전달되며, `category`는 수정되지 않습니다. JSON 병합 패치의 정확한 세부 정보는 [RFC 7396](https://tools.ietf.org/html/rfc7396)을 참조하세요. JSON 병합 패치의 미디어 유형은 `application/merge-patch+json`입니다.
+이를 통해 서버에게 `name`과 `category`는 그대로 둔 채, `price`를 업데이트하고, `color`를 삭제하고, `size`를 추가하라고 할 수 있습니다. JSON 병합 패치의 정확한 세부 정보는 [RFC 7396](https://tools.ietf.org/html/rfc7396)을 참조하세요. JSON 병합 패치의 미디어 유형은 `application/merge-patch+json`입니다.
 
 원래 리소스가 명시적 null 값을 포함할 수 있으면 패치 문서에서 `null`이 갖는 특별한 의미 때문에 병합 패치가 적합하지 않습니다. 또한 패치 문서는 서버에서 업데이트를 적용할 순서를 지정하지 않습니다. 데이터 및 도메인에 따라 이것이 중요할 수도 있고 중요하지 않을 수도 있습니다. [RFC 6902](https://tools.ietf.org/html/rfc6902)에 정의된 JSON 패치는 좀 더 유연합니다. 작업의 결과로 적용할 변경 내용을 지정합니다. 작업에는 추가, 제거, 바꾸기, 복사 및 테스트(값의 유효성 검사)가 포함됩니다. JSON 패치의 미디어 유형은 `application/json-patch+json`입니다.
 
